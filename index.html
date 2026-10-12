@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeDuo — Belajar Ngoding</title>
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#58cc02">
+  <meta name="description" content="Belajar coding gaya Duolingo: pelajaran pendek, latihan interaktif, teman robot bernama Bibit. Offline, tanpa akun.">
+  <meta name="color-scheme" content="light">
+  <!-- Social preview (og:image diisi setelah aset OG tersedia; saat ini tanpa gambar agar tak 404) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CodeDuo — Belajar Ngoding">
+  <meta property="og:description" content="Pelajaran coding pendek & interaktif, teman robot Bibit. Offline, tanpa akun.">
+  <meta property="og:locale" content="id_ID">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CodeDuo — Belajar Ngoding">
+  <meta name="twitter:description" content="Pelajaran coding pendek & interaktif, teman robot Bibit. Offline, tanpa akun.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/">
+      <span class="brand__mascot" id="brand-mascot" aria-hidden="true"></span>
+      <span class="brand__text">CodeDuo</span>
+    </a>
+    <div class="top-stats">
+      <button class="mute-btn" id="mute-btn" data-act="mute" aria-label="Suara" title="Suara">🔊</button>
+      <span class="streak" id="streak-badge" title="Streak harian">🔥 <b id="streak-count">0</b></span>
+    </div>
+  </header>
+  <main id="app"></main>
+  <aside id="buddy" class="buddy" aria-live="polite" aria-label="Bibit, teman belajar"></aside>
+  <!-- Library motion dari CDN — non-esensial (boleh gagal offline). referrerpolicy=no-referrer, SRI terkunci.
+       Jangan edit integrity manual: kalau versi CDN naik, jalan ulang `node sri.js`. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer referrerpolicy="no-referrer" crossorigin="anonymous" integrity="sha384-fXdIufVbE9aU7STmdk/DWK0imNOozId9fTwzM/gi0NfPjphEIC3gq0M760UnsKVy"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer referrerpolicy="no-referrer" crossorigin="anonymous" integrity="sha384-sPwMflxqfAN+Q5mvlkLmHiX3PORGbZSXHiSGPTXT9VHCD/AB+b+r+vJWsqprv+7k"></script>
+  <!-- Konten kurikulum dipecah per blok (mudah dirawat). WAJIB urut: blok dulu, barrel content.js terakhir. -->
+  <script src="content/html.js" defer></script>
+  <script src="content/js.js" defer></script>
+  <script src="content/sql.js" defer></script>
+  <script src="content/ts.js" defer></script>
+  <script src="content/web.js" defer></script>
+  <script src="content.js" defer></script>
+  <script src="srs.js" defer></script>
+  <script src="robot.js" defer></script>
+  <script src="checkers.js" defer></script>
+  <script src="sfx.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

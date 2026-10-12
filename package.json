@@ -1,0 +1,50 @@
+{
+  "name": "codeduo",
+  "version": "1.0.0",
+  "description": "Belajar pemrograman gaya Duolingo — pelajaran pendek, latihan interaktif, teman robot Bibit. Offline, tanpa akun, tanpa backend.",
+  "keywords": [
+    "belajar-coding",
+    "duolingo",
+    "pwa",
+    "offline-first",
+    "spaced-repetition",
+    "pendidikan",
+    "indonesia",
+    "vanilla-js"
+  ],
+  "license": "MIT",
+  "author": "Grayzeus",
+  "homepage": "https://github.com/grayzeus/codeduo#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grayzeus/codeduo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/grayzeus/codeduo/issues"
+  },
+  "private": false,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node test.js",
+    "check": "node --check app.js && node --check content.js && node --check content/html.js && node --check content/js.js && node --check content/sql.js && node --check content/ts.js && node --check content/web.js && node --check srs.js && node --check robot.js && node --check checkers.js && node --check sfx.js",
+    "sri": "node sri.js",
+    "start": "python -m http.server 8080"
+  },
+  "files": [
+    "index.html",
+    "styles.css",
+    "*.js",
+    "content/",
+    "manifest.json",
+    "icon.svg",
+    "icon-192.png",
+    "icon-512.png",
+    "robots.txt",
+    "404.html",
+    "README.md",
+    "LICENSE"
+  ]
+}
