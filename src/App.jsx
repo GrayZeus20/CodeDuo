@@ -4,7 +4,7 @@
 
 import { useEffect } from 'react';
 import { useStore } from './useStore.js';
-import { routeInfo } from './store.js';
+import { routeInfo, getState } from './store.js';
 import Topbar from './components/Topbar.jsx';
 import Buddy from './components/Buddy.jsx';
 import Home from './components/Home.jsx';
@@ -14,6 +14,8 @@ import Profile from './components/Profile.jsx';
 
 export default function App() {
   useStore();
+  const state = getState();
+  const buddyHidden = state ? !!state.buddyHidden : false;
   const route = routeInfo();
   const isLesson = route.name === 'lesson' || route.name === 'review';
 
@@ -35,7 +37,7 @@ export default function App() {
     <>
       <Topbar />
       <main id="app">{screen}</main>
-      <Buddy />
+      {!buddyHidden && <Buddy />}
     </>
   );
 }

@@ -16,7 +16,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { RobotHead } from 'robot-heads';
 import {
-  buddyState, buddyFace, buddyLine, onBuddyTap, tickBuddy, getSession, getCompanion,
+  buddyState, buddyFace, buddyLine, onBuddyTap, tickBuddy, getSession, getCompanion, getState,
 } from '../store.js';
 import { useStore } from '../useStore.js';
 import { SFX } from '../../sfx.js';
@@ -26,6 +26,9 @@ const HEAD_SIZE = 132;
 
 export default function Buddy() {
   useStore();                       /* re-render tiap state store berubah */
+  const state = getState();
+  if (state && state.buddyHidden) return null;
+
   const last = useRef(Date.now());
   const session = getSession();
   const companion = getCompanion();

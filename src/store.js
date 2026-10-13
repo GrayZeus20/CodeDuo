@@ -161,6 +161,7 @@ function defaultState() {
     progress: {},
     stats: { correct: 0, wrong: 0, lessonsDone: 0 },
     muted: false,
+    buddyHidden: false,
   };
 }
 
@@ -185,6 +186,7 @@ function sanitizeState(parsed) {
   });
   s.progress = cleanProgress;
   s.muted = !!s.muted;
+  s.buddyHidden = !!s.buddyHidden;
   return s;
 }
 
@@ -580,6 +582,18 @@ export function toggleMute() {
   saveState();
   bump();
   return state.muted;
+}
+
+export function toggleBuddy() {
+  if (!state) return false;
+  state.buddyHidden = !state.buddyHidden;
+  saveState();
+  bump();
+  return state.buddyHidden;
+}
+
+export function isBuddyHidden() {
+  return state ? !!state.buddyHidden : false;
 }
 
 export function currentExercise() {
