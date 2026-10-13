@@ -356,7 +356,8 @@ function collectAiSignals() {
   const ex = currentExercise();
   const t = r.topicId ? topicById(r.topicId) : null;
   const nodes = t ? topicNodes(t.id) : [];
-  const doneCount = nodes.filter((n) => isNodeDone(t.id, n.id)).length;
+  const stepNodes = nodes.filter((n) => n.kind === 'step');
+  const doneCount = stepNodes.filter((n) => isNodeDone(t.id, n.id)).length;
   const nextT = currentTopicId() ? topicById(currentTopicId()) : null;
 
   return {
@@ -373,10 +374,10 @@ function collectAiSignals() {
     currentExercise: ex,
     face: companion.face,
     mood: companion.mood,
-    topicTitle: t ? t.title : null,
+    topicTitle: t ? (t.name || t.title) : null,
     topicDoneCount: doneCount,
-    topicTotalCount: nodes.length,
-    nextTopicTitle: nextT ? nextT.title : null,
+    topicTotalCount: stepNodes.length || 3,
+    nextTopicTitle: nextT ? (nextT.name || nextT.title) : null,
     lessonLabel: session ? session.label : null,
     lastResult: session ? session.lastResult : null,
   };
@@ -624,9 +625,10 @@ function checkPreview(userCode, ex) {
     return { correct: true };
   }
   const doc = new DOMParser().parseFromString(code, 'text/html');
+  const bodyText = doc.body ? doc.body.textContent : (doc.documentElement ? doc.documentElement.textContent : '');
   for (const m of ex.must) {
     if (m.t === 'selector' && !doc.querySelector(m.v)) return { correct: false, message: 'Elemen ' + m.v + ' tidak ditemukan.' };
-    if (m.t === 'text' && !doc.body.textContent.includes(m.v)) return { correct: false, message: 'Teks "' + m.v + '" tidak ditemukan.' };
+    if (m.t === 'text' && !bodyText.includes(m.v)) return { correct: false, message: 'Teks "' + m.v + '" tidak ditemukan.' };
   }
   return { correct: true };
 }
@@ -658,7 +660,10 @@ export function answerCheck(answer) {
   const ex = currentExercise();
   if (!ex) return null;
   let result;
-  if (ex.type === 'mc') result = answer === ex.a ? { correct: true } : { correct: false, message: 'Pilihan belum tepat.' };
+  if (ex.type === 'mc') {
+    if (answer == null) return { empty: true, message: 'Pilih salah satu jawaban dulu.' };
+    result = answer === ex.a ? { correct: true } : { correct: false, message: 'Pilihan belum tepat.' };
+  }
   else if (ex.type === 'fill') result = checkFill(answer, ex.accept);
   else if (ex.type === 'code') result = checkCode(answer, { fnName: ex.fn, tests: ex.tests });
   else if (ex.type === 'preview') result = checkPreview(answer, ex);
@@ -668,7 +673,7 @@ export function answerCheck(answer) {
   session.answered = true;
   session.lastResult = { correct: result.correct, message: result.message || (result.correct ? 'Mantap!' : 'Belum tepat.'), explain: ex.explain };
 
-  if (result.reason === 'empty') {
+  if (result.reason === 'empty' || result.reason === 'incomplete') {
     session.answered = false;
     session.lastResult = null;
     session.phase = 'run';

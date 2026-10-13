@@ -37,7 +37,7 @@ export default function App() {
     <>
       <Topbar />
       <main id="app">{screen}</main>
-      {!buddyHidden && <Buddy />}
+      <Buddy />
     </>
   );
 }

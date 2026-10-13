@@ -28,7 +28,7 @@ export default function Topic({ topicId }) {
       <header className="topic__head" style={{ borderColor: topic.color }}>
         <span className="topic__icon">{topic.icon}</span>
         <div>
-          <span className="topic-card__tier">3 step · 10 soal/step · ujian tiap tier</span>
+          <span className="topic-card__tier">{stepNodes.length} step · 10 soal/step · ujian tiap tier</span>
           <h1>{topic.name}</h1>
           <p>{topic.desc}</p>
         </div>
@@ -69,26 +69,46 @@ export default function Topic({ topicId }) {
       )}
 
       {TIER_ORDER.map((tier) => {
-        const step = nodes.find((n) => n.kind === 'step' && n.tier === tier);
+        const tierSteps = nodes.filter((n) => n.kind === 'step' && n.tier === tier);
         const test = nodes.find((n) => n.kind === 'test' && n.tier === tier);
-        if (!step || !test) return null;
-        const idxStep = nodes.indexOf(step);
-        const idxTest = nodes.indexOf(test);
-        const stepDone = isNodeDone(topicId, step.id);
+        if (!tierSteps.length || !test) return null;
+        const doneTierSteps = tierSteps.filter((s) => isNodeDone(topicId, s.id)).length;
         const testDone = isNodeDone(topicId, test.id);
-        const sIdx = stepNodes.indexOf(step);
-        const prevStepDone = sIdx === 0 || isNodeDone(topicId, stepNodes[sIdx - 1].id);
-        const stepOpen = prevStepDone || stepDone;
-        const testOpen = stepDone || testDone;
+        const allTierStepsDone = doneTierSteps === tierSteps.length;
+        const testOpen = allTierStepsDone || testDone;
+
         return (
           <section className="tier" key={tier}>
             <div className="tier__head">
               <span className="tier__name">{tier}</span>
-              <span className="tier__count">{stepDone ? '1' : '0'}/1 step{testDone ? ' · ujian ✓' : ''}</span>
+              <span className="tier__count">{doneTierSteps}/{tierSteps.length} step{testDone ? ' · ujian ✓' : ''}</span>
             </div>
             <ol className="lesson-path">
-              <NodeItem topicId={topicId} node={step} idx={idxStep} open={stepOpen} kind="step" />
-              <NodeItem topicId={topicId} node={test} idx={idxTest} open={testOpen} kind="test" />
+              {tierSteps.map((step) => {
+                const idxStep = nodes.indexOf(step);
+                const sIdx = stepNodes.indexOf(step);
+                const stepDone = isNodeDone(topicId, step.id);
+                const prevStepDone = sIdx === 0 || isNodeDone(topicId, stepNodes[sIdx - 1].id);
+                const stepOpen = prevStepDone || stepDone;
+                return (
+                  <NodeItem
+                    key={step.id}
+                    topicId={topicId}
+                    node={step}
+                    idx={idxStep}
+                    open={stepOpen}
+                    kind="step"
+                  />
+                );
+              })}
+              <NodeItem
+                key={test.id}
+                topicId={topicId}
+                node={test}
+                idx={nodes.indexOf(test)}
+                open={testOpen}
+                kind="test"
+              />
             </ol>
           </section>
         );
@@ -104,8 +124,11 @@ function NodeItem({ topicId, node, idx, open, kind }) {
   const cls = done ? 'node node--done' : open ? 'node node--open' : 'node node--locked';
   const label = done ? '★' : open ? (isTest ? '★' : String(node.stepNo)) : '🔒';
   const title = isTest ? 'Ujian ' + node.tier : 'Step ' + node.stepNo + ' · ' + node.tier;
-  const lessonsForTier = t ? t.lessons.filter((l) => l.level === node.tier) : [];
-  const lessonTitles = lessonsForTier.map((l) => l.title).join(' · ');
+  const lessonIds = isTest
+    ? []
+    : [...new Set((node.questionIds || []).map((k) => (k.includes('|') ? k.split('|')[1].split('#')[0] : '')))];
+  const stepLessons = t ? t.lessons.filter((l) => lessonIds.includes(l.id)) : [];
+  const lessonTitles = stepLessons.map((l) => l.title).join(' · ');
   const onClick = open
     ? (e) => { pop(e.currentTarget); if (isTest) tierTest(topicId, node.id); else stepStart(topicId, node.id); }
     : undefined;
@@ -113,7 +136,7 @@ function NodeItem({ topicId, node, idx, open, kind }) {
     <li className={'lesson-path__item' + (idx % 2 ? ' lesson-path__item--right' : '')}>
       <button className={cls + (isTest ? ' node--exam' : '')} disabled={!open} aria-disabled={!open} onClick={onClick}>{label}</button>
       <span className="lesson-path__title">
-        <span className="topic-card__tier">{isTest ? 'Ujian ' + node.tier : 'Step ' + node.stepNo + ' · 10 soal'}</span><br />
+        <span className="topic-card__tier">{isTest ? 'Ujian ' + node.tier : 'Step ' + node.stepNo + ' · ' + (node.questionIds ? node.questionIds.length : 10) + ' soal'}</span><br />
         <b>{title}</b>{done ? ' · selesai' : open ? '' : ' · terkunci'}
         {!isTest && lessonTitles && (
           <span className="topic-card__sub-lessons" style={{ display: 'block', fontSize: '0.78rem', color: 'var(--muted)', marginTop: '2px' }}>

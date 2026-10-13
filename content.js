@@ -6,11 +6,11 @@
  *   content/web.js   → Blok Web
  * File ini menyusun semuanya jadi CURRICULUM + helper murni (step/ujian/SRS key).
  *
- * Struktur: 10 topik × 3 tier (Dasar/Menengah/Advance) = 30 step, 300 soal.
- * Tiap topik punya 6 pelajaran: 2 per tier (urutan lessons = urutan langkah, unlock berurutan).
- * Field `level` menandai tier; tiap tier = TEPAT 10 soal → 1 step = 10 soal.
- * stepsForTopic() memotong tiap topik jadi 6 node: [step, ujian] × 3 tier.
- * tipe soal: mc | fill | code | preview | arrange
+ * Struktur: 10 topik × 31 pelajaran (10 Dasar, 10 Menengah, 11 Advance). Total 3.050 soal (>300 per topik).
+ * Tiap tier dipotong menjadi step berurutan (10 soal per step) hingga seluruh soal habis,
+ * ditutup dengan 1 ujian tier (10 soal komprehensif dari tier tersebut).
+ * Total per topik: 31 step + 3 ujian = 34 node.
+ * Tipe soal: mc | fill | code | preview | arrange
  *
  * Dual-mode: ESM (import) untuk Vite/test; blok konten tetap juga Node-CJS via require().
  */
@@ -33,36 +33,45 @@ function questionKey(topicId, lessonId, idx) {
   return topicId + '|' + lessonId + '#' + idx;
 }
 
-/* stepsForTopic(topic) → daftar node progresi murni: 3 step (10 soal/tier)
- * masing-masing diikuti 1 ujian tier (10 soal tier yang sama, diacak ulang per attempt).
+/* stepsForTopic(topic) → daftar node progresi murni:
+ * tiap tier dipecah jadi step-step berurutan (10 soal/step) hingga soal habis,
+ * diikuti 1 ujian tier (10 soal representatif dari tier tersebut).
  * Node: { id, topicId, tier, kind:'step'|'test', label, questionIds[], stepNo }
- * questionIds = kunci global (questionKey). Total soal per topik = 30; kurikulum = 300. */
+ * questionIds = kunci global (questionKey). */
 function stepsForTopic(topic) {
   if (!topic || !Array.isArray(topic.lessons)) return [];
   const nodes = [];
-  TIER_ORDER.forEach((tier, ti) => {
+  let globalStepNo = 0;
+  TIER_ORDER.forEach((tier) => {
     const ids = topic.lessons
       .filter((l) => l.level === tier)
       .flatMap((l) => l.exercises.map((_, i) => questionKey(topic.id, l.id, i)));
     if (!ids.length) return;
-    const stepNo = ti + 1;
+    const tierStepNodes = [];
+    for (let c = 0; c < ids.length; c += STEP_SIZE) {
+      globalStepNo += 1;
+      const slice = ids.slice(c, c + STEP_SIZE);
+      const stepNode = {
+        id: `${topic.id}--${globalStepNo}`,
+        topicId: topic.id,
+        tier,
+        kind: 'step',
+        label: `Step ${globalStepNo} · ${tier}`,
+        questionIds: slice,
+        stepNo: globalStepNo,
+      };
+      nodes.push(stepNode);
+      tierStepNodes.push(stepNode);
+    }
+    const testQuestionIds = tierStepNodes.map((s) => s.questionIds[0]).slice(0, STEP_SIZE);
     nodes.push({
-      id: `${topic.id}--${ti + 1}`,
-      topicId: topic.id,
-      tier,
-      kind: 'step',
-      label: `Step ${stepNo} · ${tier}`,
-      questionIds: ids.slice(),
-      stepNo,
-    });
-    nodes.push({
-      id: `${topic.id}--${ti + 1}--test`,
+      id: `${topic.id}--${globalStepNo}--test`,
       topicId: topic.id,
       tier,
       kind: 'test',
       label: `Ujian ${tier}`,
-      questionIds: ids.slice(),
-      stepNo,
+      questionIds: testQuestionIds,
+      stepNo: globalStepNo,
     });
   });
   return nodes;

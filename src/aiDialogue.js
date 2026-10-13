@@ -93,15 +93,16 @@ export function getAiTapDialogue(signals = {}, seed = Math.random() * 1000) {
       rememberResponse(res);
       return res;
     }
-    if (pos >= totalInSession) {
+    const currentNum = pos + 1;
+    if (currentNum >= totalInSession) {
       const res = 'Soal terakhir! Satu langkah lagi tuntas.';
       rememberResponse(res);
       return res;
     }
     const sessionLines = [
-      `Soal ${pos}/${totalInSession}. Fokus!`,
+      `Soal ${currentNum}/${totalInSession}. Fokus!`,
       'Kamu pasti bisa!',
-      `Tinggal ${totalInSession - pos + 1} soal lagi. Gas!`,
+      `Tinggal ${totalInSession - currentNum} soal lagi. Gas!`,
       ex && ex.type === 'code' ? 'Perhatikan return nilainya ya!' : 'Logikanya sudah tepat, lanjut!',
       'Pelan tapi pasti!',
     ];
@@ -113,10 +114,10 @@ export function getAiTapDialogue(signals = {}, seed = Math.random() * 1000) {
   // 2. Berada di Halaman Topik
   if (route === 'topic' && s.topicTitle) {
     const doneL = s.topicDoneCount || 0;
-    const totalL = s.topicTotalCount || 6;
+    const totalL = s.topicTotalCount || 3;
     const topicLines = doneL >= totalL
-      ? [`Topik ${s.topicTitle} sudah tuntas! Keren.`, 'Hebat, semua level beres! 🎉']
-      : [`Topik ${s.topicTitle}: ${doneL}/${totalL} selesai. Lanjut!`, 'Ayo taklukkan level ini!'];
+      ? [`Topik ${s.topicTitle} sudah tuntas! Keren.`, 'Hebat, semua step beres! 🎉']
+      : [`Topik ${s.topicTitle}: ${doneL}/${totalL} step selesai. Lanjut!`, 'Ayo taklukkan level ini!'];
     const full = pickDiverse(topicLines, seed);
     rememberResponse(full);
     return full;

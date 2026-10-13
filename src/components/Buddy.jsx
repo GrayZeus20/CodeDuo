@@ -27,7 +27,25 @@ const HEAD_SIZE = 132;
 export default function Buddy() {
   useStore();                       /* re-render tiap state store berubah */
   const state = getState();
-  if (state && state.buddyHidden) return null;
+  const buddyHidden = state ? !!state.buddyHidden : false;
+
+  const [shouldRender, setShouldRender] = useState(!buddyHidden);
+  const [isHiding, setIsHiding] = useState(false);
+
+  /* Animasi pop up / pop out saat toggle show/hide Bibit */
+  useEffect(() => {
+    if (buddyHidden) {
+      setIsHiding(true);
+      const timer = setTimeout(() => {
+        setShouldRender(false);
+        setIsHiding(false);
+      }, 360);
+      return () => clearTimeout(timer);
+    } else {
+      setShouldRender(true);
+      setIsHiding(false);
+    }
+  }, [buddyHidden]);
 
   const last = useRef(Date.now());
   const session = getSession();
@@ -99,6 +117,8 @@ export default function Buddy() {
     setIsBubbleVisible(false);
   };
 
+  if (!shouldRender) return null;
+
   const currentMood = companion.mood || b.mood || 'idle';
   const isSleeping = face === 'sleeping';
   const isHappy = face === 'happy' || currentMood === 'celebrate';
@@ -107,6 +127,7 @@ export default function Buddy() {
 
   const buddyClassNames = [
     'buddy',
+    isHiding ? 'buddy--hiding' : 'buddy--showing',
     `buddy--state-${face}`,
     `buddy--mood-${currentMood}`,
     isTalking ? 'buddy--talking' : '',
@@ -125,6 +146,7 @@ export default function Buddy() {
           key={bubbleKey}
           className="buddy__bubble buddy__bubble--pop"
           role="status"
+          onMouseDown={(e) => e.preventDefault()}
           onClick={handleBubbleClick}
           title="Klik untuk menutup pesan"
           aria-label={`${line.text} (Klik untuk menutup)`}
@@ -148,6 +170,7 @@ export default function Buddy() {
         <button
           className="buddy__head"
           type="button"
+          onMouseDown={(e) => e.preventDefault()}
           onClick={handleTap}
           aria-label="Sentuh Bibit"
           title="Sentuh aku!"

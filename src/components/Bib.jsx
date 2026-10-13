@@ -95,8 +95,15 @@ export default function Bib({ mood = 'idle', size = 34, label = 'Bibit, teman be
       role="img"
       aria-label={label}
       xmlns="http://www.w3.org/2000/svg"
+      onMouseDown={interactive || onMascotClick ? (e) => e.preventDefault() : undefined}
       onClick={interactive || onMascotClick ? handleClick : undefined}
-      style={{ cursor: interactive || onMascotClick ? 'pointer' : undefined }}
+      style={{
+        cursor: interactive || onMascotClick ? 'pointer' : undefined,
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
+        WebkitTapHighlightColor: 'transparent',
+        outline: 'none',
+      }}
     >
       <defs>
         <radialGradient id="bibHalo" cx="50%" cy="50%" r="50%">

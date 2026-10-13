@@ -93,7 +93,12 @@ function RunView({ session, topic, isReview }) {
       {session.phase === 'run' && (
         <div className="check-bar">
           {ex.type === 'mc' && (
-            <button className="btn btn--primary btn--wide" id="check-btn" onClick={(e) => { pop(e.currentTarget); if (session.pendingAnswer != null) onSubmit(session.pendingAnswer); }}>CEK</button>
+            <button
+              className="btn btn--primary btn--wide"
+              id="check-btn"
+              disabled={session.pendingAnswer == null}
+              onClick={(e) => { pop(e.currentTarget); onSubmit(session.pendingAnswer); }}
+            >CEK</button>
           )}
           {ex.type === 'fill' && (
             <button className="btn btn--primary btn--wide" id="check-btn" onClick={(e) => { pop(e.currentTarget); const el = document.getElementById('fill-input'); onSubmit(el ? el.value : ''); }}>CEK</button>
@@ -168,14 +173,40 @@ function ExerciseBody({ ex, session, onSubmit }) {
     );
   }
   if (ex.type === 'code') {
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        onSubmit(e.currentTarget.value);
+      } else if (e.key === 'Tab') {
+        e.preventDefault();
+        const start = e.currentTarget.selectionStart;
+        const end = e.currentTarget.selectionEnd;
+        const val = e.currentTarget.value;
+        e.currentTarget.value = val.substring(0, start) + '  ' + val.substring(end);
+        e.currentTarget.selectionStart = e.currentTarget.selectionEnd = start + 2;
+      }
+    };
     return (
       <div className="lesson__body">
-        <textarea className="code-input" id="code-input" spellCheck="false" rows={8} defaultValue={ex.starter} disabled={session.answered} />
+        <textarea
+          className="code-input"
+          id="code-input"
+          spellCheck="false"
+          rows={8}
+          defaultValue={ex.starter}
+          disabled={session.answered}
+          onKeyDown={handleKeyDown}
+        />
+        {ex.tests && ex.tests.length > 0 && (
+          <div className="muted" style={{ fontSize: '0.82rem', marginTop: '2px' }}>
+            Contoh uji: <code>{ex.fn}({ex.tests[0].args.map((a) => JSON.stringify(a)).join(', ')})</code> → <code>{JSON.stringify(ex.tests[0].expected)}</code>
+          </div>
+        )}
       </div>
     );
   }
   if (ex.type === 'preview') {
-    return <PreviewBody ex={ex} disabled={session.answered} />;
+    return <PreviewBody ex={ex} disabled={session.answered} onSubmit={onSubmit} />;
   }
   if (ex.type === 'arrange') {
     return <ArrangeBody ex={ex} session={session} />;
@@ -183,7 +214,7 @@ function ExerciseBody({ ex, session, onSubmit }) {
   return null;
 }
 
-function PreviewBody({ ex, disabled }) {
+function PreviewBody({ ex, disabled, onSubmit }) {
   const [code, setCode] = useState(ex.starter || '');
   const frame = useRef(null);
   useEffect(() => {
@@ -193,9 +224,39 @@ function PreviewBody({ ex, disabled }) {
       : code;
     frame.current.srcdoc = src;
   }, [code, ex.lang, ex.html]);
+
+  const handleKeyDown = (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      if (onSubmit) onSubmit(code);
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      const start = e.target.selectionStart;
+      const end = e.target.selectionEnd;
+      const val = code;
+      const updated = val.substring(0, start) + '  ' + val.substring(end);
+      setCode(updated);
+      setTimeout(() => {
+        if (e.target) e.target.selectionStart = e.target.selectionEnd = start + 2;
+      }, 0);
+    }
+  };
+
   return (
     <div className="lesson__body">
-      <textarea className="code-input" id="code-input" spellCheck="false" rows={8} value={code} disabled={disabled} onChange={(e) => setCode(e.target.value)} />
+      <textarea
+        className="code-input"
+        id="code-input"
+        spellCheck="false"
+        rows={8}
+        value={code}
+        disabled={disabled}
+        onChange={(e) => setCode(e.target.value)}
+        onKeyDown={handleKeyDown}
+      />
+      <div className="preview-label" style={{ fontSize: '0.78rem', fontWeight: '700', color: 'var(--muted)', marginTop: '2px' }}>
+        👁️ Hasil Tampilan (Live Preview)
+      </div>
       <iframe className="preview-frame" id="preview-frame" ref={frame} sandbox title="Preview" />
     </div>
   );
@@ -212,12 +273,22 @@ function ArrangeBody({ ex, session }) {
         {placed.length === 0
           ? <p className="muted">Klik blok di bawah untuk menyusun urutan.</p>
           : placed.map((id) => (
-            <button key={id} className="arr-block arr-block--placed" onClick={() => arrangeUnpick(id)}>{ex.blocks[+id]}</button>
+            <button
+              key={id}
+              className="arr-block arr-block--placed"
+              disabled={session.answered}
+              onClick={() => arrangeUnpick(id)}
+            >{ex.blocks[+id]}</button>
           ))}
       </div>
       <div className="arr-pool" id="arr-pool">
         {pool.map((id) => (
-          <button key={id} className="arr-block" onClick={() => arrangePick(id)}>{ex.blocks[+id]}</button>
+          <button
+            key={id}
+            className="arr-block"
+            disabled={session.answered}
+            onClick={() => arrangePick(id)}
+          >{ex.blocks[+id]}</button>
         ))}
       </div>
     </div>
