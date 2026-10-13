@@ -1,10 +1,18 @@
-/* CodeDuo — self-test. Run: node test.js */
+/* CodeDuo — self-test. Run: node test.js
+ * `package.json` = type:module → file ini ESM. Modul mesin tetap dual-mode (export + module.exports),
+ * jadi import di sini & require() legacy sama-sama valid. */
 'use strict';
-const assert = require('assert');
-const { normalizeCode, checkFill, checkCode, checkArrange } = require('./checkers.js');
-const { CURRICULUM, syncPath, stepsForTopic, allQuestionIds, resolveQuestion, questionKey, TIER_ORDER, STEP_SIZE } = require('./content.js');
-const SRS = require('./srs.js');
-const { ROBOT_MOODS, ROBOT_STATES, robotSVG, robotSay, robotReact, stateFromMood, ledMatrixFor, mountRobotHead, RH_MOTION, RH_COLORS, _rhHash, _rhFrame, _rhMotionFor, EXPR_STATES, EXPR_FEATURES, exprFeatures, exprLabelIndex, createExpressionModel, restoreExpressionModel, exprLearn, exprProbs, pickExpression, stateToMood } = require('./robot.js');
+import assert from 'node:assert/strict';
+import { normalizeCode, checkFill, checkCode, checkArrange } from './checkers.js';
+import { CURRICULUM, syncPath, stepsForTopic, allQuestionIds, resolveQuestion, questionKey, TIER_ORDER, STEP_SIZE } from './content.js';
+import * as SRS from './srs.js';
+import {
+  ROBOT_MOODS, ROBOT_STATES, robotSVG, robotSay, robotReact,
+  stateFromMood, ledMatrixFor, mountRobotHead,
+  RH_MOTION, RH_COLORS, _rhHash, _rhFrame, _rhMotionFor, _rhFaceGrid,
+  EXPR_STATES, EXPR_FEATURES, exprFeatures, exprLabelIndex,
+  createExpressionModel, restoreExpressionModel, exprLearn, exprProbs, pickExpression, stateToMood,
+} from './robot.js';
 
 let passed = 0;
 let failed = 0;
@@ -509,7 +517,6 @@ t('motion: tiap state punya warna LED (dibocorkan untuk inspeksi)', () => {
 });
 
 /* --- Wajah LED per state (pola khas robot-heads) --- */
-const { _rhFaceGrid } = require('./robot.js');
 const _lit = (g) => g.flat().filter((v) => v > 0.05).length;
 t('face: dimensi 22×14 utk semua state + deterministik', () => {
   ROBOT_STATES.forEach((s) => {

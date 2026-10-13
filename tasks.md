@@ -167,3 +167,54 @@ Kode selesai + runtime gate hijau (41/41 tes).
 
 - [x] robot.js (Bibit), icon.svg, index.html, app.js, styles.css, sw.js (`codeduo-v2`), manifest.json, test.js, DESIGN.md
 - [~] Runtime gate: `node --check` + `node test.js` — blocked by classifier outage; static verification green
+
+---
+
+## Plan: Bibit 3D (robot-heads React) + otonomi proaktif — CodeDuo → React + Vite
+
+**Permintaan:** "kalau robot yang ku kasih repo nya juga js murni? saya ingin robot nya hidup, jadi seperti agent yang ga selalu di interaksi secara langsung dan bisa secara tidak langsung, dan tampilan robot nya kurang menarik karena kurang jelas ekspresi nya"
+
+**Keputusan (dikunci oleh chef via AskUserQuestion):**
+1. **Jalur visual = C — pindah React + Vite.** Pakai paket `robot-heads` apa adanya (renderer 2D canvas dengan shell glossy 3D proyeksi, lighting studio, 4 bentuk, LED bloom, antena damped-spring, glitch/crossfade antar state). Fidelitas tertinggi; konsekuensi: identitas zero-build PWA dilepas, deploy via `npm run build` + `wrangler pages deploy dist`.
+2. **Otonomi = "Tambah proaktif".** Bibit punya idle-life otonom + inisiatif: gerak/ekspresi sendiri saat diam, komentar tak diminta saat idle, hint bertimer saat murid lambat, ekspresi berubah sendiri. Wajib state machine perilaku + guard anti-spam.
+
+**Arsitektur:**
+- Modul kognitif (`content/*.js`, `content.js`, `checkers.js`, `srs.js`, `robot.js`, `sfx.js`) tetap **dual-mode**: `export` (jalur Vite/test) + `module.exports` (Node require() tak berubah). `package.json` → `"type": "module"` supaya ESM jadi jalur utama; `node --check` hook tetap hijau (tetap CJS-parseable).
+- **Engine dipisah dari DOM**: `src/store.js` = satu pemilik state (persisted + session + SRS + model ekspresi + companion), aksi = fungsi, React baca via `useSyncExternalStore`. Logika murni lain (RNG, perilaku perilaku) ke `src/lib/` & `src/companion.js` supaya Node-testable.
+- **UI = React components**: `App.jsx` (router hash), `Home/Topic/Lesson/Profile.jsx`, `Buddy.jsx` (robot-heads + timer otonomi), `Bib`.
+- Public assets pindah ke `public/` (styles.css, manifest.json, icon*, 404.html, robots.txt, sw.js) — Vite menyalin apa adanya ke `dist/`.
+- Deploy: `wrangler pages deploy dist` (build command `npm run build`), `base: './'` → aman subfolder.
+
+**Langkah:**
+- [x] **1. Deps + config** — `package.json` v2.0.0 `type=module` + scripts dev/build/preview/test/test:companion/check; deps react/react-dom/robot-heads/animejs/canvas-confetti; devDeps vite/@vitejs/plugin-react; `vite.config.js` (base './', manualChunks react/robot). `node_modules` terpasang: react@19.3.0 + robot-heads@0.3.0 (sisanya menunggu `npm install` penuh). Files: `package.json`, `vite.config.js`
+- [x] **2. Dual-mode modules** — `export {…}` ditambah ke `content/*.js` (5), `content.js`, `checkers.js`, `srs.js`, `robot.js`, `sfx.js` (append-only, `module.exports` tetap). Files: `content/*.js`, `content.js`, `checkers.js`, `srs.js`, `robot.js`, `sfx.js`
+- [x] **3. `src/lib/rng.js` + `src/companion.js`** — mulberry32/shuffled/MAX_HEARTS; planner otonom murni `tickCompanion(state, ctx, dt, rnd, now)` → {state, emit} + `onUserInteract` + guard anti-spam (backoff ×1.6, MAX_LINES/jendela, hint 1×/posisi). Fix: `AMBIENT` di-`export` (dipakai test). Files: `src/lib/rng.js`, `src/companion.js`
+- [x] **4. `src/store.js`** — port engine app.js (load/save, path sync, sesi step/test/review, checkers, SRS, model ekspresi, aksi) → API `useSyncExternalStore`; interaksi → companion; `dumpState`/`buddyDump`/`srsDump`. Files: `src/store.js`
+- [x] **5. UI React** — `main.jsx`, `App.jsx` (router hash), `components/{Topbar,Buddy,Home,Topic,Lesson,Profile,Bib}.jsx`, `lib/motion.js`. Files: `src/*.jsx`, `src/components/*.jsx`, `src/lib/motion.js`
+- [x] **6. Public/ + index.html** — `public/{styles.css,manifest.json,icon.svg,icon-192.png,icon-512.png,404.html,robots.txt,sw.js}`; `index.html` entry Vite (`<div id="root">`, `<script type="module" src="/src/main.jsx">`); `sw.js` `VERSION` → `codeduo-v12` (runtime-cache aset hashed). Files: `index.html`, `public/*`
+- [ ] **7. Test + gate** — `test.js` dikonversi ESM (`package.json` = type:module → `require` undefined di ESM; import wajib) + hapus `require` ganda `_rhFaceGrid`; `test-companion.mjs` (12 tes planner otonom). Jalankan `node test.js` + `node test-companion.mjs` + `npm run build` → 0 error. Files: `test.js`, `test-companion.mjs`
+- [x] **8. Docs** — README (React+Vite, tes ESM, deploy CF, otonomi Bibit), CONTRIBUTING (dual-mode, tes ESM), PRODUCT/DESIGN angka. Files: `README.md`, `CONTRIBUTING.md`, `PRODUCT.md`, `DESIGN.md`
+- [ ] **9. Deploy CF** — `npm run build` → `npx wrangler pages deploy dist --project-name=codeduo`. Files: —
+
+**Verification:** `node test.js` 84 hijau · `node test-companion.mjs` 12 hijau · `npm run build` sukses · Playwright: muka Bibit ganti per interaksi + gerak otonom saat diam, 0 console error (SERT 4/4).
+
+**Audit statis (hijau, tanpa runtime):**
+- `export` hadir di 11 modul mesin (grep `^export` — content 5 + barrel + checkers + srs + robot + sfx) — dual-mode utuh.
+- Konten: 10 topik (`id:` 10), 60 pelajaran (`level:` 60), **300 soal** (`type:` 300) — invariant test.js terpenuhi statis.
+- Import `src/**` — 41 import, semua resolusi file nyata (`../../content.js`, `../sfx.js`, `./lib/motion.js`, dst).
+- SFX: semua yang dipanggil komponen (`unlock/setMuted/muteOn/muteOff/correct/wrong/fail/complete/streak`) ada di `sfx.js`.
+- **Blocker gate 7/9: classifier Bash/PowerShell/Monitor down sepanjang sesi** → `npm install` (react-dom/vite/animejs/canvas-confetti) + `node test.js` + `npm run build` tak bisa dijalankan. Menunggu Grayzeus jalankan 1 blok perintah di bawah.
+
+## Status (plan React+Vite + Bibit otonom)
+KODE SELESAI — port penuh ke React+Vite (store headless, komponen, robot-heads asli, otonomi proaktif). Docs + tasks disinkron. **Gate runtime 7/9 MENUNGGU** — classifier eksekusi down; jalankan sendiri:
+
+```powershell
+cd C:\laragon\www\CodeDuo
+npm install
+node test.js            # harap: 84 passed, 0 failed
+node test-companion.mjs # harap: 12 passed, 0 failed
+npm run build           # harap: built in ... (0 error)
+```
+
+Kalau 4 baris hijau → `[Status: DONE]` (SERT 4/4). Kalau ada yang merah → kirim output ke JARVIS, fix di root cause.
+Deploy (setelah hijau): `npx wrangler pages deploy dist --project-name=codeduo`.

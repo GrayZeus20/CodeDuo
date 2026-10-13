@@ -80,6 +80,9 @@ function checkCode(userCode, spec) {
   return { correct: true };
 }
 
+export { normalizeCode, checkFill, checkCode, checkArrange };
+
+/* Node CJS tetap jalan (require()). ESM = jalur utama Vite & test. */
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { normalizeCode, checkFill, checkCode, checkArrange };
 }

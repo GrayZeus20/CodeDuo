@@ -1,8 +1,48 @@
 # CodeDuo
 
 Belajar pemrograman gaya Duolingo — pelajaran pendek, latihan interaktif, dan teman
-robot **Bibit** yang selalu menemani (di pelajaran maupun saat memilih topik).
-Bahasa Indonesia, progres lokal, tanpa akun.
+robot **Bibit** yang hidup: dia bergerak, menatap, dan berkomentar sendiri walau kamu
+tidak menyentuhnya. Bahasa Indonesia, progres lokal, tanpa akun, jalan offline.
+
+**Stack:** React 19 + Vite 5. Render Bibit pakai paket asli
+[`robot-heads`](https://github.com/fayazara/robot-heads) (2D canvas, tanpa WebGL).
+
+## Jalankan
+
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # hasil ke dist/
+npm run preview    # cek hasil build
+```
+
+## Struktur
+
+```
+index.html            entry Vite (root #root + /src/main.jsx)
+vite.config.js        base './', manualChunks (react, robot-heads)
+public/               aset statis disalin apa adanya ke dist/
+                      styles.css, manifest.json, icon*, 404.html, robots.txt, sw.js
+src/
+  main.jsx            entry React: initStore → hashchange → render
+  App.jsx             router hash (home / topic / lesson / review / profile) + topbar + buddy
+  store.js            SATU pemilik state; React baca via useSyncExternalStore
+  companion.js        planner perilaku otonom Bibit (murni, Node-testable)
+  useStore.js         useSyncExternalStore(subscribe, getSnapshot)
+  lib/rng.js          mulberry32 / shuffled / MAX_HEARTS
+  lib/motion.js       anime.js + canvas-confetti (no-op saat reduced-motion)
+  components/         Topbar, Buddy, Bib, Home, Topic, Lesson, Profile
+content/              kurikulum dipecah per blok (html, js, sql, ts, web)
+content.js            barrel: CURRICULUM + helper murni (step/ujian/SRS key)
+checkers.js  srs.js  robot.js  sfx.js    mesin murni (dual-mode: ESM + CJS)
+```
+
+### Engine dipisah dari DOM
+
+`src/store.js` memegang seluruh state dan aksi tanpa menyentuh DOM, jadi bisa diuji
+di Node. React hanya *membaca* lewat `useSyncExternalStore(subscribe, getSnapshot)`
+(snapshot = nomor versi) dan memanggil aksi. Efek (SFX, animasi, konfeti) dipasang di
+komponen, bukan di store — supaya logika tetap murni dan testable.
 
 ## Struktur konten (mudah dirawat)
 
@@ -17,176 +57,143 @@ Kurikulum **dipecah per blok** — mengubah soal tak perlu menyentuh engine:
 | `content/web.js` | Blok Web (peta fungsi tiap blok) | 30 |
 
 `content.js` = **barrel**: menyusun tiap blok jadi `CURRICULUM` + helper murni
-(`stepsForTopic`, `questionKey`, `resolveQuestion`, `allQuestionIds`, …). Urutan muat
-wajib: blok dulu, `content.js` paling akhir (didokumentasikan di `index.html` & `sw.js`).
+(`stepsForTopic`, `questionKey`, `resolveQuestion`, `allQuestionIds`, …).
 
 **Aturan (dijaga `test.js`):** tiap topik = 6 pelajaran (2 per tier), tiap tier tepat
 **10 soal**, total **300 soal**. Lihat `CONTRIBUTING.md` untuk menambah soal.
 
-## Muka Bibit belajar (model ekspresi on-device)
+## Bibit hidup — otonomi + ekspresi belajar sendiri
 
-Wajah Bibit **berubah tiap interaksi**: tiap klik, tiap jawaban, tiap pindah rute.
-Yang memilih bukan `if/else` — melainkan **model machine learning kecil yang dilatih
-di browser murid sendiri**:
+Bibit bukan lagi sekadar bereaksi saat diklik. Dia punya dua lapis perilaku:
 
-- **Algoritma:** regresi logistik multikelas (softmax) + **SGD online** (gradient descent).
-  Murni JavaScript, tanpa library, tanpa server, jalan offline. Ini ML klasik
-  (linear), **bukan** deep learning — jujur soal skalanya.
-- **Masukan (14 fitur):** benar/salah, nyawa, progres pelajaran, jenis interaksi
+**1. Perilaku otonom (`src/companion.js`, murni & Node-testable).** State machine
+berprioritas dengan guard anti-spam:
+
+| Event | Pemicu | Aksi |
+|-------|--------|------|
+| `IDLE_FACE` | diam 5–12 dtk | wajah ambien — **`idle` dominan**, sesekali `thinking/searching/listening/working` |
+| `SLEEP_DRIFT` | diam > 75 dtk | condong `sleeping` (napas pelan, lampu mati) |
+| `WAKE` | user kembali | `happy` + sapaan singkat |
+| `PROACTIVE` | diam 45–110 dtk | satu baris komentar sesuai konteks (maks 2 / 3 mnt, backoff ×1.6 bila diabaikan) |
+| `HINT` | murid > 25 dtk di 1 soal | satu petunjuk sesuai tipe soal (sekali per posisi) |
+
+Guard: baris proaktif tidak muncul saat fase feedback/done/failed; hint sekali per
+posisi; jeda makin panjang bila baris terakhir diabaikan. Timer hidup di `Buddy.jsx`
+(interval 1 dtk, `dt` dari jam nyata jadi tetap akurat walau tab di-throttle).
+
+**2. Model ekspresi on-device (dilatih di browser murid).** Wajah Bibit **berubah tiap
+interaksi** — dipilih **model machine learning kecil**, bukan `if/else`:
+
+- **Algoritma:** regresi logistik multikelas (softmax) + **SGD online**. Murni JS,
+  tanpa library, tanpa server. ML klasik (linear), **bukan** deep learning — jujur soal skalanya.
+- **Masukan (14 fitur):** benar/salah, nyawa, progres, jenis interaksi
   (pelajaran/tap/navigasi/pilih), streak, first-try, kecepatan.
-- **Keluaran (9 kelas):** state wajah robot-heads (idle, thinking, searching,
-  listening, speaking, working, happy, error, sleeping).
-- **Cara pakai:** tiap aksi → `exprLearn()` melatih 1 langkah SGD → `pickExpression()`
-  mengambil sampel wajah (ada eksplorasi 12% + anti-ulang, jadi muka **tak pernah diam**).
-- **Persistensi:** bobot disimpan di `localStorage` `codeduo_expr_v1`; menua = makin
-  halus. Tombol reset profil ikut menghapus model (mulai dari nol).
-- **Inspeksi (SERT State):** `buddyDump()` di konsol → bobot ringkas + distribusi
-  probabilitas tiap state untuk sinyal terakhir.
+- **Keluaran (9 kelas):** state wajah robot-heads (idle, thinking, searching, listening,
+  speaking, working, happy, error, sleeping).
+- **Cara pakai:** tiap aksi → `exprLearn()` satu langkah SGD → `pickExpression()` mengambil
+  sampel wajah (eksplorasi 12% + anti-ulang, jadi muka tak pernah beku).
+- **Persistensi:** bobot di `localStorage` `codeduo_expr_v1`; reset profil menghapusnya.
+- **Inspeksi (SERT State):** `buddyDump()` di konsol → bobot ringkas + distribusi probabilitas.
 
 ## Ingat ≥30 hari — step 10 soal, ujian tiap tier, ulangan berjarak (SRS)
 
-Kurikulum dipotong jadi **unit kecil + diingat ulang** supaya nempel jangka panjang:
-
 - **1 step = tepat 10 soal.** Tiap topik = **3 step** (Dasar/Menengah/Advance) = 30 soal;
-  total kurikulum = **300 soal**. Tiap tier selesai → **ujian tier** (10 soal tier itu, diacak
-  ulang, tanpa bocoran urutan). Unlock tetap berurutan: step → ujian → step berikutnya → …
+  total = **300 soal**. Tiap tier selesai → **ujian tier** (10 soal tier itu, diacak ulang,
+  tanpa bocoran urutan). Unlock berurutan: step → ujian → step berikutnya → …
 - **Ulangan berjarak (SRS).** Tiap soal dijadwalkan ulang dengan interval membesar
-  **1 → 2 → 4 → 8 → 16 → 32 hari** (kotak Leitner). Benar = naik kotak; salah = reset ke kotak 0.
+  **1 → 2 → 4 → 8 → 16 → 32 hari** (kotak Leitner). Benar = naik kotak; salah = reset kotak 0.
   Kartu **"Ingat"** di home menampilkan ≤10 soal jatuh tempo → tiap sesi = **mengingat ulang
-  (tes), bukan baca ulang**. Bank habis = semua soal sudah pernah dikerjakan & terjadwal.
-- **Mesin murni** `srs.js` (`schedule`, `dueItems`, `toJSON`/`fromJSON`), persistensi
-  `localStorage codeduo_srs_v1`; owner state = `app.js`. Inpeksi: `srsDump()` di konsol.
+  (tes)**. Bank habis = semua soal sudah pernah dikerjakan & terjadwal.
+- **Mesin murni** `srs.js`, persistensi `localStorage codeduo_srs_v1`. Inspeksi: `srsDump()`.
 
-**Basis literatur (spaced repetition + retrieval practice):** Ebbinghaus (1885) — kurva lupa;
-Cepeda, Pashler, Vul, Wixted & Rohrer (2006) *Psych. Bulletin* 132(3) & Cepeda dkk (2008)
-*Psych. Science* 19(11) — jeda optimal tumbuh, target 30 hari → jeda optimal ~3–6 hari;
-Roediger & Karpicke (2006) *Psych. Science* 17(3) — *testing effect*; Karpicke & Blunt (2011)
-*Science* 331 — retrieval > elaborasi; Murre & Dros (2015) *PLoS ONE* 10(7) — replikasi kurva lupa;
-Smolen, Zhang & Byrne (2016) *Nat. Rev. Neuroscience* 17 — dosis spaced learning;
-Settles & Meeder (2016) *ACL* — preseden SRS (Duolingo half-life regression).
+**Basis literatur:** Ebbinghaus (1885) — kurva lupa; Cepeda, Pashler, Vul, Wixted & Rohrer
+(2006) *Psych. Bulletin* 132(3) & Cepeda dkk (2008) *Psych. Science* 19(11) — jeda optimal
+tumbuh; Roediger & Karpicke (2006) *Psych. Science* 17(3) — *testing effect*; Karpicke &
+Blunt (2011) *Science* 331 — retrieval > elaborasi; Murre & Dros (2015) *PLoS ONE* 10(7) —
+replikasi kurva lupa; Smolen, Zhang & Byrne (2016) *Nat. Rev. Neuroscience* 17 — dosis
+spaced learning; Settles & Meeder (2016) *ACL* — preseden SRS (Duolingo).
 
-## Kepala Bibit — animasi robot-heads (semua state hidup)
+## Kepala Bibit — `robot-heads` asli
 
-Kepala Bibit = port bahasa bentuk [robot-heads](https://github.com/fayazara/robot-heads)
-(kotak TV glossy + **layar LED matrix 22×14** kecerahan float 0..1, sama seperti paket aslinya),
-dirender di `<canvas>`. **Tiap state beranimasi**, bukan cuma `idle`:
+Kepala Bibit dirender komponen `<RobotHead>` dari paket **`robot-heads`** apa adanya:
 
-- **Wajah LED khas tiap state** (`_rhFaceGrid`, port pola `Xt` robot-heads): `idle` = mata blok
-  berkedip & melirik; `thinking` = mata menengadah + tiga titik berdenyut; `searching` = berkas
-  scan menyapu kolom; `listening` = equaliser 12 bar; `speaking` = mulut bergerak; `working` =
-  progress bar; `happy` = mata `^ ^` + senyum; `error` = mata `X X` berkedip; `sleeping` = mata
-  pejam + huruf z naik.
-- **Mesin gerak murni** `_rhFrame(state, t, seed)` menurunkan kedip, lirik, sisi pandang, dan
-  goyangan — deterministik dari (state, waktu, seed) → bisa diuji di Node tanpa DOM.
-- **Bohlam antena berwarna per state** (`RH_META.bulb`, port `Ot`): amber saat berpikir, cyan saat
-  mencari, hijau saat mendengar, biru saat bekerja, pink saat senang, merah saat error.
-- **Seed per head** = hash nama state (`_rhHash`) → tiap head punya fase sendiri, tak serempak.
-- Loop bersama satu `requestAnimationFrame` untuk semua head, berhenti saat tab hidden, hormati
-  `prefers-reduced-motion` (frame statis). Tanpa library, offline penuh.
-
-`ledMatrixFor(state)` + `_rhFaceGrid(state, f)` (wajah) + `_rhFrame` (gerak) murni → diuji tanpa DOM.
-
-## Menjalankan
-
-Aplikasi ini statis (HTML/CSS/JS vanilla, **tanpa framework, tanpa build step**).
-Cukup sajikan foldernya lewat web server apa pun:
-
-```bash
-# dari folder ini
-python -m http.server 8080
-# atau di Laragon: http://codeduo.test
-```
-
-Buka `http://localhost:8080`. Service worker butuh `http`/`https` (bukan `file://`).
+- **Geometri nyata:** shell dengan tepi bergulung, kuping kenop & kerah antena di-*lathe*
+  jadi mesh quad; tiap frame diputar, diproyeksikan, back-face di-cull.
+- **Lighting studio:** key light + fill + sky dome + softbox, pantulan clear-coat dengan
+  Fresnel, rim cahaya belakang, lalu filmic tone curve.
+- **LED bloom:** matriks LED penuh layar, wajah di tengah, digambar tajam lalu di-bloom
+  dari citra 1 piksel-per-LED yang diperbesar halus.
+- **Antena pegas teredam** yang mencambuk saat kepala melompat/mendarat/miring.
+- **Loop animasi sendiri (rAF):** tiap state punya gerak khas — `idle` bernapas & melirik,
+  `thinking` menoleh, `searching` menyapu, `listening` mengangguk, `working` menggoyang,
+  `happy` melompat cepat, `error` bergetar, `sleeping` bernapas pelan. Kepala bergoyang,
+  berkedip, dan antena mencambuk **tiap frame** — bukan animasi sekali-mount.
+- **Bentuk kepala Bibit tetap `rectangle`** (TV klasik, warna brand hijau). Bentuk tidak
+  berganti-ganti tiap mood — identitas Bibit stabil; yang berubah hanya wajah LED.
+- **9 state** dengan glitch + crossfade antar state, glif wajah khas, dan warna bohlam antena
+  per state. Di panel bawah ada "napas" CSS pelan (4,2 dtk) biar selalu bergerak.
+  `prefers-reduced-motion` → pose diam (loop kanvas + napas dimatikan).
 
 ## Tes
 
 ```bash
-npm test            # = node test.js → 84 tes: checker, kurikulum (10 topik / 300 soal / tier = 10), step & SRS, wajah LED 22×14, animasi head, migrasi path, model ekspresi
-npm run check       # node --check semua berkas JS (content/*.js, content.js, app.js, dll.)
+npm test                  # node test.js → checker, kurikulum (10 topik/300 soal/tier=10),
+                          # step & SRS, wajah LED, animasi head, migrasi path, model ekspresi
+npm run test-companion    # node test-companion.mjs → planner otonom Bibit (idle/proaktif/hint)
+npm run build             # vite build (gate: 0 error)
 ```
 
-## Siap production & repo publik
+`package.json` = `"type": "module"` → `test.js` & `test-companion.mjs` jalan sebagai ESM
+(`import`). Modul mesin **dual-mode** (`export` untuk Vite/ESM + `module.exports` untuk
+`require()` legacy), jadi satu sumber jalan di dua runtime.
 
-Proyek ini **tanpa dependensi runtime** (nol `node_modules` saat jalan). Yang perlu
-dipenuhi sebelum deploy/publish:
-
-- **Metadata** — `package.json` (nama, versi, lisensi MIT, engines `node >=18`) + `LICENSE`.
-- **Bersih untuk publik** — `.gitignore` menutup `node_modules/`, `.impeccable/`,
-  `.playwright-mcp/`, log, dan OS junk. **Jangan** commit `node_modules/`.
-- **Offline penuh** — shell di-cache service worker (`codeduo-v11`). Untuk nol request
-  eksternal sejak kunjungan pertama, turunkan 2 lib CDN ke `vendor/` (lihat "Offline").
-- **SRI** — hash 2 script CDN terkunci (jalankan `npm run sri` bila versi CDN naik).
-- **Checklist launch** (di bawah): Lighthouse a11y ≥ AA, render HP asli, `og:image` final.
-
-Inisialisasi repo (sekali):
+## Deploy ke Cloudflare Pages
 
 ```bash
-git init
-git add .
-git commit -m "CodeDuo 1.0.0 — belajar coding offline, SRS ≥30 hari, 300 soal"
-git branch -M main
-git remote add origin https://github.com/<user>/codeduo.git
-git push -u origin main
+npm run build
+npx wrangler pages deploy dist --project-name=codeduo
 ```
 
-## Deploy
+Atau lewat dashboard Cloudflare Pages:
 
-Hosting statis apa pun (Netlify, Cloudflare Pages, GitHub Pages, Vercel, nginx).
-Semua path relatif → jalan di subfolder juga. **Hash routing** (`#/lesson/...`) berarti
-deep-link aman tanpa aturan rewrite; `404.html` disediakan sebagai fallback server.
+| Setelan | Nilai |
+|---|---|
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Node version | 20+ |
 
-Ikon di-nomori cache dengan `VERSION` di `sw.js` — **bump `VERSION` tiap deploy**
-yang mengubah aset shell.
+`base: './'` → hasil build aman walau di-host di subfolder. **Rute hash**
+(`#/lesson/...`) berarti deep-link aman tanpa aturan rewrite.
 
-## SRI (Subresource Integrity) — WAJIB sebelum produksi
-
-Dua library motion dimuat dari CDN dan seharusnya dikunci dengan hash. Karena hash
-**harus dihitung dari byte asli** (jangan pernah diketik manual), ada alatnya:
-
-```bash
-node sri.js      # ambil dari CDN, hitung sha384, suntik ke index.html (idempoten)
-```
-
-Butuh koneksi sekali. Kalau gagal ambil salah satu sumber, `sri.js` **tidak**
-menyentuh baris itu (lebih baik tanpa SRI daripada hash salah) dan keluar dengan
-kode error — jalankan lagi saat stabil. Verifikasi cepat setelahnya:
-`grep integrity index.html` → harus ada dua baris `integrity="sha384-…"`.
-
-Kedua script sudah memakai `crossorigin="anonymous"` (syarat SRI) dan bersifat
-**non-esensial**: kalau gagal dimuat, app tetap jalan — animasi degrade mulus.
+**Bump `VERSION` di `public/sw.js` tiap deploy** yang mengubah aset shell — aset
+ber-hash Vite di-cache runtime (cache-first), shell di-precache.
 
 ## Offline — apa adanya
 
-PWA menyimpan seluruh aset shell, jadi setelah kunjungan pertama app **jalan penuh
-offline**. Tapi klaim "tanpa request aset eksternal" **tidak akurat** untuk kunjungan
-pertama: dua library CDN (anime.js, canvas-confetti) diambil sekali lalu di-cache.
-Untuk benar-benar nol request eksternal: turunkan keduanya ke `vendor/`, tambahkan ke
-`SHELL` di `sw.js`, dan hapus baris `CDN`. Keduanya hanya untuk motion — boleh hilang.
+PWA menyimpan shell + aset yang pernah dibuka, jadi setelah kunjungan pertama app
+jalan penuh offline. CDN **sudah tidak dipakai** (anime.js & canvas-confetti kini
+dibundel Vite), jadi tidak ada request aset eksternal sama sekali.
 
 ## Keamanan
 
 `checkCode` menjalankan jawaban murid lewat `new Function` di **browser murid sendiri**
-(sandbox = tab user, bukan server). Untuk tool lokal satu-user ini aman; kalau nanti
-multi-user daring, pindah ke Web Worker + timeout + iframe sandbox.
+(sandbox = tab user, bukan server). Untuk tool satu-user ini aman; kalau nanti multi-user
+daring, pindah ke Web Worker + timeout + iframe sandbox.
 
 ## Atribusi
 
 - Kode & maskot Bibit: © 2026 Grayzeus (MIT, lihat `LICENSE`).
-- Bentuk kepala kanvas (Bibit) adalah **port orisinal** bahasa desain
-  [robot-heads](https://github.com/fayazara/robot-heads) — MIT © Fayaz Ahmed (@fayazara).
-  Tidak ada kode/aset pihak ketiga yang disalin.
+- Kepala Bibit memakai paket [`robot-heads`](https://github.com/fayazara/robot-heads)
+  (MIT © [Fayaz Ahmed](https://x.com/fayazara)) — dependency runtime, tanpa modifikasi.
 
 ## Checklist launch
 
-- [x] `node test.js` hijau (72/72 → 84/84 setelah fitur ingat-30-hari)
-- [x] Tiket PWA: icon 192/512 (maskable), manifest, service worker
+- [x] `npm test` hijau (84 tes) + `npm run test-companion` hijau
+- [x] Tiket PWA: icon 192/512 (maskable), manifest, service worker (`codeduo-v12`)
 - [x] `robots.txt`, `404.html`, `LICENSE`, `README.md`
 - [x] Meta sosial dasar (og/twitter, tanpa og:image agar tak 404)
-- [x] **SRI** ditambahkan ke 2 script CDN (lihat bagian SRI)
+- [x] Nol CDN runtime — anime.js & canvas-confetti dibundel Vite (offline 100%)
 - [ ] **Lighthouse** (mobile & desktop): Performance / **A11y ≥ AA** / Best-practices / PWA — 0 critical
 - [ ] Rendering dites di HP asli (kanvas head 60 fps, service worker, install PWA)
-- [ ] Nilai kontras teks sekunder dicek (ink 10.7:1 OK; verifikasi `--muted` #5c6670 & tombol hijau ≥ 3:1)
+- [ ] Nilai kontras teks sekunder dicek (`--muted` #5c6670 & tombol hijau ≥ 3:1)
 - [ ] `og:image` final (1200×630) + `<link rel="canonical">` setelah domain tetap
-- [x] Diputuskan: turunkan CDN ke `vendor/` untuk offline 100% (opsional, graceful degrade sudah ada)
-- [x] Repo public-ready: `.gitignore` (node_modules, .impeccable, .playwright-mcp, log, OS junk), `package.json` ber-metadata, `CONTRIBUTING.md`, `LICENSE` MIT — **tinggal `git init` + push** (chef yang commit)

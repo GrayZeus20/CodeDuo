@@ -75,3 +75,8 @@ const SFX = (() => {
     },
   };
 })();
+
+export { SFX };
+
+/* Node CJS tetap jalan bila di-require (tak dipakai test; aman). */
+if (typeof module !== 'undefined' && module.exports) module.exports = SFX;

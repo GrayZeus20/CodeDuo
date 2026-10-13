@@ -305,4 +305,6 @@ const CONTENT_JS = [
   },
 ];
 
+export { CONTENT_JS };
+
 if (typeof module !== 'undefined' && module.exports) module.exports = CONTENT_JS;

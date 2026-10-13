@@ -113,7 +113,7 @@ Gerak adalah bagian bahasa: background gradient melayang perlahan 28 detik, node
 - Hijau sebagai identitas sekaligus penanda "benar/kemajuan"
 - Tombol tactile ber-shadow bawah (aka "press down"), kartu tenang ber-border
 - Satu kolom 520px di HP, shell melebar (kartu 2-up) di desktop ≥1024px, portrait-first PWA
-- Maskot robot **Bibit** — kepala SVG inline, 6 mood, teman belajar yang bereaksi
+- Maskot robot **Bibit** — kepala kanvas `robot-heads` (4 bentuk, 9 state, glossy 3D) + maskot SVG (6 mood); teman belajar yang hidup, bereaksi, dan bergerak sendiri
 - Gamifikasi literal: hati, streak, node jalan belajar berjenjang (Dasar → Menengah → Advance)
 - Monospace hanya untuk kode; teks UI selalu sans-serif sistem
 - Gerak sebagai balasan, bukan dekorasi
@@ -276,14 +276,13 @@ Karakter komponennya **hybrid oleh peran**: kontrol yang disentuh (tombol, node,
 - Hover menaikkan `scale(1.06)` hanya untuk node yang terbuka.
 
 ### Robot Companion — "Bibit" (maskot ikonik)
-Dua wajah, satu identitas. (1) **Maskot SVG inline** (`robotSVG(mood)`, 6 mood) untuk topbar, home hero, dan favicon/PWA icon — tanpa request aset eksternal. (2) **Kepala kanvas LED-matrix** (`mountRobotHead`, di `robot.js`) sebagai companion floating yang menampilkan status belajar real-time: kotak TV glossy, layar LED, antena pegas + bohlam, 9 state. Bentuk kepala kanvas adalah **port murni bahasa desain [robot-heads](https://github.com/fayazara/robot-heads) (MIT © Fayaz Ahmed / @fayazara)** — tidak ada kode/aset pihak ketiga yang disalin; paket itu React+bundler sementara CodeDuo vanilla tanpa build & wajib offline.
-- **Selalu hadir:** companion floating tampil di semua lebar (mobile→desktop) dan di semua rute — home, pilih topik, pelajaran, profil. Di pelajaran `body.is-lesson` mengangkatnya ke atas bar Cek/Lanjut yang fixed; tap kepala = respons (konfeti kata + sedikit lompat).
-- **State kanvas (9):** `idle` `thinking` `searching` `listening` `speaking` `working` `happy` `error` `sleeping` — dipetakan dari mood latihan (benar→happy, salah→thinking→error, tuntas→happy). `ledMatrixFor(state)` merender 8×14 LED; warna LED + bohlam mengikuti nada state (amber berpikir, cyan mencari, hijau mendengar, merah error).
-- **Bentuk (SVG):** kepala kotak-lembut 76×68 (rx 22) hijau dengan border 3px hijau-tua, layar wajah `--bg-soft` (rx 15), antena garis + bola emas yang berkedip. Semua sudut ≥15px, nol sudut tajam — patuh No-Sharp-Corner.
-- **Mood (6):** `idle` `happy` `thinking` `excited` `sad` `celebrate`. Mata & mulut diganti per mood; `happy`/`celebrate` menambah pipi blush; `celebrate` memakai mata bintang emas.
-- **Warna:** hanya token yang ada (hijau, hijau-tua, emas, tinta, latar-lembut) + `#ff9a9a` untuk blush — robot adalah pengecualian senyap dari aturan "satu aksen per peran" karena dia makhluk, bukan kontrol UI.
-- **Gerak sebagai balasan:** antena bola berkedip pelan, mata berkedip tiap 5.6s; wiggle antena saat happy, bob naik-turun saat celebrate; kepala kanvas bernapas/condong/mengangguk per state lewat satu `requestAnimationFrame` bersama (tidur saat tab hidden). Semua mati di `prefers-reduced-motion`.
-- **Perilaku:** `robotSay(ctx, seed)` memberi satu baris dialog Indonesia deterministik per seed — Bibit menyapa di home, menyemangati saat mulai, memuji/koreksi saat feedback, dan merayakan saat pelajaran tuntas atau gagal.
+Tiga wajah, satu identitas. (1) **Maskot SVG inline** (`Bib.jsx`, 6 mood) untuk topbar, home hero, dan fallback — tanpa request aset eksternal. (2) **Kepala kanvas** `<RobotHead>` dari paket [`robot-heads`](https://github.com/fayazara/robot-heads) (MIT © Fayaz Ahmed / @fayazara) sebagai companion floating: shell glossy 3D-proyeksi, lighting studio (key/fill/sky/softbox + Fresnel + rim + filmic curve), LED bloom, antena pegas teredam, 4 bentuk, 9 state. Ini **dependency runtime**, dipakai apa adanya. (3) **Maskot Bib SVG** sebagai identitas merek di topbar & hero.
+- **Selalu hadir & hidup:** companion floating tampil di semua lebar dan semua rute. Dua lapis gerak: (a) **reaktif** — model ekspresi on-device memilih wajah tiap interaksi (softmax + SGD, lihat README); (b) **otonom** — `src/companion.js` memberi idle-life (wajah ambien tiap 4–9 dtk, tidur setelah 75 dtk diam), baris proaktif (45–110 dtk, maks 2/3 mnt), dan hint bertimer (>25 dtk di satu soal). Guard anti-spam: tak ada baris saat feedback/done/failed, backoff ×1.6 bila diabaikan. Tap kepala = respons.
+- **Bentuk (4):** `rectangle` `square` `circle` `hexagon` — dipilih deterministik dari mood (hash FNV) → bentuk ikut berubah saat konteks berganti, jadi wajah terasa beda, bukan satu head statis.
+- **Bentuk maskot SVG:** kepala kotak-lembut 76×68 (rx 22) hijau, layar wajah `--bg-soft` (rx 15), antena garis + bola emas yang berkedip. Semua sudut ≥15px — patuh No-Sharp-Corner.
+- **Mood SVG (6):** `idle` `happy` `thinking` `excited` `sad` `celebrate`. Mata & mulut diganti per mood; `happy`/`celebrate` menambah pipi blush.
+- **Warna:** hanya token yang ada (hijau, hijau-tua, emas, tinta, latar-lembut) + `#ff9a9a` untuk blush — robot adalah pengecualian senyap dari aturan "satu aksen per peran" karena dia makhluk, bukan kontrol UI. Head kanvas memakai hijau merek (`#58cc02`) sebagai warna shell.
+- **Gerak sebagai balasan, bukan dekorasi:** kepala memakai satu animasi bersama (tidur saat tab hidden), semua mati di `prefers-reduced-motion` (pose diam). Idle-life & proaktif dijalankan timer 1 dtk yang `dt`-nya dari jam nyata → tetap akurat walau tab di-throttle.
 
 ### Topbar & Check-bar (navigation)
 - Topbar sticky di atas: maskot head Bibit (34px) + merek hijau-tua 1.25rem/800 di kiri; tombol mute dan badge streak (`🔥 N`, oranye `#c2410c`) di kanan. Latar putih transparan 0.86 + blur.

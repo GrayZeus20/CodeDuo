@@ -21,6 +21,7 @@ Tiga mekanisme yang tidak bisa di-copy tetangga sekaligus:
 1. **Fully offline, no account** — PWA jalan tanpa server dan tanpa login; seluruh progres di localStorage. Belajar kapan saja tanpa internet dan tanpa daftar akun.
 2. **Personal path per user** — urutan topik di-shuffle dengan seed per user; tiap orang punya jalur belajar unik, bukan kurikulum linear baku.
 3. **Latihan nge-code beneran** — bukan cuma pilihan ganda: ada tipe soal editor (HTML preview, JS/SQL code check) yang mengecek kode asli.
+4. **Teman yang hidup** — Bibit bukan hiasan: model ekspresi on-device (softmax + SGD) memilih wajahnya tiap interaksi, dan planner otonom memberinya idle-life, baris proaktif, serta hint bertimer — ia hadir walau kamu tidak menyentuhnya.
 
 ## Operating Context
 
@@ -36,14 +37,14 @@ Tiga mekanisme yang tidak bisa di-copy tetangga sekaligus:
 - **Konten kurikulum bebas diubah** — struktur topik/pelajaran/soal tidak dikunci.
 - Gamifikasi berjalan saat ini: 3 hearts, streak harian, jalan belajar berjenjang (Dasar/Menengah/Advance), mute SFX dengan konfirmasi audio dua arah — termasuk kemampuan aktif, bukan kommitmen merek.
 - Mesin checker: normalisasi jawaban (case, smart-quote, spasi, titik-koma), sandbox `new Function` untuk soal kode (ponytail: upgrade path = Worker + timeout kalau nanti multi-user).
-- Library runtime dari CDN (anime.js, canvas-confetti) dengan graceful degrade offline; service worker meng-cache aset.
-- Stack: statis HTML/CSS/JS vanilla (tanpa framework, tanpa build step).
+- Library motion (anime.js, canvas-confetti) dibundel Vite — **nol CDN runtime**, offline 100% setelah kunjungan pertama (service worker meng-cache shell + aset).
+- Stack: **React 19 + Vite 5** (SPA, hash routing); engine dipisah dari DOM di `src/store.js` (headless, Node-testable), perilaku otonom Bibit di `src/companion.js` (murni), render kepala pakai paket `robot-heads`. Static hosting apa pun (Cloudflare Pages, dst.).
 
 ## Evidence on Hand
 
-- Kode lengkap berjalan: `index.html`, `styles.css`, `app.js`, `content.js`, `checkers.js`, `sfx.js`, `sw.js`, `manifest.json`.
-- Ikon PWA: `icon-192.png`, `icon-512.png`.
-- Test checker: `test.js` (happy + edge + error path).
+- Kode lengkap berjalan: `index.html` (entry Vite), `src/` (React + store + companion), `content/*.js` + `content.js`, `checkers.js`, `srs.js`, `robot.js`, `sfx.js`, `public/sw.js`, `public/manifest.json`.
+- Ikon PWA: `public/icon-192.png`, `public/icon-512.png`.
+- Test checker: `test.js` (happy + edge + error path) + `test-companion.mjs` (planner otonom).
 - Tidak ada testimoni, testimonial, press, data pengguna, atau aset merek di luar ikon & tema hijau `#58cc02` yang ada di manifest — kerjaan berikutnya dilarang mengarang bukti sosial.
 
 ## Product Principles

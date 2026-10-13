@@ -1,42 +1,26 @@
-/* CodeDuo service worker.
- * Strategi: navigasi = network-first (anti HTML basi, lesson dari cache offline),
- * aset statis = cache-first, CDN runtime-cached. Bump VERSION saat deploy.
+/* CodeDuo service worker (React + Vite build).
+ * Strategi: navigasi = network-first (anti HTML basi, app tetap jalan offline),
+ * aset statis ber-hash = cache-first. Bump VERSION saat deploy.
  */
 'use strict';
 
-const VERSION = 'codeduo-v11';
+const VERSION = 'codeduo-v12';
 const SHELL = [
+  './',
   'index.html',
   'styles.css',
-  'app.js',
-  'robot.js',
-  'content.js',
-  'content/html.js',
-  'content/js.js',
-  'content/sql.js',
-  'content/ts.js',
-  'content/web.js',
-  'checkers.js',
-  'srs.js',
-  'sfx.js',
   'manifest.json',
   'icon.svg',
   'icon-192.png',
   'icon-512.png',
 ];
-const CDN = [
-  'https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js',
-  'https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js',
-];
 
 self.addEventListener('install', (e) => {
   e.waitUntil((async () => {
     const cache = await caches.open(VERSION);
-    await cache.addAll(SHELL);
-    /* CDN opsional — gagal satu tetap lanjut (graceful offline degrade) */
-    await Promise.all(CDN.map((u) => fetch(u)
-      .then((r) => cache.put(u, r))
-      .catch(() => {})));
+    await Promise.all(SHELL.map((u) => fetch(u)
+      .then((r) => (r && r.ok ? cache.put(u, r) : null))
+      .catch(() => null)));
     await self.skipWaiting();
   })());
 });
@@ -63,7 +47,7 @@ self.addEventListener('fetch', (e) => {
         return resp;
       } catch (_) {
         const hit = await caches.match(req);
-        return hit || caches.match('index.html');
+        return hit || caches.match('index.html') || Response.error();
       }
     })());
     return;

@@ -1,6 +1,6 @@
 {
   "name": "codeduo",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Belajar pemrograman gaya Duolingo — pelajaran pendek, latihan interaktif, teman robot Bibit. Offline, tanpa akun, tanpa backend.",
   "keywords": [
     "belajar-coding",
@@ -10,7 +10,9 @@
     "spaced-repetition",
     "pendidikan",
     "indonesia",
-    "vanilla-js"
+    "react",
+    "vite",
+    "robot-heads"
   ],
   "license": "MIT",
   "author": "Grayzeus",
@@ -23,28 +25,27 @@
     "url": "https://github.com/grayzeus/codeduo/issues"
   },
   "private": false,
-  "type": "commonjs",
+  "type": "module",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "node test.js",
-    "check": "node --check app.js && node --check content.js && node --check content/html.js && node --check content/js.js && node --check content/sql.js && node --check content/ts.js && node --check content/web.js && node --check srs.js && node --check robot.js && node --check checkers.js && node --check sfx.js",
-    "sri": "node sri.js",
-    "start": "python -m http.server 8080"
+    "test:companion": "node test-companion.mjs",
+    "check": "vite build --mode check"
   },
-  "files": [
-    "index.html",
-    "styles.css",
-    "*.js",
-    "content/",
-    "manifest.json",
-    "icon.svg",
-    "icon-192.png",
-    "icon-512.png",
-    "robots.txt",
-    "404.html",
-    "README.md",
-    "LICENSE"
-  ]
+  "dependencies": {
+    "animejs": "^3.2.2",
+    "canvas-confetti": "^1.9.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "robot-heads": "^0.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
 }

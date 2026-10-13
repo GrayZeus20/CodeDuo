@@ -129,4 +129,6 @@ const CONTENT_WEB = [
   },
 ];
 
+export { CONTENT_WEB };
+
 if (typeof module !== 'undefined' && module.exports) module.exports = CONTENT_WEB;

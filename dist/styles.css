@@ -632,16 +632,26 @@ body {
 
 @keyframes buddyIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
-.buddy__head { line-height: 0; pointer-events: auto; } /* head bisa di-tap */
-.buddy__head .robot-head { display: block; }
-/* muka "pop" tiap ganti state/rute → bot terasa hidup & bereaksi */
-.buddy__head .robot-head, .buddy__head .robot { animation: buddyPop 0.4s ease-out both; }
-@keyframes buddyPop {
-  0% { transform: scale(0.82) translateY(6px); opacity: 0.35; }
-  60% { transform: scale(1.06); opacity: 1; }
-  100% { transform: none; }
+.buddy__head {
+  position: relative;
+  line-height: 0;
+  pointer-events: auto;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  width: 132px;
+  height: 156px; /* head 132 + ruang antena/lompatan agar tak terpotong */
+  cursor: pointer;
 }
-.buddy__head .robot { width: 72px; height: 72px; } /* fallback SVG saat canvas tak ada */
+/* RobotHead (robot-heads) merender <span><canvas>. Loop rAF paket menggerakkan kepala
+ * (sway/kedip/hop/antena). Di sini tambah "napas" CSS pelan & kontinu biar selalu hidup —
+ * bukan animasi pop sekali-mount (yang cuma nendang sekali lalu diam). */
+.buddy__head > span { animation: buddyBreathe 4.2s ease-in-out infinite; }
+@keyframes buddyBreathe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
 
 /* di layar pelajaran: bar Cek/Lanjut nempel di bawah → angkat buddy agar tak menutup */
 body.is-lesson .buddy { bottom: 88px; }
@@ -680,7 +690,6 @@ body.is-lesson .buddy { bottom: 88px; }
 
 @media (min-width: 1024px) {
   .buddy { right: 24px; bottom: 24px; }
-  .buddy__head .robot { width: 92px; height: 92px; }
 
   .topbar { max-width: 1040px; padding: 14px 24px; }
   #app { max-width: 1040px; padding: 32px 24px 90px; }
@@ -725,7 +734,7 @@ body.is-lesson .buddy { bottom: 88px; }
   body { animation: none; }
   .robot__bulb, .robot__eye, .robot__blush, .robot--celebrate,
   .robot--happy .robot__antenna, .robot--celebrate .robot__antenna,
-  .buddy__head .robot-head, .buddy__head .robot { animation: none; }
+  .buddy__head > span { animation: none; }
   .buddy { animation: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

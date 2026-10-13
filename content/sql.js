@@ -368,4 +368,6 @@ const CONTENT_SQL = [
   },
 ];
 
+export { CONTENT_SQL };
+
 if (typeof module !== 'undefined' && module.exports) module.exports = CONTENT_SQL;

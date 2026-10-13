@@ -809,6 +809,16 @@ function stateToMood(state) {
   return 'idle';
 }
 
+export {
+  ROBOT_NAME, ROBOT_MOODS, ROBOT_STATES,
+  robotSVG, robotSay, robotReact,
+  stateFromMood, ledMatrixFor, mountRobotHead,
+  RH_MOTION, RH_COLORS, _rhHash, _rhFrame, _rhMotionFor, _rhFaceGrid,
+  EXPR_STATES, EXPR_FEATURES, exprFeatures, exprLabelIndex,
+  createExpressionModel, restoreExpressionModel, exprLearn, exprProbs, pickExpression, stateToMood,
+};
+
+/* Node CJS tetap jalan (require()). ESM = jalur utama Vite & test. */
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     ROBOT_NAME, ROBOT_MOODS, ROBOT_STATES,

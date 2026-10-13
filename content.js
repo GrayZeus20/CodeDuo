@@ -12,28 +12,17 @@
  * stepsForTopic() memotong tiap topik jadi 6 node: [step, ujian] × 3 tier.
  * tipe soal: mc | fill | code | preview | arrange
  *
- * Dual-mode (tanpa build): Node pakai require(), browser pakai global CONTENT_*
- * (content/*.js dimuat sebelum file ini di index.html & sw.js SHELL).
+ * Dual-mode: ESM (import) untuk Vite/test; blok konten tetap juga Node-CJS via require().
  */
 'use strict';
 
-/* Kumpulkan blok konten. Node = require; browser = variabel global CONTENT_*. */
-function collectContent() {
-  if (typeof module !== 'undefined' && module.exports) {
-    return [
-      require('./content/html.js'),
-      require('./content/js.js'),
-      require('./content/sql.js'),
-      require('./content/ts.js'),
-      require('./content/web.js'),
-    ];
-  }
-  /* eslint-disable no-undef */
-  return [CONTENT_HTML, CONTENT_JS, CONTENT_SQL, CONTENT_TS, CONTENT_WEB];
-  /* eslint-enable no-undef */
-}
+import { CONTENT_HTML } from './content/html.js';
+import { CONTENT_JS } from './content/js.js';
+import { CONTENT_SQL } from './content/sql.js';
+import { CONTENT_TS } from './content/ts.js';
+import { CONTENT_WEB } from './content/web.js';
 
-const CURRICULUM = collectContent().reduce((all, block) => all.concat(block), []);
+const CURRICULUM = [].concat(CONTENT_HTML, CONTENT_JS, CONTENT_SQL, CONTENT_TS, CONTENT_WEB);
 
 /* Tier tetap & ukuran step — dipakai app.js untuk memotong topik jadi step + ujian. */
 const TIER_ORDER = ['Dasar', 'Menengah', 'Advance'];
@@ -132,6 +121,13 @@ function shuffledIds(arr, rng) {
   return a;
 }
 
+export {
+  CURRICULUM, syncPath,
+  stepsForTopic, allQuestionIds, questionKey, resolveQuestion, exerciseById,
+  TIER_ORDER, STEP_SIZE,
+};
+
+/* Node CJS tetap jalan (require()). ESM = jalur utama Vite & test. */
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     CURRICULUM, syncPath,

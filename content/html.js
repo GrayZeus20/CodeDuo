@@ -255,4 +255,6 @@ const CONTENT_HTML = [
   },
 ];
 
+export { CONTENT_HTML };
+
 if (typeof module !== 'undefined' && module.exports) module.exports = CONTENT_HTML;

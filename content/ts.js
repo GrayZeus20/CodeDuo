@@ -248,4 +248,6 @@ const CONTENT_TS = [
   },
 ];
 
+export { CONTENT_TS };
+
 if (typeof module !== 'undefined' && module.exports) module.exports = CONTENT_TS;

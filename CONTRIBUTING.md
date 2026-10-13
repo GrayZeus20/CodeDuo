@@ -1,25 +1,38 @@
 # Kontribusi — CodeDuo
 
-Terima kasih mau ikut nambah. Proyek ini **statis, offline, tanpa framework, tanpa build step** —
-HTML/CSS/JS vanilla + Node cuma untuk tes. Jaga tetap begitu.
+Terima kasih mau ikut nambah. Proyek ini **offline-first**: React + Vite untuk UI,
+Node untuk tes. Mesin logika wajib tetap **murni & Node-testable** (tanpa DOM).
 
 ## Menjalankan
 
 ```bash
-python -m http.server 8080     # lalu buka http://localhost:8080
-# atau: npm start
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # hasil ke dist/
+npm run preview    # cek hasil build
 ```
-
-Service worker butuh `http`/`https` (bukan `file://`).
 
 ## Tes (wajib hijau sebelum PR)
 
 ```bash
-node test.js       # 84 tes: checker, kurikulum, step & SRS, wajah/animasi head, model ekspresi
-node sri.js        # hanya kalau versi CDN motion berubah (butuh koneksi sekali)
+node test.js              # 84 tes: checker, kurikulum, step & SRS, wajah/animasi head, model ekspresi
+node test-companion.mjs   # planner otonom Bibit (idle-life / proaktif / hint)
+npm run build             # gate build: 0 error
 ```
 
-Target: `84 passed, 0 failed`. Tes baru **tidak boleh** menurunkan jumlah yang lulus.
+Target: `84 passed, 0 failed` (test.js) + semua hijau (test-companion) + build sukses.
+Tes baru **tidak boleh** menurunkan jumlah yang lulus.
+
+## Arsitektur (jangan dilanggar)
+
+- **Engine tanpa DOM.** State & aksi hanya di `src/store.js`; React membaca via
+  `useSyncExternalStore` (`src/useStore.js`). Efek (SFX/motion/DOM) hanya di komponen.
+- **Perilaku otonom murni.** `src/companion.js` = state machine tanpa DOM → bisa diuji Node.
+  Tambah perilaku = tambah event di sana + tesnya, bukan di komponen.
+- **Modul mesin dual-mode.** `content/*.js`, `content.js`, `checkers.js`, `srs.js`,
+  `robot.js`, `sfx.js` punya `export {…}` (Vite/ESM **&** `test.js`/`test-companion.mjs`) **dan**
+  `module.exports` (Node `require()` legacy). Jangan hapus salah satu.
+- **Reuse first.** Cek dulu file yang sudah ada — jangan buat file paralel / `_v2` / duplikat logika.
 
 ## Menambah / mengubah soal
 
@@ -50,14 +63,14 @@ Tambah soal → jalankan `node test.js`. Kalau jumlah per tier jadi ≠ 10, tes 
 ## Gaya kode
 
 - Bahasa Indonesia untuk UI & konten; komentar ringkas.
-- Murni & deterministik kalau bisa (biar Node-testable tanpa DOM) — lihat `srs.js`, `robot.js`.
-- Tanpa dependensi runtime baru tanpa diskusi. CDN motion (anime.js, canvas-confetti) dikunci SRI.
-- Jangan commit `node_modules/` atau `.impeccable/` (sudah di `.gitignore`).
+- Murni & deterministik kalau bisa (biar Node-testable tanpa DOM) — lihat `src/companion.js`, `srs.js`, `robot.js`.
+- Jangan inline `<script>`/`<style>` di HTML — JS di `src/`, CSS di `public/styles.css`.
+- Tanpa dependensi runtime baru tanpa diskusi. Render kepala = `robot-heads` (MIT, dipakai apa adanya).
 
 ## Commit
 
 - Satu commit = satu perubahan bermakna. Pesan jelas, imperatif.
-- Sebelum commit: `node test.js` hijau.
+- Sebelum commit: `node test.js` + `node test-companion.mjs` hijau + `npm run build` sukses.
 
 ## Lisensi
 
