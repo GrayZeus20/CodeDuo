@@ -1,19 +1,23 @@
 /* CodeDuo — Topik: jalur 3 tier × (step + ujian), unlock berurutan global. */
 'use strict';
 
+import { useState } from 'react';
 import { useStore } from '../useStore.js';
 import {
   topicById, topicNodes, isNodeDone, stepStart, tierTest,
 } from '../store.js';
 import { TIER_ORDER } from '../../content.js';
 import { pop } from '../lib/motion.js';
+import { TOPIC_GUIDES } from '../guidebooks.js';
 
 export default function Topic({ topicId }) {
   useStore();
+  const [showGuide, setShowGuide] = useState(false);
   const topic = topicById(topicId);
   if (!topic) {
     return (<section className="screen"><p>Topik tidak ditemukan. <a href="#/">Ke home</a></p></section>);
   }
+  const guide = TOPIC_GUIDES[topicId];
   const nodes = topicNodes(topicId);
   const stepNodes = nodes.filter((n) => n.kind === 'step');
   const doneSteps = stepNodes.filter((n) => isNodeDone(topicId, n.id)).length;
@@ -31,6 +35,39 @@ export default function Topic({ topicId }) {
         <span className="topic__progress">{doneSteps}/{stepNodes.length}</span>
       </header>
 
+      {guide && (
+        <div className="topic__guide-card card">
+          <div className="topic__guide-header">
+            <b>💡 Panduan Singkat · {guide.title}</b>
+            <button
+              className="btn btn--ghost btn--sm"
+              onClick={(e) => { pop(e.currentTarget); setShowGuide((v) => !v); }}
+            >
+              {showGuide ? 'Tutup ▲' : 'Buka Tips ▼'}
+            </button>
+          </div>
+          {showGuide && (
+            <div className="topic__guide-body">
+              <p className="topic__guide-summary">{guide.summary}</p>
+              <ul className="topic__guide-points">
+                {guide.keyPoints.map((pt, i) => (
+                  <li key={i}>{pt}</li>
+                ))}
+              </ul>
+              {guide.snippet && (
+                <pre className="code-block topic__guide-code"><code>{guide.snippet}</code></pre>
+              )}
+              {guide.bibitTip && (
+                <div className="topic__guide-tip">
+                  <span aria-hidden="true">🤖</span>
+                  <div><b>Tips Bibit:</b> {guide.bibitTip}</div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
       {TIER_ORDER.map((tier) => {
         const step = nodes.find((n) => n.kind === 'step' && n.tier === tier);
         const test = nodes.find((n) => n.kind === 'test' && n.tier === tier);
@@ -39,7 +76,9 @@ export default function Topic({ topicId }) {
         const idxTest = nodes.indexOf(test);
         const stepDone = isNodeDone(topicId, step.id);
         const testDone = isNodeDone(topicId, test.id);
-        const stepOpen = idxStep === 0 || isNodeDone(topicId, nodes[idxStep - 1].id) || stepDone;
+        const sIdx = stepNodes.indexOf(step);
+        const prevStepDone = sIdx === 0 || isNodeDone(topicId, stepNodes[sIdx - 1].id);
+        const stepOpen = prevStepDone || stepDone;
         const testOpen = stepDone || testDone;
         return (
           <section className="tier" key={tier}>
@@ -59,11 +98,14 @@ export default function Topic({ topicId }) {
 }
 
 function NodeItem({ topicId, node, idx, open, kind }) {
+  const t = topicById(topicId);
   const done = isNodeDone(topicId, node.id);
   const isTest = kind === 'test';
   const cls = done ? 'node node--done' : open ? 'node node--open' : 'node node--locked';
   const label = done ? '★' : open ? (isTest ? '★' : String(node.stepNo)) : '🔒';
   const title = isTest ? 'Ujian ' + node.tier : 'Step ' + node.stepNo + ' · ' + node.tier;
+  const lessonsForTier = t ? t.lessons.filter((l) => l.level === node.tier) : [];
+  const lessonTitles = lessonsForTier.map((l) => l.title).join(' · ');
   const onClick = open
     ? (e) => { pop(e.currentTarget); if (isTest) tierTest(topicId, node.id); else stepStart(topicId, node.id); }
     : undefined;
@@ -71,8 +113,13 @@ function NodeItem({ topicId, node, idx, open, kind }) {
     <li className={'lesson-path__item' + (idx % 2 ? ' lesson-path__item--right' : '')}>
       <button className={cls + (isTest ? ' node--exam' : '')} disabled={!open} aria-disabled={!open} onClick={onClick}>{label}</button>
       <span className="lesson-path__title">
-        <span className="topic-card__tier">{isTest ? 'Ujian' : 'Step ' + node.stepNo + ' · 10 soal'}</span><br />
-        {title}{done ? ' · selesai' : open ? '' : ' · terkunci'}
+        <span className="topic-card__tier">{isTest ? 'Ujian ' + node.tier : 'Step ' + node.stepNo + ' · 10 soal'}</span><br />
+        <b>{title}</b>{done ? ' · selesai' : open ? '' : ' · terkunci'}
+        {!isTest && lessonTitles && (
+          <span className="topic-card__sub-lessons" style={{ display: 'block', fontSize: '0.78rem', color: 'var(--muted)', marginTop: '2px' }}>
+            {lessonTitles}
+          </span>
+        )}
       </span>
     </li>
   );

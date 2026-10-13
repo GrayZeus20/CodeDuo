@@ -39,7 +39,13 @@ function RunView({ session, topic, isReview }) {
   if (!ex) return (<section className="screen"><p>Soal tidak ditemukan. <a href="#/">Ke home</a></p></section>);
   const total = session.order.length;
   const exitHref = isReview ? '#/' : '#/topic/' + topic.id;
-  const metaName = isReview ? 'Ruang ingat' : topic.name + ' · ' + (session.label || '');
+  const curEntry = session.exercises[session.order[session.pos]];
+  const keyParts = curEntry && curEntry.key ? curEntry.key.split('|')[1] : null;
+  const lessonId = keyParts ? keyParts.split('#')[0] : null;
+  const currentLesson = topic && topic.lessons ? topic.lessons.find((l) => l.id === lessonId) : null;
+  const metaName = isReview
+    ? 'Latihan'
+    : topic.name + (currentLesson ? ' · ' + currentLesson.title : ' · ' + (session.label || ''));
 
   const onSubmit = (answer) => {
     const r = answerCheck(answer);
@@ -226,7 +232,7 @@ function FailView({ session, topic, isReview }) {
   return (
     <section className="screen screen--center">
       <div className="card card--fail">💔 Nyawa habis!</div>
-      <p className="muted">{label} akan diulang dari awal — urutan soalnya beda lagi.</p>
+      <p className="muted">Jangan berkecil hati! Coba lagi untuk memperkuat pemahamanmu.</p>
       <button className="btn btn--danger" onClick={lessonRetry}>Coba Lagi</button>
       {isReview
         ? <a className="btn btn--ghost" href="#/">Ke home</a>
@@ -241,7 +247,7 @@ function DoneView({ session, topic, isReview, state }) {
   const idx = isReview ? -1 : nodes.findIndex((n) => n.id === session.nodeId);
   const nextNode = idx >= 0 ? nodes[idx + 1] : null;
   const nextTopicId = isReview ? null : state.path[state.path.indexOf(topic.id) + 1];
-  const title = isReview ? 'Ulangan selesai!' : (session.kind === 'test' ? 'Ujian ' + session.tier + ' lulus!' : 'Step ' + String(session.nodeId).split('--')[1] + ' tuntas!');
+  const title = isReview ? 'Latihan selesai!' : (session.kind === 'test' ? 'Ujian ' + session.tier + ' lulus!' : 'Step ' + String(session.nodeId).split('--')[1] + ' tuntas!');
   const more = isReview ? dueReviewKeys().length : 0;
 
   return (
@@ -250,11 +256,11 @@ function DoneView({ session, topic, isReview, state }) {
       <h1 className="result__title">{title}</h1>
       <p className="result__streak">🔥 Streak: {state.streak.count} hari</p>
       <p className="muted">{session.label}{topic ? ' · ' + topic.name : ''}</p>
-      <p className="muted">Soal ini dijadwalkan ulang biar nempel ≥30 hari.</p>
+      <p className="muted">Langkah hebat untuk pemahaman kodingmu!</p>
       <div className="result__actions">
         {isReview ? (
           more > 0
-            ? <button className="btn btn--primary" onClick={reviewStart}>Lanjut ulangan ({Math.min(more, STEP_SIZE)} lagi)</button>
+            ? <button className="btn btn--primary" onClick={reviewStart}>Lanjut latihan ({Math.min(more, STEP_SIZE)} lagi)</button>
             : <a className="btn btn--primary" href="#/">Ke home</a>
         ) : nextNode ? (
           <button
@@ -264,7 +270,6 @@ function DoneView({ session, topic, isReview, state }) {
         ) : (
           <a className="btn btn--primary" href="#/">{(nextTopicId || allDone) ? 'Lanjut ke topik lain 🔓' : 'Ke home'}</a>
         )}
-        <button className="btn btn--ghost" onClick={lessonRetry}>Ulangi sesi</button>
       </div>
     </section>
   );

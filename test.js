@@ -404,7 +404,7 @@ t('robot: tiap mood punya markup mata & mulut', () => {
   });
 });
 t('robot: say deterministik + non-empty untuk tiap konteks', () => {
-  ['greet', 'start', 'correct', 'wrong', 'lost-heart', 'done', 'streak'].forEach((c) => {
+  ['greet', 'start', 'correct', 'wrong', 'lost-heart', 'done', 'streak', 'idle-home', 'idle-topic', 'idle-lesson', 'wake', 'tap', 'face-thinking', 'type-code'].forEach((c) => {
     const a = robotSay(c, 3);
     const b = robotSay(c, 3);
     assert.ok(a && a.length > 0, c + ' kosong');

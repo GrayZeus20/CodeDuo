@@ -36,11 +36,16 @@ import {
   EXPR_STATES, EXPR_FEATURES,
 } from '../robot.js';
 import { newCompanion, tickCompanion, onUserInteract } from './companion.js';
+import {
+  createDialogueModel, updateDialogueModel,
+  getAiTapDialogue, generateAiDialogue, getAiHintDialogue,
+} from './aiDialogue.js';
 
 export { MAX_HEARTS, ROBOT_NAME };
 const TIERS = TIER_ORDER;
 const STORAGE_KEY = 'codeduo_state_v1';
 const EXPR_KEY = 'codeduo_expr_v1';
+const AI_MODEL_KEY = 'codeduo_ai_dialogue_v1';
 
 /* ================= Store inti ================= */
 
@@ -50,6 +55,7 @@ let srs = newSched();
 let stateLoadError = null;
 let exprModel = null;
 let exprTrained = null;
+let aiDialogueModel = createDialogueModel();
 let companion = newCompanion();
 let version = 0;
 const listeners = new Set();
@@ -76,8 +82,8 @@ export function getExprModel() { return exprModel; }
 
 /* ================= Seeded path personal ================= */
 
-function generatePath(seed) {
-  return shuffled(CURRICULUM.map((t) => t.id), mulberry32(seed));
+function generatePath() {
+  return CURRICULUM.map((t) => t.id);
 }
 
 export function topicById(id) {
@@ -255,11 +261,21 @@ function loadExpression() {
   try { raw = localStorage.getItem(EXPR_KEY); } catch (_) { raw = null; }
   if (raw) exprModel = restoreExpressionModel(raw);
   if (!exprModel) exprModel = createExpressionModel();
+
+  let rawAi = null;
+  try { rawAi = localStorage.getItem(AI_MODEL_KEY); } catch (_) { rawAi = null; }
+  if (rawAi) {
+    try { aiDialogueModel = JSON.parse(rawAi); } catch (_) { aiDialogueModel = createDialogueModel(); }
+  } else {
+    aiDialogueModel = createDialogueModel();
+  }
 }
 
 function saveExpression() {
   try { localStorage.setItem(EXPR_KEY, JSON.stringify(exprModel)); }
   catch (e) { console.warn('[codeduo] gagal simpan model ekspresi:', e.message); }
+  try { localStorage.setItem(AI_MODEL_KEY, JSON.stringify(aiDialogueModel)); }
+  catch (_) {}
 }
 
 function learnExpression(features) {
@@ -298,23 +314,86 @@ function interactionSignal(sig) {
   };
 }
 
-/* Tiap interaksi: latih model → pilih wajah baru → reset jam otonom (baris proaktif dibuang). */
+/* Tiap interaksi: latih model → reset jam otonom (baris proaktif dibuang) → ekspresi kontekstual. */
 export function onInteraction(sig) {
   const s = sig || {};
   const features = interactionSignal(s);
   learnExpression(features);
-  const face = pickExpression(exprModel, features, Math.random, companion.face);
+  updateDialogueModel(aiDialogueModel, s);
+  saveExpression();
   const r = onUserInteract(companion, Math.random);
   companion = r.state;
-  companion.face = face;
-  companion.mood = stateToMood(face);
+
+  /* Jaga ekspresi tetap sinkron dengan emosi belajar agar Bibit tidak loncat-loncat seperti slideshow */
+  if (s.correct) {
+    companion.face = 'happy';
+  } else if (s.wrong) {
+    companion.face = 'thinking';
+  } else if (s.tap) {
+    companion.face = pickExpression(exprModel, features, Math.random, companion.face);
+  } else if (session && session.phase === 'run') {
+    /* Saat murid sedang berpikir/memilih jawaban, Bibit tetap fokus menemani */
+    if (!companion.face || companion.face === 'sleeping' || companion.face === 'error') {
+      companion.face = 'idle';
+    }
+  } else {
+    companion.face = pickExpression(exprModel, features, Math.random, companion.face);
+  }
+
+  companion.mood = stateToMood(companion.face);
   companion.line = null; /* balik ke baris konteks permainan sampai tick otonom berikutnya */
   if (r.greeting) { companion.line = robotSay(r.greeting.ctx, (state ? state.seed : 0) + 3); companion.ctx = r.greeting.ctx; }
   bump();
 }
 
+let tapSeed = 0;
+
+function collectAiSignals() {
+  const r = routeInfo();
+  const s = state;
+  const ex = currentExercise();
+  const t = r.topicId ? topicById(r.topicId) : null;
+  const nodes = t ? topicNodes(t.id) : [];
+  const doneCount = nodes.filter((n) => isNodeDone(t.id, n.id)).length;
+  const nextT = currentTopicId() ? topicById(currentTopicId()) : null;
+
+  return {
+    inSession: !!session,
+    route: r.name,
+    phase: session ? session.phase : null,
+    pos: session ? session.pos : 0,
+    totalInSession: session && session.order ? session.order.length : 10,
+    hearts: session ? session.hearts : 3,
+    streak: s && s.streak ? s.streak.count : 0,
+    lessonsDone: s && s.stats ? s.stats.lessonsDone : 0,
+    correct: s && s.stats ? s.stats.correct : 0,
+    dueReviews: dueReviewKeys().length,
+    currentExercise: ex,
+    face: companion.face,
+    mood: companion.mood,
+    topicTitle: t ? t.title : null,
+    topicDoneCount: doneCount,
+    topicTotalCount: nodes.length,
+    nextTopicTitle: nextT ? nextT.title : null,
+    lessonLabel: session ? session.label : null,
+    lastResult: session ? session.lastResult : null,
+  };
+}
+
+function getTapDialogue(seed) {
+  if (companion.face === 'sleeping') {
+    return 'Hoam... Aku bangun! Siap ngoding lagi!';
+  }
+  const signals = collectAiSignals();
+  return getAiTapDialogue(signals, seed);
+}
+
 export function onBuddyTap() {
+  tapSeed += 1;
   onInteraction({ tap: true, nav: false, lesson: !!session, n: 0.3 });
+  companion.line = getTapDialogue(tapSeed + (state ? state.seed : 0));
+  companion.ctx = 'tap';
+  bump();
 }
 
 /* ================= Tick otonom (dipanggil timer React) =================
@@ -327,7 +406,7 @@ export function tickBuddy(dtMs) {
   if (emit.face) { companion.face = emit.face; companion.mood = stateToMood(emit.face); }
   if (emit.kind === 'line') {
     const seed = (state ? state.seed : 0) + (session ? session.pos : 0) + (companion.lines.length | 0);
-    companion.line = robotSay(emit.ctx, seed);
+    companion.line = buildContextualLine(seed);
     companion.ctx = emit.ctx;
   } else if (emit.kind === 'hint') {
     companion.line = hintLine();
@@ -344,15 +423,23 @@ function currentCtx() {
 
 function hintLine() {
   const ex = currentExercise();
-  if (!ex) return 'Pelan-pelan aja. Baca soal sekali lagi.';
-  const byType = {
-    mc: 'Coret dulu yang jelas salah, sisanya lebih mudah.',
-    fill: 'Lihat kata kunci di dalam kode — bagian kosong biasanya satu kata.',
-    code: 'Coba bikin fungsi sekecil mungkin dulu, tes dengan satu contoh.',
-    preview: 'Tulis sedikit, lihat hasilnya di preview, lalu tambah lagi.',
-    arrange: 'Blok pertama biasanya pembuka (variabel/import), yang terakhir hasil.',
-  };
-  return byType[ex.type] || 'Kalau mentok, baca ulang soalnya pelan-pelan.';
+  const signals = collectAiSignals();
+  return getAiHintDialogue(ex, signals);
+}
+
+function buildContextualLine(seed) {
+  const signals = collectAiSignals();
+  const b = buddyState();
+
+  if (session && session.phase === 'feedback' && session.lastResult) {
+    if (session.lastResult.correct) {
+      return generateAiDialogue('correct', signals, seed);
+    } else {
+      return generateAiDialogue('wrong', signals, seed);
+    }
+  }
+
+  return generateAiDialogue(b.ctx, signals, seed);
 }
 
 /* Baris bubble default (ikut konteks permainan) — dipakai Buddy bila tak ada baris otonom. */
@@ -370,8 +457,11 @@ export function buddyState() {
 
 /* Wajah yang tampil: pilihan model bila ada, else turunan mood konteks. */
 export function buddyFace() {
-  if (companion.face) return companion.face;
   const b = buddyState();
+  if (session && (session.phase === 'feedback' || session.phase === 'done' || session.phase === 'failed')) {
+    return stateFromMood(b.mood === 'celebrate' ? 'happy' : b.mood);
+  }
+  if (companion.face) return companion.face;
   return stateFromMood(b.mood === 'celebrate' ? 'happy' : b.mood);
 }
 
@@ -381,7 +471,7 @@ export function buddyLine(pos) {
   const seed = (state ? state.seed : 0) + (Number.isFinite(pos) ? pos : (session ? session.pos : 0));
   const inFeedback = session && (session.phase === 'feedback' || session.phase === 'done' || session.phase === 'failed');
   if (companion.line && !inFeedback) return { text: companion.line, ctx: companion.ctx };
-  return { text: robotSay(b.ctx, seed), ctx: b.ctx };
+  return { text: buildContextualLine(seed), ctx: b.ctx };
 }
 
 export function buddyDump() {
@@ -577,7 +667,15 @@ export function answerCheck(answer) {
     session.hearts -= 1;
     session.wrongOnThis = true;
     state.stats.wrong += 1;
-    if (session.hearts <= 0) session.phase = 'failed';
+    if (session.hearts <= 0) {
+      session.phase = 'failed';
+    } else {
+      // Duolingo Review Mistakes Queue:
+      // Soal yang belum tepat diulang di akhir sesi agar seluruh soal pada materi ini
+      // benar-benar habis dan dipahami murid sampai tuntas.
+      const currentIdx = session.order[session.pos];
+      session.order.push(currentIdx);
+    }
   }
   if (session.phase === 'run') session.phase = 'feedback';
 
@@ -683,13 +781,8 @@ export function initStore() {
   loadState();
   loadSrs();
   loadExpression();
-  if (!state.path || !state.path.length) {
-    state.path = generatePath(state.seed);
-    saveState();
-  } else {
-    const synced = syncPath(state.path, mulberry32(state.seed));
-    if (JSON.stringify(synced) !== JSON.stringify(state.path)) { state.path = synced; saveState(); }
-  }
+  state.path = CURRICULUM.map((t) => t.id);
+  saveState();
   bump();
   return { muted: !!state.muted };
 }

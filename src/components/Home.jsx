@@ -4,9 +4,9 @@
 import { useStore } from '../useStore.js';
 import {
   getState, getLoadError, topicById, isTopicDone, isNodeDone,
-  dueReviewKeys, reviewStart, openTopic, goProfile, MAX_HEARTS,
+  openTopic,
 } from '../store.js';
-import { CURRICULUM, stepsForTopic, STEP_SIZE } from '../../content.js';
+import { CURRICULUM, stepsForTopic } from '../../content.js';
 import Bib from './Bib.jsx';
 import { pop } from '../lib/motion.js';
 
@@ -15,35 +15,19 @@ export default function Home() {
   const state = getState();
   const loadError = getLoadError();
   const allDone = state.path.every(isTopicDone);
-  const due = dueReviewKeys().length;
 
   return (
     <section className="screen home">
       {loadError && <div className="banner banner--warn">{loadError}</div>}
 
       <div className="home__hero">
-        <span className="home__robot" aria-hidden="true"><Bib mood={allDone ? 'celebrate' : 'happy'} size={76} label="Bibit" /></span>
+        <span className="home__robot" aria-hidden="true"><Bib mood={allDone ? 'celebrate' : 'happy'} size={76} label="Bibit" interactive /></span>
         <div className="home__hero-text">
           <h1 className="home__hi">Lanjut belajar 👋</h1>
           <p className="home__sub">
-            Aku <b>Bibit</b>, teman belajarmu. Tiap topik: 3 step (Dasar → Menengah → Advance) + ujian tiap tier
-            — tiap step 10 soal, diingat ulang biar nempel 30 hari.
+            Aku <b>Bibit</b>, teman belajarmu. Tiap topik: 3 step (Dasar → Menengah → Advance) + ujian tiap tier.
           </p>
         </div>
-      </div>
-
-      <div className={'recall card' + (due ? ' card--due' : '')}>
-        <div className="recall__text">
-          <b>Ingat · ulangan berjarak</b>
-          <span className="muted">
-            {due ? due + ' soal jatuh tempo hari ini' : 'Semua soal sudah terjadwal. Balik kapan nanti 👍'}
-          </span>
-        </div>
-        {due > 0 && (
-          <button className="btn btn--primary recall__btn" onClick={(e) => { pop(e.currentTarget); reviewStart(); }}>
-            Ulangi {Math.min(due, STEP_SIZE)} soal
-          </button>
-        )}
       </div>
 
       {allDone && (

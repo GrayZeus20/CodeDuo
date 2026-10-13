@@ -120,36 +120,122 @@ const SAY = {
     'Halo! Aku Bibit, teman belajarmu. Siap nge-code?',
     'Eh, kamu balik! Aku udah nyalain bengkelnya.',
     'Ayok lanjut. Satu pelajaran sehari aja udah bussin.',
+    'Senang ketemu lagi! Yuk lanjutkan langkah kodingmu.',
   ],
   start: [
     'Gas! Baca soalnya pelan-pelan ya.',
     'Aku pantau dari sini. Santai aja.',
     'Fokus dikit, nanti kita rayain.',
+    'Pahami alur kodenya, kamu pasti bisa pecahin!',
   ],
   correct: [
     'Bener! Kepalamu lebih cepat dari prosesorku.',
     'Sip, mantap. Lanjut!',
     'Itu dia. Jangan berhenti.',
+    'Jawaban tepat! Logika kodingmu makin tajam.',
+    'Mantap jiwa! Bebas bug dan rapi.',
   ],
   wrong: [
     'Hampir. Coba baca ulang soalnya.',
     'Belum tepat, tenang — error itu guru terbaik.',
     'Salah itu normal. Yang penting lanjut.',
+    'Jangan khawatir, coba amati detail kodenya sekali lagi.',
   ],
   'lost-heart': [
     'Nyawa habis... tapi urutan soalnya bakal beda. Coba lagi!',
     'Ups, kita mulai ulang dari awal. Aku temenin.',
+    'Tarik napas dulu. Latihan ulang bikin otak makin paham kok.',
   ],
   done: [
     'Pelajaran tuntas! Aku bangga.',
     'YES! Pelajaran tuntas. Kepalamu makin terang.',
     'Tuntas! Sekarang istirahat, nanti lanjut lagi.',
+    'Level ini berhasil kamu taklukkan! Keren banget.',
   ],
   streak: [
     'Streak nambah! Jangan putus rantainya.',
     'Hari ini kehitung. Besok balik lagi ya!',
+    'Apinya makin membara! Pertahankan konsistensimu.',
   ],
-  idle: ['Aku di sini kalau kamu butuh.'],
+  'idle-home': [
+    'Pilih topik yang mau dipelajari!',
+    'Yuk mulai satu modul dulu!',
+    'Siap eksplorasi tantangan baru?',
+  ],
+  'idle-topic': [
+    'Pilih level yang terbuka ya.',
+    'Ayo kuasai topik ini bareng!',
+    'Satu level lagi menuju tuntas!',
+  ],
+  'idle-lesson': [
+    'Fokus ke pertanyaannya!',
+    'Kamu pasti bisa pecahin.',
+    'Amati alur kodenya ya.',
+  ],
+  slow: [
+    'Perlu bantuan? Baca lagi kodenya.',
+    'Tenang, teliti ya.',
+  ],
+  wake: [
+    'Aku bangun! Siap ngoding.',
+    'Online lagi! Yuk lanjut!',
+  ],
+  tap: [
+    'Siap bantu! Semangat!',
+    'Yuk, kita pecahin kodenya!',
+    'Fokus ya, kamu pasti bisa!',
+  ],
+  'face-thinking': [
+    'Hmm... lagi mikir logikanya...',
+    'Telaah kondisinya bareng yuk.',
+  ],
+  'face-searching': [
+    'Mencari kata kunci yang pas...',
+    'Cari tag atau fungsi yang cocok.',
+  ],
+  'face-working': [
+    'Fokus penuh! Simulasi kode.',
+    'Logikamu udah di arah tepat!',
+  ],
+  'face-listening': [
+    'Aku simak, ketik aja dulu!',
+    'Coba idemu, jangan takut salah.',
+  ],
+  'face-speaking': [
+    'Perhatikan variabel dan urutan ya!',
+    'Cek kurung dan tanda bacanya.',
+  ],
+  'face-sleeping': [
+    'Zzz... sentuh aku buat bangunin.',
+  ],
+  'type-code': [
+    'Perhatikan parameter dan return ya!',
+    'Pastikan fungsi mengembalikan nilai.',
+  ],
+  'type-fill': [
+    'Isi keyword yang paling tepat.',
+    'Amati sintaks di sekelilingnya.',
+  ],
+  'type-arrange': [
+    'Susun blok kode berurutan.',
+    'Inisialisasi dulu, lalu output.',
+  ],
+  'type-preview': [
+    'Ketik kodenya, cek preview!',
+    'Pastikan tag HTML/CSS tertulis rapi.',
+  ],
+  'type-mc': [
+    'Eliminasi opsi yang janggal dulu.',
+    'Pilih opsi yang paling tepat.',
+  ],
+  'heart-low': [
+    'Awas, nyawa sisa 1 hati!',
+    'Santai aja, lebih teliti ya.',
+  ],
+  idle: [
+    'Aku di sini kalau kamu butuh.',
+    'Yuk lanjut koding!',
+  ],
 };
 
 function robotSay(context, seed) {

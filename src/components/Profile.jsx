@@ -3,20 +3,17 @@
 
 import { useStore } from '../useStore.js';
 import {
-  getState, getSrs, topicById, isTopicDone, dueReviewKeys,
-  dumpState, srsDump, stateReset,
+  getState, topicById, isTopicDone,
+  dumpState, stateReset,
 } from '../store.js';
-import { SRS_INTERVALS } from '../../srs.js';
 
 export default function Profile() {
   useStore();
   const state = getState();
-  const srs = getSrs();
   const topicsDone = state.path.filter((id) => isTopicDone(id)).length;
-  const due = dueReviewKeys().length;
 
   const onReset = () => {
-    if (window.confirm('Reset semua progress, streak, jadwal ingatan, dan model ekspresi Bibit? Tindakan ini tidak bisa dibatalkan.')) {
+    if (window.confirm('Reset semua progress, streak, dan model ekspresi Bibit? Tindakan ini tidak bisa dibatalkan.')) {
       stateReset();
     }
   };
@@ -33,7 +30,7 @@ export default function Profile() {
       </div>
 
       <div className="card">
-        <h3>Jalur personal kamu</h3>
+        <h3>Jalur belajar kurikulum</h3>
         <ol className="path-list">
           {state.path.map((id, i) => {
             const t = topicById(id);
@@ -47,14 +44,6 @@ export default function Profile() {
             );
           })}
         </ol>
-      </div>
-
-      <div className="card">
-        <h3>Ingatan (30 hari)</h3>
-        <p className="muted">
-          {Object.keys(srs).length} soal terjadwal · {due} jatuh tempo. Interval: {SRS_INTERVALS.join(' → ')} hari.
-        </p>
-        <button className="btn btn--ghost" onClick={(e) => { srsDump(); e.currentTarget.textContent = 'Jadwal dicetak ke console ✓'; }}>Lihat jadwal (console)</button>
       </div>
 
       <div className="card">
