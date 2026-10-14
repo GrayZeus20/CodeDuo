@@ -77,3 +77,13 @@ if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.
     }
   });
 }
+
+/* Garansi Penyimpanan: jika pengguna sebelumnya sudah menerima ('accepted'),
+ * pastikan status persistent storage tetap terjaga di sesi ini. */
+if (typeof navigator !== 'undefined' && navigator.storage && navigator.storage.persist) {
+  try {
+    if (localStorage.getItem('codeduo_persist_consent') === 'accepted') {
+      navigator.storage.persist().catch(() => {});
+    }
+  } catch (_) {}
+}

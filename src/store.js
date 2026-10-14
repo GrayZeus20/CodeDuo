@@ -228,6 +228,51 @@ export function dumpState() {
   return dump;
 }
 
+/* Ekspor seluruh data progres, SRS, dan preferensi ke string JSON */
+export function exportSaveData() {
+  const exportPayload = {
+    app: 'CodeDuo',
+    version: state ? state.version : 1,
+    exportDate: new Date().toISOString(),
+    state: state,
+    srs: srs ? toJSON(srs) : null,
+    buddyPos: typeof localStorage !== 'undefined' ? localStorage.getItem('codeduo_buddy_drag_pos') : null,
+    motion: typeof localStorage !== 'undefined' ? localStorage.getItem('codeduo_motion') : null,
+  };
+  return JSON.stringify(exportPayload, null, 2);
+}
+
+/* Impor data progres dari string JSON dengan validasi dan sanitasi ketat */
+export function importSaveData(jsonString) {
+  try {
+    const data = JSON.parse(jsonString);
+    if (!data || typeof data !== 'object') throw new Error('Format berkas JSON tidak valid.');
+    const rawState = data.state || (data.progress ? data : null);
+    if (!rawState) throw new Error('Data progres CodeDuo tidak ditemukan dalam berkas.');
+    state = sanitizeState(rawState);
+    saveState();
+    if (data.srs) {
+      const restored = fromJSON(data.srs);
+      if (restored) {
+        srs = restored;
+        saveSrs();
+      }
+    }
+    if (data.buddyPos && typeof localStorage !== 'undefined') {
+      try {
+        localStorage.setItem('codeduo_buddy_drag_pos', typeof data.buddyPos === 'string' ? data.buddyPos : JSON.stringify(data.buddyPos));
+      } catch (_) {}
+    }
+    if (data.motion && typeof localStorage !== 'undefined') {
+      try { localStorage.setItem('codeduo_motion', data.motion); } catch (_) {}
+    }
+    bump();
+    return { ok: true, message: 'Progres berhasil dipulihkan dari cadangan!' };
+  } catch (err) {
+    return { ok: false, message: 'Gagal memulihkan: ' + err.message };
+  }
+}
+
 /* ================= SRS ================= */
 
 function loadSrs() {
@@ -864,6 +909,7 @@ export function routeInfo() {
   if (parts[0] === 'lesson' && parts[1] && parts[2]) return { name: 'lesson', topicId: parts[1], nodeId: parts[2] };
   if (parts[0] === 'topic' && parts[1]) return { name: 'topic', topicId: parts[1] };
   if (parts[0] === 'profile') return { name: 'profile' };
+  if (parts[0] === 'terms') return { name: 'terms' };
   return { name: 'home' };
 }
 

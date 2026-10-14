@@ -1,10 +1,12 @@
 /* CodeDuo — Profil: stat, jalur personal, jadwal ingatan (SRS), data & reset. */
 'use strict';
 
+import { useRef, useState } from 'react';
 import { useStore } from '../useStore.js';
 import {
   getState, topicById, isTopicDone,
   dumpState, stateReset, toggleMotion,
+  exportSaveData, importSaveData,
 } from '../store.js';
 import TopicIcon from './TopicIcon.jsx';
 
@@ -12,6 +14,46 @@ export default function Profile() {
   useStore();
   const state = getState();
   const topicsDone = state.path.filter((id) => isTopicDone(id)).length;
+  const fileInputRef = useRef(null);
+  const [importStatus, setImportStatus] = useState(null);
+
+  const handleExport = () => {
+    try {
+      const jsonStr = exportSaveData();
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const dateStr = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = `codeduo-cadangan-${dateStr}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      alert('Gagal mengekspor data: ' + err.message);
+    }
+  };
+
+  const handleImportFile = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      try {
+        const text = evt.target.result;
+        const res = importSaveData(text);
+        setImportStatus(res);
+        if (res.ok) {
+          setTimeout(() => setImportStatus(null), 5000);
+        }
+      } catch (err) {
+        setImportStatus({ ok: false, message: 'Gagal memproses file: ' + err.message });
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  };
 
   const onReset = () => {
     if (window.confirm('Reset semua progress, streak, dan model ekspresi Bibit? Tindakan ini tidak bisa dibatalkan.')) {
@@ -79,11 +121,44 @@ export default function Profile() {
       </div>
 
       <div className="card">
-        <h3>Data & Aplikasi</h3>
-        <p className="muted">Progress disimpan di localStorage browser ini — tidak ada akun, tidak ada server.</p>
-        <button className="btn btn--ghost" onClick={onRefreshApp}>🔄 Perbarui / Refresh Aplikasi</button>{' '}
-        <button className="btn btn--ghost" onClick={(e) => { dumpState(); e.currentTarget.textContent = 'State dicetak ke console ✓'; }}>Lihat state (console)</button>{' '}
-        <button className="btn btn--danger" onClick={onReset}>Reset progress</button>
+        <h3>Data & Cadangan Progres</h3>
+        <p className="muted">
+          Progres belajar disimpan di penyimpanan lokal browser ini. Anda dapat mengunduh cadangan berkas JSON agar data tidak pernah hilang atau bisa dipindahkan ke perangkat lain.
+        </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '12px' }}>
+          <button className="btn btn--primary" onClick={handleExport} title="Unduh cadangan data ke file JSON">
+            📥 Unduh Cadangan (.json)
+          </button>
+          <button className="btn btn--ghost" onClick={() => fileInputRef.current?.click()} title="Pulihkan data dari file JSON cadangan">
+            📤 Pulihkan dari Berkas (.json)
+          </button>
+          <input
+            type="file"
+            ref={fileInputRef}
+            style={{ display: 'none' }}
+            accept=".json,application/json"
+            onChange={handleImportFile}
+          />
+        </div>
+        {importStatus && (
+          <p style={{
+            fontSize: '0.88rem',
+            padding: '8px 12px',
+            borderRadius: '8px',
+            marginBottom: '12px',
+            background: importStatus.ok ? 'rgba(34, 197, 94, 0.15)' : 'rgba(239, 68, 68, 0.15)',
+            color: importStatus.ok ? '#4ade80' : '#f87171',
+            border: `1px solid ${importStatus.ok ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
+          }}>
+            {importStatus.message}
+          </p>
+        )}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '12px' }}>
+          <a href="#/terms" className="btn btn--ghost" style={{ textDecoration: 'none' }}>📜 Ketentuan & Privasi Penyimpanan</a>{' '}
+          <button className="btn btn--ghost" onClick={onRefreshApp}>🔄 Periksa Pembaruan PWA</button>{' '}
+          <button className="btn btn--ghost" onClick={(e) => { dumpState(); e.currentTarget.textContent = 'State dicetak ke console ✓'; }}>Lihat state (console)</button>{' '}
+          <button className="btn btn--danger" onClick={onReset}>Reset progress</button>
+        </div>
       </div>
     </section>
   );

@@ -11,6 +11,8 @@ import Home from './components/Home.jsx';
 import Topic from './components/Topic.jsx';
 import Lesson from './components/Lesson.jsx';
 import Profile from './components/Profile.jsx';
+import Terms from './components/Terms.jsx';
+import StorageConsentPrompt from './components/StorageConsentPrompt.jsx';
 
 export default function App() {
   useStore();
@@ -30,6 +32,7 @@ export default function App() {
     case 'lesson':
     case 'review': screen = <Lesson />; break;
     case 'profile': screen = <Profile />; break;
+    case 'terms': screen = <Terms />; break;
     default: screen = <Home />;
   }
 
@@ -38,6 +41,7 @@ export default function App() {
       <Topbar />
       <main id="app">{screen}</main>
       <Buddy />
+      <StorageConsentPrompt />
     </>
   );
 }
