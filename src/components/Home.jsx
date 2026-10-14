@@ -21,17 +21,17 @@ export default function Home() {
       {loadError && <div className="banner banner--warn">{loadError}</div>}
 
       <div className="home__hero">
-        <span className="home__robot" aria-hidden="true"><Bib mood={allDone ? 'celebrate' : 'happy'} size={76} label="Bibit" interactive /></span>
+        <span className="home__robot" aria-hidden="true"><Bib mood={allDone ? 'celebrate' : 'happy'} label="Bibit" interactive /></span>
         <div className="home__hero-text">
           <h1 className="home__hi">Lanjut belajar 👋</h1>
           <p className="home__sub">
-            Aku <b>Bibit</b>, teman belajarmu. Tiap topik: 3 step (Dasar → Menengah → Advance) + ujian tiap tier.
+            Aku <b>Bibit</b>, teman belajarmu. Tiap topik terbagi dalam 31 step (Dasar → Menengah → Advance) + ujian tiap tier.
           </p>
         </div>
       </div>
 
       {allDone && (
-        <div className="card card--done">🎉 Semua step tuntas! {CURRICULUM.length * 3} step × 10 soal kamu habiskan — kamu juara.</div>
+        <div className="card card--done">🎉 Semua step tuntas! {CURRICULUM.length * 31} step koding kamu habiskan — kamu juara.</div>
       )}
 
       {state.path.map((id) => {

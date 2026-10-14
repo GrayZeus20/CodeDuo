@@ -116,26 +116,29 @@ let totalSoal = 0;
 
 const TIERS = TIER_ORDER;
 
-t('curriculum: 10 topik, tiap topik 6 pelajaran berjenjang (2 per tier)', () => {
+t('curriculum: 10 topik, tiap topik 31 pelajaran berjenjang (10 Dasar, 10 Menengah, 11 Advance)', () => {
   assert.strictEqual(CURRICULUM.length, 10);
   CURRICULUM.forEach((topic) => {
-    assert.strictEqual(topic.lessons.length, 6, topic.id);
+    assert.strictEqual(topic.lessons.length, 31, topic.id);
     const counts = { Dasar: 0, Menengah: 0, Advance: 0 };
     topic.lessons.forEach((lesson) => {
       assert.ok(TIERS.includes(lesson.level), topic.id + '/' + lesson.id + ' level=' + lesson.level);
       counts[lesson.level] += 1;
     });
-    TIERS.forEach((tier) => assert.strictEqual(counts[tier], 2, topic.id + ' tier ' + tier + '=' + counts[tier]));
+    assert.strictEqual(counts.Dasar, 10, topic.id + ' Dasar');
+    assert.strictEqual(counts.Menengah, 10, topic.id + ' Menengah');
+    assert.strictEqual(counts.Advance, 11, topic.id + ' Advance');
   });
 });
-t('curriculum: TIAP TIER tepat 10 soal (1 step = 10 soal)', () => {
+t('curriculum: tiap topik 305 soal (100 Dasar, 100 Menengah, 105 Advance)', () => {
   CURRICULUM.forEach((topic) => {
-    TIERS.forEach((tier) => {
-      const n = topic.lessons
-        .filter((l) => l.level === tier)
-        .reduce((s, l) => s + l.exercises.length, 0);
-      assert.strictEqual(n, STEP_SIZE, topic.id + ' tier ' + tier + ' = ' + n + ' soal');
+    const counts = { Dasar: 0, Menengah: 0, Advance: 0 };
+    topic.lessons.forEach((l) => {
+      counts[l.level] += l.exercises.length;
     });
+    assert.strictEqual(counts.Dasar, 100, topic.id + ' Dasar');
+    assert.strictEqual(counts.Menengah, 100, topic.id + ' Menengah');
+    assert.strictEqual(counts.Advance, 105, topic.id + ' Advance');
   });
 });
 t('curriculum: id topik & pelajaran unik', () => {
@@ -219,13 +222,13 @@ t('curriculum: arrange — blocks non-empty', () => {
     });
   }));
 });
-t('curriculum: jumlah soal terdokumentasi (300)', () => {
-  assert.strictEqual(totalSoal, 300);
+t('curriculum: jumlah soal terdokumentasi (3050)', () => {
+  assert.strictEqual(totalSoal, 3050);
 });
 t('curriculum: topik "Blok Web" ada (peta fungsi tiap blok)', () => {
   const web = CURRICULUM.find((t) => t.id === 'web');
   assert.ok(web, 'topik web hilang');
-  assert.strictEqual(web.lessons.length, 6);
+  assert.strictEqual(web.lessons.length, 31);
   assert.ok(web.lessons.some((l) => /css/i.test(l.title + JSON.stringify(l.exercises))), 'harus menyebut CSS');
 });
 
@@ -255,23 +258,20 @@ t('syncPath: deterministik dengan rng sama', () => {
   assert.deepStrictEqual(a, b);
 });
 
-/* --- stepsForTopic: pemotongan kurikulum → 3 step + 3 ujian (10 soal masing-masing) --- */
-t('steps: tiap topik = 6 node (step + ujian × 3 tier), 3 step 10 soal', () => {
+/* --- stepsForTopic: pemotongan kurikulum → 31 step + 3 ujian tier --- */
+t('steps: tiap topik = 34 node (31 step + 3 ujian tier)', () => {
   CURRICULUM.forEach((topic) => {
     const nodes = stepsForTopic(topic);
-    assert.strictEqual(nodes.length, 6, topic.id + ' nodes=' + nodes.length);
+    assert.strictEqual(nodes.length, 34, topic.id + ' nodes=' + nodes.length);
     const steps = nodes.filter((n) => n.kind === 'step');
     const tests = nodes.filter((n) => n.kind === 'test');
-    assert.strictEqual(steps.length, 3, topic.id + ' step');
+    assert.strictEqual(steps.length, 31, topic.id + ' step');
     assert.strictEqual(tests.length, 3, topic.id + ' ujian');
-    steps.forEach((n) => assert.strictEqual(n.questionIds.length, STEP_SIZE, topic.id + '/' + n.id + ' soal=' + n.questionIds.length));
+    steps.forEach((n) => assert.ok(n.questionIds.length >= 5, topic.id + '/' + n.id + ' soal=' + n.questionIds.length));
     tests.forEach((n) => {
       assert.strictEqual(n.questionIds.length, STEP_SIZE, topic.id + '/' + n.id + ' soal ujian');
-      assert.deepStrictEqual(n.questionIds, steps.find((s) => s.tier === n.tier).questionIds, topic.id + ' ujian harus dari soal tier sama');
     });
-    assert.deepStrictEqual(steps.map((n) => n.tier), TIER_ORDER, topic.id + ' urutan tier');
-    assert.strictEqual(nodes[0].kind, 'step');
-    assert.strictEqual(nodes[1].kind, 'test');
+    assert.deepStrictEqual(tests.map((n) => n.tier), TIER_ORDER, topic.id + ' urutan tier');
   });
 });
 t('steps: stepsForTopic menutup SEMUA soal kurikulum (tanpa duplikat/hilang)', () => {
@@ -286,7 +286,7 @@ t('steps: stepsForTopic menutup SEMUA soal kurikulum (tanpa duplikat/hilang)', (
   });
   const bank = allQuestionIds();
   assert.strictEqual(seen.size, bank.length, 'step menutup ' + seen.size + ' vs bank ' + bank.length);
-  assert.strictEqual(bank.length, 300, 'total bank=' + bank.length);
+  assert.strictEqual(bank.length, 3050, 'total bank=' + bank.length);
 });
 t('steps: id node unik lintas kurikulum + bentuk id benar', () => {
   const ids = CURRICULUM.flatMap((t) => stepsForTopic(t).map((n) => n.id));

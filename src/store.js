@@ -162,6 +162,7 @@ function defaultState() {
     stats: { correct: 0, wrong: 0, lessonsDone: 0 },
     muted: false,
     buddyHidden: false,
+    motionEnabled: true,
   };
 }
 
@@ -187,6 +188,7 @@ function sanitizeState(parsed) {
   s.progress = cleanProgress;
   s.muted = !!s.muted;
   s.buddyHidden = !!s.buddyHidden;
+  s.motionEnabled = s.motionEnabled !== false;
   return s;
 }
 
@@ -399,6 +401,39 @@ export function onBuddyTap() {
   bump();
 }
 
+/* Dielus-elus via hover mouse */
+export function onBuddyPet() {
+  if (companion.ctx === 'spam') return;
+  companion.face = 'happy';
+  companion.mood = 'celebrate';
+  const seed = Math.random() * 1000;
+  companion.line = generateAiDialogue('pet', collectAiSignals(), seed);
+  companion.ctx = 'pet';
+  bump();
+}
+
+/* Reaksi marah / pusing saat dispam klik */
+export function onBuddySpam() {
+  companion.face = 'error';
+  companion.mood = 'sad';
+  const seed = Math.random() * 1000;
+  companion.line = generateAiDialogue('spam', collectAiSignals(), seed);
+  companion.ctx = 'spam';
+  bump();
+}
+
+/* Pulih dari pusing */
+export function onBuddyRecover() {
+  if (companion.ctx === 'spam') {
+    companion.face = 'idle';
+    companion.mood = 'idle';
+    const seed = Math.random() * 1000;
+    companion.line = generateAiDialogue('recovered', collectAiSignals(), seed);
+    companion.ctx = 'idle';
+    bump();
+  }
+}
+
 /* ================= Tick otonom (dipanggil timer React) =================
  * dtMs = ms sejak tick terakhir. Return emit = null | { kind, ctx, line?, face? } untuk efek. */
 export function tickBuddy(dtMs) {
@@ -406,6 +441,7 @@ export function tickBuddy(dtMs) {
   companion = r.state;
   const emit = r.emit;
   if (!emit) return null; /* tak ada perubahan tampak → jangan re-render (bump) */
+  if (companion.ctx === 'spam') return null; /* jangan timpa state saat sedang pusing */
   if (emit.face) { companion.face = emit.face; companion.mood = stateToMood(emit.face); }
   if (emit.kind === 'line') {
     const seed = (state ? state.seed : 0) + (session ? session.pos : 0) + (companion.lines.length | 0);
@@ -595,6 +631,25 @@ export function toggleBuddy() {
 
 export function isBuddyHidden() {
   return state ? !!state.buddyHidden : false;
+}
+
+export function toggleMotion() {
+  if (!state) return true;
+  state.motionEnabled = !state.motionEnabled;
+  try {
+    localStorage.setItem('codeduo_motion', state.motionEnabled ? 'enabled' : 'disabled');
+  } catch (_) {}
+  if (typeof document !== 'undefined') {
+    document.documentElement.classList.toggle('motion-enabled', state.motionEnabled);
+    document.documentElement.classList.toggle('reduced-motion', !state.motionEnabled);
+  }
+  saveState();
+  bump();
+  return state.motionEnabled;
+}
+
+export function isMotionEnabled() {
+  return state ? state.motionEnabled !== false : true;
 }
 
 export function currentExercise() {
@@ -801,6 +856,11 @@ export function initStore() {
   loadSrs();
   loadExpression();
   state.path = CURRICULUM.map((t) => t.id);
+  if (typeof document !== 'undefined') {
+    const enabled = state.motionEnabled !== false;
+    document.documentElement.classList.toggle('motion-enabled', enabled);
+    document.documentElement.classList.toggle('reduced-motion', !enabled);
+  }
   saveState();
   bump();
   return { muted: !!state.muted };

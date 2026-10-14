@@ -50,17 +50,17 @@ Kurikulum **dipecah per blok** — mengubah soal tak perlu menyentuh engine:
 
 | File | Topik | Soal |
 |------|-------|------|
-| `content/html.js` | HTML, CSS | 60 |
-| `content/js.js` | JavaScript, Struktur Data | 60 |
-| `content/sql.js` | SQL, Database, API | 90 |
-| `content/ts.js` | TypeScript, REST API | 60 |
-| `content/web.js` | Blok Web (peta fungsi tiap blok) | 30 |
+| `content/html.js` | HTML, CSS | 610 |
+| `content/js.js` | JavaScript, Struktur Data | 610 |
+| `content/sql.js` | SQL, Database, API | 915 |
+| `content/ts.js` | TypeScript, REST API | 610 |
+| `content/web.js` | Blok Web (peta fungsi tiap blok) | 305 |
 
 `content.js` = **barrel**: menyusun tiap blok jadi `CURRICULUM` + helper murni
 (`stepsForTopic`, `questionKey`, `resolveQuestion`, `allQuestionIds`, …).
 
-**Aturan (dijaga `test.js`):** tiap topik = 6 pelajaran (2 per tier), tiap tier tepat
-**10 soal**, total **300 soal**. Lihat `CONTRIBUTING.md` untuk menambah soal.
+**Aturan (dijaga `test.js`):** tiap topik = 31 pelajaran (10 Dasar, 10 Menengah, 11 Advance),
+total **3.050 soal** across 10 topik kurikulum. Tiap topik dipotong rapi menjadi 31 step + 3 ujian tier (34 node).
 
 ## Bibit hidup — otonomi + ekspresi belajar sendiri
 
@@ -189,7 +189,7 @@ daring, pindah ke Web Worker + timeout + iframe sandbox.
 ## Checklist launch
 
 - [x] `npm test` hijau (84 tes) + `npm run test-companion` hijau
-- [x] Tiket PWA: icon 192/512 (maskable), manifest, service worker (`codeduo-v12`)
+- [x] Tiket PWA: icon 192/512 (maskable), manifest, service worker (`codeduo-v13`)
 - [x] `robots.txt`, `404.html`, `LICENSE`, `README.md`
 - [x] Meta sosial dasar (og/twitter, tanpa og:image agar tak 404)
 - [x] Nol CDN runtime — anime.js & canvas-confetti dibundel Vite (offline 100%)

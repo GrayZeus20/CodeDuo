@@ -90,8 +90,8 @@ export default function Bib({ mood = 'idle', size = 34, label = 'Bibit, teman be
       className={'robot robot--' + m + (bounced ? ' robot--bounced' : '')}
       data-mood={m}
       viewBox="0 0 120 120"
-      width={size}
-      height={size}
+      width={size || '100%'}
+      height={size || '100%'}
       role="img"
       aria-label={label}
       xmlns="http://www.w3.org/2000/svg"

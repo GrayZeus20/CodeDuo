@@ -2,6 +2,32 @@
  * lalu render React root. Service worker didaftarkan setelah UI hidup. */
 'use strict';
 
+/* Intersep prefers-reduced-motion agar robot 3D & animasi Bibit tetap aktif 60fps
+ * di browser desktop Windows (di mana opsi OS 'Animation effects' sering mematikannya),
+ * kecuali pengguna secara eksplisit memilih 'Hemat Gerakan' di profil CodeDuo. */
+if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+  const origMatchMedia = window.matchMedia;
+  window.matchMedia = function (query) {
+    const mql = origMatchMedia.call(window, query);
+    if (query && query.includes('prefers-reduced-motion')) {
+      const motionEnabled = localStorage.getItem('codeduo_motion') !== 'disabled';
+      return {
+        get matches() {
+          return motionEnabled ? false : mql.matches;
+        },
+        media: mql.media,
+        onchange: mql.onchange,
+        addListener: mql.addListener ? mql.addListener.bind(mql) : undefined,
+        removeListener: mql.removeListener ? mql.removeListener.bind(mql) : undefined,
+        addEventListener: mql.addEventListener ? mql.addEventListener.bind(mql) : undefined,
+        removeEventListener: mql.removeEventListener ? mql.removeEventListener.bind(mql) : undefined,
+        dispatchEvent: mql.dispatchEvent ? mql.dispatchEvent.bind(mql) : undefined,
+      };
+    }
+    return mql;
+  };
+}
+
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
@@ -27,7 +53,27 @@ createRoot(document.getElementById('root')).render(
   </StrictMode>
 );
 
-/* PWA: service worker — http/https saja (localhost OK, file:// skip). */
+/* PWA: service worker — auto-update saat versi baru tersedia (http/https saja). */
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.protocol === 'http:')) {
-  navigator.serviceWorker.register('sw.js').catch((e) => console.warn('[sw] register gagal:', e.message));
+  navigator.serviceWorker.register('sw.js').then((reg) => {
+    reg.update().catch(() => {});
+    reg.addEventListener('updatefound', () => {
+      const newWorker = reg.installing;
+      if (newWorker) {
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            newWorker.postMessage({ type: 'SKIP_WAITING' });
+          }
+        });
+      }
+    });
+  }).catch((e) => console.warn('[sw] register gagal:', e.message));
+
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      window.location.reload();
+    }
+  });
 }

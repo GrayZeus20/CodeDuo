@@ -1,0 +1,13 @@
+# CodeDuo — Apache Configuration for Laragon
+DirectoryIndex index.php index.html
+
+# Prevent directory browsing
+Options -Indexes
+
+# If index.php exists, it handles redirecting root visitors to dist/
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Do not rewrite if accessing dist or api or existing files
+    RewriteCond %{REQUEST_URI} ^/CodeDuo/?$ [NC]
+    RewriteRule ^$ index.php [L]
+</IfModule>

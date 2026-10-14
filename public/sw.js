@@ -4,7 +4,7 @@
  */
 'use strict';
 
-const VERSION = 'codeduo-v12';
+const VERSION = 'codeduo-v15';
 const SHELL = [
   './',
   'index.html',
@@ -13,7 +13,14 @@ const SHELL = [
   'icon.svg',
   'icon-192.png',
   'icon-512.png',
+  'icon-maskable.png',
 ];
+
+self.addEventListener('message', (e) => {
+  if (e.data && e.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
 
 self.addEventListener('install', (e) => {
   e.waitUntil((async () => {

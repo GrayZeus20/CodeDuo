@@ -4,7 +4,7 @@
 import { useStore } from '../useStore.js';
 import {
   getState, topicById, isTopicDone,
-  dumpState, stateReset,
+  dumpState, stateReset, toggleMotion,
 } from '../store.js';
 
 export default function Profile() {
@@ -16,6 +16,24 @@ export default function Profile() {
     if (window.confirm('Reset semua progress, streak, dan model ekspresi Bibit? Tindakan ini tidak bisa dibatalkan.')) {
       stateReset();
     }
+  };
+
+  const onRefreshApp = async (e) => {
+    e.currentTarget.textContent = 'Memperbarui...';
+    try {
+      if ('serviceWorker' in navigator) {
+        const regs = await navigator.serviceWorker.getRegistrations();
+        for (const reg of regs) {
+          await reg.update();
+          if (reg.waiting) reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+        }
+      }
+      if ('caches' in window) {
+        const keys = await caches.keys();
+        await Promise.all(keys.map((k) => caches.delete(k)));
+      }
+    } catch {}
+    window.location.reload();
   };
 
   return (
@@ -47,8 +65,22 @@ export default function Profile() {
       </div>
 
       <div className="card">
-        <h3>Data</h3>
+        <h3>Pengaturan Tampilan & Gerakan</h3>
+        <p className="muted">
+          Bibit bergerak hidup dengan renderer 3D 60fps & ekspresi responsif. Anda bisa mematikannya bila menginginkan tampilan statis hemat daya.
+        </p>
+        <button
+          className={'btn ' + (state.motionEnabled !== false ? 'btn--primary' : 'btn--ghost')}
+          onClick={() => toggleMotion()}
+        >
+          {state.motionEnabled !== false ? '✨ Gerakan & Animasi: Aktif (60fps)' : '🛑 Gerakan: Hemat / Statis'}
+        </button>
+      </div>
+
+      <div className="card">
+        <h3>Data & Aplikasi</h3>
         <p className="muted">Progress disimpan di localStorage browser ini — tidak ada akun, tidak ada server.</p>
+        <button className="btn btn--ghost" onClick={onRefreshApp}>🔄 Perbarui / Refresh Aplikasi</button>{' '}
         <button className="btn btn--ghost" onClick={(e) => { dumpState(); e.currentTarget.textContent = 'State dicetak ke console ✓'; }}>Lihat state (console)</button>{' '}
         <button className="btn btn--danger" onClick={onReset}>Reset progress</button>
       </div>

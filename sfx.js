@@ -65,6 +65,17 @@ const SFX = (() => {
       [523, 659, 784, 1047].forEach((f, i) => blip({ freq: f, dur: 0.16, vol: 0.14, type: 'sine', delay: i * 0.11 }));
     },
     streak() { blip({ freq: 880, freq2: 1760, dur: 0.28, vol: 0.11, type: 'triangle' }); },
+    /* Efek suara dielus-elus (purr / chime hangat) */
+    pet() {
+      blip({ freq: 587, freq2: 880, dur: 0.16, vol: 0.12, type: 'sine' });
+      blip({ freq: 880, freq2: 1175, dur: 0.2, vol: 0.1, type: 'sine', delay: 0.08 });
+    },
+    /* Efek suara pusing saat dispam klik */
+    dizzy() {
+      blip({ freq: 440, freq2: 220, dur: 0.14, vol: 0.16, type: 'sawtooth' });
+      blip({ freq: 330, freq2: 165, dur: 0.16, vol: 0.16, type: 'sawtooth', delay: 0.1 });
+      blip({ freq: 260, freq2: 130, dur: 0.22, vol: 0.16, type: 'sawtooth', delay: 0.22 });
+    },
     /* konfirmasi audio saat suara DIMATIKAN — selalu berbunyi (force) agar user dengar suara terakhirnya */
     muteOn() {
       blip({ freq: 520, freq2: 260, dur: 0.18, vol: 0.16, type: 'triangle', force: true });

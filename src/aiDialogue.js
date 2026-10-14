@@ -181,11 +181,49 @@ export function generateAiDialogue(contextKey = 'idle', signals = {}, seed = Mat
     return pickDiverse(pool, seed);
   }
 
+  // Dielus-elus via hover
+  if (contextKey === 'pet') {
+    const pool = [
+      'Uwaa, dielus-elus~ Senangnya!',
+      'Hehe geli tapi hangat! ^-^',
+      'Purr... Bibit suka dielus!',
+      'Makasih elusannya, makin semangat!',
+      'Nyamannya... Elus lagi dong~',
+    ];
+    return pickDiverse(pool, seed);
+  }
+
+  // Pusing atau marah karena dispam klik
+  if (contextKey === 'spam' || contextKey === 'dizzy') {
+    const pool = [
+      'Aduh pusinggg! Jangan dipencet terus! @~@',
+      'Aaa olenggg! Kepalaku muter-muter!',
+      'Ihh jangan dispam klik dong, pusing tau! >_<',
+      'Overload! Tunggu kepalaku dingin dulu ya!',
+      'Ampuuun! Jangan dispam, mataku berputar!',
+    ];
+    return pickDiverse(pool, seed);
+  }
+
+  // Pemulihan setelah pusing
+  if (contextKey === 'recovered') {
+    const pool = [
+      'Fiuh... untung pusingnya udah reda!',
+      'Kepalaku udah dingin lagi. Yuk lanjut belajar!',
+      'Huft... jangan dispam lagi ya! Hehe.',
+    ];
+    return pickDiverse(pool, seed);
+  }
+
   // Respon ekspresi wajah
   if (face === 'thinking') return 'Lagi mikir logikanya bareng kamu...';
   if (face === 'working') return 'Fokus mode on! Simulasi kode aktif.';
   if (face === 'searching') return 'Cari kata kunci yang paling pas...';
-  if (face === 'listening') return 'Ketik aja kodenya, aku simak!';
+  if (face === 'listening') {
+    if (ex && ex.type === 'mc') return 'Pilih jawaban yang paling pas, aku simak!';
+    if (ex && ex.type === 'arrange') return 'Susun bloknya sesuai urutan, aku simak!';
+    return 'Ketik aja kodenya, aku simak!';
+  }
   if (face === 'speaking') return 'Perhatikan variabel dan urutan ya.';
   if (face === 'sleeping') return 'Zzz... ketuk aku kalau mau lanjut.';
 
