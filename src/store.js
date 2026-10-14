@@ -404,16 +404,26 @@ export function onBuddyTap() {
 /* Dielus-elus via hover mouse */
 export function onBuddyPet() {
   if (companion.ctx === 'spam') return;
+  const wasSleeping = companion.face === 'sleeping' || companion.sinceUser >= 75000;
+  const r = onUserInteract(companion, Math.random);
+  companion = r.state;
   companion.face = 'happy';
   companion.mood = 'celebrate';
   const seed = Math.random() * 1000;
-  companion.line = generateAiDialogue('pet', collectAiSignals(), seed);
+  const signals = collectAiSignals();
+  if (wasSleeping) {
+    companion.line = generateAiDialogue('wake-pet', signals, seed) || 'Hoamm... Eh? Dielus sampai bangun~ Semangat!';
+  } else {
+    companion.line = generateAiDialogue('pet', signals, seed);
+  }
   companion.ctx = 'pet';
   bump();
 }
 
 /* Reaksi marah / pusing saat dispam klik */
 export function onBuddySpam() {
+  const r = onUserInteract(companion, Math.random);
+  companion = r.state;
   companion.face = 'error';
   companion.mood = 'sad';
   const seed = Math.random() * 1000;
@@ -425,6 +435,8 @@ export function onBuddySpam() {
 /* Pulih dari pusing */
 export function onBuddyRecover() {
   if (companion.ctx === 'spam') {
+    const r = onUserInteract(companion, Math.random);
+    companion = r.state;
     companion.face = 'idle';
     companion.mood = 'idle';
     const seed = Math.random() * 1000;
@@ -437,6 +449,8 @@ export function onBuddyRecover() {
 /* Sedang di-drag / diangkat untuk pindah posisi */
 export function onBuddyDrag() {
   if (companion.ctx === 'spam') return;
+  const r = onUserInteract(companion, Math.random);
+  companion = r.state;
   companion.face = 'searching';
   companion.mood = 'focus';
   const seed = Math.random() * 1000;
@@ -448,6 +462,8 @@ export function onBuddyDrag() {
 /* Selesai di-drag / mendarat di posisi baru */
 export function onBuddyLand() {
   if (companion.ctx === 'spam') return;
+  const r = onUserInteract(companion, Math.random);
+  companion = r.state;
   companion.face = 'happy';
   companion.mood = 'celebrate';
   const seed = Math.random() * 1000;

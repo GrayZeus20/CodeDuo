@@ -193,6 +193,18 @@ export function generateAiDialogue(contextKey = 'idle', signals = {}, seed = Mat
     return pickDiverse(pool, seed);
   }
 
+  // Bangun tidur karena dielus-elus
+  if (contextKey === 'wake-pet') {
+    const pool = [
+      'Hoamm... Eh? Dielus sampai bangun~',
+      'Uwaa hangatnya... Aku udah bangun dan siap nemenin!',
+      'Nyamannya elusanmu... Langsung melek dan segar lagi!',
+      'Hoam... Makasih udah dibangunin dengan lembut ^-^',
+      'Bangun-bangun langsung disayang~ Siap ngoding lagi!',
+    ];
+    return pickDiverse(pool, seed);
+  }
+
   // Pusing atau marah karena dispam klik
   if (contextKey === 'spam' || contextKey === 'dizzy') {
     const pool = [
