@@ -76,6 +76,15 @@ const SFX = (() => {
       blip({ freq: 330, freq2: 165, dur: 0.16, vol: 0.16, type: 'sawtooth', delay: 0.1 });
       blip({ freq: 260, freq2: 130, dur: 0.22, vol: 0.16, type: 'sawtooth', delay: 0.22 });
     },
+    /* Efek suara diangkat saat di-drag */
+    lift() {
+      blip({ freq: 380, freq2: 680, dur: 0.14, vol: 0.12, type: 'triangle' });
+    },
+    /* Efek suara mendarat setelah di-drag */
+    land() {
+      blip({ freq: 520, freq2: 784, dur: 0.1, vol: 0.14, type: 'sine' });
+      blip({ freq: 784, freq2: 659, dur: 0.14, vol: 0.12, type: 'sine', delay: 0.08 });
+    },
     /* konfirmasi audio saat suara DIMATIKAN — selalu berbunyi (force) agar user dengar suara terakhirnya */
     muteOn() {
       blip({ freq: 520, freq2: 260, dur: 0.18, vol: 0.16, type: 'triangle', force: true });

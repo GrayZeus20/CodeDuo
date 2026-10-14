@@ -215,6 +215,30 @@ export function generateAiDialogue(contextKey = 'idle', signals = {}, seed = Mat
     return pickDiverse(pool, seed);
   }
 
+  // Sedang di-drag / dipindah
+  if (contextKey === 'drag') {
+    const pool = [
+      'Wuuusshhh! Mau pindah ke mana kita? 🚀',
+      'Weee! Melayang ke posisi baru!',
+      'Pegang erat-erat, aku ikut kamu! ✨',
+      'Asyik terbang! Cari spot yang paling nyaman ya!',
+      'Geseer terus ke posisi favoritmu!',
+    ];
+    return pickDiverse(pool, seed);
+  }
+
+  // Selesai di-drag / mendarat
+  if (contextKey === 'landed') {
+    const pool = [
+      'Mendarat dengan mulus! Siap nemenin kamu lagi. ✨',
+      'Spot baru yang mantap! Di sini enak buat mantau kodinganmu.',
+      'Asyik, posisi baru lebih PW! Lanjut yuk!',
+      'Landing sempurna! Siap gas ngoding lagi!',
+      'Di sini pemandangannya lebih seru!',
+    ];
+    return pickDiverse(pool, seed);
+  }
+
   // Respon ekspresi wajah
   if (face === 'thinking') return 'Lagi mikir logikanya bareng kamu...';
   if (face === 'working') return 'Fokus mode on! Simulasi kode aktif.';

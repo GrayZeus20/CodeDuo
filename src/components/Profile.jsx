@@ -6,6 +6,7 @@ import {
   getState, topicById, isTopicDone,
   dumpState, stateReset, toggleMotion,
 } from '../store.js';
+import TopicIcon from './TopicIcon.jsx';
 
 export default function Profile() {
   useStore();
@@ -57,7 +58,7 @@ export default function Profile() {
             const isNext = !done && state.path.slice(0, i).every((x) => isTopicDone(x));
             return (
               <li key={id} className={done ? 'is-done' : isNext ? 'is-cur' : ''}>
-                {i + 1}. {t.icon} {t.name}{done ? ' ✓' : isNext ? ' ← lanjut di sini' : ''}
+                {i + 1}. <span style={{ display: 'inline-flex', verticalAlign: '-3px', marginRight: '6px' }}><TopicIcon id={t.id} size={18} /></span> {t.name}{done ? ' ✓' : isNext ? ' ← lanjut di sini' : ''}
               </li>
             );
           })}

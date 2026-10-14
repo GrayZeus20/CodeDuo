@@ -4,7 +4,7 @@
  */
 'use strict';
 
-const VERSION = 'codeduo-v15';
+const VERSION = 'codeduo-v16';
 const SHELL = [
   './',
   'index.html',

@@ -434,6 +434,28 @@ export function onBuddyRecover() {
   }
 }
 
+/* Sedang di-drag / diangkat untuk pindah posisi */
+export function onBuddyDrag() {
+  if (companion.ctx === 'spam') return;
+  companion.face = 'searching';
+  companion.mood = 'focus';
+  const seed = Math.random() * 1000;
+  companion.line = generateAiDialogue('drag', collectAiSignals(), seed);
+  companion.ctx = 'drag';
+  bump();
+}
+
+/* Selesai di-drag / mendarat di posisi baru */
+export function onBuddyLand() {
+  if (companion.ctx === 'spam') return;
+  companion.face = 'happy';
+  companion.mood = 'celebrate';
+  const seed = Math.random() * 1000;
+  companion.line = generateAiDialogue('landed', collectAiSignals(), seed);
+  companion.ctx = 'landed';
+  bump();
+}
+
 /* ================= Tick otonom (dipanggil timer React) =================
  * dtMs = ms sejak tick terakhir. Return emit = null | { kind, ctx, line?, face? } untuk efek. */
 export function tickBuddy(dtMs) {

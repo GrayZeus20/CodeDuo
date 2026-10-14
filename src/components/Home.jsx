@@ -8,6 +8,7 @@ import {
 } from '../store.js';
 import { CURRICULUM, stepsForTopic } from '../../content.js';
 import Bib from './Bib.jsx';
+import TopicIcon from './TopicIcon.jsx';
 import { pop } from '../lib/motion.js';
 
 export default function Home() {
@@ -47,7 +48,7 @@ export default function Home() {
             className={'topic-card topic-card--active' + (done ? ' topic-card--done' : '')}
             onClick={(e) => { pop(e.currentTarget); openTopic(t.id); }}
           >
-            <span className="topic-card__icon">{t.icon}</span>
+            <span className="topic-card__icon"><TopicIcon id={t.id} size={36} /></span>
             <span className="topic-card__body">
               <span className="topic-card__name">{t.name}{done ? ' ✓' : ''}</span>
               <span className="topic-card__desc">{t.desc}</span>

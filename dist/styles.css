@@ -316,7 +316,25 @@ input, textarea, [contenteditable="true"] {
 
 .topic-card--locked { opacity: 0.75; background: var(--bg-soft); }
 
-.topic-card__icon { font-size: 2.2rem; }
+.topic-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.topic-svg {
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.topic-card:hover .topic-svg {
+  transform: scale(1.08) rotate(-2deg);
+}
 
 .topic-card__body { display: flex; flex-direction: column; gap: 3px; flex: 1; }
 
@@ -390,7 +408,18 @@ input, textarea, [contenteditable="true"] {
   padding: 16px;
 }
 
-.topic__icon { font-size: 2.4rem; }
+.topic__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+}
+
+.topic__head:hover .topic-svg {
+  transform: scale(1.05);
+}
 .topic__head h1 { font-size: 1.3rem; }
 .topic__head p { color: var(--muted); font-size: 0.88rem; }
 .topic__progress { margin-left: auto; font-weight: 800; color: var(--muted); }
@@ -894,15 +923,13 @@ input, textarea, [contenteditable="true"] {
 
 /* floating buddy — agen interaktif yang hidup */
 .buddy {
-  display: flex;
+  display: block;
   position: fixed;
   right: 16px;
   bottom: 16px;
+  width: 132px;
+  height: 156px;
   z-index: 60;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-  max-width: min(68vw, 260px);
   pointer-events: none;
   animation: buddyPopIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   user-select: none;
@@ -914,20 +941,65 @@ input, textarea, [contenteditable="true"] {
   transition: bottom 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.22s ease;
 }
 
+@media (max-width: 520px) {
+  .buddy {
+    width: 106px;
+    height: 126px;
+  }
+}
+
 .buddy--hiding {
   animation: buddyPopOut 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
   pointer-events: none !important;
 }
 
-/* Saat sesi belajar (ada fixed check-bar di bawah), posisikan Bibit rapi di atas bar aksi */
-.is-lesson .buddy {
+/* Ketika posisi Bibit dipindah sendiri oleh user (drag & drop) */
+.buddy--custom-pos {
+  right: auto !important;
+  bottom: auto !important;
+}
+
+/* Saat sesi belajar (ada fixed check-bar di bawah), posisikan Bibit rapi di atas bar aksi (hanya jika posisi belum di-drag) */
+.is-lesson .buddy:not(.buddy--custom-pos) {
   bottom: calc(76px + env(safe-area-inset-bottom));
 }
 
-/* Saat feedback sheet muncul, naikkan Bibit dengan elegan di atas sheet */
-body:has(.feedback) .buddy,
-.is-lesson:has(.feedback) .buddy {
+/* Saat feedback sheet muncul, naikkan Bibit dengan elegan di atas sheet (hanya jika posisi belum di-drag) */
+body:has(.feedback) .buddy:not(.buddy--custom-pos),
+.is-lesson:has(.feedback) .buddy:not(.buddy--custom-pos) {
   bottom: calc(184px + env(safe-area-inset-bottom));
+}
+
+/* Efek fisik saat Bibit sedang di-drag (melayang bebas di udara) */
+.buddy--dragging {
+  transition: none !important;
+  pointer-events: auto !important;
+  cursor: grabbing !important;
+  z-index: 100 !important;
+}
+
+.buddy--dragging .buddy__head {
+  cursor: grabbing !important;
+  transform: scale(1.08) rotate(calc(var(--drag-tilt, 0) * 1deg)) !important;
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 18px rgba(88, 204, 2, 0.55)) !important;
+  transition: none !important;
+}
+
+.buddy--dragging .buddy__head > span {
+  animation-play-state: paused !important;
+}
+
+/* Efek fisik pendaratan membal (squash and stretch) */
+.buddy--landed .buddy__head {
+  animation: buddyLandBounce 0.62s cubic-bezier(0.34, 1.56, 0.64, 1) both !important;
+}
+
+@keyframes buddyLandBounce {
+  0% { transform: scale(1.12, 0.88) translateY(0); }
+  28% { transform: scale(0.88, 1.15) translateY(-16px); }
+  52% { transform: scale(1.06, 0.94) translateY(0); }
+  72% { transform: scale(0.97, 1.03) translateY(-4px); }
+  100% { transform: scale(1, 1) translateY(0); }
 }
 
 @media (max-width: 520px) {
@@ -988,9 +1060,9 @@ body:has(.feedback) .buddy,
   padding: 0;
   border: 0;
   background: none;
-  width: 132px;
-  height: 156px; /* head 132 + ruang antena/lompatan agar tak terpotong */
-  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
   transform-origin: 50% 88%;
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
   user-select: none !important;
@@ -1001,6 +1073,10 @@ body:has(.feedback) .buddy,
   -webkit-tap-highlight-color: transparent !important;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
   outline: none !important;
+}
+
+.buddy__head:active {
+  cursor: grabbing;
 }
 
 .buddy__head:focus,
@@ -1245,11 +1321,14 @@ body:has(.feedback) .buddy,
   100% { transform: translate(var(--dx), var(--dy)) scale(1.2); opacity: 0; }
 }
 
-/* Balon Dialog Hidup */
+/* Balon Dialog Hidup — melayang di atas Bibit tanpa menggeser posisi kepala */
 .buddy__bubble {
-  position: relative;
+  position: absolute;
+  bottom: calc(100% - 6px);
+  right: 0;
   pointer-events: auto;
-  max-width: 250px;
+  width: max-content;
+  max-width: min(76vw, 260px);
   background: #ffffff;
   border: 2px solid var(--line);
   border-radius: 16px 16px 4px 16px;
@@ -1261,7 +1340,6 @@ body:has(.feedback) .buddy,
   display: flex;
   align-items: flex-start;
   gap: 7px;
-  margin-bottom: 2px;
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
@@ -1271,6 +1349,7 @@ body:has(.feedback) .buddy,
   -webkit-tap-highlight-color: transparent;
   outline: none;
   transition: transform 0.18s ease, box-shadow 0.25s ease, opacity 0.2s ease;
+  z-index: 25;
 }
 
 .buddy__bubble:focus {
@@ -1314,6 +1393,52 @@ body:has(.feedback) .buddy,
   border-right: 2px solid var(--line);
   border-bottom: 2px solid var(--line);
   transform: rotate(45deg);
+}
+
+/* Balon ucapan otomatis menyesuaikan bila Bibit digeser ke sisi kiri layar */
+.buddy--align-left .buddy__bubble {
+  right: auto;
+  left: 0;
+  border-radius: 16px 16px 16px 4px;
+}
+
+.buddy--align-left .buddy__bubble-tail {
+  right: auto;
+  left: 28px;
+  border-right: none;
+  border-left: 2px solid var(--line);
+  border-bottom: 2px solid var(--line);
+}
+
+/* Jika Bibit dekat batas atas layar, posisikan balon di bawah kepala agar tidak terpotong */
+.buddy--flip-top .buddy__bubble {
+  bottom: auto;
+  top: calc(100% - 6px);
+  border-radius: 4px 16px 16px 16px;
+}
+
+.buddy--flip-top .buddy__bubble-tail {
+  bottom: auto;
+  top: -7px;
+  border-right: none;
+  border-bottom: none;
+  border-left: 2px solid var(--line);
+  border-top: 2px solid var(--line);
+}
+
+.buddy--flip-top.buddy--align-left .buddy__bubble {
+  border-radius: 16px 4px 16px 16px;
+}
+
+.buddy--flip-top.buddy--align-left .buddy__bubble-tail {
+  bottom: auto;
+  top: -7px;
+  left: 28px;
+  right: auto;
+  border-left: none;
+  border-bottom: none;
+  border-right: 2px solid var(--line);
+  border-top: 2px solid var(--line);
 }
 
 /* home hero with robot */

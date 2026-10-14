@@ -9,6 +9,7 @@ import {
 import { TIER_ORDER } from '../../content.js';
 import { pop } from '../lib/motion.js';
 import { TOPIC_GUIDES } from '../guidebooks.js';
+import TopicIcon from './TopicIcon.jsx';
 
 export default function Topic({ topicId }) {
   useStore();
@@ -26,7 +27,7 @@ export default function Topic({ topicId }) {
     <section className="screen topic">
       <a className="back" href="#/">← Kembali</a>
       <header className="topic__head" style={{ borderColor: topic.color }}>
-        <span className="topic__icon">{topic.icon}</span>
+        <span className="topic__icon"><TopicIcon id={topic.id} size={48} /></span>
         <div>
           <span className="topic-card__tier">{stepNodes.length} step · 10 soal/step · ujian tiap tier</span>
           <h1>{topic.name}</h1>
