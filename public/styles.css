@@ -672,6 +672,13 @@ input, textarea, [contenteditable="true"] {
   color: #2d6a00;
 }
 
+/* Hampir benar (aturan longgar): emas = "hampir sampai", tanpa -1 nyawa */
+.feedback--near {
+  background: #fff3c4;
+  border-top: 3px solid var(--gold);
+  color: #6b4e00;
+}
+
 .feedback--bad {
   background: #ffdfe0;
   border-top: 3px solid var(--red);
@@ -679,6 +686,59 @@ input, textarea, [contenteditable="true"] {
 }
 
 .lesson--fb .lesson__body { opacity: 0.45; pointer-events: none; }
+
+/* ---------- materi (guidebook per pelajaran) ---------- */
+
+.materi__head { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.materi__title { font-size: 1.6rem; font-weight: 800; line-height: 1.2; }
+.materi__subtitle {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 14px 0 6px;
+}
+.materi__subtitle:first-child { margin-top: 0; }
+.materi__summary { line-height: 1.55; }
+.materi__points { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; line-height: 1.5; }
+.materi__points code, .materi__summary code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1px 5px;
+}
+.materi__code { margin: 0; overflow-x: auto; }
+.materi__tip {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: var(--bg-soft);
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.materi__tip span[aria-hidden] { font-size: 1.2rem; line-height: 1.2; }
+.materi__actions { margin-top: 4px; }
+.materi__foot { font-size: 0.82rem; text-align: center; }
+
+/* Link "Baca materi" di jalur belajar */
+.materi-link {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 2px dashed rgba(28, 176, 246, 0.4);
+  cursor: pointer;
+}
+.materi-link:hover { color: #0f93d6; }
 
 /* ---------- result ---------- */
 

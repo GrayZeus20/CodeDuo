@@ -337,7 +337,7 @@ t('srs: schedule murni (tak memutasi input) & idempoten', () => {
   assert.deepStrictEqual(a, b, 'panggilan sama → state sama');
   assert.strictEqual(Object.keys(base).length, 0, 'input tak boleh dimutasi');
 });
-t('srs: dueItems ambil overdue dulu, lalu soal baru; dueCount cocok', () => {
+t('srs: dueItems ambil overdue saja; soal baru tidak masuk ulangan', () => {
   const now = 1_000_000;
   let s = SRS.newSched();
   s = SRS.schedule(s, 'a', 1, now - 5 * SRS.DAY_MS); /* sudah lewat jauh */
@@ -345,8 +345,18 @@ t('srs: dueItems ambil overdue dulu, lalu soal baru; dueCount cocok', () => {
   s = SRS.schedule(s, 'c', 1, now);                   /* jatuh tempo besok */
   const bank = ['a', 'b', 'c', 'd']; /* d = baru (belum pernah dijadwalkan) */
   const due = SRS.dueItems(bank, s, now);
-  assert.deepStrictEqual(due, ['a', 'b', 'd'], 'urut: overdue terlama → baru; c belum due');
-  assert.strictEqual(SRS.dueCount(bank, s, now), 3);
+  assert.deepStrictEqual(due, ['a', 'b'], 'urut overdue terlama dulu; c belum due; d belum dipelajari');
+  assert.strictEqual(SRS.dueCount(bank, s, now), 2);
+});
+t('srs: grade hampir benar (2) = repeat: kotak tetap, due besok', () => {
+  const now = 1_000_000;
+  let s = SRS.newSched();
+  s = SRS.schedule(s, 'x', 1, now - SRS.DAY_MS); /* kotak 0 */
+  const before = s.x.box;
+  s = SRS.schedule(s, 'x', 2, now); /* hampir benar */
+  assert.strictEqual(s.x.box, before, 'kotak tidak naik & tidak reset');
+  assert.ok(s.x.due - now <= SRS.DAY_MS, 'due maksimal besok');
+  assert.strictEqual(SRS.gradeFromResult(2), 2, 'grade 2 lolos');
 });
 t('srs: gradeFromResult benar→1, salah→0', () => {
   assert.strictEqual(SRS.gradeFromResult(true), 1);
@@ -373,7 +383,7 @@ t('srs: toJSON/fromJSON round-trip + tolak data korup', () => {
 t('srs: isScheduled/isDue/intervalFor aman utk input asing', () => {
   const s = SRS.newSched();
   assert.strictEqual(SRS.isScheduled(s, 'x'), false);
-  assert.strictEqual(SRS.isDue(s, 'x', 0), true, 'belum terjadwal = due');
+  assert.strictEqual(SRS.isDue(s, 'x', 0), false, 'belum terjadwal = BUKAN due (masih milik step belajar)');
   s.x = { box: 0, due: 100, last: 0, reps: 1, lapses: 0 };
   assert.strictEqual(SRS.isDue(s, 'x', 50), false);
   assert.strictEqual(SRS.isDue(s, 'x', 100), true);

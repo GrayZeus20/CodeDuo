@@ -27,7 +27,7 @@ import {
 import {
   SRS_KEY, SRS_INTERVALS, newSched, schedule, gradeFromResult, dueItems, toJSON, fromJSON,
 } from '../srs.js';
-import { checkFill, checkCode, checkArrange } from '../checkers.js';
+import { checkFill, checkCode, checkArrange, checkMc } from '../checkers.js';
 import { MAX_HEARTS, mulberry32, shuffled } from './lib/rng.js';
 import {
   ROBOT_NAME, robotSay, stateFromMood,
@@ -159,7 +159,7 @@ function defaultState() {
     path: null,
     streak: { count: 0, lastActive: null },
     progress: {},
-    stats: { correct: 0, wrong: 0, lessonsDone: 0 },
+    stats: { correct: 0, wrong: 0, close: 0, lessonsDone: 0 },
     muted: false,
     buddyHidden: false,
     motionEnabled: true,
@@ -174,8 +174,8 @@ function sanitizeState(parsed) {
   if (!s.streak || typeof s.streak !== 'object') s.streak = { count: 0, lastActive: null };
   if (typeof s.streak.count !== 'number' || !Number.isFinite(s.streak.count) || s.streak.count < 0) s.streak.count = 0;
   if (typeof s.streak.lastActive !== 'string') s.streak.lastActive = null;
-  if (!s.stats || typeof s.stats !== 'object') s.stats = { correct: 0, wrong: 0, lessonsDone: 0 };
-  ['correct', 'wrong', 'lessonsDone'].forEach((k) => {
+  if (!s.stats || typeof s.stats !== 'object') s.stats = { correct: 0, wrong: 0, close: 0, lessonsDone: 0 };
+  ['correct', 'wrong', 'close', 'lessonsDone'].forEach((k) => {
     if (typeof s.stats[k] !== 'number' || !Number.isFinite(s.stats[k]) || s.stats[k] < 0) s.stats[k] = 0;
   });
   if (!s.progress || typeof s.progress !== 'object' || Array.isArray(s.progress)) s.progress = {};
@@ -800,7 +800,7 @@ export function answerCheck(answer) {
   let result;
   if (ex.type === 'mc') {
     if (answer == null) return { empty: true, message: 'Pilih salah satu jawaban dulu.' };
-    result = answer === ex.a ? { correct: true } : { correct: false, message: 'Pilihan belum tepat.' };
+    result = checkMc(answer, ex);
   }
   else if (ex.type === 'fill') result = checkFill(answer, ex.accept);
   else if (ex.type === 'code') result = checkCode(answer, { fnName: ex.fn, tests: ex.tests });
@@ -809,7 +809,13 @@ export function answerCheck(answer) {
   else result = { correct: false, message: 'Tipe soal tidak dikenal.' };
 
   session.answered = true;
-  session.lastResult = { correct: result.correct, message: result.message || (result.correct ? 'Mantap!' : 'Belum tepat.'), explain: ex.explain };
+  const isClose = !result.correct && !!result.close;
+  session.lastResult = {
+    correct: result.correct,
+    close: isClose,
+    message: result.message || (result.correct ? 'Mantap!' : 'Belum tepat.'),
+    explain: ex.explain,
+  };
 
   if (result.reason === 'empty' || result.reason === 'incomplete') {
     session.answered = false;
@@ -819,8 +825,18 @@ export function answerCheck(answer) {
     return { empty: true, message: result.message };
   }
 
-  if (result.correct) state.stats.correct += 1;
-  else {
+  if (result.correct) {
+    state.stats.correct += 1;
+  } else if (result.close) {
+    /* ATURAN LONGGAR — "hampir benar":
+     * - nyawa TIDAK dikurangi (beda tipis dari salah sungguhan);
+     * - dicatat sebagai "hampir" di statistik;
+     * - soal diulang di akhir sesi (antrean review mistake ala Duolingo);
+     * - SRS: repeat (tetap di kotak sekarang, due besok) — bukan reset penuh. */
+    state.stats.close = (state.stats.close || 0) + 1;
+    const closeIdx = session.order[session.pos];
+    session.order.push(closeIdx);
+  } else {
     session.hearts -= 1;
     session.wrongOnThis = true;
     state.stats.wrong += 1;
@@ -837,18 +853,25 @@ export function answerCheck(answer) {
   if (session.phase === 'run') session.phase = 'feedback';
 
   const key = currentKey();
-  if (key) { srs = schedule(srs, key, gradeFromResult(result.correct), Date.now()); saveSrs(); }
+  if (key) {
+    /* SRS: benar → naik kotak; hampir benar → repeat (tetap di kotak sekarang, due besok);
+     * salah → reset kotak. */
+    const grade = result.correct ? 1 : (isClose ? 2 : 0);
+    srs = schedule(srs, key, gradeFromResult(grade), Date.now());
+    saveSrs();
+  }
 
   onInteraction({
     correct: session.lastResult.correct,
-    wrong: !session.lastResult.correct,
+    wrong: !session.lastResult.correct && !isClose,
+    close: isClose,
     hearts: 'session',
     progress: 'session',
     lesson: true,
     n: session.order.length ? session.pos / session.order.length : 0,
   });
   saveState();
-  return { result: { correct: result.correct, failed: session.phase === 'failed' } };
+  return { result: { correct: result.correct, close: isClose, failed: session.phase === 'failed' } };
 }
 
 export function lessonContinue() {
@@ -908,6 +931,7 @@ export function routeInfo() {
   if (parts[0] === 'review') return { name: 'review' };
   if (parts[0] === 'lesson' && parts[1] && parts[2]) return { name: 'lesson', topicId: parts[1], nodeId: parts[2] };
   if (parts[0] === 'topic' && parts[1]) return { name: 'topic', topicId: parts[1] };
+  if (parts[0] === 'materi' && parts[1] && parts[2]) return { name: 'materi', topicId: parts[1], lessonId: parts[2] };
   if (parts[0] === 'profile') return { name: 'profile' };
   if (parts[0] === 'terms') return { name: 'terms' };
   return { name: 'home' };

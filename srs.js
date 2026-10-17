@@ -39,8 +39,10 @@ function intervalFor(box) {
   return SRS_INTERVALS[b] * DAY_MS;
 }
 
-/* Grade dari hasil jawaban: benar → 1 (naik kotak), salah → 0 (reset). */
-function gradeFromResult(correct /* , firstTry */) {
+/* Grade dari hasil jawaban: 1 = benar (naik kotak), 2 = hampir benar (repeat,
+ * kotak tetap), 0/undefined = salah (reset kotak 0). */
+function gradeFromResult(correct) {
+  if (correct === 2) return 2;
   return correct ? 1 : 0;
 }
 
@@ -54,11 +56,15 @@ function schedule(sched, item, grade, now) {
   const t = Number.isFinite(now) ? now : Date.now();
   const prev = base[item];
   const prevBox = prev && Number.isInteger(prev.box) ? prev.box : -1;
-  const good = grade ? 1 : 0;
+  const g = Number(grade);
+  const good = g === 2 ? 2 : (g ? 1 : 0);
 
-  const box = good ? Math.min(SRS_MAX_BOX, prevBox + 1) : 0;
+  /* grade 2 (hampir benar) = repeat: kotak tetap (min. 0), due besok. */
+  const box = good === 1 ? Math.min(SRS_MAX_BOX, prevBox + 1)
+    : good === 2 ? Math.max(0, prevBox)
+    : 0;
   const reps = prev && Number.isInteger(prev.reps) ? prev.reps + 1 : 1;
-  const lapses = (prev && Number.isInteger(prev.lapses) ? prev.lapses : 0) + (good ? 0 : 1);
+  const lapses = (prev && Number.isInteger(prev.lapses) ? prev.lapses : 0) + (good === 1 ? 0 : 1);
 
   return Object.assign({}, base, {
     [item]: { box, due: t + intervalFor(box), last: t, reps, lapses },
@@ -70,27 +76,27 @@ function isScheduled(sched, item) {
   return !!(sched && Object.prototype.hasOwnProperty.call(sched, item));
 }
 
-/* Sebuah item "jatuh tempo" bila belum pernah dijadwalkan (baru) ATAU due <= now. */
+/* Sebuah item "jatuh tempo" bila sudah pernah dijadwalkan DAN due <= now.
+ * Soal yang belum pernah dipelajari TIDAK masuk ulangan (mereka milik step belajar). */
 function isDue(sched, item, now) {
-  if (!isScheduled(sched, item)) return true;
+  if (!isScheduled(sched, item)) return false;
   const e = sched[item];
   return !(Number.isFinite(e.due) && e.due > now);
 }
 
-/* Urutan deterministik: jatuh tempo terlama dulu, lalu item baru (urut masukan).
- * Return daftar id dari `bank` (semua id soal kurikulum). Tanpa rng → stabil diuji. */
+/* Urutan deterministik: jatuh tempo terlama dulu. Hanya item yang PERNAH
+ * dijadwalkan (sudah dipelajari) yang masuk daftar ulangan. Return daftar id dari `bank`. */
 function dueItems(bank, sched, now) {
   const t = Number.isFinite(now) ? now : Date.now();
   const list = Array.isArray(bank) ? bank : [];
   const overdue = [];
-  const fresh = [];
   for (const id of list) {
-    if (!isScheduled(sched, id)) { fresh.push(id); continue; }
+    if (!isScheduled(sched, id)) continue;
     const e = sched[id];
     if (Number.isFinite(e.due) && e.due <= t) overdue.push(id);
   }
   overdue.sort((a, b) => sched[a].due - sched[b].due);
-  return overdue.concat(fresh);
+  return overdue;
 }
 
 /* Hitung cepat berapa item jatuh tempo (untuk badge). */

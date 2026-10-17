@@ -87,6 +87,8 @@ export default function Profile() {
       <div className="stat-row">
         <div className="stat"><b>{state.streak.count}</b><span>streak 🔥</span></div>
         <div className="stat"><b>{state.stats.lessonsDone}</b><span>sesi</span></div>
+        <div className="stat"><b>{state.stats.correct}</b><span>benar</span></div>
+        <div className="stat"><b>{state.stats.close || 0}</b><span>hampir</span></div>
         <div className="stat"><b>{topicsDone}/{state.path.length}</b><span>topik</span></div>
       </div>
 

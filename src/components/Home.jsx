@@ -4,7 +4,7 @@
 import { useStore } from '../useStore.js';
 import {
   getState, getLoadError, topicById, isTopicDone, isNodeDone,
-  openTopic,
+  openTopic, dueReviewKeys, reviewStart,
 } from '../store.js';
 import { CURRICULUM, stepsForTopic } from '../../content.js';
 import Bib from './Bib.jsx';
@@ -16,6 +16,7 @@ export default function Home() {
   const state = getState();
   const loadError = getLoadError();
   const allDone = state.path.every(isTopicDone);
+  const dueCount = dueReviewKeys().length;
 
   return (
     <section className="screen home">
@@ -33,6 +34,19 @@ export default function Home() {
 
       {allDone && (
         <div className="card card--done">🎉 Semua step tuntas! {CURRICULUM.length * 31} step koding kamu habiskan — kamu juara.</div>
+      )}
+
+      {/* Kartu "Ingat" — pintu ulangan berjarak (SRS): soal yang pernah dipelajari & jatuh tempo */}
+      {dueCount > 0 && (
+        <button className="card recall card--due" onClick={(e) => { pop(e.currentTarget); reviewStart(); }}>
+          <span aria-hidden="true" style={{ fontSize: '1.6rem' }}>🧠</span>
+          <span className="recall__text">
+            <span className="topic-card__tier">Ulangan ingatan</span>
+            <b>{dueCount} soal siap diulang</b>
+            <span className="topic-card__desc">Retensi makin kuat kalau diulang tepat waktu.</span>
+          </span>
+          <span className="btn btn--primary btn--sm recall__btn">Ulangi</span>
+        </button>
       )}
 
       {state.path.map((id) => {
@@ -64,6 +78,7 @@ export default function Home() {
       <div className="stat-row">
         <div className="stat"><b>{state.stats.lessonsDone}</b><span>sesi</span></div>
         <div className="stat"><b>{state.stats.correct}</b><span>benar</span></div>
+        <div className="stat"><b>{state.stats.close || 0}</b><span>hampir</span></div>
         <div className="stat"><b>{state.streak.count}</b><span>streak 🔥</span></div>
       </div>
       <a className="btn btn--ghost home__profile" href="#/profile">Profil &amp; pengaturan</a>

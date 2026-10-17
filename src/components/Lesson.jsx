@@ -10,8 +10,7 @@ import {
   lessonRetry, lessonExit, reviewStart, stepStart, tierTest, MAX_HEARTS,
 } from '../store.js';
 import { STEP_SIZE } from '../../content.js';
-import { SFX } from '../../sfx.js';
-import { pop, slideUp, fadeOutDown, celebrate, pulse } from '../lib/motion.js';
+import { SFX } from '../../sfx.js';import { pop, slideUp, fadeOutDown, celebrate, pulse } from '../lib/motion.js';
 
 export default function Lesson() {
   useStore();
@@ -53,9 +52,10 @@ function RunView({ session, topic, isReview }) {
     if (r.empty) { setEmptyMsg(r.message); }
     else {
       setEmptyMsg(null);
-      const failed = r.result && r.result.failed;
-      if (r.result && r.result.correct) SFX.correct();
-      else if (failed) SFX.fail();
+      const res = r.result || {};
+      if (res.correct) SFX.correct();
+      else if (res.close) SFX.close();
+      else if (res.failed) SFX.fail();
       else SFX.wrong();
     }
   };
@@ -63,10 +63,10 @@ function RunView({ session, topic, isReview }) {
   const onContinue = (sheetEl) => {
     const next = lessonContinue();
     if (next) {
-      SFX.complete();
       celebrate();
       const badge = document.querySelector('.top-stats .streak');
       if (badge) pulse(badge);
+      SFX.complete();
       setTimeout(() => SFX.streak(), 550);
     }
   };
@@ -127,11 +127,19 @@ function Feedback({ session, onContinue }) {
     else onContinue();
     pop(e.currentTarget);
   };
+  /* Tiga tingkat feedback: benar (hijau) / hampir benar (emas) / salah (merah).
+   * "Hampir benar" = aturan longgar: tanpa -1 nyawa, soal diulang di akhir sesi. */
+  const kind = last.correct ? 'ok' : (last.close ? 'near' : 'bad');
+  const cls = kind === 'ok' ? 'feedback--ok' : kind === 'near' ? 'feedback--near' : 'feedback--bad';
+  const head = kind === 'ok' ? '✅ Benar!' : kind === 'near' ? '🟡 Hampir benar!' : '❌ ' + last.message;
+  const note = kind === 'near'
+    ? 'Jawabanmu sangat dekat — nyawa aman, tapi soal ini akan diulang di akhir sesi ya.'
+    : last.explain;
   return (
-    <div className={'feedback ' + (last.correct ? 'feedback--ok' : 'feedback--bad')} ref={ref}>
-      <b>{last.correct ? '✅ Benar!' : '❌ ' + last.message}</b>
-      <p>{last.explain}</p>
-      <button className={'btn ' + (last.correct ? 'btn--primary' : 'btn--danger')} onClick={run}>LANJUT</button>
+    <div className={'feedback ' + cls} ref={ref}>
+      <b>{head}</b>
+      <p>{note}</p>
+      <button className={'btn ' + (kind === 'bad' ? 'btn--danger' : 'btn--primary')} onClick={run}>LANJUT</button>
     </div>
   );
 }

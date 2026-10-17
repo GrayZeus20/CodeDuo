@@ -59,7 +59,7 @@ const CONTENT_SQL = [
           },
           {
             "type": "mc",
-            "q": "Mengganti nama kolom pada hasil (alias) memakai:",
+            "q": "Kata kunci untuk memberi alias pada kolom di hasil query:",
             "options": [
               "AS",
               "NAME",
@@ -1328,7 +1328,7 @@ const CONTENT_SQL = [
           },
           {
             "type": "fill",
-            "q": "Gabungkan tabel pesanan dan pembeli:\nSELECT * FROM pesanan\nINNER JOIN pembeli ON pesanan.user_id = pembeli.___;",
+            "q": "Lengkapi kolom yang menjadi kunci relasi di sisi tabel pembeli:",
             "code": "SELECT * FROM pesanan\nINNER JOIN pembeli ON pesanan.user_id = pembeli.___;",
             "accept": [
               "id"
@@ -1419,8 +1419,8 @@ const CONTENT_SQL = [
           },
           {
             "type": "fill",
-            "q": "Kelompokkan penjualan per bulan:",
-            "code": "SELECT ___, SUM(total) FROM sales GROUP BY month;",
+            "q": "Lengkapi kolom pengelompokan agar sesuai dengan kolom yang diseleksi:",
+            "code": "SELECT bulan, SUM(total) FROM sales GROUP BY ___;",
             "accept": [
               "month"
             ],
@@ -3996,8 +3996,8 @@ const CONTENT_SQL = [
           },
           {
             "type": "fill",
-            "q": "Primary key gabungan dua kolom disebut:",
-            "code": "PRIMARY KEY (a, b) -- composite / ___ key",
+            "q": "Lengkapi istilah untuk primary key yang terdiri dari lebih dari satu kolom:",
+            "code": "PRIMARY KEY (a, b) -- ___ key",
             "accept": [
               "composite",
               "compound"
@@ -7709,8 +7709,8 @@ const CONTENT_SQL = [
           },
           {
             "type": "fill",
-            "q": "Alamat spesifik tempat resource dilayani disebut:",
-            "code": "GET /api/users/42 → ___ ini endpoint",
+            "q": "Lengkapi istilah untuk alamat spesifik tempat resource dilayani:",
+            "code": "GET /api/users/42 → ___",
             "accept": [
               "endpoint"
             ],

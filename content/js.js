@@ -84,7 +84,7 @@ const CONTENT_JS = [
           },
           {
             "type": "mc",
-            "q": "Kata kunci mendeklarasikan variabel yang nilainya tidak dapat di-reassign:",
+            "q": "Kata kunci deklarasi variabel yang nilainya TIDAK dapat di-reassign:",
             "options": [
               "const",
               "let",
@@ -930,8 +930,8 @@ const CONTENT_JS = [
           },
           {
             "type": "fill",
-            "q": "Akses properti objek user:\nconst nama = user.___;",
-            "code": "const nama = user.___;",
+            "q": "Ambil properti nama dari objek user dengan dot notation:",
+            "code": "const lengkap = user.___;",
             "accept": [
               "nama",
               "name"
@@ -1008,8 +1008,8 @@ const CONTENT_JS = [
           },
           {
             "type": "fill",
-            "q": "Ambil semua key dari objek:\nconst keys = Object.___(data);",
-            "code": "const keys = Object.___(data);",
+            "q": "Lengkapi method Object untuk mengambil daftar kunci milik objek:",
+            "code": "const daftar = Object.___(data);",
             "accept": [
               "keys"
             ],
@@ -2740,8 +2740,8 @@ const CONTENT_JS = [
           },
           {
             "type": "fill",
-            "q": "Lengkapi destructuring objek:",
-            "code": "const { ___ } = user; // ambil properti name",
+            "q": "Lengkapi destructure untuk mengambil properti pertama dari objek profil:",
+            "code": "const { ___ } = profil;",
             "accept": [
               "name"
             ],
@@ -2824,8 +2824,8 @@ const CONTENT_JS = [
           },
           {
             "type": "fill",
-            "q": "Ambil sinyal pembatalan controller:\nconst signal = controller.___;",
-            "code": "const signal = controller.___;",
+            "q": "Lengkapi pengambilan properti signal dari objek controller:",
+            "code": "const sinyal = kendali.___;",
             "accept": [
               "signal"
             ],
@@ -3868,8 +3868,8 @@ const CONTENT_JS = [
           },
           {
             "type": "fill",
-            "q": "Gunakan optional chaining:\nconst nama = user?.profile?.___;",
-            "code": "const nama = user?.profile?.___;",
+            "q": "Lengkapi optional chaining untuk mengambil properti terakhir:",
+            "code": "const lengkap = user?.profil?.___;",
             "accept": [
               "nama",
               "name"
@@ -4127,7 +4127,7 @@ const CONTENT_JS = [
           },
           {
             "type": "fill",
-            "q": "Sambungkan array kata menjadi string berpemisah spasi:",
+            "q": "Sambungkan semua elemen array menjadi satu string dengan pemisah spasi:",
             "code": "['a','b'].join(___);",
             "accept": [
               "' '",
@@ -5279,8 +5279,8 @@ const CONTENT_JS = [
           },
           {
             "type": "fill",
-            "q": "Akses node berikutnya pada linked list:\nconst nextNode = current.___;",
-            "code": "const nextNode = current.___;",
+            "q": "Lengkapi properti penunjuk ke node berikutnya pada linked list:",
+            "code": "const lanjut = sekarang.___;",
             "accept": [
               "next"
             ],
@@ -5378,8 +5378,8 @@ const CONTENT_JS = [
           },
           {
             "type": "fill",
-            "q": "Kompleksitas binary search:",
-            "code": "binary search = O(log ___)",
+            "q": "Lengkapi kompleksitas waktu binary search (logaritmik terhadap banyak data):",
+            "code": "binary search: O(log ___)",
             "accept": [
               "n"
             ],
@@ -6557,8 +6557,8 @@ const CONTENT_JS = [
           },
           {
             "type": "fill",
-            "q": "Karakteristik Max-Heap: nilai root selalu yang paling ___:",
-            "code": "Karakteristik Max-Heap: nilai root selalu yang paling ___:",
+            "q": "Pada Max-Heap, nilai node akar dibandingkan dengan anak-anaknya:",
+            "code": "Max-Heap: root >= anak (paling ___)",
             "accept": [
               "besar",
               "tinggi",
@@ -7789,8 +7789,8 @@ const CONTENT_JS = [
           },
           {
             "type": "fill",
-            "q": "Kompleksitas algoritma Merge Sort:\nO(n log ___)",
-            "code": "O(n log ___)",
+            "q": "Lengkapi kompleksitas waktu merge sort (linearitmik terhadap banyak data):",
+            "code": "merge sort: O(n log ___)",
             "accept": [
               "n"
             ],

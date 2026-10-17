@@ -2,8 +2,7 @@
 'use strict';
 
 import { useStore } from '../useStore.js';
-import { getState, toggleMute, toggleBuddy } from '../store.js';
-import { SFX } from '../../sfx.js';
+import { getState, toggleMute, toggleBuddy } from '../store.js';import { SFX } from '../../sfx.js';
 import { pop } from '../lib/motion.js';
 import Bib from './Bib.jsx';
 

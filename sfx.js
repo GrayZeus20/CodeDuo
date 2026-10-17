@@ -60,6 +60,11 @@ const SFX = (() => {
       blip({ freq: 1175, dur: 0.14, vol: 0.15, type: 'sine', delay: 0.09 });
     },
     wrong() { blip({ freq: 220, freq2: 155, dur: 0.22, vol: 0.13, type: 'square' }); },
+    /* Hampir benar: nada dua-tone lembut "hampir tepat" — tidak menghukum */
+    close() {
+      blip({ freq: 660, freq2: 550, dur: 0.12, vol: 0.11, type: 'triangle' });
+      blip({ freq: 550, freq2: 660, dur: 0.16, vol: 0.1, type: 'triangle', delay: 0.1 });
+    },
     fail() { blip({ freq: 196, freq2: 98, dur: 0.4, vol: 0.15, type: 'sawtooth' }); },
     complete() {
       [523, 659, 784, 1047].forEach((f, i) => blip({ freq: f, dur: 0.16, vol: 0.14, type: 'sine', delay: i * 0.11 }));

@@ -63,7 +63,15 @@ function stepsForTopic(topic) {
       nodes.push(stepNode);
       tierStepNodes.push(stepNode);
     }
-    const testQuestionIds = tierStepNodes.map((s) => s.questionIds[0]).slice(0, STEP_SIZE);
+    /* Ujian tier: 10 soal komprehensif — sampel merata dari seluruh step tier ini
+     * (1 soal per step dulu; jika step < 10, lengkapi dari soal cadangan per step). */
+    const perStep = tierStepNodes.map((s) => s.questionIds);
+    const testQuestionIds = [];
+    for (const qids of perStep) { if (qids.length && testQuestionIds.length < STEP_SIZE) testQuestionIds.push(qids[0]); }
+    for (const qids of perStep) {
+      if (testQuestionIds.length >= STEP_SIZE) break;
+      for (let i = 1; i < qids.length && testQuestionIds.length < STEP_SIZE; i++) testQuestionIds.push(qids[i]);
+    }
     nodes.push({
       id: `${topic.id}--${globalStepNo}--test`,
       topicId: topic.id,
@@ -106,8 +114,7 @@ function exerciseById(topic, qid) {
 
 /* Sinkronkan path personal tersimpan dengan kurikulum saat ini:
  * topik baru (mis. "web") ditambahkan di akhir; id yang sudah dihapus dibuang.
- * Path lama dipertahankan urutannya; topik yang sudah ada tak diacak ulang. */
-function syncPath(path, rng) {
+ * Path lama dipertahankan urutannya; topik yang sudah ada tak diacak ulang. */function syncPath(path, rng) {
   const ids = CURRICULUM.map((t) => t.id);
   const r = typeof rng === 'function' ? rng : Math.random;
   const seen = new Set();

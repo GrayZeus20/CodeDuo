@@ -391,7 +391,7 @@ const CONTENT_HTML = [
         "exercises": [
           {
             "type": "mc",
-            "q": "Protokol link untuk mengirim email:",
+            "q": "Protokol link untuk membuka aplikasi klien surel (email) pengguna:",
             "options": [
               "mailto:",
               "emailto:",
@@ -424,7 +424,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Buat link telepon:\n<a href=\"___:08123456789\">Telepon</a>",
+            "q": "Lengkapi protokol tautan yang membuka aplikasi panggilan:",
             "code": "<a href=\"___:08123456789\">Telepon</a>",
             "accept": [
               "tel"
@@ -445,8 +445,8 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Lengkapi link jangkar (anchor):\n<a href=\"#___\">Ke Atas</a>",
-            "code": "<a href=\"#___\">Ke Atas</a>",
+            "q": "Lengkapi href untuk melompat ke elemen yang ber-id \"puncak\" di halaman ini:",
+            "code": "<a href=\"___\">Lihat puncak</a>",
             "accept": [
               "top",
               "atas",
@@ -468,7 +468,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "mc",
-            "q": "Atribut untuk memberitahu browser agar file di-download bukan dibuka:",
+            "q": "Atribut pada link yang memaksa file tersimpan ke perangkat, bukan dibuka di tab:",
             "options": [
               "download",
               "save",
@@ -880,7 +880,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "mc",
-            "q": "Entitas HTML untuk tanda lebih kecil (<):",
+            "q": "Entitas HTML yang mewakili tanda kurung sudut pembuka:",
             "options": [
               "&lt;",
               "&less;",
@@ -892,7 +892,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "mc",
-            "q": "Entitas HTML untuk tanda lebih besar (>):",
+            "q": "Entitas HTML yang mewakili tanda kurung sudut penutup:",
             "options": [
               "&gt;",
               "&greater;",
@@ -1693,7 +1693,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "mc",
-            "q": "Atribut untuk memvalidasi teks dengan pola regular expression (regex):",
+            "q": "Atribut input untuk membatasi isi teks pada pola tertentu:",
             "options": [
               "pattern",
               "regex",
@@ -1868,7 +1868,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "mc",
-            "q": "Atribut pada <option> agar terpilih secara default:",
+            "q": "Atribut pada <option> agar dipilih sejak halaman dimuat:",
             "options": [
               "selected",
               "checked",
@@ -2431,8 +2431,8 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Tentukan format sumber file video alternatif:\n<video controls>\n  <source src=\"video.mp4\" type=\"video/___\">\n</video>",
-            "code": "<video controls>\n  <source src=\"video.mp4\" type=\"video/___\">\n</video>",
+            "q": "Lengkapi atribut type sumber video untuk file berformat MP4:",
+            "code": "<video controls>\n  <source src=\"film.webm\" type=\"video/___\">\n</video>",
             "accept": [
               "mp4"
             ],
@@ -2582,7 +2582,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "mc",
-            "q": "Atribut untuk menentukan teks tooltip saat kursor melayang di atas elemen:",
+            "q": "Atribut global yang menampilkan keterangan kecil saat kursor melayang di atas elemen:",
             "options": [
               "title",
               "tooltip",
@@ -3061,8 +3061,8 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Hubungkan input dengan pesan bantuan:\n<input aria-describedby=\"___\">\n<span id=\"hint\">Minimal 8 karakter</span>",
-            "code": "<input aria-describedby=\"___\">\n<span id=\"hint\">Minimal 8 karakter</span>",
+            "q": "Hubungkan input dengan pesan bantuan: isi aria-describedby dengan id elemen bantu:",
+            "code": "<input aria-describedby=\"___\">\n<span id=\"petunjuk\">Minimal 8 karakter</span>",
             "accept": [
               "hint"
             ],
@@ -3202,8 +3202,8 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Elemen kanvas grafis JavaScript di HTML:\n<___ id=\"myCanvas\" width=\"300\" height=\"200\"></___>",
-            "code": "<___ id=\"myCanvas\" width=\"300\" height=\"200\"></___>",
+            "q": "Lengkapi elemen kanvas yang digambar lewat JavaScript:",
+            "code": "<___ id=\"papan\" width=\"300\" height=\"200\"></___>",
             "accept": [
               "canvas"
             ],
@@ -3223,7 +3223,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Tentukan radius lingkaran SVG:\n<circle cx=\"50\" cy=\"50\" ___=\"25\">",
+            "q": "Lengkapi atribut SVG yang menentukan jarak lingkaran dari pusatnya:",
             "code": "<circle cx=\"50\" cy=\"50\" ___=\"25\">",
             "accept": [
               "r"
@@ -3614,7 +3614,7 @@ const CONTENT_HTML = [
         "exercises": [
           {
             "type": "mc",
-            "q": "Selector untuk memilih SEMUA elemen dengan class \"card\":",
+            "q": "Selector untuk memilih SEMUA elemen yang punya class \"card\":",
             "options": [
               "#card",
               ".card",
@@ -3635,7 +3635,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "mc",
-            "q": "Selector untuk id=\"main\":",
+            "q": "Selector untuk memilih elemen dengan id \"main\":",
             "options": [
               ".main",
               "#main",
@@ -3699,7 +3699,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "mc",
-            "q": "Selektor untuk memilih elemen berdasarkan nama kelas \"judul\":",
+            "q": "Selector untuk memilih elemen berdasarkan nama kelasnya:",
             "options": [
               ".judul",
               "#judul",
@@ -4928,12 +4928,12 @@ const CONTENT_HTML = [
           },
           {
             "type": "mc",
-            "q": "Satuan fleksibel yang membagi ruang grid secara proporsional:",
+            "q": "Satuan fleksibel yang membagi sisa ruang grid secara proporsional:",
             "options": [
               "px",
               "fr",
               "em",
-              "%selalu"
+              "%"
             ],
             "a": 1,
             "explain": "fr = fraction dari ruang tersisa."
@@ -5043,8 +5043,8 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Izinkan item flex turun ke baris berikutnya jika penuh:\n.galeri {\n  flex-wrap: ___;\n}",
-            "code": ".galeri {\n  flex-wrap: ___;\n}",
+            "q": "Lengkapi agar item flex boleh melipat ke baris baru:",
+            "code": ".galeri {\n  flex-flow: row ___;\n}",
             "accept": [
               "wrap"
             ],
@@ -5448,8 +5448,8 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Beri nama area pada item grid:\n.header {\n  grid-area: ___;\n}",
-            "code": ".header {\n  grid-area: ___;\n}",
+            "q": "Lengkapi nama area grid untuk bagian atas halaman:",
+            "code": ".tata {\n  grid-template-areas:\n    \"___\"\n    \"isi\";\n}",
             "accept": [
               "header",
               "nav",
@@ -5965,7 +5965,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "mc",
-            "q": "Unit relatif terhadap ukuran font root (biasanya 16px):",
+            "q": "Unit relatif terhadap ukuran font elemen akar (root) dokumen:",
             "options": [
               "px",
               "rem",
@@ -6307,8 +6307,8 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Geser elemen 50% ke kiri pada sumbu X:\n.box {\n  transform: translate___(-50%);\n}",
-            "code": ".box {\n  transform: translate___(-50%);\n}",
+            "q": "Lengkapi fungsi transform yang menggeser elemen mengikuti sumbu horizontal:",
+            "code": ".box {\n  transform: ___(-50%);\n}",
             "accept": [
               "X",
               "x"
@@ -6456,12 +6456,12 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Hormati preferensi tanpa animasi pengguna:\n@media (prefers-reduced-motion: ___) {\n  * { animation: none !important; }\n}",
-            "code": "@media (prefers-reduced-motion: ___) {\n  * { animation: none !important; }\n}",
+            "q": "Lengkapi media feature yang membaca preferensi gerakan dari sistem:",
+            "code": "@media (___: reduce) {\n  * { animation: none !important; }\n}",
             "accept": [
-              "reduce"
+              "prefers-reduced-motion"
             ],
-            "explain": "reduce menonaktifkan gerakan berlebih."
+            "explain": "prefers-reduced-motion: reduce = sinyal sistem untuk mematikan animasi berlebih."
           },
           {
             "type": "arrange",
@@ -6572,14 +6572,12 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Beri nama pada container query agar spesifik:\n.sidebar {\n  container-name: ___;\n}",
-            "code": ".sidebar {\n  container-name: ___;\n}",
+            "q": "Lengkapi properti container query yang menentukan jenis pelacakan ukuran:",
+            "code": ".kartu-samping {\n  ___: inline-size;\n}",
             "accept": [
-              "sidebar",
-              "menu",
-              "panel"
+              "container-type"
             ],
-            "explain": "container-name membedakan query kontainer spesifik."
+            "explain": "container-type: inline-size membuat elemen menjadi query container berdasar lebarnya."
           },
           {
             "type": "mc",
@@ -7011,8 +7009,8 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Kunci rasio elemen persegi 1 banding 1:\n.kotak {\n  aspect-ratio: ___ / 1;\n}",
-            "code": ".kotak {\n  aspect-ratio: ___ / 1;\n}",
+            "q": "Lengkapi rasio aspek untuk persegi (lebar dibanding tinggi):",
+            "code": ".kotak {\n  aspect-ratio: ___;\n}",
             "accept": [
               "1"
             ],

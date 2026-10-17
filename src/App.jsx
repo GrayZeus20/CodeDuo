@@ -10,6 +10,7 @@ import Buddy from './components/Buddy.jsx';
 import Home from './components/Home.jsx';
 import Topic from './components/Topic.jsx';
 import Lesson from './components/Lesson.jsx';
+import Materi from './components/Materi.jsx';
 import Profile from './components/Profile.jsx';
 import Terms from './components/Terms.jsx';
 import StorageConsentPrompt from './components/StorageConsentPrompt.jsx';
@@ -29,6 +30,7 @@ export default function App() {
   let screen;
   switch (route.name) {
     case 'topic': screen = <Topic topicId={route.topicId} />; break;
+    case 'materi': screen = <Materi topicId={route.topicId} lessonId={route.lessonId} />; break;
     case 'lesson':
     case 'review': screen = <Lesson />; break;
     case 'profile': screen = <Profile />; break;

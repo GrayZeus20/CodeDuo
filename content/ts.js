@@ -2544,7 +2544,7 @@ const CONTENT_TS = [
           },
           {
             "type": "fill",
-            "q": "Lengkapi parameter generik fungsi first:",
+            "q": "Lengkapi tipe kembalian fungsi generik (elemen yang disimpan array bertipe T):",
             "code": "function first<T>(arr: T[]): ___ { return arr[0]; }",
             "accept": [
               "t",

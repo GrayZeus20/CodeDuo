@@ -130,6 +130,7 @@ function NodeItem({ topicId, node, idx, open, kind }) {
     : [...new Set((node.questionIds || []).map((k) => (k.includes('|') ? k.split('|')[1].split('#')[0] : '')))];
   const stepLessons = t ? t.lessons.filter((l) => lessonIds.includes(l.id)) : [];
   const lessonTitles = stepLessons.map((l) => l.title).join(' · ');
+  const firstLesson = stepLessons[0] || null;
   const onClick = open
     ? (e) => { pop(e.currentTarget); if (isTest) tierTest(topicId, node.id); else stepStart(topicId, node.id); }
     : undefined;
@@ -143,6 +144,14 @@ function NodeItem({ topicId, node, idx, open, kind }) {
           <span className="topic-card__sub-lessons" style={{ display: 'block', fontSize: '0.78rem', color: 'var(--muted)', marginTop: '2px' }}>
             {lessonTitles}
           </span>
+        )}
+        {!isTest && firstLesson && (
+          <a
+            className="materi-link"
+            href={'#/materi/' + topicId + '/' + firstLesson.id}
+            onClick={(e) => e.stopPropagation()}
+            title="Baca materi dulu sebelum latihan"
+          >📖 Baca materi</a>
         )}
       </span>
     </li>

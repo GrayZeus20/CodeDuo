@@ -10,4 +10,12 @@ Options -Indexes
     # Do not rewrite if accessing dist or api or existing files
     RewriteCond %{REQUEST_URI} ^/CodeDuo/?$ [NC]
     RewriteRule ^$ index.php [L]
+    # 2026-10-17 security (audit wave 2): deny dotfile (.env/.git/config) + dot-dir.
+    RewriteRule "(^|/)\.(?!well-known)" - [F]
+</IfModule>
+
+<IfModule mod_authz_core.c>
+    <FilesMatch "^\.">
+        Require all denied
+    </FilesMatch>
 </IfModule>
