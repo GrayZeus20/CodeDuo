@@ -138,7 +138,3 @@ function stateToMoodSafe(state) {
   if (state === 'sleeping') return 'idle';
   return 'idle';
 }
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { IDLE, AMBIENT, newCompanion, tickCompanion, onUserInteract, proactiveContext };
-}

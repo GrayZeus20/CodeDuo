@@ -27,7 +27,8 @@ import {
 import {
   SRS_KEY, SRS_INTERVALS, newSched, schedule, gradeFromResult, dueItems, toJSON, fromJSON,
 } from '../srs.js';
-import { checkFill, checkCode, checkArrange, checkMc } from '../checkers.js';
+import { checkFill, checkArrange, checkMc } from '../checkers.js';
+import { runCodeCheck } from './lib/codeRunner.js';
 import { MAX_HEARTS, mulberry32, shuffled } from './lib/rng.js';
 import {
   ROBOT_NAME, robotSay, stateFromMood,
@@ -636,6 +637,7 @@ function startNode(topicId, nodeId) {
     order: shuffled(keys.map((_, i) => i)),
     pos: 0, hearts: MAX_HEARTS, phase: 'run', lastResult: null,
     mcMap: {}, arrMap: {}, arrPlaced: [], answered: false, wrongOnThis: false, pendingAnswer: null,
+    closeChances: 2, retryActive: false, retryMsg: null, lastInput: null, checking: false,
   };
   onInteraction({ lesson: true, n: 0 });
   /* rute sinkron: #/lesson/<topic>/<node> → router React merender Lesson.
@@ -653,6 +655,7 @@ function startReview() {
     order: shuffled(keys.map((_, i) => i)),
     pos: 0, hearts: MAX_HEARTS, phase: 'run', lastResult: null,
     mcMap: {}, arrMap: {}, arrPlaced: [], answered: false, wrongOnThis: false, pendingAnswer: null,
+    closeChances: 2, retryActive: false, retryMsg: null, lastInput: null, checking: false,
   };
   onInteraction({ lesson: true, n: 0 });
   setHash('#/review');
@@ -784,38 +787,79 @@ export function arrangePick(id) {
   if (session.arrPlaced.includes(id)) return;
   session.arrPlaced.push(id);
   onInteraction({ pick: true, lesson: true, n: 0.4 });
+  bump();
 }
 
 export function arrangeUnpick(id) {
   if (!session || session.answered) return;
   session.arrPlaced = (session.arrPlaced || []).filter((x) => x !== id);
   onInteraction({ pick: true, lesson: true, n: 0.4 });
+  bump();
 }
 
-/* Inti penilaian + SRS + pembelajaran ekspresi. Return objek status untuk efek di komponen. */
-export function answerCheck(answer) {
-  if (!session || session.phase !== 'run' || session.answered) return null;
+export function arrangeReorder(fromIndex, toIndex) {
+  if (!session || session.answered) return;
+  session.arrPlaced = session.arrPlaced || [];
+  if (fromIndex < 0 || fromIndex >= session.arrPlaced.length) return;
+  if (toIndex < 0 || toIndex >= session.arrPlaced.length) return;
+  if (fromIndex === toIndex) return;
+  const next = session.arrPlaced.slice();
+  const [moved] = next.splice(fromIndex, 1);
+  next.splice(toIndex, 0, moved);
+  session.arrPlaced = next;
+  onInteraction({ pick: true, lesson: true, n: 0.4 });
+  bump();
+}
+
+export function arrangeInsert(id, toIndex) {
+  if (!session || session.answered) return;
+  session.arrPlaced = session.arrPlaced || [];
+  const next = session.arrPlaced.filter((x) => x !== id);
+  const targetIdx = Math.max(0, Math.min(toIndex, next.length));
+  next.splice(targetIdx, 0, id);
+  session.arrPlaced = next;
+  onInteraction({ pick: true, lesson: true, n: 0.4 });
+  bump();
+}
+
+export function lessonRetryCurrent() {
+  if (!session || session.phase !== 'feedback') return;
+  session.phase = 'run';
+  session.answered = false;
+  session.lastResult = null;
+  onInteraction({ lesson: true, n: session.order.length ? session.pos / session.order.length : 0 });
+  bump();
+}
+
+/* Inti penilaian + SRS + pembelajaran ekspresi. Return Promise objek status untuk efek di komponen. */
+export async function answerCheck(answer) {
+  if (!session || session.phase !== 'run' || session.answered || session.checking) return null;
   const ex = currentExercise();
   if (!ex) return null;
+
+  session.lastInput = answer;
+
   let result;
   if (ex.type === 'mc') {
     if (answer == null) return { empty: true, message: 'Pilih salah satu jawaban dulu.' };
     result = checkMc(answer, ex);
   }
   else if (ex.type === 'fill') result = checkFill(answer, ex.accept);
-  else if (ex.type === 'code') result = checkCode(answer, { fnName: ex.fn, tests: ex.tests });
+  else if (ex.type === 'code') {
+    /* Kode murid dijalankan di Worker dengan timeout → loop tak berujung tak membekukan tab. */
+    const cur = session;
+    session.checking = true;
+    bump();
+    try {
+      result = await runCodeCheck(answer, { fnName: ex.fn, tests: ex.tests });
+    } finally {
+      if (session === cur) session.checking = false;
+    }
+    if (session !== cur) return null; /* keluar pelajaran / ganti soal saat menunggu */
+  }
   else if (ex.type === 'preview') result = checkPreview(answer, ex);
   else if (ex.type === 'arrange') result = checkArrange(answer, ex.blocks.map((_, i) => String(i)));
   else result = { correct: false, message: 'Tipe soal tidak dikenal.' };
-
-  session.answered = true;
-  const isClose = !result.correct && !!result.close;
-  session.lastResult = {
-    correct: result.correct,
-    close: isClose,
-    message: result.message || (result.correct ? 'Mantap!' : 'Belum tepat.'),
-    explain: ex.explain,
-  };
 
   if (result.reason === 'empty' || result.reason === 'incomplete') {
     session.answered = false;
@@ -825,57 +869,124 @@ export function answerCheck(answer) {
     return { empty: true, message: result.message };
   }
 
+  if (session.closeChances == null) session.closeChances = 2;
+
   if (result.correct) {
+    session.answered = true;
+    session.closeChances = 2;
+    session.retryActive = false;
+    session.retryMsg = null;
+    session.phase = 'feedback';
+    session.lastResult = {
+      correct: true,
+      close: false,
+      retryable: false,
+      message: 'Mantap! Jawabanmu benar.',
+      explain: ex.explain,
+    };
     state.stats.correct += 1;
-  } else if (result.close) {
-    /* ATURAN LONGGAR — "hampir benar":
-     * - nyawa TIDAK dikurangi (beda tipis dari salah sungguhan);
-     * - dicatat sebagai "hampir" di statistik;
-     * - soal diulang di akhir sesi (antrean review mistake ala Duolingo);
-     * - SRS: repeat (tetap di kotak sekarang, due besok) — bukan reset penuh. */
-    state.stats.close = (state.stats.close || 0) + 1;
-    const closeIdx = session.order[session.pos];
-    session.order.push(closeIdx);
-  } else {
-    session.hearts -= 1;
-    session.wrongOnThis = true;
-    state.stats.wrong += 1;
-    if (session.hearts <= 0) {
-      session.phase = 'failed';
-    } else {
-      // Duolingo Review Mistakes Queue:
-      // Soal yang belum tepat diulang di akhir sesi agar seluruh soal pada materi ini
-      // benar-benar habis dan dipahami murid sampai tuntas.
-      const currentIdx = session.order[session.pos];
-      session.order.push(currentIdx);
+    const key = currentKey();
+    if (key) {
+      srs = schedule(srs, key, gradeFromResult(1), Date.now());
+      saveSrs();
     }
+    onInteraction({
+      correct: true,
+      wrong: false,
+      close: false,
+      hearts: 'session',
+      progress: 'session',
+      lesson: true,
+      n: session.order.length ? session.pos / session.order.length : 0,
+    });
+    saveState();
+    return { result: { correct: true, close: false, failed: false } };
   }
-  if (session.phase === 'run') session.phase = 'feedback';
+
+  // JAWABAN TIDAK TEPAT:
+  const isClose = !!result.close;
+  // Diberi kesempatan sebanyak 2x jika jawaban mendekati, salah urutan, kurang benar sedikit:
+  const canRetry = (isClose || session.retryActive) && session.closeChances > 0;
+
+  if (canRetry) {
+    session.retryActive = true;
+    session.closeChances -= 1;
+    session.retryMsg = result.message || 'Jawaban hampir benar.';
+    state.stats.close = (state.stats.close || 0) + 1;
+    session.answered = true;
+    session.phase = 'feedback';
+    session.lastResult = {
+      correct: false,
+      close: true,
+      retryable: true,
+      chancesLeft: session.closeChances,
+      message: result.message || 'Hampir benar!',
+      explain: ex.explain,
+    };
+    onInteraction({
+      correct: false,
+      wrong: false,
+      close: true,
+      hearts: 'session',
+      progress: 'session',
+      lesson: true,
+      n: session.order.length ? session.pos / session.order.length : 0,
+    });
+    saveState();
+    return { result: { correct: false, close: true, retryable: true, failed: false } };
+  }
+
+  // KESEMPATAN HABIS ATAU SALAH TOTAL SEJAK AWAL:
+  session.retryActive = false;
+  session.closeChances = 0;
+  session.retryMsg = null;
+  session.answered = true;
+  session.phase = 'feedback';
+  session.hearts -= 1;
+  session.wrongOnThis = true;
+  state.stats.wrong += 1;
+
+  if (session.hearts <= 0) {
+    session.phase = 'failed';
+  } else {
+    const currentIdx = session.order[session.pos];
+    session.order.push(currentIdx);
+  }
+
+  session.lastResult = {
+    correct: false,
+    close: false,
+    retryable: false,
+    message: isClose ? ('Kesempatan perbaikan habis. ' + (result.message || '')) : (result.message || 'Belum tepat.'),
+    explain: ex.explain,
+  };
 
   const key = currentKey();
   if (key) {
-    /* SRS: benar → naik kotak; hampir benar → repeat (tetap di kotak sekarang, due besok);
-     * salah → reset kotak. */
-    const grade = result.correct ? 1 : (isClose ? 2 : 0);
-    srs = schedule(srs, key, gradeFromResult(grade), Date.now());
+    srs = schedule(srs, key, gradeFromResult(0), Date.now());
     saveSrs();
   }
 
   onInteraction({
-    correct: session.lastResult.correct,
-    wrong: !session.lastResult.correct && !isClose,
-    close: isClose,
+    correct: false,
+    wrong: true,
+    close: false,
     hearts: 'session',
     progress: 'session',
     lesson: true,
     n: session.order.length ? session.pos / session.order.length : 0,
   });
   saveState();
-  return { result: { correct: result.correct, close: isClose, failed: session.phase === 'failed' } };
+  return { result: { correct: false, close: false, failed: session.phase === 'failed' } };
 }
 
 export function lessonContinue() {
   if (!session || session.phase !== 'feedback') return false;
+  // Jika user melewati (skip) soal yang hampir benar tanpa retry, ulangi di akhir sesi
+  if (session.lastResult && session.lastResult.close && session.lastResult.retryable) {
+    const currentIdx = session.order[session.pos];
+    session.order.push(currentIdx);
+  }
   if (session.pos >= session.order.length - 1) return finishLesson();
   session.pos += 1;
   session.phase = 'run';
@@ -884,6 +995,10 @@ export function lessonContinue() {
   session.lastResult = null;
   session.pendingAnswer = null;
   session.arrPlaced = [];
+  session.closeChances = 2;
+  session.retryActive = false;
+  session.retryMsg = null;
+  session.lastInput = null;
   onInteraction({ lesson: true, progress: 'session', hearts: 'session', n: session.order.length ? session.pos / session.order.length : 0 });
   return false;
 }
@@ -963,7 +1078,22 @@ export function initStore() {
   loadState();
   loadSrs();
   loadExpression();
-  state.path = CURRICULUM.map((t) => t.id);
+  /* Migrasi path tersimpan: buang id usang, tambah topik baru di akhir.
+   * User baru tetap dapat urutan kurikulum (bukan diacak). */
+  state.path = syncPath(state.path || CURRICULUM.map((t) => t.id), mulberry32(state.seed));
+  /* Hormati prefers-reduced-motion OS selama user belum memilih eksplisit di profil. */
+  try {
+    if (typeof localStorage !== 'undefined') {
+      const pref = localStorage.getItem('codeduo_motion');
+      if (pref === 'enabled') state.motionEnabled = true;
+      else if (pref === 'disabled') state.motionEnabled = false;
+      else {
+        const reduced = typeof window !== 'undefined' && typeof window.matchMedia === 'function'
+          && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced) state.motionEnabled = false;
+      }
+    }
+  } catch (_) {}
   if (typeof document !== 'undefined') {
     const enabled = state.motionEnabled !== false;
     document.documentElement.classList.toggle('motion-enabled', enabled);

@@ -1,7 +1,7 @@
 /* CodeDuo — blok konten: TypeScript · REST API.
  * 2 topik (ts, rest) × 31 pelajaran (10 Dasar, 10 Menengah, 11 Advance). Total 610 soal (305 per topik).
  * Engine di content.js (barrel) & app.js. Format tipe soal: mc | fill | code | preview | arrange.
- * Dual-mode: browser pakai global CONTENT_TS; Node pakai module.exports.
+ * ESM murni: dipakai Vite (browser) & Node (test).
  */
 'use strict';
 
@@ -7724,7 +7724,3 @@ const CONTENT_TS = [
 ];
 
 export { CONTENT_TS };
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { CONTENT_TS };
-}

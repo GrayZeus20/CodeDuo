@@ -1,7 +1,7 @@
 /* CodeDuo — blok konten: SQL · Database · API.
  * 3 topik (sql, db, api) × 31 pelajaran (10 Dasar, 10 Menengah, 11 Advance). Total 915 soal (305 per topik).
  * Engine di content.js (barrel) & app.js. Format tipe soal: mc | fill | code | preview | arrange.
- * Dual-mode: browser pakai global CONTENT_SQL; Node pakai module.exports.
+ * ESM murni: dipakai Vite (browser) & Node (test).
  */
 'use strict';
 
@@ -1422,6 +1422,7 @@ const CONTENT_SQL = [
             "q": "Lengkapi kolom pengelompokan agar sesuai dengan kolom yang diseleksi:",
             "code": "SELECT bulan, SUM(total) FROM sales GROUP BY ___;",
             "accept": [
+              "bulan",
               "month"
             ],
             "explain": "Kolom yang di-SELECT di luar agregat harus ada di GROUP BY."
@@ -11537,7 +11538,3 @@ const CONTENT_SQL = [
 ];
 
 export { CONTENT_SQL };
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { CONTENT_SQL };
-}

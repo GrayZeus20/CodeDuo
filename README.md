@@ -20,7 +20,7 @@ npm run preview    # cek hasil build
 
 ```
 index.html            entry Vite (root #root + /src/main.jsx)
-vite.config.js        base './', manualChunks (react, robot-heads)
+vite.config.js        base './', manualChunks (react/robot/vendor/content-*), plugin swBuildId()
 public/               aset statis disalin apa adanya ke dist/
                       styles.css, manifest.json, icon*, 404.html, robots.txt, sw.js
 src/
@@ -31,10 +31,12 @@ src/
   useStore.js         useSyncExternalStore(subscribe, getSnapshot)
   lib/rng.js          mulberry32 / shuffled / MAX_HEARTS
   lib/motion.js       anime.js + canvas-confetti (no-op saat reduced-motion)
+  lib/codeRunner.js   jawaban 'code' → Worker + timeout (Node: jalur sinkron)
+  lib/codeWorker.js   worker: jalankan checkCode, jauh dari main thread
   components/         Topbar, Buddy, Bib, Home, Topic, Lesson, Profile
 content/              kurikulum dipecah per blok (html, js, sql, ts, web)
 content.js            barrel: CURRICULUM + helper murni (step/ujian/SRS key)
-checkers.js  srs.js  robot.js  sfx.js    mesin murni (dual-mode: ESM + CJS)
+checkers.js  srs.js  robot.js  sfx.js    mesin murni (ESM)
 ```
 
 ### Engine dipisah dari DOM
@@ -137,15 +139,15 @@ Kepala Bibit dirender komponen `<RobotHead>` dari paket **`robot-heads`** apa ad
 ## Tes
 
 ```bash
-npm test                  # node test.js → checker, kurikulum (10 topik/300 soal/tier=10),
-                          # step & SRS, wajah LED, animasi head, migrasi path, model ekspresi
-npm run test-companion    # node test-companion.mjs → planner otonom Bibit (idle/proaktif/hint)
+npm test                  # node test.js → checker+runner, kurikulum (10 topik/3050 soal),
+                          # step & SRS, store (migrasi path, prefers-reduced-motion),
+                          # wajah LED, animasi head, model ekspresi
+npm run test:companion    # node test-companion.mjs → planner otonom Bibit (idle/proaktif/hint)
 npm run build             # vite build (gate: 0 error)
 ```
 
 `package.json` = `"type": "module"` → `test.js` & `test-companion.mjs` jalan sebagai ESM
-(`import`). Modul mesin **dual-mode** (`export` untuk Vite/ESM + `module.exports` untuk
-`require()` legacy), jadi satu sumber jalan di dua runtime.
+(`import`), sama seperti modul mesin.
 
 ## Deploy ke Cloudflare Pages
 
@@ -165,8 +167,10 @@ Atau lewat dashboard Cloudflare Pages:
 `base: './'` → hasil build aman walau di-host di subfolder. **Rute hash**
 (`#/lesson/...`) berarti deep-link aman tanpa aturan rewrite.
 
-**Bump `VERSION` di `public/sw.js` tiap deploy** yang mengubah aset shell — aset
-ber-hash Vite di-cache runtime (cache-first), shell di-precache.
+Versi cache service worker **tidak perlu di-bump manual**: plugin `swBuildId()` di
+`vite.config.js` mengisi `__BUILD_ID__` di `dist/sw.js` dengan hash build, jadi cache
+lama otomatis dibuang tiap deploy. Aset ber-hash Vite = cache-first (immutable);
+`styles.css`/manifest/ikon = stale-while-revalidate (update ikut terkirim).
 
 ## Offline — apa adanya
 
@@ -176,9 +180,10 @@ dibundel Vite), jadi tidak ada request aset eksternal sama sekali.
 
 ## Keamanan
 
-`checkCode` menjalankan jawaban murid lewat `new Function` di **browser murid sendiri**
-(sandbox = tab user, bukan server). Untuk tool satu-user ini aman; kalau nanti multi-user
-daring, pindah ke Web Worker + timeout + iframe sandbox.
+`checkCode` menjalankan jawaban murid lewat `new Function` di **Worker terpisah** di
+browser murid sendiri (sandbox = tab user, bukan server), dengan batas waktu 1,2 dtk —
+loop tak berujung hanya mematikan worker, bukan membekukan tab. Untuk tool satu-user ini
+aman; kalau nanti multi-user daring, jalankan worker di origin terisolasi.
 
 ## Atribusi
 
@@ -188,8 +193,8 @@ daring, pindah ke Web Worker + timeout + iframe sandbox.
 
 ## Checklist launch
 
-- [x] `npm test` hijau (84 tes) + `npm run test-companion` hijau
-- [x] Tiket PWA: icon 192/512 (maskable), manifest, service worker (`codeduo-v13`)
+- [x] `npm test` hijau (92 tes) + `npm run test:companion` hijau + CI (`.github/workflows/ci.yml`)
+- [x] Tiket PWA: icon 192/512 (maskable), manifest, service worker (cache id = hash build)
 - [x] `robots.txt`, `404.html`, `LICENSE`, `README.md`
 - [x] Meta sosial dasar (og/twitter, tanpa og:image agar tak 404)
 - [x] Nol CDN runtime — anime.js & canvas-confetti dibundel Vite (offline 100%)

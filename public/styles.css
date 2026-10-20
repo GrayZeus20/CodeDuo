@@ -628,6 +628,52 @@ input, textarea, [contenteditable="true"] {
   cursor: pointer;
   box-shadow: 0 2px 0 var(--line);
   font-weight: 600;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.arr-block[draggable="true"] {
+  cursor: grab;
+}
+
+.arr-block:active {
+  cursor: grabbing;
+}
+
+.arr-block.is-dragging {
+  opacity: 0.45;
+  transform: scale(0.96);
+  border-style: dashed;
+}
+
+.arr-block.drag-over {
+  border-color: var(--blue) !important;
+  box-shadow: 0 0 0 3px rgba(28, 176, 246, 0.4), 0 3px 6px rgba(0, 0, 0, 0.12);
+  transform: scale(1.05);
+  background: #eaf6ff;
+}
+
+.arr-drag-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+  opacity: 0.55;
+  font-size: 0.95rem;
+  cursor: grab;
+  user-select: none;
+}
+
+.arr-zone.drag-active {
+  border-color: var(--blue);
+  background: #eef7ff;
+}
+
+.arr-pool.drag-active {
+  background: #fff2f2;
+  border-radius: 12px;
 }
 
 .arr-block--placed { border-color: var(--green); background: #f4fbe9; }

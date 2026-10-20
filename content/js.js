@@ -1,7 +1,7 @@
 /* CodeDuo — blok konten: JavaScript · Struktur Data.
  * 2 topik (js, ds) × 31 pelajaran (10 Dasar, 10 Menengah, 11 Advance). Total 610 soal (305 per topik).
  * Engine di content.js (barrel) & app.js. Format tipe soal: mc | fill | code | preview | arrange.
- * Dual-mode: browser pakai global CONTENT_JS; Node pakai module.exports.
+ * ESM murni: dipakai Vite (browser) & Node (test).
  */
 'use strict';
 
@@ -2740,12 +2740,13 @@ const CONTENT_JS = [
           },
           {
             "type": "fill",
-            "q": "Lengkapi destructure untuk mengambil properti pertama dari objek profil:",
+            "q": "Lengkapi destructure untuk mengambil properti nama dari objek profil:",
             "code": "const { ___ } = profil;",
             "accept": [
-              "name"
+              "name",
+              "nama"
             ],
-            "explain": "const { name } = user; mengambil user.name."
+            "explain": "const { name } = profil; atau const { nama } = profil; mengekstrak properti menjadi variabel lokal."
           },
           {
             "type": "mc",
@@ -4131,6 +4132,7 @@ const CONTENT_JS = [
             "code": "['a','b'].join(___);",
             "accept": [
               "' '",
+              "\" \"",
               " "
             ],
             "explain": "join(' ') menyatukan dengan spasi."
@@ -7814,7 +7816,3 @@ const CONTENT_JS = [
 ];
 
 export { CONTENT_JS };
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { CONTENT_JS };
-}

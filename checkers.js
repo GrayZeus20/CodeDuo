@@ -90,6 +90,13 @@ function checkFill(user, accept) {
   if (bestSimilarity(u, list.map((a) => normalizeCode(a))) >= CLOSE_THRESHOLD) {
     return { correct: false, close: true, message: 'Hampir benar! Ada huruf yang keliru, cek lagi.' };
   }
+  /* Aturan longgar #4: kurang benar sedikit (potongan/substring/awalan) */
+  if (list.some((a) => {
+    const na = normalizeCode(a);
+    return (na.length >= 3 && u.length >= 3 && (na.includes(u) || u.includes(na)));
+  })) {
+    return { correct: false, close: true, message: 'Kurang sedikit lagi! Cek kembali penulisan jawabanmu.' };
+  }
   return { correct: false, reason: 'wrong', message: 'Jawaban belum tepat.' };
 }
 
@@ -99,12 +106,15 @@ function checkArrange(userOrder, blocks) {
     return { correct: false, reason: 'incomplete', message: 'Susun dulu semua bloknya.' };
   }
   if (userOrder.every((id, i) => id === blocks[i])) return { correct: true };
-  /* Aturan longgar: susunan hampir pas — maksimal 2 posisi meleset dan bloknya sama semua
-   * → "hampir benar", tanpa -1 nyawa. */
+  /* Aturan longgar: susunan salah urutan — semua blok lengkap tapi urutan belum pas
+   * → "hampir benar / salah urutan", diberi kesempatan memperbaiki. */
   const wrongPos = userOrder.filter((id, i) => id !== blocks[i]).length;
   const sameSet = userOrder.slice().sort().join('\u0000') === blocks.slice().sort().join('\u0000');
-  if (sameSet && wrongPos <= 2) {
-    return { correct: false, close: true, message: 'Hampir benar! Tinggal sedikit blok yang belum di tempat yang pas.' };
+  if (sameSet) {
+    if (wrongPos <= 2) {
+      return { correct: false, close: true, message: 'Hampir benar! Tinggal sedikit blok yang belum di tempat yang pas.' };
+    }
+    return { correct: false, close: true, message: 'Urutan blok belum tepat. Coba atur kembali posisinya.' };
   }
   return { correct: false, reason: 'wrong', message: 'Urutan blok belum benar.' };
 }
@@ -188,8 +198,3 @@ function checkCode(userCode, spec) {
 }
 
 export { normalizeCode, looseNormalize, similarity, CLOSE_THRESHOLD, checkFill, checkArrange, checkMc, checkCode };
-
-/* Node CJS tetap jalan (require()). ESM = jalur utama Vite & test. */
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { normalizeCode, looseNormalize, similarity, CLOSE_THRESHOLD, checkFill, checkArrange, checkMc, checkCode };
-}

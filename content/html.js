@@ -1,7 +1,7 @@
 /* CodeDuo — blok konten: HTML · CSS.
  * 2 topik (html, css) × 31 pelajaran (10 Dasar, 10 Menengah, 11 Advance). Total 610 soal (305 per topik).
  * Engine di content.js (barrel) & app.js. Format tipe soal: mc | fill | code | preview | arrange.
- * Dual-mode: browser pakai global CONTENT_HTML; Node pakai module.exports.
+ * ESM murni: dipakai Vite (browser) & Node (test).
  */
 'use strict';
 
@@ -2432,9 +2432,10 @@ const CONTENT_HTML = [
           {
             "type": "fill",
             "q": "Lengkapi atribut type sumber video untuk file berformat MP4:",
-            "code": "<video controls>\n  <source src=\"film.webm\" type=\"video/___\">\n</video>",
+            "code": "<video controls>\n  <source src=\"film.mp4\" type=\"video/___\">\n</video>",
             "accept": [
-              "mp4"
+              "mp4",
+              "webm"
             ],
             "explain": "type=\"video/mp4\" menginformasikan codec file ke browser."
           },
@@ -3064,6 +3065,7 @@ const CONTENT_HTML = [
             "q": "Hubungkan input dengan pesan bantuan: isi aria-describedby dengan id elemen bantu:",
             "code": "<input aria-describedby=\"___\">\n<span id=\"petunjuk\">Minimal 8 karakter</span>",
             "accept": [
+              "petunjuk",
               "hint"
             ],
             "explain": "aria-describedby mengambil id teks bantuan."
@@ -6308,10 +6310,12 @@ const CONTENT_HTML = [
           {
             "type": "fill",
             "q": "Lengkapi fungsi transform yang menggeser elemen mengikuti sumbu horizontal:",
-            "code": ".box {\n  transform: ___(-50%);\n}",
+            "code": ".box {\n  transform: translate___(-50%);\n}",
             "accept": [
               "X",
-              "x"
+              "x",
+              "translateX",
+              "translatex"
             ],
             "explain": "translateX menggeser pada sumbu horizontal."
           },
@@ -7012,7 +7016,9 @@ const CONTENT_HTML = [
             "q": "Lengkapi rasio aspek untuk persegi (lebar dibanding tinggi):",
             "code": ".kotak {\n  aspect-ratio: ___;\n}",
             "accept": [
-              "1"
+              "1",
+              "1 / 1",
+              "1/1"
             ],
             "explain": "aspect-ratio: 1 / 1 menjamin bentuk bujur sangkar sempurna."
           },
@@ -7174,7 +7180,3 @@ const CONTENT_HTML = [
 ];
 
 export { CONTENT_HTML };
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { CONTENT_HTML };
-}

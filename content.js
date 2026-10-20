@@ -12,7 +12,7 @@
  * Total per topik: 31 step + 3 ujian = 34 node.
  * Tipe soal: mc | fill | code | preview | arrange
  *
- * Dual-mode: ESM (import) untuk Vite/test; blok konten tetap juga Node-CJS via require().
+ * ESM murni: dipakai Vite (browser) & Node (test).
  */
 'use strict';
 
@@ -142,12 +142,3 @@ export {
   stepsForTopic, allQuestionIds, questionKey, resolveQuestion, exerciseById,
   TIER_ORDER, STEP_SIZE,
 };
-
-/* Node CJS tetap jalan (require()). ESM = jalur utama Vite & test. */
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    CURRICULUM, syncPath,
-    stepsForTopic, allQuestionIds, questionKey, resolveQuestion, exerciseById,
-    TIER_ORDER, STEP_SIZE,
-  };
-}

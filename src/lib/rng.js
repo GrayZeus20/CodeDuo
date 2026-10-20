@@ -23,7 +23,3 @@ export function shuffled(arr, rng) {
   }
   return a;
 }
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { MAX_HEARTS, mulberry32, shuffled };
-}

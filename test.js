@@ -1,6 +1,5 @@
 /* CodeDuo — self-test. Run: node test.js
- * `package.json` = type:module → file ini ESM. Modul mesin tetap dual-mode (export + module.exports),
- * jadi import di sini & require() legacy sama-sama valid. */
+ * `package.json` = type:module → file ini ESM (import), sama seperti modul mesin. */
 'use strict';
 import assert from 'node:assert/strict';
 import { normalizeCode, checkFill, checkCode, checkArrange } from './checkers.js';
@@ -54,6 +53,11 @@ t('fill edge: kosong ditolak', () => {
 t('fill error: salah ditolak', () => {
   assert.strictEqual(checkFill('selectt', ['select']).correct, false);
 });
+t('fill: mendekati / kurang sedikit memberikan close: true', () => {
+  const r = checkFill('translat', ['translateX']);
+  assert.strictEqual(r.correct, false);
+  assert.strictEqual(r.close, true);
+});
 
 /* --- checkArrange --- */
 const blocks = ['b0', 'b1', 'b2'];
@@ -66,7 +70,14 @@ t('arrange edge: belum lengkap', () => {
   assert.strictEqual(r.reason, 'incomplete');
 });
 t('arrange error: urut salah', () => {
-  assert.strictEqual(checkArrange(['b2', 'b1', 'b0'], blocks).correct, false);
+  const r = checkArrange(['b2', 'b1', 'b0'], blocks);
+  assert.strictEqual(r.correct, false);
+  assert.strictEqual(r.close, true);
+});
+t('arrange error: urut salah total (semua posisi meleset tapi blok lengkap) tetap close: true', () => {
+  const r = checkArrange(['b1', 'b2', 'b0'], blocks);
+  assert.strictEqual(r.correct, false);
+  assert.strictEqual(r.close, true);
 });
 t('arrange error: null userOrder', () => {
   assert.strictEqual(checkArrange(null, blocks).correct, false);
@@ -221,6 +232,24 @@ t('curriculum: arrange — blocks non-empty', () => {
       assert.ok(Array.isArray(ex.blocks) && ex.blocks.length >= 2, where + ' blocks');
     });
   }));
+});
+t('curriculum: verifikasi perbaikan bug soal', () => {
+  const html21_6 = resolveQuestion('html|html-21#6');
+  assert.ok(html21_6.accept.includes('mp4'), 'html-21#6 harus terima mp4');
+  assert.ok(html21_6.code.includes('film.mp4'), 'html-21#6 code harus film.mp4');
+
+  const html26_9 = resolveQuestion('html|html-26#9');
+  assert.ok(html26_9.accept.includes('petunjuk'), 'html-26#9 harus terima petunjuk');
+
+  const css24_1 = resolveQuestion('css|css-24#1');
+  assert.ok(css24_1.accept.includes('translateX') || css24_1.accept.includes('X'), 'css-24#1 harus terima translateX/X');
+  assert.ok(css24_1.code.includes('translate___'), 'css-24#1 code harus translate___');
+
+  const sql12_4 = resolveQuestion('sql|sql-12#4');
+  assert.ok(sql12_4.accept.includes('bulan'), 'sql-12#4 harus terima bulan');
+
+  const js22_1 = resolveQuestion('js|js-22#1');
+  assert.ok(js22_1.accept.includes('nama') && js22_1.accept.includes('name'), 'js-22#1 harus terima nama dan name');
 });
 t('curriculum: jumlah soal terdokumentasi (3050)', () => {
   assert.strictEqual(totalSoal, 3050);
@@ -701,6 +730,83 @@ t('expr: stateToMood menutup semua state → mood valid', () => {
   assert.strictEqual(stateToMood('error'), 'sad');
   assert.strictEqual(stateToMood('happy'), 'celebrate');
 });
+
+/* --- store: migrasi path & prefers-reduced-motion (butuh stub DOM/localStorage) --- */
+const mem = {};
+globalThis.localStorage = {
+  getItem: (k) => (k in mem ? mem[k] : null),
+  setItem: (k, v) => { mem[k] = String(v); },
+  removeItem: (k) => { delete mem[k]; },
+};
+let osReduced = false;
+globalThis.window = { matchMedia: () => ({ matches: osReduced }) };
+const htmlClasses = new Set();
+globalThis.document = {
+  documentElement: {
+    classList: { toggle: (c, on) => { if (on) htmlClasses.add(c); else htmlClasses.delete(c); } },
+  },
+};
+const { initStore, dumpState, isMotionEnabled } = await import('./src/store.js');
+
+t('store: path tersimpan dimigrasi, bukan direset (id usang dibuang, topik baru ditambah)', () => {
+  localStorage.setItem('codeduo_state_v1', JSON.stringify({ version: 1, path: ['css', 'topik-hantu', 'html'], progress: {} }));
+  initStore();
+  const p = (() => {
+    const log = console.log; console.log = () => {};
+    try { return dumpState().persisted.path; } finally { console.log = log; }
+  })();
+  assert.deepStrictEqual(p.slice(0, 2), ['css', 'html'], 'urutan lama harus dipertahankan: ' + p);
+  assert.strictEqual(p.length, CURRICULUM.length);
+  assert.strictEqual(new Set(p).size, CURRICULUM.length, 'tak boleh ada duplikat: ' + p);
+});
+t('store: prefers-reduced-motion OS dihormati; pilihan eksplisit user menang', () => {
+  localStorage.removeItem('codeduo_state_v1');
+  osReduced = true;
+  initStore();
+  assert.strictEqual(isMotionEnabled(), false, 'OS minta hemat gerakan → harus statis');
+  assert.ok(htmlClasses.has('reduced-motion') && !htmlClasses.has('motion-enabled'), 'kelas CSS statis');
+  localStorage.setItem('codeduo_motion', 'enabled');
+  initStore();
+  assert.strictEqual(isMotionEnabled(), true, 'user memilih aktif → harus aktif');
+  assert.ok(htmlClasses.has('motion-enabled'));
+  osReduced = false;
+  localStorage.removeItem('codeduo_motion');
+  initStore();
+  assert.strictEqual(isMotionEnabled(), true, 'default tanpa sinyal OS → aktif');
+});
+
+/* --- runner kode: jalur sinkron di Node (tanpa Worker) --- */
+const { runCodeCheck } = await import('./src/lib/codeRunner.js');
+const okRun = await runCodeCheck('function add(a, b) { return a + b; }', {
+  fnName: 'add',
+  tests: [{ args: [2, 3], expected: 5 }],
+});
+const badRun = await runCodeCheck('function add(a, b) { return a - b; }', {
+  fnName: 'add',
+  tests: [{ args: [2, 3], expected: 5 }],
+});
+t('runner: tanpa Worker (Node) jalur sinkron memberi hasil sama seperti checkCode', () => {
+  assert.strictEqual(okRun.correct, true);
+  assert.strictEqual(badRun.correct, false);
+  assert.strictEqual(badRun.reason, 'wrong-output');
+});
+
+/* --- runner kode: worker + timeout (loop tak berujung tidak menggantung) --- */
+globalThis.window = { matchMedia: () => ({ matches: false }) };
+let terminated = false;
+globalThis.Worker = class {
+  constructor() { this.onmessage = null; this.onerror = null; terminated = false; }
+  postMessage() { /* sengaja bisu: mensimulasikan kode murid yang tak pernah selesai */ }
+  terminate() { terminated = true; }
+};
+const timeoutResult = await runCodeCheck('function f() { while (true) {} }', { fnName: 'f', tests: [] }, 40);
+t('runner: kode yang menggantung di-terminate & dianggap "hampir benar" (tanpa -1 nyawa)', () => {
+  assert.strictEqual(timeoutResult.correct, false);
+  assert.strictEqual(timeoutResult.close, true, 'timeout tak boleh mengurangi nyawa');
+  assert.ok(/kelamaan/.test(timeoutResult.message), 'pesan harus menjelaskan: ' + timeoutResult.message);
+  assert.strictEqual(terminated, true, 'worker harus di-terminate');
+});
+delete globalThis.Worker;
 
 console.log('\n' + passed + ' passed, ' + failed + ' failed');
 process.exit(failed === 0 ? 0 : 1);

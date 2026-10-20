@@ -1,7 +1,7 @@
 /* CodeDuo — blok konten: Blok Web (peta fungsi & arsitektur web).
  * 1 topik (web) × 31 pelajaran (10 Dasar, 10 Menengah, 11 Advance). Total 305 soal.
  * Engine di content.js (barrel) & app.js. Format tipe soal: mc | fill | code | preview | arrange.
- * Dual-mode: browser pakai global CONTENT_WEB; Node pakai module.exports.
+ * ESM murni: dipakai Vite (browser) & Node (test).
  */
 'use strict';
 
@@ -3882,7 +3882,3 @@ const CONTENT_WEB = [
 ];
 
 export { CONTENT_WEB };
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { CONTENT_WEB };
-}

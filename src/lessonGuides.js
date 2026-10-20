@@ -276,8 +276,3 @@ function lessonGuide(lesson) {
 }
 
 export { LESSON_GUIDES, lessonGuide, titleize };
-
-/* Node CJS tetap jalan (require()). */
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { LESSON_GUIDES, lessonGuide, titleize };
-}

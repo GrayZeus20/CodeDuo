@@ -148,12 +148,3 @@ export {
   newSched, intervalFor, gradeFromResult, schedule, isScheduled, isDue,
   dueItems, dueCount, toJSON, fromJSON,
 };
-
-/* Node CJS tetap jalan (require()). ESM = jalur utama Vite & test. */
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    SRS_KEY, SRS_VERSION, SRS_INTERVALS, SRS_MAX_BOX, DAY_MS,
-    newSched, intervalFor, gradeFromResult, schedule, isScheduled, isDue,
-    dueItems, dueCount, toJSON, fromJSON,
-  };
-}

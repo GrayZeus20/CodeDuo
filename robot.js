@@ -698,8 +698,13 @@ function mountRobotHead(el, opts) {
   /* seed deterministik per state (hash nama state) → tiap state punya fase gerak sendiri,
    * bukan semua osilasi serempak. Caller boleh menimpanya lewat o.seed. */
   const seed = Number.isFinite(o.seed) ? o.seed : _rhHash(state);
-  const reduced = typeof window !== 'undefined' && window.matchMedia
+  let reduced = typeof window !== 'undefined' && window.matchMedia
     && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  try {
+    const pref = localStorage.getItem('codeduo_motion');
+    if (pref === 'enabled') reduced = false;
+    else if (pref === 'disabled') reduced = true;
+  } catch (_) {}
 
   canvas.width = Math.round(size * dpr);
   canvas.height = Math.round(size * dpr);
@@ -903,15 +908,3 @@ export {
   EXPR_STATES, EXPR_FEATURES, exprFeatures, exprLabelIndex,
   createExpressionModel, restoreExpressionModel, exprLearn, exprProbs, pickExpression, stateToMood,
 };
-
-/* Node CJS tetap jalan (require()). ESM = jalur utama Vite & test. */
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    ROBOT_NAME, ROBOT_MOODS, ROBOT_STATES,
-    robotSVG, robotSay, robotReact,
-    stateFromMood, ledMatrixFor, mountRobotHead,
-    RH_MOTION, RH_COLORS, _rhHash, _rhFrame, _rhMotionFor, _rhFaceGrid,
-    EXPR_STATES, EXPR_FEATURES, exprFeatures, exprLabelIndex,
-    createExpressionModel, restoreExpressionModel, exprLearn, exprProbs, pickExpression, stateToMood,
-  };
-}

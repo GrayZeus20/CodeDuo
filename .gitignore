@@ -34,6 +34,9 @@ src/plugins/impeccable-live.client.ts
 # Dependensi & cache
 node_modules/
 
+# Hasil build (dibuat saat deploy/CI, jangan di-commit)
+/dist/
+
 # Impeccable (tooling lokal, bukan bagian produk)
 .impeccable/
 

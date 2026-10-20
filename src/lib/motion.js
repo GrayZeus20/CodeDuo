@@ -8,7 +8,9 @@ import confetti from 'canvas-confetti';
 export function isReduced() {
   if (typeof window === 'undefined') return true;
   try {
-    if (localStorage.getItem('codeduo_motion') === 'disabled') return true;
+    const pref = localStorage.getItem('codeduo_motion');
+    if (pref === 'disabled') return true;
+    if (pref === 'enabled') return false; /* pilihan eksplisit user menang atas OS */
   } catch (_) {}
   return typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }

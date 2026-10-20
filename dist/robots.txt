@@ -1,3 +1,0 @@
-# CodeDuo — aplikasi belajar pemrograman. Publik, tanpa area privat.
-User-agent: *
-Allow: /
