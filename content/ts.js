@@ -162,7 +162,8 @@ const CONTENT_TS = [
             "q": "Property opsional (boleh tidak diisi) ditandai:",
             "code": "interface User {\n  email: string;\n  phone___ : string;\n}",
             "accept": [
-              "?"
+              "?",
+              "phone?"
             ],
             "explain": "Tanda ? = optional property."
           },
@@ -1290,6 +1291,7 @@ const CONTENT_TS = [
             "code": "type Status = \"on\" | ___;",
             "accept": [
               "\"off\"",
+              "'off'",
               "off"
             ],
             "explain": "Union memisah dengan tanda |"
@@ -2672,7 +2674,9 @@ const CONTENT_TS = [
             "code": "type Arah = \"atas\" | \"bawah\" | \"___\";",
             "accept": [
               "kiri",
-              "kanan"
+              "kanan",
+              "depan",
+              "belakang"
             ],
             "explain": "Literal union = himpunan nilai terbatas."
           },
@@ -4009,7 +4013,9 @@ const CONTENT_TS = [
             "q": "Koleksi pakai nama jamak — lengkapi:",
             "code": "GET /api/___   // daftar artikel",
             "accept": [
-              "articles"
+              "articles",
+              "artikel",
+              "artikels"
             ],
             "explain": "Plural noun = koleksi (articles, users)."
           },
@@ -4042,8 +4048,11 @@ const CONTENT_TS = [
             "code": "GET /api/users/___",
             "accept": [
               "42",
+              "1",
+              "123",
               "{id}",
-              ":id"
+              ":id",
+              "id"
             ],
             "explain": "Identifier ditaruh di segmen path."
           },

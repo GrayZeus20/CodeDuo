@@ -2,7 +2,7 @@
  * `package.json` = type:module → file ini ESM (import), sama seperti modul mesin. */
 'use strict';
 import assert from 'node:assert/strict';
-import { normalizeCode, checkFill, checkCode, checkArrange } from './checkers.js';
+import { normalizeCode, quoteNormalized, canonCode, checkFill, checkCode, checkArrange } from './checkers.js';
 import { CURRICULUM, syncPath, stepsForTopic, allQuestionIds, resolveQuestion, questionKey, TIER_ORDER, STEP_SIZE } from './content.js';
 import * as SRS from './srs.js';
 import {
@@ -45,6 +45,18 @@ t('fill happy: accept variant with different case/semicolon', () => {
 t('fill happy: alternatif accept', () => {
   assert.strictEqual(checkFill('off', ['"off"', 'off']).correct, true);
 });
+t('fill happy: kutip tunggal dan ganda ekuivalen', () => {
+  assert.strictEqual(checkFill("'off'", ['"off"']).correct, true);
+  assert.strictEqual(checkFill('"off"', ["'off'"]).correct, true);
+  assert.strictEqual(checkFill("'puncak'", ['"puncak"']).correct, true);
+});
+t('fill happy: spasi di sekitar operator/simbol diabaikan', () => {
+  assert.strictEqual(checkFill('1/1', ['1 / 1']).correct, true);
+  assert.strictEqual(checkFill('1 / 1', ['1/1']).correct, true);
+  assert.strictEqual(checkFill('... b', ['...b']).correct, true);
+  assert.strictEqual(checkFill('a + b', ['a+b']).correct, true);
+  assert.strictEqual(checkFill('a+b', ['a + b']).correct, true);
+});
 t('fill edge: kosong ditolak', () => {
   const r = checkFill('   ', ['where']);
   assert.strictEqual(r.correct, false);
@@ -57,6 +69,18 @@ t('fill: mendekati / kurang sedikit memberikan close: true', () => {
   const r = checkFill('translat', ['translateX']);
   assert.strictEqual(r.correct, false);
   assert.strictEqual(r.close, true);
+});
+t('fill: spasi tanpa tanda kutip memberikan close: true dengan petunjuk kutip', () => {
+  const r = checkFill(' ', ["' '", '" "']);
+  assert.strictEqual(r.correct, false);
+  assert.strictEqual(r.close, true);
+  assert.ok(r.message.includes('tanda kutip'));
+});
+t('fill: tag HTML beda kurung siku memberikan close: true dengan petunjuk < >', () => {
+  const r = checkFill('<header>', ['header']);
+  assert.strictEqual(r.correct, false);
+  assert.strictEqual(r.close, true);
+  assert.ok(r.message.includes('< >'));
 });
 
 /* --- checkArrange --- */
@@ -250,6 +274,32 @@ t('curriculum: verifikasi perbaikan bug soal', () => {
 
   const js22_1 = resolveQuestion('js|js-22#1');
   assert.ok(js22_1.accept.includes('nama') && js22_1.accept.includes('name'), 'js-22#1 harus terima nama dan name');
+
+  const html1_1 = resolveQuestion('html|html-1#1');
+  assert.ok(html1_1.accept.includes('<!doctype html>') && html1_1.accept.includes('<!DOCTYPE html>'), 'html-1#1 harus terima doctype varian');
+
+  const html9_2 = resolveQuestion('html|html-9#2');
+  assert.strictEqual(html9_2.accept.length, 1, 'html-9#2 accept tidak boleh duplikat');
+
+  const js21_7 = resolveQuestion('js|js-21#7');
+  const js21_blocks = js21_7.blocks.map((b) => b.trim());
+  assert.strictEqual(new Set(js21_blocks).size, js21_blocks.length, 'js-21#7 blok tidak boleh ambigu/duplikat');
+
+  const ds2_4 = resolveQuestion('ds|ds-2#4');
+  assert.ok(!ds2_4.accept.includes(' '), 'ds-2#4 tidak boleh memiliki accept spasi kosong');
+
+  const html4_5 = resolveQuestion('html|html-4#5');
+  assert.ok(html4_5.accept.includes('#puncak') && html4_5.accept.includes('puncak'), 'html-4#5 harus terima #puncak dan puncak');
+
+  const html9_7 = resolveQuestion('html|html-9#7');
+  assert.ok(html9_7.q.includes('Halo Dunia'), 'html-9#7 soal harus menyebutkan teks Halo Dunia');
+  assert.ok(html9_7.accept.includes('Halo Dunia') && html9_7.accept.includes('halo dunia'), 'html-9#7 harus terima Halo Dunia');
+
+  const ts11_1 = resolveQuestion('ts|ts-11#1');
+  assert.ok(ts11_1.accept.includes("'off'"), 'ts-11#1 harus terima \'off\'');
+
+  const css1_9 = resolveQuestion('css|css-1#9');
+  assert.ok(css1_9.accept.includes('#konten'), 'css-1#9 harus terima #konten');
 });
 t('curriculum: jumlah soal terdokumentasi (3050)', () => {
   assert.strictEqual(totalSoal, 3050);

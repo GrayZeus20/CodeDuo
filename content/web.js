@@ -70,7 +70,9 @@ const CONTENT_WEB = [
             "q": "Lengkapi analogi blok: HTML = tulang, CSS = ___, JavaScript = otot:",
             "code": "HTML = tulang, CSS = ___, JavaScript = otot",
             "accept": [
-              "kulit"
+              "kulit",
+              "pakaian",
+              "baju"
             ],
             "explain": "CSS = kulit/penampilan, JS = otot yang menggerakkan."
           },

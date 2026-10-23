@@ -246,7 +246,10 @@ const CONTENT_JS = [
             "code": "const angka = ___.parseInt(\"42\");",
             "accept": [
               "Number",
-              "window"
+              "number",
+              "window",
+              "globalThis",
+              "global"
             ],
             "explain": "Number.parseInt() mengonversi teks jadi bilangan bulat."
           },
@@ -471,7 +474,8 @@ const CONTENT_JS = [
             "q": "Balik nilai boolean menjadi lawannya:\nconst kebalikan = ___true;",
             "code": "const kebalikan = ___true;",
             "accept": [
-              "!"
+              "!",
+              "!true"
             ],
             "explain": "! membalik nilai kebenaran logika."
           },
@@ -1064,7 +1068,10 @@ const CONTENT_JS = [
             "q": "Lengkapi for loop:\nfor (let i = 0; i < 5; i___) {}",
             "code": "for (let i = 0; i < 5; i___) {}",
             "accept": [
-              "++"
+              "++",
+              "i++",
+              "+= 1",
+              "+=1"
             ],
             "explain": "i++ menambah nilai 1 tiap iterasi."
           },
@@ -2661,7 +2668,9 @@ const CONTENT_JS = [
             "q": "Menggabungkan dua array tanpa mengubah aslinya:",
             "code": "const gabung = [...a, ___];",
             "accept": [
-              "...b"
+              "...b",
+              "... b",
+              "b"
             ],
             "explain": "Spread ...b menyisipkan seluruh elemen b."
           },
@@ -2691,9 +2700,7 @@ const CONTENT_JS = [
             "q": "Susun deklarasi class sederhana:",
             "blocks": [
               "class Mobil {",
-              "  constructor(merk) {",
-              "    this.merk = merk;",
-              "  }",
+              "  constructor(merk) { this.merk = merk; }",
               "}"
             ],
             "explain": "Class dengan constructor."
@@ -4132,8 +4139,7 @@ const CONTENT_JS = [
             "code": "['a','b'].join(___);",
             "accept": [
               "' '",
-              "\" \"",
-              " "
+              "\" \""
             ],
             "explain": "join(' ') menyatukan dengan spasi."
           },

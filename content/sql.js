@@ -2671,7 +2671,8 @@ const CONTENT_SQL = [
             "q": "Ambil baris dengan pola teks berawalan \"bud\":",
             "code": "SELECT * FROM users WHERE name ___ 'bud%';",
             "accept": [
-              "like"
+              "like",
+              "ilike"
             ],
             "explain": "LIKE 'bud%' = pencocokan pola (prefix)."
           },
@@ -3843,6 +3844,7 @@ const CONTENT_SQL = [
               "varchar(255)",
               "varchar",
               "varchar(100)",
+              "varchar(50)",
               "text",
               "char(255)",
               "string"
@@ -10351,7 +10353,10 @@ const CONTENT_SQL = [
             "accept": [
               "limit",
               "per_page",
-              "size"
+              "size",
+              "pageSize",
+              "pagesize",
+              "count"
             ],
             "explain": "limit/per_page mengendalikan ukuran halaman."
           },

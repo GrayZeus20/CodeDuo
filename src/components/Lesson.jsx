@@ -220,18 +220,7 @@ function ExerciseBody({ ex, session, onSubmit }) {
     );
   }
   if (ex.type === 'fill') {
-    const parts = String(ex.code).split('___');
-    return (
-      <div className="lesson__body">
-        <pre className="code-block">{parts[0]}<span className="blank-line" id="fill-slot" />{parts.slice(1).join('___')}</pre>
-        <input
-          className="input" id="fill-input" type="text" placeholder="Ketik jawaban…"
-          autoComplete="off" autoCapitalize="off" spellCheck="false" disabled={session.answered}
-          defaultValue={session.lastInput != null ? session.lastInput : ''}
-          onKeyDown={(e) => { if (e.key === 'Enter' && !session.answered) onSubmit(e.currentTarget.value); }}
-        />
-      </div>
-    );
+    return <FillBody ex={ex} session={session} onSubmit={onSubmit} />;
   }
   if (ex.type === 'code') {
     const handleKeyDown = (e) => {
@@ -273,6 +262,33 @@ function ExerciseBody({ ex, session, onSubmit }) {
     return <ArrangeBody ex={ex} session={session} />;
   }
   return null;
+}
+
+function FillBody({ ex, session, onSubmit }) {
+  const initial = typeof session.lastInput === 'string' ? session.lastInput : '';
+  const [value, setValue] = useState(initial);
+  const parts = String(ex.code).split('___');
+  const blank = (i) => (
+    <span key={'b' + i} className={'blank-line' + (value ? ' blank-line--filled' : '')}>
+      {value}
+    </span>
+  );
+  return (
+    <div className="lesson__body">
+      <pre className="code-block">
+        {parts.map((part, i) => (
+          <span key={i}>{part}{i < parts.length - 1 ? blank(i) : null}</span>
+        ))}
+      </pre>
+      <input
+        className="input" id="fill-input" type="text" placeholder="Ketik jawaban…"
+        autoComplete="off" autoCapitalize="off" spellCheck="false" disabled={session.answered}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) => { if (e.key === 'Enter' && !session.answered) onSubmit(e.currentTarget.value); }}
+      />
+    </div>
+  );
 }
 
 function PreviewBody({ ex, disabled, onSubmit }) {
@@ -328,6 +344,7 @@ function ArrangeBody({ ex, session }) {
   const [overIndex, setOverIndex] = useState(null);
   const [isOverZone, setIsOverZone] = useState(false);
   const [isOverPool, setIsOverPool] = useState(false);
+  const [touchPos, setTouchPos] = useState(null);
 
   const placed = session.arrPlaced || [];
   const all = ex.blocks.map((_, i) => String(i));
@@ -353,7 +370,12 @@ function ArrangeBody({ ex, session }) {
   const handleDragOverItem = (e, targetIndex) => {
     if (session.answered) return;
     e.preventDefault();
+    e.stopPropagation();
     e.dataTransfer.dropEffect = 'move';
+    if (dragged && dragged.type === 'placed' && dragged.index === targetIndex) {
+      if (overIndex !== null) setOverIndex(null);
+      return;
+    }
     if (overIndex !== targetIndex) setOverIndex(targetIndex);
   };
 
@@ -399,6 +421,7 @@ function ArrangeBody({ ex, session }) {
   const handleDropPool = (e) => {
     if (session.answered) return;
     e.preventDefault();
+    e.stopPropagation();
     let data = dragged;
     try {
       const raw = e.dataTransfer.getData('text/plain');
@@ -418,40 +441,70 @@ function ArrangeBody({ ex, session }) {
     setIsOverPool(false);
   };
 
-  // Touch drag support for mobile / touchscreen
-  const touchRef = useRef({ index: -1, id: null, startX: 0, startY: 0, moved: false });
+  // Touch drag: HTML5 DnD tidak berjalan di layar sentuh, jadi sentuhan dipetakan
+  // manual ke blok tujuan/zona dengan floating ghost avatar. Klik tetap dipakai untuk tambah/hapus.
+  const touchRef = useRef({ mode: null, index: -1, id: null, startX: 0, startY: 0, moved: false, target: null });
+  const suppressClickRef = useRef(false);
 
-  const onTouchStartPlaced = (e, index, id) => {
-    if (session.answered) return;
-    const t = e.touches[0];
-    touchRef.current = { index, id, startX: t.clientX, startY: t.clientY, moved: false };
+  const resolveTouchTarget = (x, y) => {
+    const el = document.elementFromPoint(x, y);
+    if (!el) return null;
+    const item = el.closest('[data-arr-placed-idx]');
+    if (item) return { type: 'item', index: Number(item.getAttribute('data-arr-placed-idx')) };
+    if (el.closest('#arr-zone')) return { type: 'zone' };
+    if (el.closest('#arr-pool')) return { type: 'pool' };
+    return null;
   };
 
-  const onTouchMovePlaced = (e) => {
-    if (session.answered || touchRef.current.index < 0) return;
+  const onTouchStart = (e, mode, index, id) => {
+    if (session.answered || e.touches.length > 1) return;
     const t = e.touches[0];
-    const dx = Math.abs(t.clientX - touchRef.current.startX);
-    const dy = Math.abs(t.clientY - touchRef.current.startY);
-    if (dx > 8 || dy > 8) {
-      touchRef.current.moved = true;
-      const el = document.elementFromPoint(t.clientX, t.clientY);
-      const btn = el ? el.closest('[data-arr-placed-idx]') : null;
-      if (btn) {
-        const tIdx = Number(btn.getAttribute('data-arr-placed-idx'));
-        if (!isNaN(tIdx) && tIdx !== overIndex) {
-          setOverIndex(tIdx);
-        }
-      }
-    }
+    touchRef.current = { mode, index, id, startX: t.clientX, startY: t.clientY, moved: false, target: null };
   };
 
-  const onTouchEndPlaced = (e) => {
-    if (session.answered) return;
-    if (touchRef.current.moved && overIndex != null && overIndex !== touchRef.current.index) {
-      arrangeReorder(touchRef.current.index, overIndex);
+  const onTouchMove = (e) => {
+    const st = touchRef.current;
+    if (session.answered || !st.mode) return;
+    const t = e.touches[0];
+    if (!t) return;
+    if (!st.moved) {
+      if (Math.hypot(t.clientX - st.startX, t.clientY - st.startY) <= 6) return;
+      st.moved = true;
+      setDragged(st.mode === 'placed' ? { type: 'placed', index: st.index, id: st.id } : { type: 'pool', id: st.id });
     }
-    touchRef.current = { index: -1, id: null, startX: 0, startY: 0, moved: false };
+    setTouchPos({ x: t.clientX, y: t.clientY });
+    const target = resolveTouchTarget(t.clientX, t.clientY);
+    st.target = target;
+    const isSelf = st.mode === 'placed' && target && target.type === 'item' && target.index === st.index;
+    setOverIndex(target && target.type === 'item' && !isSelf ? target.index : null);
+    setIsOverZone(!!target && target.type === 'zone');
+    setIsOverPool(!!target && target.type === 'pool');
+  };
+
+  const onTouchEnd = (e) => {
+    const st = touchRef.current;
+    if (st.moved && e && e.changedTouches && e.changedTouches[0]) {
+      st.target = resolveTouchTarget(e.changedTouches[0].clientX, e.changedTouches[0].clientY) || st.target;
+    }
+    touchRef.current = { mode: null, index: -1, id: null, startX: 0, startY: 0, moved: false, target: null };
     setOverIndex(null);
+    setIsOverZone(false);
+    setIsOverPool(false);
+    setDragged(null);
+    setTouchPos(null);
+    if (!st.moved) return; /* tap → onClick yang menangani */
+    suppressClickRef.current = true;
+    setTimeout(() => { suppressClickRef.current = false; }, 350);
+    const target = st.target;
+    if (!target) return;
+    if (st.mode === 'placed') {
+      if (target.type === 'item' && target.index !== st.index) arrangeReorder(st.index, target.index);
+      else if (target.type === 'pool') arrangeUnpick(st.id);
+      else if (target.type === 'zone') arrangeReorder(st.index, placed.length - 1);
+    } else if (st.mode === 'pool') {
+      if (target.type === 'item') arrangeInsert(st.id, target.index);
+      else if (target.type === 'zone') arrangePick(st.id);
+    }
   };
 
   return (
@@ -460,7 +513,7 @@ function ArrangeBody({ ex, session }) {
         className={'arr-zone' + (isOverZone ? ' drag-active' : '')}
         id="arr-zone"
         onDragOver={(e) => { e.preventDefault(); if (!isOverZone) setIsOverZone(true); }}
-        onDragLeave={() => setIsOverZone(false)}
+        onDragLeave={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsOverZone(false); }}
         onDrop={handleDropZone}
       >
         {placed.length === 0 ? (
@@ -477,13 +530,15 @@ function ArrangeBody({ ex, session }) {
               draggable={!session.answered}
               onDragStart={(e) => handleDragStartPlaced(e, idx, id)}
               onDragOver={(e) => handleDragOverItem(e, idx)}
+              onDragLeave={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setOverIndex(null); }}
               onDrop={(e) => handleDropItem(e, idx)}
               onDragEnd={handleDragEnd}
-              onTouchStart={(e) => onTouchStartPlaced(e, idx, id)}
-              onTouchMove={onTouchMovePlaced}
-              onTouchEnd={onTouchEndPlaced}
+              onTouchStart={(e) => onTouchStart(e, 'placed', idx, id)}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+              onTouchCancel={onTouchEnd}
               onClick={() => {
-                if (touchRef.current.moved) return;
+                if (suppressClickRef.current) return;
                 arrangeUnpick(id);
               }}
               title="Drag / geser untuk memindahkan urutan blok, atau klik untuk batal"
@@ -498,7 +553,7 @@ function ArrangeBody({ ex, session }) {
         className={'arr-pool' + (isOverPool ? ' drag-active' : '')}
         id="arr-pool"
         onDragOver={(e) => { e.preventDefault(); if (!isOverPool) setIsOverPool(true); }}
-        onDragLeave={() => setIsOverPool(false)}
+        onDragLeave={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsOverPool(false); }}
         onDrop={handleDropPool}
       >
         {pool.map((id) => (
@@ -508,14 +563,49 @@ function ArrangeBody({ ex, session }) {
             disabled={session.answered}
             draggable={!session.answered}
             onDragStart={(e) => handleDragStartPool(e, id)}
+            onDragOver={(e) => { e.preventDefault(); if (!isOverPool) setIsOverPool(true); }}
+            onDrop={handleDropPool}
             onDragEnd={handleDragEnd}
-            onClick={() => arrangePick(id)}
+            onTouchStart={(e) => onTouchStart(e, 'pool', -1, id)}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+            onTouchCancel={onTouchEnd}
+            onClick={() => {
+              if (suppressClickRef.current) return;
+              arrangePick(id);
+            }}
             title="Klik atau drag ke kotak susunan di atas"
           >
             {ex.blocks[+id]}
           </button>
         ))}
       </div>
+      {touchPos && dragged && (
+        <div
+          className="arr-drag-ghost"
+          style={{
+            position: 'fixed',
+            left: touchPos.x,
+            top: touchPos.y - 34,
+            transform: 'translate(-50%, -50%) scale(1.06)',
+            pointerEvents: 'none',
+            zIndex: 9999,
+            boxShadow: '0 8px 24px rgba(0,0,0,0.22), 0 0 0 2px var(--blue)',
+            background: '#fff',
+            borderRadius: '10px',
+            padding: '10px 14px',
+            fontFamily: 'var(--mono)',
+            fontSize: '0.88rem',
+            fontWeight: '700',
+            color: 'var(--text)',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {dragged.type === 'placed' && placed[dragged.index] != null
+            ? ex.blocks[+placed[dragged.index]]
+            : ex.blocks[+dragged.id]}
+        </div>
+      )}
     </div>
   );
 }

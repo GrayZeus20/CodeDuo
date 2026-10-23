@@ -36,7 +36,7 @@ const CONTENT_HTML = [
             "code": "___\n<html>\n  <head></head>\n  <body></body>\n</html>",
             "accept": [
               "<!doctype html>",
-              "<!doctype html>"
+              "<!DOCTYPE html>"
             ],
             "explain": "Doctype memberi tahu browser ini dokumen HTML5."
           },
@@ -448,9 +448,12 @@ const CONTENT_HTML = [
             "q": "Lengkapi href untuk melompat ke elemen yang ber-id \"puncak\" di halaman ini:",
             "code": "<a href=\"___\">Lihat puncak</a>",
             "accept": [
+              "#puncak",
+              "puncak",
+              "#top",
               "top",
-              "atas",
-              "header"
+              "#atas",
+              "atas"
             ],
             "explain": "Nama id diletakkan setelah simbol #."
           },
@@ -929,7 +932,9 @@ const CONTENT_HTML = [
             "q": "Cetak karakter < agar tidak dibaca sebagai tag:\n___div>",
             "code": "___div>",
             "accept": [
-              "&lt;"
+              "&lt;",
+              "&lt;div>",
+              "&lt;div"
             ],
             "explain": "&lt; menampilkan karakter < di browser."
           },
@@ -1005,7 +1010,6 @@ const CONTENT_HTML = [
             "q": "Lengkapi komentar HTML:\n<!___ Ini catatan ___>",
             "code": "<!___ Ini catatan ___>",
             "accept": [
-              "--",
               "--"
             ],
             "explain": "Komentar HTML diawali <!-- dan diakhiri -->."
@@ -1058,11 +1062,15 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Bungkus teks dalam paragraf:\n<p>___</p>",
+            "q": "Tulis teks \"Halo Dunia\" di dalam paragraf:\n<p>___</p>",
             "code": "<p>___</p>",
             "accept": [
               "Halo Dunia",
-              "Halo"
+              "Halo",
+              "halo dunia",
+              "halo",
+              "Hello World",
+              "hello world"
             ],
             "explain": "Isi konten berada di antara tag pembuka dan penutup."
           },
@@ -2753,8 +2761,11 @@ const CONTENT_HTML = [
             "code": "<img srcset=\"small.jpg 400w, large.jpg ___w\">",
             "accept": [
               "800",
+              "800w",
               "1200",
-              "1000"
+              "1200w",
+              "1000",
+              "1000w"
             ],
             "explain": "Descriptor w menandai lebar intrinsik gambar dalam piksel."
           },
@@ -3716,7 +3727,8 @@ const CONTENT_HTML = [
             "q": "Pilih elemen dengan id \"konten\":\n___konten {\n  padding: 10px;\n}",
             "code": "___konten {\n  padding: 10px;\n}",
             "accept": [
-              "#"
+              "#",
+              "#konten"
             ],
             "explain": "Tanda pagar (#) adalah selektor id CSS."
           }
@@ -4603,7 +4615,8 @@ const CONTENT_HTML = [
             "q": "Tentukan tinggi section setinggi layar penuh:\n.hero {\n  height: 100___;\n}",
             "code": ".hero {\n  height: 100___;\n}",
             "accept": [
-              "vh"
+              "vh",
+              "100vh"
             ],
             "explain": "100vh berarti 100% tinggi viewport."
           },
@@ -4645,7 +4658,8 @@ const CONTENT_HTML = [
             "q": "Jika root html bernilai 16px, maka 32px setara dengan berapa rem?:\nh1 {\n  font-size: ___rem;\n}",
             "code": "h1 {\n  font-size: ___rem;\n}",
             "accept": [
-              "2"
+              "2",
+              "2rem"
             ],
             "explain": "32px / 16px = 2rem."
           }
@@ -4792,7 +4806,8 @@ const CONTENT_HTML = [
             "q": "Lengkapi agar item rata tengah secara horizontal:",
             "code": ".wrap {\n  display: flex;\n  ___-content: center;\n}",
             "accept": [
-              "justify"
+              "justify",
+              "justify-content"
             ],
             "explain": "justify-content mengatur sumbu utama (horizontal di row)."
           },
@@ -5027,7 +5042,8 @@ const CONTENT_HTML = [
             "q": "Balik urutan kolom dari bawah ke atas:\n.daftar {\n  flex-direction: ___-reverse;\n}",
             "code": ".daftar {\n  flex-direction: ___-reverse;\n}",
             "accept": [
-              "column"
+              "column",
+              "column-reverse"
             ],
             "explain": "column-reverse menyusun item dari bawah ke atas."
           },
@@ -5176,7 +5192,8 @@ const CONTENT_HTML = [
             "q": "Beri ruang maksimal di antara item flex:\n.navbar {\n  justify-content: space-___;\n}",
             "code": ".navbar {\n  justify-content: space-___;\n}",
             "accept": [
-              "between"
+              "between",
+              "space-between"
             ],
             "explain": "space-between umum digunakan untuk navigasi bar (logo kiri, menu kanan)."
           },
@@ -5348,7 +5365,8 @@ const CONTENT_HTML = [
             "q": "Tentukan jarak khusus antar baris grid:\n.grid {\n  ___-gap: 24px;\n}",
             "code": ".grid {\n  ___-gap: 24px;\n}",
             "accept": [
-              "row"
+              "row",
+              "row-gap"
             ],
             "explain": "row-gap mengatur celah horizontal antar baris."
           }
@@ -5388,7 +5406,8 @@ const CONTENT_HTML = [
             "q": "Tentukan jarak khusus antar kolom grid:\n.grid {\n  ___-gap: 16px;\n}",
             "code": ".grid {\n  ___-gap: 16px;\n}",
             "accept": [
-              "column"
+              "column",
+              "column-gap"
             ],
             "explain": "column-gap mengatur celah vertikal antar kolom."
           },
@@ -5842,7 +5861,8 @@ const CONTENT_HTML = [
             "q": "Terapkan box-sizing modern:\n* {\n  box-sizing: ___-box;\n}",
             "code": "* {\n  box-sizing: ___-box;\n}",
             "accept": [
-              "border"
+              "border",
+              "border-box"
             ],
             "explain": "box-sizing: border-box adalah standar industri web modern."
           },
@@ -5961,7 +5981,8 @@ const CONTENT_HTML = [
             "q": "Lengkapi media query untuk layar minimal 1024px:",
             "code": "@media (min-width: ___px) { /* desktop */ }",
             "accept": [
-              "1024"
+              "1024",
+              "1024px"
             ],
             "explain": "1024px = ambang umum tablet-landscape/desktop."
           },
@@ -6016,7 +6037,9 @@ const CONTENT_HTML = [
             "code": ".btn {\n  transition: all ___s ease;\n}",
             "accept": [
               "0.3",
-              ".3"
+              ".3",
+              "0.3s",
+              ".3s"
             ],
             "explain": "Durasi menentukan lama waktu animasi transisi."
           },
@@ -6049,7 +6072,8 @@ const CONTENT_HTML = [
             "q": "Tentukan kurva percepatan transisi yang melambat di akhir:\n.modal {\n  transition: opacity 0.3s ___-out;\n}",
             "code": ".modal {\n  transition: opacity 0.3s ___-out;\n}",
             "accept": [
-              "ease"
+              "ease",
+              "ease-out"
             ],
             "explain": "ease-out melambat saat mendekati akhir animasi."
           }
@@ -6140,7 +6164,8 @@ const CONTENT_HTML = [
             "q": "Tentukan media query untuk layar minimal 1024px desktop:\n@media (min-width: ___px) {}",
             "code": "@media (min-width: ___px) {}",
             "accept": [
-              "1024"
+              "1024",
+              "1024px"
             ],
             "explain": "1024px adalah breakpoint umum layar desktop."
           },
@@ -6336,7 +6361,8 @@ const CONTENT_HTML = [
             "q": "Putar elemen 180 derajat:\n.panah {\n  transform: rotate(___deg);\n}",
             "code": ".panah {\n  transform: rotate(___deg);\n}",
             "accept": [
-              "180"
+              "180",
+              "180deg"
             ],
             "explain": "rotate(180deg) membalik elemen terbalik."
           },
@@ -6402,7 +6428,9 @@ const CONTENT_HTML = [
             "q": "Miringkan elemen secara visual pada sumbu X:\n.miring {\n  transform: ___X(15deg);\n}",
             "code": ".miring {\n  transform: ___X(15deg);\n}",
             "accept": [
-              "skew"
+              "skew",
+              "skewX",
+              "skewx"
             ],
             "explain": "skewX memiringkan bidang elemen."
           }
@@ -6547,7 +6575,8 @@ const CONTENT_HTML = [
             "q": "Aktifkan container context pada induk komponen:\n.card-wrapper {\n  container-type: ___-size;\n}",
             "code": ".card-wrapper {\n  container-type: ___-size;\n}",
             "accept": [
-              "inline"
+              "inline",
+              "inline-size"
             ],
             "explain": "container-type: inline-size mengukur lebar horizontal kontainer."
           },
@@ -6665,7 +6694,8 @@ const CONTENT_HTML = [
             "q": "Deklarasikan variabel warna utama pada root dokumen:\n:root {\n  ___-primary: #58cc02;\n}",
             "code": ":root {\n  ___-primary: #58cc02;\n}",
             "accept": [
-              "--"
+              "--",
+              "--primary"
             ],
             "explain": "Variabel CSS wajib diawali strip ganda (--)."
           },
@@ -6720,7 +6750,8 @@ const CONTENT_HTML = [
             "q": "Ganti variabel CSS via JS:\nel.style.setProperty(\"___-bg\", \"red\");",
             "code": "el.style.setProperty(\"___-bg\", \"red\");",
             "accept": [
-              "--"
+              "--",
+              "--bg"
             ],
             "explain": "setProperty memerlukan prefiks strip ganda."
           },
@@ -6943,7 +6974,8 @@ const CONTENT_HTML = [
             "q": "Beri filter bayangan drop-shadow pada gambar transparan PNG/SVG:\nimg {\n  filter: ___-shadow(0 4px 8px rgba(0,0,0,0.3));\n}",
             "code": "img {\n  filter: ___-shadow(0 4px 8px rgba(0,0,0,0.3));\n}",
             "accept": [
-              "drop"
+              "drop",
+              "drop-shadow"
             ],
             "explain": "drop-shadow mengikuti kontur transparansi gambar PNG/SVG."
           },

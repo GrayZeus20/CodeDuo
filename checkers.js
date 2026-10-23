@@ -65,6 +65,23 @@ function normalizeCode(s) {
     .trim();
 }
 
+/* Normalisasi tanda kutip tunggal terluar menjadi tanda kutip ganda untuk literal string. */
+function quoteNormalized(s) {
+  const norm = normalizeCode(s);
+  if (norm.startsWith("'") && norm.endsWith("'") && norm.length >= 2) {
+    return '"' + norm.slice(1, -1).replace(/"/g, '\\"') + '"';
+  }
+  return norm;
+}
+
+/* Normalisasi spasi di sekitar operator/simbol kode (contoh: 1 / 1 → 1/1, ... b → ...b). */
+function canonCode(s) {
+  return quoteNormalized(s)
+    .replace(/\s*([=+\-*/%<>!&|^~?:,;()[\]{}])\s*/g, '$1')
+    .replace(/\.\s*\.\s*\.\s*/g, '...')
+    .trim();
+}
+
 /* Abaikan kapital + tanda kutip → "X" vs "x" vs "'x'" dianggap sama. */
 function looseNormalize(s) {
   return normalizeCode(s).replace(/['"]/g, '');
@@ -73,9 +90,17 @@ function looseNormalize(s) {
 /* ---------- fill ---------- */
 function checkFill(user, accept) {
   const u = normalizeCode(user);
-  if (!u) return { correct: false, reason: 'empty', message: 'Jawaban masih kosong.' };
   const list = (Array.isArray(accept) ? accept : [accept]).map((a) => String(a));
+  if (!u) {
+    /* Jika user memasukkan spasi tetapi accept menghendaki string spasi dengan tanda kutip */
+    if (user != null && String(user).length > 0 && list.some((a) => looseNormalize(a).trim() === '')) {
+      return { correct: false, close: true, message: "Hampir benar! Tambahkan tanda kutip untuk membuat string: ' '." };
+    }
+    return { correct: false, reason: 'empty', message: 'Jawaban masih kosong.' };
+  }
   if (list.some((a) => normalizeCode(a) === u)) return { correct: true };
+  if (list.some((a) => quoteNormalized(a) === quoteNormalized(u))) return { correct: true };
+  if (list.some((a) => canonCode(a) === canonCode(u))) return { correct: true };
   /* Aturan longgar #1: beda kapital/tanda kutip saja → hampir benar. */
   const lu = looseNormalize(user);
   if (lu && list.some((a) => looseNormalize(a) === lu)) {
@@ -86,11 +111,16 @@ function checkFill(user, accept) {
   if (uFlat && list.some((a) => normalizeCode(a).replace(/\s+/g, '') === uFlat)) {
     return { correct: false, close: true, message: 'Hampir benar! Spasi berlebih terdeteksi.' };
   }
-  /* Aturan longgar #3: typo ringan (kemiripan tinggi) → hampir benar. */
+  /* Aturan longgar #3: perbedaan kurung siku < > pada tag HTML */
+  const uNoAngle = u.replace(/[<>]/g, '');
+  if (uNoAngle && list.some((a) => normalizeCode(a).replace(/[<>]/g, '') === uNoAngle)) {
+    return { correct: false, close: true, message: 'Hampir benar! Perhatikan tanda kurung siku < > pada tag HTML.' };
+  }
+  /* Aturan longgar #4: typo ringan (kemiripan tinggi) → hampir benar. */
   if (bestSimilarity(u, list.map((a) => normalizeCode(a))) >= CLOSE_THRESHOLD) {
     return { correct: false, close: true, message: 'Hampir benar! Ada huruf yang keliru, cek lagi.' };
   }
-  /* Aturan longgar #4: kurang benar sedikit (potongan/substring/awalan) */
+  /* Aturan longgar #5: kurang benar sedikit (potongan/substring/awalan) */
   if (list.some((a) => {
     const na = normalizeCode(a);
     return (na.length >= 3 && u.length >= 3 && (na.includes(u) || u.includes(na)));
@@ -108,30 +138,37 @@ function checkArrange(userOrder, blocks) {
   if (userOrder.every((id, i) => id === blocks[i])) return { correct: true };
   /* Aturan longgar: susunan salah urutan — semua blok lengkap tapi urutan belum pas
    * → "hampir benar / salah urutan", diberi kesempatan memperbaiki. */
-  const wrongPos = userOrder.filter((id, i) => id !== blocks[i]).length;
   const sameSet = userOrder.slice().sort().join('\u0000') === blocks.slice().sort().join('\u0000');
   if (sameSet) {
-    if (wrongPos <= 2) {
-      return { correct: false, close: true, message: 'Hampir benar! Tinggal sedikit blok yang belum di tempat yang pas.' };
-    }
-    return { correct: false, close: true, message: 'Urutan blok belum tepat. Coba atur kembali posisinya.' };
+    const wrongPos = userOrder.filter((id, i) => id !== blocks[i]).length;
+    return {
+      correct: false,
+      close: true,
+      message: wrongPos <= 2
+        ? 'Hampir benar! Tinggal sedikit blok yang belum di tempat yang pas.'
+        : 'Hampir benar! Semua blok sudah terpakai, tapi urutannya masih keliru.',
+    };
   }
   return { correct: false, reason: 'wrong', message: 'Urutan blok belum benar.' };
 }
 
 /* ---------- mc ---------- */
 function checkMc(answer, ex) {
-  const chosen = typeof answer === 'number'
-    ? String(ex.options[answer] == null ? '' : ex.options[answer])
-    : String(answer == null ? '' : answer);
+  /* UI mengirim index pilihan (bukan teks). Bandingkan index: opsi bisa sengaja
+   * hanya beda kapital (mis. `string` vs `String`), jadi pencocokan teks
+   * case-insensitive akan menilai pilihan yang salah sebagai benar. */
+  if (typeof answer === 'number') {
+    if (!Number.isInteger(answer) || answer < 0 || answer >= ex.options.length) {
+      return { correct: false, reason: 'empty', message: 'Pilih salah satu jawaban dulu.' };
+    }
+    if (answer === ex.a) return { correct: true };
+    return { correct: false, reason: 'wrong', message: 'Pilihan belum tepat.' };
+  }
+  /* Jalur teks (API/pemanggil lain): tetap longgar, salah ketik ringan → hampir benar. */
+  const chosen = String(answer == null ? '' : answer);
   if (!looseNormalize(chosen)) return { correct: false, reason: 'empty', message: 'Pilih salah satu jawaban dulu.' };
   const correctText = String(ex.options[ex.a] == null ? '' : ex.options[ex.a]);
-  if (looseNormalize(chosen) === looseNormalize(correctText)) return { correct: true };
-  /* Index pilihan sama dengan kunci (teks beda kapital dsb.) → hampir benar. */
-  if (typeof answer === 'number' && answer === ex.a) {
-    return { correct: false, close: true, message: 'Hampir benar! Perhatikan penulisannya.' };
-  }
-  /* Teks jawaban sangat mirip kunci (typo ringan saat menyalin) → hampir benar. */
+  if (normalizeCode(chosen) === normalizeCode(correctText)) return { correct: true };
   if (bestSimilarity(looseNormalize(chosen), [looseNormalize(correctText)]) >= CLOSE_THRESHOLD) {
     return { correct: false, close: true, message: 'Hampir benar! Jawabanmu sangat dekat — baca lagi opsinya.' };
   }
@@ -197,4 +234,4 @@ function checkCode(userCode, spec) {
   return { correct: true };
 }
 
-export { normalizeCode, looseNormalize, similarity, CLOSE_THRESHOLD, checkFill, checkArrange, checkMc, checkCode };
+export { normalizeCode, quoteNormalized, canonCode, looseNormalize, similarity, CLOSE_THRESHOLD, checkFill, checkArrange, checkMc, checkCode };

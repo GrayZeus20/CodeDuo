@@ -574,8 +574,11 @@ input, textarea, [contenteditable="true"] {
 .blank-line {
   display: inline-block;
   min-width: 72px;
+  padding: 0 4px;
   border-bottom: 2px dashed var(--gold);
 }
+
+.blank-line--filled { color: var(--gold); font-weight: 700; }
 
 .input, .code-input {
   width: 100%;
@@ -630,7 +633,7 @@ input, textarea, [contenteditable="true"] {
   font-weight: 600;
   user-select: none;
   -webkit-user-select: none;
-  touch-action: manipulation;
+  touch-action: none;
   transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
 }
 
@@ -664,6 +667,7 @@ input, textarea, [contenteditable="true"] {
   font-size: 0.95rem;
   cursor: grab;
   user-select: none;
+  pointer-events: none;
 }
 
 .arr-zone.drag-active {
