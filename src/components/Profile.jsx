@@ -6,6 +6,7 @@ import { useStore } from '../useStore.js';
 import {
   getState, topicById, isTopicDone,
   dumpState, stateReset, toggleMotion,
+  setBuddySize,
   exportSaveData, importSaveData,
 } from '../store.js';
 import TopicIcon from './TopicIcon.jsx';
@@ -107,6 +108,28 @@ export default function Profile() {
             );
           })}
         </ol>
+      </div>
+
+      <div className="card">
+        <h3>Ukuran Bibit</h3>
+        <p className="muted">Pilih ukuran teman belajarmu. Pengaturan ini tersimpan di perangkat ini.</p>
+        <div className="buddy-size-options" role="group" aria-label="Ukuran Bibit">
+          {[
+            { value: 'small', label: 'Kecil' },
+            { value: 'medium', label: 'Normal' },
+            { value: 'large', label: 'Besar' },
+          ].map((option) => (
+            <button
+              key={option.value}
+              type="button"
+              className={'btn ' + (state.buddySize === option.value ? 'btn--primary' : 'btn--ghost')}
+              aria-pressed={state.buddySize === option.value}
+              onClick={() => setBuddySize(option.value)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="card">

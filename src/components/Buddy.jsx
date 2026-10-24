@@ -19,6 +19,7 @@ import { useStore } from '../useStore.js';
 import { SFX } from '../../sfx.js';
 
 const IDLE_TICK_MS = 1000;
+const BUDDY_HEAD_SIZES = { small: 96, medium: 124, large: 148 };
 
 export default function Buddy() {
   useStore();                       /* re-render tiap state store berubah */
@@ -26,7 +27,7 @@ export default function Buddy() {
   const buddyHidden = state ? !!state.buddyHidden : false;
 
   const buddyRef = useRef(null);
-  const [headSize, setHeadSize] = useState(() => (typeof window !== 'undefined' && window.innerWidth <= 520 ? 104 : 124));
+  const headSize = BUDDY_HEAD_SIZES[state && state.buddySize] || BUDDY_HEAD_SIZES.medium;
 
   /* Posisi custom hasil seretan (drag) yang tersimpan di localStorage */
   const [pos, setPos] = useState(() => {
@@ -61,12 +62,11 @@ export default function Buddy() {
   /* Re-clamp posisi saat ukuran jendela browser berubah */
   useEffect(() => {
     const onResize = () => {
-      const newHeadSize = window.innerWidth <= 520 ? 104 : 124;
-      setHeadSize(newHeadSize);
+      const buddyRect = buddyRef.current && buddyRef.current.getBoundingClientRect();
+      const headW = buddyRect ? buddyRect.width : headSize + 8;
+      const headH = buddyRect ? buddyRect.height : headSize + 32;
       setPos((prev) => {
         if (!prev) return null;
-        const headW = window.innerWidth <= 520 ? 106 : 132;
-        const headH = window.innerWidth <= 520 ? 126 : 156;
         const minX = 0; /* Mentok di batas kiri layar */
         const maxX = Math.max(0, window.innerWidth - headW);
         const minY = 0; /* Mentok di batas atas layar */
@@ -83,9 +83,10 @@ export default function Buddy() {
         return prev;
       });
     };
+    onResize();
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
-  }, []);
+  }, [headSize]);
 
   const [shouldRender, setShouldRender] = useState(!buddyHidden);
   const [isHiding, setIsHiding] = useState(false);
@@ -320,6 +321,8 @@ export default function Buddy() {
       startY: e.clientY,
       origX: rect.left,
       origY: rect.top,
+      width: rect.width,
+      height: rect.height,
       isMoved: false,
     };
 
@@ -348,8 +351,8 @@ export default function Buddy() {
 
       if (st.isMoved) {
         moveEv.preventDefault();
-        const headW = window.innerWidth <= 520 ? 106 : 132;
-        const headH = window.innerWidth <= 520 ? 126 : 156;
+        const headW = st.width;
+        const headH = st.height;
         const minX = 0; /* Mentok persis di kiri (0px) */
         const maxX = Math.max(0, window.innerWidth - headW);
         const minY = 0; /* Mentok persis di atas (0px) */
@@ -517,7 +520,11 @@ export default function Buddy() {
     <aside
       ref={buddyRef}
       className={buddyClassNames}
-      style={customStyle}
+      style={{
+        ...customStyle,
+        width: `${headSize + 8}px`,
+        height: `${headSize + 32}px`,
+      }}
       aria-live="polite"
       aria-label={'Bibit, teman belajar — ' + currentMood}
     >

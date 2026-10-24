@@ -1,4 +1,4 @@
-/* CodeDuo — Home: hero + kartu Ingat + kartu topik + stat. */
+/* CodeDuo — Home: hero + kartu Ingat + kartu topik. */
 'use strict';
 
 import { useStore } from '../useStore.js';
@@ -10,6 +10,11 @@ import { CURRICULUM, stepsForTopic } from '../../content.js';
 import Bib from './Bib.jsx';
 import TopicIcon from './TopicIcon.jsx';
 import { pop } from '../lib/motion.js';
+
+const TOTAL_STEP_COUNT = CURRICULUM.reduce(
+  (total, topic) => total + stepsForTopic(topic).filter((node) => node.kind === 'step').length,
+  0,
+);
 
 export default function Home() {
   useStore();
@@ -27,13 +32,13 @@ export default function Home() {
         <div className="home__hero-text">
           <h1 className="home__hi">Lanjut belajar 👋</h1>
           <p className="home__sub">
-            Aku <b>Bibit</b>, teman belajarmu. Tiap topik terbagi dalam 31 step (Dasar → Menengah → Advance) + ujian tiap tier.
+            Aku <b>Bibit</b>, teman belajarmu. Setiap topik punya step bertahap sesuai materi, dari Dasar sampai Advance, plus ujian tiap tier.
           </p>
         </div>
       </div>
 
       {allDone && (
-        <div className="card card--done">🎉 Semua step tuntas! {CURRICULUM.length * 31} step koding kamu habiskan — kamu juara.</div>
+        <div className="card card--done">🎉 Semua step tuntas! {TOTAL_STEP_COUNT} step koding kamu habiskan — kamu juara.</div>
       )}
 
       {/* Kartu "Ingat" — pintu ulangan berjarak (SRS): soal yang pernah dipelajari & jatuh tempo */}
@@ -75,12 +80,6 @@ export default function Home() {
         );
       })}
 
-      <div className="stat-row">
-        <div className="stat"><b>{state.stats.lessonsDone}</b><span>sesi</span></div>
-        <div className="stat"><b>{state.stats.correct}</b><span>benar</span></div>
-        <div className="stat"><b>{state.stats.close || 0}</b><span>hampir</span></div>
-        <div className="stat"><b>{state.streak.count}</b><span>streak 🔥</span></div>
-      </div>
       <a className="btn btn--ghost home__profile" href="#/profile">Profil &amp; pengaturan</a>
     </section>
   );

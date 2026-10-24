@@ -6,10 +6,11 @@
  *   content/web.js   → Blok Web
  * File ini menyusun semuanya jadi CURRICULUM + helper murni (step/ujian/SRS key).
  *
- * Struktur: 10 topik × 31 pelajaran (10 Dasar, 10 Menengah, 11 Advance). Total 3.050 soal (>300 per topik).
+ * Struktur: 10 topik. Umumnya 31 pelajaran; Blok Web memiliki jalur Advance lebih panjang.
+ * Total 3.080 soal (>300 per topik).
  * Tiap tier dipotong menjadi step berurutan (10 soal per step) hingga seluruh soal habis,
  * ditutup dengan 1 ujian tier (10 soal komprehensif dari tier tersebut).
- * Total per topik: 31 step + 3 ujian = 34 node.
+ * Step dibuat per 10 soal pada tiap tier, lalu ditutup satu ujian per tier.
  * Tipe soal: mc | fill | code | preview | arrange
  *
  * ESM murni: dipakai Vite (browser) & Node (test).

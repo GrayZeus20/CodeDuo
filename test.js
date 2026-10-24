@@ -143,6 +143,28 @@ t('code error: throw di runtime ditangkap', () => {
 t('code edge: arrow function juga valid', () => {
   assert.strictEqual(checkCode('const tambah = (a,b) => a+b;', specAdd).correct, true);
 });
+t('code: implementasi alternatif tetap dinilai dari hasilnya', () => {
+  const result = checkCode(
+    'function tambah(a,b){ let total = 0; for (const n of [a,b]) total += n; return total; }',
+    specAdd,
+  );
+  assert.strictEqual(result.correct, true);
+});
+t('code: urutan properti objek tidak memengaruhi hasil setara', () => {
+  const spec = { fnName: 'buatUser', tests: [{ args: [], expected: { nama: 'Ayu', usia: 17 } }] };
+  const result = checkCode('function buatUser(){ return { usia: 17, nama: "Ayu" }; }', spec);
+  assert.strictEqual(result.correct, true);
+});
+t('code: urutan elemen array tetap harus sesuai hasil yang diminta', () => {
+  const spec = { fnName: 'hitungMundur', tests: [{ args: [3], expected: [3, 2, 1] }] };
+  const result = checkCode('function hitungMundur(n){ return [1, 2, 3]; }', spec);
+  assert.strictEqual(result.correct, false);
+});
+t('code: objek khusus tidak disamakan dengan objek kosong', () => {
+  const spec = { fnName: 'hasil', tests: [{ args: [], expected: {} }] };
+  const result = checkCode('function hasil(){ return new Date(0); }', spec);
+  assert.strictEqual(result.correct, false);
+});
 
 /* --- CURRICULUM integrity (guards the class of bug where a `tests` expectation
  *     does not match its own `explain` solution, or an mc index is out of range) --- */
@@ -151,10 +173,11 @@ let totalSoal = 0;
 
 const TIERS = TIER_ORDER;
 
-t('curriculum: 10 topik, tiap topik 31 pelajaran berjenjang (10 Dasar, 10 Menengah, 11 Advance)', () => {
+t('curriculum: 10 topik dengan pelajaran berjenjang; Blok Web memiliki Advance ekstra', () => {
   assert.strictEqual(CURRICULUM.length, 10);
   CURRICULUM.forEach((topic) => {
-    assert.strictEqual(topic.lessons.length, 31, topic.id);
+    const isWeb = topic.id === 'web';
+    assert.strictEqual(topic.lessons.length, isWeb ? 34 : 31, topic.id);
     const counts = { Dasar: 0, Menengah: 0, Advance: 0 };
     topic.lessons.forEach((lesson) => {
       assert.ok(TIERS.includes(lesson.level), topic.id + '/' + lesson.id + ' level=' + lesson.level);
@@ -162,18 +185,19 @@ t('curriculum: 10 topik, tiap topik 31 pelajaran berjenjang (10 Dasar, 10 Meneng
     });
     assert.strictEqual(counts.Dasar, 10, topic.id + ' Dasar');
     assert.strictEqual(counts.Menengah, 10, topic.id + ' Menengah');
-    assert.strictEqual(counts.Advance, 11, topic.id + ' Advance');
+    assert.strictEqual(counts.Advance, isWeb ? 14 : 11, topic.id + ' Advance');
   });
 });
-t('curriculum: tiap topik 305 soal (100 Dasar, 100 Menengah, 105 Advance)', () => {
+t('curriculum: Blok Web memiliki lebih banyak soal Advance untuk lebih banyak step', () => {
   CURRICULUM.forEach((topic) => {
+    const isWeb = topic.id === 'web';
     const counts = { Dasar: 0, Menengah: 0, Advance: 0 };
     topic.lessons.forEach((l) => {
       counts[l.level] += l.exercises.length;
     });
     assert.strictEqual(counts.Dasar, 100, topic.id + ' Dasar');
     assert.strictEqual(counts.Menengah, 100, topic.id + ' Menengah');
-    assert.strictEqual(counts.Advance, 105, topic.id + ' Advance');
+    assert.strictEqual(counts.Advance, isWeb ? 135 : 105, topic.id + ' Advance');
   });
 });
 t('curriculum: id topik & pelajaran unik', () => {
@@ -301,14 +325,30 @@ t('curriculum: verifikasi perbaikan bug soal', () => {
   const css1_9 = resolveQuestion('css|css-1#9');
   assert.ok(css1_9.accept.includes('#konten'), 'css-1#9 harus terima #konten');
 });
-t('curriculum: jumlah soal terdokumentasi (3050)', () => {
-  assert.strictEqual(totalSoal, 3050);
+t('curriculum: jumlah soal terdokumentasi (3080)', () => {
+  assert.strictEqual(totalSoal, 3080);
 });
 t('curriculum: topik "Blok Web" ada (peta fungsi tiap blok)', () => {
   const web = CURRICULUM.find((t) => t.id === 'web');
   assert.ok(web, 'topik web hilang');
-  assert.strictEqual(web.lessons.length, 31);
+  assert.strictEqual(web.lessons.length, 34);
   assert.ok(web.lessons.some((l) => /css/i.test(l.title + JSON.stringify(l.exercises))), 'harus menyebut CSS');
+});
+t('curriculum: materi framework berlanjut ke tiga pelajaran Advance tambahan', () => {
+  const web = CURRICULUM.find((topic) => topic.id === 'web');
+  const advancedLessons = web.lessons.filter((lesson) => lesson.id >= 'web-32' && lesson.id <= 'web-34');
+  assert.strictEqual(advancedLessons.length, 3);
+  assert.ok(advancedLessons.every((lesson) => lesson.level === 'Advance' && lesson.exercises.length === 10));
+});
+t('curriculum: Blok Web mengenalkan seluruh framework dan bahasa yang diminta', () => {
+  const web = CURRICULUM.find((t) => t.id === 'web');
+  const lessons = web.lessons.filter((lesson) => ['web-3', 'web-4'].includes(lesson.id));
+  const material = JSON.stringify(lessons);
+  [
+    'Next.js', 'React', 'Laravel', 'Kotlin', 'Golang', 'Flutter', 'Ruby',
+    'Elysia', 'Python', 'MATLAB', 'PHP', '"C"', 'C++', 'Java',
+  ].forEach((technology) => assert.ok(material.includes(technology), technology + ' belum ada di materi blok'));
+  assert.strictEqual(lessons.reduce((count, lesson) => count + lesson.exercises.length, 0), 20);
 });
 
 /* --- syncPath: migrasi path tersimpan saat kurikulum bertambah --- */
@@ -337,14 +377,23 @@ t('syncPath: deterministik dengan rng sama', () => {
   assert.deepStrictEqual(a, b);
 });
 
-/* --- stepsForTopic: pemotongan kurikulum → 31 step + 3 ujian tier --- */
-t('steps: tiap topik = 34 node (31 step + 3 ujian tier)', () => {
+/* --- stepsForTopic: pemotongan kurikulum → 31 standard steps, extra advanced web steps + exams --- */
+t('steps: Blok Web mendapat tiga step Advance tambahan', () => {
   CURRICULUM.forEach((topic) => {
     const nodes = stepsForTopic(topic);
-    assert.strictEqual(nodes.length, 34, topic.id + ' nodes=' + nodes.length);
+    const expectedStepCount = topic.id === 'web' ? 34 : 31;
+    assert.strictEqual(nodes.length, expectedStepCount + 3, topic.id + ' nodes=' + nodes.length);
     const steps = nodes.filter((n) => n.kind === 'step');
     const tests = nodes.filter((n) => n.kind === 'test');
-    assert.strictEqual(steps.length, 31, topic.id + ' step');
+    assert.strictEqual(steps.length, expectedStepCount, topic.id + ' step');
+    TIER_ORDER.forEach((tier) => {
+      const expectedTierSteps = tier === 'Advance' ? (topic.id === 'web' ? 14 : 11) : 10;
+      assert.strictEqual(
+        steps.filter((step) => step.tier === tier).length,
+        expectedTierSteps,
+        topic.id + ' ' + tier + ' steps',
+      );
+    });
     assert.strictEqual(tests.length, 3, topic.id + ' ujian');
     steps.forEach((n) => assert.ok(n.questionIds.length >= 5, topic.id + '/' + n.id + ' soal=' + n.questionIds.length));
     tests.forEach((n) => {
@@ -365,7 +414,7 @@ t('steps: stepsForTopic menutup SEMUA soal kurikulum (tanpa duplikat/hilang)', (
   });
   const bank = allQuestionIds();
   assert.strictEqual(seen.size, bank.length, 'step menutup ' + seen.size + ' vs bank ' + bank.length);
-  assert.strictEqual(bank.length, 3050, 'total bank=' + bank.length);
+  assert.strictEqual(bank.length, 3080, 'total bank=' + bank.length);
 });
 t('steps: id node unik lintas kurikulum + bentuk id benar', () => {
   const ids = CURRICULUM.flatMap((t) => stepsForTopic(t).map((n) => n.id));
@@ -796,7 +845,10 @@ globalThis.document = {
     classList: { toggle: (c, on) => { if (on) htmlClasses.add(c); else htmlClasses.delete(c); } },
   },
 };
-const { initStore, dumpState, isMotionEnabled } = await import('./src/store.js');
+const {
+  initStore, dumpState, isMotionEnabled, setBuddySize, getState,
+  getSession, currentExercise, stepStart, answerCheck, topicNodes,
+} = await import('./src/store.js');
 
 t('store: path tersimpan dimigrasi, bukan direset (id usang dibuang, topik baru ditambah)', () => {
   localStorage.setItem('codeduo_state_v1', JSON.stringify({ version: 1, path: ['css', 'topik-hantu', 'html'], progress: {} }));
@@ -823,6 +875,37 @@ t('store: prefers-reduced-motion OS dihormati; pilihan eksplisit user menang', (
   localStorage.removeItem('codeduo_motion');
   initStore();
   assert.strictEqual(isMotionEnabled(), true, 'default tanpa sinyal OS → aktif');
+});
+t('store: ukuran Bibit tersimpan dan divalidasi saat memuat state', () => {
+  setBuddySize('large');
+  assert.strictEqual(getState().buddySize, 'large');
+  assert.strictEqual(JSON.parse(localStorage.getItem('codeduo_state_v1')).buddySize, 'large');
+  initStore();
+  assert.strictEqual(getState().buddySize, 'large');
+
+  const saved = JSON.parse(localStorage.getItem('codeduo_state_v1'));
+  saved.buddySize = 'giant';
+  localStorage.setItem('codeduo_state_v1', JSON.stringify(saved));
+  initStore();
+  assert.strictEqual(getState().buddySize, 'medium');
+});
+
+globalThis.location = { hash: '#/' };
+const failedCodeKey = questionKey('js', 'js-1', 9);
+const failedCodeNode = topicNodes('js').find((node) => node.questionIds.includes(failedCodeKey));
+stepStart('js', failedCodeNode.id);
+const failedSession = getSession();
+failedSession.order[failedSession.pos] = failedSession.exercises.findIndex((entry) => entry.key === failedCodeKey);
+failedSession.hearts = 1;
+const failedCodeExercise = currentExercise();
+const finalWrongAnswer = `function ${failedCodeExercise.fn}(){ return null; }`;
+const finalWrongResult = await answerCheck(finalWrongAnswer);
+t('store: saat nyawa habis, soal terakhir menyimpan alasan dan pembahasan', () => {
+  assert.strictEqual(finalWrongResult.result.failed, true);
+  assert.strictEqual(failedSession.phase, 'failed');
+  assert.ok(failedSession.lastResult.message);
+  assert.strictEqual(failedSession.lastResult.explain, failedCodeExercise.explain);
+  assert.strictEqual(failedSession.lastInput, finalWrongAnswer);
 });
 
 /* --- runner kode: jalur sinkron di Node (tanpa Worker) --- */

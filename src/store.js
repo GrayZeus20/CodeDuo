@@ -47,6 +47,7 @@ const TIERS = TIER_ORDER;
 const STORAGE_KEY = 'codeduo_state_v1';
 const EXPR_KEY = 'codeduo_expr_v1';
 const AI_MODEL_KEY = 'codeduo_ai_dialogue_v1';
+const BUDDY_SIZES = ['small', 'medium', 'large'];
 
 /* ================= Store inti ================= */
 
@@ -163,6 +164,7 @@ function defaultState() {
     stats: { correct: 0, wrong: 0, close: 0, lessonsDone: 0 },
     muted: false,
     buddyHidden: false,
+    buddySize: 'medium',
     motionEnabled: true,
   };
 }
@@ -189,6 +191,7 @@ function sanitizeState(parsed) {
   s.progress = cleanProgress;
   s.muted = !!s.muted;
   s.buddyHidden = !!s.buddyHidden;
+  if (!BUDDY_SIZES.includes(s.buddySize)) s.buddySize = 'medium';
   s.motionEnabled = s.motionEnabled !== false;
   return s;
 }
@@ -717,6 +720,15 @@ export function toggleBuddy() {
 
 export function isBuddyHidden() {
   return state ? !!state.buddyHidden : false;
+}
+
+export function setBuddySize(size) {
+  if (!state) return null;
+  if (!BUDDY_SIZES.includes(size)) throw new Error('Ukuran Bibit tidak valid.');
+  state.buddySize = size;
+  saveState();
+  bump();
+  return size;
 }
 
 export function toggleMotion() {

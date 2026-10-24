@@ -82,6 +82,53 @@ function canonCode(s) {
     .trim();
 }
 
+/* Nilai objek dibandingkan berdasarkan isinya, bukan urutan penulisan propertinya.
+ * Array tetap berurutan karena posisi elemen adalah bagian dari hasil yang diminta. */
+function sameOutput(actual, expected, seen) {
+  if (Object.is(actual, expected)) return true;
+  if (actual === null || expected === null || typeof actual !== 'object' || typeof expected !== 'object') return false;
+  if (Array.isArray(actual) !== Array.isArray(expected)) return false;
+  if (!Array.isArray(actual)) {
+    const actualPrototype = Object.getPrototypeOf(actual);
+    const expectedPrototype = Object.getPrototypeOf(expected);
+    if ((actualPrototype !== Object.prototype && actualPrototype !== null) ||
+        (expectedPrototype !== Object.prototype && expectedPrototype !== null)) return false;
+  }
+
+  const pairs = seen || new WeakMap();
+  if (pairs.has(actual)) return pairs.get(actual) === expected;
+  pairs.set(actual, expected);
+
+  if (Array.isArray(actual)) {
+    if (actual.length !== expected.length) return false;
+    for (let i = 0; i < actual.length; i++) {
+      const actualHasIndex = Object.prototype.hasOwnProperty.call(actual, i);
+      const expectedHasIndex = Object.prototype.hasOwnProperty.call(expected, i);
+      if (actualHasIndex !== expectedHasIndex) return false;
+      if (actualHasIndex && !sameOutput(actual[i], expected[i], pairs)) return false;
+    }
+    return true;
+  }
+
+  const actualKeys = Object.keys(actual).sort();
+  const expectedKeys = Object.keys(expected).sort();
+  if (actualKeys.length !== expectedKeys.length) return false;
+  for (let i = 0; i < actualKeys.length; i++) {
+    if (actualKeys[i] !== expectedKeys[i] ||
+        !sameOutput(actual[actualKeys[i]], expected[expectedKeys[i]], pairs)) return false;
+  }
+  return true;
+}
+
+function describeOutput(value) {
+  try {
+    const json = JSON.stringify(value);
+    return json === undefined ? String(value) : json;
+  } catch (_) {
+    return String(value);
+  }
+}
+
 /* Abaikan kapital + tanda kutip → "X" vs "x" vs "'x'" dianggap sama. */
 function looseNormalize(s) {
   return normalizeCode(s).replace(/['"]/g, '');
@@ -208,10 +255,10 @@ function checkCode(userCode, spec) {
         message: 'Error waktu jalan: ' + e.message,
       };
     }
-    if (JSON.stringify(got) !== JSON.stringify(t.expected)) {
+    if (!sameOutput(got, t.expected)) {
       /* Aturan longgar: hasil hampir sama (beda format/tanda tipis) → hampir benar. */
-      const g = JSON.stringify(got);
-      const w = JSON.stringify(t.expected);
+      const g = describeOutput(got);
+      const w = describeOutput(t.expected);
       const loose = (v) => String(v == null ? '' : v).toLowerCase().replace(/\s+/g, '');
       if (got != null && t.expected != null &&
           (loose(g) === loose(w) || similarity(String(got), String(t.expected)) >= CLOSE_THRESHOLD)) {

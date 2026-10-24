@@ -27,7 +27,7 @@ export default function Lesson() {
     return (<section className="screen"><p>Topik tidak ditemukan. <a href="#/">Ke home</a></p></section>);
   }
 
-  if (session.phase === 'failed') return <FailView session={session} topic={topic} isReview={isReview} />;
+  if (session.phase === 'failed') return <FailView session={session} topic={topic} isReview={isReview} ex={currentExercise()} />;
   if (session.phase === 'done') return <DoneView session={session} topic={topic} isReview={isReview} state={state} />;
   return <RunView session={session} topic={topic} isReview={isReview} />;
 }
@@ -543,7 +543,6 @@ function ArrangeBody({ ex, session }) {
               }}
               title="Drag / geser untuk memindahkan urutan blok, atau klik untuk batal"
             >
-              <span className="arr-drag-handle" aria-hidden="true">⠿</span>
               {ex.blocks[+id]}
             </button>
           ))
@@ -612,11 +611,25 @@ function ArrangeBody({ ex, session }) {
 
 /* ---------- Failed / Done ---------- */
 
-function FailView({ session, topic, isReview }) {
-  const label = session.label || '';
+function FailView({ session, topic, isReview, ex }) {
+  const expected = ex ? getExpectedAnswer(ex) : '';
   useEffect(() => { SFX.fail(); }, []);
   return (
     <section className="screen screen--center">
+      {ex && session.lastResult && (
+        <article className="card fail-review">
+          <h2>Pembahasan soal terakhir</h2>
+          <p className="fail-review__question">{ex.q}</p>
+          <p><b>Kenapa belum benar:</b> {session.lastResult.message}</p>
+          {session.lastResult.explain && <p><b>Petunjuk:</b> {session.lastResult.explain}</p>}
+          {expected && (
+            <div>
+              <b>{ex.type === 'preview' ? 'Hal yang perlu ada:' : 'Jawaban yang benar:'}</b>
+              <pre className="fail-review__answer"><code>{expected}</code></pre>
+            </div>
+          )}
+        </article>
+      )}
       <div className="card card--fail">💔 Nyawa habis!</div>
       <p className="muted">Jangan berkecil hati! Coba lagi untuk memperkuat pemahamanmu.</p>
       <button className="btn btn--danger" onClick={lessonRetry}>Coba Lagi</button>
@@ -625,6 +638,15 @@ function FailView({ session, topic, isReview }) {
         : <a className="btn btn--ghost" href={'#/topic/' + topic.id}>Keluar</a>}
     </section>
   );
+}
+
+function getExpectedAnswer(ex) {
+  if (ex.type === 'mc') return ex.options[ex.a];
+  if (ex.type === 'fill') return ex.accept.join(' / ');
+  if (ex.type === 'code') return ex.solution || ex.explain;
+  if (ex.type === 'arrange') return ex.blocks.join('\n');
+  if (ex.type === 'preview') return Array.isArray(ex.must) ? ex.must.join('\n') : ex.explain;
+  return ex.explain || '';
 }
 
 function DoneView({ session, topic, isReview, state }) {

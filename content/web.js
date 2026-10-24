@@ -1,5 +1,5 @@
 /* CodeDuo — blok konten: Blok Web (peta fungsi & arsitektur web).
- * 1 topik (web) × 31 pelajaran (10 Dasar, 10 Menengah, 11 Advance). Total 305 soal.
+ * 1 topik (web) × 34 pelajaran (10 Dasar, 10 Menengah, 14 Advance). Total 335 soal.
  * Engine di content.js (barrel) & app.js. Format tipe soal: mc | fill | code | preview | arrange.
  * ESM murni: dipakai Vite (browser) & Node (test).
  */
@@ -265,254 +265,254 @@ const CONTENT_WEB = [
       {
         "id": "web-3",
         "level": "Dasar",
-        "title": "Web Lesson 3",
+        "title": "Blok Framework Web",
         "exercises": [
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #11: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Framework berbasis React untuk membangun aplikasi web dengan routing dan rendering server:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Next.js",
+              "Laravel",
+              "Flutter",
+              "MATLAB"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Next.js adalah framework React yang menyediakan routing dan pilihan rendering di server maupun client."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #12: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Library JavaScript untuk membangun antarmuka dari komponen yang dapat digunakan ulang:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "React",
+              "Elysia",
+              "Kotlin",
+              "C"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "React adalah library JavaScript untuk membangun UI berbasis komponen."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #13: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Framework PHP yang menyediakan routing, ORM, dan fitur aplikasi web:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Laravel",
+              "Next.js",
+              "Ruby",
+              "Java"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Laravel adalah framework web PHP dengan fitur seperti routing dan Eloquent ORM."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #14: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Framework TypeScript untuk membuat API web yang berjalan di runtime Bun:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
+              "Elysia",
+              "Flutter",
+              "MATLAB",
               "C++"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Elysia adalah framework server/API TypeScript yang dirancang untuk Bun."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #15: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Toolkit UI berbasis Dart untuk membangun aplikasi dari satu codebase ke beberapa platform:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Flutter",
+              "React",
+              "PHP",
+              "Go"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Flutter adalah UI toolkit lintas platform; bahasa yang umum dipakai bersamanya adalah Dart."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #16: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Bahasa yang banyak digunakan untuk aplikasi Android dan berjalan di ekosistem JVM:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Kotlin",
+              "Ruby",
+              "CSS",
+              "Laravel"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Kotlin adalah bahasa modern yang didukung untuk pengembangan Android dan kompatibel dengan JVM."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #17: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Bahasa pemrograman berorientasi objek yang berjalan di JVM dan banyak dipakai pada sistem enterprise:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Java",
+              "Elysia",
+              "Flutter",
+              "PHP"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Java adalah bahasa general-purpose yang berjalan di Java Virtual Machine (JVM)."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #18: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Hubungan yang tepat antara Next.js dan React adalah:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Next.js dibangun di atas React",
+              "React adalah runtime wajib Next.js",
+              "Keduanya bahasa pemrograman",
+              "Next.js adalah database untuk React"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "React menyediakan UI berbasis komponen; Next.js menambahkan kerangka aplikasi dan fitur rendering."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #19: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Manakah yang merupakan bahasa, bukan framework atau UI toolkit?",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Kotlin",
+              "Next.js",
+              "Laravel",
+              "Flutter"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Kotlin adalah bahasa pemrograman; Next.js, Laravel, dan Flutter adalah framework/toolkit."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #20: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Pasangan teknologi dan perannya yang benar:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Laravel — framework web PHP",
+              "React — bahasa pemrograman baru",
+              "Flutter — database relasional",
+              "Elysia — framework CSS"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Laravel adalah framework aplikasi web yang ditulis untuk ekosistem PHP."
           }
         ]
       },
       {
         "id": "web-4",
         "level": "Dasar",
-        "title": "Web Lesson 4",
+        "title": "Blok Bahasa Pemrograman",
         "exercises": [
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #21: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Bahasa pemrograman Google yang dikenal dengan goroutine untuk concurrency:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Go (Golang)",
+              "Ruby",
+              "Java",
+              "MATLAB"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Go, yang juga disebut Golang, memiliki goroutine dan channel untuk membangun program concurrent."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #22: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Bahasa dinamis yang terkenal dengan sintaks ekspresif dan menjadi dasar framework Rails:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Ruby",
+              "Kotlin",
+              "C",
+              "PHP"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Ruby adalah bahasa pemrograman dinamis; Ruby on Rails adalah framework web yang dibangun dengannya."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #23: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Bahasa serbaguna dengan sintaks yang mudah dibaca dan banyak dipakai untuk otomasi serta data science:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
               "Python",
+              "Java",
+              "Elysia",
               "C++"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Python digunakan untuk berbagai keperluan, termasuk scripting, otomasi, dan data science."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #24: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Lingkungan komputasi yang berfokus pada komputasi numerik, matriks, dan analisis teknik:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "MATLAB",
+              "Next.js",
+              "Flutter",
+              "Laravel"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "MATLAB dirancang untuk komputasi numerik, analisis matriks, dan pemodelan teknik."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #25: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Bahasa yang umum dipakai untuk membuat halaman web dinamis di sisi server:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "PHP",
+              "React",
+              "Kotlin",
+              "MATLAB"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "PHP dapat dijalankan di server untuk menghasilkan halaman web dan menangani request."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #26: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Bahasa pemrograman sistem yang menjadi dasar banyak API dan program tingkat rendah:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "C",
+              "Laravel",
+              "Ruby",
+              "Next.js"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "C adalah bahasa compiled yang banyak dipakai untuk sistem operasi, embedded, dan pustaka tingkat rendah."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #27: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Bahasa compiled yang mendukung pemrograman berorientasi objek dan banyak dipakai pada game/performa tinggi:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "C++",
+              "Elysia",
+              "PHP",
+              "Flutter"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "C++ menggabungkan kontrol tingkat rendah dengan abstraksi dan sering dipilih untuk game serta aplikasi performa tinggi."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #28: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Pasangan framework dan bahasa utama yang benar:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Elysia — TypeScript/JavaScript di runtime Bun",
+              "Laravel — Kotlin",
+              "Next.js — PHP",
+              "Flutter — MATLAB"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Elysia dibuat untuk membangun server dan API dengan TypeScript atau JavaScript pada Bun."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #29: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Manakah pasangan bahasa dan penggunaan yang tepat?",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Python — otomasi dan data science",
+              "MATLAB — styling halaman web",
+              "C — framework UI lintas platform",
+              "Ruby — runtime untuk Next.js"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Python memiliki ekosistem luas untuk otomasi, analisis data, dan machine learning."
           },
           {
             "type": "mc",
-            "q": "Arsitektur Web Modern #30: Bahasa yang mengatur tata letak, warna, dan tampilan visual halaman web adalah:",
+            "q": "Pilihan yang tepat untuk membuat aplikasi Android native adalah:",
             "options": [
-              "CSS (Cascading Style Sheets)",
-              "SQL",
-              "Python",
-              "C++"
+              "Kotlin atau Java",
+              "Next.js atau Laravel",
+              "MATLAB atau CSS",
+              "Elysia atau Flutter"
             ],
             "a": 0,
-            "explain": "CSS bertanggung jawab penuh atas presentasi dan estetika visual halaman web."
+            "explain": "Kotlin dan Java sama-sama didukung untuk pengembangan Android native."
           }
         ]
       },
@@ -3876,6 +3876,237 @@ const CONTENT_WEB = [
             ],
             "a": 0,
             "explain": "CSP adalah benteng pertahanan krusial terhadap eksploitasi Cross-Site Scripting (XSS)."
+          }
+        ]
+      },
+      {
+        "id": "web-32",
+        "level": "Advance",
+        "title": "Advance: React & Next.js",
+        "exercises": [
+          {
+            "type": "mc",
+            "q": "Di React, bagian UI yang perlu state lokal atau event handler browser harus:",
+            "options": ["Berjalan sebagai Client Component", "Selalu menjadi file CSS", "Dijalankan hanya di database", "Menghapus semua props"],
+            "a": 0,
+            "explain": "Interaksi browser dan state client memerlukan komponen client; di Next.js App Router beri batas 'use client' pada file yang membutuhkannya."
+          },
+          {
+            "type": "mc",
+            "q": "Mengapa item list React sebaiknya memakai key stabil seperti id data?",
+            "options": ["Agar React mencocokkan item saat list berubah", "Agar semua komponen dipaksa unmount", "Untuk mengenkripsi data", "Untuk mengurutkan list alfabetis"],
+            "a": 0,
+            "explain": "Key stabil membantu React mengenali item yang sama saat list ditambah, dihapus, atau diurutkan."
+          },
+          {
+            "type": "mc",
+            "q": "Pola yang tepat untuk memperbarui state array React adalah:",
+            "options": ["Membuat array baru, bukan memutasi state lama", "Mengubah array langsung tanpa setter", "Mengedit DOM secara manual", "Mengganti array menjadi string"],
+            "a": 0,
+            "explain": "Pembaruan immutable dengan setter membuat perubahan state dapat dideteksi dan dirender ulang."
+          },
+          {
+            "type": "mc",
+            "q": "Dalam Next.js App Router, direktori `app/blog/[slug]` biasanya menyatakan:",
+            "options": ["Route dinamis dengan parameter slug", "Folder database SQL", "Komponen CSS global", "Endpoint khusus gambar"],
+            "a": 0,
+            "explain": "Segmen dalam tanda kurung siku membuat parameter route dinamis, misalnya slug artikel."
+          },
+          {
+            "type": "mc",
+            "q": "Hydration pada halaman yang dirender di server adalah proses:",
+            "options": ["Menghubungkan HTML awal dengan JavaScript agar interaktif", "Menghapus HTML setelah tampil", "Mengubah CSS menjadi SQL", "Mengirim password ke browser"],
+            "a": 0,
+            "explain": "Hydration mengaktifkan interaksi client pada markup HTML yang sudah dirender."
+          },
+          {
+            "type": "mc",
+            "q": "Hook React `useEffect` paling tepat digunakan untuk:",
+            "options": ["Menyinkronkan komponen dengan sistem eksternal setelah render", "Menghitung nilai turunan yang bisa dibuat saat render", "Mendefinisikan route server Next.js", "Mengganti semua props"],
+            "a": 0,
+            "explain": "Effect cocok untuk sinkronisasi seperti subscription atau API browser; jangan pakai untuk nilai turunan yang sederhana."
+          },
+          {
+            "type": "mc",
+            "q": "Di Next.js, variabel rahasia server sebaiknya:",
+            "options": ["Tetap di server dan tidak memakai prefix NEXT_PUBLIC_", "Dikirim sebagai prop ke semua komponen", "Ditulis langsung di file halaman", "Disimpan di localStorage publik"],
+            "a": 0,
+            "explain": "Nilai ber-prefix NEXT_PUBLIC_ dapat masuk ke bundle browser; rahasia harus digunakan pada kode server."
+          },
+          {
+            "type": "mc",
+            "q": "Server Component di Next.js bermanfaat karena dapat:",
+            "options": ["Mengambil data di server tanpa mengirim seluruh logika komponen ke browser", "Menjalankan onClick langsung tanpa client", "Mengakses DOM browser saat build", "Menggantikan kebutuhan validasi"],
+            "a": 0,
+            "explain": "Server Components dapat mengerjakan pekerjaan server-side dan mengurangi JavaScript client; interaksi tetap membutuhkan Client Component."
+          },
+          {
+            "type": "mc",
+            "q": "Action yang mengubah data melalui form tetap harus memvalidasi input karena:",
+            "options": ["Data dari client tidak boleh dianggap tepercaya", "Browser selalu mengirim data yang benar", "Validasi hanya perlu untuk CSS", "Server tidak menerima input kosong"],
+            "a": 0,
+            "explain": "Validasi server tetap diperlukan meskipun form juga memvalidasi di browser."
+          },
+          {
+            "type": "mc",
+            "q": "Komponen React yang menerima data dari induk sebaiknya memperlakukan props sebagai:",
+            "options": ["Input untuk dibaca, bukan dimutasi", "Variabel global yang selalu diubah", "Pengganti event handler", "Penyimpanan permanen browser"],
+            "a": 0,
+            "explain": "Props adalah input komponen; perubahan data diminta melalui callback atau state owner, bukan mutasi props."
+          }
+        ]
+      },
+      {
+        "id": "web-33",
+        "level": "Advance",
+        "title": "Advance: Backend, API & Runtime",
+        "exercises": [
+          {
+            "type": "mc",
+            "q": "Di Laravel, middleware umumnya dipakai untuk:",
+            "options": ["Memeriksa atau memproses request sebelum mencapai handler", "Menggambar widget Flutter", "Mengompilasi kernel C", "Mengurutkan CSS"],
+            "a": 0,
+            "explain": "Middleware membungkus alur request, misalnya untuk autentikasi, rate limit, atau pencatatan."
+          },
+          {
+            "type": "mc",
+            "q": "Laravel Form Request membantu memusatkan:",
+            "options": ["Aturan validasi dan otorisasi input", "Konfigurasi layar Android", "Garbage collection JVM", "Plot matriks MATLAB"],
+            "a": 0,
+            "explain": "Form Request mengelompokkan validasi serta otorisasi input request."
+          },
+          {
+            "type": "mc",
+            "q": "Eloquent ORM pada Laravel memetakan:",
+            "options": ["Model aplikasi ke tabel dan record database", "Komponen React ke route browser", "Pointer C ke widget", "File Dart ke package Java"],
+            "a": 0,
+            "explain": "Eloquent menyediakan pola model untuk membaca dan mengubah record database."
+          },
+          {
+            "type": "mc",
+            "q": "Pada Elysia, schema request sebaiknya digunakan untuk:",
+            "options": ["Memvalidasi bentuk input di batas endpoint", "Mengganti database dengan CSS", "Menjalankan kode di browser tanpa bundler", "Melewati pemeriksaan tipe"],
+            "a": 0,
+            "explain": "Schema endpoint Elysia membantu memvalidasi input dan menjaga kontrak API."
+          },
+          {
+            "type": "mc",
+            "q": "Aplikasi Go menerima `context.Context` pada handler terutama agar dapat:",
+            "options": ["Meneruskan deadline, pembatalan, dan metadata request", "Mengubah tipe Go menjadi Ruby", "Menyimpan data tanpa batas waktu", "Menghapus kebutuhan menangani error"],
+            "a": 0,
+            "explain": "Context membawa sinyal pembatalan/deadline sepanjang operasi request."
+          },
+          {
+            "type": "mc",
+            "q": "Pola penanganan error yang umum dan eksplisit di Go adalah:",
+            "options": ["Mengembalikan nilai error dan memeriksanya", "Mengabaikan semua error", "Mengandalkan exception tersembunyi", "Mengubah error menjadi komentar"],
+            "a": 0,
+            "explain": "Go biasanya mengembalikan error sebagai nilai sehingga pemanggil dapat menanganinya secara eksplisit."
+          },
+          {
+            "type": "mc",
+            "q": "Saat memakai goroutine yang mengakses data bersama, program perlu:",
+            "options": ["Sinkronisasi yang benar atau kepemilikan data yang jelas", "Menambah global mutable tanpa aturan", "Menghapus semua return", "Menganggap race tidak mungkin"],
+            "a": 0,
+            "explain": "Concurrency memerlukan aturan akses data agar tidak terjadi data race."
+          },
+          {
+            "type": "mc",
+            "q": "Di Ruby on Rails, migrasi database digunakan untuk:",
+            "options": ["Mencatat perubahan skema database secara bertahap", "Mengubah Ruby menjadi Java", "Menata halaman dengan CSS", "Mengirim event DOM"],
+            "a": 0,
+            "explain": "Migration menyimpan perubahan skema sebagai rangkaian perubahan yang dapat diterapkan bersama."
+          },
+          {
+            "type": "mc",
+            "q": "Untuk menghindari query database berulang di dalam loop relasi Rails, gunakan:",
+            "options": ["Eager loading seperti `includes`", "Menonaktifkan semua index", "Mengirim query dari CSS", "Mengganti model menjadi array acak"],
+            "a": 0,
+            "explain": "Eager loading memuat relasi secara terencana dan membantu mencegah pola N+1 query."
+          },
+          {
+            "type": "mc",
+            "q": "Konfigurasi rahasia aplikasi backend sebaiknya disimpan:",
+            "options": ["Di environment/secret manager, bukan di repository", "Di file publik yang dikirim ke browser", "Di nama route", "Di output log setiap request"],
+            "a": 0,
+            "explain": "Rahasia perlu dipisahkan dari source control dan tidak diekspos lewat bundle atau log."
+          }
+        ]
+      },
+      {
+        "id": "web-34",
+        "level": "Advance",
+        "title": "Advance: Mobile, Sistem & Komputasi",
+        "exercises": [
+          {
+            "type": "mc",
+            "q": "Di Flutter, widget biasanya:",
+            "options": ["Mendeskripsikan bagian UI yang disusun menjadi widget tree", "Menjadi tabel SQL", "Menggantikan bahasa Dart", "Membuka goroutine Go"],
+            "a": 0,
+            "explain": "Flutter menyusun UI melalui widget tree yang dibangun dari widget."
+          },
+          {
+            "type": "mc",
+            "q": "Saat state Flutter berubah dan tampilan harus diperbarui, pola yang tepat adalah:",
+            "options": ["Memperbarui state melalui mekanisme state management yang dipakai", "Mengubah piksel layar secara manual setiap frame", "Menyimpan state hanya di nama widget", "Mengedit file build hasil kompilasi"],
+            "a": 0,
+            "explain": "Perubahan state harus disalurkan lewat mekanisme state yang sesuai agar UI dibangun ulang secara konsisten."
+          },
+          {
+            "type": "mc",
+            "q": "Null safety Kotlin membantu dengan cara:",
+            "options": ["Membedakan tipe yang boleh null dan yang tidak", "Membuat semua variabel menjadi null", "Menghapus pemeriksaan runtime sepenuhnya", "Mengubah Kotlin menjadi SQL"],
+            "a": 0,
+            "explain": "Sistem tipe Kotlin menandai kemungkinan null agar banyak kesalahan dapat dideteksi lebih awal."
+          },
+          {
+            "type": "mc",
+            "q": "Kotlin coroutine cocok untuk pekerjaan asynchronous karena:",
+            "options": ["Mendukung penangguhan operasi tanpa memblokir thread secara langsung", "Menghapus semua kebutuhan menangani error", "Selalu membuat satu thread baru per fungsi", "Hanya berjalan di CSS"],
+            "a": 0,
+            "explain": "Coroutine menyediakan struktur untuk pekerjaan suspend/asynchronous; dispatcher tetap menentukan konteks eksekusi."
+          },
+          {
+            "type": "mc",
+            "q": "Di Java, garbage collector terutama mengelola:",
+            "options": ["Memori heap untuk objek yang tidak lagi terjangkau", "Semua file di disk", "Koneksi jaringan tanpa batas", "Urutan import source"],
+            "a": 0,
+            "explain": "Garbage collector mereklamasi objek heap yang tidak lagi dapat dijangkau; bukan pengganti penutupan resource eksternal."
+          },
+          {
+            "type": "mc",
+            "q": "Mengapa file atau koneksi di Java perlu ditutup secara deterministik?",
+            "options": ["Resource eksternal tidak selalu dilepas oleh garbage collector tepat waktu", "Agar class bisa diubah menjadi interface", "Karena heap tidak punya objek", "Untuk menghindari kompilasi bytecode"],
+            "a": 0,
+            "explain": "Gunakan try-with-resources untuk menutup resource seperti stream dan koneksi secara andal."
+          },
+          {
+            "type": "mc",
+            "q": "Pada C, pointer yang sudah tidak menunjuk ke objek valid berbahaya karena dapat menyebabkan:",
+            "options": ["Undefined behavior saat diakses", "Route Next.js baru", "Garbage collection otomatis", "Widget Flutter ter-rebuild"],
+            "a": 0,
+            "explain": "Dereference pointer invalid dapat menyebabkan undefined behavior; kepemilikan dan masa hidup memori harus dijaga."
+          },
+          {
+            "type": "mc",
+            "q": "Prinsip RAII di C++ mengaitkan masa hidup resource dengan:",
+            "options": ["Masa hidup objek pemiliknya", "Nama file CSS", "Urutan halaman web", "Nilai balik HTTP"],
+            "a": 0,
+            "explain": "RAII memakai constructor/destructor agar resource dilepas saat objek pemilik keluar dari scope."
+          },
+          {
+            "type": "mc",
+            "q": "Smart pointer `std::unique_ptr` dipilih ketika:",
+            "options": ["Satu objek memiliki kepemilikan eksklusif atas resource", "Banyak pemilik bersama selalu diperlukan", "Resource harus bocor selamanya", "Pointer tidak boleh memiliki tipe"],
+            "a": 0,
+            "explain": "`unique_ptr` menyatakan kepemilikan tunggal dan melepas resource otomatis saat pemiliknya dihancurkan."
+          },
+          {
+            "type": "mc",
+            "q": "Di MATLAB, operasi vektor/matriks sering lebih baik daripada loop manual karena:",
+            "options": ["Operasi tervektorisasi menyatakan komputasi array secara langsung", "Matriks tidak punya ukuran", "Loop dilarang oleh bahasa", "MATLAB hanya memproses string"],
+            "a": 0,
+            "explain": "Vectorization memanfaatkan operasi array bawaan MATLAB dan membuat maksud perhitungan lebih ringkas."
           }
         ]
       }

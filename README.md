@@ -56,13 +56,15 @@ Kurikulum **dipecah per blok** — mengubah soal tak perlu menyentuh engine:
 | `content/js.js` | JavaScript, Struktur Data | 610 |
 | `content/sql.js` | SQL, Database, API | 915 |
 | `content/ts.js` | TypeScript, REST API | 610 |
-| `content/web.js` | Blok Web (peta fungsi tiap blok) | 305 |
+| `content/web.js` | Blok Web (framework, bahasa, dan arsitektur) | 335 |
 
 `content.js` = **barrel**: menyusun tiap blok jadi `CURRICULUM` + helper murni
 (`stepsForTopic`, `questionKey`, `resolveQuestion`, `allQuestionIds`, …).
 
-**Aturan (dijaga `test.js`):** tiap topik = 31 pelajaran (10 Dasar, 10 Menengah, 11 Advance),
-total **3.050 soal** across 10 topik kurikulum. Tiap topik dipotong rapi menjadi 31 step + 3 ujian tier (34 node).
+**Aturan (dijaga `test.js`):** sebagian besar topik memiliki 31 pelajaran (10 Dasar, 10 Menengah,
+11 Advance). Blok Web memiliki 34 pelajaran, dengan 14 di tingkat Advance untuk materi framework
+dan bahasa lanjutan. Total **3.080 soal** di 10 topik. Step dibuat per 10 soal pada tiap tier,
+jadi jumlah step menyesuaikan banyaknya materi sebelum ujian tier.
 
 ## Bibit hidup — otonomi + ekspresi belajar sendiri
 
@@ -139,7 +141,7 @@ Kepala Bibit dirender komponen `<RobotHead>` dari paket **`robot-heads`** apa ad
 ## Tes
 
 ```bash
-npm test                  # node test.js → checker+runner, kurikulum (10 topik/3050 soal),
+npm test                  # node test.js → checker+runner, kurikulum (10 topik/3080 soal),
                           # step & SRS, store (migrasi path, prefers-reduced-motion),
                           # wajah LED, animasi head, model ekspresi
 npm run test:companion    # node test-companion.mjs → planner otonom Bibit (idle/proaktif/hint)
