@@ -144,7 +144,7 @@ export function isLessonDone(topicId, lessonId) {
   if (!l) return false;
   const done = progressSet(topicId);
   return done.has(lessonId)
-    || topicNodes(topicId).some((n) => n.kind === 'step' && n.tier === l.level && done.has(n.id));
+    || topicNodes(topicId).some((n) => n.kind === 'step' && n.lessonId === lessonId && done.has(n.id));
 }
 
 export function nextUnlockedNode(topic) {

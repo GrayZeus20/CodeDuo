@@ -7,10 +7,9 @@
  * File ini menyusun semuanya jadi CURRICULUM + helper murni (step/ujian/SRS key).
  *
  * Struktur: 10 topik. Umumnya 31 pelajaran; Blok Web memiliki jalur Advance lebih panjang.
- * Total 3.080 soal (>300 per topik).
- * Tiap tier dipotong menjadi step berurutan (10 soal per step) hingga seluruh soal habis,
- * ditutup dengan 1 ujian tier (10 soal komprehensif dari tier tersebut).
- * Step dibuat per 10 soal pada tiap tier, lalu ditutup satu ujian per tier.
+ * Total 3.160 soal (>300 per topik).
+ * Tiap pelajaran menjadi step tersendiri (maksimal 10 soal per step),
+ * lalu tiap tier ditutup dengan 1 ujian (10 soal komprehensif).
  * Tipe soal: mc | fill | code | preview | arrange
  *
  * ESM murni: dipakai Vite (browser) & Node (test).
@@ -35,35 +34,39 @@ function questionKey(topicId, lessonId, idx) {
 }
 
 /* stepsForTopic(topic) → daftar node progresi murni:
- * tiap tier dipecah jadi step-step berurutan (10 soal/step) hingga soal habis,
+ * tiap pelajaran menjadi step tersendiri (maksimal 10 soal/step),
  * diikuti 1 ujian tier (10 soal representatif dari tier tersebut).
- * Node: { id, topicId, tier, kind:'step'|'test', label, questionIds[], stepNo }
+ * Node: { id, topicId, tier, kind:'step'|'test', label, lessonId?, questionIds[], stepNo }
  * questionIds = kunci global (questionKey). */
 function stepsForTopic(topic) {
   if (!topic || !Array.isArray(topic.lessons)) return [];
   const nodes = [];
   let globalStepNo = 0;
   TIER_ORDER.forEach((tier) => {
-    const ids = topic.lessons
-      .filter((l) => l.level === tier)
-      .flatMap((l) => l.exercises.map((_, i) => questionKey(topic.id, l.id, i)));
-    if (!ids.length) return;
+    const lessons = topic.lessons.filter((lesson) => lesson.level === tier && lesson.exercises.length);
+    if (!lessons.length) return;
     const tierStepNodes = [];
-    for (let c = 0; c < ids.length; c += STEP_SIZE) {
-      globalStepNo += 1;
-      const slice = ids.slice(c, c + STEP_SIZE);
-      const stepNode = {
-        id: `${topic.id}--${globalStepNo}`,
-        topicId: topic.id,
-        tier,
-        kind: 'step',
-        label: `Step ${globalStepNo} · ${tier}`,
-        questionIds: slice,
-        stepNo: globalStepNo,
-      };
-      nodes.push(stepNode);
-      tierStepNodes.push(stepNode);
-    }
+    lessons.forEach((lesson) => {
+      const ids = lesson.exercises.map((_, i) => questionKey(topic.id, lesson.id, i));
+      for (let c = 0; c < ids.length; c += STEP_SIZE) {
+        globalStepNo += 1;
+        const slice = ids.slice(c, c + STEP_SIZE);
+        const part = Math.floor(c / STEP_SIZE) + 1;
+        const stepNode = {
+          id: `${topic.id}--${globalStepNo}`,
+          topicId: topic.id,
+          tier,
+          kind: 'step',
+          label: lesson.title + (part > 1 ? ` · Bagian ${part}` : ''),
+          lessonId: lesson.id,
+          lessonTitle: lesson.title,
+          questionIds: slice,
+          stepNo: globalStepNo,
+        };
+        nodes.push(stepNode);
+        tierStepNodes.push(stepNode);
+      }
+    });
     /* Ujian tier: 10 soal komprehensif — sampel merata dari seluruh step tier ini
      * (1 soal per step dulu; jika step < 10, lengkapi dari soal cadangan per step). */
     const perStep = tierStepNodes.map((s) => s.questionIds);

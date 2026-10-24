@@ -29,7 +29,7 @@ export default function Topic({ topicId }) {
       <header className="topic__head" style={{ borderColor: topic.color }}>
         <span className="topic__icon"><TopicIcon id={topic.id} size={48} /></span>
         <div>
-          <span className="topic-card__tier">{stepNodes.length} step · 10 soal/step · ujian tiap tier</span>
+          <span className="topic-card__tier">{stepNodes.length} step · tiap step fokus satu pelajaran · ujian tiap tier</span>
           <h1>{topic.name}</h1>
           <p>{topic.desc}</p>
         </div>
@@ -124,7 +124,7 @@ function NodeItem({ topicId, node, idx, open, kind }) {
   const isTest = kind === 'test';
   const cls = done ? 'node node--done' : open ? 'node node--open' : 'node node--locked';
   const label = done ? '★' : open ? (isTest ? '★' : String(node.stepNo)) : '🔒';
-  const title = isTest ? 'Ujian ' + node.tier : 'Step ' + node.stepNo + ' · ' + node.tier;
+  const title = isTest ? 'Ujian ' + node.tier : (node.lessonTitle || 'Step ' + node.stepNo + ' · ' + node.tier);
   const lessonIds = isTest
     ? []
     : [...new Set((node.questionIds || []).map((k) => (k.includes('|') ? k.split('|')[1].split('#')[0] : '')))];
@@ -140,7 +140,7 @@ function NodeItem({ topicId, node, idx, open, kind }) {
       <span className="lesson-path__title">
         <span className="topic-card__tier">{isTest ? 'Ujian ' + node.tier : 'Step ' + node.stepNo + ' · ' + (node.questionIds ? node.questionIds.length : 10) + ' soal'}</span><br />
         <b>{title}</b>{done ? ' · selesai' : open ? '' : ' · terkunci'}
-        {!isTest && lessonTitles && (
+        {!isTest && lessonTitles && !node.lessonTitle && (
           <span className="topic-card__sub-lessons" style={{ display: 'block', fontSize: '0.78rem', color: 'var(--muted)', marginTop: '2px' }}>
             {lessonTitles}
           </span>

@@ -1,5 +1,5 @@
 /* CodeDuo — blok konten: Blok Web (peta fungsi & arsitektur web).
- * 1 topik (web) × 34 pelajaran (10 Dasar, 10 Menengah, 14 Advance). Total 335 soal.
+ * 1 topik (web) × 50 pelajaran (10 Dasar, 10 Menengah, 30 Advance). Total 415 soal.
  * Engine di content.js (barrel) & app.js. Format tipe soal: mc | fill | code | preview | arrange.
  * ESM murni: dipakai Vite (browser) & Node (test).
  */
@@ -265,7 +265,7 @@ const CONTENT_WEB = [
       {
         "id": "web-3",
         "level": "Dasar",
-        "title": "Blok Framework Web",
+        "title": "Peta Framework & Toolkit",
         "exercises": [
           {
             "type": "mc",
@@ -3882,7 +3882,7 @@ const CONTENT_WEB = [
       {
         "id": "web-32",
         "level": "Advance",
-        "title": "Advance: React & Next.js",
+        "title": "Pengantar Frontend Modern",
         "exercises": [
           {
             "type": "mc",
@@ -3959,7 +3959,7 @@ const CONTENT_WEB = [
       {
         "id": "web-33",
         "level": "Advance",
-        "title": "Advance: Backend, API & Runtime",
+        "title": "Pengantar Backend & API",
         "exercises": [
           {
             "type": "mc",
@@ -4036,7 +4036,7 @@ const CONTENT_WEB = [
       {
         "id": "web-34",
         "level": "Advance",
-        "title": "Advance: Mobile, Sistem & Komputasi",
+        "title": "Pengantar Mobile & Sistem",
         "exercises": [
           {
             "type": "mc",
@@ -4108,6 +4108,198 @@ const CONTENT_WEB = [
             "a": 0,
             "explain": "Vectorization memanfaatkan operasi array bawaan MATLAB dan membuat maksud perhitungan lebih ringkas."
           }
+        ]
+      },
+      {
+        "id": "web-35",
+        "level": "Advance",
+        "title": "React: Komponen & State",
+        "exercises": [
+          { "type": "mc", "q": "Hook React yang umum dipakai untuk menyimpan state lokal komponen adalah:", "options": ["useState", "useRoute", "useTable", "useStyle"], "a": 0, "explain": "useState memberi komponen state lokal dan setter untuk memperbaruinya." },
+          { "type": "mc", "q": "Mengapa elemen list React membutuhkan key yang stabil?", "options": ["Agar React mencocokkan item ketika list berubah", "Agar item otomatis diurutkan", "Untuk mengubah item menjadi komponen server", "Untuk menyembunyikan item dari DOM"], "a": 0, "explain": "Key yang stabil membantu React mengenali item yang sama saat list ditambah, dihapus, atau diurutkan." },
+          { "type": "mc", "q": "Props pada komponen React sebaiknya diperlakukan sebagai:", "options": ["Input yang dibaca, bukan dimutasi", "State global untuk diubah langsung", "Pengganti semua event handler", "Penyimpanan permanen"], "a": 0, "explain": "Komponen meminta perubahan melalui callback atau pemilik state, bukan dengan memutasi props." },
+          { "type": "mc", "q": "Kapan `useEffect` paling tepat digunakan?", "options": ["Untuk sinkronisasi dengan sistem eksternal setelah render", "Untuk menghitung setiap nilai turunan sederhana", "Untuk mengganti props", "Untuk menentukan warna CSS saat build"], "a": 0, "explain": "Effect berguna untuk sinkronisasi seperti subscription atau API browser." },
+          { "type": "mc", "q": "Pola controlled input di React biasanya menghubungkan:", "options": ["`value` dan `onChange` ke state", "`key` dan `className` ke database", "`href` dan `src` ke state", "`id` dan `name` ke router"], "a": 0, "explain": "Nilai input berasal dari state dan event onChange memperbarui state tersebut." }
+        ]
+      },
+      {
+        "id": "web-36",
+        "level": "Advance",
+        "title": "Next.js: Routing & Rendering",
+        "exercises": [
+          { "type": "mc", "q": "Pada Next.js App Router, file `app/blog/[slug]/page.js` menyatakan:", "options": ["Route dinamis dengan parameter slug", "Folder untuk tabel database", "File konfigurasi CSS", "Route yang hanya dapat dibuka saat build"], "a": 0, "explain": "Segmen dalam kurung siku membuat parameter route dinamis." },
+          { "type": "mc", "q": "Server Component di Next.js cocok untuk:", "options": ["Mengambil data di server tanpa mengirim seluruh logika komponen ke browser", "Memakai onClick tanpa komponen client", "Mengakses DOM browser saat server render", "Menggantikan validasi input"], "a": 0, "explain": "Server Components dapat mengerjakan pekerjaan server-side dan mengurangi JavaScript yang dikirim ke client." },
+          { "type": "mc", "q": "Untuk navigasi antarhalaman aplikasi Next.js, komponen yang disediakan adalah:", "options": ["Link", "RouteTable", "AnchorProvider", "PageSwitch"], "a": 0, "explain": "Komponen Link mendukung navigasi client-side pada route Next.js." },
+          { "type": "mc", "q": "Rahasia server Next.js sebaiknya disimpan di variabel yang:", "options": ["Tidak memakai prefix NEXT_PUBLIC_", "Selalu diawali NEXT_PUBLIC_", "Ditulis di dalam komponen halaman", "Disimpan di localStorage"], "a": 0, "explain": "Prefix NEXT_PUBLIC_ membuat nilai dapat diekspos ke bundle browser." },
+          { "type": "mc", "q": "Hydration pada halaman Next.js yang dirender di server berarti:", "options": ["JavaScript menghubungkan HTML awal agar interaktif", "HTML awal dihapus sebelum tampil", "CSS dikonversi menjadi route", "Server mengirim database ke browser"], "a": 0, "explain": "Hydration mengaktifkan interaksi client pada markup HTML yang sudah dirender." }
+        ]
+      },
+      {
+        "id": "web-37",
+        "level": "Advance",
+        "title": "Laravel: Request & Database",
+        "exercises": [
+          { "type": "mc", "q": "Dalam Laravel, route umumnya digunakan untuk:", "options": ["Memetakan request URL dan metode HTTP ke handler", "Menyimpan gambar ke CSS", "Membuat class JavaScript di browser", "Mengganti tabel database"], "a": 0, "explain": "Route menghubungkan request HTTP dengan controller atau closure." },
+          { "type": "mc", "q": "Middleware Laravel berjalan terutama untuk:", "options": ["Memeriksa atau memproses request sebelum mencapai handler", "Menggambar tampilan Flutter", "Mengubah PHP menjadi SQL", "Menyusun file gambar"], "a": 0, "explain": "Middleware dapat menangani autentikasi, pencatatan, atau pemeriksaan request." },
+          { "type": "mc", "q": "Laravel Form Request membantu memusatkan:", "options": ["Validasi dan otorisasi input request", "Styling halaman", "Konfigurasi JVM", "Routing file gambar"], "a": 0, "explain": "Form Request mengelompokkan aturan validasi serta otorisasi input." },
+          { "type": "mc", "q": "Eloquent ORM memetakan model aplikasi ke:", "options": ["Tabel dan record database", "Komponen React dan event DOM", "File CSS dan warna", "Route browser dan cache"], "a": 0, "explain": "Eloquent menyediakan pola model untuk membaca dan mengubah record database." },
+          { "type": "mc", "q": "Migration Laravel digunakan untuk:", "options": ["Mencatat perubahan skema database secara bertahap", "Menjalankan JavaScript di browser", "Mengganti controller menjadi route", "Mengompres asset gambar"], "a": 0, "explain": "Migration menyimpan perubahan skema sebagai urutan perubahan yang dapat diterapkan." }
+        ]
+      },
+      {
+        "id": "web-38",
+        "level": "Advance",
+        "title": "Ruby: Bahasa & Koleksi",
+        "exercises": [
+          { "type": "mc", "q": "Ruby dikenal sebagai bahasa yang:", "options": ["Dinamis dan berorientasi objek", "Hanya berjalan sebagai stylesheet", "Tidak memiliki tipe data", "Khusus untuk query SQL"], "a": 0, "explain": "Ruby adalah bahasa dinamis serbaguna dengan dukungan pemrograman berorientasi objek." },
+          { "type": "mc", "q": "Struktur Ruby yang menyimpan pasangan key-value adalah:", "options": ["Hash", "Block", "Gemfile", "ModulePath"], "a": 0, "explain": "Hash adalah koleksi pasangan kunci dan nilai." },
+          { "type": "mc", "q": "Dalam Ruby, block paling tepat dipahami sebagai:", "options": ["Potongan kode yang dapat diberikan ke suatu metode", "File konfigurasi database", "Jenis komentar khusus", "Objek untuk mengatur CSS"], "a": 0, "explain": "Block adalah potongan kode yang dapat diterima dan dijalankan oleh metode." },
+          { "type": "mc", "q": "Nilai `nil` pada Ruby menandakan:", "options": ["Tidak adanya nilai objek", "Angka nol", "String kosong", "Nilai true"], "a": 0, "explain": "nil adalah objek Ruby yang menyatakan ketiadaan nilai." },
+          { "type": "mc", "q": "Cara umum menjalankan berkas Ruby bernama `app.rb` dari terminal adalah:", "options": ["`ruby app.rb`", "`php app.rb`", "`rails css app.rb`", "`node app.rb`"], "a": 0, "explain": "Perintah ruby menjalankan berkas Ruby melalui interpreter." }
+        ]
+      },
+      {
+        "id": "web-39",
+        "level": "Advance",
+        "title": "Ruby on Rails: MVC & Data",
+        "exercises": [
+          { "type": "mc", "q": "Rails menggunakan pola arsitektur:", "options": ["Model-View-Controller", "Memory-Value-Cache", "Module-Version-Class", "Markup-Visual-Cascade"], "a": 0, "explain": "Rails mengorganisasi aplikasi web dengan pola Model-View-Controller." },
+          { "type": "mc", "q": "Deklarasi `resources :posts` pada routes Rails biasanya membuat:", "options": ["Kumpulan route CRUD untuk resource posts", "Tabel CSS bernama posts", "Koneksi database baru", "File JavaScript untuk setiap post"], "a": 0, "explain": "resources membuat route RESTful standar untuk resource." },
+          { "type": "mc", "q": "Active Record pada Rails berfungsi sebagai:", "options": ["ORM untuk berinteraksi dengan model dan database", "Compiler Ruby ke CSS", "Sistem untuk menggambar route", "Pengganti seluruh controller"], "a": 0, "explain": "Active Record memetakan objek model Ruby ke record database." },
+          { "type": "mc", "q": "Eager loading dengan `includes` membantu mengurangi:", "options": ["Query berulang untuk relasi (N+1)", "Jumlah route yang terdaftar", "Ukuran file CSS", "Kebutuhan validasi input"], "a": 0, "explain": "Eager loading memuat relasi secara terencana dan membantu mencegah pola N+1 query." },
+          { "type": "mc", "q": "Strong Parameters di Rails membantu:", "options": ["Membatasi atribut yang boleh diterima dari input pengguna", "Mengenkripsi seluruh route", "Membuat migration otomatis setiap request", "Mengubah Ruby menjadi Java"], "a": 0, "explain": "Strong Parameters mencegah atribut yang tidak diizinkan masuk ke proses mass assignment." }
+        ]
+      },
+      {
+        "id": "web-40",
+        "level": "Advance",
+        "title": "Elysia: API TypeScript & Bun",
+        "exercises": [
+          { "type": "mc", "q": "Elysia dirancang untuk membangun server/API terutama pada runtime:", "options": ["Bun", "JVM", "MATLAB", "Unity"], "a": 0, "explain": "Elysia adalah framework web TypeScript/JavaScript yang dirancang untuk Bun." },
+          { "type": "mc", "q": "Pada Elysia, route GET sederhana biasanya didaftarkan dengan:", "options": ["`.get(path, handler)`", "`.style(path, handler)`", "`.table(path, handler)`", "`.compileCSS(path, handler)`"], "a": 0, "explain": "Metode get mendaftarkan handler untuk request HTTP GET." },
+          { "type": "mc", "q": "Schema request pada endpoint Elysia berguna untuk:", "options": ["Memvalidasi bentuk input di batas endpoint", "Melewati pemeriksaan tipe", "Menggantikan semua pengujian", "Mengubah request menjadi file CSS"], "a": 0, "explain": "Schema membantu memvalidasi input dan menjaga kontrak API." },
+          { "type": "mc", "q": "TypeScript pada Elysia membantu pengembang dengan:", "options": ["Pemeriksaan tipe saat pengembangan dan editor", "Menghapus kebutuhan runtime", "Menyimpan rahasia di browser", "Menggantikan protokol HTTP"], "a": 0, "explain": "TypeScript memberi informasi tipe saat pengembangan; validasi runtime tetap perlu untuk input eksternal." },
+          { "type": "mc", "q": "Plugin pada aplikasi Elysia paling berguna untuk:", "options": ["Mengelompokkan dan memakai ulang fitur server", "Mengganti semua route dengan CSS", "Membuat variabel global tanpa batas", "Menjalankan query tanpa koneksi"], "a": 0, "explain": "Plugin membantu memisahkan fitur seperti autentikasi atau route dan menggunakannya kembali." }
+        ]
+      },
+      {
+        "id": "web-41",
+        "level": "Advance",
+        "title": "Go: Concurrency & Error",
+        "exercises": [
+          { "type": "mc", "q": "Unit concurrency ringan yang dijalankan dengan kata kunci `go` disebut:", "options": ["Goroutine", "ThreadClass", "PromiseBlock", "TaskNode"], "a": 0, "explain": "Goroutine adalah unit eksekusi ringan yang dikelola runtime Go." },
+          { "type": "mc", "q": "Channel Go terutama digunakan untuk:", "options": ["Mengirim nilai dan berkoordinasi antar goroutine", "Menyimpan style halaman", "Mengganti fungsi menjadi class", "Membuat tabel SQL"], "a": 0, "explain": "Channel memungkinkan goroutine berkomunikasi dan menyinkronkan pekerjaan." },
+          { "type": "mc", "q": "Pola penanganan error Go yang umum adalah:", "options": ["Mengembalikan nilai error dan memeriksanya", "Mengabaikan semua error", "Mengandalkan exception tersembunyi", "Mengubah error menjadi komentar"], "a": 0, "explain": "Go biasanya mengembalikan error sebagai nilai agar pemanggil menanganinya secara eksplisit." },
+          { "type": "mc", "q": "`context.Context` pada handler Go dapat membawa:", "options": ["Deadline dan sinyal pembatalan", "Warna CSS", "Data tanpa batas waktu", "Route browser"], "a": 0, "explain": "Context meneruskan deadline dan pembatalan di sepanjang operasi request." },
+          { "type": "mc", "q": "Saat beberapa goroutine mengakses data bersama, program perlu:", "options": ["Sinkronisasi atau kepemilikan data yang jelas", "Menambah global mutable tanpa aturan", "Menganggap race tidak mungkin", "Menghapus semua pemeriksaan error"], "a": 0, "explain": "Aturan akses data yang jelas mencegah data race." }
+        ]
+      },
+      {
+        "id": "web-42",
+        "level": "Advance",
+        "title": "Flutter: Widget & Tampilan",
+        "exercises": [
+          { "type": "mc", "q": "Flutter menyusun antarmuka aplikasi dari:", "options": ["Widget yang membentuk widget tree", "Route CSS yang saling mewarisi", "Tabel SQL bertingkat", "Goroutine untuk setiap tombol"], "a": 0, "explain": "Flutter membangun UI dengan menyusun widget dalam widget tree." },
+          { "type": "mc", "q": "Widget yang tampilannya bergantung pada state lokal yang berubah biasanya:", "options": ["StatefulWidget", "StatelessWidget", "StyleSheet", "RouteTable"], "a": 0, "explain": "StatefulWidget digunakan ketika tampilan perlu bereaksi pada perubahan state." },
+          { "type": "mc", "q": "Pada State Flutter, `setState` memberi tahu framework bahwa:", "options": ["State berubah dan UI perlu dibangun ulang", "Aplikasi harus dihapus", "Database harus dimigrasikan", "Route server harus ditutup"], "a": 0, "explain": "setState menjadwalkan rebuild agar UI mencerminkan state terbaru." },
+          { "type": "mc", "q": "Untuk membuat layout responsif di Flutter, developer biasanya menyusun:", "options": ["Widget layout seperti Row, Column, dan constraints", "File migration", "Pointer mentah untuk setiap piksel", "Query SQL di dalam warna"], "a": 0, "explain": "Widget layout dan constraints menentukan bagaimana elemen mengisi ruang." },
+          { "type": "mc", "q": "Hot reload Flutter berguna untuk:", "options": ["Melihat perubahan kode dengan cepat saat pengembangan", "Menghapus data produksi", "Menggantikan pengujian", "Mengubah Dart menjadi SQL"], "a": 0, "explain": "Hot reload mempercepat iterasi UI tanpa memulai ulang seluruh proses pengembangan." }
+        ]
+      },
+      {
+        "id": "web-43",
+        "level": "Advance",
+        "title": "Dart: Tipe & Asinkron",
+        "exercises": [
+          { "type": "mc", "q": "Di Dart, `final` berarti variabel:", "options": ["Hanya dapat diberi nilai sekali", "Harus selalu bernilai null", "Selalu berubah otomatis", "Hanya boleh berisi angka"], "a": 0, "explain": "final membatasi assignment variabel menjadi satu kali." },
+          { "type": "mc", "q": "Null safety Dart membantu membedakan:", "options": ["Tipe yang dapat berisi null dan yang tidak", "Variabel lokal dan file CSS", "Server dan database", "Fungsi dan route HTTP"], "a": 0, "explain": "Tanda `?` pada tipe menunjukkan bahwa nilainya dapat berupa null." },
+          { "type": "mc", "q": "Pada Dart, `Future<T>` biasanya mewakili:", "options": ["Nilai bertipe T yang tersedia setelah operasi asynchronous selesai", "Tabel database", "Widget tanpa state", "Nilai yang hanya ada saat compile"], "a": 0, "explain": "Future merepresentasikan hasil operasi yang belum selesai." },
+          { "type": "mc", "q": "`async` dan `await` di Dart digunakan untuk:", "options": ["Menulis alur asynchronous dengan gaya berurutan", "Menghapus semua error", "Membuat route web tanpa server", "Mengubah list menjadi map secara otomatis"], "a": 0, "explain": "await menunggu Future di dalam fungsi async tanpa memblokir seluruh aplikasi." },
+          { "type": "mc", "q": "Dart paling sering digunakan bersama Flutter untuk:", "options": ["Menulis logika dan UI aplikasi", "Mengatur skema database server saja", "Menggantikan HTML pada browser", "Menyusun query MATLAB"], "a": 0, "explain": "Flutter memakai Dart sebagai bahasa utama untuk logika aplikasi dan deklarasi UI." }
+        ]
+      },
+      {
+        "id": "web-44",
+        "level": "Advance",
+        "title": "Kotlin: Tipe & Coroutine",
+        "exercises": [
+          { "type": "mc", "q": "Deklarasi `val` di Kotlin berarti:", "options": ["Referensi tidak dapat di-assign ulang", "Variabel harus selalu null", "Nilai bertambah otomatis", "Objek selalu immutable secara mendalam"], "a": 0, "explain": "val mencegah assignment ulang referensi, meski objek yang dirujuk belum tentu immutable." },
+          { "type": "mc", "q": "Null safety Kotlin membantu dengan cara:", "options": ["Membedakan tipe yang boleh null dan yang tidak", "Membuat semua variabel menjadi null", "Menghapus semua pemeriksaan runtime", "Mengubah Kotlin menjadi SQL"], "a": 0, "explain": "Sistem tipe Kotlin menandai kemungkinan null agar banyak kesalahan terdeteksi lebih awal." },
+          { "type": "mc", "q": "Kotlin `data class` cocok untuk:", "options": ["Mewakili data dengan fungsi umum seperti equals dan copy", "Menyimpan file CSS", "Menjalankan query tanpa database", "Menggantikan semua interface"], "a": 0, "explain": "Data class menghasilkan fungsi standar untuk objek pembawa data." },
+          { "type": "mc", "q": "Fungsi Kotlin yang diberi kata kunci `suspend` dirancang untuk:", "options": ["Menangguhkan pekerjaan asynchronous dalam coroutine", "Menghentikan compiler secara permanen", "Mengubah fungsi menjadi route", "Menjalankan kode hanya di CSS"], "a": 0, "explain": "Fungsi suspend dapat menangguhkan coroutine tanpa memblokir thread secara langsung." },
+          { "type": "mc", "q": "Ekspresi `when` Kotlin digunakan untuk:", "options": ["Memilih hasil berdasarkan beberapa kondisi atau nilai", "Membuat koneksi database otomatis", "Menyusun file HTML", "Mengalokasikan pointer mentah"], "a": 0, "explain": "when adalah ekspresi percabangan yang dapat mencocokkan nilai, tipe, atau kondisi." }
+        ]
+      },
+      {
+        "id": "web-45",
+        "level": "Advance",
+        "title": "Java: Tipe & Resource",
+        "exercises": [
+          { "type": "mc", "q": "Program Java umumnya dijalankan di atas:", "options": ["Java Virtual Machine (JVM)", "Bun runtime", "Browser CSS engine", "MATLAB Live Editor saja"], "a": 0, "explain": "Bytecode Java dijalankan oleh Java Virtual Machine." },
+          { "type": "mc", "q": "Generic seperti `List<String>` membantu:", "options": ["Menentukan tipe elemen koleksi saat compile", "Mengurutkan list otomatis", "Menyimpan data secara permanen", "Menghapus kebutuhan menangani error"], "a": 0, "explain": "Generic memberi informasi tipe dan membantu pemeriksaan saat compile." },
+          { "type": "mc", "q": "Garbage collector Java terutama mengelola:", "options": ["Objek heap yang tidak lagi terjangkau", "Semua file di disk", "Koneksi jaringan tanpa batas", "Urutan import source"], "a": 0, "explain": "Garbage collector mereklamasi objek heap yang tidak lagi dapat dijangkau." },
+          { "type": "mc", "q": "Try-with-resources Java membantu:", "options": ["Menutup resource yang mengimplementasikan AutoCloseable", "Menyimpan class ke database", "Mengubah exception menjadi komentar", "Membuat thread untuk setiap file"], "a": 0, "explain": "Try-with-resources menutup resource secara deterministik setelah blok selesai." },
+          { "type": "mc", "q": "Untuk menyatakan bahwa suatu method dapat mengalami kondisi error tertentu, Java menggunakan:", "options": ["Exception dan mekanisme penanganannya", "CSS selector", "Migration route", "Widget tree"], "a": 0, "explain": "Exception dapat dilempar dan ditangani sesuai kontrak method." }
+        ]
+      },
+      {
+        "id": "web-46",
+        "level": "Advance",
+        "title": "Python: Fungsi & Koleksi",
+        "exercises": [
+          { "type": "mc", "q": "Kata kunci Python untuk mendefinisikan fungsi adalah:", "options": ["def", "func", "function", "method"], "a": 0, "explain": "Fungsi Python didefinisikan dengan kata kunci def." },
+          { "type": "mc", "q": "Dictionary Python menyimpan data sebagai:", "options": ["Pasangan key-value", "Urutan karakter saja", "Blok CSS", "Pointer tanpa tipe"], "a": 0, "explain": "Dictionary adalah koleksi pemetaan key ke value." },
+          { "type": "mc", "q": "Indentasi pada Python digunakan untuk:", "options": ["Menandai struktur blok kode", "Mengakhiri semua nama variabel", "Membuat komentar multi-file", "Mendeklarasikan tipe data wajib"], "a": 0, "explain": "Indentasi menentukan batas blok seperti isi fungsi dan percabangan." },
+          { "type": "mc", "q": "List comprehension berguna untuk:", "options": ["Membentuk list dari iterable dengan ekspresi ringkas", "Menghapus seluruh elemen list", "Menjalankan server web otomatis", "Mengganti dictionary menjadi file"], "a": 0, "explain": "List comprehension membuat list baru dari iterable, dengan transformasi atau filter opsional." },
+          { "type": "mc", "q": "Virtual environment Python membantu:", "options": ["Mengisolasi dependency antarproyek", "Mengubah Python menjadi C++", "Menyimpan password di source code", "Menghapus kebutuhan package"], "a": 0, "explain": "Environment terpisah mencegah dependency satu proyek mengganggu proyek lain." }
+        ]
+      },
+      {
+        "id": "web-47",
+        "level": "Advance",
+        "title": "MATLAB: Array & Komputasi",
+        "exercises": [
+          { "type": "mc", "q": "Indeks elemen pertama array MATLAB dimulai dari:", "options": ["1", "0", "-1", "Ukuran array"], "a": 0, "explain": "MATLAB menggunakan indexing berbasis satu." },
+          { "type": "mc", "q": "Operasi `A .* B` pada MATLAB berarti:", "options": ["Perkalian elemen demi elemen", "Perkalian matriks biasa", "Penggabungan string", "Pembagian setiap baris"], "a": 0, "explain": "Operator titik sebelum operator aritmetika menandakan operasi per elemen." },
+          { "type": "mc", "q": "Vectorization di MATLAB sering berguna karena:", "options": ["Menyatakan operasi array secara langsung dan memanfaatkan operasi bawaan", "Loop dilarang oleh bahasa", "Matriks tidak memiliki ukuran", "Semua variabel berubah menjadi string"], "a": 0, "explain": "Operasi vektor/matriks menyatakan komputasi array dengan ringkas dan efisien." },
+          { "type": "mc", "q": "Fungsi MATLAB biasanya disimpan dalam file dengan ekstensi:", "options": [".m", ".php", ".css", ".class"], "a": 0, "explain": "File .m digunakan untuk script dan fungsi MATLAB." },
+          { "type": "mc", "q": "Fungsi `size(A)` digunakan untuk mengetahui:", "options": ["Dimensi array A", "Nilai maksimum A saja", "Nama file A", "Waktu eksekusi A"], "a": 0, "explain": "size mengembalikan ukuran dimensi array." }
+        ]
+      },
+      {
+        "id": "web-48",
+        "level": "Advance",
+        "title": "PHP: Server & Input",
+        "exercises": [
+          { "type": "mc", "q": "PHP paling umum digunakan di sisi server untuk:", "options": ["Memproses request dan menghasilkan respons web", "Mengatur styling browser saja", "Mengompilasi aplikasi Android", "Menjalankan query MATLAB"], "a": 0, "explain": "PHP dapat dijalankan di server untuk menangani request dan menghasilkan konten." },
+          { "type": "mc", "q": "Nama variabel PHP diawali dengan:", "options": ["`$`", "`#`", "`@`", "`&`"], "a": 0, "explain": "Variabel PHP ditulis dengan tanda dolar, misalnya $name." },
+          { "type": "mc", "q": "Superglobal `$_GET` pada PHP umumnya berisi:", "options": ["Parameter query URL", "Isi file CSS", "Konfigurasi compiler", "Daftar class yang sedang aktif"], "a": 0, "explain": "$_GET berisi data yang dikirim melalui parameter query URL." },
+          { "type": "mc", "q": "Prepared statement pada akses database PHP membantu:", "options": ["Memisahkan query SQL dari nilai input", "Menghilangkan kebutuhan koneksi database", "Mengubah input menjadi HTML", "Menjalankan SQL di browser"], "a": 0, "explain": "Parameter terikat membantu menjaga nilai input tetap terpisah dari struktur query." },
+          { "type": "mc", "q": "Deklarasi tipe pada fungsi PHP membantu menyatakan:", "options": ["Jenis argumen atau nilai balik yang diharapkan", "Warna elemen HTML", "Lokasi route browser", "Ukuran tabel database otomatis"], "a": 0, "explain": "Type declaration memperjelas kontrak argumen dan nilai balik fungsi." }
+        ]
+      },
+      {
+        "id": "web-49",
+        "level": "Advance",
+        "title": "C: Pointer & Memori",
+        "exercises": [
+          { "type": "mc", "q": "Pointer pada C menyimpan:", "options": ["Alamat suatu objek atau fungsi", "Nama class", "Route HTTP", "Nilai CSS"], "a": 0, "explain": "Pointer menyimpan alamat yang dapat merujuk ke objek atau fungsi." },
+          { "type": "mc", "q": "Operator `&value` pada C digunakan untuk:", "options": ["Mengambil alamat value", "Mengakses isi pointer", "Mengalikan dua nilai", "Menghapus variabel"], "a": 0, "explain": "Operator & menghasilkan alamat objek yang diberikan." },
+          { "type": "mc", "q": "Memori yang dialokasikan secara dinamis dengan `malloc` perlu:", "options": ["Dilepas dengan `free` saat tidak dipakai lagi", "Dilepas dengan `delete[]`", "Disimpan dalam CSS", "Dibiarkan tanpa batas"], "a": 0, "explain": "Di C, memori hasil malloc harus dilepas dengan free ketika masa pakainya berakhir." },
+          { "type": "mc", "q": "Mengakses elemen array di luar batas pada C dapat menyebabkan:", "options": ["Undefined behavior", "Pengecekan batas otomatis selalu", "Konversi ke string", "Kompilasi menjadi route"], "a": 0, "explain": "C tidak menjamin pemeriksaan batas array otomatis." },
+          { "type": "mc", "q": "Pointer yang sudah menunjuk ke objek yang masa hidupnya berakhir disebut berbahaya karena:", "options": ["Dereference dapat menghasilkan undefined behavior", "Garbage collector selalu memperbaikinya", "Pointer berubah menjadi null otomatis", "Compiler mengubahnya ke Java"], "a": 0, "explain": "Pointer dangling tidak lagi merujuk ke objek valid dan tidak boleh diakses." }
+        ]
+      },
+      {
+        "id": "web-50",
+        "level": "Advance",
+        "title": "C++: RAII & Koleksi",
+        "exercises": [
+          { "type": "mc", "q": "Prinsip RAII di C++ mengaitkan masa hidup resource dengan:", "options": ["Masa hidup objek pemiliknya", "Nama file CSS", "Urutan route web", "Nilai balik HTTP"], "a": 0, "explain": "Resource dilepas oleh destructor saat objek pemiliknya keluar dari masa hidup." },
+          { "type": "mc", "q": "`std::unique_ptr<T>` cocok ketika:", "options": ["Satu pemilik eksklusif mengelola resource", "Resource tidak memiliki tipe", "Banyak pemilik bersama selalu diperlukan", "Resource harus bocor"], "a": 0, "explain": "unique_ptr menyatakan kepemilikan tunggal dan melepas resource otomatis." },
+          { "type": "mc", "q": "Container `std::vector<T>` menyediakan:", "options": ["Array dinamis yang dapat bertambah ukurannya", "Pointer tanpa batas", "Tabel SQL", "Pengganti compiler"], "a": 0, "explain": "vector adalah container urutan yang mengelola array dinamis." },
+          { "type": "mc", "q": "C++ references berbeda dari pointer karena reference:", "options": ["Merupakan alias yang harus terikat pada objek saat inisialisasi", "Selalu dapat bernilai null", "Menyimpan route HTTP", "Harus dibebaskan dengan free"], "a": 0, "explain": "Reference adalah alias untuk objek dan harus diinisialisasi ketika dibuat." },
+          { "type": "mc", "q": "Destructor C++ biasanya dipanggil ketika:", "options": ["Masa hidup objek berakhir", "Program mengimpor header", "Fungsi mengubah warna UI", "Pointer ditampilkan sebagai string"], "a": 0, "explain": "Destructor membersihkan resource saat objek keluar dari masa hidupnya." }
         ]
       }
     ]
