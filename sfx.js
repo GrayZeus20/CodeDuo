@@ -55,6 +55,22 @@ const SFX = (() => {
     isMuted() { return muted; },
     unlock() { ensure(); },
     click() { blip({ freq: 660, dur: 0.05, vol: 0.07, type: 'triangle' }); },
+    happy() {
+      blip({ freq: 587, freq2: 784, dur: 0.12, vol: 0.1, type: 'sine' });
+      blip({ freq: 880, dur: 0.16, vol: 0.1, type: 'triangle', delay: 0.09 });
+    },
+    angry() {
+      blip({ freq: 260, freq2: 185, dur: 0.16, vol: 0.1, type: 'square' });
+      blip({ freq: 220, freq2: 146, dur: 0.2, vol: 0.09, type: 'sawtooth', delay: 0.12 });
+    },
+    sleep() {
+      blip({ freq: 392, freq2: 330, dur: 0.24, vol: 0.07, type: 'triangle' });
+      blip({ freq: 294, freq2: 220, dur: 0.34, vol: 0.06, type: 'sine', delay: 0.22 });
+    },
+    wake() {
+      blip({ freq: 440, freq2: 660, dur: 0.11, vol: 0.09, type: 'sine' });
+      blip({ freq: 784, freq2: 988, dur: 0.16, vol: 0.1, type: 'triangle', delay: 0.08 });
+    },
     correct() {
       blip({ freq: 784, dur: 0.1, vol: 0.15, type: 'sine' });
       blip({ freq: 1175, dur: 0.14, vol: 0.15, type: 'sine', delay: 0.09 });

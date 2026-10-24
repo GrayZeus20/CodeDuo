@@ -160,6 +160,7 @@ export default function Buddy() {
   useEffect(() => {
     if (prevFace.current !== face) {
       prevFace.current = face;
+      if (face === 'sleeping') SFX.sleep();
       setTransitioning(true);
       const timer = setTimeout(() => setTransitioning(false), 420);
       return () => clearTimeout(timer);
@@ -205,10 +206,11 @@ export default function Buddy() {
     isPettedRef.current = true;
     setIsPetted(true);
 
-    // Suara purr & dialog dipicu secara harmonis (dibatasi jeda min 1.8 detik antar celoteh)
+    // Suara & dialog dipicu secara harmonis (dibatasi jeda min 1.8 detik antar celoteh)
     if (now - lastPetTimeRef.current >= 1800) {
       lastPetTimeRef.current = now;
-      SFX.pet();
+      if (buddyFace() === 'sleeping') SFX.wake();
+      else SFX.pet();
       onBuddyPet();
       setIsBubbleVisible(true);
       setBubbleKey((k) => k + 1);
@@ -439,7 +441,7 @@ export default function Buddy() {
       setIsPetted(false);
       clearTimeout(petFadeTimerRef.current);
 
-      SFX.dizzy();
+      SFX.angry();
       onBuddySpam();
       setIsBubbleVisible(true);
       setBubbleKey((k) => k + 1);
@@ -450,7 +452,8 @@ export default function Buddy() {
     }
 
     // Klik normal sekali
-    SFX.click();
+    if (face === 'sleeping') SFX.wake();
+    else SFX.happy();
     setTapped(true);
     setTimeout(() => setTapped(false), 550);
     onBuddyTap(e);
