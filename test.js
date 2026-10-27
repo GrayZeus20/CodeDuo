@@ -912,6 +912,7 @@ const {
   getSession, currentExercise, stepStart, answerCheck, topicNodes, isLessonDone,
   lessonRetryCurrent,
   buddyFace, buddyDump, onBuddyPet, onBuddySpam, onBuddyRecover,
+  isFavorite, toggleFavorite, favoriteTopicIds, orderedTopicIds,
 } = await import('./src/store.js');
 
 t('store: path tersimpan dimigrasi, bukan direset (id usang dibuang, topik baru ditambah)', () => {
@@ -981,6 +982,37 @@ t('Bibit: spam memaksa wajah error walau sebelumnya sedang senang', () => {
   assert.strictEqual(buddyDump().mood, 'sad', 'mood spam tidak boleh celebrate/happy');
   onBuddyRecover();
   assert.strictEqual(buddyFace(), 'idle', 'setelah pulih kembali idle');
+});
+
+/* --- store: favorit topik (muncul paling atas di Home) --- */
+t('store: favorit topik tersimpan, tampil paling atas, dan data korup dibersihkan', () => {
+  localStorage.setItem('codeduo_state_v1', JSON.stringify({ version: 1, path: ['html', 'css', 'js'] }));
+  initStore();
+  assert.deepEqual(favoriteTopicIds(), [], 'awal tanpa favorit');
+  assert.deepEqual(orderedTopicIds().slice(0, 3), ['html', 'css', 'js'], 'tanpa favorit = urutan jalur');
+
+  assert.strictEqual(toggleFavorite('js'), true);
+  assert.strictEqual(isFavorite('js'), true);
+  assert.strictEqual(orderedTopicIds()[0], 'js', 'favorit harus di urutan pertama');
+  assert.deepEqual(JSON.parse(localStorage.getItem('codeduo_state_v1')).favorites, ['js'], 'favorit ikut tersimpan');
+
+  initStore();
+  assert.strictEqual(isFavorite('js'), true, 'favorit bertahan setelah reload');
+  assert.deepEqual(orderedTopicIds().slice(0, 2), ['js', 'html']);
+
+  assert.strictEqual(toggleFavorite('topik-hantu'), false, 'id bukan topik kurikulum ditolak');
+  assert.strictEqual(toggleFavorite('js'), false, 'toggle kedua = lepas favorit');
+  assert.strictEqual(isFavorite('js'), false);
+  assert.deepEqual(orderedTopicIds().slice(0, 3), ['html', 'css', 'js'], 'urutan pulih setelah favorit dilepas');
+
+  localStorage.setItem('codeduo_state_v1', JSON.stringify({
+    version: 1,
+    path: ['html', 'js'],
+    favorites: ['js', 'js', 'hantu', 42],
+  }));
+  initStore();
+  assert.deepEqual(favoriteTopicIds(), ['js'], 'duplikat & id asing dibuang');
+  assert.deepEqual(orderedTopicIds().slice(0, 2), ['js', 'html']);
 });
 
 globalThis.location = { hash: '#/' };

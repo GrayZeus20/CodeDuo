@@ -21,6 +21,18 @@ import { SFX } from '../../sfx.js';
 const IDLE_TICK_MS = 1000;
 const BUDDY_HEAD_SIZES = { small: 96, medium: 124, large: 148 };
 
+/* Rotasi ekspresi saat Bibit diklik: wajah layar + partikel + bunyi yang berbeda.
+ * Semua state ini memang didukung renderer robot-heads (bukan state karangan). */
+const TAP_EXPRESSIONS = [
+  { id: 'happy',     face: 'happy',     emoji: '💚', color: '#e0559c', speed: 1.2,  sfx: 'happy', label: 'senang' },
+  { id: 'speaking',  face: 'speaking',  emoji: '💬', color: '#58cc02', speed: 1.1,  sfx: 'pick',  label: 'ngobrol' },
+  { id: 'listening', face: 'listening', emoji: '♪',  color: '#2fae3f', speed: 0.95, sfx: 'pet',   label: 'bersenandung' },
+  { id: 'working',   face: 'working',   emoji: '⚡', color: '#5f8fe0', speed: 1.7,  sfx: 'land',  label: 'semangat' },
+  { id: 'searching', face: 'searching', emoji: '✨', color: '#0aa2c0', speed: 1.4,  sfx: 'lift',  label: 'penasaran' },
+];
+const TAP_EXPR_MS = 1800;
+const BURST_MS = 900;
+
 export default function Buddy() {
   useStore();                       /* re-render tiap state store berubah */
   const state = getState();
@@ -127,6 +139,12 @@ export default function Buddy() {
   const isPettedRef = useRef(false);
   const clickTimestamps = useRef([]);
   const dizzyTimerRef = useRef(null);
+  /* Ekspresi tap bergilir + partikel emosi yang melayang dari kepala. */
+  const [tapExpr, setTapExpr] = useState(null);      /* index ke TAP_EXPRESSIONS */
+  const tapCycleRef = useRef(0);
+  const tapExprTimerRef = useRef(null);
+  const [burst, setBurst] = useState(null);          /* { emoji, color, key } */
+  const burstTimerRef = useRef(null);
   const strokeStateRef = useRef({
     lastX: 0,
     lastY: 0,
@@ -154,6 +172,8 @@ export default function Buddy() {
       clearTimeout(dizzyTimerRef.current);
       clearTimeout(petFadeTimerRef.current);
       clearTimeout(landTimerRef.current);
+      clearTimeout(tapExprTimerRef.current);
+      clearTimeout(burstTimerRef.current);
     };
   }, []);
 
@@ -199,6 +219,25 @@ export default function Buddy() {
     return () => clearInterval(id);
   }, []);
 
+  /* Partikel emosi: melayang sekali lalu dibersihkan (biar DOM tetap ringan). */
+  const spawnBurst = useCallback((emoji, color) => {
+    setBurst({ emoji, color, key: Date.now() });
+    clearTimeout(burstTimerRef.current);
+    burstTimerRef.current = setTimeout(() => setBurst(null), BURST_MS);
+  }, []);
+
+  /* Tampilkan satu ekspresi tap selama ±1,8 dtk, lalu balik ke wajah dari store. */
+  const showTapExpression = useCallback(() => {
+    const index = tapCycleRef.current % TAP_EXPRESSIONS.length;
+    tapCycleRef.current = (index + 1) % TAP_EXPRESSIONS.length;
+    const expr = TAP_EXPRESSIONS[index];
+    setTapExpr(index);
+    clearTimeout(tapExprTimerRef.current);
+    tapExprTimerRef.current = setTimeout(() => setTapExpr(null), TAP_EXPR_MS);
+    spawnBurst(expr.emoji, expr.color);
+    return expr;
+  }, [spawnBurst]);
+
   /* Pemicu Elusan (Hanya aktif saat dielus mondar-mandir / bolak-balik) */
   const triggerPet = useCallback(() => {
     if (isDizzyRef.current || isDraggingRef.current || dragStartRef.current.isMoved) return;
@@ -213,6 +252,7 @@ export default function Buddy() {
       if (buddyFace() === 'sleeping') SFX.wake();
       else SFX.pet();
       onBuddyPet();
+      spawnBurst('💚', '#e0559c');
       setIsBubbleVisible(true);
       setBubbleKey((k) => k + 1);
     }
@@ -222,7 +262,7 @@ export default function Buddy() {
       isPettedRef.current = false;
       setIsPetted(false);
     }, 1400);
-  }, []);
+  }, [spawnBurst]);
 
   /* Masuk area kepala: inisialisasi titik awal */
   const handlePointerEnter = (e) => {
@@ -443,6 +483,9 @@ export default function Buddy() {
       isPettedRef.current = false;
       setIsPetted(false);
       clearTimeout(petFadeTimerRef.current);
+      /* Buang ekspresi tap yang sedang tampil supaya wajah error langsung terlihat. */
+      setTapExpr(null);
+      clearTimeout(tapExprTimerRef.current);
 
       SFX.angry();
       onBuddySpam();
@@ -455,8 +498,9 @@ export default function Buddy() {
     }
 
     // Klik normal sekali
+    const expr = showTapExpression();
     if (face === 'sleeping') SFX.wake();
-    else SFX.happy();
+    else if (SFX[expr.sfx]) SFX[expr.sfx]();
     setTapped(true);
     setTimeout(() => setTapped(false), 550);
     onBuddyTap(e);
@@ -473,9 +517,12 @@ export default function Buddy() {
   if (!shouldRender) return null;
 
   const currentMood = companion.mood || b.mood || 'idle';
+  const tapExpression = tapExpr != null ? TAP_EXPRESSIONS[tapExpr] : null;
   const activeFace = isDizzy
     ? 'error'
-    : (isDragging ? 'searching' : (isPetted || isLanded ? 'happy' : face));
+    : (isDragging
+      ? 'searching'
+      : (tapExpression ? tapExpression.face : (isPetted || isLanded ? 'happy' : face)));
   const isSleeping = activeFace === 'sleeping';
   const isHappy = activeFace === 'happy' || currentMood === 'celebrate' || isPetted || isLanded;
   const isThinking = activeFace === 'thinking';
@@ -555,6 +602,34 @@ export default function Buddy() {
 
       {/* Panggung fisik robot */}
       <div className="buddy__stage">
+        {/* Partikel emosi sesuai ekspresi (💚 senang, ♪ bersenandung, ⚡ semangat, …) */}
+        {burst && (
+          <div className="buddy__tap-particles" key={burst.key} aria-hidden="true">
+            {[
+              { dx: '-26px', dy: '-46px' },
+              { dx: '2px', dy: '-58px' },
+              { dx: '28px', dy: '-40px' },
+            ].map((p, i) => (
+              <span
+                key={i}
+                className="buddy__tap-particle"
+                style={{ '--dx': p.dx, '--dy': p.dy, color: burst.color, animationDelay: (i * 0.05) + 's' }}
+              >
+                {burst.emoji}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Kilau tambahan khusus ekspresi senang */}
+        {tapExpression && tapExpression.id === 'happy' && (
+          <div className="buddy__sparkles-wrap" aria-hidden="true">
+            <span className="buddy__sparkle buddy__sparkle--1">✨</span>
+            <span className="buddy__sparkle buddy__sparkle--2">✨</span>
+            <span className="buddy__sparkle buddy__sparkle--3">✨</span>
+          </div>
+        )}
+
         <button
           className="buddy__head"
           type="button"
@@ -576,12 +651,16 @@ export default function Buddy() {
           aria-label={
             isDizzy
               ? "Bibit sedang pusing"
-              : (isDragging ? "Sedang memindahkan Bibit" : (isPetted ? "Bibit sedang dielus" : "Bibit"))
+              : (isDragging
+                ? "Sedang memindahkan Bibit"
+                : (tapExpression ? "Bibit sedang " + tapExpression.label : (isPetted ? "Bibit sedang dielus" : "Bibit")))
           }
           title={
             isDizzy
               ? "Aduh pusinggg!"
-              : (isDragging ? "Seret ke posisi mana saja!" : (isPetted ? "Hehe senang dielus-elus~" : "Seret untuk memindahkan · Elus atau sentuh aku!"))
+              : (isDragging
+                ? "Seret ke posisi mana saja!"
+                : (tapExpression ? "Bibit sedang " + tapExpression.label + " — klik lagi untuk ekspresi lain!" : (isPetted ? "Hehe senang dielus-elus~" : "Seret untuk memindahkan · Elus atau sentuh aku!")))
           }
         >
           {/* key: paksa renderer dibuat ulang saat masuk/keluar mode pusing.
@@ -595,9 +674,12 @@ export default function Buddy() {
             trimColor="#46a302"
             screenColor="#0f1a10"
             shape="rectangle"
-            speed={isDizzy ? 2.5 : (isDragging ? 1.6 : 1)}
+            speed={isDizzy ? 2.5 : (isDragging ? 1.6 : (tapExpression ? tapExpression.speed : 1))}
             /* interactive=false saat pusing: cegah poke() menimpa wajah error jadi happy. */
             interactive={!isDragging && !isDizzy}
+            /* Matikan poke internal renderer: wajah sekarang diatur rotasi ekspresi Buddy,
+             * kalau tidak, tiap klik akan dipaksa "happy" selama 1,6 dtk. */
+            onClick={() => {}}
             antenna
             floorShadow={false}
             seed={0.3}

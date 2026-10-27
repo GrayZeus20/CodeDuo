@@ -3,7 +3,7 @@
  *
  * State shape:
  *   persisted (localStorage codeduo_state_v1):
- *     { version, seed, path[], streak:{count,lastActive}, progress:{[topicId]:{done:[nodeId]}},
+ *     { version, seed, path[], favorites[], streak:{count,lastActive}, progress:{[topicId]:{done:[nodeId]}},
  *       stats:{correct,wrong,lessonsDone}, muted }
  *     nodeId = "topicId--N" (step) | "topicId--N--test" (ujian tier) — lihat stepsForTopic().
  *   session (in-memory, persistence none):
@@ -168,6 +168,7 @@ function defaultState() {
     buddyHidden: false,
     buddySize: 'medium',
     motionEnabled: true,
+    favorites: [],
   };
 }
 
@@ -195,6 +196,10 @@ function sanitizeState(parsed) {
   s.buddyHidden = !!s.buddyHidden;
   if (!BUDDY_SIZES.includes(s.buddySize)) s.buddySize = 'medium';
   s.motionEnabled = s.motionEnabled !== false;
+  /* Favorit: buang id yang bukan topik kurikulum dan duplikat (data lama/korup). */
+  s.favorites = Array.isArray(s.favorites)
+    ? s.favorites.filter((id, i, arr) => typeof id === 'string' && !!topicById(id) && arr.indexOf(id) === i)
+    : [];
   return s;
 }
 
@@ -752,6 +757,36 @@ export function toggleMotion() {
 
 export function isMotionEnabled() {
   return state ? state.motionEnabled !== false : true;
+}
+
+/* ================= Favorit topik ================= */
+
+export function isFavorite(topicId) {
+  return !!state && Array.isArray(state.favorites) && state.favorites.includes(topicId);
+}
+
+export function favoriteTopicIds() {
+  return state && Array.isArray(state.favorites) ? state.favorites.slice() : [];
+}
+
+/* Tandai/lepas favorit. Kembalianya = status barunya (true = sekarang favorit). */
+export function toggleFavorite(topicId) {
+  if (!state || !topicById(topicId)) return false;
+  if (!Array.isArray(state.favorites)) state.favorites = [];
+  const i = state.favorites.indexOf(topicId);
+  if (i >= 0) state.favorites.splice(i, 1);
+  else state.favorites.push(topicId);
+  saveState();
+  bump();
+  return i < 0;
+}
+
+/* Urutan tampil Home: favorit dulu (tetap urut kurikulum), lalu sisanya. */
+export function orderedTopicIds() {
+  if (!state) return [];
+  const path = Array.isArray(state.path) ? state.path : [];
+  const fav = new Set(favoriteTopicIds());
+  return path.filter((id) => fav.has(id)).concat(path.filter((id) => !fav.has(id)));
 }
 
 export function currentExercise() {

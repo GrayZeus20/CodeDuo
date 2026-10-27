@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useStore } from '../useStore.js';
 import {
   topicById, topicNodes, isNodeDone, stepStart, tierTest,
+  isFavorite, toggleFavorite,
 } from '../store.js';
 import { TIER_ORDER } from '../../content.js';
 import { pop } from '../lib/motion.js';
@@ -35,6 +36,28 @@ export default function Topic({ topicId }) {
           <p>{topic.desc}</p>
         </div>
         <span className="topic__progress">{doneSteps}/{stepNodes.length}</span>
+        <button
+          type="button"
+          className={'topic__fav' + (isFavorite(topic.id) ? ' is-on' : '')}
+          aria-pressed={isFavorite(topic.id)}
+          title={isFavorite(topic.id) ? 'Hapus dari favorit' : 'Tandai sebagai favorit'}
+          onClick={(e) => {
+            pop(e.currentTarget);
+            if (toggleFavorite(topic.id)) SFX.pick();
+            else SFX.back();
+          }}
+        >
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path
+              d="M12 3.2l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.6l6-.9z"
+              fill={isFavorite(topic.id) ? 'currentColor' : 'none'}
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span>{isFavorite(topic.id) ? 'Favorit' : 'Favoritkan'}</span>
+        </button>
       </header>
 
       {guide && (
