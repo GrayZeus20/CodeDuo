@@ -643,6 +643,7 @@ function startNode(topicId, nodeId) {
     pos: 0, hearts: MAX_HEARTS, phase: 'run', lastResult: null,
     mcMap: {}, arrMap: {}, arrPlaced: [], answered: false, wrongOnThis: false, pendingAnswer: null,
     closeChances: 2, retryActive: false, retryMsg: null, lastInput: null, checking: false,
+    retryToken: 0,
   };
   onInteraction({ lesson: true, n: 0 });
   /* rute sinkron: #/lesson/<topic>/<node> → router React merender Lesson.
@@ -661,6 +662,7 @@ function startReview() {
     pos: 0, hearts: MAX_HEARTS, phase: 'run', lastResult: null,
     mcMap: {}, arrMap: {}, arrPlaced: [], answered: false, wrongOnThis: false, pendingAnswer: null,
     closeChances: 2, retryActive: false, retryMsg: null, lastInput: null, checking: false,
+    retryToken: 0,
   };
   onInteraction({ lesson: true, n: 0 });
   setHash('#/review');
@@ -838,9 +840,17 @@ export function arrangeInsert(id, toIndex) {
 
 export function lessonRetryCurrent() {
   if (!session || session.phase !== 'feedback') return;
+  const ex = currentExercise();
   session.phase = 'run';
   session.answered = false;
   session.lastResult = null;
+  /* "COBA LAGI" harus mulai dari kolom kosong untuk soal isian: jangan biarkan
+   * jawaban lama terisi otomatis. Editor kode/preview tetap disimpan agar bisa
+   * diperbaiki (bukan diketik dari nol). */
+  if (ex && ex.type === 'fill') session.lastInput = null;
+  /* Token ini dipakai sebagai key komponen body → body remount & membaca ulang
+   * nilai awal dari store (bukan menyisakan state input sebelumnya). */
+  session.retryToken = (session.retryToken || 0) + 1;
   onInteraction({ lesson: true, n: session.order.length ? session.pos / session.order.length : 0 });
   bump();
 }
@@ -1022,6 +1032,7 @@ export function lessonContinue() {
   session.retryActive = false;
   session.retryMsg = null;
   session.lastInput = null;
+  session.retryToken = 0;
   onInteraction({ lesson: true, progress: 'session', hearts: 'session', n: session.order.length ? session.pos / session.order.length : 0 });
   return false;
 }

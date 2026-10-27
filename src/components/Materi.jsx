@@ -10,6 +10,7 @@ import {
 } from '../store.js';
 import { lessonGuide } from '../lessonGuides.js';
 import { pop } from '../lib/motion.js';
+import { SFX } from '../../sfx.js';
 
 export default function Materi({ topicId, lessonId }) {
   useStore();
@@ -38,7 +39,7 @@ export default function Materi({ topicId, lessonId }) {
 
   return (
     <section className="screen materi">
-      <a className="back" href={'#/topic/' + topic.id}>← {topic.name}</a>
+      <a className="back" href={'#/topic/' + topic.id} onClick={() => SFX.back()}>← {topic.name}</a>
 
       <header className="materi__head">
         <span className="topic-card__tier">{lesson.level} · Materi</span>

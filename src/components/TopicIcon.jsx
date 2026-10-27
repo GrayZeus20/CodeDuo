@@ -1,10 +1,29 @@
 /* CodeDuo — TopicIcon: Ikon vektor resmi (SVG) untuk kurikulum teknologi.
+ * Bahasa/framework memakai logo brand aslinya dari `brandLogos.js` (Simple Icons, CC0);
+ * topik konsep (HTML/CSS/JS/TS/SQL/DB/DS/API/REST/Web) digambar manual.
  * Bebas dependensi eksternal, tajam di semua resolusi, 100% offline-ready.
  */
 'use strict';
 
+import { BRAND_LOGOS } from '../brandLogos.js';
+
 export default function TopicIcon({ id, className = '', size = 36 }) {
   const s = size;
+
+  /* Logo resmi: latar warna brand + lambang di tengah (viewBox 24 → 26px di kanvas 48). */
+  const brand = BRAND_LOGOS[id];
+  if (brand) {
+    return (
+      <svg className={`topic-svg topic-svg--${id} ${className}`} width={s} height={s} viewBox="0 0 48 48" fill="none" role="img" aria-label={brand.label + ' logo'}>
+        <rect width="48" height="48" rx="8" fill={brand.hex} />
+        <g transform="translate(11 11) scale(1.0834)">
+          {brand.paths.map((d, i) => (
+            <path key={i} d={d} fill={brand.mark} />
+          ))}
+        </g>
+      </svg>
+    );
+  }
 
   switch (id) {
     case 'html':
@@ -160,7 +179,22 @@ export default function TopicIcon({ id, className = '', size = 36 }) {
         </svg>
       );
 
+    case 'elysia':
+      /* Elysia: huruf e melingkar dengan aksen */
+      return (
+        <svg className={`topic-svg topic-svg--elysia ${className}`} width={s} height={s} viewBox="0 0 48 48" fill="none" aria-label="Elysia Icon">
+          <rect width="48" height="48" rx="8" fill="#0B1020" />
+          <circle cx="24" cy="24" r="11.5" stroke="#C4B5FD" strokeWidth="3.4" fill="none" />
+          <path d="M35.5 24H22" stroke="#C4B5FD" strokeWidth="3.4" strokeLinecap="round" />
+          <path d="M22 24l-4.5 5" stroke="#F472B6" strokeWidth="3.4" strokeLinecap="round" />
+        </svg>
+      );
+
     default:
-      return <span className={`topic-icon-fallback ${className}`}>{id}</span>;
+      return (
+        <span className={`topic-icon-fallback ${className}`} style={{ width: s, height: s }} aria-hidden="true">
+          {String(id || '?').replace(/[^a-z0-9]/gi, '').slice(0, 1).toUpperCase() || '?'}
+        </span>
+      );
   }
 }

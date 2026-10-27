@@ -44,7 +44,7 @@ export default defineConfig({
             if (/node_modules[\\/](animejs|canvas-confetti)[\\/]/.test(id)) return 'vendor';
             return undefined;
           }
-          const block = /[\\/]content[\\/](html|js|sql|ts|web)\.js$/.exec(id);
+          const block = /[\\/]content[\\/]([a-z][a-z0-9-]*)\.js$/.exec(id);
           return block ? 'content-' + block[1] : undefined;
         },
       },

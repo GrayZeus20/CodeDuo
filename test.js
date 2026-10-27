@@ -910,6 +910,7 @@ globalThis.document = {
 const {
   initStore, dumpState, isMotionEnabled, setBuddySize, getState,
   getSession, currentExercise, stepStart, answerCheck, topicNodes, isLessonDone,
+  lessonRetryCurrent,
 } = await import('./src/store.js');
 
 t('store: path tersimpan dimigrasi, bukan direset (id usang dibuang, topik baru ditambah)', () => {
@@ -984,6 +985,45 @@ t('store: saat nyawa habis, soal terakhir menyimpan alasan dan pembahasan', () =
   assert.ok(failedSession.lastResult.message);
   assert.strictEqual(failedSession.lastResult.explain, failedCodeExercise.explain);
   assert.strictEqual(failedSession.lastInput, finalWrongAnswer);
+});
+
+/* --- store: "COBA LAGI" tidak mengisi otomatis jawaban lama --- */
+function findStepWithType(type) {
+  for (const topic of CURRICULUM) {
+    for (const node of topicNodes(topic.id)) {
+      if (node.kind !== 'step') continue;
+      stepStart(topic.id, node.id);
+      const s = getSession();
+      const idx = s.exercises.findIndex((e) => e.ex && e.ex.type === type);
+      if (idx >= 0) return { session: s, idx };
+    }
+  }
+  return null;
+}
+
+const fillHit = findStepWithType('fill');
+assert.ok(fillHit, 'kurikulum harus punya soal tipe fill');
+fillHit.session.order[fillHit.session.pos] = fillHit.idx;
+fillHit.session.lastInput = 'jawaban-lama';
+fillHit.session.phase = 'feedback';
+fillHit.session.lastResult = { correct: false, close: true, retryable: true, chancesLeft: 1 };
+lessonRetryCurrent();
+t('store: COBA LAGI mengosongkan isian lama & menaikkan retryToken (body remount)', () => {
+  assert.strictEqual(fillHit.session.lastInput, null, 'jawaban lama tidak boleh terisi otomatis');
+  assert.strictEqual(fillHit.session.retryToken, 1, 'retryToken harus berubah agar input remount');
+  assert.strictEqual(fillHit.session.phase, 'run');
+});
+
+const codeHit = findStepWithType('code');
+assert.ok(codeHit, 'kurikulum harus punya soal tipe code');
+codeHit.session.order[codeHit.session.pos] = codeHit.idx;
+codeHit.session.lastInput = 'function latihan() { return 1; }';
+codeHit.session.phase = 'feedback';
+codeHit.session.lastResult = { correct: false, close: true, retryable: true, chancesLeft: 1 };
+lessonRetryCurrent();
+t('store: COBA LAGI mempertahankan kode murid agar bisa diperbaiki', () => {
+  assert.strictEqual(codeHit.session.lastInput, 'function latihan() { return 1; }');
+  assert.strictEqual(codeHit.session.retryToken, 1);
 });
 
 /* --- runner kode: jalur sinkron di Node (tanpa Worker) --- */

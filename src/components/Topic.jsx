@@ -8,6 +8,7 @@ import {
 } from '../store.js';
 import { TIER_ORDER } from '../../content.js';
 import { pop } from '../lib/motion.js';
+import { SFX } from '../../sfx.js';
 import { TOPIC_GUIDES } from '../guidebooks.js';
 import TopicIcon from './TopicIcon.jsx';
 
@@ -25,7 +26,7 @@ export default function Topic({ topicId }) {
 
   return (
     <section className="screen topic">
-      <a className="back" href="#/">← Kembali</a>
+      <a className="back" href="#/" onClick={() => SFX.back()}>← Kembali</a>
       <header className="topic__head" style={{ borderColor: topic.color }}>
         <span className="topic__icon"><TopicIcon id={topic.id} size={48} /></span>
         <div>
@@ -132,7 +133,10 @@ function NodeItem({ topicId, node, idx, open, kind }) {
   const lessonTitles = stepLessons.map((l) => l.title).join(' · ');
   const firstLesson = stepLessons[0] || null;
   const onClick = open
-    ? (e) => { pop(e.currentTarget); if (isTest) tierTest(topicId, node.id); else stepStart(topicId, node.id); }
+    ? (e) => {
+      pop(e.currentTarget);
+      if (isTest) { SFX.exam(); tierTest(topicId, node.id); } else { SFX.open(); stepStart(topicId, node.id); }
+    }
     : undefined;
   return (
     <li className={'lesson-path__item' + (idx % 2 ? ' lesson-path__item--right' : '')}>

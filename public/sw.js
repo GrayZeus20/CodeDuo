@@ -52,11 +52,11 @@ self.addEventListener('fetch', (e) => {
   if (url.origin !== self.location.origin) return;
   if (url.pathname.endsWith('/sw.js')) return; /* biar update worker tak pernah di-cache */
 
-  /* Navigasi: network-first, fallback shell dari cache */
+  /* Navigasi: network-first (cache 'no-store' → HTML tak tertahan cache HTTP browser), fallback shell dari cache */
   if (req.mode === 'navigate') {
     e.respondWith((async () => {
       try {
-        const resp = await fetch(req);
+        const resp = await fetch(req, { cache: 'no-store' });
         const cache = await caches.open(CACHE);
         cache.put('index.html', resp.clone());
         return resp;

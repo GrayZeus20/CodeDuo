@@ -51,6 +51,7 @@ function RunView({ session, topic, isReview }) {
     : topic.name + (currentLesson ? ' · ' + currentLesson.title : ' · ' + (session.label || ''));
 
   const onSubmit = (answer) => {
+    const heartsBefore = session.hearts;
     answerCheck(answer).then((r) => {
       if (!r) return;
       if (r.empty) { setEmptyMsg(r.message); return; }
@@ -59,6 +60,8 @@ function RunView({ session, topic, isReview }) {
       if (res.correct) SFX.correct();
       else if (res.close) SFX.close();
       else if (res.failed) SFX.fail();
+      /* Nyawa tinggal 1 → bunyi "nyawa berkurang" yang lebih berat, bukan sekadar salah biasa. */
+      else if (session.hearts === 1 && heartsBefore > 1) SFX.heartLost();
       else SFX.wrong();
     });
   };
@@ -124,7 +127,7 @@ function RunView({ session, topic, isReview }) {
           dangerouslySetInnerHTML={{ __html: circuitSVG(ex.circuit, { alt: ex.q }) }} />
       )}
       <h2 className="lesson__q">{ex.q}</h2>
-      <ExerciseBody key={session.pos} ex={ex} session={session} onSubmit={onSubmit} />
+      <ExerciseBody key={session.pos + ':' + (session.retryToken || 0)} ex={ex} session={session} onSubmit={onSubmit} />
       {emptyMsg && <div className="banner banner--warn">{emptyMsg}</div>}
       {session.phase === 'run' && (
         <div className="check-bar">
@@ -167,6 +170,7 @@ function Feedback({ session, onContinue, onRetry }) {
   const last = session.lastResult;
   useEffect(() => { if (ref.current) slideUp(ref.current); }, []);
   const run = (e) => {
+    SFX.click();
     if (ref.current) fadeOutDown(ref.current, () => onContinue());
     else onContinue();
     pop(e.currentTarget);
@@ -226,7 +230,7 @@ function ExerciseBody({ ex, session, onSubmit }) {
                 + (optIdx === session.pendingAnswer ? ' option--sel' : '')
                 + (session.answered && optIdx === ex.a ? ' option--correct' : '')}
               disabled={session.answered}
-              onClick={() => pickMc(optIdx)}
+              onClick={() => { SFX.pick(); pickMc(optIdx); }}
             >{ex.options[optIdx]}</button>
           ))}
         </div>
@@ -240,7 +244,7 @@ function ExerciseBody({ ex, session, onSubmit }) {
     return <CodeBody ex={ex} session={session} onSubmit={onSubmit} />;
   }
   if (ex.type === 'preview') {
-    return <PreviewBody ex={ex} disabled={session.answered} onSubmit={onSubmit} />;
+    return <PreviewBody ex={ex} session={session} disabled={session.answered} onSubmit={onSubmit} />;
   }
   if (ex.type === 'arrange') {
     return <ArrangeBody ex={ex} session={session} />;
@@ -371,7 +375,8 @@ function FillBody({ ex, session, onSubmit }) {
       </pre>
       <input
         className="input" id="fill-input" type="text" placeholder="Ketik jawaban…"
-        autoComplete="off" autoCapitalize="off" spellCheck="false" disabled={session.answered}
+        name="codeduo-answer" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false"
+        enterKeyHint="done" disabled={session.answered}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(e) => { if (e.key === 'Enter' && !session.answered) onSubmit(e.currentTarget.value); }}
@@ -380,8 +385,8 @@ function FillBody({ ex, session, onSubmit }) {
   );
 }
 
-function PreviewBody({ ex, disabled, onSubmit }) {
-  const [code, setCode] = useState(ex.starter || '');
+function PreviewBody({ ex, session, disabled, onSubmit }) {
+  const [code, setCode] = useState(() => (session.lastInput != null ? session.lastInput : (ex.starter || '')));
   const frame = useRef(null);
   useEffect(() => {
     if (!frame.current) return;

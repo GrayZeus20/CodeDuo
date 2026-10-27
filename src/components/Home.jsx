@@ -10,6 +10,7 @@ import { CURRICULUM, stepsForTopic } from '../../content.js';
 import Bib from './Bib.jsx';
 import TopicIcon from './TopicIcon.jsx';
 import { pop } from '../lib/motion.js';
+import { SFX } from '../../sfx.js';
 
 const TOTAL_STEP_COUNT = CURRICULUM.reduce(
   (total, topic) => total + stepsForTopic(topic).filter((node) => node.kind === 'step').length,
@@ -43,7 +44,7 @@ export default function Home() {
 
       {/* Kartu "Ingat" — pintu ulangan berjarak (SRS): soal yang pernah dipelajari & jatuh tempo */}
       {dueCount > 0 && (
-        <button className="card recall card--due" onClick={(e) => { pop(e.currentTarget); reviewStart(); }}>
+        <button className="card recall card--due" onClick={(e) => { pop(e.currentTarget); SFX.open(); reviewStart(); }}>
           <span aria-hidden="true" style={{ fontSize: '1.6rem' }}>🧠</span>
           <span className="recall__text">
             <span className="topic-card__tier">Ulangan ingatan</span>
@@ -65,7 +66,7 @@ export default function Home() {
           <button
             key={id}
             className={'topic-card topic-card--active' + (done ? ' topic-card--done' : '')}
-            onClick={(e) => { pop(e.currentTarget); openTopic(t.id); }}
+            onClick={(e) => { pop(e.currentTarget); SFX.open(); openTopic(t.id); }}
           >
             <span className="topic-card__icon"><TopicIcon id={t.id} size={36} /></span>
             <span className="topic-card__body">
