@@ -1778,3 +1778,64 @@ html.reduced-motion .robot__body {
     flex: 1;
   }
 }
+
+/* ===== Arduino: diagram rangkaian, soal wiring, panel simulasi ===== */
+.lesson__circuit {
+  margin: 4px 0 10px;
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  line-height: 0;
+}
+.lesson__circuit svg { display: block; }
+
+.wiring { gap: 10px; }
+.wiring__row {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 10px 12px; border: 1px solid var(--line, #e2e8f0);
+  border-radius: 12px; background: var(--card, #fff);
+}
+.wiring__label { font-weight: 700; font-size: 0.9rem; }
+.wiring__opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.wiring__chip {
+  font: inherit; font-weight: 700; font-size: 0.85rem;
+  padding: 7px 14px; border-radius: 999px; cursor: pointer;
+  border: 2px solid var(--line, #e2e8f0); background: #fff;
+  color: var(--ink, #0f172a); transition: transform .08s ease, border-color .12s ease;
+}
+.wiring__chip:hover:not(:disabled) { transform: translateY(-1px); }
+.wiring__chip--on {
+  border-color: #58cc02; background: #dcfce7; color: #14532d;
+}
+.wiring__chip:disabled { opacity: .6; cursor: default; }
+
+.sim-panel {
+  margin-top: 6px; padding: 12px;
+  border: 1px solid var(--line, #e2e8f0); border-radius: 12px;
+  background: var(--card, #fff);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.sim-panel__title { font-weight: 800; font-size: .82rem; letter-spacing: .02em; }
+.sim-panel__error {
+  font-size: .8rem; color: #b91c1c; background: #fee2e2;
+  border-radius: 8px; padding: 7px 9px;
+}
+.sim-panel__pins { display: flex; flex-wrap: wrap; gap: 8px; }
+.sim-pin {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 9px; border-radius: 999px;
+  background: #f1f5f9; font-size: .76rem; font-weight: 700;
+}
+.sim-pin__led { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.sim-pin__val { color: var(--muted, #64748b); font-weight: 600; }
+.sim-panel__tone { font-size: .8rem; font-weight: 700; color: #a16207; }
+.sim-panel__serial { border-top: 1px dashed var(--line, #e2e8f0); padding-top: 8px; }
+.sim-panel__serial-head { font-size: .72rem; font-weight: 800; color: var(--muted, #64748b); margin-bottom: 4px; }
+.sim-panel__serial-body {
+  margin: 0; max-height: 120px; overflow: auto;
+  background: #0f172a; color: #e2e8f0; border-radius: 8px;
+  padding: 8px 10px; font-size: .76rem; line-height: 1.5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  white-space: pre-wrap;
+}

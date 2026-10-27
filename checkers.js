@@ -178,16 +178,43 @@ function checkFill(user, accept) {
 }
 
 /* ---------- arrange ---------- */
-function checkArrange(userOrder, blocks) {
+/* Bandingkan urutan sebagai string supaya tahan beda tipe: UI mengirim id blok
+ * sebagai string ('0','1',…) sedangkan `answers` di konten boleh berupa angka
+ * (0,1,…). Tanpa normalisasi ini, urutan yang sah gagal cocok ('0' !== 0). */
+function sameOrder(a, b) {
+  if (!Array.isArray(a) || !Array.isArray(b) || a.length !== b.length) return false;
+  return a.every((v, i) => String(v) === String(b[i]));
+}
+
+/* Cek apakah sebuah urutan `order` sama persis dengan salah satu urutan sah. */
+function matchesOrder(order, candidates) {
+  return candidates.some((valid) => sameOrder(order, valid));
+}
+
+/* `blocks`  : urutan id blok saat dirender (acuan utama).
+ * `answers` : daftar urutan sah TAMBAHAN (opsional). Dipakai saat blok yang isinya
+ *             saling-tukar memang sama-sama benar — mis. dua `<li>` bersaudara di
+ *             dalam `<ul>`, beberapa `<meta>`, atau deklarasi CSS dalam satu rule.
+ *             Tanpa ini, murid yang menukar urutan yang sah tetap dinilai salah.
+ */
+function checkArrange(userOrder, blocks, answers) {
   if (!Array.isArray(userOrder) || userOrder.length !== blocks.length) {
     return { correct: false, reason: 'incomplete', message: 'Susun dulu semua bloknya.' };
   }
-  if (userOrder.every((id, i) => id === blocks[i])) return { correct: true };
+  const validOrders = [blocks];
+  if (Array.isArray(answers)) {
+    answers.forEach((order) => {
+      if (Array.isArray(order) && order.length === blocks.length) validOrders.push(order);
+    });
+  }
+  if (matchesOrder(userOrder, validOrders)) return { correct: true };
   /* Aturan longgar: susunan salah urutan — semua blok lengkap tapi urutan belum pas
    * → "hampir benar / salah urutan", diberi kesempatan memperbaiki. */
-  const sameSet = userOrder.slice().sort().join('\u0000') === blocks.slice().sort().join('\u0000');
+  const uKeys = userOrder.map(String).sort().join('\u0000');
+  const bKeys = blocks.map(String).sort().join('\u0000');
+  const sameSet = uKeys === bKeys;
   if (sameSet) {
-    const wrongPos = userOrder.filter((id, i) => id !== blocks[i]).length;
+    const wrongPos = userOrder.filter((id, i) => String(id) !== String(blocks[i])).length;
     return {
       correct: false,
       close: true,

@@ -666,6 +666,7 @@ const CONTENT_HTML = [
               "<li>Gula</li>",
               "</ul>"
             ],
+            "answers": [[0,2,1,3]],
             "explain": "Daftar dimulai ul, li, li, ditutup ul."
           },
           {
@@ -1821,6 +1822,7 @@ const CONTENT_HTML = [
               "<option value=\"Firefox\">",
               "</datalist>"
             ],
+            "answers": [[0,1,3,2,4]],
             "explain": "input list=\"id\" merujuk ke datalist id=\"id\"."
           },
           {
@@ -3138,6 +3140,7 @@ const CONTENT_HTML = [
               "<meta property=\"og:description\" content=\"Deskripsi singkat\">",
               "<meta property=\"og:image\" content=\"https://site.com/img.jpg\">"
             ],
+            "answers": [[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]],
             "explain": "Urutan meta OG dasar."
           },
           {
@@ -3578,6 +3581,7 @@ const CONTENT_HTML = [
               "<title>Judul</title>",
               "<link rel=\"stylesheet\" href=\"style.css\">"
             ],
+            "answers": [[1,0,2,3]],
             "explain": "charset -> viewport -> title -> link CSS."
           },
           {
@@ -3708,6 +3712,7 @@ const CONTENT_HTML = [
               "color: white;",
               "}"
             ],
+            "answers": [[0,2,1,3]],
             "explain": "Selektor diikuti kurung kurawal pembuka, deklarasi properti, kurung penutup."
           },
           {
@@ -3823,6 +3828,7 @@ const CONTENT_HTML = [
               "font-size: 16px;",
               "}"
             ],
+            "answers": [[0,2,1,3]],
             "explain": "Struktur ruleset CSS."
           },
           {
@@ -3951,6 +3957,7 @@ const CONTENT_HTML = [
               "line-height: 1.3;",
               "}"
             ],
+            "answers": [[0,1,3,2,4],[0,2,1,3,4],[0,2,3,1,4],[0,3,1,2,4],[0,3,2,1,4]],
             "explain": "Aturan tipografi berurutan."
           },
           {
@@ -4056,6 +4063,7 @@ const CONTENT_HTML = [
               "text-decoration: none;",
               "}"
             ],
+            "answers": [[0,2,1,3]],
             "explain": "Gaya umum untuk link modern."
           },
           {
@@ -4170,6 +4178,7 @@ const CONTENT_HTML = [
               "border-radius: 20px;",
               "}"
             ],
+            "answers": [[0,2,1,3]],
             "explain": "Border dan border-radius."
           },
           {
@@ -4272,6 +4281,7 @@ const CONTENT_HTML = [
               "margin: 0 auto;",
               "}"
             ],
+            "answers": [[0,2,1,3]],
             "explain": "width fixed + margin auto menengahkan blok."
           },
           {
@@ -4422,6 +4432,7 @@ const CONTENT_HTML = [
               "background-repeat: no-repeat;",
               "}"
             ],
+            "answers": [[0,1,3,2,4],[0,2,1,3,4],[0,2,3,1,4],[0,3,1,2,4],[0,3,2,1,4]],
             "explain": "Pola umum background-image."
           }
         ]
@@ -4541,6 +4552,7 @@ const CONTENT_HTML = [
               "text-decoration: none;",
               "}"
             ],
+            "answers": [[0,1,3,2,4],[0,2,1,3,4],[0,2,3,1,4],[0,3,1,2,4],[0,3,2,1,4]],
             "explain": "Pola tombol link yang rapi."
           }
         ]
@@ -4639,6 +4651,7 @@ const CONTENT_HTML = [
               "background: #222;",
               "}"
             ],
+            "answers": [[0,1,3,2,4],[0,2,1,3,4],[0,2,3,1,4],[0,3,1,2,4],[0,3,2,1,4]],
             "explain": "Pola section hero full-screen."
           },
           {
@@ -4713,6 +4726,7 @@ const CONTENT_HTML = [
               "box-sizing: border-box;",
               "}"
             ],
+            "answers": [[0,1,3,2,4],[0,2,1,3,4],[0,2,3,1,4],[0,3,1,2,4],[0,3,2,1,4]],
             "explain": "Reset CSS modern universal."
           },
           {
@@ -4880,6 +4894,7 @@ const CONTENT_HTML = [
               "gap: 10px;",
               "}"
             ],
+            "answers": [[0,2,1,3]],
             "explain": "display flex dengan jarak gap."
           },
           {
@@ -4941,6 +4956,7 @@ const CONTENT_HTML = [
               "gap: 12px;",
               "}"
             ],
+            "answers": [[0,1,3,2,4],[0,2,1,3,4],[0,2,3,1,4],[0,3,1,2,4],[0,3,2,1,4]],
             "explain": "display:grid + template kolom + gap."
           },
           {
@@ -4995,6 +5011,7 @@ const CONTENT_HTML = [
               "gap: 20px;",
               "}"
             ],
+            "answers": [[0,1,3,2,4],[0,2,1,3,4],[0,2,3,1,4],[0,3,1,2,4],[0,3,2,1,4]],
             "explain": "Aturan grid dua kolom."
           },
           {
@@ -5100,6 +5117,7 @@ const CONTENT_HTML = [
               "gap: 16px;",
               "}"
             ],
+            "answers": [[0,1,3,2,4],[0,2,1,3,4],[0,2,3,1,4],[0,3,1,2,4],[0,3,2,1,4]],
             "explain": "Pola layout kartu produk yang responsif."
           },
           {
@@ -5240,6 +5258,7 @@ const CONTENT_HTML = [
               "align-items: center;",
               "}"
             ],
+            "answers": [[0,1,3,2,4],[0,2,1,3,4],[0,2,3,1,4],[0,3,1,2,4],[0,3,2,1,4]],
             "explain": "Flexbox centering sempurna."
           },
           {
@@ -5334,6 +5353,7 @@ const CONTENT_HTML = [
               "gap: 16px;",
               "}"
             ],
+            "answers": [[0,1,3,2,4],[0,2,1,3,4],[0,2,3,1,4],[0,3,1,2,4],[0,3,2,1,4]],
             "explain": "Pola auto-fit minmax paling populer di industri web."
           },
           {
@@ -5441,6 +5461,7 @@ const CONTENT_HTML = [
               "background: #333;",
               "}"
             ],
+            "answers": [[0,2,1,3]],
             "explain": "Penataan posisi item spesifik."
           },
           {
@@ -5921,6 +5942,7 @@ const CONTENT_HTML = [
               "overflow-y: auto;",
               "}"
             ],
+            "answers": [[0,2,1,3]],
             "explain": "max-height + overflow-y auto membatasi tinggi."
           },
           {
@@ -6053,6 +6075,7 @@ const CONTENT_HTML = [
               "}",
               "button:hover { background: darkblue; }"
             ],
+            "answers": [[0,2,1,3,4]],
             "explain": "Transisi diletakkan pada selector dasar, bukan hanya di hover."
           },
           {
@@ -6861,6 +6884,7 @@ const CONTENT_HTML = [
               "box-shadow: 0 4px 12px rgba(88,204,2,0.3);",
               "}"
             ],
+            "answers": [[0,2,1,3]],
             "explain": "Induk beraksi terhadap isi anaknya."
           },
           {
@@ -6955,6 +6979,7 @@ const CONTENT_HTML = [
               "border: 1px solid rgba(255, 255, 255, 0.2);",
               "}"
             ],
+            "answers": [[0,1,3,2,4],[0,2,1,3,4],[0,2,3,1,4],[0,3,1,2,4],[0,3,2,1,4]],
             "explain": "Komposisi lengkap kartu kaca glassmorphic."
           },
           {
@@ -7084,6 +7109,7 @@ const CONTENT_HTML = [
               "line-height: 1.2;",
               "}"
             ],
+            "answers": [[0,2,1,3]],
             "explain": "Ukuran font responsif otomatis menyesuaikan layar."
           },
           {
@@ -7178,6 +7204,7 @@ const CONTENT_HTML = [
               "color: white;",
               "}"
             ],
+            "answers": [[0,1,3,2,4],[0,2,1,3,4],[0,2,3,1,4],[0,3,1,2,4],[0,3,2,1,4]],
             "explain": "Pola komponen modular dengan custom property lokal."
           },
           {

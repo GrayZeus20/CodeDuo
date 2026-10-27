@@ -28,6 +28,8 @@ import {
   SRS_KEY, SRS_INTERVALS, newSched, schedule, gradeFromResult, dueItems, toJSON, fromJSON,
 } from '../srs.js';
 import { checkFill, checkArrange, checkMc } from '../checkers.js';
+import { checkSketch } from './lib/arduino.js';
+import { checkWiring } from './lib/wiring.js';
 import { runCodeCheck } from './lib/codeRunner.js';
 import { MAX_HEARTS, mulberry32, shuffled } from './lib/rng.js';
 import {
@@ -858,19 +860,28 @@ export async function answerCheck(answer) {
   }
   else if (ex.type === 'fill') result = checkFill(answer, ex.accept);
   else if (ex.type === 'code') {
-    /* Kode murid dijalankan di Worker dengan timeout → loop tak berujung tak membekukan tab. */
-    const cur = session;
-    session.checking = true;
-    bump();
-    try {
-      result = await runCodeCheck(answer, { fnName: ex.fn, tests: ex.tests });
-    } finally {
-      if (session === cur) session.checking = false;
+    if (ex.sim === 'arduino') {
+      /* Sketsa Arduino: dijalankan simulator (bukan Worker JS) lalu dicek
+       * terhadap `expect` (pin mode, PWM, Serial, tone, ...). */
+      /* simOptions (A0/button) ikut dikirim agar sketsa diuji pada kondisi yang sama
+       * seperti yang dilihat murid di panel simulasi. */
+      result = checkSketch(answer, Object.assign({}, ex.expect || {}, { simOptions: ex.simOptions }));
+    } else {
+      /* Kode murid dijalankan di Worker dengan timeout → loop tak berujung tak membekukan tab. */
+      const cur = session;
+      session.checking = true;
+      bump();
+      try {
+        result = await runCodeCheck(answer, { fnName: ex.fn, tests: ex.tests });
+      } finally {
+        if (session === cur) session.checking = false;
+      }
+      if (session !== cur) return null; /* keluar pelajaran / ganti soal saat menunggu */
     }
-    if (session !== cur) return null; /* keluar pelajaran / ganti soal saat menunggu */
   }
+  else if (ex.type === 'wiring') result = checkWiring(answer, ex);
   else if (ex.type === 'preview') result = checkPreview(answer, ex);
-  else if (ex.type === 'arrange') result = checkArrange(answer, ex.blocks.map((_, i) => String(i)));
+  else if (ex.type === 'arrange') result = checkArrange(answer, ex.blocks.map((_, i) => String(i)), ex.answers);
   else result = { correct: false, message: 'Tipe soal tidak dikenal.' };
 
   if (result.reason === 'empty' || result.reason === 'incomplete') {

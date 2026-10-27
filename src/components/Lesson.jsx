@@ -12,6 +12,8 @@ import {
 } from '../store.js';
 import { STEP_SIZE } from '../../content.js';
 import { SFX } from '../../sfx.js';
+import { circuitSVG } from '../lib/circuit.js';
+import { runSketch } from '../lib/arduino.js';
 import { pop, slideUp, fadeOutDown, celebrate, pulse } from '../lib/motion.js';
 
 export default function Lesson() {
@@ -117,6 +119,10 @@ function RunView({ session, topic, isReview }) {
           </span>
         </div>
       )}
+      {ex.circuit && (
+        <div className="lesson__circuit" aria-label="Diagram rangkaian"
+          dangerouslySetInnerHTML={{ __html: circuitSVG(ex.circuit, { alt: ex.q }) }} />
+      )}
       <h2 className="lesson__q">{ex.q}</h2>
       <ExerciseBody key={session.pos} ex={ex} session={session} onSubmit={onSubmit} />
       {emptyMsg && <div className="banner banner--warn">{emptyMsg}</div>}
@@ -135,6 +141,14 @@ function RunView({ session, topic, isReview }) {
           )}
           {(ex.type === 'code' || ex.type === 'preview') && (
             <button className="btn btn--primary btn--wide" id="check-btn" disabled={!!session.checking} onClick={(e) => { pop(e.currentTarget); const el = document.getElementById('code-input'); onSubmit(el ? el.value : ''); }}>{session.checking ? 'MEMERIKSA…' : (session.retryActive ? 'CEK LAGI' : 'CEK')}</button>
+          )}
+          {ex.type === 'wiring' && (
+            <button
+              className="btn btn--primary btn--wide"
+              id="check-btn"
+              disabled={session.answered}
+              onClick={(e) => { pop(e.currentTarget); onSubmit(session.wirePicks || {}); }}
+            >{session.retryActive ? 'CEK LAGI' : 'CEK'}</button>
           )}
           {ex.type === 'arrange' && (
             <button className="btn btn--primary btn--wide" id="check-btn" onClick={(e) => { pop(e.currentTarget); onSubmit((session.arrPlaced || []).slice()); }}>{session.retryActive ? 'CEK LAGI' : 'CEK'}</button>
@@ -223,6 +237,22 @@ function ExerciseBody({ ex, session, onSubmit }) {
     return <FillBody ex={ex} session={session} onSubmit={onSubmit} />;
   }
   if (ex.type === 'code') {
+    return <CodeBody ex={ex} session={session} onSubmit={onSubmit} />;
+  }
+  if (ex.type === 'preview') {
+    return <PreviewBody ex={ex} disabled={session.answered} onSubmit={onSubmit} />;
+  }
+  if (ex.type === 'arrange') {
+    return <ArrangeBody ex={ex} session={session} />;
+  }
+  if (ex.type === 'wiring') {
+    return <WiringBody ex={ex} session={session} />;
+  }
+  return null;
+}
+
+function CodeBody({ ex, session, onSubmit }) {
+    const [code, setCode] = useState(() => session.lastInput != null ? session.lastInput : (ex.starter || '')); 
     const handleKeyDown = (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
         e.preventDefault();
@@ -231,9 +261,12 @@ function ExerciseBody({ ex, session, onSubmit }) {
         e.preventDefault();
         const start = e.currentTarget.selectionStart;
         const end = e.currentTarget.selectionEnd;
-        const val = e.currentTarget.value;
-        e.currentTarget.value = val.substring(0, start) + '  ' + val.substring(end);
-        e.currentTarget.selectionStart = e.currentTarget.selectionEnd = start + 2;
+        const next = code.substring(0, start) + '  ' + code.substring(end);
+        setCode(next);
+        requestAnimationFrame(() => {
+          const el = document.getElementById('code-input');
+          if (el) el.selectionStart = el.selectionEnd = start + 2;
+        });
       }
     };
     return (
@@ -243,10 +276,12 @@ function ExerciseBody({ ex, session, onSubmit }) {
           id="code-input"
           spellCheck="false"
           rows={8}
-          defaultValue={session.lastInput != null ? session.lastInput : ex.starter}
+          value={code}
           disabled={session.answered}
+          onChange={(e) => setCode(e.target.value)}
           onKeyDown={handleKeyDown}
         />
+        {ex.sim === 'arduino' && <ArduinoSimPanel ex={ex} sketch={code} />}
         {ex.tests && ex.tests.length > 0 && (
           <div className="muted" style={{ fontSize: '0.82rem', marginTop: '2px' }}>
             Contoh uji: <code>{ex.fn}({ex.tests[0].args.map((a) => JSON.stringify(a)).join(', ')})</code> → <code>{JSON.stringify(ex.tests[0].expected)}</code>
@@ -254,14 +289,68 @@ function ExerciseBody({ ex, session, onSubmit }) {
         )}
       </div>
     );
-  }
-  if (ex.type === 'preview') {
-    return <PreviewBody ex={ex} disabled={session.answered} onSubmit={onSubmit} />;
-  }
-  if (ex.type === 'arrange') {
-    return <ArrangeBody ex={ex} session={session} />;
-  }
-  return null;
+}
+
+/* Panel simulasi untuk sketsa Arduino: LED/PWM, tone, dan Serial Monitor.
+ * Sketsa dijalankan ulang tiap kali isi editor berubah (debounce ringan) supaya
+ * murid melihat efek kodenya — meniru "lihat koding → hasil" ala Tinkercad. */
+function ArduinoSimPanel({ ex, sketch }) {
+  const [result, setResult] = useState(null);
+  const timer = useRef(null);
+
+  useEffect(() => {
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      try {
+        const r = runSketch(sketch, ex.simOptions || { durationMs: 1500 });
+        setResult(r);
+      } catch (e) {
+        setResult({ ok: false, error: String(e && e.message) });
+      }
+    }, 250);
+    return () => { if (timer.current) clearTimeout(timer.current); };
+  }, [sketch, ex.simOptions]);
+
+  const board = result && result.board;
+  const ledPins = Object.entries((board && board.pins) || {})
+    .filter(([, st]) => st.mode === 'OUTPUT' || st.pwm > 0 || st.digital)
+    .slice(0, 6);
+  const serial = (board && board.serial) || [];
+
+  return (
+    <div className="sim-panel">
+      <div className="sim-panel__title">🔌 Simulasi papan</div>
+      {result && !result.ok && (
+        <div className="sim-panel__error">{result.error}</div>
+      )}
+      {board && (
+        <>
+          <div className="sim-panel__pins">
+            {ledPins.length === 0 && <span className="muted">Belum ada pin aktif.</span>}
+            {ledPins.map(([pin, st]) => {
+              const level = st.pwm > 0 ? st.pwm / 255 : (st.digital ? 1 : 0);
+              return (
+                <div className="sim-pin" key={pin}>
+                  <span className="sim-pin__name">Pin {pin}</span>
+                  <span
+                    className="sim-pin__led"
+                    style={{ opacity: 0.15 + (Math.max(0, Math.min(1, level)) * 0.85), background: st.pwm > 0 ? '#22c55e' : '#ef4444' }}
+                    title={st.pwm > 0 ? 'PWM ' + st.pwm : (st.digital ? 'HIGH' : 'LOW')}
+                  />
+                  <span className="sim-pin__val">{st.pwm > 0 ? 'PWM ' + st.pwm : (st.digital ? 'HIGH' : 'LOW')}</span>
+                </div>
+              );
+            })}
+          </div>
+          {board.tone && <div className="sim-panel__tone">🔊 tone() {board.tone.freq} Hz</div>}
+          <div className="sim-panel__serial">
+            <div className="sim-panel__serial-head">Serial Monitor {board.baud ? '(' + board.baud + ')' : ''}</div>
+            <pre className="sim-panel__serial-body">{serial.length ? serial.slice(-12).join('\n') : '(belum ada output)'}</pre>
+          </div>
+        </>
+      )}
+    </div>
+  );
 }
 
 function FillBody({ ex, session, onSubmit }) {
@@ -335,6 +424,41 @@ function PreviewBody({ ex, disabled, onSubmit }) {
         👁️ Hasil Tampilan (Live Preview)
       </div>
       <iframe className="preview-frame" id="preview-frame" ref={frame} sandbox title="Preview" />
+    </div>
+  );
+}
+
+/* Soal `wiring`: pilih pin/sambungan tiap komponen. Pilihan disimpan di sesi
+ * (session.wirePicks) supaya tidak hilang saat soal di-retry. */
+function WiringBody({ ex, session }) {
+  const slots = Array.isArray(ex.slots) ? ex.slots : [];
+  /* Pilihan disimpan di sesi agar tidak hilang saat di-retry, tapi ditampilkan
+   * lewat state lokal supaya UI langsung re-render. */
+  const [picks, setPicks] = useState(() => session.wirePicks || {});
+  const disabled = session.answered;
+  useEffect(() => { session.wirePicks = picks; }, [picks, session]);
+
+  return (
+    <div className="lesson__body wiring">
+      {slots.map((slot) => (
+        <div className="wiring__row" key={slot.id}>
+          <div className="wiring__label">{slot.label}</div>
+          <div className="wiring__opts">
+            {(slot.options || []).map((opt) => {
+              const active = String(picks[slot.id]) === String(opt);
+              return (
+                <button
+                  key={opt}
+                  type="button"
+                  className={'wiring__chip' + (active ? ' wiring__chip--on' : '')}
+                  disabled={disabled}
+                  onClick={() => setPicks((prev) => Object.assign({}, prev, { [slot.id]: opt }))}
+                >{opt}</button>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

@@ -106,6 +106,52 @@ t('arrange error: urut salah total (semua posisi meleset tapi blok lengkap) teta
 t('arrange error: null userOrder', () => {
   assert.strictEqual(checkArrange(null, blocks).correct, false);
 });
+/* --- arrange dengan urutan alternatif yang sama-sama sah (`answers`) ---
+ * Kasus nyata: di dalam <ul>, urutan <li> boleh ditukar — keduanya sama benar. */
+t('arrange answers: urutan alternatif yang sah diterima', () => {
+  const listBlocks = ['c0', 'c1', 'c2', 'c3'];
+  const r = checkArrange(['c0', 'c2', 'c1', 'c3'], listBlocks, [['c0', 'c2', 'c1', 'c3']]);
+  assert.strictEqual(r.correct, true);
+});
+t('arrange answers: urutan asli tetap diterima', () => {
+  const listBlocks = ['c0', 'c1', 'c2', 'c3'];
+  const r = checkArrange(['c0', 'c1', 'c2', 'c3'], listBlocks, [['c0', 'c2', 'c1', 'c3']]);
+  assert.strictEqual(r.correct, true);
+});
+t('arrange answers: urutan yang tetap salah tidak ikut diterima', () => {
+  const listBlocks = ['c0', 'c1', 'c2', 'c3'];
+  const r = checkArrange(['c3', 'c1', 'c2', 'c0'], listBlocks, [['c0', 'c2', 'c1', 'c3']]);
+  assert.strictEqual(r.correct, false);
+  assert.strictEqual(r.close, true);
+});
+t('arrange answers: answers kosong/rusak tidak merusak penilaian', () => {
+  assert.strictEqual(checkArrange(['b0', 'b1', 'b2'], blocks, []).correct, true);
+  assert.strictEqual(checkArrange(['b1', 'b0', 'b2'], blocks, [[1, 2]]).correct, false);
+});
+t('arrange answers: tahan beda tipe string/angka (UI kirim "0", konten simpan 0)', () => {
+  /* Regresi: UI mengirim id blok sebagai string, `answers` di konten berupa angka.
+   * Sebelum diperbaiki, '0' !== 0 membuat urutan sah dinilai salah. */
+  const listBlocks = ['0', '1', '2', '3'];
+  assert.strictEqual(checkArrange(['0', '2', '1', '3'], listBlocks, [[0, 2, 1, 3]]).correct, true);
+  assert.strictEqual(checkArrange([0, 2, 1, 3], listBlocks, [['0', '2', '1', '3']]).correct, true);
+});
+t('arrange answers: kurikulum — tiap answers adalah permutasi lengkap & index sah', () => {
+  let checked = 0;
+  CURRICULUM.forEach((topic) => topic.lessons.forEach((lesson) => {
+    lesson.exercises.forEach((ex, i) => {
+      if (ex.type !== 'arrange' || !Array.isArray(ex.answers)) return;
+      const where = topic.id + '/' + lesson.id + '#' + i;
+      ex.answers.forEach((order) => {
+        assert.strictEqual(order.length, ex.blocks.length, where + ' panjang answers');
+        const sorted = order.slice().sort((a, b) => a - b).join(',');
+        const expected = ex.blocks.map((_, k) => k).sort((a, b) => a - b).join(',');
+        assert.strictEqual(sorted, expected, where + ' harus permutasi index 0..n-1');
+      });
+      checked++;
+    });
+  }));
+  assert.ok(checked > 0, 'harus ada soal arrange ber-answers');
+});
 
 /* --- checkCode --- */
 const specAdd = {
@@ -168,16 +214,15 @@ t('code: objek khusus tidak disamakan dengan objek kosong', () => {
 
 /* --- CURRICULUM integrity (guards the class of bug where a `tests` expectation
  *     does not match its own `explain` solution, or an mc index is out of range) --- */
-const EX_TYPES = ['mc', 'fill', 'code', 'preview', 'arrange'];
+const EX_TYPES = ['mc', 'fill', 'code', 'preview', 'arrange', 'wiring'];
 let totalSoal = 0;
 
 const TIERS = TIER_ORDER;
 
-t('curriculum: 10 topik dengan pelajaran berjenjang; Blok Web memiliki materi Advance terpisah', () => {
-  assert.strictEqual(CURRICULUM.length, 10);
+t('curriculum: 27 topik dengan pelajaran berjenjang (bahasa dipisah jadi topik sendiri)', () => {
+  assert.strictEqual(CURRICULUM.length, 27);
   CURRICULUM.forEach((topic) => {
-    const isWeb = topic.id === 'web';
-    assert.strictEqual(topic.lessons.length, isWeb ? 50 : 31, topic.id);
+    assert.strictEqual(topic.lessons.length, 31, topic.id);
     const counts = { Dasar: 0, Menengah: 0, Advance: 0 };
     topic.lessons.forEach((lesson) => {
       assert.ok(TIERS.includes(lesson.level), topic.id + '/' + lesson.id + ' level=' + lesson.level);
@@ -185,19 +230,18 @@ t('curriculum: 10 topik dengan pelajaran berjenjang; Blok Web memiliki materi Ad
     });
     assert.strictEqual(counts.Dasar, 10, topic.id + ' Dasar');
     assert.strictEqual(counts.Menengah, 10, topic.id + ' Menengah');
-    assert.strictEqual(counts.Advance, isWeb ? 30 : 11, topic.id + ' Advance');
+    assert.strictEqual(counts.Advance, 11, topic.id + ' Advance');
   });
 });
-t('curriculum: Blok Web memiliki lebih banyak soal Advance untuk lebih banyak step', () => {
+t('curriculum: tiap topik 100 Dasar + 100 Menengah + 105 Advance soal', () => {
   CURRICULUM.forEach((topic) => {
-    const isWeb = topic.id === 'web';
     const counts = { Dasar: 0, Menengah: 0, Advance: 0 };
     topic.lessons.forEach((l) => {
       counts[l.level] += l.exercises.length;
     });
     assert.strictEqual(counts.Dasar, 100, topic.id + ' Dasar');
     assert.strictEqual(counts.Menengah, 100, topic.id + ' Menengah');
-    assert.strictEqual(counts.Advance, isWeb ? 215 : 105, topic.id + ' Advance');
+    assert.strictEqual(counts.Advance, 105, topic.id + ' Advance');
   });
 });
 t('curriculum: id topik & pelajaran unik', () => {
@@ -241,6 +285,8 @@ t('curriculum: code — fn + tests valid, solusi dari explain lolos', () => {
   CURRICULUM.forEach((topic) => topic.lessons.forEach((lesson) => {
     lesson.exercises.forEach((ex, i) => {
       if (ex.type !== 'code') return;
+      /* Sketsa Arduino punya jalur sendiri (simulator), bukan checkCode JS. */
+      if (ex.sim === 'arduino') return;
       const where = topic.id + '/' + lesson.id + '#' + i;
       assert.ok(typeof ex.fn === 'string' && ex.fn, where + ' fn');
       assert.ok(Array.isArray(ex.tests) && ex.tests.length > 0, where + ' tests');
@@ -253,6 +299,7 @@ t('curriculum: code — solusi referensi lolos checkCode (cegah expected≠solus
   CURRICULUM.forEach((topic) => topic.lessons.forEach((lesson) => {
     lesson.exercises.forEach((ex, i) => {
       if (ex.type !== 'code') return;
+      if (ex.sim === 'arduino') return;
       const where = topic.id + '/' + lesson.id + '#' + i;
       assert.ok(typeof ex.solution === 'string' && ex.solution.trim(), where + ' wajib punya field solution');
       const r = checkCode(ex.solution, { fnName: ex.fn, tests: ex.tests });
@@ -325,60 +372,44 @@ t('curriculum: verifikasi perbaikan bug soal', () => {
   const css1_9 = resolveQuestion('css|css-1#9');
   assert.ok(css1_9.accept.includes('#konten'), 'css-1#9 harus terima #konten');
 });
-t('curriculum: jumlah soal terdokumentasi (3160)', () => {
-  assert.strictEqual(totalSoal, 3160);
+t('curriculum: jumlah soal terdokumentasi (8235)', () => {
+  assert.strictEqual(totalSoal, 8235);
 });
-t('curriculum: topik "Blok Web" ada (peta fungsi tiap blok)', () => {
+t('curriculum: topik "Blok Web" tetap ada (peta fungsi tiap blok)', () => {
   const web = CURRICULUM.find((t) => t.id === 'web');
   assert.ok(web, 'topik web hilang');
-  assert.strictEqual(web.lessons.length, 50);
+  assert.strictEqual(web.lessons.length, 31);
   assert.ok(web.lessons.some((l) => /css/i.test(l.title + JSON.stringify(l.exercises))), 'harus menyebut CSS');
 });
-t('curriculum: materi framework berlanjut ke tiga pelajaran Advance tambahan', () => {
-  const web = CURRICULUM.find((topic) => topic.id === 'web');
-  const advancedLessons = web.lessons.filter((lesson) => lesson.id >= 'web-32' && lesson.id <= 'web-34');
-  assert.strictEqual(advancedLessons.length, 3);
-  assert.ok(advancedLessons.every((lesson) => lesson.level === 'Advance' && lesson.exercises.length === 10));
+t('curriculum: tiap bahasa/framework punya topik sendiri dengan 3 jenjang lengkap', () => {
+  const expected = {
+    react: 'React', nextjs: 'Next.js', laravel: 'Laravel', ruby: 'Ruby', rails: 'Ruby on Rails',
+    elysia: 'Elysia', go: 'Go', flutter: 'Flutter', dart: 'Dart', kotlin: 'Kotlin',
+    java: 'Java', python: 'Python', matlab: 'MATLAB', php: 'PHP', c: 'C', cpp: 'C++',
+  };
+  Object.entries(expected).forEach(([id, name]) => {
+    const topic = CURRICULUM.find((t) => t.id === id);
+    assert.ok(topic, 'topik ' + id + ' hilang');
+    assert.strictEqual(topic.name, name, id + ' nama');
+    const perLevel = { Dasar: 0, Menengah: 0, Advance: 0 };
+    topic.lessons.forEach((l) => { perLevel[l.level] += 1; });
+    assert.deepStrictEqual(perLevel, { Dasar: 10, Menengah: 10, Advance: 11 }, id + ' pelajaran per jenjang');
+    assert.strictEqual(topic.lessons.reduce((n, l) => n + l.exercises.length, 0), 305, id + ' total soal');
+    const master = topic.lessons.filter((l) => /^Master Review/.test(l.title));
+    assert.strictEqual(master.length, 1, id + ' butuh satu Master Review');
+    assert.strictEqual(master[0].exercises.length, 5, id + ' Master Review 5 soal');
+  });
 });
-t('curriculum: Blok Web mengenalkan seluruh framework dan bahasa yang diminta', () => {
-  const web = CURRICULUM.find((t) => t.id === 'web');
-  const lessons = web.lessons.filter((lesson) => ['web-3', 'web-4'].includes(lesson.id));
-  const material = JSON.stringify(lessons);
-  [
-    'Next.js', 'React', 'Laravel', 'Kotlin', 'Golang', 'Flutter', 'Ruby',
-    'Elysia', 'Python', 'MATLAB', 'PHP', '"C"', 'C++', 'Java',
-  ].forEach((technology) => assert.ok(material.includes(technology), technology + ' belum ada di materi blok'));
-  assert.strictEqual(lessons.reduce((count, lesson) => count + lesson.exercises.length, 0), 20);
-});
-t('curriculum: bahasa dan framework punya pelajaran Advance terpisah', () => {
-  const web = CURRICULUM.find((topic) => topic.id === 'web');
-  const titles = [
-    'React: Komponen & State',
-    'Next.js: Routing & Rendering',
-    'Laravel: Request & Database',
-    'Ruby: Bahasa & Koleksi',
-    'Ruby on Rails: MVC & Data',
-    'Elysia: API TypeScript & Bun',
-    'Go: Concurrency & Error',
-    'Flutter: Widget & Tampilan',
-    'Dart: Tipe & Asinkron',
-    'Kotlin: Tipe & Coroutine',
-    'Java: Tipe & Resource',
-    'Python: Fungsi & Koleksi',
-    'MATLAB: Array & Komputasi',
-    'PHP: Server & Input',
-    'C: Pointer & Memori',
-    'C++: RAII & Koleksi',
-  ];
-  const lessons = web.lessons.filter((lesson) => titles.includes(lesson.title));
-  assert.deepStrictEqual(lessons.map((lesson) => lesson.title), titles);
-  assert.ok(lessons.every((lesson) => lesson.level === 'Advance' && lesson.exercises.length === 5));
-  const nodes = stepsForTopic(web).filter((node) => node.kind === 'step');
-  lessons.forEach((lesson) => {
-    const node = nodes.find((step) => step.lessonId === lesson.id);
-    assert.ok(node, lesson.title + ' harus memiliki step sendiri');
-    assert.strictEqual(node.questionIds.length, 5, lesson.title + ' jumlah soal');
-    assert.ok(node.questionIds.every((key) => key.includes('|' + lesson.id + '#')), lesson.title + ' bercampur dengan pelajaran lain');
+t('curriculum: tiap topik bahasa punya step per pelajaran, tanpa bercampur', () => {
+  ['react', 'nextjs', 'laravel', 'go', 'cpp'].forEach((id) => {
+    const topic = CURRICULUM.find((t) => t.id === id);
+    const nodes = stepsForTopic(topic).filter((node) => node.kind === 'step');
+    assert.strictEqual(nodes.length, 31, id + ' jumlah step');
+    topic.lessons.forEach((lesson) => {
+      const node = nodes.find((step) => step.lessonId === lesson.id);
+      assert.ok(node, id + '/' + lesson.id + ' harus memiliki step sendiri');
+      assert.ok(node.questionIds.every((key) => key.includes('|' + lesson.id + '#')), id + '/' + lesson.id + ' bercampur');
+    });
   });
 });
 
@@ -409,16 +440,16 @@ t('syncPath: deterministik dengan rng sama', () => {
 });
 
 /* --- stepsForTopic: tiap pelajaran menjadi step, ujian tiap tier --- */
-t('steps: tiap pelajaran punya step; Advance Blok Web punya blok bahasa terpisah', () => {
+t('steps: tiap pelajaran punya step; tiap topik punya 31 step + 3 ujian', () => {
   CURRICULUM.forEach((topic) => {
     const nodes = stepsForTopic(topic);
-    const expectedStepCount = topic.id === 'web' ? 50 : 31;
+    const expectedStepCount = 31;
     assert.strictEqual(nodes.length, expectedStepCount + 3, topic.id + ' nodes=' + nodes.length);
     const steps = nodes.filter((n) => n.kind === 'step');
     const tests = nodes.filter((n) => n.kind === 'test');
     assert.strictEqual(steps.length, expectedStepCount, topic.id + ' step');
     TIER_ORDER.forEach((tier) => {
-      const expectedTierSteps = tier === 'Advance' ? (topic.id === 'web' ? 30 : 11) : 10;
+      const expectedTierSteps = tier === 'Advance' ? 11 : 10;
       assert.strictEqual(
         steps.filter((step) => step.tier === tier).length,
         expectedTierSteps,
@@ -445,7 +476,7 @@ t('steps: stepsForTopic menutup SEMUA soal kurikulum (tanpa duplikat/hilang)', (
   });
   const bank = allQuestionIds();
   assert.strictEqual(seen.size, bank.length, 'step menutup ' + seen.size + ' vs bank ' + bank.length);
-  assert.strictEqual(bank.length, 3160, 'total bank=' + bank.length);
+  assert.strictEqual(bank.length, 8235, 'total bank=' + bank.length);
 });
 t('steps: id node unik lintas kurikulum + bentuk id benar', () => {
   const ids = CURRICULUM.flatMap((t) => stepsForTopic(t).map((n) => n.id));
@@ -892,20 +923,21 @@ t('store: path tersimpan dimigrasi, bukan direset (id usang dibuang, topik baru 
   assert.strictEqual(p.length, CURRICULUM.length);
   assert.strictEqual(new Set(p).size, CURRICULUM.length, 'tak boleh ada duplikat: ' + p);
 });
-t('store: progres satu blok bahasa tidak menandai semua blok Advance selesai', () => {
-  const webSteps = topicNodes('web').filter((node) => node.kind === 'step');
-  const target = webSteps.find((node) => node.lessonId === 'web-35');
-  const other = webSteps.find((node) => node.lessonId === 'web-36');
-  assert.ok(target && other, 'step React dan Next.js harus tersedia');
+t('store: progres satu blok bahasa tidak menandai topik bahasa lain selesai', () => {
+  /* React dan Next.js kini topik terpisah: menyelesaikan satu pelajaran React
+   * tidak boleh menandai pelajaran Next.js (atau topik lain) selesai. */
+  const reactSteps = topicNodes('react').filter((node) => node.kind === 'step');
+  const target = reactSteps[0];
+  assert.ok(target, 'step React harus tersedia');
   localStorage.setItem('codeduo_state_v1', JSON.stringify({
     version: 1,
     path: CURRICULUM.map((topic) => topic.id),
-    progress: { web: { done: [target.id] } },
+    progress: { react: { done: [target.id] } },
   }));
   initStore();
-  assert.strictEqual(isLessonDone('web', 'web-35'), true);
-  assert.strictEqual(isLessonDone('web', 'web-36'), false);
-  assert.ok(other);
+  assert.strictEqual(isLessonDone('react', target.lessonId), true);
+  assert.strictEqual(isLessonDone('nextjs', target.lessonId), false);
+  assert.strictEqual(isLessonDone('web', target.lessonId), false);
 });
 t('store: prefers-reduced-motion OS dihormati; pilihan eksplisit user menang', () => {
   localStorage.removeItem('codeduo_state_v1');
@@ -986,6 +1018,131 @@ t('runner: kode yang menggantung di-terminate & dianggap "hampir benar" (tanpa -
   assert.strictEqual(terminated, true, 'worker harus di-terminate');
 });
 delete globalThis.Worker;
+
+/* --- Arduino: simulator sketsa, soal wiring, diagram SVG --- */
+const { runSketch, checkSketch, transpileSketch, isPwmPin } = await import('./src/lib/arduino.js');
+const { checkWiring } = await import('./src/lib/wiring.js');
+const { circuitSVG } = await import('./src/lib/circuit.js');
+const { CONTENT_ARDUINO } = await import('./content/arduino.js');
+
+t('arduino: topik ada — 31 pelajaran (10/10/11) & 305 soal', () => {
+  const topic = CURRICULUM.find((x) => x.id === 'arduino');
+  assert.ok(topic, 'topik arduino hilang');
+  assert.strictEqual(topic.name, 'Arduino');
+  assert.strictEqual(topic.lessons.length, 31);
+  const perLevel = { Dasar: 0, Menengah: 0, Advance: 0 };
+  topic.lessons.forEach((l) => { perLevel[l.level] += 1; });
+  assert.deepStrictEqual(perLevel, { Dasar: 10, Menengah: 10, Advance: 11 });
+  assert.strictEqual(topic.lessons.reduce((n, l) => n + l.exercises.length, 0), 305);
+});
+
+t('arduino: simulator — Blink menyalakan pin 13 bergantian', () => {
+  const r = runSketch('void setup(){pinMode(13,OUTPUT);}\nvoid loop(){digitalWrite(13,HIGH);delay(1000);digitalWrite(13,LOW);delay(1000);}', { durationMs: 1500 });
+  assert.strictEqual(r.ok, true, r.error);
+  assert.strictEqual(r.board.pins['13'].mode, 'OUTPUT');
+  assert.ok(r.board.log.some((l) => l.type === 'digitalWrite' && l.value === 1));
+  assert.ok(r.board.log.some((l) => l.type === 'digitalWrite' && l.value === 0));
+});
+
+t('arduino: simulator — analogWrite PWM 0..255 & map() potensio', () => {
+  const r = runSketch('void setup(){pinMode(9,OUTPUT);}\nvoid loop(){int v=analogRead(A0);analogWrite(9,map(v,0,1023,0,255));delay(10);}', { durationMs: 200, analog: { A0: 1023 } });
+  assert.strictEqual(r.ok, true, r.error);
+  const pw = r.board.log.filter((l) => l.type === 'analogWrite');
+  assert.ok(pw.length > 0 && pw[pw.length - 1].value === 255, 'A0 penuh → PWM 255');
+});
+
+t('arduino: simulator — INPUT_PULLUP membaca LOW saat tombol ditekan', () => {
+  const sk = 'void setup(){pinMode(2,INPUT_PULLUP);Serial.begin(9600);}\nvoid loop(){if(digitalRead(2)==LOW){Serial.println("tekan");}delay(20);}';
+  const tekan = runSketch(sk, { durationMs: 100, buttons: { 2: false } });
+  const lepas = runSketch(sk, { durationMs: 100, buttons: { 2: true } });
+  assert.ok(tekan.board.serial.includes('tekan'), 'harus mencetak saat ditekan');
+  assert.strictEqual(lepas.board.serial.length, 0, 'tidak mencetak saat lepas');
+});
+
+t('arduino: simulator — millis() non-blocking & error Serial tanpa begin', () => {
+  const r = runSketch('unsigned long prev=0;\nvoid setup(){pinMode(13,OUTPUT);Serial.begin(9600);}\nvoid loop(){if(millis()-prev>=500){prev=millis();digitalWrite(13,!digitalRead(13));Serial.println(prev);}}', { durationMs: 1600 });
+  assert.ok(r.board.serial.length >= 2, 'millis harus maju: ' + JSON.stringify(r.board.serial));
+  const noBegin = runSketch('void setup(){pinMode(13,OUTPUT);}\nvoid loop(){Serial.println("x");delay(10);}', { durationMs: 50 });
+  assert.ok(noBegin.ok, 'tetap jalan');
+  assert.ok(noBegin.board.errors.some((e) => /Serial\.begin/.test(e)), 'beri tahu Serial.begin belum dipanggil');
+});
+
+t('arduino: simulator — analogWrite di pin non-PWM dilaporkan sebagai kesalahan', () => {
+  const r = checkSketch('void setup(){pinMode(7,OUTPUT);}\nvoid loop(){analogWrite(7,128);delay(10);}', { pwm: { pin: 7, eq: 128 } });
+  assert.strictEqual(r.correct, false);
+  assert.ok(/PWM/.test(r.message), r.message);
+  assert.strictEqual(isPwmPin(9), true);
+  assert.strictEqual(isPwmPin(7), false);
+});
+
+t('arduino: checkSketch menolak starter kosong & menerima solusi sah', () => {
+  CONTENT_ARDUINO[0].lessons.forEach((lesson) => {
+    lesson.exercises.forEach((ex, i) => {
+      if (ex.type !== 'code' || ex.sim !== 'arduino') return;
+      const where = lesson.id + '#' + i;
+      const expect = Object.assign({}, ex.expect, { simOptions: ex.simOptions });
+      assert.strictEqual(checkSketch(ex.starter || '', expect).correct, false, where + ': starter harus gagal');
+      const ok = checkSketch(ex.solution, expect);
+      assert.strictEqual(ok.correct, true, where + ': solusi harus lulus — ' + ok.message);
+    });
+  });
+});
+
+t('arduino: transpiler — tipe C++ (int/float/bool), #define, array, fungsi', () => {
+  const res = transpileSketch('int a = 1;\nfloat b = 2.5;\nbool c = true;\n#define LED 13\nint arr[3] = {1,2,3};\nint duaKali(int x){ return x*2; }');
+  const code = res.code;
+  assert.ok(!/\bint\s+a\b/.test(code), 'int harus hilang: ' + code);
+  assert.ok(!/\bfloat\s+b\b/.test(code), 'float harus hilang');
+  assert.ok(!/\bbool\s+c\b/.test(code), 'bool harus hilang');
+  assert.strictEqual(res.defines.LED, '13', '#define harus tercatat');
+  /* #define dipakai sebagai variabel runtime; substitusi terjadi saat namanya
+   * benar-benar dipakai di badan sketsa. */
+  const used = transpileSketch('#define LED 13\nvoid setup(){pinMode(LED, OUTPUT);}').code;
+  assert.ok(used.includes('pinMode(13,'), '#define harus disubstitusi saat dipakai: ' + used);
+  assert.ok(code.includes('[1,2,3]'), 'array → JS: ' + code);
+  assert.ok(code.includes('function duaKali'), 'fungsi harus diterjemahkan');
+});
+
+t('arduino: soal wiring — jawaban benar diterima, salah ditolak', () => {
+  const topic = CONTENT_ARDUINO[0];
+  let n = 0;
+  topic.lessons.forEach((lesson) => {
+    lesson.exercises.forEach((ex, i) => {
+      if (ex.type !== 'wiring') return;
+      n += 1;
+      const where = lesson.id + '#' + i;
+      const good = {};
+      ex.slots.forEach((sl) => { good[sl.id] = sl.a; });
+      assert.strictEqual(checkWiring(good, ex).correct, true, where + ': jawaban benar harus diterima');
+      const bad = {};
+      ex.slots.forEach((sl) => { bad[sl.id] = sl.options[sl.options.indexOf(sl.a) === 0 ? 1 : 0]; });
+      assert.strictEqual(checkWiring(bad, ex).correct, false, where + ': jawaban salah harus ditolak');
+    });
+  });
+  assert.ok(n >= 5, 'harus ada soal wiring, dapat ' + n);
+});
+
+t('arduino: diagram SVG dihasilkan untuk tiap soal ber-circuit', () => {
+  let n = 0;
+  CONTENT_ARDUINO[0].lessons.forEach((lesson) => {
+    lesson.exercises.forEach((ex) => {
+      if (!ex.circuit) return;
+      n += 1;
+      const svg = circuitSVG(ex.circuit, { alt: ex.q });
+      assert.ok(svg.startsWith('<svg'), 'harus SVG');
+      assert.ok(svg.includes('</svg>'), 'harus tertutup');
+      assert.ok(!/NaN|undefined/.test(svg), 'tidak boleh ada NaN/undefined di SVG');
+    });
+  });
+  assert.ok(n >= 5, 'harus ada diagram, dapat ' + n);
+});
+
+t('arduino: peta pin — pin PWM ditandai ~ di diagram pinmap', () => {
+  const svg = circuitSVG({ parts: [{ k: 'pinmap' }] });
+  assert.ok(svg.includes('~9'), 'pin 9 harus bertanda ~');
+  assert.ok(svg.includes('A0'), 'pin A0 harus ada');
+});
+
 
 console.log('\n' + passed + ' passed, ' + failed + ' failed');
 process.exit(failed === 0 ? 0 : 1);

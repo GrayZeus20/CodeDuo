@@ -3,14 +3,18 @@
  *   content/js.js    → JavaScript, Struktur Data
  *   content/sql.js   → SQL, Database, API
  *   content/ts.js    → TypeScript, REST API
- *   content/web.js   → Blok Web
+ *   content/web.js   → Blok Web (peta arsitektur & fungsi blok web)
+ *   content/lang-*.js → satu topik per bahasa/framework (React, Next.js, Laravel, dst.)
  * File ini menyusun semuanya jadi CURRICULUM + helper murni (step/ujian/SRS key).
  *
- * Struktur: 10 topik. Umumnya 31 pelajaran; Blok Web memiliki jalur Advance lebih panjang.
- * Total 3.160 soal (>300 per topik).
+ * Struktur: 26 topik × 31 pelajaran (10 Dasar, 10 Menengah, 11 Advance) = 305 soal/topik.
+ * Total 7.930 soal. Bahasa/framework lama yang menumpuk di Blok Web kini jadi topik sendiri.
  * Tiap pelajaran menjadi step tersendiri (maksimal 10 soal per step),
  * lalu tiap tier ditutup dengan 1 ujian (10 soal komprehensif).
  * Tipe soal: mc | fill | code | preview | arrange
+ * `arrange` boleh punya `answers` (opsional): daftar urutan index blok yang juga sah,
+ * dipakai saat blok bersebelahan memang saling-tukar (mis. dua `<li>` dalam `<ul>`,
+ * beberapa `<meta>`, atau deklarasi CSS dalam satu rule). Lihat checkers.js#checkArrange.
  *
  * ESM murni: dipakai Vite (browser) & Node (test).
  */
@@ -21,8 +25,34 @@ import { CONTENT_JS } from './content/js.js';
 import { CONTENT_SQL } from './content/sql.js';
 import { CONTENT_TS } from './content/ts.js';
 import { CONTENT_WEB } from './content/web.js';
+/* Topik bahasa/framework: dipisah dari Blok Web agar tiap bahasa punya
+ * blok soal sendiri (Dasar/Menengah/Advance + Master Review). */
+import { CONTENT_REACT } from './content/lang-react.js';
+import { CONTENT_NEXTJS } from './content/lang-nextjs.js';
+import { CONTENT_LARAVEL } from './content/lang-laravel.js';
+import { CONTENT_RUBY } from './content/lang-ruby.js';
+import { CONTENT_RAILS } from './content/lang-rails.js';
+import { CONTENT_ELYSIA } from './content/lang-elysia.js';
+import { CONTENT_GO } from './content/lang-go.js';
+import { CONTENT_FLUTTER } from './content/lang-flutter.js';
+import { CONTENT_DART } from './content/lang-dart.js';
+import { CONTENT_KOTLIN } from './content/lang-kotlin.js';
+import { CONTENT_JAVA } from './content/lang-java.js';
+import { CONTENT_PYTHON } from './content/lang-python.js';
+import { CONTENT_MATLAB } from './content/lang-matlab.js';
+import { CONTENT_PHP } from './content/lang-php.js';
+import { CONTENT_C } from './content/lang-c.js';
+import { CONTENT_CPP } from './content/lang-cpp.js';
+import { CONTENT_ARDUINO } from './content/arduino.js';
 
-const CURRICULUM = [].concat(CONTENT_HTML, CONTENT_JS, CONTENT_SQL, CONTENT_TS, CONTENT_WEB);
+const CONTENT_LANGS = [].concat(
+  CONTENT_REACT, CONTENT_NEXTJS, CONTENT_LARAVEL, CONTENT_RUBY, CONTENT_RAILS,
+  CONTENT_ELYSIA, CONTENT_GO, CONTENT_FLUTTER, CONTENT_DART, CONTENT_KOTLIN,
+  CONTENT_JAVA, CONTENT_PYTHON, CONTENT_MATLAB, CONTENT_PHP, CONTENT_C, CONTENT_CPP,
+  CONTENT_ARDUINO,
+);
+
+const CURRICULUM = [].concat(CONTENT_HTML, CONTENT_JS, CONTENT_SQL, CONTENT_TS, CONTENT_WEB, CONTENT_LANGS);
 
 /* Tier tetap & ukuran step — dipakai app.js untuk memotong topik jadi step + ujian. */
 const TIER_ORDER = ['Dasar', 'Menengah', 'Advance'];

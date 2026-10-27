@@ -176,6 +176,7 @@ const CONTENT_TS = [
               "age: number;",
               "}"
             ],
+            "answers": [[0,2,1,3]],
             "explain": "interface Nama { prop: tipe; ... }"
           },
           {

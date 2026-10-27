@@ -61,10 +61,12 @@ Kurikulum **dipecah per blok** — mengubah soal tak perlu menyentuh engine:
 `content.js` = **barrel**: menyusun tiap blok jadi `CURRICULUM` + helper murni
 (`stepsForTopic`, `questionKey`, `resolveQuestion`, `allQuestionIds`, …).
 
-**Aturan (dijaga `test.js`):** sebagian besar topik memiliki 31 pelajaran (10 Dasar, 10 Menengah,
-11 Advance). Blok Web memiliki 50 pelajaran, termasuk 16 blok Advance khusus untuk tiap bahasa
-dan framework, sehingga jumlahnya 30 step Advance. Total **3.160 soal** di 10 topik. Setiap
-pelajaran menjadi step tersendiri (maksimal 10 soal), lalu diikuti ujian tiap tier.
+**Aturan (dijaga `test.js`):** setiap topik memiliki 31 pelajaran (10 Dasar, 10 Menengah,
+11 Advance) = **305 soal**. Materi tiap bahasa/framework kini punya topik sendiri
+(`content/lang-*.js`): React, Next.js, Laravel, Ruby, Ruby on Rails, Elysia, Go, Flutter, Dart,
+Kotlin, Java, Python, MATLAB, PHP, C, dan C++ — masing-masing dengan jalur Dasar → Menengah →
+Advance plus satu pelajaran *Master Review*. Total **7.930 soal** di 26 topik. Setiap pelajaran
+menjadi step tersendiri (maksimal 10 soal), lalu diikuti ujian tiap tier.
 
 ## Bibit hidup — otonomi + ekspresi belajar sendiri
 
@@ -141,7 +143,7 @@ Kepala Bibit dirender komponen `<RobotHead>` dari paket **`robot-heads`** apa ad
 ## Tes
 
 ```bash
-npm test                  # node test.js → checker+runner, kurikulum (10 topik/3160 soal),
+npm test                  # node test.js → checker+runner, kurikulum (26 topik/7930 soal),
                           # step & SRS, store (migrasi path, prefers-reduced-motion),
                           # wajah LED, animasi head, model ekspresi
 npm run test:companion    # node test-companion.mjs → planner otonom Bibit (idle/proaktif/hint)
