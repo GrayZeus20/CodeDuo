@@ -911,6 +911,7 @@ const {
   initStore, dumpState, isMotionEnabled, setBuddySize, getState,
   getSession, currentExercise, stepStart, answerCheck, topicNodes, isLessonDone,
   lessonRetryCurrent,
+  buddyFace, buddyDump, onBuddyPet, onBuddySpam, onBuddyRecover,
 } = await import('./src/store.js');
 
 t('store: path tersimpan dimigrasi, bukan direset (id usang dibuang, topik baru ditambah)', () => {
@@ -967,6 +968,19 @@ t('store: ukuran Bibit tersimpan dan divalidasi saat memuat state', () => {
   localStorage.setItem('codeduo_state_v1', JSON.stringify(saved));
   initStore();
   assert.strictEqual(getState().buddySize, 'medium');
+});
+
+/* Regresi: dulu wajah Bibit sempat bertahan senyum saat dispam karena mood "celebrate"
+ * dari elusan/tap sebelumnya menang atas state error. Spam harus selalu menang. */
+t('Bibit: spam memaksa wajah error walau sebelumnya sedang senang', () => {
+  initStore();
+  onBuddyPet();
+  assert.strictEqual(buddyFace(), 'happy', 'prasyarat: elusan membuat Bibit senang');
+  onBuddySpam();
+  assert.strictEqual(buddyFace(), 'error', 'spam harus langsung tampil error');
+  assert.strictEqual(buddyDump().mood, 'sad', 'mood spam tidak boleh celebrate/happy');
+  onBuddyRecover();
+  assert.strictEqual(buddyFace(), 'idle', 'setelah pulih kembali idle');
 });
 
 globalThis.location = { hash: '#/' };

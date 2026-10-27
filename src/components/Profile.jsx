@@ -7,6 +7,7 @@ import {
   getState, topicById, isTopicDone,
   dumpState, stateReset, toggleMotion,
   setBuddySize,
+  toggleMute,
   exportSaveData, importSaveData,
 } from '../store.js';
 import TopicIcon from './TopicIcon.jsx';
@@ -82,6 +83,21 @@ export default function Profile() {
     window.location.reload();
   };
 
+  /* Volume 0–100: simpan ke SFX (persist di localStorage) + mainkan contoh singkat. */
+  const applyVolume = (v) => {
+    const clamped = Math.min(100, Math.max(0, Math.round(Number(v) || 0)));
+    setVolumePct(clamped);
+    SFX.setVolume(clamped / 100);
+    if (!state.muted && clamped > 0) SFX.pick();
+  };
+
+  /* Sinkron dengan tombol speaker di topbar (state.muted di store). */
+  const onToggleSound = () => {
+    const m = toggleMute();
+    SFX.setMuted(m);
+    if (m) SFX.muteOn(); else SFX.muteOff();
+  };
+
   return (
     <section className="screen profile">
       <a className="back" href="#/" onClick={() => SFX.back()}>← Kembali</a>
@@ -150,7 +166,7 @@ export default function Profile() {
       <div className="card">
         <h3>Volume Efek Suara</h3>
         <p className="muted">
-          Semua efek suara disintesis langsung di perangkat (tanpa file audio). Geser untuk mengatur sekeras apa suaranya.
+          Semua efek suara disintesis langsung di perangkat (tanpa file audio). Atur volumenya pada skala 0–100.
         </p>
         <div className="volume-row">
           <span aria-hidden="true">{volumePct === 0 ? '🔇' : volumePct < 50 ? '🔈' : '🔊'}</span>
@@ -158,21 +174,50 @@ export default function Profile() {
             type="range"
             min="0"
             max="100"
-            step="5"
+            step="1"
             value={volumePct}
             aria-label="Volume efek suara"
+            aria-valuetext={volumePct + ' persen'}
             onChange={(e) => {
               const v = Number(e.target.value);
               setVolumePct(v);
               SFX.setVolume(v / 100);
             }}
-            onPointerUp={() => SFX.pick()}
-            onKeyUp={() => SFX.pick()}
+            onPointerUp={() => { if (!state.muted && volumePct > 0) SFX.pick(); }}
+            onKeyUp={() => { if (!state.muted && volumePct > 0) SFX.pick(); }}
           />
-          <b className="volume-row__value">{volumePct}%</b>
+          <output className="volume-row__value">{volumePct}%</output>
         </div>
-        <button className="btn btn--ghost btn--sm" onClick={() => SFX.pick()}>Coba suara</button>
-        {state.muted && <p className="muted" style={{ marginTop: '8px' }}>🔇 Suara sedang dimatikan — aktifkan lewat ikon speaker di bar atas.</p>}
+        <div className="volume-presets" role="group" aria-label="Pilihan volume cepat">
+          {[25, 50, 75, 100].map((v) => (
+            <button
+              key={v}
+              type="button"
+              className={'btn btn--sm ' + (volumePct === v ? 'btn--primary' : 'btn--ghost')}
+              aria-pressed={volumePct === v}
+              onClick={() => applyVolume(v)}
+            >
+              {v}%
+            </button>
+          ))}
+        </div>
+        <div className="volume-actions">
+          <button className="btn btn--ghost btn--sm" onClick={() => { if (!state.muted && volumePct > 0) SFX.pick(); }}>
+            🔊 Coba suara
+          </button>
+          <button
+            className={'btn btn--sm ' + (state.muted ? 'btn--ghost' : 'btn--primary')}
+            onClick={onToggleSound}
+            aria-pressed={!state.muted}
+          >
+            {state.muted ? '🔇 Suara: Mati' : '🔊 Suara: Aktif'}
+          </button>
+        </div>
+        {state.muted && (
+          <p className="muted" style={{ marginTop: '8px' }}>
+            Suara sedang dimatikan — volume tetap tersimpan dan berlaku lagi saat suara dinyalakan.
+          </p>
+        )}
       </div>
 
       <div className="card">

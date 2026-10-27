@@ -584,7 +584,11 @@ export default function Buddy() {
               : (isDragging ? "Seret ke posisi mana saja!" : (isPetted ? "Hehe senang dielus-elus~" : "Seret untuk memindahkan · Elus atau sentuh aku!"))
           }
         >
+          {/* key: paksa renderer dibuat ulang saat masuk/keluar mode pusing.
+           * Tanpa ini, robot-heads masih menyimpan "reactUntil" (efek poke ±1,6 dtk)
+           * dari klik-klik sebelum spam terdeteksi sehingga wajahnya tetap tersenyum. */}
           <RobotHead
+            key={isDizzy ? 'dizzy' : 'calm'}
             state={activeFace}
             size={headSize}
             color="#58cc02"
@@ -592,7 +596,8 @@ export default function Buddy() {
             screenColor="#0f1a10"
             shape="rectangle"
             speed={isDizzy ? 2.5 : (isDragging ? 1.6 : 1)}
-            interactive={!isDragging}
+            /* interactive=false saat pusing: cegah poke() menimpa wajah error jadi happy. */
+            interactive={!isDragging && !isDizzy}
             antenna
             floorShadow={false}
             seed={0.3}
