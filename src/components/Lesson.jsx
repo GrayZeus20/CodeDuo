@@ -15,6 +15,7 @@ import { SFX } from '../../sfx.js';
 import { circuitSVG } from '../lib/circuit.js';
 import { runSketch } from '../lib/arduino.js';
 import { pop, slideUp, fadeOutDown, celebrate, pulse } from '../lib/motion.js';
+import { notifyStreakMilestone } from '../notifications.js';
 
 export default function Lesson() {
   useStore();
@@ -779,6 +780,11 @@ function getExpectedAnswer(ex) {
 }
 
 function DoneView({ session, topic, isReview, state }) {
+  useEffect(() => {
+    if (state && state.streak && state.streak.count > 0) {
+      notifyStreakMilestone(state.streak.count).catch(() => {});
+    }
+  }, [state && state.streak ? state.streak.count : 0]);
   const allDone = state.path.every(isTopicDone);
   const nodes = isReview ? [] : topicNodes(topic.id);
   const idx = isReview ? -1 : nodes.findIndex((n) => n.id === session.nodeId);

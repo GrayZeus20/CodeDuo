@@ -2,6 +2,7 @@
 'use strict';
 
 import { useStore } from '../useStore.js';
+import { useRealtimeStreak } from '../useRealtimeStreak.js';
 import {
   getState, getLoadError, topicById, isTopicDone, isNodeDone,
   openTopic, dueReviewKeys, reviewStart,
@@ -20,6 +21,7 @@ const TOTAL_STEP_COUNT = CURRICULUM.reduce(
 
 export default function Home() {
   useStore();
+  const streakInfo = useRealtimeStreak();
   const state = getState();
   const loadError = getLoadError();
   const allDone = state.path.every(isTopicDone);
@@ -84,6 +86,14 @@ export default function Home() {
   return (
     <section className="screen home">
       {loadError && <div className="banner banner--warn">{loadError}</div>}
+      {streakInfo.status === 'danger' && (
+        <div className="banner banner--streak-danger" role="alert">
+          <span className="banner__icon">🔥⚠️</span>
+          <span className="banner__text">
+            <b>Streak {streakInfo.count} harimu dalam bahaya!</b> Sisa waktu {streakInfo.timeLeftFormatted} sebelum tengah malam. Selesaikan 1 step kuis sekarang agar streak tidak hangus!
+          </span>
+        </div>
+      )}
 
       <div className="home__hero">
         <span className="home__robot" aria-hidden="true"><Bib mood={allDone ? 'celebrate' : 'happy'} label="Bibit" interactive /></span>

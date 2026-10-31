@@ -2612,3 +2612,313 @@ html.reduced-motion .buddy__sparkles-wrap { display: none; }
   gap: 6px;
   flex-shrink: 0;
 }
+
+/* ================= Notifikasi & Pengingat Belajar (Web & PWA) ================= */
+.notif-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.notif-badge--granted {
+  background: var(--green-light, #e8f9d8);
+  color: var(--green-dark, #46a302);
+}
+
+.notif-badge--denied {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.notif-badge--default {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.notif-badge--unsupported {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.notif-time-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0 6px;
+}
+
+.notif-time-input {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border: 1.5px solid var(--line, #e2e8f0);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink, #1e293b);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.notif-time-input:focus {
+  border-color: var(--green, #58cc02);
+  box-shadow: 0 0 0 3px rgba(88, 204, 2, 0.15);
+}
+
+.notif-options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: var(--bg-soft, #f8fafc);
+  border-radius: 12px;
+  border: 1px solid var(--line, #e2e8f0);
+}
+
+.notif-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.notif-option input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--green-dark, #46a302);
+  cursor: pointer;
+}
+
+.notif-tip {
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--muted, #64748b);
+  background: #f1f5f9;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.notif-msg {
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-top: 10px;
+  animation: fadeIn 0.2s ease;
+}
+
+.notif-msg--ok {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.notif-msg--warn {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* Realtime Streak & Danger Status */
+.streak--saved {
+  background: rgba(249, 115, 22, 0.12);
+  border-color: rgba(249, 115, 22, 0.4);
+  color: #ea580c;
+  text-decoration: none;
+}
+
+.streak--danger {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #dc2626;
+  text-decoration: none;
+  animation: streakDangerPulse 2s infinite ease-in-out;
+}
+
+.streak--inactive {
+  opacity: 0.75;
+  color: var(--muted, #64748b);
+  text-decoration: none;
+}
+
+.streak-danger-dot {
+  font-size: 0.76rem;
+  margin-left: 4px;
+}
+
+@keyframes streakDangerPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.18);
+  }
+}
+
+.stat--streak-saved {
+  border-color: rgba(249, 115, 22, 0.35);
+}
+
+.stat--streak-danger {
+  border-color: rgba(239, 68, 68, 0.45);
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.06) 0%, transparent 100%);
+}
+
+.stat--streak-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.streak-badge-pill {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.streak-badge-pill--saved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.streak-badge-pill--danger {
+  background: #fee2e2;
+  color: #b91c1c;
+  animation: streakDangerPulse 2s infinite ease-in-out;
+}
+
+.streak-badge-pill--inactive,
+.streak-badge-pill--active {
+  background: var(--bg-soft, #f8fafc);
+  color: var(--muted, #64748b);
+}
+
+.streak-live-timer {
+  font-size: 0.74rem;
+  margin-top: 3px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.streak-live-timer .text-danger {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.streak-live-timer .text-muted {
+  color: var(--muted, #64748b);
+}
+
+.banner--streak-danger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #fef2f2;
+  border: 2px solid rgba(239, 68, 68, 0.35);
+  border-radius: 14px;
+  color: #991b1b;
+  margin-bottom: 16px;
+  animation: fadeIn 0.3s ease;
+}
+
+.banner--streak-danger .banner__icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.banner--streak-danger .banner__text {
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+/* Otak Belajar Bibit (Machine Learning) */
+.bibit-brain-box {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--bg-soft, #f8fafc);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 12px;
+}
+.bibit-brain-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.bibit-brain-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.bibit-brain-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(88, 204, 2, 0.15);
+  color: #15803d;
+}
+.bibit-brain-desc {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--muted, #64748b);
+  margin-bottom: 10px;
+}
+.bibit-brain-stats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.bibit-brain-stat {
+  background: #fff;
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text, #1e293b);
+}
+.bibit-concept-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.bibit-concept-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  background: #fff;
+  border: 1px solid rgba(88, 204, 2, 0.35);
+  border-radius: 8px;
+  color: #1e293b;
+  font-weight: 600;
+}
+.bibit-concept-chip .chip-topic {
+  color: var(--green-dark, #46a302);
+  font-weight: 700;
+}

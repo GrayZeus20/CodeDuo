@@ -25,6 +25,55 @@ const HASHED = /\/assets\/.+-[A-Za-z0-9_-]{8,}\.(?:js|css|png|svg|woff2?)$/;
 
 self.addEventListener('message', (e) => {
   if (e.data && e.data.type === 'SKIP_WAITING') self.skipWaiting();
+  if (e.data && e.data.type === 'SHOW_NOTIFICATION') {
+    const { title, options } = e.data;
+    self.registration.showNotification(title, options);
+  }
+});
+
+/* PWA & Web Push / Local Notification click handling */
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  if (event.action === 'later') return;
+
+  const targetUrl = (event.notification.data && event.notification.data.url)
+    ? event.notification.data.url
+    : './';
+
+  event.waitUntil((async () => {
+    const clientList = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    for (const client of clientList) {
+      if ('focus' in client) {
+        if (client.navigate && targetUrl !== './') {
+          client.navigate(targetUrl).catch(() => {});
+        }
+        return client.focus();
+      }
+    }
+    if (self.clients.openWindow) {
+      return self.clients.openWindow(targetUrl);
+    }
+  })());
+});
+
+self.addEventListener('notificationclose', () => {
+  /* Notification dismissed by user */
+});
+
+/* Periodic Background Sync (Chromium PWA) — pengingat belajar berkala */
+self.addEventListener('periodicsync', (event) => {
+  if (event.tag === 'codeduo-daily-reminder') {
+    event.waitUntil(
+      self.registration.showNotification('🔥 Jangan Lupa Belajar Hari Ini!', {
+        body: 'Bibit sudah menunggumu! Luangkan 3 menit untuk belajar koding dan jaga streak-mu.',
+        icon: './icon-192.png',
+        badge: './icon.svg',
+        tag: 'codeduo-daily-streak-reminder',
+        renotify: true,
+        data: { url: './' },
+      })
+    );
+  }
 });
 
 self.addEventListener('install', (e) => {

@@ -42,7 +42,11 @@ import { newCompanion, tickCompanion, onUserInteract } from './companion.js';
 import {
   createDialogueModel, updateDialogueModel,
   getAiTapDialogue, generateAiDialogue, getAiHintDialogue,
+  learnConceptFromExercise, learnConceptFromLessonFinish,
+  getLearnedConcepts, clearLearnedConcepts,
 } from './aiDialogue.js';
+
+export { getLearnedConcepts, clearLearnedConcepts };
 
 export { MAX_HEARTS, ROBOT_NAME };
 const TIERS = TIER_ORDER;
@@ -446,7 +450,15 @@ function getTapDialogue(seed) {
     return 'Hoam... Aku bangun! Siap ngoding lagi!';
   }
   const signals = collectAiSignals();
-  return getAiTapDialogue(signals, seed);
+  const res = getAiTapDialogue(signals, seed);
+  if (res && typeof res === 'object') {
+    if (res.face) {
+      companion.face = res.face;
+      companion.mood = stateToMood(res.face);
+    }
+    return res.text;
+  }
+  return res;
 }
 
 export function onBuddyTap() {
@@ -958,6 +970,14 @@ export async function answerCheck(answer) {
       srs = schedule(srs, key, gradeFromResult(1), Date.now());
       saveSrs();
     }
+    const t = session.topicId ? topicById(session.topicId) : null;
+    learnConceptFromExercise({
+      topicId: session.topicId,
+      topicName: t ? t.name : session.topicId,
+      lessonTitle: session.label || 'Latihan',
+      ex,
+      correct: true,
+    });
     onInteraction({
       correct: true,
       wrong: false,
@@ -981,6 +1001,14 @@ export async function answerCheck(answer) {
     session.closeChances -= 1;
     session.retryMsg = result.message || 'Jawaban hampir benar.';
     state.stats.close = (state.stats.close || 0) + 1;
+    const tClose = session.topicId ? topicById(session.topicId) : null;
+    learnConceptFromExercise({
+      topicId: session.topicId,
+      topicName: tClose ? tClose.name : session.topicId,
+      lessonTitle: session.label || 'Latihan',
+      ex,
+      correct: false,
+    });
     session.answered = true;
     session.phase = 'feedback';
     session.lastResult = {
@@ -1078,6 +1106,15 @@ function finishLesson() {
     const p = (state.progress[session.topicId] = state.progress[session.topicId] || { done: [] });
     if (!p.done.includes(session.nodeId)) p.done.push(session.nodeId);
   }
+  const tFinish = session.topicId ? topicById(session.topicId) : null;
+  learnConceptFromLessonFinish({
+    topicId: session.topicId,
+    topicName: tFinish ? tFinish.name : session.topicId,
+    nodeId: session.nodeId,
+    lessonTitle: session.label || 'Modul',
+    tier: session.tier || 'Dasar',
+    exercises: session.exercises,
+  });
   const newStreakDay = bumpStreak();
   saveState();
   session.phase = 'done';
@@ -1098,6 +1135,85 @@ function bumpStreak() {
 function localDateStr(d) {
   const x = d || new Date();
   return x.getFullYear() + '-' + String(x.getMonth() + 1).padStart(2, '0') + '-' + String(x.getDate()).padStart(2, '0');
+}
+
+/* ================= Realtime Streak Engine ================= */
+
+export function getStreakRealtime() {
+  if (!state || !state.streak) {
+    return {
+      count: 0,
+      lastActive: null,
+      status: 'inactive',
+      todayCompleted: false,
+      streakAtRisk: false,
+      hoursLeft: 0,
+      minutesLeft: 0,
+      secondsLeft: 0,
+      timeLeftFormatted: '00:00:00',
+    };
+  }
+
+  const now = new Date();
+  const today = localDateStr(now);
+  const y = new Date(now.getTime() - 86400000);
+  const yesterday = localDateStr(y);
+
+  // Waktu hingga tengah malam (pergantian hari)
+  const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+  const diffMs = Math.max(0, midnight.getTime() - now.getTime());
+  const hoursLeft = Math.floor(diffMs / 3600000);
+  const minutesLeft = Math.floor((diffMs % 3600000) / 60000);
+  const secondsLeft = Math.floor((diffMs % 60000) / 1000);
+  const timeLeftFormatted = [
+    String(hoursLeft).padStart(2, '0'),
+    String(minutesLeft).padStart(2, '0'),
+    String(secondsLeft).padStart(2, '0')
+  ].join(':');
+
+  const lastActive = state.streak.lastActive;
+  let count = state.streak.count || 0;
+
+  // Jika hari aktif terakhir lebih lampau dari kemarin (terlewat >= 1 hari penuh), streak telah pecah
+  if (lastActive && lastActive !== today && lastActive !== yesterday) {
+    if (count > 0) {
+      count = 0;
+      state.streak.count = 0;
+      saveState();
+    }
+  }
+
+  const todayCompleted = lastActive === today;
+  const streakAtRisk = !todayCompleted && lastActive === yesterday && count > 0;
+  let status = 'inactive';
+  if (todayCompleted) {
+    status = 'saved';
+  } else if (streakAtRisk) {
+    status = 'danger';
+  } else if (count > 0) {
+    status = 'active';
+  }
+
+  return {
+    count,
+    lastActive,
+    status,
+    todayCompleted,
+    streakAtRisk,
+    hoursLeft,
+    minutesLeft,
+    secondsLeft,
+    timeLeftFormatted,
+  };
+}
+
+export function syncStreakRealtime() {
+  const prevCount = state && state.streak ? state.streak.count : 0;
+  const info = getStreakRealtime();
+  if (prevCount !== info.count) {
+    bump();
+  }
+  return info;
 }
 
 /* ================= Router (hash) ================= */
@@ -1154,6 +1270,7 @@ export function initStore() {
   /* Migrasi path tersimpan: buang id usang, tambah topik baru di akhir.
    * User baru tetap dapat urutan kurikulum (bukan diacak). */
   state.path = syncPath(state.path || CURRICULUM.map((t) => t.id), mulberry32(state.seed));
+  syncStreakRealtime();
   /* Hormati prefers-reduced-motion OS selama user belum memilih eksplisit di profil. */
   try {
     if (typeof localStorage !== 'undefined') {

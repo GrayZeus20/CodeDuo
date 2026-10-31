@@ -6,7 +6,19 @@ import { normalizeCode, quoteNormalized, canonCode, checkFill, checkCode, checkA
 import { CURRICULUM, syncPath, stepsForTopic, allQuestionIds, resolveQuestion, questionKey, TIER_ORDER, STEP_SIZE } from './content.js';
 import * as SRS from './srs.js';
 import { BGM } from './bgm.js';
-import { routeInfo } from './src/store.js';
+import { routeInfo, getStreakRealtime, syncStreakRealtime, getLearnedConcepts, clearLearnedConcepts } from './src/store.js';
+import {
+  distillConceptInsight, learnConceptFromExercise, learnConceptFromLessonFinish,
+  createDialogueModel, updateDialogueModel, scoreAndRankLearnedDialogues,
+  getAiTapDialogue,
+} from './src/aiDialogue.js';
+import {
+  isNotificationSupported,
+  getPermissionStatus,
+  getNotificationSettings,
+  updateNotificationSettings,
+  subscribeNotifications,
+} from './src/notifications.js';
 import {
   ROBOT_MOODS, ROBOT_STATES, robotSVG, robotSay, robotReact,
   stateFromMood, ledMatrixFor, mountRobotHead,
@@ -1288,6 +1300,109 @@ t('router: routeInfo mengenali sub-halaman bgm-settings (#/profile/bgm & #/bgm)'
 
   globalThis.location = { hash: '#/profile' };
   assert.strictEqual(routeInfo().name, 'profile');
+});
+
+t('notifications: modul aman di Node.js & mengelola pengaturan notifikasi', () => {
+  assert.strictEqual(typeof isNotificationSupported, 'function');
+  assert.strictEqual(typeof getPermissionStatus, 'function');
+
+  // Di Node.js Notification belum ada
+  assert.strictEqual(isNotificationSupported(), false);
+  assert.strictEqual(getPermissionStatus(), 'unsupported');
+
+  // Pengaturan default
+  const cfg = getNotificationSettings();
+  assert.ok(cfg, 'Pengaturan harus objek');
+  assert.strictEqual(typeof cfg.enabled, 'boolean');
+  assert.strictEqual(typeof cfg.time, 'string');
+
+  let notified = 0;
+  const unsub = subscribeNotifications(() => { notified++; });
+
+  const updated = updateNotificationSettings({ time: '20:15', streakReminder: true });
+  assert.strictEqual(updated.time, '20:15');
+  assert.strictEqual(notified, 1, 'subscriber harus dipanggil saat update setting');
+
+  unsub();
+});
+
+
+t('streak: realtime engine menghitung status, sisa waktu, dan peringatan bahaya', () => {
+  const info = getStreakRealtime();
+  assert.ok(info, 'getStreakRealtime mengembalikan objek info');
+  assert.strictEqual(typeof info.count, 'number');
+  assert.strictEqual(typeof info.todayCompleted, 'boolean');
+  assert.strictEqual(typeof info.streakAtRisk, 'boolean');
+  assert.strictEqual(typeof info.timeLeftFormatted, 'string');
+  assert.match(info.timeLeftFormatted, /^\d{2}:\d{2}:\d{2}$/, 'Format waktu tersisa harus HH:MM:SS');
+  assert.ok(['saved', 'danger', 'inactive', 'active'].includes(info.status), 'Status harus valid');
+
+  const sync = syncStreakRealtime();
+  assert.strictEqual(typeof sync.count, 'number');
+});
+
+t('notifications: mendukung opsi streakDangerAlert & simulasi streak mau pecah', async () => {
+  const cfg = updateNotificationSettings({ streakDangerAlert: true });
+  assert.strictEqual(cfg.streakDangerAlert, true);
+
+  // Fungsi simulasi aman di Node (kembalikan objek penolakan/unsupported)
+  assert.strictEqual(typeof sendStreakDangerTestNotification, 'function');
+  const res = await sendStreakDangerTestNotification();
+  assert.strictEqual(res.ok, false);
+  assert.strictEqual(res.permission, 'unsupported');
+});
+
+
+t('bibit-ml: ekstraksi & distilasi intisari konsep koding', () => {
+  const insight = distillConceptInsight('<code><body></code> memuat semua konten yang tampil di layar pengunjung browser.');
+  assert.ok(insight.includes('<body> memuat semua konten yang tampil di layar'));
+  assert.ok(!insight.includes('<code>'));
+  assert.ok(insight.endsWith('.'));
+});
+
+t('bibit-ml: penyerapan konsep baru & penambahan dialog dinamis', () => {
+  clearLearnedConcepts();
+  assert.strictEqual(getLearnedConcepts().length, 0);
+
+  // Latih konsep 1: CSS Flexbox
+  const cid1 = learnConceptFromExercise({
+    topicId: 'css',
+    topicName: 'CSS',
+    lessonTitle: 'Flexbox Layout',
+    ex: { explain: 'flex-direction mengatur orientasi elemen fleksibel menjadi baris atau kolom.' },
+    correct: true,
+  });
+  assert.ok(cid1);
+  assert.strictEqual(getLearnedConcepts().length, 1);
+
+  // Latih konsep 2: JavaScript Arrow Function
+  learnConceptFromExercise({
+    topicId: 'js',
+    topicName: 'JavaScript',
+    lessonTitle: 'Fungsi Modern',
+    ex: { explain: 'Arrow function tidak memiliki this sendiri, melainkan mewarisi dari scope luar.' },
+    correct: true,
+  });
+  assert.strictEqual(getLearnedConcepts().length, 2);
+
+  // Model ML menilai dan memilih dialog yang relevan
+  const model = createDialogueModel();
+  updateDialogueModel(model, { correct: true, topicId: 'js' });
+  assert.ok(model.weights.bangga > 1.4);
+  assert.ok(model.topicWeights['js'] > 1.0);
+
+  // Dialog yang dihasilkan menyertakan topik & konsep yang dipelajari
+  const ranked = scoreAndRankLearnedDialogues({ topicId: 'js' }, model, 42);
+  assert.ok(ranked, 'Harus menghasilkan kandidat dialog dari konsep yang dipelajari');
+  assert.strictEqual(typeof ranked.text, 'string');
+  assert.ok(['speaking', 'happy', 'thinking'].includes(ranked.face), 'Wajah harus sinkron dengan nada obrolan');
+  assert.ok(ranked.text.includes('CSS') || ranked.text.includes('JavaScript'), 'Teks dialog harus merefleksikan materi koding');
+
+  // getAiTapDialogue juga merespons dengan materi koding
+  const tapRes = getAiTapDialogue({ route: 'home' }, 77);
+  assert.ok(tapRes);
+  const tapText = typeof tapRes === 'object' ? tapRes.text : tapRes;
+  assert.strictEqual(typeof tapText, 'string');
 });
 
 console.log('\n' + passed + ' passed, ' + failed + ' failed');

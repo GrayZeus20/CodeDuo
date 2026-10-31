@@ -8,12 +8,14 @@ import App from './App.jsx';
 import { initStore, exposeGlobals, routeChange, getSession } from './store.js';
 import { SFX } from '../sfx.js';
 import { BGM } from '../bgm.js';
+import { initNotificationScheduler } from './notifications.js';
 
 /* Store lebih dulu (state+path+SRS+model) — sebelum render pertama. */
 const boot = initStore();
 SFX.setMuted(!!boot.muted);
 BGM.setMuted(!!boot.muted);
 BGM.init();
+initNotificationScheduler();
 exposeGlobals();
 
 /* Autoplay policy: AudioContext butuh gesture pertama user. */

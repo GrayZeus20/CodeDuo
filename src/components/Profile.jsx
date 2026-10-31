@@ -2,7 +2,7 @@
  * musik latar akustik minimalis, data/cadangan, dan jalur belajar. */
 'use strict';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useStore } from '../useStore.js';
 import {
   getState, topicById, isTopicDone,
@@ -10,10 +10,22 @@ import {
   setBuddySize,
   toggleMute,
   exportSaveData, importSaveData,
+  getLearnedConcepts, onBuddyTap,
 } from '../store.js';
 import TopicIcon from './TopicIcon.jsx';
+import { useRealtimeStreak } from '../useRealtimeStreak.js';
 import { SFX } from '../../sfx.js';
 import { BGM } from '../../bgm.js';
+import {
+  isNotificationSupported,
+  getPermissionStatus,
+  getNotificationSettings,
+  updateNotificationSettings,
+  requestNotificationPermission,
+  sendTestNotification,
+  sendStreakDangerTestNotification,
+  subscribeNotifications,
+} from '../notifications.js';
 
 /* Ikon garis sederhana (24px) — konsisten 1 stroke width, tanpa aset luar. */
 function Icon({ name, size = 20 }) {
@@ -25,6 +37,7 @@ function Icon({ name, size = 20 }) {
     route: 'M6 19a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM18 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 13V9a3 3 0 0 1 3-3h6M18 11v4a3 3 0 0 1-3 3H9',
     bot: 'M9 3h6v3H9zM5 6h14v12H5zM9 11h2M13 11h2M9 15h6',
     back: 'M15 5l-7 7 7 7',
+    bell: 'M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0',
   };
   return (
     <svg className="ico" viewBox="0 0 24 24" width={size} height={size} aria-hidden="true" fill="none"
@@ -68,11 +81,88 @@ function Switch({ checked, onChange, label }) {
 
 export default function Profile() {
   useStore();
+  const streakInfo = useRealtimeStreak();
   const state = getState();
   const topicsDone = state.path.filter((id) => isTopicDone(id)).length;
   const fileInputRef = useRef(null);
   const [importStatus, setImportStatus] = useState(null);
   const [volumePct, setVolumePct] = useState(() => Math.round(SFX.getVolume() * 100));
+  const [notifCfg, setNotifCfg] = useState(getNotificationSettings);
+  const [notifPerm, setNotifPerm] = useState(getPermissionStatus);
+  const [testNotifMsg, setTestNotifMsg] = useState(null);
+  const [learnedConcepts, setLearnedConcepts] = useState(() => getLearnedConcepts());
+  const [chatFeedback, setChatFeedback] = useState(null);
+
+  const onPromptBibitChat = () => {
+    SFX.happy();
+    onBuddyTap();
+    setChatFeedback('Bibit merespons materi yang baru dipelajari! Cek balon obrolan Bibit 💬');
+    setTimeout(() => setChatFeedback(null), 4500);
+  };
+
+  useEffect(() => {
+    return subscribeNotifications(() => {
+      setNotifCfg(getNotificationSettings());
+      setNotifPerm(getPermissionStatus());
+    });
+  }, []);
+
+  const onToggleNotification = async () => {
+    if (!isNotificationSupported()) {
+      alert('Browser ini tidak mendukung fitur notifikasi Web/PWA.');
+      return;
+    }
+    if (notifPerm !== 'granted') {
+      const res = await requestNotificationPermission();
+      setNotifPerm(getPermissionStatus());
+      if (res.ok) {
+        SFX.happy();
+      } else if (res.permission === 'denied') {
+        alert('Notifikasi diblokir oleh browser. Silakan izinkan notifikasi melalui pengaturan izin situs di bilah alamat browser.');
+      }
+    } else {
+      const next = !notifCfg.enabled;
+      updateNotificationSettings({ enabled: next });
+      if (next) SFX.pick(); else SFX.back();
+    }
+  };
+
+  const onTimeChange = (e) => {
+    const val = e.target.value;
+    updateNotificationSettings({ time: val });
+  };
+
+  const onTimePreset = (t) => {
+    SFX.pick();
+    updateNotificationSettings({ time: t });
+  };
+
+  const onToggleOption = async (key) => {
+    if (notifPerm !== 'granted') {
+      const res = await requestNotificationPermission();
+      if (!res.ok) return;
+    }
+    const currentVal = notifCfg[key] !== false;
+    const nextVal = !currentVal;
+    updateNotificationSettings({ [key]: nextVal });
+    if (nextVal) SFX.pick(); else SFX.back();
+  };
+
+  const onTestNotification = async () => {
+    SFX.pick();
+    setTestNotifMsg({ type: 'loading', text: 'Mengirim notifikasi uji coba...' });
+    const res = await sendTestNotification();
+    setTestNotifMsg({ type: res.ok ? 'ok' : 'warn', text: res.message });
+    setTimeout(() => setTestNotifMsg(null), 5000);
+  };
+
+  const onTestDangerNotification = async () => {
+    SFX.pick();
+    setTestNotifMsg({ type: 'loading', text: 'Mengirim simulasi notifikasi streak mau pecah...' });
+    const res = await sendStreakDangerTestNotification();
+    setTestNotifMsg({ type: res.ok ? 'ok' : 'warn', text: res.message });
+    setTimeout(() => setTestNotifMsg(null), 5000);
+  };
 
   const motionOn = state.motionEnabled !== false;
   const totalTopics = state.path.length;
@@ -172,9 +262,23 @@ export default function Profile() {
 
       {/* Ringkasan progres */}
       <div className="profile__stats">
-        <div className="stat stat--streak">
-          <span>streak hari</span>
-          <b>{state.streak.count} 🔥</b>
+        <div className={`stat stat--streak stat--streak-${streakInfo.status}`}>
+          <div className="stat--streak-header">
+            <span>streak hari</span>
+            <span className={`streak-badge-pill streak-badge-pill--${streakInfo.status}`}>
+              {streakInfo.status === 'saved' ? '✓ Aman' : streakInfo.status === 'danger' ? '⚠️ Mau Pecah' : 'Mulai'}
+            </span>
+          </div>
+          <b>{streakInfo.count} 🔥</b>
+          <div className="streak-live-timer" title="Hitung mundur waktu tersisa hari ini">
+            {streakInfo.status === 'danger' ? (
+              <span className="text-danger">⏳ Sisa {streakInfo.timeLeftFormatted}</span>
+            ) : streakInfo.status === 'saved' ? (
+              <span className="text-muted">✨ Besok dlm {streakInfo.timeLeftFormatted}</span>
+            ) : (
+              <span className="text-muted">Reset pk 00:00</span>
+            )}
+          </div>
         </div>
         <div className="stat">
           <span>sesi selesai</span>
@@ -253,6 +357,62 @@ export default function Profile() {
               onChange={() => { if (motionOn) SFX.back(); else SFX.pick(); toggleMotion(); }}
             />
           </Row>
+
+          {/* Otak Belajar Bibit (Machine Learning) */}
+          <div className="bibit-brain-box">
+            <div className="bibit-brain-header">
+              <span className="bibit-brain-title">
+                🧠 Otak Belajar Bibit
+              </span>
+              <span className="bibit-brain-badge">🤖 On-Device ML</span>
+            </div>
+            <p className="bibit-brain-desc">
+              Obrolan dan ekspresi Bibit bertambah secara cerdas mengikuti soal dan konsep koding yang baru saja kamu pelajari.
+            </p>
+            <div className="bibit-brain-stats">
+              <span className="bibit-brain-stat">
+                📚 <b>{learnedConcepts.length}</b> konsep diserap
+              </span>
+              <span className="bibit-brain-stat">
+                ⚡ <b>Adaptive Weights</b> aktif
+              </span>
+            </div>
+
+            {learnedConcepts.length > 0 ? (
+              <>
+                <div style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--muted)', marginBottom: '6px' }}>
+                  Materi terakhir yang dipelajari Bibit:
+                </div>
+                <div className="bibit-concept-chips">
+                  {learnedConcepts.slice(0, 6).map((c) => (
+                    <span key={c.id} className="bibit-concept-chip" title={c.insight}>
+                      <span className="chip-topic">[{c.topicName}]</span>
+                      <span>{c.lessonTitle}</span>
+                    </span>
+                  ))}
+                </div>
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap', marginTop: '6px' }}>
+                  <button
+                    type="button"
+                    className="btn btn--primary btn--sm"
+                    onClick={onPromptBibitChat}
+                    style={{ fontSize: '0.76rem', padding: '5px 10px' }}
+                  >
+                    💬 Ajak Bibit Ngobrol Materi
+                  </button>
+                  {chatFeedback && (
+                    <span style={{ fontSize: '0.76rem', color: '#15803d', fontWeight: 600 }}>
+                      {chatFeedback}
+                    </span>
+                  )}
+                </div>
+              </>
+            ) : (
+              <p className="muted" style={{ fontSize: '0.76rem', margin: 0 }}>
+                Bibit belum menyerap materi baru. Selesaikan 1 kuis untuk mulai melatih memori konsep Bibit!
+              </p>
+            )}
+          </div>
         </section>
 
         {/* 2. Efek Suara */}
@@ -337,6 +497,160 @@ export default function Profile() {
             </div>
             <span className="setting-nav-btn__arrow" aria-hidden="true">➔</span>
           </a>
+        </section>
+
+        {/* 4. Notifikasi & Pengingat Belajar (Web & PWA) */}
+        <section className="card set-card">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+            <h2 className="set-card__title" style={{ margin: 0 }}>
+              <Icon name="bell" /> Notifikasi &amp; Pengingat
+            </h2>
+            <span className={`notif-badge notif-badge--${notifPerm}`}>
+              {notifPerm === 'granted'
+                ? '✓ Diizinkan'
+                : notifPerm === 'denied'
+                ? '⚠️ Diblokir Browser'
+                : notifPerm === 'unsupported'
+                ? 'Tidak Didukung'
+                : 'Belum Diizinkan'}
+            </span>
+          </div>
+
+          <Row
+            icon="bell"
+            title="Master Notifikasi & Pengingat"
+            desc={
+              !isNotificationSupported()
+                ? 'Browser atau perangkat ini belum mendukung Web Notifications.'
+                : notifPerm === 'denied'
+                ? 'Izin notifikasi diblokir. Aktifkan izin pada ikon gembok di bilah alamat browser.'
+                : notifCfg.enabled && notifPerm === 'granted'
+                ? 'Notifikasi aktif untuk menjaga streak, pengingat jam belajar, dan ulangan SRS.'
+                : 'Aktifkan agar Bibit dapat mengingatkan saat streak mau pecah atau waktu belajar tiba.'
+            }
+          >
+            <Switch
+              checked={notifCfg.enabled && notifPerm === 'granted'}
+              label="Master notifikasi aktif"
+              onChange={onToggleNotification}
+            />
+          </Row>
+
+          {notifCfg.enabled && notifPerm === 'granted' && (
+            <div style={{ marginTop: '8px' }}>
+              {/* Opsi 1: Peringatan Darurat Streak Mau Pecah */}
+              <Row
+                icon="spark"
+                title="🔥 Peringatan Streak Mau Pecah"
+                desc="Notifikasi darurat malam hari jika kamu belum belajar agar streak tidak hangus."
+              >
+                <Switch
+                  checked={notifCfg.streakDangerAlert !== false}
+                  label="Peringatan darurat streak mau pecah"
+                  onChange={() => onToggleOption('streakDangerAlert')}
+                />
+              </Row>
+
+              {/* Opsi 2: Pengingat Rutin Harian */}
+              <Row
+                icon="bell"
+                title="⏰ Pengingat Belajar Rutin"
+                desc={`Pengingat terjadwal setiap pukul ${notifCfg.time || '19:00'}.`}
+              >
+                <Switch
+                  checked={!!notifCfg.streakReminder}
+                  label="Pengingat belajar harian rutin"
+                  onChange={() => onToggleOption('streakReminder')}
+                />
+              </Row>
+
+              {notifCfg.streakReminder && (
+                <div className="notif-time-wrap" style={{ margin: '4px 0 12px 0' }}>
+                  <span style={{ fontSize: '0.84rem', fontWeight: 700 }}>Jam Pengingat:</span>
+                  <input
+                    type="time"
+                    className="notif-time-input"
+                    value={notifCfg.time || '19:00'}
+                    onChange={onTimeChange}
+                    aria-label="Pilih jam pengingat belajar"
+                  />
+                  <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                    {[
+                      { label: 'Pagi', val: '08:00' },
+                      { label: 'Siang', val: '12:30' },
+                      { label: 'Malam', val: '19:00' },
+                      { label: 'Santai', val: '20:30' },
+                    ].map((preset) => (
+                      <button
+                        key={preset.val}
+                        type="button"
+                        className={'chip-btn' + (notifCfg.time === preset.val ? ' is-active' : '')}
+                        onClick={() => onTimePreset(preset.val)}
+                        style={{ fontSize: '0.74rem', padding: '3px 8px' }}
+                      >
+                        {preset.label} ({preset.val})
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Opsi 3: Pengingat Ulangan SRS */}
+              <Row
+                icon="bot"
+                title="🧠 Ulangan Ingatan (SRS Spaced-Repetition)"
+                desc="Pengingat jika ada materi koding yang jatuh tempo untuk diulang."
+              >
+                <Switch
+                  checked={!!notifCfg.srsReminder}
+                  label="Pengingat ulangan materi ingatan"
+                  onChange={() => onToggleOption('srsReminder')}
+                />
+              </Row>
+
+              {/* Opsi 4: Selebrasi Kenaikan Streak */}
+              <Row
+                icon="spark"
+                title="🎉 Selebrasi Kenaikan Streak"
+                desc="Ucapan selamat saat kamu berhasil memecahkan rekor streak baru."
+              >
+                <Switch
+                  checked={!!notifCfg.milestoneAlert}
+                  label="Selebrasi kenaikan streak"
+                  onChange={() => onToggleOption('milestoneAlert')}
+                />
+              </Row>
+
+              <div style={{ marginTop: '14px', display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+                <button
+                  type="button"
+                  className="btn btn--ghost btn--sm"
+                  onClick={onTestNotification}
+                  title="Coba kirimkan notifikasi umum ke browser sekarang"
+                >
+                  🔔 Tes Notif Umum
+                </button>
+                <button
+                  type="button"
+                  className="btn btn--ghost btn--sm"
+                  onClick={onTestDangerNotification}
+                  title="Simulasikan notifikasi peringatan jika streak kamu mau pecah"
+                  style={{ borderColor: 'rgba(239, 68, 68, 0.4)', color: '#dc2626' }}
+                >
+                  🔥 Tes Notif Streak Mau Pecah
+                </button>
+                {testNotifMsg && (
+                  <span className={`notif-msg notif-msg--${testNotifMsg.type === 'ok' ? 'ok' : 'warn'}`} role="status">
+                    {testNotifMsg.text}
+                  </span>
+                )}
+              </div>
+
+              <div className="notif-tip">
+                💡 <b>Pengalaman PWA Terbaik:</b> Di HP (Android &amp; iOS 16.4+), pasang CodeDuo ke Layar Utama (<i>Add to Home Screen</i>) agar notifikasi bekerja optimal seperti aplikasi native.
+              </div>
+            </div>
+          )}
         </section>
 
         {/* 4. Data & Cadangan */}

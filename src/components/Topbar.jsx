@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { useStore } from '../useStore.js';
+import { useRealtimeStreak } from '../useRealtimeStreak.js';
 import { getState, toggleMute, toggleBuddy } from '../store.js';
 import { SFX } from '../../sfx.js';
 import { BGM } from '../../bgm.js';
@@ -18,9 +19,9 @@ const BLUSH = '#ff9a9a';
 
 export default function Topbar() {
   useStore();
+  const streakInfo = useRealtimeStreak();
   const state = getState();
   const muted = state ? state.muted : false;
-  const streak = state ? state.streak.count : 0;
   const buddyHidden = state ? !!state.buddyHidden : false;
 
   const [bgmActive, setBgmActive] = useState(() => BGM.isPlaying());
@@ -123,7 +124,22 @@ export default function Topbar() {
             </svg>
           </button>
           <button className="mute-btn" onMouseDown={(e) => e.preventDefault()} onClick={onMute} aria-label="Suara" title="Suara">{muted ? '🔇' : '🔊'}</button>
-          <span className="streak" title="Streak harian">🔥 <b>{streak}</b></span>
+          <a
+            className={'streak streak--' + streakInfo.status}
+            href="#/profile"
+            title={
+              streakInfo.status === 'danger'
+                ? `⚠️ BAHAYA! Streak ${streakInfo.count} harimu mau pecah! Tersisa ${streakInfo.timeLeftFormatted} sebelum tengah malam.`
+                : streakInfo.status === 'saved'
+                ? `🔥 Streak ${streakInfo.count} hari aman! Kamu sudah belajar hari ini.`
+                : '🔥 Mulai streak pertamamu hari ini!'
+            }
+          >
+            🔥 <b>{streakInfo.count}</b>
+            {streakInfo.status === 'danger' && (
+              <span className="streak-danger-dot" aria-hidden="true">⚠️</span>
+            )}
+          </a>
           <a
             className="profile-btn"
             href="#/profile"
