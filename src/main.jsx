@@ -7,15 +7,18 @@ import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import { initStore, exposeGlobals, routeChange, getSession } from './store.js';
 import { SFX } from '../sfx.js';
+import { BGM } from '../bgm.js';
 
 /* Store lebih dulu (state+path+SRS+model) — sebelum render pertama. */
 const boot = initStore();
 SFX.setMuted(!!boot.muted);
+BGM.setMuted(!!boot.muted);
+BGM.init();
 exposeGlobals();
 
 /* Autoplay policy: AudioContext butuh gesture pertama user. */
-document.addEventListener('pointerdown', () => SFX.unlock(), { once: true });
-document.addEventListener('keydown', () => SFX.unlock(), { once: true });
+document.addEventListener('pointerdown', () => { SFX.unlock(); BGM.unlock(); }, { once: true });
+document.addEventListener('keydown', () => { SFX.unlock(); BGM.unlock(); }, { once: true });
 
 /* Router: hash berubah → store sinkron sesi, lalu bump → React re-render. */
 window.addEventListener('hashchange', routeChange);

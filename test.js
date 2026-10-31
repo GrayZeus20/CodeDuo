@@ -5,6 +5,8 @@ import assert from 'node:assert/strict';
 import { normalizeCode, quoteNormalized, canonCode, checkFill, checkCode, checkArrange } from './checkers.js';
 import { CURRICULUM, syncPath, stepsForTopic, allQuestionIds, resolveQuestion, questionKey, TIER_ORDER, STEP_SIZE } from './content.js';
 import * as SRS from './srs.js';
+import { BGM } from './bgm.js';
+import { routeInfo } from './src/store.js';
 import {
   ROBOT_MOODS, ROBOT_STATES, robotSVG, robotSay, robotReact,
   stateFromMood, ledMatrixFor, mountRobotHead,
@@ -1229,6 +1231,64 @@ t('arduino: peta pin — pin PWM ditandai ~ di diagram pinmap', () => {
   assert.ok(svg.includes('A0'), 'pin A0 harus ada');
 });
 
+
+/* --- BGM (Musik Latar Akustik) --- */
+t('bgm: modul memiliki API lengkap & aman di lingkungan Node', () => {
+  assert.ok(BGM, 'BGM harus terdefinisi');
+  assert.strictEqual(typeof BGM.play, 'function');
+  assert.strictEqual(typeof BGM.pause, 'function');
+  assert.strictEqual(typeof BGM.toggle, 'function');
+  assert.strictEqual(typeof BGM.setEnabled, 'function');
+  assert.strictEqual(typeof BGM.isEnabled, 'function');
+  assert.strictEqual(typeof BGM.setVolume, 'function');
+  assert.strictEqual(typeof BGM.getVolume, 'function');
+  assert.strictEqual(typeof BGM.setMuted, 'function');
+  assert.strictEqual(typeof BGM.isMuted, 'function');
+  assert.strictEqual(typeof BGM.subscribe, 'function');
+  assert.strictEqual(typeof BGM.unlock, 'function');
+});
+
+t('bgm: volume clamp 0..1 & subscribe listener dipanggil saat state berubah', () => {
+  let notified = 0;
+  const unsub = BGM.subscribe(() => { notified++; });
+
+  BGM.setVolume(0.5);
+  assert.strictEqual(BGM.getVolume(), 0.5);
+  assert.ok(notified >= 1, 'listener harus terpanggil');
+
+  BGM.setVolume(1.8);
+  assert.strictEqual(BGM.getVolume(), 1, 'volume > 1 harus di-clamp ke 1');
+
+  BGM.setVolume(-0.4);
+  assert.strictEqual(BGM.getVolume(), 0, 'volume < 0 harus di-clamp ke 0');
+
+  BGM.setEnabled(false);
+  assert.strictEqual(BGM.isEnabled(), false);
+
+  BGM.setEnabled(true);
+  assert.strictEqual(BGM.isEnabled(), true);
+
+  BGM.setMuted(true);
+  assert.strictEqual(BGM.isMuted(), true);
+  BGM.setMuted(false);
+  assert.strictEqual(BGM.isMuted(), false);
+
+  unsub();
+  const countBefore = notified;
+  BGM.setVolume(0.35);
+  assert.strictEqual(notified, countBefore, 'unsub harus menghentikan pemanggilan listener');
+});
+
+t('router: routeInfo mengenali sub-halaman bgm-settings (#/profile/bgm & #/bgm)', () => {
+  globalThis.location = { hash: '#/profile/bgm' };
+  assert.strictEqual(routeInfo().name, 'bgm-settings');
+
+  globalThis.location = { hash: '#/bgm' };
+  assert.strictEqual(routeInfo().name, 'bgm-settings');
+
+  globalThis.location = { hash: '#/profile' };
+  assert.strictEqual(routeInfo().name, 'profile');
+});
 
 console.log('\n' + passed + ' passed, ' + failed + ' failed');
 process.exit(failed === 0 ? 0 : 1);

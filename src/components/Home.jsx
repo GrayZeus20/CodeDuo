@@ -122,7 +122,6 @@ export default function Home() {
         <p className="muted">Belum ada topik. Coba muat ulang halaman.</p>
       )}
 
-      <a className="btn btn--ghost home__profile" href="#/profile">Profil &amp; pengaturan</a>
     </section>
   );
 }

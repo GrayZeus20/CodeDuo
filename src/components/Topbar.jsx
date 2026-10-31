@@ -1,8 +1,11 @@
-/* CodeDuo — Topbar: brand (maskot Bib) + mute + streak. */
+/* CodeDuo — Topbar: brand (maskot Bib) + musik + mute + streak. */
 'use strict';
 
+import { useState, useEffect } from 'react';
 import { useStore } from '../useStore.js';
-import { getState, toggleMute, toggleBuddy } from '../store.js';import { SFX } from '../../sfx.js';
+import { getState, toggleMute, toggleBuddy } from '../store.js';
+import { SFX } from '../../sfx.js';
+import { BGM } from '../../bgm.js';
 import { pop } from '../lib/motion.js';
 import Bib from './Bib.jsx';
 
@@ -20,10 +23,21 @@ export default function Topbar() {
   const streak = state ? state.streak.count : 0;
   const buddyHidden = state ? !!state.buddyHidden : false;
 
+  const [bgmActive, setBgmActive] = useState(() => BGM.isPlaying());
+  const [bgmEnabled, setBgmEnabled] = useState(() => BGM.isEnabled());
+
+  useEffect(() => {
+    return BGM.subscribe(() => {
+      setBgmActive(BGM.isPlaying());
+      setBgmEnabled(BGM.isEnabled());
+    });
+  }, []);
+
   const onMute = (e) => {
     pop(e.currentTarget);
     const m = toggleMute();
     SFX.setMuted(m);
+    BGM.setMuted(m);
     if (m) SFX.muteOn(); else SFX.muteOff();
   };
 
@@ -31,6 +45,18 @@ export default function Topbar() {
     pop(e.currentTarget);
     SFX.click();
     toggleBuddy();
+  };
+
+  const onToggleBgm = (e) => {
+    pop(e.currentTarget);
+    SFX.click();
+    if (muted) {
+      const m = toggleMute();
+      SFX.setMuted(m);
+      BGM.setMuted(m);
+      SFX.muteOff();
+    }
+    BGM.toggle();
   };
 
   return (
@@ -80,8 +106,35 @@ export default function Topbar() {
               </g>
             </svg>
           </button>
+          <button
+            className={'music-btn' + (bgmActive ? ' music-btn--playing' : '') + (!bgmEnabled || muted ? ' music-btn--off' : '')}
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={onToggleBgm}
+            aria-label={bgmActive ? 'Jeda musik akustik' : 'Putar musik akustik'}
+            title={bgmActive ? 'Musik Akustik (Aktif) — Klik untuk jeda' : 'Musik Akustik (Nonaktif) — Klik untuk putar'}
+          >
+            <svg className="music-btn__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M9 18V5l12-2v13" />
+              <circle cx="6" cy="18" r="3" fill="currentColor" />
+              <circle cx="18" cy="16" r="3" fill="currentColor" />
+              {(!bgmEnabled || muted) && (
+                <line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" strokeWidth="2.2" />
+              )}
+            </svg>
+          </button>
           <button className="mute-btn" onMouseDown={(e) => e.preventDefault()} onClick={onMute} aria-label="Suara" title="Suara">{muted ? '🔇' : '🔊'}</button>
           <span className="streak" title="Streak harian">🔥 <b>{streak}</b></span>
+          <a
+            className="profile-btn"
+            href="#/profile"
+            aria-label="Profil dan pengaturan"
+            title="Profil dan pengaturan"
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M5 21a7 7 0 0 1 14 0" />
+            </svg>
+          </a>
         </div>
       </div>
     </header>

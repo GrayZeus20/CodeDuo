@@ -1116,7 +1116,11 @@ export function routeInfo() {
   if (parts[0] === 'lesson' && parts[1] && parts[2]) return { name: 'lesson', topicId: parts[1], nodeId: parts[2] };
   if (parts[0] === 'topic' && parts[1]) return { name: 'topic', topicId: parts[1] };
   if (parts[0] === 'materi' && parts[1] && parts[2]) return { name: 'materi', topicId: parts[1], lessonId: parts[2] };
-  if (parts[0] === 'profile') return { name: 'profile' };
+  if (parts[0] === 'profile' || parts[0] === 'settings') {
+    if (parts[1] === 'bgm') return { name: 'bgm-settings' };
+    return { name: 'profile' };
+  }
+  if (parts[0] === 'bgm') return { name: 'bgm-settings' };
   if (parts[0] === 'terms') return { name: 'terms' };
   return { name: 'home' };
 }

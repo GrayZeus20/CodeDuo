@@ -12,6 +12,7 @@ import Topic from './components/Topic.jsx';
 import Lesson from './components/Lesson.jsx';
 import Materi from './components/Materi.jsx';
 import Profile from './components/Profile.jsx';
+import BgmSettings from './components/BgmSettings.jsx';
 import Terms from './components/Terms.jsx';
 import StorageConsentPrompt from './components/StorageConsentPrompt.jsx';
 
@@ -34,6 +35,7 @@ export default function App() {
     case 'lesson':
     case 'review': screen = <Lesson />; break;
     case 'profile': screen = <Profile />; break;
+    case 'bgm-settings': screen = <BgmSettings />; break;
     case 'terms': screen = <Terms />; break;
     default: screen = <Home />;
   }
