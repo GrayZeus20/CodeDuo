@@ -6,7 +6,7 @@ import { normalizeCode, quoteNormalized, canonCode, checkFill, checkCode, checkA
 import { CURRICULUM, syncPath, stepsForTopic, allQuestionIds, resolveQuestion, questionKey, TIER_ORDER, STEP_SIZE } from './content.js';
 import * as SRS from './srs.js';
 import { BGM } from './bgm.js';
-import { routeInfo, getStreakRealtime, syncStreakRealtime, getLearnedConcepts, clearLearnedConcepts } from './src/store.js';
+import { routeInfo, getStreakRealtime, syncStreakRealtime, getLearnedConcepts, clearLearnedConcepts, stateReset, importSaveData, getTheme, setTheme, toggleTheme, getResolvedTheme } from './src/store.js';
 import {
   distillConceptInsight, learnConceptFromExercise, learnConceptFromLessonFinish,
   createDialogueModel, updateDialogueModel, scoreAndRankLearnedDialogues,
@@ -19,6 +19,7 @@ import {
   updateNotificationSettings,
   subscribeNotifications,
 } from './src/notifications.js';
+import { showToast, dismissToast, showConfirm, getUiFeedbackState } from './src/uiFeedback.js';
 import {
   ROBOT_MOODS, ROBOT_STATES, robotSVG, robotSay, robotReact,
   stateFromMood, ledMatrixFor, mountRobotHead,
@@ -1403,6 +1404,98 @@ t('bibit-ml: penyerapan konsep baru & penambahan dialog dinamis', () => {
   assert.ok(tapRes);
   const tapText = typeof tapRes === 'object' ? tapRes.text : tapRes;
   assert.strictEqual(typeof tapText, 'string');
+});
+
+
+t('deepscan-fix: stateReset menjaga state.path valid & menghapus memori ML Bibit', () => {
+  learnConceptFromExercise({
+    topicId: 'html',
+    topicName: 'HTML',
+    lessonTitle: 'Test Reset',
+    ex: { explain: 'Tag p membuat paragraf teks.' },
+    correct: true,
+  });
+  assert.ok(getLearnedConcepts().length >= 1);
+
+  globalThis.location = { hash: '#/profile' };
+  stateReset();
+  const s = getState();
+  assert.ok(Array.isArray(s.path) && s.path.length > 0, 'state.path tidak boleh null setelah reset');
+  assert.strictEqual(getLearnedConcepts().length, 0, 'memori konsep Bibit harus bersih setelah reset');
+});
+
+t('deepscan-fix: importSaveData tanpa field path tetap membangun path valid', () => {
+  const res = importSaveData(JSON.stringify({ state: { progress: {}, streak: { count: 2, lastActive: null } } }));
+  assert.strictEqual(res.ok, true);
+  const s = getState();
+  assert.ok(Array.isArray(s.path) && s.path.length > 0, 'state.path harus diisi otomatis saat impor tanpa path');
+});
+
+t('deepscan-fix: getAiTapDialogue tidak salah hitung soal terakhir pada soal 9/10', () => {
+  clearLearnedConcepts();
+  const res9 = getAiTapDialogue({ inSession: true, pos: 8, totalInSession: 10, hearts: 3 }, 1);
+  const txt9 = typeof res9 === 'object' ? res9.text : res9;
+  assert.ok(!txt9.includes('Soal terakhir'), 'Soal index 8 (ke-9) bukan soal terakhir dari 10');
+
+  const res10 = getAiTapDialogue({ inSession: true, pos: 9, totalInSession: 10, hearts: 3 }, 1);
+  const txt10 = typeof res10 === 'object' ? res10.text : res10;
+  assert.ok(txt10.includes('Soal terakhir'), 'Soal index 9 (ke-10) harus dianggap soal terakhir');
+});
+
+
+t('uiFeedback: toast menambah & menghapus item, confirm aman di Node', async () => {
+  const id = showToast('Pesan uji coba', { type: 'success', duration: 0 });
+  assert.ok(id);
+  assert.ok(getUiFeedbackState().toasts.some((x) => x.id === id));
+  dismissToast(id);
+  assert.ok(!getUiFeedbackState().toasts.some((x) => x.id === id));
+
+  const confirmed = await showConfirm({ title: 'Test', message: 'Test' });
+  assert.strictEqual(confirmed, false, 'showConfirm di Node tanpa window harus aman mengembalikan false');
+});
+
+t('streak-freeze: otomatis melindungi streak saat terlewat 1 hari jika punya perisai', () => {
+  const twoDaysAgo = new Date(Date.now() - 2 * 86400000);
+  const twoDaysAgoStr = twoDaysAgo.getFullYear() + '-' +
+    String(twoDaysAgo.getMonth() + 1).padStart(2, '0') + '-' +
+    String(twoDaysAgo.getDate()).padStart(2, '0');
+
+  // Kasus 1: Punya 1 perisai → streak 7 hari diselamatkan!
+  importSaveData(JSON.stringify({
+    state: {
+      progress: {},
+      streak: { count: 7, lastActive: twoDaysAgoStr, freezes: 1, lastFreezeUsed: null },
+    },
+  }));
+  const protectedInfo = getStreakRealtime();
+  assert.strictEqual(protectedInfo.count, 7, 'Streak harus tetap utuh 7 hari');
+  assert.strictEqual(protectedInfo.freezes, 0, '1 Perisai Streak harus terpakai');
+  assert.strictEqual(protectedInfo.freezeUsedToday, true, 'freezeUsedToday harus true');
+  assert.strictEqual(protectedInfo.status, 'danger', 'Status jadi danger agar user belajar hari ini');
+
+  // Kasus 2: Tidak punya perisai (freezes: 0) → streak 7 hari pecah jadi 0
+  importSaveData(JSON.stringify({
+    state: {
+      progress: {},
+      streak: { count: 7, lastActive: twoDaysAgoStr, freezes: 0, lastFreezeUsed: null },
+    },
+  }));
+  const brokenInfo = getStreakRealtime();
+  assert.strictEqual(brokenInfo.count, 0, 'Tanpa perisai, streak harus pecah menjadi 0');
+});
+
+
+t('theme: mendukung system/light/dark, toggleTheme, & sanitasi nilai asing', () => {
+  setTheme('dark');
+  assert.strictEqual(getTheme(), 'dark');
+  assert.strictEqual(getResolvedTheme(), 'dark');
+
+  toggleTheme();
+  assert.strictEqual(getTheme(), 'light');
+  assert.strictEqual(getResolvedTheme(), 'light');
+
+  setTheme('invalid-mode');
+  assert.strictEqual(getTheme(), 'system', 'Nilai tema asing harus fallback ke system');
 });
 
 console.log('\n' + passed + ' passed, ' + failed + ' failed');

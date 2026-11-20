@@ -1,6 +1,7 @@
-/* CodeDuo — Home: hero + kartu Ingat + kartu topik. */
+/* CodeDuo — Home: hero + banner streak + kartu Ingat + pencarian & filter kategori + kartu topik. */
 'use strict';
 
+import { useState, useMemo } from 'react';
 import { useStore } from '../useStore.js';
 import { useRealtimeStreak } from '../useRealtimeStreak.js';
 import {
@@ -19,18 +20,49 @@ const TOTAL_STEP_COUNT = CURRICULUM.reduce(
   0,
 );
 
+const TOPIC_CATEGORIES = [
+  { id: 'all', label: 'Semua', ids: null },
+  { id: 'web', label: 'Web & Frontend', ids: ['html', 'css', 'js', 'ts', 'web', 'react', 'nextjs'] },
+  { id: 'backend', label: 'Backend & API', ids: ['api', 'rest', 'php', 'laravel', 'ruby', 'rails', 'elysia', 'go', 'java', 'python'] },
+  { id: 'mobile', label: 'Mobile', ids: ['flutter', 'dart', 'kotlin'] },
+  { id: 'data', label: 'Data & Sistem', ids: ['ds', 'sql', 'db', 'matlab', 'c', 'cpp'] },
+  { id: 'iot', label: 'Hardware / IoT', ids: ['arduino'] },
+];
+
 export default function Home() {
   useStore();
   const streakInfo = useRealtimeStreak();
   const state = getState();
   const loadError = getLoadError();
-  const allDone = state.path.every(isTopicDone);
+  const path = Array.isArray(state.path) ? state.path : [];
+  const allDone = path.length > 0 && path.every(isTopicDone);
   const dueCount = dueReviewKeys().length;
 
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCat, setActiveCat] = useState('all');
+
   /* Favorit tampil paling atas; sisanya tetap mengikuti jalur belajar. */
-  const pathIds = orderedTopicIds().filter((id) => !!topicById(id));
-  const favIds = pathIds.filter((id) => isFavorite(id));
-  const restIds = pathIds.filter((id) => !isFavorite(id));
+  const allPathIds = orderedTopicIds().filter((id) => !!topicById(id));
+
+  const filteredIds = useMemo(() => {
+    const cat = TOPIC_CATEGORIES.find((c) => c.id === activeCat);
+    const q = searchQuery.trim().toLowerCase();
+    return allPathIds.filter((id) => {
+      if (cat && cat.ids && !cat.ids.includes(id)) return false;
+      if (!q) return true;
+      const t = topicById(id);
+      if (!t) return false;
+      return (
+        (t.name && t.name.toLowerCase().includes(q)) ||
+        (t.desc && t.desc.toLowerCase().includes(q)) ||
+        id.toLowerCase().includes(q)
+      );
+    });
+  }, [allPathIds, activeCat, searchQuery]);
+
+  const favIds = filteredIds.filter((id) => isFavorite(id));
+  const restIds = filteredIds.filter((id) => !isFavorite(id));
+  const isFiltering = activeCat !== 'all' || searchQuery.trim().length > 0;
 
   const renderTopic = (id) => {
     const t = topicById(id);
@@ -86,14 +118,22 @@ export default function Home() {
   return (
     <section className="screen home">
       {loadError && <div className="banner banner--warn">{loadError}</div>}
-      {streakInfo.status === 'danger' && (
+
+      {streakInfo.freezeUsedToday && !streakInfo.todayCompleted ? (
+        <div className="banner banner--streak-freeze" role="status">
+          <span className="banner__icon" aria-hidden="true">❄️</span>
+          <span className="banner__text">
+            <b>Perisai Streak melindungimu kemarin!</b> Streak {streakInfo.count} harimu masih utuh. Selesaikan 1 step hari ini ({streakInfo.timeLeftFormatted} tersisa) agar terus menyala!
+          </span>
+        </div>
+      ) : streakInfo.status === 'danger' ? (
         <div className="banner banner--streak-danger" role="alert">
-          <span className="banner__icon">🔥⚠️</span>
+          <span className="banner__icon" aria-hidden="true">🔥⚠️</span>
           <span className="banner__text">
             <b>Streak {streakInfo.count} harimu dalam bahaya!</b> Sisa waktu {streakInfo.timeLeftFormatted} sebelum tengah malam. Selesaikan 1 step kuis sekarang agar streak tidak hangus!
           </span>
         </div>
-      )}
+      ) : null}
 
       <div className="home__hero">
         <span className="home__robot" aria-hidden="true"><Bib mood={allDone ? 'celebrate' : 'happy'} label="Bibit" interactive /></span>
@@ -122,16 +162,79 @@ export default function Home() {
         </button>
       )}
 
+      {/* Pencarian cepat & filter kategori topik */}
+      <div className="home-filter" role="search" aria-label="Cari dan filter topik belajar">
+        <div className="home-search">
+          <svg className="home-search__ico" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M20 20l-3.5-3.5" />
+          </svg>
+          <input
+            type="search"
+            className="home-search__input"
+            placeholder="Cari topik (mis. Python, React, SQL, Arduino)…"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            aria-label="Cari topik pemrograman"
+          />
+          {searchQuery && (
+            <button
+              type="button"
+              className="home-search__clear"
+              aria-label="Hapus pencarian"
+              onClick={() => { SFX.back(); setSearchQuery(''); }}
+            >
+              ✕
+            </button>
+          )}
+        </div>
+        <div className="home-cats" role="group" aria-label="Filter kategori topik">
+          {TOPIC_CATEGORIES.map((cat) => {
+            const count = cat.ids ? allPathIds.filter((id) => cat.ids.includes(id)).length : allPathIds.length;
+            const active = activeCat === cat.id;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                className={'home-cat-btn' + (active ? ' is-active' : '')}
+                aria-pressed={active}
+                onClick={() => { SFX.pick(); setActiveCat(cat.id); }}
+              >
+                <span>{cat.label}</span>
+                <span className="home-cat-btn__count">{count}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {favIds.length > 0 && <h2 className="home__h2">★ Favorit</h2>}
       {favIds.map(renderTopic)}
 
       {favIds.length > 0 && restIds.length > 0 && <h2 className="home__h2">Topik lain</h2>}
       {restIds.map(renderTopic)}
 
-      {pathIds.length === 0 && (
-        <p className="muted">Belum ada topik. Coba muat ulang halaman.</p>
+      {filteredIds.length === 0 && (
+        <div className="card home-empty">
+          <p className="home-empty__title">
+            {isFiltering ? 'Tidak ada topik yang cocok' : 'Belum ada topik'}
+          </p>
+          <p className="muted home-empty__desc">
+            {isFiltering
+              ? `Pencarian "${searchQuery.trim() || activeCat}" tidak menemukan topik.`
+              : 'Coba muat ulang halaman.'}
+          </p>
+          {isFiltering && (
+            <button
+              type="button"
+              className="btn btn--ghost btn--sm"
+              onClick={() => { SFX.back(); setSearchQuery(''); setActiveCat('all'); }}
+            >
+              Reset filter
+            </button>
+          )}
+        </div>
       )}
-
     </section>
   );
 }

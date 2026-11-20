@@ -3,6 +3,7 @@
 'use strict';
 
 import { useState, useEffect } from 'react';
+import { showToast } from '../uiFeedback.js';
 
 export default function Terms() {
   const [persistentStatus, setPersistentStatus] = useState('checking'); // 'checking' | 'persisted' | 'prompt' | 'unsupported'
@@ -33,7 +34,7 @@ export default function Terms() {
         }
         setPersistentStatus(granted ? 'persisted' : 'prompt');
       } catch (err) {
-        alert('Gagal meminta persistensi: ' + err.message);
+        showToast('Gagal meminta persistensi: ' + err.message, { type: 'error' });
       }
     }
   };

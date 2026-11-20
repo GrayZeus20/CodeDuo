@@ -67,14 +67,17 @@ function RunView({ session, topic, isReview }) {
     });
   };
 
-  const onContinue = (sheetEl) => {
-    const next = lessonContinue();
-    if (next) {
+  const onContinue = () => {
+    const isLast = session.pos >= session.order.length - 1;
+    const newStreakDay = lessonContinue();
+    if (isLast) {
       celebrate();
-      const badge = document.querySelector('.top-stats .streak');
-      if (badge) pulse(badge);
       SFX.complete();
-      setTimeout(() => SFX.streak(), 550);
+      if (newStreakDay) {
+        const badge = document.querySelector('.top-stats .streak');
+        if (badge) pulse(badge);
+        setTimeout(() => SFX.streak(), 550);
+      }
     }
   };
 
@@ -95,30 +98,9 @@ function RunView({ session, topic, isReview }) {
       </header>
       <p className="lesson__meta">{metaName} · soal {session.pos + 1}/{total}</p>
       {session.retryActive && session.closeChances != null && (
-        <div className="banner banner--near" style={{
-          background: '#fff3c4',
-          color: '#6b4e00',
-          border: '2px solid var(--gold)',
-          borderRadius: '12px',
-          padding: '10px 14px',
-          marginBottom: '12px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          fontWeight: '600',
-          fontSize: '0.92rem'
-        }}>
+        <div className="banner banner--near">
           <span>🟡 {session.retryMsg || 'Jawaban hampir benar! Coba perbaiki lagi.'}</span>
-          <span style={{
-            background: '#f59e0b',
-            color: '#fff',
-            padding: '3px 10px',
-            borderRadius: '999px',
-            fontSize: '0.8rem',
-            fontWeight: '700',
-            whiteSpace: 'nowrap',
-            marginLeft: '8px'
-          }}>
+          <span className="banner--near__badge">
             Kesempatan: {session.closeChances + 1}x
           </span>
         </div>
@@ -775,7 +757,15 @@ function getExpectedAnswer(ex) {
   if (ex.type === 'fill') return ex.accept.join(' / ');
   if (ex.type === 'code') return ex.solution || ex.explain;
   if (ex.type === 'arrange') return ex.blocks.join('\n');
-  if (ex.type === 'preview') return Array.isArray(ex.must) ? ex.must.join('\n') : ex.explain;
+  if (ex.type === 'preview') {
+    if (!Array.isArray(ex.must)) return ex.explain || '';
+    return ex.must.map((m) => {
+      if (typeof m === 'string') return m;
+      if (m && m.t === 'selector') return 'Elemen: ' + m.v;
+      if (m && m.t === 'text') return 'Teks: "' + m.v + '"';
+      return m && m.v ? String(m.v) : '';
+    }).filter(Boolean).join('\n');
+  }
   return ex.explain || '';
 }
 

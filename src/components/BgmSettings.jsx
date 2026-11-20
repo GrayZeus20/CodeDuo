@@ -8,6 +8,7 @@ import { useStore } from '../useStore.js';
 import { getState, toggleMute } from '../store.js';
 import { SFX } from '../../sfx.js';
 import { BGM } from '../../bgm.js';
+import { showToast } from '../uiFeedback.js';
 
 function Icon({ name, size = 20 }) {
   const paths = {
@@ -241,8 +242,11 @@ export default function BgmSettings() {
       window.removeEventListener('offline', handleOffline);
       unsub();
       if (previewAudioRef.current) {
+        previewAudioRef.current.onended = null;
+        previewAudioRef.current.onerror = null;
         previewAudioRef.current.pause();
-        previewAudioRef.current.src = '';
+        previewAudioRef.current.removeAttribute('src');
+        previewAudioRef.current.load();
       }
       if (previewBlobUrlRef.current) {
         URL.revokeObjectURL(previewBlobUrlRef.current);
@@ -256,6 +260,16 @@ export default function BgmSettings() {
   }, []);
 
   const onToggleBgm = () => {
+    if (state && state.muted) {
+      const m = toggleMute();
+      SFX.setMuted(m);
+      BGM.setMuted(m);
+      SFX.muteOff();
+      if (!bgmEnabled) BGM.setEnabled(true);
+      BGM.unlock();
+      if (!BGM.isPlaying()) BGM.play();
+      return;
+    }
     if (bgmEnabled) SFX.back(); else SFX.pick();
     BGM.toggle();
   };
@@ -313,7 +327,7 @@ export default function BgmSettings() {
         wasBgmPlayingRef.current = false;
         BGM.play();
       }
-      alert('Tidak dapat memutar pratinjau audio. Periksa koneksi internet.');
+      showToast('Tidak dapat memutar pratinjau audio. Periksa koneksi internet.', { type: 'warn' });
     };
 
     audio.play().then(() => {
@@ -366,7 +380,7 @@ export default function BgmSettings() {
       SFX.happy();
     } catch (err) {
       console.error('[BGM Download]', err);
-      alert('Gagal mengunduh musik Pixabay: ' + err.message + '\n\nTips: Buka Pengelola Lengkap untuk opsi upload manual.');
+      showToast('Gagal mengunduh musik Pixabay: ' + err.message + '. Coba upload manual di Pengelola Lengkap.', { type: 'error', duration: 5500 });
     } finally {
       setDownloadingId(null);
     }

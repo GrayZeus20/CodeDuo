@@ -7,9 +7,22 @@
   <link rel="icon" type="image/svg+xml" href="./icon.svg">
   <link rel="apple-touch-icon" href="./icon-192.png">
   <link rel="manifest" href="./manifest.json">
-  <meta name="theme-color" content="#58cc02">
+  <meta name="theme-color" content="#10b981">
   <meta name="description" content="Belajar coding gaya Duolingo: pelajaran pendek, latihan interaktif, teman robot bernama Bibit. Offline, tanpa akun.">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    (function () {
+      try {
+        var pref = localStorage.getItem('codeduo_theme') || 'system';
+        var dark = pref === 'dark' || (pref === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        var resolved = dark ? 'dark' : 'light';
+        document.documentElement.dataset.theme = resolved;
+        document.documentElement.style.colorScheme = resolved;
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute('content', dark ? '#0b1116' : '#10b981');
+      } catch (e) {}
+    })();
+  </script>
   <meta property="og:type" content="website">
   <meta property="og:title" content="CodeDuo — Belajar Ngoding">
   <meta property="og:description" content="Pelajaran coding pendek & interaktif, teman robot Bibit. Offline, tanpa akun.">

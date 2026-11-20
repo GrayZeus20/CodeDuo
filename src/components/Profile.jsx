@@ -11,11 +11,13 @@ import {
   toggleMute,
   exportSaveData, importSaveData,
   getLearnedConcepts, onBuddyTap,
+  getTheme, setTheme,
 } from '../store.js';
 import TopicIcon from './TopicIcon.jsx';
 import { useRealtimeStreak } from '../useRealtimeStreak.js';
 import { SFX } from '../../sfx.js';
 import { BGM } from '../../bgm.js';
+import { showToast, showConfirm } from '../uiFeedback.js';
 import {
   isNotificationSupported,
   getPermissionStatus,
@@ -83,33 +85,42 @@ export default function Profile() {
   useStore();
   const streakInfo = useRealtimeStreak();
   const state = getState();
-  const topicsDone = state.path.filter((id) => isTopicDone(id)).length;
+  const path = Array.isArray(state.path) ? state.path : [];
+  const topicsDone = path.filter((id) => isTopicDone(id)).length;
   const fileInputRef = useRef(null);
+  const notifTimerRef = useRef(null);
+  const chatTimerRef = useRef(null);
   const [importStatus, setImportStatus] = useState(null);
   const [volumePct, setVolumePct] = useState(() => Math.round(SFX.getVolume() * 100));
   const [notifCfg, setNotifCfg] = useState(getNotificationSettings);
   const [notifPerm, setNotifPerm] = useState(getPermissionStatus);
   const [testNotifMsg, setTestNotifMsg] = useState(null);
-  const [learnedConcepts, setLearnedConcepts] = useState(() => getLearnedConcepts());
+  const learnedConcepts = getLearnedConcepts();
   const [chatFeedback, setChatFeedback] = useState(null);
 
   const onPromptBibitChat = () => {
     SFX.happy();
     onBuddyTap();
     setChatFeedback('Bibit merespons materi yang baru dipelajari! Cek balon obrolan Bibit 💬');
-    setTimeout(() => setChatFeedback(null), 4500);
+    if (chatTimerRef.current) clearTimeout(chatTimerRef.current);
+    chatTimerRef.current = setTimeout(() => setChatFeedback(null), 4500);
   };
 
   useEffect(() => {
-    return subscribeNotifications(() => {
+    const unsub = subscribeNotifications(() => {
       setNotifCfg(getNotificationSettings());
       setNotifPerm(getPermissionStatus());
     });
+    return () => {
+      unsub();
+      if (notifTimerRef.current) clearTimeout(notifTimerRef.current);
+      if (chatTimerRef.current) clearTimeout(chatTimerRef.current);
+    };
   }, []);
 
   const onToggleNotification = async () => {
     if (!isNotificationSupported()) {
-      alert('Browser ini tidak mendukung fitur notifikasi Web/PWA.');
+      showToast('Browser ini tidak mendukung fitur notifikasi Web/PWA.', { type: 'warn' });
       return;
     }
     if (notifPerm !== 'granted') {
@@ -117,8 +128,9 @@ export default function Profile() {
       setNotifPerm(getPermissionStatus());
       if (res.ok) {
         SFX.happy();
+        showToast('Notifikasi pengingat belajar aktif!', { type: 'success' });
       } else if (res.permission === 'denied') {
-        alert('Notifikasi diblokir oleh browser. Silakan izinkan notifikasi melalui pengaturan izin situs di bilah alamat browser.');
+        showToast('Notifikasi diblokir browser. Izinkan lewat ikon gembok di bilah alamat.', { type: 'warn', duration: 5500 });
       }
     } else {
       const next = !notifCfg.enabled;
@@ -153,7 +165,8 @@ export default function Profile() {
     setTestNotifMsg({ type: 'loading', text: 'Mengirim notifikasi uji coba...' });
     const res = await sendTestNotification();
     setTestNotifMsg({ type: res.ok ? 'ok' : 'warn', text: res.message });
-    setTimeout(() => setTestNotifMsg(null), 5000);
+    if (notifTimerRef.current) clearTimeout(notifTimerRef.current);
+    notifTimerRef.current = setTimeout(() => setTestNotifMsg(null), 5000);
   };
 
   const onTestDangerNotification = async () => {
@@ -161,11 +174,13 @@ export default function Profile() {
     setTestNotifMsg({ type: 'loading', text: 'Mengirim simulasi notifikasi streak mau pecah...' });
     const res = await sendStreakDangerTestNotification();
     setTestNotifMsg({ type: res.ok ? 'ok' : 'warn', text: res.message });
-    setTimeout(() => setTestNotifMsg(null), 5000);
+    if (notifTimerRef.current) clearTimeout(notifTimerRef.current);
+    notifTimerRef.current = setTimeout(() => setTestNotifMsg(null), 5000);
   };
 
   const motionOn = state.motionEnabled !== false;
-  const totalTopics = state.path.length;
+  const currentTheme = getTheme();
+  const totalTopics = path.length;
   const pctDone = totalTopics ? Math.round((topicsDone / totalTopics) * 100) : 0;
 
   const handleExport = () => {
@@ -181,8 +196,9 @@ export default function Profile() {
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+      showToast('Cadangan progres JSON berhasil diunduh.', { type: 'success' });
     } catch (err) {
-      alert('Gagal mengekspor data: ' + err.message);
+      showToast('Gagal mengekspor data: ' + err.message, { type: 'error' });
     }
   };
 
@@ -206,9 +222,17 @@ export default function Profile() {
     e.target.value = '';
   };
 
-  const onReset = () => {
-    if (window.confirm('Reset semua progress, streak, dan model ekspresi Bibit? Tindakan ini tidak bisa dibatalkan.')) {
+  const onReset = async () => {
+    const ok = await showConfirm({
+      title: 'Reset semua progres?',
+      message: 'Seluruh progres materi, streak harian, perisai streak, dan memori belajar Bibit akan dihapus permanen. Tindakan ini tidak bisa dibatalkan.',
+      confirmLabel: 'Ya, Reset Semua',
+      cancelLabel: 'Batal',
+      danger: true,
+    });
+    if (ok) {
       stateReset();
+      showToast('Semua progres telah direset.', { type: 'info' });
     }
   };
 
@@ -279,6 +303,16 @@ export default function Profile() {
               <span className="text-muted">Reset pk 00:00</span>
             )}
           </div>
+          <div
+            className={'streak-freeze-pill' + (streakInfo.freezes > 0 ? ' is-ready' : '')}
+            title={
+              streakInfo.freezes > 0
+                ? `Kamu punya ${streakInfo.freezes} Perisai Streak (maks ${streakInfo.maxFreezes}). Otomatis melindungi streak jika terlewat 1 hari.`
+                : `Capai streak kelipatan 7 hari (${streakInfo.daysToNextFreeze} hari lagi) untuk mendapat Perisai Streak otomatis.`
+            }
+          >
+            ❄️ {streakInfo.freezes}/{streakInfo.maxFreezes} Perisai
+          </div>
         </div>
         <div className="stat">
           <span>sesi selesai</span>
@@ -348,6 +382,36 @@ export default function Profile() {
 
           <Row
             icon="spark"
+            title="Tema tampilan"
+            desc={
+              currentTheme === 'dark'
+                ? 'Mode malam aktif — nyaman di mata saat ngoding malam.'
+                : currentTheme === 'light'
+                ? 'Mode terang aktif — kontras bersih dan fokus.'
+                : 'Otomatis mengikuti tema perangkatmu.'
+            }
+          >
+            <div className="segmented" role="group" aria-label="Tema tampilan">
+              {[
+                { value: 'system', label: 'Otomatis' },
+                { value: 'light', label: 'Terang' },
+                { value: 'dark', label: 'Malam' },
+              ].map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  className={'segmented__item' + (currentTheme === option.value ? ' is-active' : '')}
+                  aria-pressed={currentTheme === option.value}
+                  onClick={() => { SFX.pick(); setTheme(option.value); }}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          </Row>
+
+          <Row
+            icon="spark"
             title="Gerakan & animasi"
             desc={motionOn ? 'Bibit bergerak hidup, 60fps.' : 'Mode hemat daya: tampilan statis.'}
           >
@@ -394,7 +458,7 @@ export default function Profile() {
                 <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap', marginTop: '6px' }}>
                   <button
                     type="button"
-                    className="btn btn--primary btn--sm"
+                    className="btn btn--ghost btn--sm"
                     onClick={onPromptBibitChat}
                     style={{ fontSize: '0.76rem', padding: '5px 10px' }}
                   >
@@ -632,10 +696,9 @@ export default function Profile() {
                 </button>
                 <button
                   type="button"
-                  className="btn btn--ghost btn--sm"
+                  className="btn btn--ghost btn--sm btn--danger-outline"
                   onClick={onTestDangerNotification}
                   title="Simulasikan notifikasi peringatan jika streak kamu mau pecah"
-                  style={{ borderColor: 'rgba(239, 68, 68, 0.4)', color: '#dc2626' }}
                 >
                   🔥 Tes Notif Streak Mau Pecah
                 </button>

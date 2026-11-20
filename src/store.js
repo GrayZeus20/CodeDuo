@@ -43,7 +43,7 @@ import {
   createDialogueModel, updateDialogueModel,
   getAiTapDialogue, generateAiDialogue, getAiHintDialogue,
   learnConceptFromExercise, learnConceptFromLessonFinish,
-  getLearnedConcepts, clearLearnedConcepts,
+  getLearnedConcepts, clearLearnedConcepts, setLearnedConcepts,
 } from './aiDialogue.js';
 
 export { getLearnedConcepts, clearLearnedConcepts };
@@ -51,6 +51,8 @@ export { getLearnedConcepts, clearLearnedConcepts };
 export { MAX_HEARTS, ROBOT_NAME };
 const TIERS = TIER_ORDER;
 const STORAGE_KEY = 'codeduo_state_v1';
+const THEME_KEY = 'codeduo_theme';
+const VALID_THEMES = ['system', 'light', 'dark'];
 const EXPR_KEY = 'codeduo_expr_v1';
 const AI_MODEL_KEY = 'codeduo_ai_dialogue_v1';
 const BUDDY_SIZES = ['small', 'medium', 'large'];
@@ -165,13 +167,14 @@ function defaultState() {
     version: 1,
     seed: Math.floor(Math.random() * 2 ** 31),
     path: null,
-    streak: { count: 0, lastActive: null },
+    streak: { count: 0, lastActive: null, freezes: 0, lastFreezeUsed: null },
     progress: {},
     stats: { correct: 0, wrong: 0, close: 0, lessonsDone: 0 },
     muted: false,
     buddyHidden: false,
     buddySize: 'medium',
     motionEnabled: true,
+    theme: 'system',
     favorites: [],
   };
 }
@@ -181,9 +184,12 @@ function sanitizeState(parsed) {
   const s = Object.assign(base, parsed);
   if (typeof s.seed !== 'number' || !Number.isFinite(s.seed)) s.seed = base.seed;
   if (!Array.isArray(s.path) || !s.path.every((id) => typeof id === 'string')) s.path = null;
-  if (!s.streak || typeof s.streak !== 'object') s.streak = { count: 0, lastActive: null };
+  if (!s.streak || typeof s.streak !== 'object') s.streak = { count: 0, lastActive: null, freezes: 0, lastFreezeUsed: null };
   if (typeof s.streak.count !== 'number' || !Number.isFinite(s.streak.count) || s.streak.count < 0) s.streak.count = 0;
   if (typeof s.streak.lastActive !== 'string') s.streak.lastActive = null;
+  if (typeof s.streak.freezes !== 'number' || !Number.isFinite(s.streak.freezes) || s.streak.freezes < 0) s.streak.freezes = 0;
+  s.streak.freezes = Math.min(2, Math.floor(s.streak.freezes));
+  if (typeof s.streak.lastFreezeUsed !== 'string') s.streak.lastFreezeUsed = null;
   if (!s.stats || typeof s.stats !== 'object') s.stats = { correct: 0, wrong: 0, close: 0, lessonsDone: 0 };
   ['correct', 'wrong', 'close', 'lessonsDone'].forEach((k) => {
     if (typeof s.stats[k] !== 'number' || !Number.isFinite(s.stats[k]) || s.stats[k] < 0) s.stats[k] = 0;
@@ -200,6 +206,7 @@ function sanitizeState(parsed) {
   s.buddyHidden = !!s.buddyHidden;
   if (!BUDDY_SIZES.includes(s.buddySize)) s.buddySize = 'medium';
   s.motionEnabled = s.motionEnabled !== false;
+  if (!VALID_THEMES.includes(s.theme)) s.theme = 'system';
   /* Favorit: buang id yang bukan topik kurikulum dan duplikat (data lama/korup). */
   s.favorites = Array.isArray(s.favorites)
     ? s.favorites.filter((id, i, arr) => typeof id === 'string' && !!topicById(id) && arr.indexOf(id) === i)
@@ -253,6 +260,9 @@ export function exportSaveData() {
     srs: srs ? toJSON(srs) : null,
     buddyPos: typeof localStorage !== 'undefined' ? localStorage.getItem('codeduo_buddy_drag_pos') : null,
     motion: typeof localStorage !== 'undefined' ? localStorage.getItem('codeduo_motion') : null,
+    theme: typeof localStorage !== 'undefined' ? localStorage.getItem(THEME_KEY) : (state ? state.theme : 'system'),
+    bibitKnowledge: getLearnedConcepts(),
+    aiDialogueModel: aiDialogueModel || null,
   };
   return JSON.stringify(exportPayload, null, 2);
 }
@@ -265,6 +275,8 @@ export function importSaveData(jsonString) {
     const rawState = data.state || (data.progress ? data : null);
     if (!rawState) throw new Error('Data progres CodeDuo tidak ditemukan dalam berkas.');
     state = sanitizeState(rawState);
+    state.path = syncPath(state.path || CURRICULUM.map((t) => t.id), mulberry32(state.seed));
+    syncStreakRealtime();
     saveState();
     if (data.srs) {
       const restored = fromJSON(data.srs);
@@ -280,6 +292,18 @@ export function importSaveData(jsonString) {
     }
     if (data.motion && typeof localStorage !== 'undefined') {
       try { localStorage.setItem('codeduo_motion', data.motion); } catch (_) {}
+    }
+    if (data.theme && VALID_THEMES.includes(data.theme)) {
+      state.theme = data.theme;
+      try { if (typeof localStorage !== 'undefined') localStorage.setItem(THEME_KEY, data.theme); } catch (_) {}
+      applyThemeToDom(data.theme);
+    }
+    if (Array.isArray(data.bibitKnowledge)) {
+      setLearnedConcepts(data.bibitKnowledge);
+    }
+    if (data.aiDialogueModel && typeof data.aiDialogueModel === 'object' && data.aiDialogueModel.weights) {
+      aiDialogueModel = Object.assign(createDialogueModel(), data.aiDialogueModel);
+      saveExpression();
     }
     bump();
     return { ok: true, message: 'Progres berhasil dipulihkan dari cadangan!' };
@@ -383,7 +407,8 @@ export function onInteraction(sig) {
   const s = sig || {};
   const features = interactionSignal(s);
   learnExpression(features);
-  updateDialogueModel(aiDialogueModel, s);
+  const activeTopicId = s.topicId || (session ? session.topicId : routeInfo().topicId) || null;
+  updateDialogueModel(aiDialogueModel, activeTopicId ? Object.assign({}, s, { topicId: activeTopicId }) : s);
   saveExpression();
   const r = onUserInteract(companion, Math.random);
   companion = r.state;
@@ -436,6 +461,7 @@ function collectAiSignals() {
     currentExercise: ex,
     face: companion.face,
     mood: companion.mood,
+    topicId: (session && session.topicId) || r.topicId || null,
     topicTitle: t ? (t.name || t.title) : null,
     topicDoneCount: doneCount,
     topicTotalCount: stepNodes.length || 3,
@@ -450,7 +476,7 @@ function getTapDialogue(seed) {
     return 'Hoam... Aku bangun! Siap ngoding lagi!';
   }
   const signals = collectAiSignals();
-  const res = getAiTapDialogue(signals, seed);
+  const res = getAiTapDialogue(signals, seed, aiDialogueModel);
   if (res && typeof res === 'object') {
     if (res.face) {
       companion.face = res.face;
@@ -584,7 +610,7 @@ function buildContextualLine(seed) {
     }
   }
 
-  return generateAiDialogue(b.ctx, signals, seed);
+  return generateAiDialogue(b.ctx, signals, seed, aiDialogueModel);
 }
 
 /* Baris bubble default (ikut konteks permainan) — dipakai Buddy bila tak ada baris otonom. */
@@ -712,11 +738,15 @@ export function lessonRetry() {
 
 export function stateReset() {
   state = defaultState();
+  state.path = syncPath(CURRICULUM.map((t) => t.id), mulberry32(state.seed));
   exprModel = createExpressionModel();
+  aiDialogueModel = createDialogueModel();
   exprTrained = null;
   companion = newCompanion();
   srs = newSched();
+  clearLearnedConcepts();
   try { localStorage.removeItem(EXPR_KEY); } catch (_) { /* ignore */ }
+  try { localStorage.removeItem(AI_MODEL_KEY); } catch (_) { /* ignore */ }
   try { localStorage.removeItem(SRS_KEY); } catch (_) { /* ignore */ }
   saveState();
   session = null;
@@ -769,6 +799,49 @@ export function toggleMotion() {
 
 export function isMotionEnabled() {
   return state ? state.motionEnabled !== false : true;
+}
+
+function resolveThemeMode(pref) {
+  if (pref === 'dark') return 'dark';
+  if (pref === 'light') return 'light';
+  if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  return 'light';
+}
+
+function applyThemeToDom(pref) {
+  if (typeof document === 'undefined') return;
+  const resolved = resolveThemeMode(pref);
+  const el = document.documentElement;
+  if (el && el.dataset) el.dataset.theme = resolved;
+  if (el && el.style) el.style.colorScheme = resolved;
+  if (typeof document.querySelector === 'function') {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', resolved === 'dark' ? '#0b1116' : '#10b981');
+  }
+}
+
+export function getTheme() {
+  return (state && VALID_THEMES.includes(state.theme)) ? state.theme : 'system';
+}
+
+export function getResolvedTheme() {
+  return resolveThemeMode(getTheme());
+}
+
+export function setTheme(mode) {
+  const next = VALID_THEMES.includes(mode) ? mode : 'system';
+  if (state) state.theme = next;
+  try { if (typeof localStorage !== 'undefined') localStorage.setItem(THEME_KEY, next); } catch (_) {}
+  applyThemeToDom(next);
+  saveState();
+  bump();
+  return next;
+}
+
+export function toggleTheme() {
+  return setTheme(getResolvedTheme() === 'dark' ? 'light' : 'dark');
 }
 
 /* ================= Favorit topik ================= */
@@ -1129,6 +1202,9 @@ function bumpStreak() {
   const yesterday = localDateStr(y);
   state.streak.count = state.streak.lastActive === yesterday ? state.streak.count + 1 : 1;
   state.streak.lastActive = today;
+  if (state.streak.count > 0 && state.streak.count % 7 === 0) {
+    state.streak.freezes = Math.min(2, (state.streak.freezes || 0) + 1);
+  }
   return true;
 }
 
@@ -1144,6 +1220,10 @@ export function getStreakRealtime() {
     return {
       count: 0,
       lastActive: null,
+      freezes: 0,
+      maxFreezes: 2,
+      freezeUsedToday: false,
+      daysToNextFreeze: 7,
       status: 'inactive',
       todayCompleted: false,
       streakAtRisk: false,
@@ -1156,8 +1236,8 @@ export function getStreakRealtime() {
 
   const now = new Date();
   const today = localDateStr(now);
-  const y = new Date(now.getTime() - 86400000);
-  const yesterday = localDateStr(y);
+  const yesterday = localDateStr(new Date(now.getTime() - 86400000));
+  const twoDaysAgo = localDateStr(new Date(now.getTime() - 2 * 86400000));
 
   // Waktu hingga tengah malam (pergantian hari)
   const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
@@ -1171,12 +1251,21 @@ export function getStreakRealtime() {
     String(secondsLeft).padStart(2, '0')
   ].join(':');
 
-  const lastActive = state.streak.lastActive;
+  let lastActive = state.streak.lastActive;
   let count = state.streak.count || 0;
+  let freezes = Math.min(2, Math.max(0, Math.floor(state.streak.freezes || 0)));
 
-  // Jika hari aktif terakhir lebih lampau dari kemarin (terlewat >= 1 hari penuh), streak telah pecah
+  // Jika hari aktif terakhir lebih lampau dari kemarin:
   if (lastActive && lastActive !== today && lastActive !== yesterday) {
-    if (count > 0) {
+    // Jika hanya terlewat 1 hari (kemarin) dan punya Perisai Streak (Streak Freeze), pakai otomatis!
+    if (lastActive === twoDaysAgo && count > 0 && freezes > 0) {
+      freezes -= 1;
+      lastActive = yesterday;
+      state.streak.freezes = freezes;
+      state.streak.lastActive = yesterday;
+      state.streak.lastFreezeUsed = today;
+      saveState();
+    } else if (count > 0) {
       count = 0;
       state.streak.count = 0;
       saveState();
@@ -1197,6 +1286,10 @@ export function getStreakRealtime() {
   return {
     count,
     lastActive,
+    freezes,
+    maxFreezes: 2,
+    freezeUsedToday: state.streak.lastFreezeUsed === today,
+    daysToNextFreeze: count > 0 ? (7 - (count % 7)) : 7,
     status,
     todayCompleted,
     streakAtRisk,
@@ -1209,8 +1302,10 @@ export function getStreakRealtime() {
 
 export function syncStreakRealtime() {
   const prevCount = state && state.streak ? state.streak.count : 0;
+  const prevFreezes = state && state.streak ? (state.streak.freezes || 0) : 0;
+  const prevLastActive = state && state.streak ? state.streak.lastActive : null;
   const info = getStreakRealtime();
-  if (prevCount !== info.count) {
+  if (prevCount !== info.count || prevFreezes !== info.freezes || prevLastActive !== info.lastActive) {
     bump();
   }
   return info;
@@ -1284,6 +1379,20 @@ export function initStore() {
       }
     }
   } catch (_) {}
+  try {
+    if (typeof localStorage !== 'undefined') {
+      const savedTheme = localStorage.getItem(THEME_KEY);
+      if (VALID_THEMES.includes(savedTheme)) state.theme = savedTheme;
+    }
+  } catch (_) {}
+  applyThemeToDom(state.theme);
+  if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const onThemeChange = () => {
+      if (getTheme() === 'system') { applyThemeToDom('system'); bump(); }
+    };
+    if (mq.addEventListener) mq.addEventListener('change', onThemeChange);
+  }
   if (typeof document !== 'undefined') {
     const enabled = state.motionEnabled !== false;
     document.documentElement.classList.toggle('motion-enabled', enabled);

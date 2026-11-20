@@ -185,6 +185,15 @@ export function clearLearnedConcepts() {
   saveKnowledge();
 }
 
+/** Memulihkan daftar konsep yang dipelajari (misal dari cadangan JSON) */
+export function setLearnedConcepts(list) {
+  if (!Array.isArray(list)) return;
+  bibitKnowledge = list
+    .filter((item) => item && typeof item === 'object' && typeof item.id === 'string' && typeof item.insight === 'string')
+    .slice(0, 60);
+  saveKnowledge();
+}
+
 /* =========================================================================
  * 2. Model Machine Learning Pembelajaran Dialog & Bobot Preferensi
  * ========================================================================= */
@@ -356,7 +365,7 @@ export function scoreAndRankLearnedDialogues(signals = {}, model = null, seed = 
  * 4. Generator Respon Tap Dinamis (Integrasi Machine Learning Konsep)
  * ========================================================================= */
 
-export function getAiTapDialogue(signals = {}, seed = Math.random() * 1000) {
+export function getAiTapDialogue(signals = {}, seed = Math.random() * 1000, model = null) {
   const s = signals;
   const streak = s.streak || 0;
   const lessonsDone = s.lessonsDone || 0;
@@ -373,18 +382,17 @@ export function getAiTapDialogue(signals = {}, seed = Math.random() * 1000) {
       rememberResponse(res);
       return { text: res, face: 'thinking', mood: 'thinking' };
     }
-    const currentNum = pos + 1;
-    if (currentNum >= totalInSession) {
+    if (pos >= totalInSession) {
       const res = 'Soal terakhir! Satu langkah lagi tuntas.';
       rememberResponse(res);
       return { text: res, face: 'speaking', mood: 'excited' };
     }
   }
 
-  // B. PRIORITAS ML: Gunakan konsep yang baru dipelajari (~65% peluang jika ada konsep)
+  // B. PRIORITAS ML: Gunakan konsep yang baru dipelajari (~68% peluang jika ada konsep)
   const rnd = Number.isFinite(seed) ? Math.abs(Math.sin(seed * 3.14)) : Math.random();
   if (bibitKnowledge.length > 0 && rnd < 0.68) {
-    const learned = scoreAndRankLearnedDialogues(s, null, seed);
+    const learned = scoreAndRankLearnedDialogues(s, model, seed);
     if (learned && learned.text) {
       return learned;
     }
@@ -430,7 +438,7 @@ export function getAiTapDialogue(signals = {}, seed = Math.random() * 1000) {
  * 5. Generator Dialog Kontekstual Acara (Event-based)
  * ========================================================================= */
 
-export function generateAiDialogue(contextKey = 'idle', signals = {}, seed = Math.random() * 1000) {
+export function generateAiDialogue(contextKey = 'idle', signals = {}, seed = Math.random() * 1000, model = null) {
   const s = signals;
   const face = s.face || 'idle';
   const ex = s.currentExercise;
@@ -545,7 +553,7 @@ export function generateAiDialogue(contextKey = 'idle', signals = {}, seed = Mat
   // Jika sedang idle di halaman beranda atau jeda materi, sesekali gunakan materi yang dipelajari
   if (contextKey === 'idle' || contextKey === 'greet') {
     if (bibitKnowledge.length > 0 && Math.random() < 0.5) {
-      const learned = scoreAndRankLearnedDialogues(s, null, seed);
+      const learned = scoreAndRankLearnedDialogues(s, model, seed);
       if (learned && learned.text) return learned.text;
     }
   }

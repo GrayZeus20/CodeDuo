@@ -6,27 +6,35 @@ import { useStore } from './useStore.js';
 import { getStreakRealtime, syncStreakRealtime } from './store.js';
 
 export function useRealtimeStreak() {
-  useStore(); // Re-render saat state store berubah (misal pelajaran tuntas)
-  const [streakInfo, setStreakInfo] = useState(() => getStreakRealtime());
+  useStore(); // Re-render instan saat state store berubah (misal pelajaran tuntas / reset)
+  const [, setTick] = useState(0);
 
   useEffect(() => {
-    // Sinkronisasi awal saat mount
-    setStreakInfo(syncStreakRealtime());
+    syncStreakRealtime();
 
-    // Detak realtime setiap 1 detik untuk memperbarui countdown waktu tersisa sebelum tengah malam
-    const timer = setInterval(() => {
-      const nextInfo = getStreakRealtime();
-      setStreakInfo(nextInfo);
+    const refresh = () => {
+      syncStreakRealtime();
+      setTick((t) => (t + 1) % 60);
+    };
 
-      // Jika tepat pergantian hari (tengah malam), sinkronkan store
-      if (nextInfo.secondsLeft === 0 && nextInfo.minutesLeft === 0 && nextInfo.hoursLeft === 0) {
-        syncStreakRealtime();
+    const timer = setInterval(refresh, 1000);
+    const onVis = () => {
+      if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
+        refresh();
       }
-    }, 1000);
+    };
 
-    return () => clearInterval(timer);
+    if (typeof document !== 'undefined') {
+      document.addEventListener('visibilitychange', onVis);
+    }
+
+    return () => {
+      clearInterval(timer);
+      if (typeof document !== 'undefined') {
+        document.removeEventListener('visibilitychange', onVis);
+      }
+    };
   }, []);
 
-  return streakInfo;
+  return getStreakRealtime();
 }
-

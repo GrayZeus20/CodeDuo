@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import { useStore } from '../useStore.js';
 import { useRealtimeStreak } from '../useRealtimeStreak.js';
-import { getState, toggleMute, toggleBuddy } from '../store.js';
+import { getState, toggleMute, toggleBuddy, getResolvedTheme, toggleTheme } from '../store.js';
 import { SFX } from '../../sfx.js';
 import { BGM } from '../../bgm.js';
 import { pop } from '../lib/motion.js';
@@ -23,6 +23,7 @@ export default function Topbar() {
   const state = getState();
   const muted = state ? state.muted : false;
   const buddyHidden = state ? !!state.buddyHidden : false;
+  const isDark = getResolvedTheme() === 'dark';
 
   const [bgmActive, setBgmActive] = useState(() => BGM.isPlaying());
   const [bgmEnabled, setBgmEnabled] = useState(() => BGM.isEnabled());
@@ -58,6 +59,12 @@ export default function Topbar() {
       SFX.muteOff();
     }
     BGM.toggle();
+  };
+
+  const onToggleTheme = (e) => {
+    pop(e.currentTarget);
+    SFX.pick();
+    toggleTheme();
   };
 
   return (
@@ -123,19 +130,41 @@ export default function Topbar() {
               )}
             </svg>
           </button>
+          <button
+            className={'theme-btn' + (isDark ? ' is-dark' : '')}
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={onToggleTheme}
+            aria-label={isDark ? 'Ganti ke mode terang' : 'Ganti ke mode malam'}
+            title={isDark ? 'Mode Malam (Aktif) — Klik ke Mode Terang' : 'Mode Terang — Klik ke Mode Malam'}
+          >
+            {isDark ? (
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
+          </button>
           <button className="mute-btn" onMouseDown={(e) => e.preventDefault()} onClick={onMute} aria-label="Suara" title="Suara">{muted ? '🔇' : '🔊'}</button>
           <a
             className={'streak streak--' + streakInfo.status}
             href="#/profile"
             title={
-              streakInfo.status === 'danger'
+              (streakInfo.status === 'danger'
                 ? `⚠️ BAHAYA! Streak ${streakInfo.count} harimu mau pecah! Tersisa ${streakInfo.timeLeftFormatted} sebelum tengah malam.`
                 : streakInfo.status === 'saved'
                 ? `🔥 Streak ${streakInfo.count} hari aman! Kamu sudah belajar hari ini.`
-                : '🔥 Mulai streak pertamamu hari ini!'
+                : '🔥 Mulai streak pertamamu hari ini!') +
+              (streakInfo.freezes > 0 ? ` • ❄️ ${streakInfo.freezes} Perisai Streak aktif` : '')
             }
           >
             🔥 <b>{streakInfo.count}</b>
+            {streakInfo.freezes > 0 && (
+              <span className="streak-freeze-dot" aria-hidden="true">❄️</span>
+            )}
             {streakInfo.status === 'danger' && (
               <span className="streak-danger-dot" aria-hidden="true">⚠️</span>
             )}
