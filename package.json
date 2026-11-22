@@ -1,7 +1,7 @@
 {
   "name": "codeduo",
   "version": "2.0.0",
-  "description": "Belajar pemrograman gaya Duolingo — pelajaran pendek, latihan interaktif, teman robot Bibit. Offline, tanpa akun, tanpa backend.",
+  "description": "Belajar pemrograman interaktif — pelajaran pendek, latihan interaktif, teman robot Bibit. Offline, tanpa akun, tanpa backend.",
   "keywords": [
     "belajar-coding",
     "duolingo",
@@ -16,13 +16,13 @@
   ],
   "license": "MIT",
   "author": "Grayzeus",
-  "homepage": "https://github.com/grayzeus/codeduo#readme",
+  "homepage": "https://github.com/GrayZeus20/CodeDuo#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/grayzeus/codeduo.git"
   },
   "bugs": {
-    "url": "https://github.com/grayzeus/codeduo/issues"
+    "url": "https://github.com/GrayZeus20/CodeDuo/issues"
   },
   "private": false,
   "type": "module",
