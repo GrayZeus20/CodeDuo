@@ -20,6 +20,7 @@ import {
   subscribeNotifications,
 } from './src/notifications.js';
 import { showToast, dismissToast, showConfirm, getUiFeedbackState } from './src/uiFeedback.js';
+import { evaluateWorkbenchCircuit, buildSimInputsFromCircuit, WORKBENCH_CHALLENGES } from './src/lib/workbenchEngine.js';
 import {
   ROBOT_MOODS, ROBOT_STATES, robotSVG, robotSay, robotReact,
   stateFromMood, ledMatrixFor, mountRobotHead,
@@ -1496,6 +1497,64 @@ t('theme: mendukung system/light/dark, toggleTheme, & sanitasi nilai asing', () 
 
   setTheme('invalid-mode');
   assert.strictEqual(getTheme(), 'system', 'Nilai tema asing harus fallback ke system');
+});
+
+
+t('arduino-workbench: rangkaian LED + Resistor seri menyala aman tanpa peringatan', () => {
+  const ch = WORKBENCH_CHALLENGES[0];
+  const boardRes = { pins: { '13': { mode: 'OUTPUT', digital: 1, pwm: 0 } } };
+  const res = evaluateWorkbenchCircuit(ch.demo.components, ch.demo.wires, boardRes);
+  assert.strictEqual(res.hasShortCircuit, false);
+  assert.strictEqual(res.warnings.length, 0);
+  const ledSt = res.componentStates['c2'];
+  assert.strictEqual(ledSt.lit, true);
+  assert.strictEqual(ledSt.hasResistor, true);
+  assert.strictEqual(ledSt.overcurrent, false);
+});
+
+t('arduino-workbench: deteksi korsleting (5V ke GND), tanpa resistor, & polaritas terbalik', () => {
+  // 1. Short circuit
+  const sc = evaluateWorkbenchCircuit([], [{ id: 'w1', from: { kind: 'board', pin: '5V' }, to: { kind: 'board', pin: 'GND1' } }], null);
+  assert.strictEqual(sc.hasShortCircuit, true);
+  assert.ok(sc.warnings.some((w) => w.code === 'short_circuit'));
+
+  // 2. LED tanpa resistor
+  const noRes = evaluateWorkbenchCircuit(
+    [{ id: 'l1', type: 'led-red', slot: 0 }],
+    [
+      { id: 'w1', from: { kind: 'board', pin: 'D13' }, to: { kind: 'comp', compId: 'l1', leg: 'anode' } },
+      { id: 'w2', from: { kind: 'comp', compId: 'l1', leg: 'cathode' }, to: { kind: 'board', pin: 'GND1' } },
+    ],
+    { pins: { '13': { mode: 'OUTPUT', digital: 1, pwm: 0 } } }
+  );
+  assert.strictEqual(noRes.componentStates['l1'].overcurrent, true);
+  assert.ok(noRes.warnings.some((w) => w.code === 'led_no_resistor'));
+
+  // 3. LED terbalik
+  const rev = evaluateWorkbenchCircuit(
+    [{ id: 'l1', type: 'led-red', slot: 0 }],
+    [
+      { id: 'w1', from: { kind: 'board', pin: 'D13' }, to: { kind: 'comp', compId: 'l1', leg: 'cathode' } },
+      { id: 'w2', from: { kind: 'comp', compId: 'l1', leg: 'anode' }, to: { kind: 'board', pin: 'GND1' } },
+    ],
+    { pins: { '13': { mode: 'OUTPUT', digital: 1, pwm: 0 } } }
+  );
+  assert.strictEqual(rev.componentStates['l1'].lit, false);
+  assert.strictEqual(rev.componentStates['l1'].reversed, true);
+  assert.ok(rev.warnings.some((w) => w.code === 'led_reversed'));
+});
+
+t('arduino-workbench: pemetaan input Push Button & Potensiometer + rute #/arduino-lab', () => {
+  const chBtn = WORKBENCH_CHALLENGES[2];
+  const btnIn = buildSimInputsFromCircuit(chBtn.demo.components, chBtn.demo.wires, { 'btn:c1': true });
+  assert.strictEqual(btnIn.buttons['2'], 0, 'Push Button ke GND saat ditekan harus LOW (0)');
+
+  const chPot = WORKBENCH_CHALLENGES[3];
+  const potIn = buildSimInputsFromCircuit(chPot.demo.components, chPot.demo.wires, { 'pot:c1': 780 });
+  assert.strictEqual(potIn.analog['A0'], 780, 'Potensiometer harus memetakan nilai 0..1023 ke A0');
+
+  globalThis.location = { hash: '#/arduino-lab' };
+  assert.strictEqual(routeInfo().name, 'arduino-lab');
 });
 
 console.log('\n' + passed + ' passed, ' + failed + ' failed');

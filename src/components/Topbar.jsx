@@ -19,7 +19,7 @@ const BLUSH = '#ff9a9a';
 
 export default function Topbar() {
   useStore();
-  const streakInfo = useRealtimeStreak();
+  const streakInfo = useRealtimeStreak({ live: false });
   const state = getState();
   const muted = state ? state.muted : false;
   const buddyHidden = state ? !!state.buddyHidden : false;

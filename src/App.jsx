@@ -2,7 +2,7 @@
  * Router tanpa dependensi: baca routeInfo() dari store, kelola kelas body, scroll ke atas. */
 'use strict';
 
-import { Component, useEffect } from 'react';
+import { Component, useEffect, useState } from 'react';
 import { useStore } from './useStore.js';
 import { routeInfo } from './store.js';
 import Topbar from './components/Topbar.jsx';
@@ -13,6 +13,7 @@ import Lesson from './components/Lesson.jsx';
 import Materi from './components/Materi.jsx';
 import Profile from './components/Profile.jsx';
 import BgmSettings from './components/BgmSettings.jsx';
+import ArduinoWorkbench from './components/ArduinoWorkbench.jsx';
 import Terms from './components/Terms.jsx';
 import StorageConsentPrompt from './components/StorageConsentPrompt.jsx';
 import UiFeedbackHost from './components/UiFeedbackHost.jsx';
@@ -68,6 +69,18 @@ export default function App() {
   useStore();
   const route = routeInfo();
   const isLesson = route.name === 'lesson' || route.name === 'review';
+  const [isOffline, setIsOffline] = useState(() => (typeof navigator !== 'undefined' ? !navigator.onLine : false));
+
+  useEffect(() => {
+    const onOff = () => setIsOffline(true);
+    const onOn = () => setIsOffline(false);
+    window.addEventListener('offline', onOff);
+    window.addEventListener('online', onOn);
+    return () => {
+      window.removeEventListener('offline', onOff);
+      window.removeEventListener('online', onOn);
+    };
+  }, []);
 
   useEffect(() => {
     if (document.body) document.body.classList.toggle('is-lesson', isLesson);
@@ -82,6 +95,7 @@ export default function App() {
     case 'review': screen = <Lesson />; break;
     case 'profile': screen = <Profile />; break;
     case 'bgm-settings': screen = <BgmSettings />; break;
+    case 'arduino-lab': screen = <ArduinoWorkbench />; break;
     case 'terms': screen = <Terms />; break;
     default: screen = <Home />;
   }
@@ -89,6 +103,11 @@ export default function App() {
   return (
     <>
       <Topbar />
+      {isOffline && (
+        <div className="offline-bar" role="status">
+          ⚡ Mode Offline aktif — semua materi, latihan &amp; simulasi tetap bisa dipakai.
+        </div>
+      )}
       <main id="app">
         <ErrorBoundary key={route.name + ':' + (route.topicId || '') + ':' + (route.nodeId || '') + ':' + (route.lessonId || '')}>
           {screen}

@@ -1332,6 +1332,7 @@ export function routeInfo() {
     return { name: 'profile' };
   }
   if (parts[0] === 'bgm') return { name: 'bgm-settings' };
+  if (parts[0] === 'arduino-lab') return { name: 'arduino-lab' };
   if (parts[0] === 'terms') return { name: 'terms' };
   return { name: 'home' };
 }

@@ -7,7 +7,7 @@ import { useRealtimeStreak } from '../useRealtimeStreak.js';
 import {
   getState, getLoadError, topicById, isTopicDone, isNodeDone,
   openTopic, dueReviewKeys, reviewStart,
-  isFavorite, toggleFavorite, orderedTopicIds,
+  isFavorite, toggleFavorite, orderedTopicIds, getStreakRealtime,
 } from '../store.js';
 import { CURRICULUM, stepsForTopic } from '../../content.js';
 import Bib from './Bib.jsx';
@@ -31,7 +31,9 @@ const TOPIC_CATEGORIES = [
 
 export default function Home() {
   useStore();
-  const streakInfo = useRealtimeStreak();
+  const initialStreak = getStreakRealtime();
+  const needsLiveCountdown = initialStreak.status === 'danger' || (initialStreak.freezeUsedToday && !initialStreak.todayCompleted);
+  const streakInfo = useRealtimeStreak({ live: needsLiveCountdown });
   const state = getState();
   const loadError = getLoadError();
   const path = Array.isArray(state.path) ? state.path : [];

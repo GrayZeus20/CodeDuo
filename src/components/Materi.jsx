@@ -32,7 +32,8 @@ export default function Materi({ topicId, lessonId }) {
   const done = isLessonDone(topic.id, lesson.id);
 
   const startPractice = (e) => {
-    pop(e.currentTarget);
+    try { pop(e.currentTarget); } catch (_) {}
+    try { SFX.open(); } catch (_) {}
     if (node) stepStart(topic.id, node.id);
     else window.location.hash = '#/topic/' + topic.id;
   };

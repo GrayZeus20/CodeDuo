@@ -60,6 +60,26 @@ export default function Topic({ topicId }) {
         </button>
       </header>
 
+      {topic.id === 'arduino' && (
+        <a
+          href="#/arduino-lab"
+          className="card wb-launch-card"
+          onClick={() => SFX.open()}
+        >
+          <span className="wb-launch-card__ico" aria-hidden="true">⚡</span>
+          <div className="wb-launch-card__body">
+            <div className="wb-launch-card__title">
+              <b>Lab Rakitan Arduino Interaktif</b>
+              <span className="bibit-brain-badge">Prototipe Baru</span>
+            </div>
+            <p className="muted wb-launch-card__desc">
+              Rakit LED, Resistor, Push Button, Potensiometer, dan Buzzer langsung di papan virtual, tarik kabel jumper, lalu jalankan sketsa C++!
+            </p>
+          </div>
+          <span className="btn btn--primary btn--sm wb-launch-card__cta">Buka Lab ➔</span>
+        </a>
+      )}
+
       {guide && (
         <div className="topic__guide-card card">
           <div className="topic__guide-header">
@@ -155,15 +175,25 @@ function NodeItem({ topicId, node, idx, open, kind }) {
   const stepLessons = t ? t.lessons.filter((l) => lessonIds.includes(l.id)) : [];
   const lessonTitles = stepLessons.map((l) => l.title).join(' · ');
   const firstLesson = stepLessons[0] || null;
-  const onClick = open
-    ? (e) => {
-      pop(e.currentTarget);
-      if (isTest) { SFX.exam(); tierTest(topicId, node.id); } else { SFX.open(); stepStart(topicId, node.id); }
-    }
-    : undefined;
+  const openStep = (e) => {
+    if (!open) return;
+    try { pop(e.currentTarget); } catch (_) {}
+    try { if (isTest) SFX.exam(); else SFX.open(); } catch (_) {}
+    if (isTest) tierTest(topicId, node.id);
+    else stepStart(topicId, node.id);
+  };
   return (
-    <li className={'lesson-path__item' + (idx % 2 ? ' lesson-path__item--right' : '')}>
-      <button className={cls + (isTest ? ' node--exam' : '')} disabled={!open} aria-disabled={!open} onClick={onClick}>{label}</button>
+    <li
+      className={'lesson-path__item' + (idx % 2 ? ' lesson-path__item--right' : '') + (open ? ' is-clickable' : '')}
+      onClick={open ? openStep : undefined}
+    >
+      <button
+        type="button"
+        className={cls + (isTest ? ' node--exam' : '')}
+        disabled={!open}
+        aria-disabled={!open}
+        onClick={(e) => { e.stopPropagation(); openStep(e); }}
+      >{label}</button>
       <span className="lesson-path__title">
         <span className="topic-card__tier">{isTest ? 'Ujian ' + node.tier : 'Step ' + node.stepNo + ' · ' + (node.questionIds ? node.questionIds.length : 10) + ' soal'}</span><br />
         <b>{title}</b>{done ? ' · selesai' : open ? '' : ' · terkunci'}

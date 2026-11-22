@@ -13,12 +13,16 @@ function swBuildId() {
     apply: 'build',
     configResolved(cfg) { outDir = resolve(cfg.root, cfg.build.outDir); },
     async closeBundle() {
-      const assets = await readdir(join(outDir, 'assets'));
+      const assets = (await readdir(join(outDir, 'assets'))).sort();
       const html = await readFile(join(outDir, 'index.html'), 'utf8');
-      const id = createHash('sha1').update(assets.sort().join() + html).digest('hex').slice(0, 8);
+      const id = createHash('sha1').update(assets.join() + html).digest('hex').slice(0, 8);
       const swPath = join(outDir, 'sw.js');
       const sw = await readFile(swPath, 'utf8');
-      await writeFile(swPath, sw.replace("const BUILD = '__BUILD_ID__'", "const BUILD = '" + id + "'"));
+      const precacheList = JSON.stringify(assets.map((f) => 'assets/' + f));
+      const updated = sw
+        .replace("const BUILD = '__BUILD_ID__'", "const BUILD = '" + id + "'")
+        .replace('const PRECACHE_ASSETS = [];', 'const PRECACHE_ASSETS = ' + precacheList + ';');
+      await writeFile(swPath, updated);
     },
   };
 }

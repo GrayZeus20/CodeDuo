@@ -53,6 +53,10 @@ const CONTENT_LANGS = [].concat(
 );
 
 const CURRICULUM = [].concat(CONTENT_HTML, CONTENT_JS, CONTENT_SQL, CONTENT_TS, CONTENT_WEB, CONTENT_LANGS);
+const TOPIC_MAP = new Map(CURRICULUM.map((t) => [t.id, t]));
+const LESSON_MAPS = new WeakMap();
+const STEPS_CACHE = new WeakMap();
+let _allQuestionIdsCache = null;
 
 /* Tier tetap & ukuran step — dipakai app.js untuk memotong topik jadi step + ujian. */
 const TIER_ORDER = ['Dasar', 'Menengah', 'Advance'];
@@ -70,6 +74,7 @@ function questionKey(topicId, lessonId, idx) {
  * questionIds = kunci global (questionKey). */
 function stepsForTopic(topic) {
   if (!topic || !Array.isArray(topic.lessons)) return [];
+  if (STEPS_CACHE.has(topic)) return STEPS_CACHE.get(topic);
   const nodes = [];
   let globalStepNo = 0;
   TIER_ORDER.forEach((tier) => {
@@ -116,12 +121,16 @@ function stepsForTopic(topic) {
       stepNo: globalStepNo,
     });
   });
+  STEPS_CACHE.set(topic, nodes);
   return nodes;
 }
 
 /* Seluruh kunci soal kurikulum (bank SRS). Panjang = total soal. */
 function allQuestionIds() {
-  return CURRICULUM.flatMap((t) => t.lessons.flatMap((l) => l.exercises.map((_, i) => questionKey(t.id, l.id, i))));
+  if (!_allQuestionIdsCache) {
+    _allQuestionIdsCache = CURRICULUM.flatMap((t) => t.lessons.flatMap((l) => l.exercises.map((_, i) => questionKey(t.id, l.id, i))));
+  }
+  return _allQuestionIdsCache;
 }
 
 /* Ambil objek soal dari kunci global (atau "lessonId#index"). Murni & aman. */
@@ -130,7 +139,7 @@ function resolveQuestion(key) {
   const bar = key.indexOf('|');
   const topicId = bar >= 0 ? key.slice(0, bar) : null;
   const rest = bar >= 0 ? key.slice(bar + 1) : key;
-  const topic = topicId ? CURRICULUM.find((t) => t.id === topicId) : null;
+  const topic = topicId ? (TOPIC_MAP.get(topicId) || CURRICULUM.find((t) => t.id === topicId)) : null;
   return topic ? exerciseById(topic, rest) : null;
 }
 
@@ -141,7 +150,12 @@ function exerciseById(topic, qid) {
   if (sep < 0) return null;
   const lessonId = qid.slice(0, sep);
   const idx = Number(qid.slice(sep + 1));
-  const lesson = topic.lessons.find((l) => l.id === lessonId);
+  let lMap = LESSON_MAPS.get(topic);
+  if (!lMap && Array.isArray(topic.lessons)) {
+    lMap = new Map(topic.lessons.map((l) => [l.id, l]));
+    LESSON_MAPS.set(topic, lMap);
+  }
+  const lesson = lMap ? lMap.get(lessonId) : null;
   if (!lesson || !Number.isInteger(idx) || idx < 0 || idx >= lesson.exercises.length) return null;
   return lesson.exercises[idx];
 }

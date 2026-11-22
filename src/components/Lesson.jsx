@@ -303,28 +303,48 @@ function ArduinoSimPanel({ ex, sketch }) {
     .filter(([, st]) => st.mode === 'OUTPUT' || st.pwm > 0 || st.digital)
     .slice(0, 6);
   const serial = (board && board.serial) || [];
+  const boardErrors = (board && Array.isArray(board.errors)) ? board.errors : [];
+  const allErrors = [];
+  if (result && !result.ok && result.error) allErrors.push(result.error);
+  boardErrors.forEach((msg) => allErrors.push(msg));
+  const blinkedPins = new Set();
+  if (board && Array.isArray(board.log)) {
+    const hi = new Set(); const lo = new Set();
+    board.log.forEach((ev) => { if (ev && ev.op === 'digitalWrite') { if (ev.v === 1) hi.add(String(ev.pin)); if (ev.v === 0) lo.add(String(ev.pin)); } });
+    hi.forEach((p) => { if (lo.has(p)) blinkedPins.add(p); });
+  }
 
   return (
     <div className="sim-panel">
       <div className="sim-panel__title">🔌 Simulasi papan</div>
-      {result && !result.ok && (
-        <div className="sim-panel__error">{result.error}</div>
+      {allErrors.length > 0 && (
+        <div className="wb-error-log" role="alert">
+          <div className="wb-error-log__head"><span>✕ Log Error</span><span>{allErrors.length} error</span></div>
+          <pre className="wb-error-log__body">{allErrors.map((err, idx) => `[${idx + 1}] ${err}`).join('\n')}</pre>
+        </div>
       )}
       {board && (
         <>
           <div className="sim-panel__pins">
             {ledPins.length === 0 && <span className="muted">Belum ada pin aktif.</span>}
             {ledPins.map(([pin, st]) => {
-              const level = st.pwm > 0 ? st.pwm / 255 : (st.digital ? 1 : 0);
+              const isBlink = blinkedPins.has(String(pin));
+              const level = st.pwm > 0 ? st.pwm / 255 : ((st.digital || isBlink) ? 1 : 0);
+              const isLit = allErrors.length === 0 && level > 0;
+              const color = st.pwm > 0 ? '#22c55e' : '#ef4444';
               return (
                 <div className="sim-pin" key={pin}>
                   <span className="sim-pin__name">Pin {pin}</span>
                   <span
-                    className="sim-pin__led"
-                    style={{ opacity: 0.15 + (Math.max(0, Math.min(1, level)) * 0.85), background: st.pwm > 0 ? '#22c55e' : '#ef4444' }}
-                    title={st.pwm > 0 ? 'PWM ' + st.pwm : (st.digital ? 'HIGH' : 'LOW')}
+                    className={'sim-pin__led' + (isLit ? ' is-lit' : '') + (isLit && isBlink ? ' is-blink' : '')}
+                    style={{
+                      opacity: isLit ? (0.3 + Math.min(1, level) * 0.7) : 0.18,
+                      background: color,
+                      boxShadow: isLit ? `0 0 ${Math.round(6 + level * 10)}px ${color}` : 'none',
+                    }}
+                    title={st.pwm > 0 ? 'PWM ' + st.pwm : (isBlink ? 'BLINK (Menyala)' : (st.digital ? 'HIGH (Menyala)' : 'LOW'))}
                   />
-                  <span className="sim-pin__val">{st.pwm > 0 ? 'PWM ' + st.pwm : (st.digital ? 'HIGH' : 'LOW')}</span>
+                  <span className="sim-pin__val">{st.pwm > 0 ? 'PWM ' + st.pwm : (isBlink ? 'BLINK ●' : (st.digital ? 'HIGH ●' : 'LOW'))}</span>
                 </div>
               );
             })}
