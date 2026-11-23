@@ -547,7 +547,7 @@ export default function BgmSettings() {
               <div className={`bgm-item ${!activeTrack ? 'bgm-item--active' : ''}`}>
                 <div className="bgm-item__info">
                   <div className="bgm-item__title">
-                    🎸 Petikan Akustik Bawaan {!activeTrack && <span style={{ color: 'var(--green-dark)', fontSize: '0.74rem' }}>✓ AKTIF</span>}
+                    🎸 Petikan Akustik Bawaan {!activeTrack && <span style={{ color: 'var(--green)', fontSize: '0.74rem' }}>✓ AKTIF</span>}
                   </div>
                   <div className="bgm-item__artist">
                     Web Audio Physical Modeling • Karplus-Strong
@@ -583,7 +583,7 @@ export default function BgmSettings() {
                 <div key={'saved-' + saved.id} className={`bgm-item ${isActive ? 'bgm-item--active' : ''}`}>
                   <div className="bgm-item__info">
                     <div className="bgm-item__title">
-                      🎵 {saved.name} {isActive && <span style={{ color: 'var(--green-dark)', fontSize: '0.74rem' }}>✓ AKTIF</span>}
+                      🎵 {saved.name} {isActive && <span style={{ color: 'var(--green)', fontSize: '0.74rem' }}>✓ AKTIF</span>}
                     </div>
                     <div className="bgm-item__artist">
                       Tersimpan di IndexedDB browser
@@ -628,7 +628,7 @@ export default function BgmSettings() {
                 <div key={item.id} className={`bgm-item ${isActive ? 'bgm-item--active' : ''}`}>
                   <div className="bgm-item__info">
                     <div className="bgm-item__title">
-                      {item.title} {isActive && <span style={{ color: 'var(--green-dark)', fontSize: '0.74rem' }}>✓ AKTIF</span>}
+                      {item.title} {isActive && <span style={{ color: 'var(--green)', fontSize: '0.74rem' }}>✓ AKTIF</span>}
                     </div>
                     <div className="bgm-item__artist">
                       👤 {item.artist} • Pixabay Free

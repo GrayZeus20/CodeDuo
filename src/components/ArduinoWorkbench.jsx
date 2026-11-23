@@ -183,10 +183,19 @@ export default function ArduinoWorkbench() {
     } catch (_) {}
   }, [simRunning, evalRes]);
 
-  /* Evaluasi checklist tantangan aktif */
+  /* Evaluasi checklist tantangan aktif (stabil walau LED sedang berkedip Blink) */
   const checklist = useMemo(() => {
-    return challenge.check(components, wires, evalRes, simRan);
-  }, [challenge, components, wires, evalRes, simRan]);
+    if (!simRunning || !simResult || !simResult.ok || blinkingPins.size === 0) {
+      return challenge.check(components, wires, evalRes, simRan);
+    }
+    const steadyPins = { ...simResult.board.pins };
+    blinkingPins.forEach((p) => {
+      const prev = steadyPins[p] || { mode: 'OUTPUT', digital: 1, pwm: 0 };
+      steadyPins[p] = { ...prev, digital: 1 };
+    });
+    const steadyEval = evaluateWorkbenchCircuit(components, wires, { ...simResult.board, pins: steadyPins });
+    return challenge.check(components, wires, steadyEval, simRan);
+  }, [challenge, components, wires, evalRes, simRan, simRunning, simResult, blinkingPins]);
 
   const allChecklistDone = checklist.length > 0 && checklist.every((item) => item.ok);
 

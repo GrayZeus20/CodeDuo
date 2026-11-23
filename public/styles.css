@@ -4217,3 +4217,29 @@ html.reduced-motion .buddy__sparkles-wrap { display: none; }
   color: #fde68a;
   border-bottom-color: #92400e;
 }
+
+/* Balon Bibit anti-terpotong saat di-drag ke tepi kiri atau atas layar */
+.buddy__bubble--left {
+  left: 0;
+  right: auto;
+}
+
+.buddy__bubble--left .buddy__bubble-tail {
+  left: 26px;
+  right: auto;
+}
+
+.buddy__bubble--below {
+  bottom: auto;
+  top: calc(100% - 2px);
+}
+
+.buddy__bubble--below .buddy__bubble-tail {
+  bottom: auto;
+  top: -7px;
+  transform: rotate(225deg);
+}
+
+:root[data-theme="dark"] .bgm-item__tag {
+  color: #34d399;
+}

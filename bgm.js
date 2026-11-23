@@ -453,6 +453,8 @@ const BGM = (() => {
 
     /* Periksa track custom */
     const track = await fetchActiveTrackFromDB();
+    /* Cek ulang setelah await (hindari race condition jika user baru saja klik Mute/Pause) */
+    if (!isEnabled || isMuted) return;
     if (track && track.blob) {
       /* Hentikan synth jika menyala */
       stopSynth();
@@ -470,7 +472,12 @@ const BGM = (() => {
 
       try {
         await customAudio.play();
-        isRunning = true;
+        if (!isEnabled || isMuted) {
+          stopCustomAudio();
+          isRunning = false;
+        } else {
+          isRunning = true;
+        }
       } catch (e) {
         console.warn('[BGM] Autoplay custom diblokir, menunggu klik:', e);
       }

@@ -150,15 +150,20 @@ function RunView({ session, topic, isReview }) {
 
 function Feedback({ session, onContinue, onRetry }) {
   const ref = useRef(null);
+  const busyRef = useRef(false);
   const last = session.lastResult;
   useEffect(() => { if (ref.current) slideUp(ref.current); }, []);
   const run = (e) => {
+    if (busyRef.current) return;
+    busyRef.current = true;
     SFX.click();
     if (ref.current) fadeOutDown(ref.current, () => onContinue());
     else onContinue();
     pop(e.currentTarget);
   };
   const retry = (e) => {
+    if (busyRef.current) return;
+    busyRef.current = true;
     if (ref.current) fadeOutDown(ref.current, () => onRetry());
     else onRetry();
     pop(e.currentTarget);
@@ -795,11 +800,12 @@ function DoneView({ session, topic, isReview, state }) {
       notifyStreakMilestone(state.streak.count).catch(() => {});
     }
   }, [state && state.streak ? state.streak.count : 0]);
-  const allDone = state.path.every(isTopicDone);
+  const path = Array.isArray(state.path) ? state.path : [];
+  const allDone = path.length > 0 && path.every(isTopicDone);
   const nodes = isReview ? [] : topicNodes(topic.id);
   const idx = isReview ? -1 : nodes.findIndex((n) => n.id === session.nodeId);
   const nextNode = idx >= 0 ? nodes[idx + 1] : null;
-  const nextTopicId = isReview ? null : state.path[state.path.indexOf(topic.id) + 1];
+  const nextTopicId = isReview ? null : path[path.indexOf(topic.id) + 1];
   const title = isReview ? 'Latihan selesai!' : (session.kind === 'test' ? 'Ujian ' + session.tier + ' lulus!' : 'Step ' + String(session.nodeId).split('--')[1] + ' tuntas!');
   const more = isReview ? dueReviewKeys().length : 0;
 
@@ -822,6 +828,9 @@ function DoneView({ session, topic, isReview, state }) {
           >{nextNode.label}</button>
         ) : (
           <a className="btn btn--primary" href="#/">{(nextTopicId || allDone) ? 'Lanjut ke topik lain 🔓' : 'Ke home'}</a>
+        )}
+        {!isReview && topic && (
+          <a className="btn btn--ghost" href={'#/topic/' + topic.id}>Kembali ke {topic.name}</a>
         )}
       </div>
     </section>

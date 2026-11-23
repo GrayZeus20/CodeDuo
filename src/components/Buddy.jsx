@@ -579,7 +579,11 @@ export default function Buddy() {
       {isBubbleVisible && line.text && (
         <div
           key={bubbleKey}
-          className="buddy__bubble buddy__bubble--pop"
+          className={
+            'buddy__bubble buddy__bubble--pop' +
+            (pos && pos.x < 220 ? ' buddy__bubble--left' : '') +
+            (pos && pos.y < 120 ? ' buddy__bubble--below' : '')
+          }
           role="status"
           onMouseDown={(e) => e.preventDefault()}
           onClick={handleBubbleClick}
