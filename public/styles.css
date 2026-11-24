@@ -4243,3 +4243,574 @@ html.reduced-motion .buddy__sparkles-wrap { display: none; }
 :root[data-theme="dark"] .bgm-item__tag {
   color: #34d399;
 }
+
+/* ================= Dedicated Materi Pages (Hub & Detail) ================= */
+
+.topic__materi-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  transition: border-color 0.16s ease, background 0.16s ease;
+}
+
+.topic__materi-banner:hover {
+  border-color: var(--green);
+  background: var(--bg-soft);
+}
+
+.topic__materi-ico {
+  font-size: 1.65rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.topic__materi-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.topic__materi-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.topic__materi-desc {
+  font-size: 0.84rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.topic__materi-cta {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.lesson-path__item.is-locked {
+  cursor: pointer;
+}
+
+/* Materi Hub & Detail Shared Layout */
+.materi-hub,
+.materi--detail {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.materi-hub__hero {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border-width: 2px;
+}
+
+.materi-hub__hero-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.materi-hub__hero-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.materi-hub__desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.materi-hub__hero-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.materi-hub__stat {
+  font-size: 0.86rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.materi-hub__stat b {
+  color: var(--ink);
+}
+
+/* Materi Cards & Typography */
+.materi__section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.materi__heading {
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0 0 8px 0;
+}
+
+.materi__section-head .materi__heading {
+  margin-bottom: 0;
+}
+
+.materi__section-lead {
+  font-size: 0.88rem;
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+}
+
+.materi__prose {
+  font-size: 0.96rem;
+  line-height: 1.72;
+  color: var(--ink);
+  margin: 0;
+}
+
+.materi__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  background: var(--bg-soft);
+  color: var(--green-dark);
+  border: 1px solid var(--line);
+}
+
+.materi__badge--muted {
+  color: var(--muted);
+}
+
+.materi__numbered {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.materi__numbered-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 0.93rem;
+  line-height: 1.62;
+  color: var(--ink);
+}
+
+.materi__num {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hub Chapters List & Filters */
+.materi-hub__chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.materi-hub__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.materi-hub__search {
+  width: 100%;
+}
+
+.materi-hub__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.materi-hub__tab {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.materi-hub__tab:hover {
+  border-color: var(--green);
+  color: var(--ink);
+}
+
+.materi-hub__tab.is-active {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.materi-hub__tier-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.materi-hub__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.materi-hub__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.materi-hub__item:hover {
+  border-color: var(--green);
+  background: var(--bg-soft);
+}
+
+.materi-hub__step-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.84rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.materi-hub__step-badge.is-done {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.materi-hub__item-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.materi-hub__item-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.materi-hub__item-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.materi-hub__item-meta {
+  font-size: 0.76rem;
+  color: var(--muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.materi-hub__item-summary {
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.48;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.materi-hub__arrow {
+  color: var(--muted);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.materi-hub__empty {
+  padding: 24px;
+  text-align: center;
+}
+
+/* Deep-Dive Lesson Materi Page */
+.materi__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.materi__nav-alt {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.materi__nav-alt:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.materi__hero-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  border-width: 2px;
+}
+
+.materi__meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.materi__hero-sub {
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.materi__article {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.materi__article .materi__card {
+  padding: 20px;
+}
+
+.materi__examples {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.materi__example {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.materi__example-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.materi__example-note {
+  font-size: 0.88rem;
+  line-height: 1.58;
+  color: var(--muted);
+  margin: 0;
+}
+
+.materi__pitfalls {
+  margin: 0 0 14px 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.materi__cta-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+}
+
+.materi__cta-title {
+  display: block;
+  font-size: 1rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.materi__cta-sub {
+  font-size: 0.86rem;
+  margin: 0;
+}
+
+.materi__pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.materi__pager-btn {
+  max-width: 100%;
+  text-decoration: none;
+  font-size: 0.86rem;
+}
+
+.materi__pager-btn--next {
+  margin-left: auto;
+}
+
+/* Mode Malam Overrides for Dedicated Materi Pages */
+:root[data-theme="dark"] .topic__materi-banner,
+:root[data-theme="dark"] .materi-hub__hero,
+:root[data-theme="dark"] .materi__hero-card,
+:root[data-theme="dark"] .materi-hub__item,
+:root[data-theme="dark"] .materi__cta-box {
+  background: var(--bg);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .topic__materi-banner:hover,
+:root[data-theme="dark"] .materi-hub__item:hover {
+  background: var(--bg-soft);
+  border-color: var(--green);
+}
+
+:root[data-theme="dark"] .materi__numbered-item {
+  background: var(--bg-soft);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .materi__badge {
+  background: var(--bg-soft);
+  border-color: var(--line);
+  color: var(--green);
+}
+
+:root[data-theme="dark"] .materi__badge--muted {
+  color: var(--muted);
+}
+
+:root[data-theme="dark"] .materi-hub__tab {
+  background: var(--bg);
+  border-color: var(--line);
+  color: var(--muted);
+}
+
+:root[data-theme="dark"] .materi-hub__tab.is-active {
+  background: var(--green);
+  border-color: var(--green);
+  color: #062115;
+}
+
+:root[data-theme="dark"] .materi-hub__step-badge {
+  background: var(--bg-soft);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .materi-hub__step-badge.is-done {
+  background: var(--green);
+  border-color: var(--green);
+  color: #062115;
+}
+
+:root[data-theme="dark"] .materi__tip {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.25);
+  color: #e0f2fe;
+}
+
+@media (max-width: 640px) {
+  .topic__materi-banner {
+    flex-wrap: wrap;
+    padding: 14px;
+  }
+  .topic__materi-cta {
+    width: 100%;
+    text-align: center;
+  }
+  .materi-hub__hero,
+  .materi__hero-card,
+  .materi__article .materi__card,
+  .materi__cta-box {
+    padding: 16px;
+  }
+  .materi-hub__hero-top {
+    align-items: flex-start;
+  }
+  .materi__pager {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .materi__pager-btn {
+    text-align: center;
+  }
+  .materi__pager-btn--next {
+    margin-left: 0;
+  }
+}

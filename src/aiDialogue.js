@@ -215,10 +215,47 @@ export function createDialogueModel() {
 }
 
 /**
+ * Pastikan struktur model yang dimuat dari localStorage/import selalu lengkap
+ * (migrasi aman untuk data lama yang belum memiliki topicWeights).
+ */
+export function sanitizeDialogueModel(raw) {
+  const base = createDialogueModel();
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return base;
+  const weights = Object.assign({}, base.weights);
+  if (raw.weights && typeof raw.weights === 'object' && !Array.isArray(raw.weights)) {
+    Object.keys(raw.weights).forEach((k) => {
+      if (typeof raw.weights[k] === 'number' && Number.isFinite(raw.weights[k])) {
+        weights[k] = raw.weights[k];
+      }
+    });
+  }
+  const topicWeights = {};
+  if (raw.topicWeights && typeof raw.topicWeights === 'object' && !Array.isArray(raw.topicWeights)) {
+    Object.keys(raw.topicWeights).forEach((k) => {
+      if (typeof raw.topicWeights[k] === 'number' && Number.isFinite(raw.topicWeights[k])) {
+        topicWeights[k] = raw.topicWeights[k];
+      }
+    });
+  }
+  return {
+    weights,
+    topicWeights,
+    interactions: typeof raw.interactions === 'number' && Number.isFinite(raw.interactions) ? raw.interactions : 0,
+    lr: typeof raw.lr === 'number' && Number.isFinite(raw.lr) && raw.lr > 0 ? raw.lr : base.lr,
+  };
+}
+
+/**
  * Pembelajaran online (Online SGD) saat pengguna berinteraksi atau menyelesaikan latihan.
  */
 export function updateDialogueModel(model, outcome = {}) {
-  if (!model || !model.weights) return;
+  if (!model || typeof model !== 'object') return;
+  if (!model.weights || typeof model.weights !== 'object') {
+    model.weights = createDialogueModel().weights;
+  }
+  if (!model.topicWeights || typeof model.topicWeights !== 'object') {
+    model.topicWeights = {};
+  }
   model.interactions = (model.interactions || 0) + 1;
   const lr = model.lr || 0.15;
 

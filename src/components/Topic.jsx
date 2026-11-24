@@ -1,7 +1,6 @@
 /* CodeDuo — Topik: jalur 3 tier × (step + ujian), unlock berurutan global. */
 'use strict';
 
-import { useState } from 'react';
 import { useStore } from '../useStore.js';
 import {
   topicById, topicNodes, isNodeDone, stepStart, tierTest,
@@ -10,20 +9,19 @@ import {
 import { TIER_ORDER } from '../../content.js';
 import { pop } from '../lib/motion.js';
 import { SFX } from '../../sfx.js';
-import { TOPIC_GUIDES } from '../guidebooks.js';
+import { showToast } from '../uiFeedback.js';
 import TopicIcon from './TopicIcon.jsx';
 
 export default function Topic({ topicId }) {
   useStore();
-  const [showGuide, setShowGuide] = useState(false);
   const topic = topicById(topicId);
   if (!topic) {
     return (<section className="screen"><p>Topik tidak ditemukan. <a href="#/">Ke home</a></p></section>);
   }
-  const guide = TOPIC_GUIDES[topicId];
   const nodes = topicNodes(topicId);
   const stepNodes = nodes.filter((n) => n.kind === 'step');
   const doneSteps = stepNodes.filter((n) => isNodeDone(topicId, n.id)).length;
+  const lessonCount = (topic.lessons || []).length;
 
   return (
     <section className="screen topic">
@@ -80,38 +78,21 @@ export default function Topic({ topicId }) {
         </a>
       )}
 
-      {guide && (
-        <div className="topic__guide-card card">
-          <div className="topic__guide-header">
-            <b>💡 Panduan Singkat · {guide.title}</b>
-            <button
-              className="btn btn--ghost btn--sm"
-              onClick={(e) => { pop(e.currentTarget); setShowGuide((v) => !v); }}
-            >
-              {showGuide ? 'Tutup ▲' : 'Buka Tips ▼'}
-            </button>
-          </div>
-          {showGuide && (
-            <div className="topic__guide-body">
-              <p className="topic__guide-summary">{guide.summary}</p>
-              <ul className="topic__guide-points">
-                {guide.keyPoints.map((pt, i) => (
-                  <li key={i}>{pt}</li>
-                ))}
-              </ul>
-              {guide.snippet && (
-                <pre className="code-block topic__guide-code"><code>{guide.snippet}</code></pre>
-              )}
-              {guide.bibitTip && (
-                <div className="topic__guide-tip">
-                  <span aria-hidden="true">🤖</span>
-                  <div><b>Tips Bibit:</b> {guide.bibitTip}</div>
-                </div>
-              )}
-            </div>
-          )}
+      {/* Tautan ke halaman Materi terpisah agar penjelasan lebih panjang, rapi, dan fokus */}
+      <a
+        href={'#/materi/' + topic.id}
+        className="card topic__materi-banner"
+        onClick={() => SFX.open()}
+      >
+        <span className="topic__materi-ico" aria-hidden="true">📚</span>
+        <div className="topic__materi-body">
+          <b className="topic__materi-title">Materi &amp; Panduan Lengkap {topic.name}</b>
+          <p className="muted topic__materi-desc">
+            Baca penjelasan konsep mendalam, contoh kode, dan daftar {lessonCount} bab materi di halaman terpisah.
+          </p>
         </div>
-      )}
+        <span className="btn btn--ghost btn--sm topic__materi-cta">Buka Materi →</span>
+      </a>
 
       {TIER_ORDER.map((tier) => {
         const tierSteps = nodes.filter((n) => n.kind === 'step' && n.tier === tier);
@@ -133,7 +114,8 @@ export default function Topic({ topicId }) {
                 const idxStep = nodes.indexOf(step);
                 const sIdx = stepNodes.indexOf(step);
                 const stepDone = isNodeDone(topicId, step.id);
-                const prevStepDone = sIdx === 0 || isNodeDone(topicId, stepNodes[sIdx - 1].id);
+                const prevStep = sIdx > 0 ? stepNodes[sIdx - 1] : null;
+                const prevStepDone = !prevStep || isNodeDone(topicId, prevStep.id);
                 const stepOpen = prevStepDone || stepDone;
                 return (
                   <NodeItem
@@ -143,6 +125,7 @@ export default function Topic({ topicId }) {
                     idx={idxStep}
                     open={stepOpen}
                     kind="step"
+                    prevStepNo={prevStep ? prevStep.stepNo : null}
                   />
                 );
               })}
@@ -162,7 +145,7 @@ export default function Topic({ topicId }) {
   );
 }
 
-function NodeItem({ topicId, node, idx, open, kind }) {
+function NodeItem({ topicId, node, idx, open, kind, prevStepNo }) {
   const t = topicById(topicId);
   const done = isNodeDone(topicId, node.id);
   const isTest = kind === 'test';
@@ -175,22 +158,30 @@ function NodeItem({ topicId, node, idx, open, kind }) {
   const stepLessons = t ? t.lessons.filter((l) => lessonIds.includes(l.id)) : [];
   const lessonTitles = stepLessons.map((l) => l.title).join(' · ');
   const firstLesson = stepLessons[0] || null;
+
   const openStep = (e) => {
-    if (!open) return;
+    if (!open) {
+      try { SFX.back(); } catch (_) {}
+      const msg = isTest
+        ? `Selesaikan semua step ${node.tier} terlebih dahulu untuk membuka Ujian ${node.tier}.`
+        : `Selesaikan Step ${prevStepNo || (node.stepNo - 1)} dulu untuk membuka Step ${node.stepNo} — atau baca materinya dulu!`;
+      showToast(msg, 'info');
+      return;
+    }
     try { pop(e.currentTarget); } catch (_) {}
     try { if (isTest) SFX.exam(); else SFX.open(); } catch (_) {}
     if (isTest) tierTest(topicId, node.id);
     else stepStart(topicId, node.id);
   };
+
   return (
     <li
-      className={'lesson-path__item' + (idx % 2 ? ' lesson-path__item--right' : '') + (open ? ' is-clickable' : '')}
-      onClick={open ? openStep : undefined}
+      className={'lesson-path__item' + (idx % 2 ? ' lesson-path__item--right' : '') + (open ? ' is-clickable' : ' is-locked')}
+      onClick={openStep}
     >
       <button
         type="button"
         className={cls + (isTest ? ' node--exam' : '')}
-        disabled={!open}
         aria-disabled={!open}
         onClick={(e) => { e.stopPropagation(); openStep(e); }}
       >{label}</button>
@@ -203,12 +194,14 @@ function NodeItem({ topicId, node, idx, open, kind }) {
           </span>
         )}
         {!isTest && firstLesson && (
-          <a
-            className="materi-link"
-            href={'#/materi/' + topicId + '/' + firstLesson.id}
-            onClick={(e) => e.stopPropagation()}
-            title="Baca materi dulu sebelum latihan"
-          >📖 Baca materi</a>
+          <div className="materi-link-wrap">
+            <a
+              className="materi-link"
+              href={'#/materi/' + topicId + '/' + firstLesson.id}
+              onClick={(e) => e.stopPropagation()}
+              title="Buka halaman materi lengkap sebelum latihan"
+            >📖 Baca materi</a>
+          </div>
         )}
       </span>
     </li>

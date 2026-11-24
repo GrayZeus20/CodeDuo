@@ -234,44 +234,193 @@ function titleize(id) {
   return String(id).replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
-/* lessonGuide(lesson) → { summary, points[], snippet, bibitTip } hasil gabungan
- * data editorial (LESSON_GUIDES) + rangkuman otomatis dari soal. */
-function lessonGuide(lesson) {
+const EXERCISE_TYPE_LABELS = {
+  mc: 'pilihan ganda',
+  fill: 'isian sintaks',
+  code: 'tulis kode',
+  preview: 'live preview',
+  arrange: 'susun blok',
+  wiring: 'rakit rangkaian',
+};
+
+function cleanExplain(raw) {
+  return String(raw || '').replace(/\s+/g, ' ').trim();
+}
+
+function buildExamplesFromExercises(lesson, editorial) {
+  const examples = [];
+  const seenCode = new Set();
+
+  if (editorial && editorial.snippet) {
+    const code = String(editorial.snippet).trim();
+    if (code) {
+      seenCode.add(code);
+      examples.push({
+        label: 'Contoh Utama · ' + (editorial.title || lesson.title),
+        code,
+        note: 'Perhatikan struktur penulisan, tanda baca, dan urutan ekspresi pada contoh di atas.',
+      });
+    }
+  }
+
+  for (const ex of lesson.exercises) {
+    if (examples.length >= 3) break;
+    if (!ex) continue;
+
+    if ((ex.type === 'code' || ex.type === 'preview') && ex.starter) {
+      const code = String(ex.starter).trim();
+      if (code && !seenCode.has(code)) {
+        seenCode.add(code);
+        examples.push({
+          label: ex.type === 'preview' ? 'Kerangka Tampilan (Live Preview)' : 'Pola Kode Latihan',
+          code,
+          note: cleanExplain(ex.explain) || cleanExplain(ex.q),
+        });
+      }
+    } else if (ex.type === 'fill' && ex.code) {
+      const firstAccept = Array.isArray(ex.accept) && ex.accept.length ? String(ex.accept[0]) : '…';
+      const filled = String(ex.code).split('___').join(firstAccept).trim();
+      if (filled && !seenCode.has(filled)) {
+        seenCode.add(filled);
+        examples.push({
+          label: 'Contoh Sintaks Lengkap',
+          code: filled,
+          note: cleanExplain(ex.explain) || cleanExplain(ex.q),
+        });
+      }
+    } else if (ex.type === 'arrange' && Array.isArray(ex.blocks) && ex.blocks.length >= 2) {
+      const ordered = ex.blocks.join('\n').trim();
+      if (ordered && !seenCode.has(ordered)) {
+        seenCode.add(ordered);
+        examples.push({
+          label: 'Urutan Struktur yang Benar',
+          code: ordered,
+          note: cleanExplain(ex.explain) || cleanExplain(ex.q),
+        });
+      }
+    }
+  }
+
+  if (examples.length === 0) {
+    /* Fallback untuk bab yang mayoritas pilihan ganda (MC): ekstrak potongan sintaks/istilah kunci dari jawaban benar. */
+    const mcSnippets = [];
+    for (const ex of lesson.exercises) {
+      if (!ex || ex.type !== 'mc' || !Array.isArray(ex.options) || !Number.isInteger(ex.a)) continue;
+      const ans = String(ex.options[ex.a] || '').trim();
+      const q = cleanExplain(ex.q);
+      if (!ans || ans.length > 90) continue;
+      const line = `${q} → ${ans}`;
+      if (!mcSnippets.includes(line)) mcSnippets.push(line);
+      if (mcSnippets.length >= 4) break;
+    }
+    if (mcSnippets.length > 0) {
+      examples.push({
+        label: 'Ringkasan Pola & Istilah Kunci',
+        code: mcSnippets.join('\n'),
+        note: 'Kenali pasangan konsep dan sintaks/istilah di atas sebelum memulai latihan.',
+      });
+    }
+  }
+
+  return examples;
+}
+
+function buildExerciseBreakdown(exercises) {
+  const counts = {};
+  for (const ex of exercises) {
+    const t = ex && ex.type ? ex.type : 'mc';
+    counts[t] = (counts[t] || 0) + 1;
+  }
+  const parts = Object.keys(counts).map((t) => `${counts[t]} ${EXERCISE_TYPE_LABELS[t] || t}`);
+  return `${exercises.length} soal latihan (${parts.join(', ')})`;
+}
+
+function buildPitfalls(lesson, editorial) {
+  const pitfalls = [];
+  const types = new Set(lesson.exercises.map((e) => e && e.type));
+
+  if (editorial && editorial.pitfalls && Array.isArray(editorial.pitfalls)) {
+    editorial.pitfalls.forEach((p) => pitfalls.push(p));
+  }
+  if (types.has('fill')) {
+    pitfalls.push('Perhatikan huruf besar/kecil (case-sensitive), spasi, dan simbol seperti tanda kutip atau titik koma pada soal isian.');
+  }
+  if (types.has('arrange')) {
+    pitfalls.push('Saat menyusun blok kode, cek urutan pembuka hingga penutup serta alur logika dari atas ke bawah.');
+  }
+  if (types.has('code') || types.has('preview')) {
+    pitfalls.push('Uji hasil kerjamu secara bertahap dan pastikan nama fungsi, tag, atau properti sesuai dengan yang diminta soal.');
+  }
+  if (types.has('wiring')) {
+    pitfalls.push('Pastikan sambungan pin positif/signal dan GND tidak tertukar agar rangkaian bekerja aman tanpa korslet.');
+  }
+  if (pitfalls.length === 0) {
+    pitfalls.push('Baca pertanyaan secara menyeluruh sebelum memilih jawaban, karena perbedaan kecil pada sintaks bisa mengubah makna kode.');
+  }
+  return pitfalls.slice(0, 4);
+}
+
+/* lessonGuide(lesson, topic?) → objek materi lengkap untuk halaman Materi terpisah.
+ * Tetap mempertahankan field lama { title, summary, points[], snippet, bibitTip } agar kompatibel penuh. */
+function lessonGuide(lesson, topic) {
   if (!lesson || !Array.isArray(lesson.exercises)) return null;
   const editorial = LESSON_GUIDES[lesson.id] || null;
+  const topicName = topic && topic.name ? topic.name : '';
+  const level = lesson.level || 'Dasar';
 
-  /* Rangkum dari explain soal (maks 4 poin, unik, dipotong 140 karakter). */
-  const points = [];
+  /* Kumpulkan seluruh intisari penjelasan unik dari soal-soal di bab ini (utuh, tanpa potong 140 karakter). */
+  const extractedPoints = [];
   const seen = new Set();
   for (const ex of lesson.exercises) {
-    const e = String(ex && ex.explain || '').trim();
+    const e = cleanExplain(ex && ex.explain);
     if (!e) continue;
-    const k = e.toLowerCase().slice(0, 40);
+    const k = e.toLowerCase().slice(0, 48);
     if (seen.has(k)) continue;
     seen.add(k);
-    points.push(e.length > 140 ? e.slice(0, 137) + '…' : e);
-    if (points.length >= 4) break;
+    extractedPoints.push(e);
+    if (extractedPoints.length >= 8) break;
   }
 
-  /* Contoh kode: ambil dari soal preview/code pertama, jika tidak ada dari fill. */
-  let snippet = null;
-  const codeEx = lesson.exercises.find((ex) => ex.type === 'code' && ex.starter)
-    || lesson.exercises.find((ex) => ex.type === 'fill' && ex.code);
-  if (codeEx) {
-    const raw = codeEx.starter || codeEx.code || '';
-    snippet = raw.split('___').join('…'); /* tampilkan blank sebagai elipsis */
+  const editorialPoints = editorial && Array.isArray(editorial.points) ? editorial.points.slice() : [];
+  const mergedPoints = editorialPoints.slice();
+  for (const pt of extractedPoints) {
+    const key = pt.toLowerCase().slice(0, 36);
+    if (!mergedPoints.some((m) => m.toLowerCase().slice(0, 36) === key)) {
+      mergedPoints.push(pt);
+    }
+    if (mergedPoints.length >= 8) break;
   }
+
+  const examples = buildExamplesFromExercises(lesson, editorial);
+  const snippet = examples.length ? examples[0].code : null;
+  const exerciseSummary = buildExerciseBreakdown(lesson.exercises);
+  const pitfalls = buildPitfalls(lesson, editorial);
+
+  const baseSummary = editorial && editorial.summary
+    ? editorial.summary
+    : `Pada bab ${lesson.title}${topicName ? ' (' + topicName + ')' : ''}, kamu akan mempelajari konsep dasar hingga penerapan praktis yang sering ditemui di dunia nyata.`;
+
+  const overview = editorial && editorial.summary
+    ? `${editorial.summary} Bab tingkat ${level} ini dirancang agar kamu memahami alasan di balik setiap aturan sintaks sebelum mengujinya langsung melalui ${exerciseSummary}.`
+    : `${baseSummary} Pelajari setiap konsep inti dan contoh sintaks di bawah secara perlahan — seluruh poin dirangkum agar kamu siap menyelesaikan ${exerciseSummary} dengan percaya diri.`;
+
+  const totalWords = (overview + ' ' + mergedPoints.join(' ') + ' ' + pitfalls.join(' ')).split(/\s+/).length;
+  const readMinutes = Math.max(2, Math.min(6, Math.ceil(totalWords / 110)));
 
   return {
     title: editorial && editorial.title ? editorial.title : lesson.title,
-    summary: editorial && editorial.summary
-      ? editorial.summary
-      : 'Materi: ' + lesson.title + ' — pelajari poin-poin kunci di bawah sebelum masuk ke latihan.',
-    points: editorial && editorial.points && editorial.points.length ? editorial.points.concat(points.slice(0, 2)) : points,
-    snippet: editorial && editorial.snippet ? editorial.snippet : snippet,
+    level,
+    readMinutes,
+    summary: baseSummary,
+    overview,
+    points: mergedPoints,
+    examples,
+    snippet,
+    pitfalls,
+    exerciseSummary,
     bibitTip: editorial && editorial.bibitTip
       ? editorial.bibitTip
-      : 'Baca materi dulu, baru kerjakan soal — pemahaman lebih awet daripada nebak-nebak!',
+      : 'Pahami pola contoh kodenya dulu, lalu coba latihan tanpa terburu-buru — ingatan jangka panjang terbentuk saat kamu mengerti alasannya!',
   };
 }
 

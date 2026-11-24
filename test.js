@@ -1557,5 +1557,52 @@ t('arduino-workbench: pemetaan input Push Button & Potensiometer + rute #/arduin
   assert.strictEqual(routeInfo().name, 'arduino-lab');
 });
 
+t('regresi buka soal: data lama codeduo_ai_dialogue_v1 tanpa topicWeights tetap bisa buka soal', async () => {
+  const { initStore, stepStart, getSession, currentExercise, topicNodes } = await import('./src/store.js');
+  const mem = {
+    codeduo_ai_dialogue_v1: JSON.stringify({
+      weights: { refleksi: 1.5, tips: 1.3 },
+      interactions: 4,
+      lr: 0.15,
+      /* sengaja tanpa topicWeights untuk simulasi localStorage pengguna lama */
+    }),
+  };
+  const prevLs = globalThis.localStorage;
+  globalThis.localStorage = {
+    getItem: (k) => (k in mem ? mem[k] : null),
+    setItem: (k, v) => { mem[k] = String(v); },
+    removeItem: (k) => { delete mem[k]; },
+  };
+  try {
+    globalThis.location = { hash: '#/topic/laravel' };
+    initStore();
+    const first = topicNodes('laravel')[0];
+    assert.ok(first, 'node laravel pertama harus ada');
+    stepStart('laravel', first.id);
+    assert.strictEqual(globalThis.location.hash, '#/lesson/laravel/' + first.id);
+    assert.ok(getSession(), 'sesi pelajaran harus terbentuk');
+    assert.ok(currentExercise(), 'soal pertama harus langsung tersedia');
+  } finally {
+    globalThis.localStorage = prevLs;
+  }
+});
+
+t('materi terpisah: rute #/materi/:topicId & #/materi/:topicId/:lessonId + lessonGuide diperkaya', async () => {
+  const { lessonGuide } = await import('./src/lessonGuides.js');
+  globalThis.location = { hash: '#/materi/laravel' };
+  assert.deepStrictEqual(routeInfo(), { name: 'materi', topicId: 'laravel', lessonId: null });
+
+  globalThis.location = { hash: '#/materi/laravel/laravel-1' };
+  assert.deepStrictEqual(routeInfo(), { name: 'materi', topicId: 'laravel', lessonId: 'laravel-1' });
+
+  const laravel = CURRICULUM.find((x) => x.id === 'laravel');
+  const g = lessonGuide(laravel.lessons[0], laravel);
+  assert.ok(g && g.overview && g.overview.length > 60, 'overview harus cukup panjang dan jelas');
+  assert.ok(Array.isArray(g.points) && g.points.length >= 2, 'poin konsep harus terisi');
+  assert.ok(Array.isArray(g.examples), 'daftar contoh kode harus berupa array');
+  assert.ok(Array.isArray(g.pitfalls) && g.pitfalls.length >= 1, 'pitfalls harus terisi');
+  assert.ok(Number.isFinite(g.readMinutes) && g.readMinutes >= 2, 'estimasi waktu baca minimal 2 menit');
+});
+
 console.log('\n' + passed + ' passed, ' + failed + ' failed');
 process.exit(failed === 0 ? 0 : 1);

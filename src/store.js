@@ -40,7 +40,7 @@ import {
 } from '../robot.js';
 import { newCompanion, tickCompanion, onUserInteract } from './companion.js';
 import {
-  createDialogueModel, updateDialogueModel,
+  createDialogueModel, sanitizeDialogueModel, updateDialogueModel,
   getAiTapDialogue, generateAiDialogue, getAiHintDialogue,
   learnConceptFromExercise, learnConceptFromLessonFinish,
   getLearnedConcepts, clearLearnedConcepts, setLearnedConcepts,
@@ -302,7 +302,7 @@ export function importSaveData(jsonString) {
       setLearnedConcepts(data.bibitKnowledge);
     }
     if (data.aiDialogueModel && typeof data.aiDialogueModel === 'object' && data.aiDialogueModel.weights) {
-      aiDialogueModel = Object.assign(createDialogueModel(), data.aiDialogueModel);
+      aiDialogueModel = sanitizeDialogueModel(data.aiDialogueModel);
       saveExpression();
     }
     bump();
@@ -353,7 +353,7 @@ function loadExpression() {
   let rawAi = null;
   try { rawAi = localStorage.getItem(AI_MODEL_KEY); } catch (_) { rawAi = null; }
   if (rawAi) {
-    try { aiDialogueModel = JSON.parse(rawAi); } catch (_) { aiDialogueModel = createDialogueModel(); }
+    try { aiDialogueModel = sanitizeDialogueModel(JSON.parse(rawAi)); } catch (_) { aiDialogueModel = createDialogueModel(); }
   } else {
     aiDialogueModel = createDialogueModel();
   }
@@ -406,10 +406,14 @@ function interactionSignal(sig) {
 export function onInteraction(sig) {
   const s = sig || {};
   const features = interactionSignal(s);
-  learnExpression(features);
-  const activeTopicId = s.topicId || (session ? session.topicId : routeInfo().topicId) || null;
-  updateDialogueModel(aiDialogueModel, activeTopicId ? Object.assign({}, s, { topicId: activeTopicId }) : s);
-  saveExpression();
+  try {
+    learnExpression(features);
+    const activeTopicId = s.topicId || (session ? session.topicId : routeInfo().topicId) || null;
+    updateDialogueModel(aiDialogueModel, activeTopicId ? Object.assign({}, s, { topicId: activeTopicId }) : s);
+    saveExpression();
+  } catch (e) {
+    console.warn('[codeduo] model update skipped:', e && e.message);
+  }
   const r = onUserInteract(companion, Math.random);
   companion = r.state;
 
@@ -688,7 +692,7 @@ function startNode(topicId, nodeId) {
     closeChances: 2, retryActive: false, retryMsg: null, lastInput: null, checking: false,
     retryToken: 0,
   };
-  onInteraction({ lesson: true, n: 0 });
+  try { onInteraction({ lesson: true, n: 0 }); } catch (e) { console.warn('[codeduo] startNode interaction error:', e && e.message); }
   /* rute sinkron: #/lesson/<topic>/<node> → router React merender Lesson.
    * setHash juga bump() bila hash sudah sama (retry) → tak menggantung. */
   setHash('#/lesson/' + topicId + '/' + nodeId);
@@ -707,7 +711,7 @@ function startReview() {
     closeChances: 2, retryActive: false, retryMsg: null, lastInput: null, checking: false,
     retryToken: 0,
   };
-  onInteraction({ lesson: true, n: 0 });
+  try { onInteraction({ lesson: true, n: 0 }); } catch (e) { console.warn('[codeduo] startNode interaction error:', e && e.message); }
   setHash('#/review');
 }
 
@@ -1327,6 +1331,7 @@ export function routeInfo() {
   if (parts[0] === 'lesson' && parts[1] && parts[2]) return { name: 'lesson', topicId: parts[1], nodeId: parts[2] };
   if (parts[0] === 'topic' && parts[1]) return { name: 'topic', topicId: parts[1] };
   if (parts[0] === 'materi' && parts[1] && parts[2]) return { name: 'materi', topicId: parts[1], lessonId: parts[2] };
+  if (parts[0] === 'materi' && parts[1]) return { name: 'materi', topicId: parts[1], lessonId: null };
   if (parts[0] === 'profile' || parts[0] === 'settings') {
     if (parts[1] === 'bgm') return { name: 'bgm-settings' };
     return { name: 'profile' };
