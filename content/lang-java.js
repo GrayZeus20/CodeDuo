@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_JAVA = [
-{
+  {
     "id": "java",
     "name": "Java",
     "icon": "☕",
@@ -34,7 +34,7 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Java berjalan di atas",
             "options": [
-              "CSS",
+              "RCE",
               "SQL engine",
               "JVM",
               "PHP"
@@ -61,7 +61,7 @@ const CONTENT_JAVA = [
               "java compile",
               "jvmc",
               "javac",
-              "CSS"
+              "throws"
             ],
             "a": 2,
             "explain": "javac adalah compiler Java."
@@ -73,7 +73,7 @@ const CONTENT_JAVA = [
               "javac run",
               "jrun",
               "java NamaKelas",
-              "CSS"
+              "inferensi tipe lokal"
             ],
             "a": 2,
             "explain": "Perintah java menjalankan bytecode."
@@ -97,7 +97,7 @@ const CONTENT_JAVA = [
               "dinamis",
               "tanpa tipe",
               "statically typed dan OOP",
-              "CSS"
+              "kondisi ? a : b"
             ],
             "a": 2,
             "explain": "Java bertipe statis dan berorientasi objek."
@@ -130,10 +130,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "JAR adalah",
             "options": [
-              "CSS",
-              "route",
+              "kondisi benar",
+              "semua konstanta",
               "arsip bytecode/library",
-              "migrasi"
+              "cek tipe/cast eksplisit"
             ],
             "a": 2,
             "explain": "JAR mengemas bytecode."
@@ -200,7 +200,7 @@ const CONTENT_JAVA = [
               "let nama",
               "var nama",
               "tipe nama = nilai;",
-              "CSS"
+              "konfigurasi per lingkungan"
             ],
             "a": 2,
             "explain": "Java memakai tipe eksplisit."
@@ -221,9 +221,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Autoboxing berarti",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "data carrier ringkas",
+              "public static void main(String[] args)",
+              "arrow -> dan yield",
               "konversi primitif ke wrapper otomatis"
             ],
             "a": 3,
@@ -234,9 +234,9 @@ const CONTENT_JAVA = [
             "q": "Var (Java 10+) memungkinkan",
             "options": [
               "inferensi tipe lokal",
-              "CSS",
-              "route",
-              "migrasi"
+              "modifikasi string efisien",
+              "Producer Extends Consumer Super",
+              "visibility antar thread"
             ],
             "a": 0,
             "explain": "var untuk tipe lokal."
@@ -246,8 +246,8 @@ const CONTENT_JAVA = [
             "q": "String immutable",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "+",
+              "JUnit",
               "ya"
             ],
             "a": 3,
@@ -260,7 +260,7 @@ const CONTENT_JAVA = [
               "&&",
               ".concat only",
               "+",
-              "CSS"
+              "GC"
             ],
             "a": 2,
             "explain": "Operator + menggabungkan."
@@ -279,7 +279,7 @@ const CONTENT_JAVA = [
               "when",
               "unless",
               "if/else",
-              "CSS"
+              "prediktabilitas"
             ],
             "a": 2,
             "explain": "Java memakai if/else."
@@ -289,9 +289,9 @@ const CONTENT_JAVA = [
             "q": "Percabangan multi memakai",
             "options": [
               "when",
-              "CSS",
+              "HashMap",
               "switch",
-              "route"
+              "referensi"
             ],
             "a": 2,
             "explain": "Java memakai switch."
@@ -302,8 +302,8 @@ const CONTENT_JAVA = [
             "options": [
               "for (init; cond; step)",
               "for x in",
-              "CSS",
-              "route"
+              "new int[5] / {}",
+              "objek diperlakukan sebagai tipe induk"
             ],
             "a": 0,
             "explain": "For klasik memakai tiga bagian."
@@ -313,8 +313,8 @@ const CONTENT_JAVA = [
             "q": "Enhanced for memakai",
             "options": [
               "for (x of koleksi)",
-              "CSS",
-              "route",
+              "nilai tanpa hasil",
+              "objek heap tak terpakai",
               "for (T x : koleksi)"
             ],
             "a": 3,
@@ -325,9 +325,9 @@ const CONTENT_JAVA = [
             "q": "while mengulang selama",
             "options": [
               "kondisi benar",
-              "CSS",
-              "route",
-              "migrasi"
+              "routing/edge",
+              "pemantauan",
+              "heap maksimum"
             ],
             "a": 0,
             "explain": "While bergantung kondisi."
@@ -336,10 +336,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "do-while menjalankan blok",
             "options": [
-              "CSS",
-              "route",
+              "switch",
+              "int[][]",
               "minimal sekali",
-              "migrasi"
+              "getX()/setX()"
             ],
             "a": 2,
             "explain": "Do-while dieksekusi minimal sekali."
@@ -348,10 +348,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "break/continue berlaku",
             "options": [
-              "CSS",
+              "get(index)",
               "di loop",
-              "route",
-              "migrasi"
+              "RuntimeException",
+              "<T extends Batas>"
             ],
             "a": 1,
             "explain": "Mengatur loop."
@@ -362,8 +362,8 @@ const CONTENT_JAVA = [
             "options": [
               "kondisi ? a : b",
               "if(a,b)",
-              "CSS",
-              "route"
+              "per baris efisien",
+              "pembuatan objek kompleks"
             ],
             "a": 0,
             "explain": "Ternary memilih nilai."
@@ -373,9 +373,9 @@ const CONTENT_JAVA = [
             "q": "Label pada loop memungkinkan",
             "options": [
               "break/continue bertarget",
-              "CSS",
-              "route",
-              "migrasi"
+              "class Box<T>",
+              "<T> T method()",
+              "sejumlah event"
             ],
             "a": 0,
             "explain": "Label memberi target."
@@ -385,8 +385,8 @@ const CONTENT_JAVA = [
             "q": "switch modern (Java 14+) memakai",
             "options": [
               "=> ",
-              "CSS",
-              "route",
+              "? extends T",
+              "aksi per elemen",
               "arrow -> dan yield"
             ],
             "a": 3,
@@ -404,9 +404,9 @@ const CONTENT_JAVA = [
             "q": "Array dibuat memakai",
             "options": [
               "new int[5] / {}",
-              "CSS",
-              "route",
-              "migrasi"
+              "ditangani atau dideklarasikan",
+              "data per thread",
+              "saling menunggu lock"
             ],
             "a": 0,
             "explain": "Java array memakai new T[n]."
@@ -418,7 +418,7 @@ const CONTENT_JAVA = [
               ".size()",
               ".len()",
               ".length",
-              "CSS"
+              "arr[0]"
             ],
             "a": 2,
             "explain": "Array memakai .length."
@@ -429,8 +429,8 @@ const CONTENT_JAVA = [
             "options": [
               "arr.get(0)",
               "arr[0]",
-              "CSS",
-              "route"
+              "diperbaiki",
+              ".length"
             ],
             "a": 1,
             "explain": "Array diakses dengan []."
@@ -440,9 +440,9 @@ const CONTENT_JAVA = [
             "q": "Array multidimensi memakai",
             "options": [
               "int[,]",
-              "CSS",
+              "pengujian",
               "int[][]",
-              "route"
+              "RCE"
             ],
             "a": 2,
             "explain": "Java memakai int[][]."
@@ -453,8 +453,8 @@ const CONTENT_JAVA = [
             "options": [
               "enum Nama { A, B }",
               "class enum",
-              "CSS",
-              "route"
+              "info generic hilang saat runtime",
+              "T ke R"
             ],
             "a": 0,
             "explain": "Java memakai enum."
@@ -463,9 +463,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Enum dapat memiliki",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "public static void main(String[] args)",
+              "arrow -> dan yield",
+              "method sama nama beda parameter",
               "field dan method"
             ],
             "a": 3,
@@ -475,10 +475,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "values() pada enum memberi",
             "options": [
-              "CSS",
-              "route",
+              "JFR/VisualVM",
+              "application.yml/properties",
               "semua konstanta",
-              "migrasi"
+              "algoritma"
             ],
             "a": 2,
             "explain": "values mengembalikan konstanta."
@@ -487,22 +487,22 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Array index out of bounds memicu",
             "options": [
-              "CSS",
+              "extends Thread/mengimplementasikan Runnable",
               "ArrayIndexOutOfBoundsException",
-              "route",
-              "migrasi"
+              "I/O efisien",
+              "per layanan"
             ],
             "a": 1,
             "explain": "Index salah melempar exception."
           },
           {
             "type": "mc",
-            "q": "Arrays.sort mengurutkan",
+            "q": "Metode utilitas `Arrays.sort()` di Java digunakan untuk mengurutkan elemen pada",
             "options": [
               "array",
-              "CSS",
-              "route",
-              "migrasi"
+              "di loop",
+              "super()",
+              "ArrayList"
             ],
             "a": 0,
             "explain": "Arrays.sort mengurutkan."
@@ -511,9 +511,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Arrays.asList mengubah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "for (init; cond; step)",
+              "pemrosesan deklaratif koleksi",
+              "info generic hilang saat runtime",
               "array ke list"
             ],
             "a": 3,
@@ -533,7 +533,7 @@ const CONTENT_JAVA = [
               "struct Nama",
               "def Nama",
               "class Nama {}",
-              "CSS"
+              "hierarki"
             ],
             "a": 2,
             "explain": "Java memakai class."
@@ -545,7 +545,7 @@ const CONTENT_JAVA = [
               "sama dengan class",
               "constructor",
               "init",
-              "CSS"
+              "info generic hilang saat runtime"
             ],
             "a": 0,
             "explain": "Konstruktor sama nama class."
@@ -557,7 +557,7 @@ const CONTENT_JAVA = [
               "Nama()",
               "new Nama()",
               "Nama.new",
-              "CSS"
+              "nilai"
             ],
             "a": 1,
             "explain": "Java memakai new."
@@ -569,7 +569,7 @@ const CONTENT_JAVA = [
               "modifier private",
               "garis bawah",
               "#",
-              "CSS"
+              "request"
             ],
             "a": 0,
             "explain": "Java memakai modifier."
@@ -580,8 +580,8 @@ const CONTENT_JAVA = [
             "options": [
               "x.get",
               "getX()/setX()",
-              "CSS",
-              "route"
+              ".length",
+              "new Nama()"
             ],
             "a": 1,
             "explain": "Konvensi get/set."
@@ -593,7 +593,7 @@ const CONTENT_JAVA = [
               "implements",
               "with",
               "extends",
-              "CSS"
+              "semua selesai"
             ],
             "a": 2,
             "explain": "Java memakai extends."
@@ -605,7 +605,7 @@ const CONTENT_JAVA = [
               "extends",
               "with",
               "implements",
-              "CSS"
+              "seluruh teks"
             ],
             "a": 2,
             "explain": "Java memakai implements."
@@ -617,7 +617,7 @@ const CONTENT_JAVA = [
               "parent()",
               "base()",
               "super()",
-              "CSS"
+              "\"\"\""
             ],
             "a": 2,
             "explain": "super memanggil induk."
@@ -628,8 +628,8 @@ const CONTENT_JAVA = [
             "options": [
               "override()",
               "@Override",
-              "CSS",
-              "route"
+              "get(key)",
+              ".split()"
             ],
             "a": 1,
             "explain": "Anotasi @Override."
@@ -640,8 +640,8 @@ const CONTENT_JAVA = [
             "options": [
               "interface only",
               "abstract class",
-              "CSS",
-              "route"
+              "menambah kompleksitas",
+              "hasil async"
             ],
             "a": 1,
             "explain": "Java memakai abstract class."
@@ -658,8 +658,8 @@ const CONTENT_JAVA = [
             "q": "Java mendukung multiple inheritance class",
             "options": [
               "ya",
-              "CSS",
-              "route",
+              "String",
+              "if/else",
               "tidak"
             ],
             "a": 3,
@@ -669,10 +669,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Interface memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "setAutoCommit(false)/commit",
+              "lokasi berkas",
               "banyak implementasi",
-              "migrasi"
+              "bebas framework"
             ],
             "a": 2,
             "explain": "Class dapat implement banyak interface."
@@ -681,10 +681,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Method overriding berarti",
             "options": [
-              "CSS",
-              "route",
+              "bytecode saat runtime",
+              "Menentukan tipe elemen koleksi saat compile",
               "subclass menimpa method induk",
-              "migrasi"
+              "inferensi tipe lokal"
             ],
             "a": 2,
             "explain": "Override mengubah perilaku."
@@ -693,10 +693,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Method overloading berarti",
             "options": [
-              "CSS",
+              "menaikkan ke tipe induk",
               "method sama nama beda parameter",
-              "route",
-              "migrasi"
+              "? extends T",
+              "aksi per elemen"
             ],
             "a": 1,
             "explain": "Overload beda signature."
@@ -705,9 +705,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Polimorfisme memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "konfigurasi per lingkungan",
+              "Menutup resource yang mengimplementasikan AutoCloseable",
+              "for (T x : koleksi)",
               "objek diperlakukan sebagai tipe induk"
             ],
             "a": 3,
@@ -717,10 +717,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Upcasting berarti",
             "options": [
-              "CSS",
-              "route",
+              "pemrosesan deklaratif koleksi",
+              "info generic hilang saat runtime",
               "menaikkan ke tipe induk",
-              "migrasi"
+              "T ke R"
             ],
             "a": 2,
             "explain": "Upcast aman."
@@ -730,9 +730,9 @@ const CONTENT_JAVA = [
             "q": "Downcasting memerlukan",
             "options": [
               "cek tipe/cast eksplisit",
-              "CSS",
-              "route",
-              "migrasi"
+              "get(index)",
+              ".replace()/replaceAll()",
+              "RuntimeException"
             ],
             "a": 0,
             "explain": "Downcast bisa gagal."
@@ -741,10 +741,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "instanceof memeriksa",
             "options": [
-              "CSS",
+              "Spring Security",
               "tipe objek",
-              "route",
-              "migrasi"
+              "perilaku",
+              "pencocokan tipe"
             ],
             "a": 1,
             "explain": "instanceof cek tipe."
@@ -753,10 +753,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "final pada class berarti",
             "options": [
-              "CSS",
-              "route",
+              "satu method abstrak",
+              "kontrak dan implementasi",
               "tidak bisa diwarisi",
-              "migrasi"
+              "data carrier ringkas"
             ],
             "a": 2,
             "explain": "final mencegah pewarisan."
@@ -766,9 +766,9 @@ const CONTENT_JAVA = [
             "q": "Composition sering disarankan",
             "options": [
               "tidak",
-              "CSS",
+              "GC",
               "ya",
-              "route"
+              "javac"
             ],
             "a": 2,
             "explain": "Komposisi fleksibel."
@@ -786,8 +786,8 @@ const CONTENT_JAVA = [
             "options": [
               "ArrayList",
               "Array only",
-              "CSS",
-              "route"
+              "container Spring",
+              "endpoint monitoring"
             ],
             "a": 0,
             "explain": "ArrayList implementasi List."
@@ -797,9 +797,9 @@ const CONTENT_JAVA = [
             "q": "Map umum adalah",
             "options": [
               "MapArray",
-              "CSS",
+              "implements",
               "HashMap",
-              "route"
+              "tipe objek"
             ],
             "a": 2,
             "explain": "HashMap implementasi Map."
@@ -809,8 +809,8 @@ const CONTENT_JAVA = [
             "q": "Set umum adalah",
             "options": [
               "SetArray",
-              "CSS",
-              "route",
+              ".equals()",
+              "throws",
               "HashSet"
             ],
             "a": 3,
@@ -823,7 +823,7 @@ const CONTENT_JAVA = [
               "push()",
               "append()",
               "add()",
-              "CSS"
+              "@BeforeEach"
             ],
             "a": 2,
             "explain": "List memakai add()."
@@ -835,7 +835,7 @@ const CONTENT_JAVA = [
               "length()",
               "count()",
               "size()",
-              "CSS"
+              ".java"
             ],
             "a": 2,
             "explain": "Koleksi memakai size()."
@@ -847,7 +847,7 @@ const CONTENT_JAVA = [
               "get(index)",
               "list[index]",
               "at()",
-              "CSS"
+              "try/catch"
             ],
             "a": 0,
             "explain": "List memakai get()."
@@ -859,7 +859,7 @@ const CONTENT_JAVA = [
               "get(key)",
               "map[key]",
               "at()",
-              "CSS"
+              "metadata"
             ],
             "a": 0,
             "explain": "Map memakai get()."
@@ -869,9 +869,9 @@ const CONTENT_JAVA = [
             "q": "Generics pada koleksi memakai",
             "options": [
               "List of String",
-              "CSS",
+              "penting",
               "List<String>",
-              "route"
+              "per layanan"
             ],
             "a": 2,
             "explain": "Java memakai <T>."
@@ -880,9 +880,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Iterasi koleksi memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "new Nama()",
+              "abstract class",
+              "HashSet",
               "for-each/Iterator"
             ],
             "a": 3,
@@ -892,10 +892,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Stream API memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "konfigurasi per lingkungan",
+              "Menutup resource yang mengimplementasikan AutoCloseable",
               "pemrosesan deklaratif koleksi",
-              "migrasi"
+              "for (T x : koleksi)"
             ],
             "a": 2,
             "explain": "Stream untuk pipeline."
@@ -911,10 +911,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "String immutable sehingga",
             "options": [
-              "CSS",
+              "subclass menimpa method induk",
               "operasi menghasilkan string baru",
-              "route",
-              "migrasi"
+              "modifikasi string efisien",
+              "Producer Extends Consumer Super"
             ],
             "a": 1,
             "explain": "String tidak berubah."
@@ -923,10 +923,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "StringBuilder dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "objek heap tak terpakai",
+              "Java Virtual Machine (JVM)",
               "modifikasi string efisien",
-              "migrasi"
+              "konversi primitif ke wrapper otomatis"
             ],
             "a": 2,
             "explain": "Builder efisien untuk banyak edit."
@@ -938,7 +938,7 @@ const CONTENT_JAVA = [
               ".size()",
               ".len()",
               ".length()",
-              "CSS"
+              "ReentrantLock"
             ],
             "a": 2,
             "explain": "String memakai length()."
@@ -948,8 +948,8 @@ const CONTENT_JAVA = [
             "q": "Mengubah huruf besar memakai",
             "options": [
               ".upper()",
-              "CSS",
-              "route",
+              "switch",
+              "int[][]",
               ".toUpperCase()"
             ],
             "a": 3,
@@ -961,8 +961,8 @@ const CONTENT_JAVA = [
             "options": [
               ".strip()",
               ".trim()",
-              "CSS",
-              "route"
+              "backward compatible",
+              "String"
             ],
             "a": 1,
             "explain": "trim/strip."
@@ -973,8 +973,8 @@ const CONTENT_JAVA = [
             "options": [
               ".replace()/replaceAll()",
               ".gsub()",
-              "CSS",
-              "route"
+              "lokasi berkas",
+              "bebas framework"
             ],
             "a": 0,
             "explain": "replace/replaceAll."
@@ -985,8 +985,8 @@ const CONTENT_JAVA = [
             "options": [
               ".explode()",
               ".split()",
-              "CSS",
-              "route"
+              "lock intrinsic",
+              "banyak kasus"
             ],
             "a": 1,
             "explain": "split memecah."
@@ -996,9 +996,9 @@ const CONTENT_JAVA = [
             "q": "Membandingkan isi string memakai",
             "options": [
               "== selalu",
-              "CSS",
+              "for-each/Iterator",
               ".equals()",
-              "route"
+              "referensi"
             ],
             "a": 2,
             "explain": "equals membandingkan isi."
@@ -1009,8 +1009,8 @@ const CONTENT_JAVA = [
             "options": [
               "selalu isi",
               "referensi",
-              "CSS",
-              "route"
+              "ke List",
+              "interface fungsional"
             ],
             "a": 1,
             "explain": "== membandingkan referensi."
@@ -1019,10 +1019,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "String formatting memakai",
             "options": [
-              "CSS",
-              "route",
+              "HashSet",
+              ".length()",
               "String.format",
-              "migrasi"
+              "resource otomatis"
             ],
             "a": 2,
             "explain": "String.format memformat."
@@ -1041,7 +1041,7 @@ const CONTENT_JAVA = [
               "try/rescue",
               "except",
               "try/catch",
-              "CSS"
+              "skalabilitas"
             ],
             "a": 2,
             "explain": "Java memakai try/catch."
@@ -1050,10 +1050,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "finally dijalankan",
             "options": [
-              "CSS",
+              "JVM",
               "selalu",
-              "route",
-              "migrasi"
+              "int",
+              "switch"
             ],
             "a": 1,
             "explain": "finally selalu dijalankan."
@@ -1063,9 +1063,9 @@ const CONTENT_JAVA = [
             "q": "Checked exception harus",
             "options": [
               "ditangani atau dideklarasikan",
-              "CSS",
-              "route",
-              "migrasi"
+              "visibility antar thread",
+              "bytecode saat runtime",
+              "Menentukan tipe elemen koleksi saat compile"
             ],
             "a": 0,
             "explain": "Wajib ditangani/dideklarasikan."
@@ -1076,8 +1076,8 @@ const CONTENT_JAVA = [
             "options": [
               "RuntimeException",
               "Exception only",
-              "CSS",
-              "route"
+              "map thread-safe",
+              "JaCoCo"
             ],
             "a": 0,
             "explain": "Unchecked turunan RuntimeException."
@@ -1088,7 +1088,7 @@ const CONTENT_JAVA = [
             "options": [
               "raise",
               "panic",
-              "CSS",
+              "hasil async",
               "throw"
             ],
             "a": 3,
@@ -1099,9 +1099,9 @@ const CONTENT_JAVA = [
             "q": "Deklarasi exception memakai",
             "options": [
               "throw only",
-              "CSS",
+              "alokasi/optimasi",
               "throws",
-              "route"
+              "Spring Security"
             ],
             "a": 2,
             "explain": "throws pada signature."
@@ -1110,9 +1110,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Custom exception mewarisi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "semua konstanta",
+              "cek tipe/cast eksplisit",
+              "get(index)",
               "Exception/RuntimeException"
             ],
             "a": 3,
@@ -1122,9 +1122,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "try-with-resources menutup",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Serializable",
+              "stream()",
+              "pemrosesan paralel",
               "resource otomatis"
             ],
             "a": 3,
@@ -1136,8 +1136,8 @@ const CONTENT_JAVA = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "span",
+              ".java"
             ],
             "a": 0,
             "explain": "Jangan abaikan exception."
@@ -1148,8 +1148,8 @@ const CONTENT_JAVA = [
             "options": [
               ".getMessage()",
               ".message",
-              "CSS",
-              "route"
+              "abstraksi",
+              "hash kuat"
             ],
             "a": 0,
             "explain": "getMessage memberi pesan."
@@ -1165,10 +1165,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Generics memungkinkan",
             "options": [
-              "CSS",
+              "field dan method",
               "tipe aman dan pemakaian ulang",
-              "route",
-              "migrasi"
+              "tidak bisa diwarisi",
+              "? super T"
             ],
             "a": 1,
             "explain": "Java memakai generics."
@@ -1179,8 +1179,8 @@ const CONTENT_JAVA = [
             "options": [
               "class Box<T>",
               "class Box[T]",
-              "CSS",
-              "route"
+              "get(index)",
+              ".replace()/replaceAll()"
             ],
             "a": 0,
             "explain": "Java memakai <T>."
@@ -1189,10 +1189,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Batasan generic memakai",
             "options": [
-              "CSS",
+              "type safety",
               "<T extends Batas>",
-              "route",
-              "migrasi"
+              "parallel processing",
+              "performa/type safety"
             ],
             "a": 1,
             "explain": "extends membatasi."
@@ -1203,7 +1203,7 @@ const CONTENT_JAVA = [
             "options": [
               "*",
               "#",
-              "CSS",
+              "+",
               "?"
             ],
             "a": 3,
@@ -1213,9 +1213,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Wildcard extends memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "method sama nama beda parameter",
+              "ditangani atau dideklarasikan",
+              "data per thread",
               "? extends T"
             ],
             "a": 3,
@@ -1225,10 +1225,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Wildcard super memakai",
             "options": [
-              "CSS",
-              "route",
+              "class ke JVM",
+              "mengukur kualitas test",
               "? super T",
-              "migrasi"
+              "tipe nama = nilai;"
             ],
             "a": 2,
             "explain": "Lower bound wildcard."
@@ -1238,9 +1238,9 @@ const CONTENT_JAVA = [
             "q": "Type erasure berarti",
             "options": [
               "info generic hilang saat runtime",
-              "CSS",
-              "route",
-              "migrasi"
+              "menaikkan ke tipe induk",
+              "? extends T",
+              "aksi per elemen"
             ],
             "a": 0,
             "explain": "Erasure menghapus generic runtime."
@@ -1250,9 +1250,9 @@ const CONTENT_JAVA = [
             "q": "List<Object> tidak sama dengan",
             "options": [
               "List<String>",
-              "CSS",
-              "route",
-              "migrasi"
+              "ke List",
+              "interface fungsional",
+              "map thread-safe"
             ],
             "a": 0,
             "explain": "Generics invarian."
@@ -1261,10 +1261,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Generics menghindari",
             "options": [
-              "CSS",
-              "route",
+              "for-each/Iterator",
+              "referensi",
               "cast manual",
-              "migrasi"
+              "Exception/RuntimeException"
             ],
             "a": 2,
             "explain": "Generics mengurangi cast."
@@ -1273,9 +1273,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Generics berlebihan dapat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "lock intrinsic",
+              "banyak kasus",
+              "HikariCP",
               "kompleksitas"
             ],
             "a": 3,
@@ -1293,9 +1293,9 @@ const CONTENT_JAVA = [
             "q": "Type erasure menyebabkan",
             "options": [
               "info tipe hilang runtime",
-              "CSS",
-              "route",
-              "migrasi"
+              "? extends T",
+              "aksi per elemen",
+              "per baris efisien"
             ],
             "a": 0,
             "explain": "Erasure menghapus tipe."
@@ -1304,9 +1304,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Membuat array generic berisiko",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "menemukan instance",
+              "JAR/WAR atau container",
+              "frame method",
               "karena erasure"
             ],
             "a": 3,
@@ -1316,9 +1316,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Wildcard membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "memisahkan API",
+              "hasil stream",
+              "lock intrinsic",
               "fleksibilitas tipe"
             ],
             "a": 3,
@@ -1328,10 +1328,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "PECS singkatan dari",
             "options": [
-              "CSS",
+              "public static void main(String[] args)",
               "Producer Extends Consumer Super",
-              "route",
-              "migrasi"
+              "arrow -> dan yield",
+              "method sama nama beda parameter"
             ],
             "a": 1,
             "explain": "Prinsip PECS generics."
@@ -1340,10 +1340,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Generic method memakai",
             "options": [
-              "CSS",
+              "banyak implementasi",
               "<T> T method()",
-              "route",
-              "migrasi"
+              "size()",
+              ".trim()"
             ],
             "a": 1,
             "explain": "Generic method deklarasi."
@@ -1352,9 +1352,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Bounded type parameter memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "antarmuka berbeda",
+              "cast bersyarat",
+              "build+test+lint",
               "extends"
             ],
             "a": 3,
@@ -1364,10 +1364,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Raw type sebaiknya",
             "options": [
-              "CSS",
-              "route",
+              "akses database",
+              "Flyway/Liquibase",
               "dihindari",
-              "migrasi"
+              "tanggung jawab"
             ],
             "a": 2,
             "explain": "Hindari raw type."
@@ -1376,10 +1376,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Generics membantu",
             "options": [
-              "CSS",
-              "route",
+              "<T extends Batas>",
+              "dihindari",
               "type safety",
-              "migrasi"
+              "producer-consumer"
             ],
             "a": 2,
             "explain": "Generics menjaga tipe."
@@ -1388,10 +1388,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Wildcard berlebihan dapat",
             "options": [
-              "CSS",
+              "routing/edge",
               "mengurangi keterbacaan",
-              "route",
-              "migrasi"
+              "pemantauan",
+              "heap maksimum"
             ],
             "a": 1,
             "explain": "Gunakan jelas."
@@ -1400,10 +1400,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Generics dan inheritance",
             "options": [
-              "CSS",
-              "route",
+              "Serializable",
+              "stream()",
               "invarian",
-              "migrasi"
+              "pemrosesan paralel"
             ],
             "a": 2,
             "explain": "Generics tidak covariant default."
@@ -1419,10 +1419,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Lock eksplisit memakai",
             "options": [
-              "CSS",
+              "switch",
               "ReentrantLock",
-              "route",
-              "migrasi"
+              "int[][]",
+              "getX()/setX()"
             ],
             "a": 1,
             "explain": "ReentrantLock lock eksplisit."
@@ -1431,10 +1431,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Semaphore membatasi",
             "options": [
-              "CSS",
+              "resource otomatis",
               "akses bersamaan",
-              "route",
-              "migrasi"
+              "karena erasure",
+              "ReentrantLock"
             ],
             "a": 1,
             "explain": "Semaphore batasi akses."
@@ -1443,10 +1443,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "CountDownLatch menunggu",
             "options": [
-              "CSS",
-              "route",
+              "JaCoCo",
+              "setAutoCommit(false)/commit",
               "sejumlah event",
-              "migrasi"
+              "lokasi berkas"
             ],
             "a": 2,
             "explain": "Latch menunggu event."
@@ -1455,9 +1455,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "BlockingQueue memudahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pembuatan objek",
+              "prediktabilitas",
+              "backward compatible",
               "producer-consumer"
             ],
             "a": 3,
@@ -1468,9 +1468,9 @@ const CONTENT_JAVA = [
             "q": "ForkJoinPool untuk",
             "options": [
               "parallel processing",
-              "CSS",
-              "route",
-              "migrasi"
+              "Spring Security",
+              "perilaku",
+              "pencocokan tipe"
             ],
             "a": 0,
             "explain": "ForkJoin paralel."
@@ -1479,10 +1479,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "CompletableFuture.allOf menunggu",
             "options": [
-              "CSS",
-              "route",
+              "extends",
+              "cek tipe/cast eksplisit",
               "semua selesai",
-              "migrasi"
+              "get(index)"
             ],
             "a": 2,
             "explain": "allOf menunggu semua."
@@ -1491,10 +1491,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "ThreadLocal menyimpan",
             "options": [
-              "CSS",
+              "kontrak dan implementasi",
               "data per thread",
-              "route",
-              "migrasi"
+              "data carrier ringkas",
+              "public static void main(String[] args)"
             ],
             "a": 1,
             "explain": "ThreadLocal per thread."
@@ -1503,10 +1503,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Deadlock dihindari dengan",
             "options": [
-              "CSS",
+              "array ke list",
               "urutan lock konsisten",
-              "route",
-              "migrasi"
+              "pemrosesan deklaratif koleksi",
+              "info generic hilang saat runtime"
             ],
             "a": 1,
             "explain": "Urutan lock konsisten."
@@ -1517,8 +1517,8 @@ const CONTENT_JAVA = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "add()",
+              "class"
             ],
             "a": 1,
             "explain": "Uji concurrency."
@@ -1527,10 +1527,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Virtual threads membantu",
             "options": [
-              "CSS",
+              "akses database",
               "skalabilitas IO",
-              "route",
-              "migrasi"
+              "Flyway/Liquibase",
+              "tanggung jawab"
             ],
             "a": 1,
             "explain": "Virtual threads untuk IO."
@@ -1546,9 +1546,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Reflection memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "int[][]",
+              "getX()/setX()",
+              "banyak implementasi",
               "introspeksi runtime"
             ],
             "a": 3,
@@ -1556,12 +1556,12 @@ const CONTENT_JAVA = [
           },
           {
             "type": "mc",
-            "q": "Class.forName memuat",
+            "q": "Metode `Class.forName()` pada Java Reflection memuat definisi runtime sebuah",
             "options": [
-              "CSS",
+              "heap maksimum",
               "class",
-              "route",
-              "migrasi"
+              "cast bersyarat",
+              "GC"
             ],
             "a": 1,
             "explain": "Memuat class by name."
@@ -1570,10 +1570,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Anotasi memberi",
             "options": [
-              "CSS",
-              "route",
+              "bebas framework",
+              "secret manager",
               "metadata",
-              "migrasi"
+              "span"
             ],
             "a": 2,
             "explain": "Anotasi metadata."
@@ -1582,10 +1582,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Retention menentukan",
             "options": [
-              "CSS",
-              "route",
+              "introspeksi runtime",
+              "akses reflection",
               "ketersediaan anotasi",
-              "migrasi"
+              "operasi terminal"
             ],
             "a": 2,
             "explain": "Retention mengatur masa hidup."
@@ -1594,10 +1594,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Reflection mengorbankan",
             "options": [
-              "CSS",
+              "referensi",
               "performa/type safety",
-              "route",
-              "migrasi"
+              "Exception/RuntimeException",
+              "kompleksitas"
             ],
             "a": 1,
             "explain": "Reflection lebih lambat."
@@ -1606,9 +1606,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Framework memakai reflection untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Testcontainers/db uji",
+              "Sun Microsystems/Oracle",
+              "String",
               "DI/routing"
             ],
             "a": 3,
@@ -1618,9 +1618,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Reflection berlebihan sebaiknya",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "@RestController",
+              "satu instance",
+              "over-engineering",
               "dihindari"
             ],
             "a": 3,
@@ -1630,9 +1630,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Anotasi kustom didefinisikan dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "lock intrinsic",
+              "banyak kasus",
+              "HikariCP",
               "@interface"
             ],
             "a": 3,
@@ -1642,10 +1642,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Modul (JPMS) membatasi",
             "options": [
-              "CSS",
+              "ketersediaan anotasi",
               "akses reflection",
-              "route",
-              "migrasi"
+              "keamanan",
+              "elemen"
             ],
             "a": 1,
             "explain": "Modul membatasi akses."
@@ -1656,8 +1656,8 @@ const CONTENT_JAVA = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "array",
+              "span"
             ],
             "a": 1,
             "explain": "Dokumentasi jelas."
@@ -1674,9 +1674,9 @@ const CONTENT_JAVA = [
             "q": "Java serialization bawaan memakai",
             "options": [
               "Serializable",
-              "CSS",
-              "route",
-              "migrasi"
+              "JaCoCo",
+              "setAutoCommit(false)/commit",
+              "lokasi berkas"
             ],
             "a": 0,
             "explain": "Serializable interface."
@@ -1685,10 +1685,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "JSON library populer adalah",
             "options": [
-              "CSS",
-              "route",
+              "pembuatan objek",
+              "prediktabilitas",
               "Jackson/Gson",
-              "migrasi"
+              "backward compatible"
             ],
             "a": 2,
             "explain": "Jackson/Gson JSON."
@@ -1698,9 +1698,9 @@ const CONTENT_JAVA = [
             "q": "Deserialization data tak tepercaya berisiko",
             "options": [
               "keamanan",
-              "CSS",
-              "route",
-              "migrasi"
+              "JVM",
+              "int",
+              "switch"
             ],
             "a": 0,
             "explain": "Deserialisasi tak aman."
@@ -1709,10 +1709,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Membuat DTO membantu",
             "options": [
-              "CSS",
-              "route",
+              "resource otomatis",
+              "karena erasure",
               "memisahkan API",
-              "migrasi"
+              "ReentrantLock"
             ],
             "a": 2,
             "explain": "DTO memisahkan API."
@@ -1721,10 +1721,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Mengontrol field JSON memakai",
             "options": [
-              "CSS",
-              "route",
+              "menemukan instance",
+              "frame method",
               "anotasi",
-              "migrasi"
+              "@RestController"
             ],
             "a": 2,
             "explain": "Anotasi mengatur field."
@@ -1733,9 +1733,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Menangani tanggal serialisasi perlu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".class",
+              "final",
+              "di loop",
               "format khusus"
             ],
             "a": 3,
@@ -1747,8 +1747,8 @@ const CONTENT_JAVA = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "nilai",
+              "wajib"
             ],
             "a": 1,
             "explain": "Tangani error parsing."
@@ -1758,9 +1758,9 @@ const CONTENT_JAVA = [
             "q": "Validasi input penting",
             "options": [
               "tidak",
-              "CSS",
+              "::",
               "ya",
-              "route"
+              "teks"
             ],
             "a": 2,
             "explain": "Validasi input."
@@ -1770,8 +1770,8 @@ const CONTENT_JAVA = [
             "q": "Versioning API membantu",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "GC",
+              "javac",
               "ya"
             ],
             "a": 3,
@@ -1781,10 +1781,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Serialization sebaiknya",
             "options": [
-              "CSS",
+              "size()",
               "teruji",
-              "route",
-              "migrasi"
+              ".trim()",
+              "selalu"
             ],
             "a": 1,
             "explain": "Uji serialisasi."
@@ -1801,9 +1801,9 @@ const CONTENT_JAVA = [
             "q": "Stream dibuat dari koleksi dengan",
             "options": [
               "stream()",
-              "CSS",
-              "route",
-              "migrasi"
+              "DI/routing",
+              "anotasi",
+              "ke List"
             ],
             "a": 0,
             "explain": "Koleksi menyediakan stream()."
@@ -1812,9 +1812,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "map pada Stream",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "new Nama()",
+              "abstract class",
+              ".length()",
               "mentransformasi elemen"
             ],
             "a": 3,
@@ -1824,10 +1824,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "filter menyaring",
             "options": [
-              "CSS",
-              "route",
+              "akses repositori",
+              "listener",
               "elemen",
-              "migrasi"
+              "optimasi/debug"
             ],
             "a": 2,
             "explain": "filter menyaring."
@@ -1836,9 +1836,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "collect mengumpulkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "operasi atomik",
+              "assertThrows",
+              "Hibernate/JPA",
               "hasil stream"
             ],
             "a": 3,
@@ -1848,10 +1848,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Collectors.toList mengumpulkan",
             "options": [
-              "CSS",
+              "try/catch",
               "ke List",
-              "route",
-              "migrasi"
+              ".getMessage()",
+              "fleksibilitas tipe"
             ],
             "a": 1,
             "explain": "toList mengumpulkan ke List."
@@ -1860,9 +1860,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "reduce mengakumulasi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".java",
+              "double",
+              "kondisi benar",
               "nilai"
             ],
             "a": 3,
@@ -1873,9 +1873,9 @@ const CONTENT_JAVA = [
             "q": "forEach menjalankan",
             "options": [
               "aksi per elemen",
-              "CSS",
-              "route",
-              "migrasi"
+              "ditangani atau dideklarasikan",
+              "data per thread",
+              "saling menunggu lock"
             ],
             "a": 0,
             "explain": "forEach iterasi."
@@ -1885,9 +1885,9 @@ const CONTENT_JAVA = [
             "q": "Stream bersifat lazy hingga",
             "options": [
               "operasi terminal",
-              "CSS",
-              "route",
-              "migrasi"
+              "metadata",
+              "Jackson/Gson",
+              "mentransformasi elemen"
             ],
             "a": 0,
             "explain": "Lazy sampai terminal."
@@ -1896,9 +1896,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "parallelStream memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "routing/edge",
+              "pemantauan",
+              "heap maksimum",
               "pemrosesan paralel"
             ],
             "a": 3,
@@ -1908,10 +1908,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Pipeline stream berlebihan dapat",
             "options": [
-              "CSS",
-              "route",
+              "Serializable",
+              "stream()",
               "menambah kompleksitas",
-              "migrasi"
+              "pemrosesan paralel"
             ],
             "a": 2,
             "explain": "Gunakan jelas."
@@ -1929,7 +1929,7 @@ const CONTENT_JAVA = [
             "options": [
               "(a) => expr",
               "lambda a",
-              "CSS",
+              "domain",
               "(a) -> expr"
             ],
             "a": 3,
@@ -1939,10 +1939,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Functional interface memiliki",
             "options": [
-              "CSS",
+              "urutan lock konsisten",
               "satu method abstrak",
-              "route",
-              "migrasi"
+              "mengurangi biaya thread",
+              "konfigurasi per lingkungan"
             ],
             "a": 1,
             "explain": "Satu method abstrak."
@@ -1951,9 +1951,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Function<T,R> mengubah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "konversi primitif ke wrapper otomatis",
+              "enum Nama { A, B }",
+              "menaikkan ke tipe induk",
               "T ke R"
             ],
             "a": 3,
@@ -1964,9 +1964,9 @@ const CONTENT_JAVA = [
             "q": "Predicate<T> mengembalikan",
             "options": [
               "boolean",
-              "CSS",
-              "route",
-              "migrasi"
+              "thread pool",
+              "akses database",
+              "Flyway/Liquibase"
             ],
             "a": 0,
             "explain": "Predicate boolean."
@@ -1975,9 +1975,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Consumer<T> memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "public static void main(String[] args)",
+              "arrow -> dan yield",
+              "method sama nama beda parameter",
               "nilai tanpa hasil"
             ],
             "a": 3,
@@ -1987,10 +1987,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Supplier<T> menyediakan",
             "options": [
-              "CSS",
-              "route",
+              "int[][]",
+              "getX()/setX()",
               "nilai",
-              "migrasi"
+              "size()"
             ],
             "a": 2,
             "explain": "Supplier memberi nilai."
@@ -2001,7 +2001,7 @@ const CONTENT_JAVA = [
             "options": [
               "->",
               "=>",
-              "CSS",
+              "JUnit",
               "::"
             ],
             "a": 3,
@@ -2011,10 +2011,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "@FunctionalInterface menandai",
             "options": [
-              "CSS",
-              "route",
+              "parallel processing",
+              "performa/type safety",
               "interface fungsional",
-              "migrasi"
+              "memisahkan API"
             ],
             "a": 2,
             "explain": "Anotasi menandai."
@@ -2024,9 +2024,9 @@ const CONTENT_JAVA = [
             "q": "Lambda menangkap variabel effectively final",
             "options": [
               "tidak",
-              "CSS",
+              "+",
               "ya",
-              "route"
+              "JUnit"
             ],
             "a": 2,
             "explain": "Variabel harus effectively final."
@@ -2035,10 +2035,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Lambda memudahkan",
             "options": [
-              "CSS",
+              "operasi mahal",
               "kode ringkas",
-              "route",
-              "migrasi"
+              "JMH/load test",
+              ".class"
             ],
             "a": 1,
             "explain": "Lambda mempersingkat."
@@ -2054,10 +2054,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Thread dibuat dengan",
             "options": [
-              "CSS",
+              "cascading failure",
               "extends Thread/mengimplementasikan Runnable",
-              "route",
-              "migrasi"
+              "reproduksibilitas",
+              "@GetMapping/@PostMapping"
             ],
             "a": 1,
             "explain": "Thread atau Runnable."
@@ -2066,10 +2066,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "ExecutorService mengelola",
             "options": [
-              "CSS",
-              "route",
+              "skalabilitas",
+              "wajib",
               "thread pool",
-              "migrasi"
+              "routing/edge"
             ],
             "a": 2,
             "explain": "Executor mengelola pool."
@@ -2078,9 +2078,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Future mewakili",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".split()",
+              "throw",
+              "type safety",
               "hasil async"
             ],
             "a": 3,
@@ -2090,10 +2090,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "CompletableFuture memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "dikelola benar",
+              "cakupan",
               "komposisi async",
-              "migrasi"
+              "Maven/Gradle"
             ],
             "a": 2,
             "explain": "CompletableFuture komposisi."
@@ -2102,10 +2102,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "synchronized memakai",
             "options": [
-              "CSS",
+              "alokasi/optimasi",
               "lock intrinsic",
-              "route",
-              "migrasi"
+              "Spring Security",
+              "perilaku"
             ],
             "a": 1,
             "explain": "synchronized mengunci."
@@ -2114,10 +2114,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "volatile menjamin",
             "options": [
-              "CSS",
-              "route",
+              "T ke R",
+              "class ke JVM",
               "visibility antar thread",
-              "migrasi"
+              "mengukur kualitas test"
             ],
             "a": 2,
             "explain": "volatile visibility."
@@ -2127,9 +2127,9 @@ const CONTENT_JAVA = [
             "q": "ConcurrentHashMap untuk",
             "options": [
               "map thread-safe",
-              "CSS",
-              "route",
-              "migrasi"
+              "Serializable",
+              "stream()",
+              "pemrosesan paralel"
             ],
             "a": 0,
             "explain": "Concurrent HashMap aman."
@@ -2138,10 +2138,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "AtomicInteger untuk",
             "options": [
-              "CSS",
+              "semua konstanta",
               "operasi atomik",
-              "route",
-              "migrasi"
+              "extends",
+              "cek tipe/cast eksplisit"
             ],
             "a": 1,
             "explain": "Atomic untuk atomik."
@@ -2150,9 +2150,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Deadlock terjadi bila",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "enum Nama { A, B }",
+              "menaikkan ke tipe induk",
+              "? extends T",
               "saling menunggu lock"
             ],
             "a": 3,
@@ -2163,9 +2163,9 @@ const CONTENT_JAVA = [
             "q": "Virtual threads (Java 21)",
             "options": [
               "mengurangi biaya thread",
-              "CSS",
-              "route",
-              "migrasi"
+              "konfigurasi per lingkungan",
+              "Menutup resource yang mengimplementasikan AutoCloseable",
+              "for (T x : koleksi)"
             ],
             "a": 0,
             "explain": "Virtual threads ringan."
@@ -2193,9 +2193,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Assertion memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "(a) -> expr",
+              "komposisi async",
+              "@BeforeEach",
               "assertEquals/assertThrows"
             ],
             "a": 3,
@@ -2205,10 +2205,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Mocking memakai",
             "options": [
-              "CSS",
-              "route",
+              "HikariCP",
+              "teks",
               "Mockito",
-              "migrasi"
+              "pengujian"
             ],
             "a": 2,
             "explain": "Mockito untuk mock."
@@ -2217,10 +2217,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Test setup memakai",
             "options": [
-              "CSS",
-              "route",
+              "over-engineering",
+              "biaya thread",
               "@BeforeEach",
-              "migrasi"
+              "test implementasi"
             ],
             "a": 2,
             "explain": "Anotasi setup."
@@ -2229,9 +2229,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Parameterized test memudahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "String",
+              "if/else",
+              "arr[0]",
               "banyak kasus"
             ],
             "a": 3,
@@ -2241,10 +2241,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Coverage memakai",
             "options": [
-              "CSS",
+              "kompleksitas",
               "JaCoCo",
-              "route",
-              "migrasi"
+              "invarian",
+              "skalabilitas IO"
             ],
             "a": 1,
             "explain": "JaCoCo mengukur."
@@ -2255,8 +2255,8 @@ const CONTENT_JAVA = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "JUnit",
+              "final"
             ],
             "a": 0,
             "explain": "Perilaku jarang berubah."
@@ -2267,8 +2267,8 @@ const CONTENT_JAVA = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "span",
+              ".java"
             ],
             "a": 0,
             "explain": "CI otomasi."
@@ -2277,9 +2277,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Test exception memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "antarmuka berbeda",
+              "cast bersyarat",
+              "build+test+lint",
               "assertThrows"
             ],
             "a": 3,
@@ -2289,10 +2289,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Integration test menguji",
             "options": [
-              "CSS",
-              "route",
+              "banyak implementasi",
+              "size()",
               "alur nyata",
-              "migrasi"
+              ".trim()"
             ],
             "a": 2,
             "explain": "Integrasi end-to-end."
@@ -2309,9 +2309,9 @@ const CONTENT_JAVA = [
             "q": "JDBC menyediakan",
             "options": [
               "akses database",
-              "CSS",
-              "route",
-              "migrasi"
+              "kondisi benar",
+              "semua konstanta",
+              "extends"
             ],
             "a": 0,
             "explain": "JDBC API database."
@@ -2320,10 +2320,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "PreparedStatement mencegah",
             "options": [
-              "CSS",
-              "route",
+              "downtime",
+              "alokasi/optimasi",
               "SQL injection",
-              "migrasi"
+              "Spring Security"
             ],
             "a": 2,
             "explain": "Parameter terikat aman."
@@ -2332,9 +2332,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "ResultSet berisi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "menambah kompleksitas",
+              "hasil async",
+              "Mockito",
               "hasil query"
             ],
             "a": 3,
@@ -2346,8 +2346,8 @@ const CONTENT_JAVA = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "throw",
+              "?"
             ],
             "a": 1,
             "explain": "Tutup koneksi/statement."
@@ -2356,9 +2356,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Connection pool memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".length()",
+              "String.format",
+              "resource otomatis",
               "HikariCP"
             ],
             "a": 3,
@@ -2368,10 +2368,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Transaksi memakai",
             "options": [
-              "CSS",
+              "optimasi/debug",
               "setAutoCommit(false)/commit",
-              "route",
-              "migrasi"
+              "kompatibilitas API",
+              "getX()/setX()"
             ],
             "a": 1,
             "explain": "Transaksi manual."
@@ -2380,10 +2380,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "ORM populer adalah",
             "options": [
-              "CSS",
+              "otomatis",
               "Hibernate/JPA",
-              "route",
-              "migrasi"
+              "skalabilitas",
+              "wajib"
             ],
             "a": 1,
             "explain": "Hibernate ORM."
@@ -2392,9 +2392,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Batch insert membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "akses bersamaan",
+              "class",
+              "Serializable",
               "performa"
             ],
             "a": 3,
@@ -2406,8 +2406,8 @@ const CONTENT_JAVA = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "::",
+              "teks"
             ],
             "a": 0,
             "explain": "Tangani error DB."
@@ -2417,9 +2417,9 @@ const CONTENT_JAVA = [
             "q": "Versioning skema memakai",
             "options": [
               "Flyway/Liquibase",
-              "CSS",
-              "route",
-              "migrasi"
+              "break/continue bertarget",
+              "class Nama {}",
+              "@Override"
             ],
             "a": 0,
             "explain": "Flyway/Liquibase migrasi."
@@ -2435,10 +2435,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Membaca berkas modern memakai",
             "options": [
-              "CSS",
-              "route",
+              "(a) -> expr",
+              "komposisi async",
               "java.nio.file.Files",
-              "migrasi"
+              "@BeforeEach"
             ],
             "a": 2,
             "explain": "Files API modern."
@@ -2447,10 +2447,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Files.readString membaca",
             "options": [
-              "CSS",
+              "ArrayList",
               "seluruh teks",
-              "route",
-              "migrasi"
+              "List<String>",
+              ".equals()"
             ],
             "a": 1,
             "explain": "readString membaca teks."
@@ -2460,9 +2460,9 @@ const CONTENT_JAVA = [
             "q": "Files.writeString menulis",
             "options": [
               "teks",
-              "CSS",
-              "route",
-              "migrasi"
+              "diperbaiki",
+              ".length",
+              "new Nama()"
             ],
             "a": 0,
             "explain": "writeString menulis."
@@ -2471,9 +2471,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "BufferedReader membaca",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "sama dengan class",
+              "operasi menghasilkan string baru",
+              "info tipe hilang runtime",
               "per baris efisien"
             ],
             "a": 3,
@@ -2483,9 +2483,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Path merepresentasikan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kompleksitas",
+              "invarian",
+              "skalabilitas IO",
               "lokasi berkas"
             ],
             "a": 3,
@@ -2497,8 +2497,8 @@ const CONTENT_JAVA = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "add()",
+              "class"
             ],
             "a": 1,
             "explain": "Tutup stream."
@@ -2507,9 +2507,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "try-with-resources menutup",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "span",
+              "diagnosis",
+              "JFR/VisualVM",
               "otomatis"
             ],
             "a": 3,
@@ -2520,8 +2520,8 @@ const CONTENT_JAVA = [
             "q": "Character encoding penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "JUnit",
+              "final",
               "ya"
             ],
             "a": 3,
@@ -2531,10 +2531,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "NIO buffer memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "request",
+              "referensi tertahan",
               "I/O efisien",
-              "migrasi"
+              "akses repositori"
             ],
             "a": 2,
             "explain": "NIO buffer."
@@ -2544,8 +2544,8 @@ const CONTENT_JAVA = [
             "q": "Menangani IOException penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "nilai",
+              "wajib",
               "ya"
             ],
             "a": 3,
@@ -2562,9 +2562,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Layered architecture memisahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tidak",
+              "add()",
+              ".toUpperCase()",
               "tanggung jawab"
             ],
             "a": 3,
@@ -2574,10 +2574,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Hexagonal architecture mengisolasi",
             "options": [
-              "CSS",
+              "format khusus",
               "domain",
-              "route",
-              "migrasi"
+              "nilai",
+              "kode ringkas"
             ],
             "a": 1,
             "explain": "Hexagonal isolasi domain."
@@ -2586,9 +2586,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Clean architecture bergantung pada",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "alur nyata",
+              "performa",
+              "I/O efisien",
               "abstraksi"
             ],
             "a": 3,
@@ -2598,9 +2598,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Dependency injection memudahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "algoritma",
+              "hierarki",
+              "profiler/JFR",
               "pengujian"
             ],
             "a": 3,
@@ -2610,9 +2610,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Interfaces memisahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pemrosesan deklaratif koleksi",
+              "info generic hilang saat runtime",
+              "T ke R",
               "kontrak dan implementasi"
             ],
             "a": 3,
@@ -2622,10 +2622,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Domain model sebaiknya",
             "options": [
-              "CSS",
-              "route",
+              "hasil query",
+              "seluruh teks",
               "bebas framework",
-              "migrasi"
+              "abstraksi"
             ],
             "a": 2,
             "explain": "Domain bebas framework."
@@ -2634,10 +2634,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Modularisasi membantu",
             "options": [
-              "CSS",
+              "retry aman",
               "skalabilitas",
-              "route",
-              "migrasi"
+              "request",
+              "referensi tertahan"
             ],
             "a": 1,
             "explain": "Modul memudahkan scaling."
@@ -2648,8 +2648,8 @@ const CONTENT_JAVA = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              ".length",
+              "new Nama()"
             ],
             "a": 0,
             "explain": "Pecah class besar."
@@ -2659,8 +2659,8 @@ const CONTENT_JAVA = [
             "q": "Dokumentasi arsitektur penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "+",
+              "JUnit",
               "ya"
             ],
             "a": 3,
@@ -2672,8 +2672,8 @@ const CONTENT_JAVA = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "final",
+              "array"
             ],
             "a": 0,
             "explain": "Bertahap."
@@ -2689,10 +2689,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Input harus divalidasi",
             "options": [
-              "CSS",
-              "route",
+              "referensi",
+              "kompleksitas",
               "di server",
-              "migrasi"
+              "invarian"
             ],
             "a": 2,
             "explain": "Validasi server wajib."
@@ -2701,9 +2701,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "SQL injection dicegah dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Testcontainers/db uji",
+              "Sun Microsystems/Oracle",
+              "String",
               "PreparedStatement"
             ],
             "a": 3,
@@ -2713,9 +2713,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Menyimpan password memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "@RestController",
+              "satu instance",
+              "over-engineering",
               "hash kuat"
             ],
             "a": 3,
@@ -2725,10 +2725,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Serialization tak aman bisa",
             "options": [
-              "CSS",
-              "route",
+              "HikariCP",
+              "teks",
               "RCE",
-              "migrasi"
+              "request"
             ],
             "a": 2,
             "explain": "Deserialisasi tak aman berisiko RCE."
@@ -2737,9 +2737,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Secrets disimpan di",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "int[][]",
+              "getX()/setX()",
+              "banyak implementasi",
               "secret manager"
             ],
             "a": 3,
@@ -2750,8 +2750,8 @@ const CONTENT_JAVA = [
             "q": "Dependency scanning penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "GC",
+              "javac",
               "ya"
             ],
             "a": 3,
@@ -2763,8 +2763,8 @@ const CONTENT_JAVA = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "span",
+              ".java"
             ],
             "a": 0,
             "explain": "Perlu pertahanan berlapis."
@@ -2775,8 +2775,8 @@ const CONTENT_JAVA = [
             "options": [
               "wajib",
               "opsional",
-              "CSS",
-              "route"
+              "teruji",
+              "JUnit"
             ],
             "a": 0,
             "explain": "TLS wajib."
@@ -2787,8 +2787,8 @@ const CONTENT_JAVA = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "final",
+              "array"
             ],
             "a": 0,
             "explain": "Hindari rahasia di log."
@@ -2798,8 +2798,8 @@ const CONTENT_JAVA = [
             "q": "Audit keamanan berkala",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "+",
+              "JUnit",
               "ya"
             ],
             "a": 3,
@@ -2816,9 +2816,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Microservices memecah aplikasi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "get(key)",
+              ".split()",
+              "throw",
               "per layanan"
             ],
             "a": 3,
@@ -2828,10 +2828,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Komunikasi antar layanan memakai",
             "options": [
-              "CSS",
+              "menambah kompleksitas",
               "HTTP/message",
-              "route",
-              "migrasi"
+              "hasil async",
+              "Mockito"
             ],
             "a": 1,
             "explain": "HTTP atau pesan."
@@ -2841,9 +2841,9 @@ const CONTENT_JAVA = [
             "q": "Service discovery membantu",
             "options": [
               "menemukan instance",
-              "CSS",
-              "route",
-              "migrasi"
+              "downtime",
+              "alokasi/optimasi",
+              "Spring Security"
             ],
             "a": 0,
             "explain": "Discovery menemukan layanan."
@@ -2852,10 +2852,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Circuit breaker mencegah",
             "options": [
-              "CSS",
+              "kondisi benar",
               "cascading failure",
-              "route",
-              "migrasi"
+              "semua konstanta",
+              "extends"
             ],
             "a": 1,
             "explain": "Circuit breaker."
@@ -2864,9 +2864,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Idempotensi penting untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "akses bersamaan",
+              "class",
+              "Serializable",
               "retry aman"
             ],
             "a": 3,
@@ -2877,9 +2877,9 @@ const CONTENT_JAVA = [
             "q": "Distributed tracing menghubungkan",
             "options": [
               "span",
-              "CSS",
-              "route",
-              "migrasi"
+              "otomatis",
+              "wajib",
+              "pemantauan"
             ],
             "a": 0,
             "explain": "Tracing menghubungkan."
@@ -2889,9 +2889,9 @@ const CONTENT_JAVA = [
             "q": "Gateway menangani",
             "options": [
               "routing/edge",
-              "CSS",
-              "route",
-              "migrasi"
+              "optimasi/debug",
+              "kompatibilitas API",
+              "switch"
             ],
             "a": 0,
             "explain": "Gateway mengatur edge."
@@ -2901,9 +2901,9 @@ const CONTENT_JAVA = [
             "q": "Saga pattern menangani",
             "options": [
               "transaksi terdistribusi",
-              "CSS",
-              "route",
-              "migrasi"
+              ".length()",
+              "String.format",
+              "resource otomatis"
             ],
             "a": 0,
             "explain": "Saga transaksi."
@@ -2914,8 +2914,8 @@ const CONTENT_JAVA = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "span",
+              ".java"
             ],
             "a": 1,
             "explain": "Observability."
@@ -2924,10 +2924,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Konfigurasi terpusat membantu",
             "options": [
-              "CSS",
-              "route",
+              "metadata class",
+              "@GetMapping/@PostMapping",
               "operasional",
-              "migrasi"
+              "pembuatan objek"
             ],
             "a": 2,
             "explain": "Config terpusat."
@@ -2943,10 +2943,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Mengemas aplikasi Java memakai",
             "options": [
-              "CSS",
-              "route",
+              "kondisi benar",
+              "semua konstanta",
               "JAR/WAR atau container",
-              "migrasi"
+              "cek tipe/cast eksplisit"
             ],
             "a": 2,
             "explain": "JAR/container."
@@ -2955,10 +2955,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Container memudahkan",
             "options": [
-              "CSS",
+              "downtime",
               "reproduksibilitas",
-              "route",
-              "migrasi"
+              "alokasi/optimasi",
+              "Spring Security"
             ],
             "a": 1,
             "explain": "Container konsisten."
@@ -2969,8 +2969,8 @@ const CONTENT_JAVA = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "+",
+              "JUnit"
             ],
             "a": 1,
             "explain": "Health check."
@@ -2979,10 +2979,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Graceful shutdown menuntaskan",
             "options": [
-              "CSS",
-              "route",
+              "get(key)",
+              ".split()",
               "request",
-              "migrasi"
+              "throw"
             ],
             "a": 2,
             "explain": "Shutdown menuntaskan."
@@ -2992,9 +2992,9 @@ const CONTENT_JAVA = [
             "q": "Logging terpusat membantu",
             "options": [
               "diagnosis",
-              "CSS",
-              "route",
-              "migrasi"
+              "dikelola benar",
+              "cakupan",
+              "Maven/Gradle"
             ],
             "a": 0,
             "explain": "Log terpusat."
@@ -3003,9 +3003,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Metrik membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "seluruh teks",
+              "abstraksi",
+              "hash kuat",
               "pemantauan"
             ],
             "a": 3,
@@ -3015,10 +3015,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Rolling deploy meminimalkan",
             "options": [
-              "CSS",
-              "route",
+              "mengurangi keterbacaan",
+              "semua selesai",
               "downtime",
-              "migrasi"
+              "DI/routing"
             ],
             "a": 2,
             "explain": "Rolling deploy."
@@ -3028,9 +3028,9 @@ const CONTENT_JAVA = [
             "q": "Secret management penting",
             "options": [
               "tidak",
-              "CSS",
+              "class",
               "ya",
-              "route"
+              "objek"
             ],
             "a": 2,
             "explain": "Kelola secret."
@@ -3041,8 +3041,8 @@ const CONTENT_JAVA = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "JVM",
+              "int"
             ],
             "a": 1,
             "explain": "Migrasi bertahap."
@@ -3053,8 +3053,8 @@ const CONTENT_JAVA = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "nilai",
+              "wajib"
             ],
             "a": 0,
             "explain": "Backup data."
@@ -3070,10 +3070,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Class loader memuat",
             "options": [
-              "CSS",
+              "konversi primitif ke wrapper otomatis",
               "class ke JVM",
-              "route",
-              "migrasi"
+              "enum Nama { A, B }",
+              "menaikkan ke tipe induk"
             ],
             "a": 1,
             "explain": "Class loader memuat class."
@@ -3082,10 +3082,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Heap menyimpan",
             "options": [
-              "CSS",
-              "route",
+              "akses data",
+              "\"\"\"",
               "objek",
-              "migrasi"
+              "dikelola benar"
             ],
             "a": 2,
             "explain": "Heap untuk objek."
@@ -3094,10 +3094,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Stack menyimpan",
             "options": [
-              "CSS",
+              "biaya thread",
               "frame method",
-              "route",
-              "migrasi"
+              "test implementasi",
+              "diperbaiki"
             ],
             "a": 1,
             "explain": "Stack untuk frame."
@@ -3106,9 +3106,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Garbage collector mengelola",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "urutan lock konsisten",
+              "mengurangi biaya thread",
+              "konfigurasi per lingkungan",
               "objek heap tak terpakai"
             ],
             "a": 3,
@@ -3118,9 +3118,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "JIT compiler mengoptimasi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kondisi ? a : b",
+              "subclass menimpa method induk",
+              "modifikasi string efisien",
               "bytecode saat runtime"
             ],
             "a": 3,
@@ -3130,10 +3130,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Metaspace menyimpan",
             "options": [
-              "CSS",
+              "pengujian",
               "metadata class",
-              "route",
-              "migrasi"
+              "retry aman",
+              "request"
             ],
             "a": 1,
             "explain": "Metaspace untuk metadata."
@@ -3142,9 +3142,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Memory leak bisa terjadi karena",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "diagnosis",
+              "JFR/VisualVM",
+              "application.yml/properties",
               "referensi tertahan"
             ],
             "a": 3,
@@ -3154,10 +3154,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Profiling memakai",
             "options": [
-              "CSS",
+              "if/else",
               "JFR/VisualVM",
-              "route",
-              "migrasi"
+              "arr[0]",
+              "modifier private"
             ],
             "a": 1,
             "explain": "JFR/VisualVM profil."
@@ -3166,10 +3166,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Opsi -Xmx mengatur",
             "options": [
-              "CSS",
-              "route",
+              "referensi tertahan",
+              "akses repositori",
               "heap maksimum",
-              "migrasi"
+              "listener"
             ],
             "a": 2,
             "explain": "-Xmx batas heap."
@@ -3178,9 +3178,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Escape analysis membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".length",
+              "new Nama()",
+              "abstract class",
               "alokasi/optimasi"
             ],
             "a": 3,
@@ -3197,10 +3197,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Spring Boot memudahkan",
             "options": [
-              "CSS",
+              "for (T x : koleksi)",
               "membuat aplikasi Java",
-              "route",
-              "migrasi"
+              "sama dengan class",
+              "operasi menghasilkan string baru"
             ],
             "a": 1,
             "explain": "Boot menyederhanakan setup."
@@ -3210,9 +3210,9 @@ const CONTENT_JAVA = [
             "q": "Dependency injection di Spring memakai",
             "options": [
               "container Spring",
-              "CSS",
-              "route",
-              "migrasi"
+              "metadata",
+              "Jackson/Gson",
+              "mentransformasi elemen"
             ],
             "a": 0,
             "explain": "Spring container DI."
@@ -3221,10 +3221,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Anotasi controller memakai",
             "options": [
-              "CSS",
+              "try/catch",
               "@RestController",
-              "route",
-              "migrasi"
+              ".getMessage()",
+              "fleksibilitas tipe"
             ],
             "a": 1,
             "explain": "Anotasi @RestController."
@@ -3233,10 +3233,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Mapping endpoint memakai",
             "options": [
-              "CSS",
-              "route",
+              "SpotBugs/Checkstyle",
+              "kondisi benar",
               "@GetMapping/@PostMapping",
-              "migrasi"
+              "semua konstanta"
             ],
             "a": 2,
             "explain": "Anotasi mapping."
@@ -3245,10 +3245,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Spring Data JPA memudahkan",
             "options": [
-              "CSS",
+              "listener",
               "akses repositori",
-              "route",
-              "migrasi"
+              "equals/hashCode/toString",
+              "optimasi/debug"
             ],
             "a": 1,
             "explain": "Repositori JPA."
@@ -3258,9 +3258,9 @@ const CONTENT_JAVA = [
             "q": "Konfigurasi memakai",
             "options": [
               "application.yml/properties",
-              "CSS",
-              "route",
-              "migrasi"
+              "operasi atomik",
+              "assertThrows",
+              "Hibernate/JPA"
             ],
             "a": 0,
             "explain": "Berkas konfigurasi."
@@ -3269,9 +3269,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Profil Spring memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "statically typed dan OOP",
+              "kondisi ? a : b",
+              "subclass menimpa method induk",
               "konfigurasi per lingkungan"
             ],
             "a": 3,
@@ -3282,9 +3282,9 @@ const CONTENT_JAVA = [
             "q": "Validasi memakai",
             "options": [
               "Bean Validation",
-              "CSS",
-              "route",
-              "migrasi"
+              "new Nama()",
+              "abstract class",
+              "HashSet"
             ],
             "a": 0,
             "explain": "Bean validation."
@@ -3293,10 +3293,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Keamanan memakai",
             "options": [
-              "CSS",
-              "route",
+              "cakupan",
+              "Maven/Gradle",
               "Spring Security",
-              "migrasi"
+              "break/continue bertarget"
             ],
             "a": 2,
             "explain": "Spring Security."
@@ -3305,10 +3305,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Actuator menyediakan",
             "options": [
-              "CSS",
+              "hash kuat",
               "endpoint monitoring",
-              "route",
-              "migrasi"
+              "cascading failure",
+              "reproduksibilitas"
             ],
             "a": 1,
             "explain": "Actuator untuk monitoring."
@@ -3324,9 +3324,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Singleton memastikan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Spring Security",
+              "perilaku",
+              "pencocokan tipe",
               "satu instance"
             ],
             "a": 3,
@@ -3336,9 +3336,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Factory memusatkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "extends",
+              "cek tipe/cast eksplisit",
+              "get(index)",
               "pembuatan objek"
             ],
             "a": 3,
@@ -3348,9 +3348,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Builder memudahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "info tipe hilang runtime",
+              "nilai tanpa hasil",
+              "objek heap tak terpakai",
               "pembuatan objek kompleks"
             ],
             "a": 3,
@@ -3361,9 +3361,9 @@ const CONTENT_JAVA = [
             "q": "Observer memakai",
             "options": [
               "listener",
-              "CSS",
-              "route",
-              "migrasi"
+              "wajib",
+              "routing/edge",
+              "pemantauan"
             ],
             "a": 0,
             "explain": "Observer listener."
@@ -3373,9 +3373,9 @@ const CONTENT_JAVA = [
             "q": "Strategy menukar",
             "options": [
               "algoritma",
-              "CSS",
-              "route",
-              "migrasi"
+              "hash kuat",
+              "cascading failure",
+              "reproduksibilitas"
             ],
             "a": 0,
             "explain": "Strategy menukar algoritma."
@@ -3384,10 +3384,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Adapter menjembatani",
             "options": [
-              "CSS",
+              "cakupan",
               "antarmuka berbeda",
-              "route",
-              "migrasi"
+              "Maven/Gradle",
+              "break/continue bertarget"
             ],
             "a": 1,
             "explain": "Adapter menjembatani."
@@ -3396,10 +3396,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Decorator menambah",
             "options": [
-              "CSS",
-              "route",
+              "throw",
+              "type safety",
               "perilaku",
-              "migrasi"
+              "parallel processing"
             ],
             "a": 2,
             "explain": "Decorator menambah perilaku."
@@ -3409,9 +3409,9 @@ const CONTENT_JAVA = [
             "q": "Repository memisahkan",
             "options": [
               "akses data",
-              "CSS",
-              "route",
-              "migrasi"
+              "Mockito",
+              "SQL injection",
+              "java.nio.file.Files"
             ],
             "a": 0,
             "explain": "Repository data."
@@ -3420,9 +3420,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Pattern berlebihan berisiko",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "@Override",
+              "HashMap",
+              "for-each/Iterator",
               "over-engineering"
             ],
             "a": 3,
@@ -3432,10 +3432,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Immutability membantu",
             "options": [
-              "CSS",
+              "memisahkan API",
               "prediktabilitas",
-              "route",
-              "migrasi"
+              "hasil stream",
+              "lock intrinsic"
             ],
             "a": 1,
             "explain": "Immutable memudahkan."
@@ -3451,10 +3451,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "record (Java 16+) membuat",
             "options": [
-              "CSS",
+              "objek diperlakukan sebagai tipe induk",
               "data carrier ringkas",
-              "route",
-              "migrasi"
+              "tipe aman dan pemakaian ulang",
+              "urutan lock konsisten"
             ],
             "a": 1,
             "explain": "Record mengurangi boilerplate."
@@ -3463,10 +3463,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "record menghasilkan",
             "options": [
-              "CSS",
+              "interface fungsional",
               "equals/hashCode/toString",
-              "route",
-              "migrasi"
+              "map thread-safe",
+              "setAutoCommit(false)/commit"
             ],
             "a": 1,
             "explain": "Record otomatis."
@@ -3475,10 +3475,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "sealed class membatasi",
             "options": [
-              "CSS",
-              "route",
+              "abstract class",
+              "HashSet",
               "hierarki",
-              "migrasi"
+              ".length()"
             ],
             "a": 2,
             "explain": "Sealed membatasi subclass."
@@ -3487,9 +3487,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Pattern matching instanceof mempersingkat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "listener",
+              "equals/hashCode/toString",
+              "optimasi/debug",
               "cast bersyarat"
             ],
             "a": 3,
@@ -3499,10 +3499,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "switch pattern (21) memungkinkan",
             "options": [
-              "CSS",
+              "assertThrows",
               "pencocokan tipe",
-              "route",
-              "migrasi"
+              "Hibernate/JPA",
+              "otomatis"
             ],
             "a": 1,
             "explain": "Switch pattern."
@@ -3513,7 +3513,7 @@ const CONTENT_JAVA = [
             "options": [
               "'''",
               "```",
-              "CSS",
+              "class",
               "\"\"\""
             ],
             "a": 3,
@@ -3523,10 +3523,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "var membantu",
             "options": [
-              "CSS",
+              "ditangani atau dideklarasikan",
               "inferensi tipe lokal",
-              "route",
-              "migrasi"
+              "data per thread",
+              "saling menunggu lock"
             ],
             "a": 1,
             "explain": "var lokal."
@@ -3535,10 +3535,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Virtual threads mengurangi",
             "options": [
-              "CSS",
-              "route",
+              "per layanan",
+              "transaksi terdistribusi",
               "biaya thread",
-              "migrasi"
+              "downtime"
             ],
             "a": 2,
             "explain": "Virtual threads ringan."
@@ -3547,9 +3547,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Java modern tetap",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Jackson/Gson",
+              "mentransformasi elemen",
+              "menambah kompleksitas",
               "backward compatible"
             ],
             "a": 3,
@@ -3559,10 +3559,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Memahami bytecode membantu",
             "options": [
-              "CSS",
+              "implements",
               "optimasi/debug",
-              "route",
-              "migrasi"
+              "tipe objek",
+              "get(key)"
             ],
             "a": 1,
             "explain": "Pahami bytecode."
@@ -3579,9 +3579,9 @@ const CONTENT_JAVA = [
             "q": "Profiling memakai",
             "options": [
               "profiler/JFR",
-              "CSS",
-              "route",
-              "migrasi"
+              "di server",
+              "HTTP/message",
+              "operasional"
             ],
             "a": 0,
             "explain": "Profiler menemukan hot spot."
@@ -3590,10 +3590,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Alokasi berlebih memengaruhi",
             "options": [
-              "CSS",
-              "route",
+              "javac",
+              "throw",
               "GC",
-              "migrasi"
+              "?"
             ],
             "a": 2,
             "explain": "Alokasi menambah GC."
@@ -3603,8 +3603,8 @@ const CONTENT_JAVA = [
             "q": "StringBuilder di loop penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "array",
+              "span",
               "ya"
             ],
             "a": 3,
@@ -3615,9 +3615,9 @@ const CONTENT_JAVA = [
             "q": "Collection tepat memengaruhi",
             "options": [
               "performa",
-              "CSS",
-              "route",
-              "migrasi"
+              "ketersediaan anotasi",
+              "keamanan",
+              "elemen"
             ],
             "a": 0,
             "explain": "Pilih struktur tepat."
@@ -3628,8 +3628,8 @@ const CONTENT_JAVA = [
             "options": [
               "tidak",
               "wajib",
-              "CSS",
-              "route"
+              "algoritma",
+              "hierarki"
             ],
             "a": 1,
             "explain": "Ukur dulu."
@@ -3638,10 +3638,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Caching membantu",
             "options": [
-              "CSS",
-              "route",
+              "modifier private",
+              "tidak",
               "operasi mahal",
-              "migrasi"
+              "add()"
             ],
             "a": 2,
             "explain": "Cache operasi mahal."
@@ -3650,10 +3650,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Concurrency harus",
             "options": [
-              "CSS",
+              "selalu",
               "dikelola benar",
-              "route",
-              "migrasi"
+              "class Box<T>",
+              "<T> T method()"
             ],
             "a": 1,
             "explain": "Kelola concurrency."
@@ -3664,8 +3664,8 @@ const CONTENT_JAVA = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "JUnit",
+              "alur nyata"
             ],
             "a": 1,
             "explain": "Minimalkan objek sementara."
@@ -3674,10 +3674,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Batch I/O membantu",
             "options": [
-              "CSS",
-              "route",
+              "introspeksi runtime",
+              "akses reflection",
               "performa",
-              "migrasi"
+              "teruji"
             ],
             "a": 2,
             "explain": "Batch mengurangi roundtrip."
@@ -3688,8 +3688,8 @@ const CONTENT_JAVA = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "span",
+              ".java"
             ],
             "a": 1,
             "explain": "Beban realistis."
@@ -3705,10 +3705,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Test perilaku lebih stabil dari",
             "options": [
-              "CSS",
-              "route",
+              "listener",
+              "equals/hashCode/toString",
               "test implementasi",
-              "migrasi"
+              "optimasi/debug"
             ],
             "a": 2,
             "explain": "Perilaku jarang berubah."
@@ -3717,10 +3717,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Mutation testing membantu",
             "options": [
-              "CSS",
-              "route",
+              "Objek heap yang tidak lagi terjangkau",
+              "for (init; cond; step)",
               "mengukur kualitas test",
-              "migrasi"
+              "array ke list"
             ],
             "a": 2,
             "explain": "Mutation test mengukur test."
@@ -3729,10 +3729,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Integration test memakai",
             "options": [
-              "CSS",
+              "interface fungsional",
               "Testcontainers/db uji",
-              "route",
-              "migrasi"
+              "map thread-safe",
+              "setAutoCommit(false)/commit"
             ],
             "a": 1,
             "explain": "Testcontainers untuk integrasi."
@@ -3741,10 +3741,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Contract test menjaga",
             "options": [
-              "CSS",
-              "route",
+              "cascading failure",
+              "reproduksibilitas",
               "kompatibilitas API",
-              "migrasi"
+              "metadata class"
             ],
             "a": 2,
             "explain": "Contract test menjaga kesepakatan."
@@ -3753,9 +3753,9 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Static analysis memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "per layanan",
+              "transaksi terdistribusi",
+              "downtime",
               "SpotBugs/Checkstyle"
             ],
             "a": 3,
@@ -3766,9 +3766,9 @@ const CONTENT_JAVA = [
             "q": "CI menjalankan",
             "options": [
               "build+test+lint",
-              "CSS",
-              "route",
-              "migrasi"
+              "double",
+              "kondisi benar",
+              "semua konstanta"
             ],
             "a": 0,
             "explain": "CI otomasi."
@@ -3777,10 +3777,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Test performa memakai",
             "options": [
-              "CSS",
-              "route",
+              ".getMessage()",
+              "fleksibilitas tipe",
               "JMH/load test",
-              "migrasi"
+              "akses bersamaan"
             ],
             "a": 2,
             "explain": "JMH untuk benchmark."
@@ -3790,9 +3790,9 @@ const CONTENT_JAVA = [
             "q": "Coverage membantu",
             "options": [
               "cakupan",
-              "CSS",
-              "route",
-              "migrasi"
+              "assertThrows",
+              "Hibernate/JPA",
+              "otomatis"
             ],
             "a": 0,
             "explain": "Coverage mengukur."
@@ -3801,10 +3801,10 @@ const CONTENT_JAVA = [
             "type": "mc",
             "q": "Flaky test harus",
             "options": [
-              "CSS",
-              "route",
+              "@BeforeEach",
+              "hasil query",
               "diperbaiki",
-              "migrasi"
+              "seluruh teks"
             ],
             "a": 2,
             "explain": "Perbaiki flaky test."
@@ -3814,9 +3814,9 @@ const CONTENT_JAVA = [
             "q": "Dokumentasi test penting",
             "options": [
               "tidak",
-              "CSS",
+              "\"\"\"",
               "ya",
-              "route"
+              "nilai"
             ],
             "a": 2,
             "explain": "Dokumentasi jelas."

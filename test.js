@@ -1604,5 +1604,52 @@ t('materi terpisah: rute #/materi/:topicId & #/materi/:topicId/:lessonId + lesso
   assert.ok(Number.isFinite(g.readMinutes) && g.readMinutes >= 2, 'estimasi waktu baca minimal 2 menit');
 });
 
+t('kualitas soal: nol pengecoh sampah CSS/route/migrasi di seluruh topik bahasa', () => {
+  const junk = new Set(['css', 'route', 'migrasi']);
+  const langIds = new Set([
+    'react', 'nextjs', 'laravel', 'ruby', 'rails', 'elysia', 'go',
+    'flutter', 'dart', 'kotlin', 'java', 'python', 'matlab', 'php', 'c', 'cpp',
+  ]);
+  let bad = 0;
+  for (const topic of CURRICULUM) {
+    if (!langIds.has(topic.id)) continue;
+    for (const lesson of topic.lessons) {
+      for (const ex of lesson.exercises) {
+        if (ex.type !== 'mc' || !Array.isArray(ex.options)) continue;
+        const hasJunk = ex.options.some((o, idx) => idx !== ex.a && junk.has(String(o).trim().toLowerCase()));
+        if (hasJunk) bad++;
+      }
+    }
+  }
+  assert.strictEqual(bad, 0, 'masih ada soal dengan pengecoh terlalu jelas CSS/route/migrasi: ' + bad);
+});
+
+t('bibit-ml: otomatis belajar dari halaman Materi & menghormati sakelar On/Off', async () => {
+  const {
+    initStore, isBibitMlEnabled, toggleBibitMl, observeMateriRead,
+    getLearnedConcepts, clearLearnedConcepts,
+  } = await import('./src/store.js');
+  initStore();
+  clearLearnedConcepts();
+  assert.strictEqual(isBibitMlEnabled(), true, 'default ML Bibit harus ON');
+
+  const okOn = observeMateriRead('laravel', 'laravel-1');
+  assert.strictEqual(okOn, true, 'saat ON, membaca materi harus otomatis diserap Bibit');
+  const afterOn = getLearnedConcepts();
+  assert.ok(afterOn.some((c) => c.topicId === 'laravel' && c.source === 'materi'), 'konsep dari materi harus tersimpan');
+
+  const nextState = toggleBibitMl();
+  assert.strictEqual(nextState, false, 'toggleBibitMl harus mematikan ML');
+  assert.strictEqual(isBibitMlEnabled(), false);
+
+  const countBeforeOff = getLearnedConcepts().length;
+  const okOff = observeMateriRead('python', 'python-1');
+  assert.strictEqual(okOff, false, 'saat OFF, Bibit tidak boleh menyerap materi baru');
+  assert.strictEqual(getLearnedConcepts().length, countBeforeOff, 'jumlah konsep tidak boleh bertambah saat OFF');
+
+  toggleBibitMl(); /* kembalikan ke ON */
+  assert.strictEqual(isBibitMlEnabled(), true);
+});
+
 console.log('\n' + passed + ' passed, ' + failed + ' failed');
 process.exit(failed === 0 ? 0 : 1);

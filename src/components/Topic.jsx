@@ -165,7 +165,7 @@ function NodeItem({ topicId, node, idx, open, kind, prevStepNo }) {
       const msg = isTest
         ? `Selesaikan semua step ${node.tier} terlebih dahulu untuk membuka Ujian ${node.tier}.`
         : `Selesaikan Step ${prevStepNo || (node.stepNo - 1)} dulu untuk membuka Step ${node.stepNo} — atau baca materinya dulu!`;
-      showToast(msg, 'info');
+      showToast(msg, { type: 'info' });
       return;
     }
     try { pop(e.currentTarget); } catch (_) {}

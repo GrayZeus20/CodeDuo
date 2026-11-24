@@ -42,9 +42,11 @@ import { newCompanion, tickCompanion, onUserInteract } from './companion.js';
 import {
   createDialogueModel, sanitizeDialogueModel, updateDialogueModel,
   getAiTapDialogue, generateAiDialogue, getAiHintDialogue,
-  learnConceptFromExercise, learnConceptFromLessonFinish,
+  learnConceptFromExercise, learnConceptFromLessonFinish, learnConceptFromMateri,
   getLearnedConcepts, clearLearnedConcepts, setLearnedConcepts,
 } from './aiDialogue.js';
+import { lessonGuide } from './lessonGuides.js';
+import { TOPIC_GUIDES } from './guidebooks.js';
 
 export { getLearnedConcepts, clearLearnedConcepts };
 
@@ -174,6 +176,7 @@ function defaultState() {
     buddyHidden: false,
     buddySize: 'medium',
     motionEnabled: true,
+    bibitMlEnabled: true,
     theme: 'system',
     favorites: [],
   };
@@ -206,6 +209,7 @@ function sanitizeState(parsed) {
   s.buddyHidden = !!s.buddyHidden;
   if (!BUDDY_SIZES.includes(s.buddySize)) s.buddySize = 'medium';
   s.motionEnabled = s.motionEnabled !== false;
+  s.bibitMlEnabled = s.bibitMlEnabled !== false;
   if (!VALID_THEMES.includes(s.theme)) s.theme = 'system';
   /* Favorit: buang id yang bukan topik kurikulum dan duplikat (data lama/korup). */
   s.favorites = Array.isArray(s.favorites)
@@ -406,13 +410,15 @@ function interactionSignal(sig) {
 export function onInteraction(sig) {
   const s = sig || {};
   const features = interactionSignal(s);
-  try {
-    learnExpression(features);
-    const activeTopicId = s.topicId || (session ? session.topicId : routeInfo().topicId) || null;
-    updateDialogueModel(aiDialogueModel, activeTopicId ? Object.assign({}, s, { topicId: activeTopicId }) : s);
-    saveExpression();
-  } catch (e) {
-    console.warn('[codeduo] model update skipped:', e && e.message);
+  if (isBibitMlEnabled()) {
+    try {
+      learnExpression(features);
+      const activeTopicId = s.topicId || (session ? session.topicId : routeInfo().topicId) || null;
+      updateDialogueModel(aiDialogueModel, activeTopicId ? Object.assign({}, s, { topicId: activeTopicId }) : s);
+      saveExpression();
+    } catch (e) {
+      console.warn('[codeduo] model update skipped:', e && e.message);
+    }
   }
   const r = onUserInteract(companion, Math.random);
   companion = r.state;
@@ -472,6 +478,7 @@ function collectAiSignals() {
     nextTopicTitle: nextT ? (nextT.name || nextT.title) : null,
     lessonLabel: session ? session.label : null,
     lastResult: session ? session.lastResult : null,
+    mlEnabled: isBibitMlEnabled(),
   };
 }
 
@@ -805,6 +812,59 @@ export function isMotionEnabled() {
   return state ? state.motionEnabled !== false : true;
 }
 
+export function isBibitMlEnabled() {
+  return state ? state.bibitMlEnabled !== false : true;
+}
+
+export function toggleBibitMl() {
+  if (!state) return true;
+  state.bibitMlEnabled = !isBibitMlEnabled();
+  saveState();
+  bump();
+  return state.bibitMlEnabled;
+}
+
+/* Otomatis menyerap konsep dari halaman Materi yang dibaca pengguna (tanpa trigger manual). */
+export function observeMateriRead(topicId, lessonId) {
+  if (!isBibitMlEnabled() || !topicId) return false;
+  const topic = topicById(topicId);
+  if (!topic) return false;
+  try {
+    if (lessonId) {
+      const lesson = lessonById(topic, lessonId);
+      if (!lesson) return false;
+      const g = lessonGuide(lesson, topic);
+      if (!g) return false;
+      learnConceptFromMateri({
+        topicId: topic.id,
+        topicName: topic.name,
+        lessonId: lesson.id,
+        lessonTitle: lesson.title,
+        level: lesson.level || 'Dasar',
+        summary: g.summary,
+        points: g.points || [],
+      });
+    } else {
+      const tg = TOPIC_GUIDES[topic.id];
+      learnConceptFromMateri({
+        topicId: topic.id,
+        topicName: topic.name,
+        lessonId: null,
+        lessonTitle: tg ? tg.title : 'Materi ' + topic.name,
+        level: 'Dasar',
+        summary: tg ? tg.summary : topic.desc,
+        points: tg && tg.keyPoints ? tg.keyPoints : [],
+      });
+    }
+    updateDialogueModel(aiDialogueModel, { topicId: topic.id, nav: true });
+    saveExpression();
+    return true;
+  } catch (e) {
+    console.warn('[codeduo] observeMateriRead skipped:', e && e.message);
+    return false;
+  }
+}
+
 function resolveThemeMode(pref) {
   if (pref === 'dark') return 'dark';
   if (pref === 'light') return 'light';
@@ -1047,14 +1107,16 @@ export async function answerCheck(answer) {
       srs = schedule(srs, key, gradeFromResult(1), Date.now());
       saveSrs();
     }
-    const t = session.topicId ? topicById(session.topicId) : null;
-    learnConceptFromExercise({
-      topicId: session.topicId,
-      topicName: t ? t.name : session.topicId,
-      lessonTitle: session.label || 'Latihan',
-      ex,
-      correct: true,
-    });
+    if (isBibitMlEnabled()) {
+      const t = session.topicId ? topicById(session.topicId) : null;
+      learnConceptFromExercise({
+        topicId: session.topicId,
+        topicName: t ? t.name : session.topicId,
+        lessonTitle: session.label || 'Latihan',
+        ex,
+        correct: true,
+      });
+    }
     onInteraction({
       correct: true,
       wrong: false,
@@ -1078,14 +1140,16 @@ export async function answerCheck(answer) {
     session.closeChances -= 1;
     session.retryMsg = result.message || 'Jawaban hampir benar.';
     state.stats.close = (state.stats.close || 0) + 1;
-    const tClose = session.topicId ? topicById(session.topicId) : null;
-    learnConceptFromExercise({
-      topicId: session.topicId,
-      topicName: tClose ? tClose.name : session.topicId,
-      lessonTitle: session.label || 'Latihan',
-      ex,
-      correct: false,
-    });
+    if (isBibitMlEnabled()) {
+      const tClose = session.topicId ? topicById(session.topicId) : null;
+      learnConceptFromExercise({
+        topicId: session.topicId,
+        topicName: tClose ? tClose.name : session.topicId,
+        lessonTitle: session.label || 'Latihan',
+        ex,
+        correct: false,
+      });
+    }
     session.answered = true;
     session.phase = 'feedback';
     session.lastResult = {
@@ -1183,15 +1247,17 @@ function finishLesson() {
     const p = (state.progress[session.topicId] = state.progress[session.topicId] || { done: [] });
     if (!p.done.includes(session.nodeId)) p.done.push(session.nodeId);
   }
-  const tFinish = session.topicId ? topicById(session.topicId) : null;
-  learnConceptFromLessonFinish({
-    topicId: session.topicId,
-    topicName: tFinish ? tFinish.name : session.topicId,
-    nodeId: session.nodeId,
-    lessonTitle: session.label || 'Modul',
-    tier: session.tier || 'Dasar',
-    exercises: session.exercises,
-  });
+  if (isBibitMlEnabled()) {
+    const tFinish = session.topicId ? topicById(session.topicId) : null;
+    learnConceptFromLessonFinish({
+      topicId: session.topicId,
+      topicName: tFinish ? tFinish.name : session.topicId,
+      nodeId: session.nodeId,
+      lessonTitle: session.label || 'Modul',
+      tier: session.tier || 'Dasar',
+      exercises: session.exercises,
+    });
+  }
   const newStreakDay = bumpStreak();
   saveState();
   session.phase = 'done';
@@ -1358,6 +1424,7 @@ export function routeChange() {
   }
   const isLesson = r.name === 'lesson' || r.name === 'review';
   if (!isLesson && session) session = null;
+  if (r.name === 'materi' && r.topicId) observeMateriRead(r.topicId, r.lessonId);
   if (!isLesson) onInteraction({ nav: true, n: ((state ? state.seed : 0) % 7) / 7 });
   bump();
 }

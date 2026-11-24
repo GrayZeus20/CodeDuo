@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_ELYSIA = [
-{
+  {
     "id": "elysia",
     "name": "Elysia",
     "icon": "🦊",
@@ -70,7 +70,7 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Elysia menekankan",
             "options": [
-              "CSS",
+              "respons terstruktur",
               "SQL engine",
               "type-safety end-to-end",
               "GUI"
@@ -94,10 +94,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Dokumentasi API otomatis bisa lewat",
             "options": [
-              "CSS",
+              "app.handle(request)",
               "plugin swagger/OpenAPI",
-              "route",
-              "migrasi"
+              "t.Array(...)",
+              "hash kuat (bcrypt/argon2)"
             ],
             "a": 1,
             "explain": "Plugin menghasilkan dokumentasi OpenAPI."
@@ -119,7 +119,7 @@ const CONTENT_ELYSIA = [
             "q": "Elysia cocok untuk membangun",
             "options": [
               "server dan API",
-              "CSS",
+              "akses lintas origin",
               "database",
               "mobile UI"
             ],
@@ -207,7 +207,7 @@ const CONTENT_ELYSIA = [
           },
           {
             "type": "mc",
-            "q": "Membaca body request JSON memakai",
+            "q": "Properti pada objek konteks handler Elysia yang berisi muatan JSON kiriman klien adalah",
             "options": [
               "data",
               "payload",
@@ -223,7 +223,7 @@ const CONTENT_ELYSIA = [
             "options": [
               "return hanya string",
               "write json",
-              "CSS",
+              "transport dan domain",
               "return objek biasa"
             ],
             "a": 3,
@@ -276,10 +276,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Context handler berisi",
             "options": [
-              "CSS",
+              "properti pada context",
               "params, query, body, dan lain-lain",
-              "route",
-              "migrasi"
+              "store saat pembuatan instance",
+              "Jest/Vitest atau bun test"
             ],
             "a": 1,
             "explain": "Context menyediakan input request."
@@ -291,7 +291,7 @@ const CONTENT_ELYSIA = [
               "status(code, body)",
               "res.status",
               "return code",
-              "CSS"
+              "investigasi"
             ],
             "a": 0,
             "explain": "Helper status mengatur kode HTTP."
@@ -302,8 +302,8 @@ const CONTENT_ELYSIA = [
             "options": [
               "throw 404",
               "status(404, ...)",
-              "CSS",
-              "route"
+              "new Elysia()",
+              "'/user/:id'"
             ],
             "a": 1,
             "explain": "status 404 menandakan tidak ditemukan."
@@ -313,9 +313,9 @@ const CONTENT_ELYSIA = [
             "q": "Handler dapat berupa",
             "options": [
               "hanya string",
-              "CSS",
+              "redirect(url)",
               "fungsi async",
-              "route"
+              "bad request"
             ],
             "a": 2,
             "explain": "Handler dapat async untuk operasi IO."
@@ -334,7 +334,7 @@ const CONTENT_ELYSIA = [
           },
           {
             "type": "mc",
-            "q": "Menggunakan cookie memakai",
+            "q": "Properti pada konteks handler Elysia untuk membaca atau menetapkan data sesi kecil di browser klien adalah",
             "options": [
               "cookies",
               "jar",
@@ -350,8 +350,8 @@ const CONTENT_ELYSIA = [
             "options": [
               "cache",
               "store",
-              "CSS",
-              "route"
+              "jumlah request",
+              "pengujian"
             ],
             "a": 1,
             "explain": "store menyimpan state per request."
@@ -361,9 +361,9 @@ const CONTENT_ELYSIA = [
             "q": "Mengembalikan teks biasa memakai",
             "options": [
               "return object",
-              "CSS",
+              "throughput",
               "return string",
-              "route"
+              "downtime"
             ],
             "a": 2,
             "explain": "String menghasilkan respons teks."
@@ -375,7 +375,7 @@ const CONTENT_ELYSIA = [
               "go(url)",
               "redirect(url)",
               "nav(url)",
-              "CSS"
+              "manipulasi klien"
             ],
             "a": 1,
             "explain": "redirect mengalihkan."
@@ -385,9 +385,9 @@ const CONTENT_ELYSIA = [
             "q": "Handler harus mengembalikan",
             "options": [
               "respons yang valid",
-              "CSS",
-              "route",
-              "migrasi"
+              "transport dan domain",
+              "startup dan eksekusi cepat",
+              "satu unit kecil"
             ],
             "a": 0,
             "explain": "Handler wajib mengembalikan respons."
@@ -403,10 +403,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Schema pada route berguna untuk",
             "options": [
-              "CSS",
+              "return string",
               "memvalidasi input",
-              "route",
-              "migrasi"
+              "t.Optional(...)",
+              "dibuat"
             ],
             "a": 1,
             "explain": "Schema memvalidasi bentuk input."
@@ -429,8 +429,8 @@ const CONTENT_ELYSIA = [
             "options": [
               "body: t.Object({...})",
               "body: {}",
-              "CSS",
-              "route"
+              "dampak kebocoran",
+              "perubahan terisolasi"
             ],
             "a": 0,
             "explain": "t.Object mendefinisikan bentuk body."
@@ -442,7 +442,7 @@ const CONTENT_ELYSIA = [
               "t.Text",
               "string",
               "t.String()",
-              "CSS"
+              "alur end-to-end"
             ],
             "a": 2,
             "explain": "t.String() menandai tipe string."
@@ -454,7 +454,7 @@ const CONTENT_ELYSIA = [
               "t.Int",
               "t.Number()",
               "number",
-              "CSS"
+              "mengurangi beban"
             ],
             "a": 1,
             "explain": "t.Number() menandai angka."
@@ -465,7 +465,7 @@ const CONTENT_ELYSIA = [
             "options": [
               "optional()",
               "?",
-              "CSS",
+              "memodifikasi respons",
               "t.Optional(...)"
             ],
             "a": 3,
@@ -487,9 +487,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Schema params memvalidasi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "t.Object bersarang",
+              "token/JWT atau sesi",
+              "perubahan skema",
               "parameter path"
             ],
             "a": 3,
@@ -499,10 +499,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Schema query memvalidasi",
             "options": [
-              "CSS",
-              "route",
+              "error server",
+              "menambah kompleksitas",
               "query string",
-              "migrasi"
+              "t.Object bersarang"
             ],
             "a": 2,
             "explain": "query schema memvalidasi query."
@@ -511,10 +511,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Schema penting untuk",
             "options": [
-              "CSS",
-              "route",
+              "runtime Bun di server/container",
+              "lint dan test otomatis",
               "kontrak API yang konsisten",
-              "migrasi"
+              "masa berlaku cache"
             ],
             "a": 2,
             "explain": "Schema menjaga kontrak API."
@@ -532,8 +532,8 @@ const CONTENT_ELYSIA = [
             "options": [
               "runtime wajib",
               "pengembangan dan editor",
-              "CSS",
-              "route"
+              "decorator = fungsi/properti, store = data",
+              "kontrak dan validasi"
             ],
             "a": 1,
             "explain": "TypeScript memberi pemeriksaan saat pengembangan."
@@ -542,9 +542,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Tipe pada Elysia mengalir ke",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tipe isi respons",
+              "merestart layanan bermasalah",
+              "streaming data besar",
               "handler dan client"
             ],
             "a": 3,
@@ -554,9 +554,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Inferensi tipe body berarti",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "keamanan data antar request",
+              "test cepat dan terisolasi",
+              "melindungi data transit",
               "body bertipe sesuai schema"
             ],
             "a": 3,
@@ -566,10 +566,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menjalankan TypeScript butuh",
             "options": [
-              "CSS",
-              "route",
+              "perawatan aplikasi besar",
+              "ya, agar tidak timeout",
               "transpilasi/runtime TS seperti Bun",
-              "migrasi"
+              "mencegah koneksi menggantung"
             ],
             "a": 2,
             "explain": "Bun menjalankan TS langsung."
@@ -580,8 +580,8 @@ const CONTENT_ELYSIA = [
             "options": [
               "selalu dipakai",
               "dihindari bila memungkinkan",
-              "CSS",
-              "route"
+              "TypeScript mengenali properti",
+              "logging, auth, dan validasi"
             ],
             "a": 1,
             "explain": "any mematikan pemeriksaan tipe."
@@ -590,10 +590,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "TypeScript tidak menggantikan validasi runtime karena",
             "options": [
-              "CSS",
-              "route",
+              "akses lintas origin",
+              "runtime Bun di server/container",
               "input eksternal tetap tak tepercaya",
-              "migrasi"
+              "lint dan test otomatis"
             ],
             "a": 2,
             "explain": "Validasi runtime tetap perlu."
@@ -602,9 +602,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "tsconfig mengatur",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "store saat pembuatan instance",
+              "Jest/Vitest atau bun test",
+              "membatasi origin yang diizinkan",
               "perilaku compiler TypeScript"
             ],
             "a": 3,
@@ -615,9 +615,9 @@ const CONTENT_ELYSIA = [
             "q": "Strict mode TypeScript membuat",
             "options": [
               "pemeriksaan tipe lebih ketat",
-              "CSS",
-              "route",
-              "migrasi"
+              "httpOnly, secure, sameSite",
+              "konfigurasi antar lingkungan",
+              "aliran satu arah"
             ],
             "a": 0,
             "explain": "strict menambah ketatnya pemeriksaan."
@@ -742,9 +742,9 @@ const CONTENT_ELYSIA = [
             "q": "Mengembalikan header custom memakai",
             "options": [
               "set.headers",
-              "CSS",
-              "route",
-              "migrasi"
+              "reproduksibilitas deploy",
+              "fetch bawaan",
+              "alur end-to-end"
             ],
             "a": 0,
             "explain": "set.headers mengatur header respons."
@@ -753,9 +753,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Mengembalikan file memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "orientasi",
+              "reproduksibilitas",
+              ".listen(3000)",
               "file(path)"
             ],
             "a": 3,
@@ -784,10 +784,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Plugin di Elysia berguna untuk",
             "options": [
-              "CSS",
-              "route",
+              "perilaku compiler TypeScript",
+              "mengatur akses lintas origin",
               "mengelompokkan fitur yang dapat dipakai ulang",
-              "migrasi"
+              "decorator = fungsi/properti, store = data"
             ],
             "a": 2,
             "explain": "Plugin memisahkan dan memakai ulang fitur."
@@ -796,9 +796,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Membuat plugin berupa",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "logika bertahap pada request",
+              "menjaga kontrak output",
+              "tipe isi respons",
               "instance Elysia yang diekspor"
             ],
             "a": 3,
@@ -820,10 +820,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Plugin dapat menambah",
             "options": [
-              "CSS",
-              "route",
+              "request selesai dengan baik",
+              "refine pada object",
               "route, decorator, dan hook",
-              "migrasi"
+              "httpOnly, secure, sameSite"
             ],
             "a": 2,
             "explain": "Plugin menambah kemampuan aplikasi."
@@ -832,10 +832,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Decorator menambah",
             "options": [
-              "CSS",
+              "dihindari bila memungkinkan",
               "properti pada context",
-              "route",
-              "migrasi"
+              "route, decorator, dan hook",
+              "TypeScript mengenali properti"
             ],
             "a": 1,
             "explain": "decorate menambah properti context."
@@ -844,9 +844,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Plugin autentikasi biasanya menambah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mencegah abuse",
+              "fitur lama",
+              "dependency konsisten",
               "pemeriksaan sesi/token"
             ],
             "a": 3,
@@ -856,10 +856,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Plugin logging menambah",
             "options": [
-              "CSS",
-              "route",
+              "dependency konsisten",
+              "TypeScript",
               "pencatatan request",
-              "migrasi"
+              "headers"
             ],
             "a": 2,
             "explain": "Plugin log mencatat aktivitas."
@@ -868,9 +868,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Plugin CORS membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "status yang jelas",
+              "t.Refine / custom check",
+              "memastikan aturan benar",
               "mengatur akses lintas origin"
             ],
             "a": 3,
@@ -880,9 +880,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Plugin dapat bersifat scoped sehingga",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "instance Elysia yang diekspor",
+              "store: {...} pada constructor",
+              "ya, sesuai scope",
               "hanya berlaku pada grup"
             ],
             "a": 3,
@@ -892,10 +892,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Membuat plugin kecil lebih mudah",
             "options": [
-              "CSS",
-              "route",
+              "t.Refine / custom check",
+              "memastikan aturan benar",
               "diuji dan dipakai ulang",
-              "migrasi"
+              "index dan optimasi"
             ],
             "a": 2,
             "explain": "Plugin kecil lebih modular."
@@ -923,9 +923,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Mendeklarasikan tipe decorator memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "melacak request lintas layanan",
+              "tidak membocorkan internal",
+              "klien memahami kesalahan",
               ".decorate({ as: 'type' })"
             ],
             "a": 3,
@@ -936,9 +936,9 @@ const CONTENT_ELYSIA = [
             "q": "Store menyimpan state per request",
             "options": [
               "selamanya",
-              "CSS",
+              "JSON",
               "ya",
-              "route"
+              "TLS"
             ],
             "a": 2,
             "explain": "store adalah penyimpanan per request."
@@ -947,10 +947,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Store dapat diakses di handler",
             "options": [
-              "CSS",
-              "route",
+              "t.String({ format })",
+              "injeksi skrip",
               "store.nama",
-              "migrasi"
+              "integritas data"
             ],
             "a": 2,
             "explain": "store tersedia pada context."
@@ -959,9 +959,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menetapkan store awal memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "import { Elysia } from 'elysia'",
+              "handler dan client",
+              "sukses tanpa konten",
               "store: {...} pada constructor"
             ],
             "a": 3,
@@ -971,10 +971,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Decorator dipakai ulang lewat",
             "options": [
-              "CSS",
+              "TypeScript",
               "plugin",
-              "route",
-              "migrasi"
+              "body",
+              "headers"
             ],
             "a": 1,
             "explain": "Plugin membagikan decorator."
@@ -984,9 +984,9 @@ const CONTENT_ELYSIA = [
             "q": "Tipe decorator penting agar",
             "options": [
               "TypeScript mengenali properti",
-              "CSS",
-              "route",
-              "migrasi"
+              "server dan API",
+              "body bertipe sesuai schema",
+              "mengelompokkan fitur yang dapat dipakai ulang"
             ],
             "a": 0,
             "explain": "Deklarasi tipe menjaga keamanan tipe."
@@ -996,9 +996,9 @@ const CONTENT_ELYSIA = [
             "q": "State global aplikasi disimpan di",
             "options": [
               "store saat pembuatan instance",
-              "CSS",
-              "route",
-              "migrasi"
+              "audit dan debugging",
+              "status yang jelas",
+              "t.Refine / custom check"
             ],
             "a": 0,
             "explain": "Store instance menyimpan state aplikasi."
@@ -1008,9 +1008,9 @@ const CONTENT_ELYSIA = [
             "q": "Membedakan decorator dan store karena",
             "options": [
               "sama",
-              "CSS",
+              "pengembangan dan editor",
               "decorator = fungsi/properti, store = data",
-              "route"
+              "pemeriksaan tipe lebih ketat"
             ],
             "a": 2,
             "explain": "Decorator menambah kemampuan; store menyimpan data."
@@ -1019,9 +1019,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menghindari state global mutable berlebihan penting untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "status yang tepat",
+              "request dan durasi",
+              "reuse antar route",
               "keamanan data antar request"
             ],
             "a": 3,
@@ -1038,9 +1038,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Hook menjalankan logika pada",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "respons yang valid",
+              "input eksternal tetap tak tepercaya",
+              "properti pada context",
               "titik tertentu siklus request"
             ],
             "a": 3,
@@ -1053,7 +1053,7 @@ const CONTENT_ELYSIA = [
               "beforeHandle",
               "afterHandle",
               "onError",
-              "CSS"
+              "mengurangi beban"
             ],
             "a": 0,
             "explain": "beforeHandle berjalan sebelum handler."
@@ -1064,8 +1064,8 @@ const CONTENT_ELYSIA = [
             "options": [
               "beforeHandle",
               "afterHandle",
-              "CSS",
-              "route"
+              "t.Object bersarang",
+              "token/JWT atau sesi"
             ],
             "a": 1,
             "explain": "afterHandle berjalan setelah handler."
@@ -1075,9 +1075,9 @@ const CONTENT_ELYSIA = [
             "q": "Hook untuk error adalah",
             "options": [
               "onFail",
-              "CSS",
+              "manajemen koneksi",
               "onError",
-              "route"
+              "disanitasi"
             ],
             "a": 2,
             "explain": "onError menangani error."
@@ -1087,9 +1087,9 @@ const CONTENT_ELYSIA = [
             "q": "Middleware autentikasi biasanya memakai",
             "options": [
               "beforeHandle",
-              "CSS",
-              "route",
-              "migrasi"
+              "cookie",
+              "t.String()",
+              "error server"
             ],
             "a": 0,
             "explain": "beforeHandle memeriksa sebelum handler."
@@ -1098,10 +1098,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Hook transform dapat mengubah",
             "options": [
-              "CSS",
-              "route",
+              "error di aplikasi",
+              "memeriksa izin sebelum handler",
               "request atau respons",
-              "migrasi"
+              "mencegah input salah"
             ],
             "a": 2,
             "explain": "Transformasi memodifikasi data."
@@ -1111,9 +1111,9 @@ const CONTENT_ELYSIA = [
             "q": "onBeforeHandle berlaku per route group",
             "options": [
               "ya, sesuai scope",
-              "CSS",
-              "route",
-              "migrasi"
+              "handler dan client",
+              "sukses tanpa konten",
+              "diuji dan dipakai ulang"
             ],
             "a": 0,
             "explain": "Hook berlaku sesuai scope-nya."
@@ -1122,9 +1122,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Membatalkan request di beforeHandle memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".get(path, handler)",
+              "plugin swagger/OpenAPI",
+              ".group(...)",
               "mengembalikan respons/status"
             ],
             "a": 3,
@@ -1134,9 +1134,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Hook berguna untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "import { Elysia } from 'elysia'",
+              "handler dan client",
+              "sukses tanpa konten",
               "logging, auth, dan validasi"
             ],
             "a": 3,
@@ -1146,10 +1146,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Hook berlebihan dapat",
             "options": [
-              "CSS",
-              "route",
+              "hasil akhir",
+              "decorate/store",
               "menambah kompleksitas",
-              "migrasi"
+              "latensi jaringan"
             ],
             "a": 2,
             "explain": "Banyak hook menyulitkan pelacakan."
@@ -1166,9 +1166,9 @@ const CONTENT_ELYSIA = [
             "q": "Menguji route Elysia biasanya dengan",
             "options": [
               "app.run()",
-              "CSS",
+              "kondisi if-none-match",
               "app.handle(request)",
-              "route"
+              "manipulasi klien"
             ],
             "a": 2,
             "explain": "handle memproses request di test."
@@ -1187,7 +1187,7 @@ const CONTENT_ELYSIA = [
           },
           {
             "type": "mc",
-            "q": "bun test dijalankan dengan",
+            "q": "Perintah CLI bawaan runtime Bun untuk menjalankan seluruh unit pengujian adalah",
             "options": [
               "bun run test",
               "bun test",
@@ -1201,9 +1201,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Assertion status memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "set.headers",
+              "store.nama",
+              "app.handle(request)",
               "expect(res.status).toBe(200)"
             ],
             "a": 3,
@@ -1214,9 +1214,9 @@ const CONTENT_ELYSIA = [
             "q": "Test API sebaiknya menguji",
             "options": [
               "kontrak dan validasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "handler dan client",
+              "sukses tanpa konten",
+              "diuji dan dipakai ulang"
             ],
             "a": 0,
             "explain": "Test API memverifikasi kontrak."
@@ -1225,10 +1225,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Mocking database pada test penting agar",
             "options": [
-              "CSS",
-              "route",
+              "status yang tepat",
+              "request dan durasi",
               "test cepat dan terisolasi",
-              "migrasi"
+              "reuse antar route"
             ],
             "a": 2,
             "explain": "Mock menghindari dependensi nyata."
@@ -1237,10 +1237,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Test perilaku lebih stabil dari",
             "options": [
-              "CSS",
-              "route",
+              "eksplisit",
+              "alat benchmark/load test",
               "test implementasi",
-              "migrasi"
+              "strategi invalidasi"
             ],
             "a": 2,
             "explain": "Perilaku jarang berubah."
@@ -1249,10 +1249,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Coverage mengukur",
             "options": [
-              "CSS",
+              "error di aplikasi",
               "bagian kode teruji",
-              "route",
-              "migrasi"
+              "memeriksa izin sebelum handler",
+              "mencegah input salah"
             ],
             "a": 1,
             "explain": "Coverage menunjukkan cakupan."
@@ -1261,9 +1261,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menjalankan test di CI membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "signature/token",
+              "kesesuaian API",
+              "dihormati",
               "mendeteksi regresi"
             ],
             "a": 3,
@@ -1274,8 +1274,8 @@ const CONTENT_ELYSIA = [
             "q": "Test validasi gagal memeriksa",
             "options": [
               "status 200",
-              "CSS",
-              "route",
+              "lock/backoff",
+              "investigasi",
               "status 422"
             ],
             "a": 3,
@@ -1293,9 +1293,9 @@ const CONTENT_ELYSIA = [
             "q": "Schema respons bisa didefinisikan untuk",
             "options": [
               "memvalidasi/menghasilkan output",
-              "CSS",
-              "route",
-              "migrasi"
+              "fleksibilitas",
+              "keamanan konfigurasi",
+              "mengukur cakupan"
             ],
             "a": 0,
             "explain": "Schema response menjaga bentuk output."
@@ -1305,9 +1305,9 @@ const CONTENT_ELYSIA = [
             "q": "Nested object pada schema memakai",
             "options": [
               "t.Object bersarang",
-              "CSS",
-              "route",
-              "migrasi"
+              "file pada body/form",
+              "crash total",
+              "transform"
             ],
             "a": 0,
             "explain": "Object dapat bersarang."
@@ -1317,8 +1317,8 @@ const CONTENT_ELYSIA = [
             "q": "Array pada schema memakai",
             "options": [
               "t.List",
-              "CSS",
-              "route",
+              "mengukur cakupan",
+              "klien streaming",
               "t.Array(...)"
             ],
             "a": 3,
@@ -1328,9 +1328,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Enum pada schema memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "keamanan konfigurasi",
+              "mengukur cakupan",
+              "klien streaming",
               "t.Union([...]) atau t.Literal"
             ],
             "a": 3,
@@ -1340,10 +1340,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Transformasi nilai memakai",
             "options": [
-              "CSS",
+              "TypeScript",
               "t.Transform",
-              "route",
-              "migrasi"
+              "body",
+              "headers"
             ],
             "a": 1,
             "explain": "Transform mengubah nilai validasi."
@@ -1353,9 +1353,9 @@ const CONTENT_ELYSIA = [
             "q": "Schema kustom untuk format khusus memakai",
             "options": [
               "t.String({ format })",
-              "CSS",
-              "route",
-              "migrasi"
+              "fitur lama",
+              "dependency konsisten",
+              "TypeScript"
             ],
             "a": 0,
             "explain": "Format memvalidasi string khusus."
@@ -1364,9 +1364,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Default value pada schema memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".decorate(...)",
+              "mengembalikan respons/status",
+              "memvalidasi/menghasilkan output",
               "t.Optional dengan default"
             ],
             "a": 3,
@@ -1376,9 +1376,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Validasi referensi silang memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "body: t.Object({...})",
+              "tidak ditemukan",
+              ".decorate(...)",
               "custom check/refine"
             ],
             "a": 3,
@@ -1388,10 +1388,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Schema bersama didefinisikan di",
             "options": [
-              "CSS",
+              "di-log dan tidak membocorkan detail",
               "modul terpisah agar dipakai ulang",
-              "route",
-              "migrasi"
+              "header lintas origin",
+              "transport dan domain"
             ],
             "a": 1,
             "explain": "Schema modular dapat dipakai ulang."
@@ -1400,10 +1400,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Schema penting untuk",
             "options": [
-              "CSS",
+              "body bertipe sesuai schema",
               "keamanan dan konsistensi",
-              "route",
-              "migrasi"
+              "mengelompokkan fitur yang dapat dipakai ulang",
+              ".decorate({ as: 'type' })"
             ],
             "a": 1,
             "explain": "Schema melindungi batas API."
@@ -1419,9 +1419,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Autentikasi sering memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "alat benchmark/load test",
+              "strategi invalidasi",
+              "pemulihan data",
               "token/JWT atau sesi"
             ],
             "a": 3,
@@ -1434,7 +1434,7 @@ const CONTENT_ELYSIA = [
               "md5",
               "hash kuat (bcrypt/argon2)",
               "plain",
-              "CSS"
+              "pelacakan"
             ],
             "a": 1,
             "explain": "Hashing kuat melindungi password."
@@ -1443,10 +1443,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Verifikasi JWT penting untuk",
             "options": [
-              "CSS",
+              "hanya berlaku pada grup",
               "memastikan token sah",
-              "route",
-              "migrasi"
+              "keamanan data antar request",
+              "test cepat dan terisolasi"
             ],
             "a": 1,
             "explain": "Verifikasi mencegah token palsu."
@@ -1457,8 +1457,8 @@ const CONTENT_ELYSIA = [
             "options": [
               "kode klien",
               "environment/secret manager",
-              "CSS",
-              "route"
+              "group/guard",
+              "origin diizinkan"
             ],
             "a": 1,
             "explain": "Rahasia dijaga di server."
@@ -1468,9 +1468,9 @@ const CONTENT_ELYSIA = [
             "q": "Rate limiting membantu mencegah",
             "options": [
               "abuse/brute force",
-              "CSS",
-              "route",
-              "migrasi"
+              "tidak ditemukan",
+              ".decorate(...)",
+              "mengembalikan respons/status"
             ],
             "a": 0,
             "explain": "Rate limit membatasi request."
@@ -1479,10 +1479,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "CORS diatur untuk",
             "options": [
-              "CSS",
-              "route",
+              "reuse antar route",
+              "efek terbatas pada area",
               "membatasi origin yang diizinkan",
-              "migrasi"
+              "pengiriman bisa berulang"
             ],
             "a": 2,
             "explain": "CORS mengatur sumber yang boleh mengakses."
@@ -1492,9 +1492,9 @@ const CONTENT_ELYSIA = [
             "q": "Header keamanan seperti CSP membantu mencegah",
             "options": [
               "injeksi skrip",
-              "CSS",
-              "route",
-              "migrasi"
+              "dependency konsisten",
+              "TypeScript",
+              "headers"
             ],
             "a": 0,
             "explain": "CSP membatasi sumber skrip."
@@ -1504,9 +1504,9 @@ const CONTENT_ELYSIA = [
             "q": "Validasi input mencegah",
             "options": [
               "injeksi dan data tak valid",
-              "CSS",
-              "route",
-              "migrasi"
+              "transport dan domain",
+              "startup dan eksekusi cepat",
+              "satu unit kecil"
             ],
             "a": 0,
             "explain": "Validasi menjaga integritas."
@@ -1516,9 +1516,9 @@ const CONTENT_ELYSIA = [
             "q": "Menggunakan HTTPS penting untuk",
             "options": [
               "melindungi data transit",
-              "CSS",
-              "route",
-              "migrasi"
+              "mengelompokkan fitur yang dapat dipakai ulang",
+              ".decorate({ as: 'type' })",
+              "request atau respons"
             ],
             "a": 0,
             "explain": "HTTPS mengenkripsi data."
@@ -1527,10 +1527,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Log tidak boleh berisi",
             "options": [
-              "CSS",
+              "throughput",
               "data sensitif",
-              "route",
-              "migrasi"
+              "downtime",
+              "signature/token"
             ],
             "a": 1,
             "explain": "Log menghindari data sensitif."
@@ -1546,9 +1546,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Elysia tidak memaksa ORM tertentu sehingga",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "instance Elysia yang diekspor",
+              "store: {...} pada constructor",
+              "ya, sesuai scope",
               "bisa memilih sesuai kebutuhan"
             ],
             "a": 3,
@@ -1558,10 +1558,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "ORM populer untuk Bun adalah",
             "options": [
-              "CSS",
+              "klien memahami kesalahan",
               "Drizzle atau Prisma",
-              "route",
-              "migrasi"
+              "akses lintas origin",
+              "runtime Bun di server/container"
             ],
             "a": 1,
             "explain": "Drizzle/Prisma umum dipakai."
@@ -1570,10 +1570,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Query berparameter penting untuk",
             "options": [
-              "CSS",
-              "route",
+              "route, decorator, dan hook",
+              "TypeScript mengenali properti",
               "mencegah SQL injection",
-              "migrasi"
+              "logging, auth, dan validasi"
             ],
             "a": 2,
             "explain": "Parameter memisahkan data dan query."
@@ -1582,9 +1582,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Transaksi database menjaga",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "abuse/brute force",
+              "environment",
+              "adapter pub/sub bersama",
               "atomisitas operasi"
             ],
             "a": 3,
@@ -1594,10 +1594,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Connection pooling mengatur",
             "options": [
-              "CSS",
-              "route",
+              "sukses tanpa konten",
+              "diuji dan dipakai ulang",
               "jumlah koneksi DB",
-              "migrasi"
+              "titik tertentu siklus request"
             ],
             "a": 2,
             "explain": "Pooling membatasi koneksi."
@@ -1606,10 +1606,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Migration mencatat",
             "options": [
-              "CSS",
+              "query.nama",
               "perubahan skema",
-              "route",
-              "migrasi"
+              "fungsi async",
+              "TypeBox"
             ],
             "a": 1,
             "explain": "Migration menyimpan riwayat skema."
@@ -1619,9 +1619,9 @@ const CONTENT_ELYSIA = [
             "q": "Index mempercepat",
             "options": [
               "pencarian kolom",
-              "CSS",
-              "route",
-              "migrasi"
+              "kualitas",
+              "workspaces",
+              "type-safety end-to-end"
             ],
             "a": 0,
             "explain": "Index mempercepat query."
@@ -1632,8 +1632,8 @@ const CONTENT_ELYSIA = [
             "options": [
               "join/eager load",
               "loop query",
-              "CSS",
-              "route"
+              "format berurutan",
+              "menilai efektivitas"
             ],
             "a": 0,
             "explain": "Join/eager loading mengurangi query."
@@ -1643,9 +1643,9 @@ const CONTENT_ELYSIA = [
             "q": "Menyimpan rahasia koneksi di",
             "options": [
               "kode klien",
-              "CSS",
+              "dihormati",
               "environment",
-              "route"
+              "lock/backoff"
             ],
             "a": 2,
             "explain": "Rahasia koneksi dijaga."
@@ -1654,10 +1654,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Validasi sebelum menyimpan penting untuk",
             "options": [
-              "CSS",
-              "route",
+              "downtime",
+              "signature/token",
               "integritas data",
-              "migrasi"
+              "kesesuaian API"
             ],
             "a": 2,
             "explain": "Validasi menjaga data bersih."
@@ -1674,9 +1674,9 @@ const CONTENT_ELYSIA = [
             "q": "Elysia mendukung websocket lewat",
             "options": [
               "plugin/ws handler",
-              "CSS",
-              "route",
-              "migrasi"
+              ".post(...)",
+              "return string",
+              "t.Optional(...)"
             ],
             "a": 0,
             "explain": "Elysia menyediakan dukungan websocket."
@@ -1686,9 +1686,9 @@ const CONTENT_ELYSIA = [
             "q": "Websocket memungkinkan",
             "options": [
               "komunikasi dua arah realtime",
-              "CSS",
-              "route",
-              "migrasi"
+              "input eksternal tetap tak tepercaya",
+              "properti pada context",
+              "store saat pembuatan instance"
             ],
             "a": 0,
             "explain": "Websocket mengirim data dua arah."
@@ -1697,10 +1697,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menangani event pesan memakai",
             "options": [
-              "CSS",
-              "route",
+              "file(path)",
+              "expect(res.status).toBe(200)",
               "handler pesan/onMessage",
-              "migrasi"
+              "t.Union([...]) atau t.Literal"
             ],
             "a": 2,
             "explain": "Handler pesan menerima data."
@@ -1710,9 +1710,9 @@ const CONTENT_ELYSIA = [
             "q": "Broadcast ke banyak klien memerlukan",
             "options": [
               "manajemen koneksi",
-              "CSS",
-              "route",
-              "migrasi"
+              "dampak kebocoran",
+              "perubahan terisolasi",
+              ".post(...)"
             ],
             "a": 0,
             "explain": "Perlu melacak koneksi aktif."
@@ -1721,9 +1721,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Autentikasi websocket penting pada",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".post(...)",
+              "return string",
+              "t.Optional(...)",
               "koneksi awal"
             ],
             "a": 3,
@@ -1734,9 +1734,9 @@ const CONTENT_ELYSIA = [
             "q": "Server-Sent Events cocok untuk",
             "options": [
               "aliran data satu arah",
-              "CSS",
-              "route",
-              "migrasi"
+              "reuse antar route",
+              "efek terbatas pada area",
+              "pengiriman bisa berulang"
             ],
             "a": 0,
             "explain": "SSE mengirim satu arah dari server."
@@ -1745,10 +1745,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menutup koneksi harus membersihkan",
             "options": [
-              "CSS",
-              "route",
+              "file(path)",
+              "plugin",
               "resource terkait",
-              "migrasi"
+              "expect(res.status).toBe(200)"
             ],
             "a": 2,
             "explain": "Cleanup mencegah kebocoran."
@@ -1757,10 +1757,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Heartbeat membantu",
             "options": [
-              "CSS",
+              "mencegah input salah",
               "mendeteksi koneksi mati",
-              "route",
-              "migrasi"
+              "perawatan aplikasi besar",
+              "ya, agar tidak timeout"
             ],
             "a": 1,
             "explain": "Heartbeat menjaga koneksi hidup."
@@ -1769,9 +1769,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Scale websocket memerlukan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "resource terkait",
+              "mencegah penumpukan",
+              "detail field",
               "adapter pub/sub bersama"
             ],
             "a": 3,
@@ -1783,8 +1783,8 @@ const CONTENT_ELYSIA = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "HTTPS",
+              "JSON"
             ],
             "a": 0,
             "explain": "Backpressure menjaga klien lambat."
@@ -1800,9 +1800,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menerima upload di Elysia memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mencegah abuse",
+              "fitur lama",
+              "dependency konsisten",
               "file pada body/form"
             ],
             "a": 3,
@@ -1812,10 +1812,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Validasi tipe berkas penting untuk",
             "options": [
-              "CSS",
-              "route",
+              "sukses tanpa konten",
+              "diuji dan dipakai ulang",
               "mencegah berkas berbahaya",
-              "migrasi"
+              "titik tertentu siklus request"
             ],
             "a": 2,
             "explain": "Validasi mencegah risiko."
@@ -1825,9 +1825,9 @@ const CONTENT_ELYSIA = [
             "q": "Membatasi ukuran unggahan penting untuk",
             "options": [
               "mencegah penyalahgunaan",
-              "CSS",
-              "route",
-              "migrasi"
+              "body: t.Object({...})",
+              "tidak ditemukan",
+              ".decorate(...)"
             ],
             "a": 0,
             "explain": "Batas ukuran melindungi server."
@@ -1836,10 +1836,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Mengirim file ke klien memakai",
             "options": [
-              "CSS",
-              "route",
+              "dependency konsisten",
+              "TypeScript",
               "file(path)",
-              "migrasi"
+              "body"
             ],
             "a": 2,
             "explain": "file mengirim berkas."
@@ -1848,9 +1848,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Streaming respons membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "t.Refine / custom check",
+              "memastikan aturan benar",
+              "index dan optimasi",
               "pengiriman data besar"
             ],
             "a": 3,
@@ -1861,9 +1861,9 @@ const CONTENT_ELYSIA = [
             "q": "Menyimpan berkas sebaiknya di",
             "options": [
               "storage/objek storage",
-              "CSS",
-              "route",
-              "migrasi"
+              "keandalan",
+              "mengukur cakupan",
+              "klien streaming"
             ],
             "a": 0,
             "explain": "Object storage cocok untuk berkas."
@@ -1873,9 +1873,9 @@ const CONTENT_ELYSIA = [
             "q": "Nama berkas pengguna sebaiknya",
             "options": [
               "dipakai apa adanya",
-              "CSS",
+              "fleksibilitas",
               "disanitasi",
-              "route"
+              "hot spot"
             ],
             "a": 2,
             "explain": "Sanitasi mencegah path traversal."
@@ -1885,9 +1885,9 @@ const CONTENT_ELYSIA = [
             "q": "Menangani error upload penting untuk",
             "options": [
               "umpan balik yang jelas",
-              "CSS",
-              "route",
-              "migrasi"
+              "mengelompokkan fitur yang dapat dipakai ulang",
+              ".decorate({ as: 'type' })",
+              "request atau respons"
             ],
             "a": 0,
             "explain": "Error jelas membantu pengguna."
@@ -1896,9 +1896,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Range request memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "integritas data",
+              "file pada body/form",
+              "crash total",
               "unduhan sebagian"
             ],
             "a": 3,
@@ -1908,10 +1908,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Membersihkan berkas sementara penting untuk",
             "options": [
-              "CSS",
-              "route",
+              "mendeteksi regresi",
+              "t.String({ format })",
               "mencegah penumpukan",
-              "migrasi"
+              "injeksi skrip"
             ],
             "a": 2,
             "explain": "Cleanup menjaga penyimpanan."
@@ -1927,10 +1927,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Logging membantu",
             "options": [
-              "CSS",
+              "streaming",
               "diagnosis masalah",
-              "route",
-              "migrasi"
+              "dampak kebocoran",
+              "perubahan terisolasi"
             ],
             "a": 1,
             "explain": "Log mencatat kejadian."
@@ -1939,9 +1939,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Log terstruktur memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "test",
+              "Bun",
+              ".post(...)",
               "JSON"
             ],
             "a": 3,
@@ -1952,9 +1952,9 @@ const CONTENT_ELYSIA = [
             "q": "Level log umum meliputi",
             "options": [
               "debug, info, warn, error",
-              "CSS",
-              "route",
-              "migrasi"
+              "perawatan aplikasi besar",
+              "ya, agar tidak timeout",
+              "mencegah koneksi menggantung"
             ],
             "a": 0,
             "explain": "Level log memisahkan kepentingan."
@@ -1964,9 +1964,9 @@ const CONTENT_ELYSIA = [
             "q": "Mencatat request penting untuk",
             "options": [
               "audit dan debugging",
-              "CSS",
-              "route",
-              "migrasi"
+              "decorator = fungsi/properti, store = data",
+              "kontrak dan validasi",
+              "injeksi dan data tak valid"
             ],
             "a": 0,
             "explain": "Request log membantu diagnosis."
@@ -1975,10 +1975,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Tracing terdistribusi membantu",
             "options": [
-              "CSS",
+              "akses lintas origin",
               "melacak request lintas layanan",
-              "route",
-              "migrasi"
+              "runtime Bun di server/container",
+              "lint dan test otomatis"
             ],
             "a": 1,
             "explain": "Tracing menghubungkan span."
@@ -1987,9 +1987,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Metrik penting seperti",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "store: {...} pada constructor",
+              "ya, sesuai scope",
+              "keamanan dan konsistensi",
               "latensi dan error rate"
             ],
             "a": 3,
@@ -1999,10 +1999,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Health check endpoint membantu",
             "options": [
-              "CSS",
+              ".post(...)",
               "pemantauan kesiapan",
-              "route",
-              "migrasi"
+              "return string",
+              "t.Optional(...)"
             ],
             "a": 1,
             "explain": "Health check memeriksa layanan."
@@ -2011,9 +2011,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Alert membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "TypeScript mengenali properti",
+              "logging, auth, dan validasi",
+              "memastikan token sah",
               "deteksi dini masalah"
             ],
             "a": 3,
@@ -2023,10 +2023,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Log tidak boleh mencatat",
             "options": [
-              "CSS",
-              "route",
+              "deploy/restart",
+              "backoff",
               "password/token",
-              "migrasi"
+              "isolasi test"
             ],
             "a": 2,
             "explain": "Data sensitif tidak dicatat."
@@ -2035,10 +2035,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Sampling log membantu",
             "options": [
-              "CSS",
-              "route",
+              "pertimbangan CPU",
+              "batas memori",
               "mengurangi volume",
-              "migrasi"
+              "bocor informasi"
             ],
             "a": 2,
             "explain": "Sampling menjaga biaya."
@@ -2054,10 +2054,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "onError menangani",
             "options": [
-              "CSS",
-              "route",
+              "httpOnly, secure, sameSite",
+              "konfigurasi antar lingkungan",
               "error di aplikasi",
-              "migrasi"
+              "aliran satu arah"
             ],
             "a": 2,
             "explain": "onError menangkap error."
@@ -2066,10 +2066,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Error handler dapat mengembalikan",
             "options": [
-              "CSS",
+              "komposisi fitur",
               "respons terstruktur",
-              "route",
-              "migrasi"
+              "kerjasama tim",
+              "pengukuran"
             ],
             "a": 1,
             "explain": "Respons error harus jelas."
@@ -2078,9 +2078,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Membedakan error klien dan server penting untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tipe isi respons",
+              "merestart layanan bermasalah",
+              "streaming data besar",
               "status yang tepat"
             ],
             "a": 3,
@@ -2090,10 +2090,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Error validasi harus memberi",
             "options": [
-              "CSS",
-              "route",
+              "data sensitif",
+              "plugin/ws handler",
               "detail field",
-              "migrasi"
+              "mencegah penyalahgunaan"
             ],
             "a": 2,
             "explain": "Detail membantu klien."
@@ -2103,9 +2103,9 @@ const CONTENT_ELYSIA = [
             "q": "Error tak terduga sebaiknya",
             "options": [
               "di-log dan tidak membocorkan detail",
-              "CSS",
-              "route",
-              "migrasi"
+              "perawatan aplikasi besar",
+              "ya, agar tidak timeout",
+              "mencegah koneksi menggantung"
             ],
             "a": 0,
             "explain": "Jangan bocorkan internal."
@@ -2114,10 +2114,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Retry pada klien memerlukan",
             "options": [
-              "CSS",
-              "route",
+              "keamanan data antar request",
+              "test cepat dan terisolasi",
               "status yang jelas",
-              "migrasi"
+              "melindungi data transit"
             ],
             "a": 2,
             "explain": "Status memandu retry."
@@ -2126,9 +2126,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Custom error class membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "query.nama",
+              "fungsi async",
+              "TypeBox",
               "klasifikasi error"
             ],
             "a": 3,
@@ -2139,9 +2139,9 @@ const CONTENT_ELYSIA = [
             "q": "Membungkus error pihak ketiga penting agar",
             "options": [
               "tidak membocorkan internal",
-              "CSS",
-              "route",
-              "migrasi"
+              "titik tertentu siklus request",
+              "bagian kode teruji",
+              "bisa memilih sesuai kebutuhan"
             ],
             "a": 0,
             "explain": "Wrapping menjaga batas."
@@ -2150,10 +2150,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Graceful shutdown memastikan",
             "options": [
-              "CSS",
-              "route",
+              "reuse antar route",
+              "efek terbatas pada area",
               "request selesai dengan baik",
-              "migrasi"
+              "pengiriman bisa berulang"
             ],
             "a": 2,
             "explain": "Shutdown menunggu request selesai."
@@ -2162,10 +2162,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Error boundary di level aplikasi mencegah",
             "options": [
-              "CSS",
+              "mengurangi volume",
               "crash total",
-              "route",
-              "migrasi"
+              "memodifikasi respons",
+              "OPTIONS"
             ],
             "a": 1,
             "explain": "Penanganan terpusat mencegah crash."
@@ -2181,10 +2181,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Middleware berlapis memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "reuse antar route",
+              "efek terbatas pada area",
               "logika bertahap pada request",
-              "migrasi"
+              "pengiriman bisa berulang"
             ],
             "a": 2,
             "explain": "Middleware berlapis memproses bertahap."
@@ -2193,9 +2193,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Middleware global didefinisikan di",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "environment/secret manager",
+              "join/eager load",
+              "resource terkait",
               "instance utama"
             ],
             "a": 3,
@@ -2205,9 +2205,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Middleware scoped memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mencegah penumpukan",
+              "detail field",
+              "hasil akhir",
               "group/guard"
             ],
             "a": 3,
@@ -2218,9 +2218,9 @@ const CONTENT_ELYSIA = [
             "q": "Guard berguna untuk",
             "options": [
               "memeriksa izin sebelum handler",
-              "CSS",
-              "route",
-              "migrasi"
+              "mengatur akses lintas origin",
+              "decorator = fungsi/properti, store = data",
+              "kontrak dan validasi"
             ],
             "a": 0,
             "explain": "Guard mengecek izin."
@@ -2229,10 +2229,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Middleware transform dapat",
             "options": [
-              "CSS",
+              "streaming",
               "memodifikasi respons",
-              "route",
-              "migrasi"
+              "dampak kebocoran",
+              "perubahan terisolasi"
             ],
             "a": 1,
             "explain": "Transform memodifikasi respons."
@@ -2242,9 +2242,9 @@ const CONTENT_ELYSIA = [
             "q": "Middleware logging mencatat",
             "options": [
               "request dan durasi",
-              "CSS",
-              "route",
-              "migrasi"
+              ".decorate({ as: 'type' })",
+              "request atau respons",
+              "modul terpisah agar dipakai ulang"
             ],
             "a": 0,
             "explain": "Log mencatat request."
@@ -2253,10 +2253,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Middleware rate limit membatasi",
             "options": [
-              "CSS",
+              ".post(...)",
               "jumlah request",
-              "route",
-              "migrasi"
+              "return string",
+              "t.Optional(...)"
             ],
             "a": 1,
             "explain": "Rate limit membatasi frekuensi."
@@ -2265,9 +2265,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Middleware CORS mengatur",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "diuji dan dipakai ulang",
+              "titik tertentu siklus request",
+              "bagian kode teruji",
               "header lintas origin"
             ],
             "a": 3,
@@ -2278,9 +2278,9 @@ const CONTENT_ELYSIA = [
             "q": "Urutan middleware memengaruhi",
             "options": [
               "hasil akhir",
-              "CSS",
-              "route",
-              "migrasi"
+              "token/JWT atau sesi",
+              "perubahan skema",
+              "manajemen koneksi"
             ],
             "a": 0,
             "explain": "Urutan menentukan hasil."
@@ -2289,10 +2289,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Middleware berat memperlambat",
             "options": [
-              "CSS",
-              "route",
+              "disanitasi",
+              "mengurangi volume",
               "semua request",
-              "migrasi"
+              "memodifikasi respons"
             ],
             "a": 2,
             "explain": "Middleware jalan tiap request."
@@ -2308,10 +2308,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Validasi kustom memakai",
             "options": [
-              "CSS",
+              "request selesai dengan baik",
               "t.Refine / custom check",
-              "route",
-              "migrasi"
+              "refine pada object",
+              "httpOnly, secure, sameSite"
             ],
             "a": 1,
             "explain": "Refine menyusun aturan khusus."
@@ -2320,10 +2320,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Pesan error kustom membantu",
             "options": [
-              "CSS",
+              "input eksternal tetap tak tepercaya",
               "klien memahami kesalahan",
-              "route",
-              "migrasi"
+              "properti pada context",
+              "store saat pembuatan instance"
             ],
             "a": 1,
             "explain": "Pesan jelas memudahkan klien."
@@ -2333,9 +2333,9 @@ const CONTENT_ELYSIA = [
             "q": "Validasi lintas field memakai",
             "options": [
               "refine pada object",
-              "CSS",
-              "route",
-              "migrasi"
+              "tidak membocorkan internal",
+              "klien memahami kesalahan",
+              "akses lintas origin"
             ],
             "a": 0,
             "explain": "Refine menangani aturan antar field."
@@ -2344,9 +2344,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Normalisasi input memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "koneksi awal",
+              "unduhan sebagian",
+              "respons terstruktur",
               "transform"
             ],
             "a": 3,
@@ -2357,9 +2357,9 @@ const CONTENT_ELYSIA = [
             "q": "Validasi schema response membantu",
             "options": [
               "menjaga kontrak output",
-              "CSS",
-              "route",
-              "migrasi"
+              "status yang jelas",
+              "t.Refine / custom check",
+              "memastikan aturan benar"
             ],
             "a": 0,
             "explain": "Response schema menjaga konsistensi."
@@ -2369,9 +2369,9 @@ const CONTENT_ELYSIA = [
             "q": "Validasi params penting untuk",
             "options": [
               "mencegah input salah",
-              "CSS",
-              "route",
-              "migrasi"
+              "transpilasi/runtime TS seperti Bun",
+              "instance Elysia yang diekspor",
+              "store: {...} pada constructor"
             ],
             "a": 0,
             "explain": "Params yang divalidasi aman."
@@ -2381,9 +2381,9 @@ const CONTENT_ELYSIA = [
             "q": "Menyatukan schema dipakai",
             "options": [
               "reuse antar route",
-              "CSS",
-              "route",
-              "migrasi"
+              "di-log dan tidak membocorkan detail",
+              "header lintas origin",
+              "transport dan domain"
             ],
             "a": 0,
             "explain": "Schema dipakai ulang."
@@ -2392,9 +2392,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Validasi berlapis memisahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "body bertipe sesuai schema",
+              "mengelompokkan fitur yang dapat dipakai ulang",
+              ".decorate({ as: 'type' })",
               "transport dan domain"
             ],
             "a": 3,
@@ -2404,10 +2404,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Error validasi harus",
             "options": [
-              "CSS",
-              "route",
+              "handler pesan/onMessage",
+              "storage/objek storage",
               "konsisten formatnya",
-              "migrasi"
+              "password/token"
             ],
             "a": 2,
             "explain": "Format konsisten memudahkan klien."
@@ -2417,9 +2417,9 @@ const CONTENT_ELYSIA = [
             "q": "Menguji validasi penting untuk",
             "options": [
               "memastikan aturan benar",
-              "CSS",
-              "route",
-              "migrasi"
+              "mengelompokkan fitur yang dapat dipakai ulang",
+              ".decorate({ as: 'type' })",
+              "request atau respons"
             ],
             "a": 0,
             "explain": "Test memastikan validasi bekerja."
@@ -2435,9 +2435,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "CORS mengatur",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pemeriksaan tipe lebih ketat",
+              "hanya berlaku pada grup",
+              "keamanan data antar request",
               "akses lintas origin"
             ],
             "a": 3,
@@ -2447,9 +2447,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Header Access-Control-Allow-Origin menetapkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mengukur cakupan",
+              "klien streaming",
+              "mencegah abuse",
               "origin diizinkan"
             ],
             "a": 3,
@@ -2471,10 +2471,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Header keamanan umum adalah",
             "options": [
-              "CSS",
-              "route",
+              "TypeScript",
+              "headers",
               "CSP, X-Frame-Options",
-              "migrasi"
+              "body: t.Object({...})"
             ],
             "a": 2,
             "explain": "Header keamanan melindungi."
@@ -2483,10 +2483,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Strict-Transport-Security memaksa",
             "options": [
-              "CSS",
-              "route",
+              "password/token",
+              "group/guard",
               "HTTPS",
-              "migrasi"
+              "eksplisit"
             ],
             "a": 2,
             "explain": "HSTS memaksa HTTPS."
@@ -2495,10 +2495,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Cookie sebaiknya memakai",
             "options": [
-              "CSS",
-              "route",
+              "logika bertahap pada request",
+              "menjaga kontrak output",
               "httpOnly, secure, sameSite",
-              "migrasi"
+              "tipe isi respons"
             ],
             "a": 2,
             "explain": "Atribut cookie meningkatkan keamanan."
@@ -2507,10 +2507,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Cache-Control mengatur",
             "options": [
-              "CSS",
+              "origin diizinkan",
               "kebijakan cache",
-              "route",
-              "migrasi"
+              "eksplisit",
+              "alat benchmark/load test"
             ],
             "a": 1,
             "explain": "Cache-Control mengatur caching."
@@ -2520,9 +2520,9 @@ const CONTENT_ELYSIA = [
             "q": "Content-Type menetapkan",
             "options": [
               "tipe isi respons",
-              "CSS",
-              "route",
-              "migrasi"
+              "request selesai dengan baik",
+              "refine pada object",
+              "httpOnly, secure, sameSite"
             ],
             "a": 0,
             "explain": "Content-Type menentukan tipe."
@@ -2531,9 +2531,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Mengatur header respons memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".listen(3000)",
+              "params.id",
+              "status(404, ...)",
               "set.headers"
             ],
             "a": 3,
@@ -2543,10 +2543,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "CORS terlalu permisif berisiko",
             "options": [
-              "CSS",
-              "route",
+              "bocor informasi",
+              "orientasi",
               "keamanan",
-              "migrasi"
+              "reproduksibilitas"
             ],
             "a": 2,
             "explain": "CORS longgar membahayakan."
@@ -2562,10 +2562,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Modularisasi berbasis fitur membantu",
             "options": [
-              "CSS",
-              "route",
+              "store: {...} pada constructor",
+              "ya, sesuai scope",
               "perawatan aplikasi besar",
-              "migrasi"
+              "keamanan dan konsistensi"
             ],
             "a": 2,
             "explain": "Fitur terpisah mudah dirawat."
@@ -2574,10 +2574,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Plugin bersarang memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "memasang dependency",
+              ".get(path, handler)",
               "komposisi fitur",
-              "migrasi"
+              "plugin swagger/OpenAPI"
             ],
             "a": 2,
             "explain": "Plugin dapat menyusun plugin lain."
@@ -2586,10 +2586,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Scoping plugin penting agar",
             "options": [
-              "CSS",
+              ".decorate({ as: 'type' })",
               "efek terbatas pada area",
-              "route",
-              "migrasi"
+              "request atau respons",
+              "modul terpisah agar dipakai ulang"
             ],
             "a": 1,
             "explain": "Scope mencegah efek global tak diinginkan."
@@ -2598,10 +2598,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Dependency antar plugin sebaiknya",
             "options": [
-              "CSS",
+              "error server",
               "eksplisit",
-              "route",
-              "migrasi"
+              "menambah kompleksitas",
+              "t.Object bersarang"
             ],
             "a": 1,
             "explain": "Ketergantungan jelas memudahkan perawatan."
@@ -2610,9 +2610,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Dokumentasi plugin penting untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "data sensitif",
+              "plugin/ws handler",
+              "mencegah penyalahgunaan",
               "pemakaian ulang"
             ],
             "a": 3,
@@ -2622,10 +2622,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Memisahkan domain dan transport membantu",
             "options": [
-              "CSS",
-              "route",
+              "pemantauan kesiapan",
+              "instance utama",
               "pengujian",
-              "migrasi"
+              "konsisten formatnya"
             ],
             "a": 2,
             "explain": "Domain terpisah mudah diuji."
@@ -2634,10 +2634,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Injeksi layanan memakai",
             "options": [
-              "CSS",
+              "komposisi fitur",
               "decorate/store",
-              "route",
-              "migrasi"
+              "kerjasama tim",
+              "pengukuran"
             ],
             "a": 1,
             "explain": "Decorator/store menyuntikkan layanan."
@@ -2646,10 +2646,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Pola clean architecture memisahkan",
             "options": [
-              "CSS",
-              "route",
+              "urutan kompatibel",
+              "kompatibilitas klien",
               "lapisan aplikasi",
-              "migrasi"
+              "bug berulang"
             ],
             "a": 2,
             "explain": "Pemisahan lapisan menjaga kode."
@@ -2658,10 +2658,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Mengurangi ketergantungan langsung membantu",
             "options": [
-              "CSS",
+              "kualitas",
               "fleksibilitas",
-              "route",
-              "migrasi"
+              "workspaces",
+              "type-safety end-to-end"
             ],
             "a": 1,
             "explain": "Dependensi longgar mudah diubah."
@@ -2670,9 +2670,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Konsistensi struktur proyek penting untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "query.nama",
+              "fungsi async",
+              "TypeBox",
               "kerjasama tim"
             ],
             "a": 3,
@@ -2689,10 +2689,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Bun dikenal karena",
             "options": [
-              "CSS",
-              "route",
+              "ya, agar tidak timeout",
+              "mencegah koneksi menggantung",
               "startup dan eksekusi cepat",
-              "migrasi"
+              "Bun mendukung TS"
             ],
             "a": 2,
             "explain": "Bun berfokus pada performa."
@@ -2701,10 +2701,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Benchmark endpoint memakai",
             "options": [
-              "CSS",
-              "route",
+              "t.String({ format })",
+              "injeksi skrip",
               "alat benchmark/load test",
-              "migrasi"
+              "integritas data"
             ],
             "a": 2,
             "explain": "Load test mengukur throughput."
@@ -2713,10 +2713,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Cache respons membantu",
             "options": [
-              "CSS",
-              "route",
+              "pemeriksaan sesi/token",
+              "afterHandle",
               "mengurangi beban",
-              "migrasi"
+              "mendeteksi regresi"
             ],
             "a": 2,
             "explain": "Cache mengurangi kerja berulang."
@@ -2725,9 +2725,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Query lambat perlu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "bagian kode teruji",
+              "bisa memilih sesuai kebutuhan",
+              "mencegah berkas berbahaya",
               "index dan optimasi"
             ],
             "a": 3,
@@ -2737,10 +2737,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Connection pooling memengaruhi",
             "options": [
-              "CSS",
-              "route",
+              "fitur lama",
+              "dependency konsisten",
               "throughput",
-              "migrasi"
+              "TypeScript"
             ],
             "a": 2,
             "explain": "Pooling menentukan kapasitas."
@@ -2749,10 +2749,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Mengurangi payload membantu",
             "options": [
-              "CSS",
+              "mengukur cakupan",
               "latensi jaringan",
-              "route",
-              "migrasi"
+              "klien streaming",
+              "mencegah abuse"
             ],
             "a": 1,
             "explain": "Payload kecil lebih cepat."
@@ -2761,10 +2761,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Compression respons membantu",
             "options": [
-              "CSS",
+              "hot spot",
               "bandwidth",
-              "route",
-              "migrasi"
+              "keamanan konfigurasi",
+              "keandalan"
             ],
             "a": 1,
             "explain": "Kompresi menghemat bandwidth."
@@ -2773,9 +2773,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Profiling membantu menemukan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "transform",
+              "keamanan",
+              "fleksibilitas",
               "hot spot"
             ],
             "a": 3,
@@ -2786,9 +2786,9 @@ const CONTENT_ELYSIA = [
             "q": "Optimasi berdasarkan",
             "options": [
               "pengukuran",
-              "CSS",
-              "route",
-              "migrasi"
+              "custom check/refine",
+              "atomisitas operasi",
+              "handler pesan/onMessage"
             ],
             "a": 0,
             "explain": "Pengukuran memandu optimasi."
@@ -2797,10 +2797,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Caching berlapis perlu",
             "options": [
-              "CSS",
-              "route",
+              ".decorate(...)",
+              "mengembalikan respons/status",
               "strategi invalidasi",
-              "migrasi"
+              "memvalidasi/menghasilkan output"
             ],
             "a": 2,
             "explain": "Invalidasi menjaga data segar."
@@ -2817,9 +2817,9 @@ const CONTENT_ELYSIA = [
             "q": "Deploy Elysia umumnya memakai",
             "options": [
               "runtime Bun di server/container",
-              "CSS",
-              "route",
-              "migrasi"
+              "reuse antar route",
+              "efek terbatas pada area",
+              "pengiriman bisa berulang"
             ],
             "a": 0,
             "explain": "Deploy menjalankan Bun di server."
@@ -2829,9 +2829,9 @@ const CONTENT_ELYSIA = [
             "q": "Environment variables memisahkan",
             "options": [
               "konfigurasi antar lingkungan",
-              "CSS",
-              "route",
-              "migrasi"
+              "hanya berlaku pada grup",
+              "keamanan data antar request",
+              "test cepat dan terisolasi"
             ],
             "a": 0,
             "explain": "Env memisahkan konfigurasi."
@@ -2840,10 +2840,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Container memudahkan",
             "options": [
-              "CSS",
+              "pelacakan",
               "reproduksibilitas deploy",
-              "route",
-              "migrasi"
+              "pengiriman bertahap",
+              "kondisi if-none-match"
             ],
             "a": 1,
             "explain": "Container konsisten antar lingkungan."
@@ -2853,9 +2853,9 @@ const CONTENT_ELYSIA = [
             "q": "Health check membantu orchestrator",
             "options": [
               "merestart layanan bermasalah",
-              "CSS",
-              "route",
-              "migrasi"
+              "diuji dan dipakai ulang",
+              "titik tertentu siklus request",
+              "bagian kode teruji"
             ],
             "a": 0,
             "explain": "Health check memandu orkestrasi."
@@ -2865,9 +2865,9 @@ const CONTENT_ELYSIA = [
             "q": "Rolling deploy meminimalkan",
             "options": [
               "downtime",
-              "CSS",
-              "route",
-              "migrasi"
+              "group/guard",
+              "origin diizinkan",
+              "eksplisit"
             ],
             "a": 0,
             "explain": "Rolling deploy menjaga layanan hidup."
@@ -2876,9 +2876,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Graceful shutdown penting saat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "alat benchmark/load test",
+              "strategi invalidasi",
+              "pemulihan data",
               "deploy/restart"
             ],
             "a": 3,
@@ -2888,10 +2888,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Centralized logging membantu",
             "options": [
-              "CSS",
-              "route",
+              "memvalidasi/menghasilkan output",
+              "custom check/refine",
               "diagnosis produksi",
-              "migrasi"
+              "atomisitas operasi"
             ],
             "a": 2,
             "explain": "Log terpusat memudahkan diagnosis."
@@ -2900,10 +2900,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Secret management penting untuk",
             "options": [
-              "CSS",
-              "route",
+              "handler pesan/onMessage",
+              "storage/objek storage",
               "keamanan konfigurasi",
-              "migrasi"
+              "password/token"
             ],
             "a": 2,
             "explain": "Rahasia dijaga aman."
@@ -2913,9 +2913,9 @@ const CONTENT_ELYSIA = [
             "q": "Migration DB saat deploy perlu",
             "options": [
               "urutan kompatibel",
-              "CSS",
-              "route",
-              "migrasi"
+              "headers",
+              "body: t.Object({...})",
+              "tidak ditemukan"
             ],
             "a": 0,
             "explain": "Migrasi bertahap menjaga uptime."
@@ -2924,10 +2924,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Backup penting untuk",
             "options": [
-              "CSS",
+              "tidak ditemukan",
               "pemulihan data",
-              "route",
-              "migrasi"
+              ".decorate(...)",
+              "mengembalikan respons/status"
             ],
             "a": 1,
             "explain": "Backup melindungi data."
@@ -2944,9 +2944,9 @@ const CONTENT_ELYSIA = [
             "q": "HTTP client pada Bun memakai",
             "options": [
               "fetch bawaan",
-              "CSS",
-              "route",
-              "migrasi"
+              "keamanan konfigurasi",
+              "keandalan",
+              "mengukur cakupan"
             ],
             "a": 0,
             "explain": "Bun menyediakan fetch."
@@ -2955,10 +2955,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Webhook diverifikasi dengan",
             "options": [
-              "CSS",
+              "keamanan",
               "signature/token",
-              "route",
-              "migrasi"
+              "fleksibilitas",
+              "hot spot"
             ],
             "a": 1,
             "explain": "Verifikasi memastikan sumber."
@@ -2968,9 +2968,9 @@ const CONTENT_ELYSIA = [
             "q": "Menerima webhook sebaiknya async",
             "options": [
               "ya, agar tidak timeout",
-              "CSS",
-              "route",
-              "migrasi"
+              "bagian kode teruji",
+              "bisa memilih sesuai kebutuhan",
+              "mencegah berkas berbahaya"
             ],
             "a": 0,
             "explain": "Proses async mencegah timeout."
@@ -2980,9 +2980,9 @@ const CONTENT_ELYSIA = [
             "q": "Idempotensi webhook penting karena",
             "options": [
               "pengiriman bisa berulang",
-              "CSS",
-              "route",
-              "migrasi"
+              "satu unit kecil",
+              "ya, berisiko bocor",
+              "Memvalidasi bentuk input di batas endpoint"
             ],
             "a": 0,
             "explain": "Webhook dapat dikirim ulang."
@@ -2991,10 +2991,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Retry keluar memakai",
             "options": [
-              "CSS",
+              "afterHandle",
               "backoff",
-              "route",
-              "migrasi"
+              "mendeteksi regresi",
+              "injeksi skrip"
             ],
             "a": 1,
             "explain": "Backoff menghindari banjir retry."
@@ -3003,9 +3003,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menguji integrasi memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "parameter path",
+              "unauthorized",
+              "pemeriksaan sesi/token",
               "mock fetch"
             ],
             "a": 3,
@@ -3015,10 +3015,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Timeout request keluar penting untuk",
             "options": [
-              "CSS",
+              "JSON",
               "keandalan",
-              "route",
-              "migrasi"
+              "crash total",
+              "transform"
             ],
             "a": 1,
             "explain": "Timeout mencegah menggantung."
@@ -3027,9 +3027,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Rahasia API disimpan di",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "injeksi skrip",
+              "integritas data",
+              "file pada body/form",
               "environment"
             ],
             "a": 3,
@@ -3039,9 +3039,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Versioning API membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "eksplisit",
+              "alat benchmark/load test",
+              "strategi invalidasi",
               "kompatibilitas klien"
             ],
             "a": 3,
@@ -3051,9 +3051,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Audit event membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "password/token",
+              "group/guard",
+              "origin diizinkan",
               "pelacakan"
             ],
             "a": 3,
@@ -3071,9 +3071,9 @@ const CONTENT_ELYSIA = [
             "q": "Test integrasi menguji",
             "options": [
               "alur end-to-end",
-              "CSS",
-              "route",
-              "migrasi"
+              "TypeScript/JavaScript",
+              ".get('/path', handler)",
+              ".group dengan prefix"
             ],
             "a": 0,
             "explain": "Integrasi menguji beberapa bagian bersama."
@@ -3082,9 +3082,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Test unit menguji",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "request atau respons",
+              "modul terpisah agar dipakai ulang",
+              "Drizzle atau Prisma",
               "satu unit kecil"
             ],
             "a": 3,
@@ -3095,9 +3095,9 @@ const CONTENT_ELYSIA = [
             "q": "Contract testing memverifikasi",
             "options": [
               "kesesuaian API",
-              "CSS",
-              "route",
-              "migrasi"
+              "set.headers",
+              "store.nama",
+              "app.handle(request)"
             ],
             "a": 0,
             "explain": "Contract test menjaga kesepakatan API."
@@ -3107,9 +3107,9 @@ const CONTENT_ELYSIA = [
             "q": "Mock database membantu",
             "options": [
               "isolasi test",
-              "CSS",
-              "route",
-              "migrasi"
+              "t.Array(...)",
+              "hash kuat (bcrypt/argon2)",
+              "pencarian kolom"
             ],
             "a": 0,
             "explain": "Mock menghindari dependensi nyata."
@@ -3119,9 +3119,9 @@ const CONTENT_ELYSIA = [
             "q": "Linting memakai",
             "options": [
               "ESLint/Biome",
-              "CSS",
-              "route",
-              "migrasi"
+              "koneksi awal",
+              "unduhan sebagian",
+              "respons terstruktur"
             ],
             "a": 0,
             "explain": "Linter menjaga kualitas."
@@ -3131,9 +3131,9 @@ const CONTENT_ELYSIA = [
             "q": "Static typing membantu menemukan",
             "options": [
               "error lebih awal",
-              "CSS",
-              "route",
-              "migrasi"
+              "keamanan data antar request",
+              "test cepat dan terisolasi",
+              "melindungi data transit"
             ],
             "a": 0,
             "explain": "Tipe menangkap error dini."
@@ -3142,9 +3142,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Coverage membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "throughput",
+              "downtime",
+              "signature/token",
               "mengukur cakupan"
             ],
             "a": 3,
@@ -3154,10 +3154,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "CI menjalankan",
             "options": [
-              "CSS",
+              "decorator = fungsi/properti, store = data",
               "lint dan test otomatis",
-              "route",
-              "migrasi"
+              "kontrak dan validasi",
+              "injeksi dan data tak valid"
             ],
             "a": 1,
             "explain": "CI otomatis memeriksa."
@@ -3166,9 +3166,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Test perilaku lebih stabil dari",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "headers",
+              "body: t.Object({...})",
+              "tidak ditemukan",
               "test implementasi"
             ],
             "a": 3,
@@ -3178,9 +3178,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Regression test mencegah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tidak ditemukan",
+              ".decorate(...)",
+              "mengembalikan respons/status",
               "bug berulang"
             ],
             "a": 3,
@@ -3198,9 +3198,9 @@ const CONTENT_ELYSIA = [
             "q": "Streaming respons membantu",
             "options": [
               "pengiriman bertahap",
-              "CSS",
-              "route",
-              "migrasi"
+              "mengurangi volume",
+              "memodifikasi respons",
+              "OPTIONS"
             ],
             "a": 0,
             "explain": "Streaming mengirim data bertahap."
@@ -3209,10 +3209,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Server-Sent Events cocok untuk",
             "options": [
-              "CSS",
+              "mengelompokkan fitur yang dapat dipakai ulang",
               "aliran satu arah",
-              "route",
-              "migrasi"
+              ".decorate({ as: 'type' })",
+              "request atau respons"
             ],
             "a": 1,
             "explain": "SSE mengirim event satu arah."
@@ -3221,9 +3221,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Backpressure penting pada",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "t.Refine / custom check",
+              "memastikan aturan benar",
+              "index dan optimasi",
               "streaming data besar"
             ],
             "a": 3,
@@ -3233,10 +3233,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Mengirim file besar sebaiknya",
             "options": [
-              "CSS",
+              "error server",
               "streaming",
-              "route",
-              "migrasi"
+              "menambah kompleksitas",
+              "t.Object bersarang"
             ],
             "a": 1,
             "explain": "Streaming menghemat memori."
@@ -3246,9 +3246,9 @@ const CONTENT_ELYSIA = [
             "q": "Membatalkan request perlu",
             "options": [
               "dihormati",
-              "CSS",
-              "route",
-              "migrasi"
+              ".group(...)",
+              "cookie",
+              "t.String()"
             ],
             "a": 0,
             "explain": "Pembatalan menghentikan kerja."
@@ -3257,9 +3257,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Compression streaming perlu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "memasang dependency",
+              ".get(path, handler)",
+              "plugin swagger/OpenAPI",
               "pertimbangan CPU"
             ],
             "a": 3,
@@ -3269,10 +3269,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Timeout streaming membantu",
             "options": [
-              "CSS",
-              "route",
+              "refine pada object",
+              "httpOnly, secure, sameSite",
               "mencegah koneksi menggantung",
-              "migrasi"
+              "konfigurasi antar lingkungan"
             ],
             "a": 2,
             "explain": "Timeout menjaga resource."
@@ -3282,9 +3282,9 @@ const CONTENT_ELYSIA = [
             "q": "Event framing SSE memakai",
             "options": [
               "teks berformat event",
-              "CSS",
-              "route",
-              "migrasi"
+              "properti pada context",
+              "store saat pembuatan instance",
+              "Jest/Vitest atau bun test"
             ],
             "a": 0,
             "explain": "SSE memakai format event teks."
@@ -3293,10 +3293,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Streaming JSON membutuhkan",
             "options": [
-              "CSS",
-              "route",
+              "komposisi fitur",
+              "kerjasama tim",
               "format berurutan",
-              "migrasi"
+              "pengukuran"
             ],
             "a": 2,
             "explain": "Format harus dapat di-parse bertahap."
@@ -3305,10 +3305,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menguji streaming perlu",
             "options": [
-              "CSS",
-              "route",
+              "pemantauan kesiapan",
+              "instance utama",
               "klien streaming",
-              "migrasi"
+              "konsisten formatnya"
             ],
             "a": 2,
             "explain": "Test memakai klien yang membaca aliran."
@@ -3324,9 +3324,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Cache respons endpoint membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "t.Optional(...)",
+              "dibuat",
+              "file(path)",
               "mengurangi beban"
             ],
             "a": 3,
@@ -3337,9 +3337,9 @@ const CONTENT_ELYSIA = [
             "q": "Invalidasi cache penting agar",
             "options": [
               "data segar",
-              "CSS",
-              "route",
-              "migrasi"
+              "plugin",
+              "expect(res.status).toBe(200)",
+              "environment/secret manager"
             ],
             "a": 0,
             "explain": "Invalidasi menjaga kesegaran."
@@ -3348,9 +3348,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Cache berbasis ETag memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "perubahan terisolasi",
+              ".post(...)",
+              "return string",
               "kondisi if-none-match"
             ],
             "a": 3,
@@ -3360,9 +3360,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Tidak boleh caching data personal berbagi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "efek terbatas pada area",
+              "pengiriman bisa berulang",
+              "teks berformat event",
               "ya, berisiko bocor"
             ],
             "a": 3,
@@ -3373,9 +3373,9 @@ const CONTENT_ELYSIA = [
             "q": "Store bersama antar instans memakai",
             "options": [
               "Redis",
-              "CSS",
-              "route",
-              "migrasi"
+              "HTTPS",
+              "decorate/store",
+              "deploy/restart"
             ],
             "a": 0,
             "explain": "Redis menyimpan state bersama."
@@ -3384,10 +3384,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Cache warming membantu",
             "options": [
-              "CSS",
+              "httpOnly, secure, sameSite",
               "respons awal cepat",
-              "route",
-              "migrasi"
+              "konfigurasi antar lingkungan",
+              "aliran satu arah"
             ],
             "a": 1,
             "explain": "Warming mengisi cache lebih awal."
@@ -3396,9 +3396,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "TTL mengatur",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "decorator = fungsi/properti, store = data",
+              "kontrak dan validasi",
+              "injeksi dan data tak valid",
               "masa berlaku cache"
             ],
             "a": 3,
@@ -3408,10 +3408,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menghindari cache stampede memakai",
             "options": [
-              "CSS",
+              "mencegah penumpukan",
               "lock/backoff",
-              "route",
-              "migrasi"
+              "detail field",
+              "hasil akhir"
             ],
             "a": 1,
             "explain": "Lock mencegah lonjakan."
@@ -3420,10 +3420,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Memoization dalam proses perlu",
             "options": [
-              "CSS",
-              "route",
+              "menambah kompleksitas",
+              "t.Object bersarang",
               "batas memori",
-              "migrasi"
+              "token/JWT atau sesi"
             ],
             "a": 2,
             "explain": "Memoization tanpa batas membengkak."
@@ -3433,9 +3433,9 @@ const CONTENT_ELYSIA = [
             "q": "Mengukur cache hit ratio membantu",
             "options": [
               "menilai efektivitas",
-              "CSS",
-              "route",
-              "migrasi"
+              "token/JWT atau sesi",
+              "perubahan skema",
+              "manajemen koneksi"
             ],
             "a": 0,
             "explain": "Hit ratio menunjukkan manfaat."
@@ -3451,10 +3451,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Rate limiting per pengguna membantu",
             "options": [
-              "CSS",
-              "route",
+              "t.Optional(...)",
+              "dibuat",
               "mencegah abuse",
-              "migrasi"
+              "file(path)"
             ],
             "a": 2,
             "explain": "Rate limit per pengguna lebih tepat."
@@ -3463,10 +3463,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Input sanitasi mencegah",
             "options": [
-              "CSS",
+              ".post(...)",
               "injeksi",
-              "route",
-              "migrasi"
+              "'/*'",
+              "return string"
             ],
             "a": 1,
             "explain": "Sanitasi mencegah injeksi."
@@ -3475,10 +3475,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menyimpan sesi server-side lebih aman dari",
             "options": [
-              "CSS",
-              "route",
+              "environment/secret manager",
+              "join/eager load",
               "manipulasi klien",
-              "migrasi"
+              "resource terkait"
             ],
             "a": 2,
             "explain": "Sesi server tidak bisa diubah klien."
@@ -3487,10 +3487,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Token rotation membatasi",
             "options": [
-              "CSS",
-              "route",
+              "plugin",
+              "expect(res.status).toBe(200)",
               "dampak kebocoran",
-              "migrasi"
+              "t.Union([...]) atau t.Literal"
             ],
             "a": 2,
             "explain": "Rotasi token mengurangi risiko."
@@ -3500,9 +3500,9 @@ const CONTENT_ELYSIA = [
             "q": "RBAC memeriksa",
             "options": [
               "izin per peran",
-              "CSS",
-              "route",
-              "migrasi"
+              "perilaku compiler TypeScript",
+              "mengatur akses lintas origin",
+              "decorator = fungsi/properti, store = data"
             ],
             "a": 0,
             "explain": "RBAC memeriksa peran."
@@ -3511,10 +3511,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Audit log membantu",
             "options": [
-              "CSS",
+              "mencegah penumpukan",
               "investigasi",
-              "route",
-              "migrasi"
+              "detail field",
+              "hasil akhir"
             ],
             "a": 1,
             "explain": "Audit log mendukung investigasi."
@@ -3523,9 +3523,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menyembunyikan detail error mencegah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pertimbangan CPU",
+              "batas memori",
+              "orientasi",
               "bocor informasi"
             ],
             "a": 3,
@@ -3536,9 +3536,9 @@ const CONTENT_ELYSIA = [
             "q": "Dependency scanning membantu",
             "options": [
               "menutup kerentanan",
-              "CSS",
-              "route",
-              "migrasi"
+              "deploy/restart",
+              "backoff",
+              "isolasi test"
             ],
             "a": 0,
             "explain": "Scan menemukan celah."
@@ -3547,9 +3547,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Enkripsi at-rest penting untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "params.id",
+              "status(404, ...)",
+              "memvalidasi input",
               "data sensitif"
             ],
             "a": 3,
@@ -3559,9 +3559,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Enkripsi in-transit memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "JSON",
+              "keamanan",
+              "hot spot",
               "TLS"
             ],
             "a": 3,
@@ -3578,9 +3578,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Nama yang jelas membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "integritas data",
+              "file pada body/form",
+              "crash total",
               "pemeliharaan"
             ],
             "a": 3,
@@ -3590,10 +3590,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Fungsi kecil berfokus membantu",
             "options": [
-              "CSS",
+              "crash total",
               "pengujian",
-              "route",
-              "migrasi"
+              "transform",
+              "keamanan"
             ],
             "a": 1,
             "explain": "Fungsi kecil mudah diuji."
@@ -3602,10 +3602,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Menghindari duplikasi membantu",
             "options": [
-              "CSS",
+              "fleksibilitas",
               "konsistensi",
-              "route",
-              "migrasi"
+              "hot spot",
+              "keamanan konfigurasi"
             ],
             "a": 1,
             "explain": "DRY menjaga konsistensi."
@@ -3614,10 +3614,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Pemisahan lapisan membantu",
             "options": [
-              "CSS",
+              "keandalan",
               "perubahan terisolasi",
-              "route",
-              "migrasi"
+              "mengukur cakupan",
+              "klien streaming"
             ],
             "a": 1,
             "explain": "Lapisan terpisah memudahkan perubahan."
@@ -3626,9 +3626,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Type strict membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "reproduksibilitas",
+              ".listen(3000)",
+              "params.id",
               "mencegah bug"
             ],
             "a": 3,
@@ -3638,10 +3638,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Dokumentasi kode secukupnya membantu",
             "options": [
-              "CSS",
-              "route",
+              "status(404, ...)",
+              "memvalidasi input",
               "orientasi",
-              "migrasi"
+              "parameter path"
             ],
             "a": 2,
             "explain": "Dokumentasi membantu pemahaman."
@@ -3650,9 +3650,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Refactor bertahap lebih aman",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "JSON",
+              "TLS",
+              "body",
               "ya"
             ],
             "a": 3,
@@ -3662,9 +3662,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Review kode membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mendeteksi regresi",
+              "t.String({ format })",
+              "injeksi skrip",
               "kualitas"
             ],
             "a": 3,
@@ -3674,10 +3674,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Test regresi melindungi",
             "options": [
-              "CSS",
-              "route",
+              "custom check/refine",
+              "atomisitas operasi",
               "fitur lama",
-              "migrasi"
+              "handler pesan/onMessage"
             ],
             "a": 2,
             "explain": "Regresi mencegah kerusakan."
@@ -3686,9 +3686,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Linter + formatter menjaga",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "handler pesan/onMessage",
+              "storage/objek storage",
+              "password/token",
               "konsistensi"
             ],
             "a": 3,
@@ -3705,10 +3705,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Bun menyediakan",
             "options": [
-              "CSS",
+              "menjaga kontrak output",
               "runtime, bundler, dan test runner",
-              "route",
-              "migrasi"
+              "tipe isi respons",
+              "merestart layanan bermasalah"
             ],
             "a": 1,
             "explain": "Bun all-in-one tooling."
@@ -3717,10 +3717,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "bun install dipakai untuk",
             "options": [
-              "CSS",
+              "afterHandle",
               "memasang dependency",
-              "route",
-              "migrasi"
+              "mendeteksi regresi",
+              "t.String({ format })"
             ],
             "a": 1,
             "explain": "bun install memasang paket."
@@ -3729,22 +3729,22 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "bun build membuat",
             "options": [
-              "CSS",
+              "orientasi",
               "bundel",
-              "route",
-              "migrasi"
+              ".listen(3000)",
+              "params.id"
             ],
             "a": 1,
             "explain": "bun build membundel."
           },
           {
             "type": "mc",
-            "q": "bun test menjalankan",
+            "q": "Perintah CLI `bun test` secara otomatis mencari dan mengeksekusi berkas",
             "options": [
               "test",
-              "CSS",
-              "route",
-              "migrasi"
+              "params.id",
+              "afterHandle",
+              "JSON"
             ],
             "a": 0,
             "explain": "bun test menjalankan test."
@@ -3753,9 +3753,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Kompatibilitas Node API membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "deploy/restart",
+              "backoff",
+              "isolasi test",
               "migrasi library"
             ],
             "a": 3,
@@ -3766,9 +3766,9 @@ const CONTENT_ELYSIA = [
             "q": "Menggunakan TypeScript langsung tanpa transpile manual karena",
             "options": [
               "Bun mendukung TS",
-              "CSS",
-              "route",
-              "migrasi"
+              "hanya berlaku pada grup",
+              "keamanan data antar request",
+              "test cepat dan terisolasi"
             ],
             "a": 0,
             "explain": "Bun menjalankan TS native."
@@ -3777,10 +3777,10 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Manajemen versi runtime penting untuk",
             "options": [
-              "CSS",
+              "mencegah penumpukan",
               "reproduksibilitas",
-              "route",
-              "migrasi"
+              "detail field",
+              "hasil akhir"
             ],
             "a": 1,
             "explain": "Versi konsisten mencegah beda perilaku."
@@ -3789,9 +3789,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Bundler pilihan berpengaruh pada",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "diuji dan dipakai ulang",
+              "titik tertentu siklus request",
+              "bagian kode teruji",
               "ukuran dan performa"
             ],
             "a": 3,
@@ -3801,9 +3801,9 @@ const CONTENT_ELYSIA = [
             "type": "mc",
             "q": "Monorepo di Bun didukung dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "plugin",
+              "expect(res.status).toBe(200)",
+              "environment/secret manager",
               "workspaces"
             ],
             "a": 3,
@@ -3814,9 +3814,9 @@ const CONTENT_ELYSIA = [
             "q": "Lockfile penting agar",
             "options": [
               "dependency konsisten",
-              "CSS",
-              "route",
-              "migrasi"
+              "environment/secret manager",
+              "join/eager load",
+              "resource terkait"
             ],
             "a": 0,
             "explain": "Lockfile mengunci versi."

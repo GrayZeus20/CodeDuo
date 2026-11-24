@@ -174,6 +174,47 @@ export function learnConceptFromLessonFinish({ topicId, topicName, nodeId, lesso
   saveKnowledge();
 }
 
+/**
+ * Menyerap konsep secara otomatis saat pengguna membaca halaman Materi (tanpa trigger manual).
+ */
+export function learnConceptFromMateri({ topicId, topicName, lessonId, lessonTitle, level, summary, points = [] }) {
+  if (!topicId) return null;
+  const rawInsight = summary || (Array.isArray(points) && points[0]) || '';
+  const insight = distillConceptInsight(rawInsight, lessonTitle || topicName);
+  if (!insight || insight.length < 5) return null;
+
+  const conceptId = `${topicId}:materi:${lessonId || 'overview'}:${hashString(insight)}`;
+  const now = Date.now();
+  const existingIdx = bibitKnowledge.findIndex((item) => item.id === conceptId);
+
+  if (existingIdx >= 0) {
+    bibitKnowledge[existingIdx].reinforcements = (bibitKnowledge[existingIdx].reinforcements || 1) + 1;
+    bibitKnowledge[existingIdx].learnedAt = now;
+  } else {
+    bibitKnowledge.unshift({
+      id: conceptId,
+      topicId,
+      topicName: topicName || topicId,
+      lessonTitle: lessonTitle || (topicName ? 'Materi ' + topicName : 'Materi'),
+      insight,
+      learnedAt: now,
+      reinforcements: 1,
+      mastery: 0.75,
+      timesMentioned: 0,
+      source: 'materi',
+      level: level || 'Dasar',
+    });
+  }
+
+  if (bibitKnowledge.length > 60) {
+    bibitKnowledge.sort((a, b) => (b.learnedAt + b.reinforcements * 60000) - (a.learnedAt + a.reinforcements * 60000));
+    bibitKnowledge = bibitKnowledge.slice(0, 60);
+  }
+
+  saveKnowledge();
+  return conceptId;
+}
+
 /** Membaca seluruh konsep yang telah diserap Bibit */
 export function getLearnedConcepts() {
   return bibitKnowledge.slice();
@@ -426,9 +467,10 @@ export function getAiTapDialogue(signals = {}, seed = Math.random() * 1000, mode
     }
   }
 
-  // B. PRIORITAS ML: Gunakan konsep yang baru dipelajari (~68% peluang jika ada konsep)
+  // B. PRIORITAS ML: Gunakan konsep yang baru dipelajari (~68% peluang jika ML aktif & ada konsep)
+  const mlEnabled = s.mlEnabled !== false;
   const rnd = Number.isFinite(seed) ? Math.abs(Math.sin(seed * 3.14)) : Math.random();
-  if (bibitKnowledge.length > 0 && rnd < 0.68) {
+  if (mlEnabled && bibitKnowledge.length > 0 && rnd < 0.68) {
     const learned = scoreAndRankLearnedDialogues(s, model, seed);
     if (learned && learned.text) {
       return learned;
@@ -481,8 +523,8 @@ export function generateAiDialogue(contextKey = 'idle', signals = {}, seed = Mat
   const ex = s.currentExercise;
 
   if (contextKey === 'done') {
-    // Jika ada konsep yang baru dituntaskan, buat selebrasi cerdas
-    if (bibitKnowledge.length > 0 && Math.random() < 0.6) {
+    // Jika ML aktif dan ada konsep yang baru dituntaskan, buat selebrasi cerdas
+    if (s.mlEnabled !== false && bibitKnowledge.length > 0 && Math.random() < 0.6) {
       const top = bibitKnowledge[0];
       return `Pelajaran tuntas! Sekarang kamu kuasai '${top.lessonTitle}' di ${top.topicName}! 🎉`;
     }
@@ -587,9 +629,9 @@ export function generateAiDialogue(contextKey = 'idle', signals = {}, seed = Mat
     return pickDiverse(pool, seed);
   }
 
-  // Jika sedang idle di halaman beranda atau jeda materi, sesekali gunakan materi yang dipelajari
+  // Jika sedang idle di halaman beranda atau jeda materi, sesekali gunakan materi yang dipelajari (jika ML aktif)
   if (contextKey === 'idle' || contextKey === 'greet') {
-    if (bibitKnowledge.length > 0 && Math.random() < 0.5) {
+    if (s.mlEnabled !== false && bibitKnowledge.length > 0 && Math.random() < 0.5) {
       const learned = scoreAndRankLearnedDialogues(s, model, seed);
       if (learned && learned.text) return learned.text;
     }

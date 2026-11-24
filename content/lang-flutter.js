@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_FLUTTER = [
-{
+  {
     "id": "flutter",
     "name": "Flutter",
     "icon": "🦋",
@@ -73,7 +73,7 @@ const CONTENT_FLUTTER = [
               "komponen PHP",
               "widget",
               "tabel SQL",
-              "CSS"
+              "sumber data"
             ],
             "a": 1,
             "explain": "Flutter membangun UI dari widget."
@@ -95,9 +95,9 @@ const CONTENT_FLUTTER = [
             "q": "Hot reload berguna untuk",
             "options": [
               "melihat perubahan cepat saat pengembangan",
-              "CSS",
-              "route",
-              "migrasi"
+              "pemisah antar item",
+              "klien dan server",
+              "solusi state management populer"
             ],
             "a": 0,
             "explain": "Hot reload mempercepat iterasi."
@@ -132,8 +132,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "HTML selalu",
               "engine render sendiri",
-              "CSS",
-              "route"
+              "satu aturan bisnis",
+              "memanggil library C"
             ],
             "a": 1,
             "explain": "Flutter merender sendiri lewat engine."
@@ -200,7 +200,7 @@ const CONTENT_FLUTTER = [
               "Container/Padding",
               "Text",
               "Icon",
-              "Route"
+              "skalabilitas"
             ],
             "a": 0,
             "explain": "Container/Padding mengatur jarak."
@@ -245,10 +245,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Scaffold menyediakan",
             "options": [
-              "CSS",
-              "route",
+              "pengujian dan perawatan",
+              "kode Dart + native",
               "kerangka halaman (appbar, body)",
-              "migrasi"
+              "flutter build apk"
             ],
             "a": 2,
             "explain": "Scaffold menyediakan struktur halaman."
@@ -257,9 +257,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "MaterialApp adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "widget tree untuk test",
+              "paralelisme terpisah memori",
+              "memanggil method native",
               "root aplikasi Material"
             ],
             "a": 3,
@@ -279,7 +279,7 @@ const CONTENT_FLUTTER = [
               "Box",
               "Card",
               "Panel",
-              "CSS"
+              "Future"
             ],
             "a": 1,
             "explain": "Card membuat kartu Material."
@@ -291,7 +291,7 @@ const CONTENT_FLUTTER = [
               "RowItem",
               "ListTile",
               "Cell",
-              "CSS"
+              "routing deklaratif"
             ],
             "a": 1,
             "explain": "ListTile menyediakan baris terstruktur."
@@ -302,8 +302,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "Drawer",
               "SideBarOnly",
-              "CSS",
-              "route"
+              "colorScheme",
+              "ListView.builder"
             ],
             "a": 0,
             "explain": "Drawer menampilkan menu samping."
@@ -314,8 +314,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "TabBar",
               "TabsOnly",
-              "CSS",
-              "route"
+              "teks tertentu",
+              ".arb"
             ],
             "a": 0,
             "explain": "TabBar membuat tab."
@@ -326,20 +326,20 @@ const CONTENT_FLUTTER = [
             "options": [
               "Popup",
               "AlertDialog",
-              "CSS",
-              "route"
+              "StatefulWidget",
+              "Column"
             ],
             "a": 1,
             "explain": "AlertDialog menampilkan dialog."
           },
           {
             "type": "mc",
-            "q": "Widget untuk snackbar adalah",
+            "q": "Widget Material Flutter untuk menampilkan pesan singkat sementara di bagian bawah layar adalah",
             "options": [
               "ToastBar",
-              "CSS",
+              "SizedBox",
               "SnackBar",
-              "route"
+              "State"
             ],
             "a": 2,
             "explain": "SnackBar menampilkan pesan sementara."
@@ -350,8 +350,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "Spinner",
               "CircularProgressIndicator",
-              "CSS",
-              "route"
+              "flutter_test",
+              "aliran event"
             ],
             "a": 1,
             "explain": "CircularProgressIndicator menampilkan loading."
@@ -361,8 +361,8 @@ const CONTENT_FLUTTER = [
             "q": "Widget pembungkus dengan batas lebar adalah",
             "options": [
               "LimitBox",
-              "CSS",
-              "route",
+              "selector",
+              "masalah performa",
               "ConstrainedBox"
             ],
             "a": 3,
@@ -374,8 +374,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "Loop",
               "Wrap",
-              "CSS",
-              "route"
+              "fokus field",
+              "gestur tap"
             ],
             "a": 1,
             "explain": "Wrap membungkus anak ke baris baru."
@@ -385,9 +385,9 @@ const CONTENT_FLUTTER = [
             "q": "Widget untuk bayangan/dekorasi memakai",
             "options": [
               "Container decoration",
-              "CSS",
-              "route",
-              "migrasi"
+              "lokalisasi",
+              "fromJson factory",
+              "AnimationController"
             ],
             "a": 0,
             "explain": "Container decoration mengatur gaya."
@@ -401,7 +401,7 @@ const CONTENT_FLUTTER = [
         "exercises": [
           {
             "type": "mc",
-            "q": "Mengatur padding memakai widget",
+            "q": "Widget Flutter khusus untuk memberi ruang kosong di bagian dalam di sekeliling anak widget adalah",
             "options": [
               "Margin",
               "Space",
@@ -418,7 +418,7 @@ const CONTENT_FLUTTER = [
               "SizedBox",
               "BoxSize",
               "Space",
-              "Route"
+              "path_provider"
             ],
             "a": 0,
             "explain": "SizedBox menetapkan ukuran."
@@ -428,8 +428,8 @@ const CONTENT_FLUTTER = [
             "q": "Center memusatkan anak",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "Dart",
+              "Row",
               "ya"
             ],
             "a": 3,
@@ -441,8 +441,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "Row/Column/Flex",
               "Stack",
-              "CSS",
-              "route"
+              "pop(result)",
+              "obscureText: true"
             ],
             "a": 0,
             "explain": "Expanded mengisi ruang flex."
@@ -451,9 +451,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Flexible mirip Expanded tetapi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "frame/waktu",
+              "supportedLocales",
+              "pengujian",
               "lebih longgar (flexible)"
             ],
             "a": 3,
@@ -463,9 +463,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "MainAxisAlignment mengatur",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "performa gambar kustom",
+              "melihat perubahan cepat saat pengembangan",
+              "UI statis tanpa state",
               "penataan sumbu utama"
             ],
             "a": 3,
@@ -475,10 +475,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "CrossAxisAlignment mengatur",
             "options": [
-              "CSS",
+              "pemisah antar item",
               "penataan sumbu silang",
-              "route",
-              "migrasi"
+              "klien dan server",
+              "solusi state management populer"
             ],
             "a": 1,
             "explain": "CrossAxis mengatur sumbu silang."
@@ -487,10 +487,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "ListView dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "package routing populer",
+              "kondisi empty state",
               "daftar yang dapat digulir",
-              "migrasi"
+              "state dan history konsisten"
             ],
             "a": 2,
             "explain": "ListView menggulir daftar."
@@ -499,9 +499,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "GridView menampilkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "formKey.currentState.validate()",
+              "BoxDecoration/Border",
+              "sliver kompleks",
               "daftar berpetak"
             ],
             "a": 3,
@@ -511,10 +511,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "SafeArea melindungi dari",
             "options": [
-              "CSS",
-              "route",
+              "ConstrainedBox",
+              "lebih longgar (flexible)",
               "notch/area sistem",
-              "migrasi"
+              "menurunkan performa"
             ],
             "a": 2,
             "explain": "SafeArea menghindari area sistem."
@@ -531,9 +531,9 @@ const CONTENT_FLUTTER = [
             "q": "StatelessWidget dipakai untuk",
             "options": [
               "UI statis tanpa state",
-              "CSS",
-              "route",
-              "migrasi"
+              "daftar yang dapat digulir",
+              "package routing populer",
+              "kondisi empty state"
             ],
             "a": 0,
             "explain": "StatelessWidget tidak punya state."
@@ -542,9 +542,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "StatefulWidget dipakai untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "bereaksi saat nilai berubah",
+              "pemisah antar item",
+              "klien dan server",
               "UI bergantung state berubah"
             ],
             "a": 3,
@@ -555,21 +555,21 @@ const CONTENT_FLUTTER = [
             "q": "Memperbarui UI pada StatefulWidget memakai",
             "options": [
               "update()",
-              "CSS",
+              "transisi state",
               "setState",
-              "route"
+              "DevTools"
             ],
             "a": 2,
             "explain": "setState memicu rebuild."
           },
           {
             "type": "mc",
-            "q": "State disimpan pada objek",
+            "q": "Pada StatefulWidget, data yang dapat berubah selama siklus hidup widget disimpan di kelas",
             "options": [
               "Widget",
               "State",
               "BuildContext",
-              "Route"
+              "widget tree"
             ],
             "a": 1,
             "explain": "State disimpan pada objek State."
@@ -579,9 +579,9 @@ const CONTENT_FLUTTER = [
             "q": "build() dipanggil saat",
             "options": [
               "widget perlu dirender",
-              "CSS",
-              "route",
-              "migrasi"
+              "akses API dari UI",
+              "menyesuaikan layout berdasarkan ukuran",
+              "widget tree untuk test"
             ],
             "a": 0,
             "explain": "build dipanggil saat render."
@@ -590,10 +590,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Memanggil setState di luar state berisiko",
             "options": [
-              "CSS",
-              "route",
+              "Icon",
+              "UX",
               "error",
-              "migrasi"
+              "kualitas UI"
             ],
             "a": 2,
             "explain": "setState harus di State."
@@ -604,8 +604,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "setState",
               "build",
-              "CSS",
-              "route"
+              ":id",
+              "inputFormatters"
             ],
             "a": 0,
             "explain": "StatelessWidget tidak punya setState."
@@ -614,10 +614,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "initState dijalankan",
             "options": [
-              "CSS",
+              "kode native lintas platform",
               "sekali saat state dibuat",
-              "route",
-              "migrasi"
+              "offline dan performa",
+              "AnimationController + CustomPainter"
             ],
             "a": 1,
             "explain": "initState sekali saat init."
@@ -626,10 +626,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "dispose dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "Image.network('url')",
+              "urutan/perubahan dinamis",
               "membersihkan resource",
-              "migrasi"
+              "guard autentikasi"
             ],
             "a": 2,
             "explain": "dispose melepas resource."
@@ -638,10 +638,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Rebuild berlebihan dapat",
             "options": [
-              "CSS",
+              "frame/waktu",
               "menurunkan performa",
-              "route",
-              "migrasi"
+              "supportedLocales",
+              "pengujian"
             ],
             "a": 1,
             "explain": "Rebuild berlebih membebani."
@@ -659,7 +659,7 @@ const CONTENT_FLUTTER = [
             "options": [
               "Navigator.go",
               "Router.push",
-              "CSS",
+              "dihindari",
               "Navigator.push"
             ],
             "a": 3,
@@ -672,7 +672,7 @@ const CONTENT_FLUTTER = [
               "Navigator.pop",
               "Navigator.back",
               "Router.pop",
-              "CSS"
+              "controller.clear()"
             ],
             "a": 0,
             "explain": "Navigator.pop kembali."
@@ -681,10 +681,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "MaterialPageRoute dipakai untuk",
             "options": [
-              "CSS",
+              "event dan state",
               "route halaman Material",
-              "route",
-              "migrasi"
+              "akses API dari UI",
+              "menyesuaikan layout berdasarkan ukuran"
             ],
             "a": 1,
             "explain": "MaterialPageRoute membuat route."
@@ -693,10 +693,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Named routes didaftarkan di",
             "options": [
-              "CSS",
+              "kapan validasi berjalan",
               "routes pada MaterialApp",
-              "route",
-              "migrasi"
+              "state lokal sederhana",
+              "membangun UI dari Future"
             ],
             "a": 1,
             "explain": "routes mendefinisikan named route."
@@ -706,9 +706,9 @@ const CONTENT_FLUTTER = [
             "q": "Navigasi named route memakai",
             "options": [
               "Navigator.pushNamed(context, '/x')",
-              "CSS",
-              "route",
-              "migrasi"
+              "obscureText: true",
+              "mengakses tema",
+              "memakan memori"
             ],
             "a": 0,
             "explain": "pushNamed membuka named route."
@@ -717,10 +717,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Mengirim argumen route memakai",
             "options": [
-              "CSS",
-              "route",
+              "mengurangi repaint",
+              "ditangani",
               "arguments",
-              "migrasi"
+              "--split-per-abi"
             ],
             "a": 2,
             "explain": "Navigator meneruskan arguments."
@@ -729,9 +729,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "GoRouter adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "flutter create nama",
+              "daftar yang dapat digulir",
+              "kondisi empty state",
               "package routing populer"
             ],
             "a": 3,
@@ -741,10 +741,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Mengembalikan hasil pop memakai",
             "options": [
-              "CSS",
-              "route",
+              "provider/bloc/riverpod",
+              "http",
               "pop(result)",
-              "migrasi"
+              "animasi"
             ],
             "a": 2,
             "explain": "pop dapat mengembalikan nilai."
@@ -753,10 +753,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Navigasi harus memakai",
             "options": [
-              "CSS",
+              "codegen binding native",
               "BuildContext yang valid",
-              "route",
-              "migrasi"
+              "flutter build ios",
+              "performa gambar kustom"
             ],
             "a": 1,
             "explain": "Context harus valid/mounted."
@@ -766,9 +766,9 @@ const CONTENT_FLUTTER = [
             "q": "Deep link mendukung",
             "options": [
               "membuka halaman spesifik dari tautan",
-              "CSS",
-              "route",
-              "migrasi"
+              "menjalankan fungsi berat di isolate",
+              "aliran event dari native",
+              "database lokal cepat"
             ],
             "a": 0,
             "explain": "Deep link membuka halaman tertentu."
@@ -785,9 +785,9 @@ const CONTENT_FLUTTER = [
             "q": "TextField dikendalikan oleh",
             "options": [
               "TextEditingController",
-              "CSS",
-              "route",
-              "migrasi"
+              "TextStyle",
+              "Image.asset('path')",
+              "itemBuilder"
             ],
             "a": 0,
             "explain": "Controller mengelola nilai teks."
@@ -798,20 +798,20 @@ const CONTENT_FLUTTER = [
             "options": [
               "input.value",
               "controller.text",
-              "CSS",
-              "route"
+              "fokus field",
+              "gestur tap"
             ],
             "a": 1,
             "explain": "controller.text berisi nilai."
           },
           {
             "type": "mc",
-            "q": "Form memakai widget",
+            "q": "Widget kontainer Flutter untuk mengelompokkan beberapa TextFormField dan memvalidasinya sekaligus adalah",
             "options": [
               "FormBox",
               "Form",
-              "CSS",
-              "route"
+              "Dart",
+              "Row"
             ],
             "a": 1,
             "explain": "Form membungkus field."
@@ -820,9 +820,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Validasi field memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "error",
+              "pop(result)",
+              "obscureText: true",
               "validator"
             ],
             "a": 3,
@@ -832,10 +832,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Key untuk form memakai",
             "options": [
-              "CSS",
-              "route",
+              "masalah performa",
+              "data relasional",
               "GlobalKey<FormState>",
-              "migrasi"
+              "keamanan/performa"
             ],
             "a": 2,
             "explain": "GlobalKey menyimpan state form."
@@ -844,10 +844,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Memeriksa validasi form memakai",
             "options": [
-              "CSS",
-              "route",
+              "ConstrainedBox",
+              "lebih longgar (flexible)",
               "formKey.currentState.validate()",
-              "migrasi"
+              "menurunkan performa"
             ],
             "a": 2,
             "explain": "validate memeriksa field."
@@ -857,9 +857,9 @@ const CONTENT_FLUTTER = [
             "q": "Menyembunyikan teks password memakai",
             "options": [
               "obscureText: true",
-              "CSS",
-              "route",
-              "migrasi"
+              "fromJson factory",
+              "AnimationController",
+              "mockito/mocktail"
             ],
             "a": 0,
             "explain": "obscureText menyembunyikan."
@@ -868,10 +868,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Keyboard type diatur dengan",
             "options": [
-              "CSS",
-              "route",
+              "aliran event",
+              "workmanager/isolate",
               "keyboardType",
-              "migrasi"
+              "transisi state"
             ],
             "a": 2,
             "explain": "keyboardType mengatur keyboard."
@@ -881,8 +881,8 @@ const CONTENT_FLUTTER = [
             "q": "Controller harus di-dispose",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "pub",
+              "Image",
               "ya"
             ],
             "a": 3,
@@ -892,10 +892,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "onChanged dipakai untuk",
             "options": [
-              "CSS",
+              "menyesuaikan layout berdasarkan ukuran",
               "bereaksi saat nilai berubah",
-              "route",
-              "migrasi"
+              "widget tree untuk test",
+              "paralelisme terpisah memori"
             ],
             "a": 1,
             "explain": "onChanged merespons perubahan."
@@ -912,9 +912,9 @@ const CONTENT_FLUTTER = [
             "q": "Tema aplikasi diatur lewat",
             "options": [
               "ThemeData",
-              "CSS",
-              "route",
-              "migrasi"
+              "flutter_test",
+              "aliran event",
+              "workmanager/isolate"
             ],
             "a": 0,
             "explain": "ThemeData mengatur tema."
@@ -923,10 +923,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Warna utama tema memakai",
             "options": [
-              "CSS",
-              "route",
+              "lokalisasi",
+              "await",
               "colorScheme",
-              "migrasi"
+              "fromJson factory"
             ],
             "a": 2,
             "explain": "ColorScheme mengatur warna."
@@ -936,9 +936,9 @@ const CONTENT_FLUTTER = [
             "q": "Mengatur gaya teks memakai",
             "options": [
               "TextStyle",
-              "CSS",
-              "route",
-              "migrasi"
+              "StatefulWidget",
+              "Column",
+              "Card"
             ],
             "a": 0,
             "explain": "TextStyle mengatur teks."
@@ -947,10 +947,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Mengatur padding konsisten memakai",
             "options": [
-              "CSS",
+              "selector",
               "EdgeInsets",
-              "route",
-              "migrasi"
+              "masalah performa",
+              "data relasional"
             ],
             "a": 1,
             "explain": "EdgeInsets mengatur jarak."
@@ -960,9 +960,9 @@ const CONTENT_FLUTTER = [
             "q": "Mengatur border memakai",
             "options": [
               "BoxDecoration/Border",
-              "CSS",
-              "route",
-              "migrasi"
+              "colorScheme",
+              "pengalaman pengguna",
+              "ListView.builder"
             ],
             "a": 0,
             "explain": "BoxDecoration mengatur dekorasi."
@@ -972,9 +972,9 @@ const CONTENT_FLUTTER = [
             "q": "Theme.of(context) dipakai untuk",
             "options": [
               "mengakses tema",
-              "CSS",
-              "route",
-              "migrasi"
+              "SizedBox",
+              "State",
+              "arguments"
             ],
             "a": 0,
             "explain": "Theme.of membaca tema."
@@ -984,9 +984,9 @@ const CONTENT_FLUTTER = [
             "q": "Dark mode diatur lewat",
             "options": [
               "darkTheme/themeMode",
-              "CSS",
-              "route",
-              "migrasi"
+              "http.get lalu jsonDecode",
+              "gesture pengguna",
+              "alur end-to-end"
             ],
             "a": 0,
             "explain": "themeMode mengatur mode."
@@ -996,9 +996,9 @@ const CONTENT_FLUTTER = [
             "q": "Font kustom didefinisikan di",
             "options": [
               "pubspec.yaml",
-              "CSS",
-              "route",
-              "migrasi"
+              "errorBuilder/not-found route",
+              "teks tertentu",
+              "memberitahukan perubahan"
             ],
             "a": 0,
             "explain": "Font didaftarkan di pubspec."
@@ -1007,9 +1007,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Material 3 diaktifkan lewat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "di-resize",
+              "key-value sederhana",
+              "penting",
               "useMaterial3"
             ],
             "a": 3,
@@ -1019,10 +1019,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Konsistensi gaya membantu",
             "options": [
-              "CSS",
+              "dikelola",
               "pengalaman pengguna",
-              "route",
-              "migrasi"
+              "tooltip/semantic label",
+              "UI tersendat"
             ],
             "a": 1,
             "explain": "Konsistensi tema penting."
@@ -1038,10 +1038,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Aset dideklarasikan di",
             "options": [
-              "CSS",
+              "SizedBox",
               "pubspec.yaml",
-              "route",
-              "migrasi"
+              "State",
+              "arguments"
             ],
             "a": 1,
             "explain": "Aset didaftarkan di pubspec."
@@ -1050,10 +1050,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menampilkan aset gambar memakai",
             "options": [
-              "CSS",
+              "colorScheme",
               "Image.asset('path')",
-              "route",
-              "migrasi"
+              "pengalaman pengguna",
+              "ListView.builder"
             ],
             "a": 1,
             "explain": "Image.asset memuat aset."
@@ -1062,9 +1062,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menampilkan gambar jaringan memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "errorBuilder/not-found route",
+              "teks tertentu",
+              "memberitahukan perubahan",
               "Image.network('url')"
             ],
             "a": 3,
@@ -1077,7 +1077,7 @@ const CONTENT_FLUTTER = [
               "Icon",
               "Image",
               "Text",
-              "CSS"
+              "Future"
             ],
             "a": 0,
             "explain": "Icon menampilkan ikon."
@@ -1086,10 +1086,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menampilkan ikon Material memakai",
             "options": [
-              "CSS",
+              "lokalisasi",
               "Icons.nama",
-              "route",
-              "migrasi"
+              "await",
+              "fromJson factory"
             ],
             "a": 1,
             "explain": "Icons menyediakan ikon Material."
@@ -1098,10 +1098,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Ukuran gambar diatur dengan",
             "options": [
-              "CSS",
-              "route",
+              "flutter_test",
+              "aliran event",
               "width/height",
-              "migrasi"
+              "workmanager/isolate"
             ],
             "a": 2,
             "explain": "width/height mengatur ukuran."
@@ -1110,10 +1110,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "fit pada Image mengatur",
             "options": [
-              "CSS",
-              "route",
+              "layout per ukuran",
+              "beberapa Future paralel",
               "cara gambar mengisi ruang",
-              "migrasi"
+              "const widget dan pemisahan"
             ],
             "a": 2,
             "explain": "fit mengatur penyesuaian gambar."
@@ -1122,10 +1122,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menangani error gambar memakai",
             "options": [
-              "CSS",
+              "StatefulWidget",
               "errorBuilder",
-              "route",
-              "migrasi"
+              "Column",
+              "ConstrainedBox"
             ],
             "a": 1,
             "explain": "errorBuilder menangani kegagalan."
@@ -1134,10 +1134,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Cache gambar jaringan dibantu oleh",
             "options": [
-              "CSS",
+              "mengisi ruang fleksibel",
               "package cache (mis. cached_network_image)",
-              "route",
-              "migrasi"
+              "dikirim ke server",
+              "pengujian dan perawatan"
             ],
             "a": 1,
             "explain": "Package cache menyimpan gambar."
@@ -1146,9 +1146,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Aset ikon aplikasi diatur di",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "dependency injection dan state",
+              "Dart ke kode native",
+              "di platform target",
               "launcher icon config"
             ],
             "a": 3,
@@ -1165,9 +1165,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Membangun list dari data memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "memecah komponen",
+              "build.gradle",
+              "StatefulWidget",
               "ListView.builder"
             ],
             "a": 3,
@@ -1178,9 +1178,9 @@ const CONTENT_FLUTTER = [
             "q": "Item list minimal butuh",
             "options": [
               "itemBuilder",
-              "CSS",
-              "route",
-              "migrasi"
+              "ElevatedButton",
+              "AlertDialog",
+              "SizedBox"
             ],
             "a": 0,
             "explain": "itemBuilder membuat tiap item."
@@ -1190,9 +1190,9 @@ const CONTENT_FLUTTER = [
             "q": "Key untuk item list penting saat",
             "options": [
               "urutan/perubahan dinamis",
-              "CSS",
-              "route",
-              "migrasi"
+              "dihindari",
+              "animasi properti",
+              "flutter_test"
             ],
             "a": 0,
             "explain": "Key membantu rekonsiliasi."
@@ -1202,9 +1202,9 @@ const CONTENT_FLUTTER = [
             "q": "Menangani list kosong memakai",
             "options": [
               "kondisi empty state",
-              "CSS",
-              "route",
-              "migrasi"
+              "routes pada MaterialApp",
+              "launcher icon config",
+              "UI bersama (mis. bottom nav)"
             ],
             "a": 0,
             "explain": "Empty state memberi umpan balik."
@@ -1213,10 +1213,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "RefreshIndicator dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "di luar main isolate terkadang",
+              "otomasi build dan rilis",
               "pull to refresh",
-              "migrasi"
+              "State berubah dan UI perlu dibangun ulang"
             ],
             "a": 2,
             "explain": "RefreshIndicator menangani tarik."
@@ -1225,10 +1225,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "ScrollController memungkinkan",
             "options": [
-              "CSS",
+              "apakah perlu repaint",
               "kontrol posisi scroll",
-              "route",
-              "migrasi"
+              "flutter create nama",
+              "daftar yang dapat digulir"
             ],
             "a": 1,
             "explain": "Controller mengatur scroll."
@@ -1237,10 +1237,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "ListView.separated menambah",
             "options": [
-              "CSS",
-              "route",
+              "mengukur cakupan test",
+              "menjalankan fungsi berat di isolate",
               "pemisah antar item",
-              "migrasi"
+              "aliran event dari native"
             ],
             "a": 2,
             "explain": "separated menambah separator."
@@ -1249,10 +1249,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "List panjang sebaiknya memakai",
             "options": [
-              "CSS",
-              "route",
+              "domain, data, presentation",
+              "codegen binding native",
               "builder, bukan children statis",
-              "migrasi"
+              "flutter build ios"
             ],
             "a": 2,
             "explain": "Builder lebih efisien."
@@ -1261,9 +1261,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "CustomScrollView memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "test implementasi",
+              "konteks asynchronous",
+              "aksesibilitas",
               "sliver kompleks"
             ],
             "a": 3,
@@ -1273,10 +1273,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Scroll berlebihan tanpa builder dapat",
             "options": [
-              "CSS",
-              "route",
+              "mengurangi repaint",
+              "ditangani",
               "memakan memori",
-              "migrasi"
+              "--split-per-abi"
             ],
             "a": 2,
             "explain": "Children statis memuat semua."
@@ -1292,9 +1292,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "GoRouter memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "http.post",
+              "mengganggu pengguna",
+              "tampilan visual",
               "routing deklaratif"
             ],
             "a": 3,
@@ -1304,10 +1304,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Nested route memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "frame/waktu",
+              "supportedLocales",
               "sub-halaman",
-              "migrasi"
+              "pengujian"
             ],
             "a": 2,
             "explain": "Nested route menyusun sub-halaman."
@@ -1319,7 +1319,7 @@ const CONTENT_FLUTTER = [
               "{id}",
               ":id",
               "<id>",
-              "CSS"
+              "await"
             ],
             "a": 1,
             "explain": "GoRouter memakai :id."
@@ -1328,9 +1328,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Query parameter pada GoRouter diakses lewat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "membersihkan resource",
+              "TextEditingController",
+              "keyboardType",
               "state.uri.queryParameters"
             ],
             "a": 3,
@@ -1340,10 +1340,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Redirect pada router berguna untuk",
             "options": [
-              "CSS",
+              "pop(result)",
               "guard autentikasi",
-              "route",
-              "migrasi"
+              "obscureText: true",
+              "mengakses tema"
             ],
             "a": 1,
             "explain": "Redirect menangani guard."
@@ -1352,9 +1352,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Deep link perlu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "flutter build apk",
+              "apakah perlu repaint",
+              "flutter create nama",
               "dikonfigurasi di platform"
             ],
             "a": 3,
@@ -1365,9 +1365,9 @@ const CONTENT_FLUTTER = [
             "q": "Navigasi kembali programatik memakai",
             "options": [
               "context.pop()/Navigator.pop",
-              "CSS",
-              "route",
-              "migrasi"
+              "path_provider",
+              "menggambar kustom",
+              "pubspec.yaml"
             ],
             "a": 0,
             "explain": "Pop kembali ke halaman sebelumnya."
@@ -1376,9 +1376,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menangani route tidak dikenal memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "firebase_messaging",
+              "prediktabilitas",
+              "memecah komponen",
               "errorBuilder/not-found route"
             ],
             "a": 3,
@@ -1388,10 +1388,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Shell route mempertahankan",
             "options": [
-              "CSS",
-              "route",
+              "di beberapa bahasa",
+              "banyak nilai seiring waktu",
               "UI bersama (mis. bottom nav)",
-              "migrasi"
+              "rentang nilai animasi"
             ],
             "a": 2,
             "explain": "Shell route menjaga navigasi bawah."
@@ -1401,9 +1401,9 @@ const CONTENT_FLUTTER = [
             "q": "Routing harus menjaga",
             "options": [
               "state dan history konsisten",
-              "CSS",
-              "route",
-              "migrasi"
+              "dikonfigurasi di platform",
+              "menemukan widget berdasarkan tipe",
+              "event dan state"
             ],
             "a": 0,
             "explain": "Konsistensi state penting."
@@ -1420,9 +1420,9 @@ const CONTENT_FLUTTER = [
             "q": "FormField kustom memungkinkan",
             "options": [
               "validasi field khusus",
-              "CSS",
-              "route",
-              "migrasi"
+              "satu aturan bisnis",
+              "memanggil library C",
+              "konfigurasi build berbeda"
             ],
             "a": 0,
             "explain": "FormField untuk field kustom."
@@ -1431,10 +1431,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "AutovalidateMode mengatur",
             "options": [
-              "CSS",
+              "database lokal cepat",
               "kapan validasi berjalan",
-              "route",
-              "migrasi"
+              "paint dan shouldRepaint",
+              "Melihat perubahan kode dengan cepat saat pengembangan"
             ],
             "a": 1,
             "explain": "Autovalidate mengatur validasi."
@@ -1444,9 +1444,9 @@ const CONTENT_FLUTTER = [
             "q": "FocusNode mengelola",
             "options": [
               "fokus field",
-              "CSS",
-              "route",
-              "migrasi"
+              "SnackBar",
+              "error",
+              "pop(result)"
             ],
             "a": 0,
             "explain": "FocusNode mengatur fokus."
@@ -1455,9 +1455,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Mengatur urutan fokus memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "validator",
+              "TextStyle",
+              "Image.asset('path')",
               "focus traversal"
             ],
             "a": 3,
@@ -1468,9 +1468,9 @@ const CONTENT_FLUTTER = [
             "q": "Input format memakai",
             "options": [
               "inputFormatters",
-              "CSS",
-              "route",
-              "migrasi"
+              "Navigator.pushNamed(context, '/x')",
+              "GlobalKey<FormState>",
+              "EdgeInsets"
             ],
             "a": 0,
             "explain": "Formatter membatasi input."
@@ -1480,9 +1480,9 @@ const CONTENT_FLUTTER = [
             "q": "Membatasi panjang input memakai",
             "options": [
               "maxLength",
-              "CSS",
-              "route",
-              "migrasi"
+              "errorBuilder",
+              "sub-halaman",
+              "focus traversal"
             ],
             "a": 0,
             "explain": "maxLength membatasi."
@@ -1491,9 +1491,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Mengosongkan field memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kualitas UI",
+              "ICU/intl messages",
+              "http.post",
               "controller.clear()"
             ],
             "a": 3,
@@ -1503,10 +1503,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menyimpan nilai form penting untuk",
             "options": [
-              "CSS",
-              "route",
+              "hasil",
+              "Card",
               "UX",
-              "migrasi"
+              "Text"
             ],
             "a": 2,
             "explain": "Penyimpanan nilai membantu UX."
@@ -1515,10 +1515,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Form validasi harus di",
             "options": [
-              "CSS",
-              "route",
+              "apakah perlu repaint",
+              "flutter create nama",
               "klien dan server",
-              "migrasi"
+              "daftar yang dapat digulir"
             ],
             "a": 2,
             "explain": "Validasi ganda penting."
@@ -1527,10 +1527,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menampilkan error form memakai",
             "options": [
-              "CSS",
-              "route",
+              "kerangka halaman (appbar, body)",
+              "widget perlu dirender",
               "pesan pada field",
-              "migrasi"
+              "bereaksi saat nilai berubah"
             ],
             "a": 2,
             "explain": "Pesan jelas membantu."
@@ -1546,9 +1546,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "find.byType dipakai untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "sekali saat state dibuat",
+              "cara gambar mengisi ruang",
+              "builder, bukan children statis",
               "menemukan widget berdasarkan tipe"
             ],
             "a": 3,
@@ -1558,10 +1558,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "find.text mencari",
             "options": [
-              "CSS",
+              "Navigator.pushNamed(context, '/x')",
               "teks tertentu",
-              "route",
-              "migrasi"
+              "GlobalKey<FormState>",
+              "EdgeInsets"
             ],
             "a": 1,
             "explain": "Finder mencari teks."
@@ -1570,10 +1570,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "tester.tap memicu",
             "options": [
-              "CSS",
+              "animasi",
               "gestur tap",
-              "route",
-              "migrasi"
+              "hasil",
+              "banyak listener"
             ],
             "a": 1,
             "explain": "tap menyimulasikan ketuk."
@@ -1583,9 +1583,9 @@ const CONTENT_FLUTTER = [
             "q": "tester.pump memajukan",
             "options": [
               "frame/waktu",
-              "CSS",
-              "route",
-              "migrasi"
+              "kualitas UI",
+              "ICU/intl messages",
+              "async"
             ],
             "a": 0,
             "explain": "pump memajukan frame."
@@ -1595,9 +1595,9 @@ const CONTENT_FLUTTER = [
             "q": "tester.pumpAndSettle menunggu",
             "options": [
               "animasi selesai",
-              "CSS",
-              "route",
-              "migrasi"
+              "--split-per-abi",
+              "ListTile",
+              "daftar berpetak"
             ],
             "a": 0,
             "explain": "pumpAndSettle menunggu animasi."
@@ -1606,10 +1606,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menguji navigasi memerlukan",
             "options": [
-              "CSS",
+              "aksesibilitas",
               "pump navigasi",
-              "route",
-              "migrasi"
+              "message passing",
+              "sumber data"
             ],
             "a": 1,
             "explain": "Navigasi membutuhkan pump."
@@ -1619,9 +1619,9 @@ const CONTENT_FLUTTER = [
             "q": "Mock dependency memakai",
             "options": [
               "mocktail/mockito",
-              "CSS",
-              "route",
-              "migrasi"
+              "validator",
+              "TextStyle",
+              "Image.asset('path')"
             ],
             "a": 0,
             "explain": "Library mock untuk dependency."
@@ -1630,9 +1630,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Golden test membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "widget tree untuk test",
+              "paralelisme terpisah memori",
+              "memanggil method native",
               "deteksi regresi visual"
             ],
             "a": 3,
@@ -1642,10 +1642,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Test aksesibilitas membantu",
             "options": [
-              "CSS",
+              "State",
               "kualitas UI",
-              "route",
-              "migrasi"
+              "arguments",
+              "BoxDecoration/Border"
             ],
             "a": 1,
             "explain": "Aksesibilitas penting."
@@ -1656,8 +1656,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "Card",
+              "Text"
             ],
             "a": 0,
             "explain": "Test harus stabil."
@@ -1673,10 +1673,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "i18n Flutter memakai",
             "options": [
-              "CSS",
-              "route",
+              "di luar main isolate terkadang",
+              "otomasi build dan rilis",
               "intl dan arb",
-              "migrasi"
+              "State berubah dan UI perlu dibangun ulang"
             ],
             "a": 2,
             "explain": "Package intl + berkas arb."
@@ -1697,10 +1697,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Mengakses terjemahan memakai",
             "options": [
-              "CSS",
+              "GlobalKey<FormState>",
               "AppLocalizations.of(context)",
-              "route",
-              "migrasi"
+              "EdgeInsets",
+              "Image.network('url')"
             ],
             "a": 1,
             "explain": "Localizations mengakses terjemahan."
@@ -1710,9 +1710,9 @@ const CONTENT_FLUTTER = [
             "q": "Mendukung locale memakai",
             "options": [
               "supportedLocales",
-              "CSS",
-              "route",
-              "migrasi"
+              "sub-halaman",
+              "focus traversal",
+              "frame/waktu"
             ],
             "a": 0,
             "explain": "supportedLocales mendaftar locale."
@@ -1721,10 +1721,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Format tanggal lokal memakai",
             "options": [
-              "CSS",
+              "pop(result)",
               "intl DateFormat",
-              "route",
-              "migrasi"
+              "obscureText: true",
+              "mengakses tema"
             ],
             "a": 1,
             "explain": "DateFormat memformat tanggal."
@@ -1734,9 +1734,9 @@ const CONTENT_FLUTTER = [
             "q": "Format angka lokal memakai",
             "options": [
               "NumberFormat",
-              "CSS",
-              "route",
-              "migrasi"
+              "TextStyle",
+              "Image.asset('path')",
+              "itemBuilder"
             ],
             "a": 0,
             "explain": "NumberFormat memformat angka."
@@ -1746,9 +1746,9 @@ const CONTENT_FLUTTER = [
             "q": "RTL layout didukung Flutter",
             "options": [
               "tidak",
-              "CSS",
+              "State",
               "ya",
-              "route"
+              "Icon"
             ],
             "a": 2,
             "explain": "Flutter mendukung RTL."
@@ -1757,9 +1757,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Lokalisasi harus diuji",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "routes pada MaterialApp",
+              "launcher icon config",
+              "UI bersama (mis. bottom nav)",
               "di beberapa bahasa"
             ],
             "a": 3,
@@ -1770,9 +1770,9 @@ const CONTENT_FLUTTER = [
             "q": "Teks hardcoded menyulitkan",
             "options": [
               "lokalisasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "ListView.builder",
+              "inputFormatters",
+              "animasi selesai"
             ],
             "a": 0,
             "explain": "Hardcode menghambat i18n."
@@ -1781,10 +1781,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Pluralisasi memakai",
             "options": [
-              "CSS",
+              "memberitahukan perubahan",
               "ICU/intl messages",
-              "route",
-              "migrasi"
+              "try/catch atau catchError",
+              "secure storage"
             ],
             "a": 1,
             "explain": "Pluralisasi lewat intl."
@@ -1800,10 +1800,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "setState cocok untuk",
             "options": [
-              "CSS",
+              "builder, bukan children statis",
               "state lokal sederhana",
-              "route",
-              "migrasi"
+              "pesan pada field",
+              "state management dengan dependensi eksplisit"
             ],
             "a": 1,
             "explain": "setState untuk state lokal."
@@ -1813,9 +1813,9 @@ const CONTENT_FLUTTER = [
             "q": "Provider adalah",
             "options": [
               "solusi state management populer",
-              "CSS",
-              "route",
-              "migrasi"
+              "BuildContext yang valid",
+              "pull to refresh",
+              "validasi field khusus"
             ],
             "a": 0,
             "explain": "Provider membagikan state."
@@ -1824,10 +1824,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Riverpod menyediakan",
             "options": [
-              "CSS",
-              "route",
+              "penataan sumbu utama",
+              "route halaman Material",
               "state management dengan dependensi eksplisit",
-              "migrasi"
+              "package cache (mis. cached_network_image)"
             ],
             "a": 2,
             "explain": "Riverpod menekankan komposisi."
@@ -1836,9 +1836,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "BLoC memisahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "efek visual lanjutan",
+              "engine render sendiri",
+              "UI bergantung state berubah",
               "event dan state"
             ],
             "a": 3,
@@ -1848,9 +1848,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Memilih library state bergantung pada",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "offline dan performa",
+              "AnimationController + CustomPainter",
+              "banyak platform dari satu codebase",
               "kompleksitas dan tim"
             ],
             "a": 3,
@@ -1860,10 +1860,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "InheritedWidget adalah",
             "options": [
-              "CSS",
+              "Dart ke kode native",
               "mekanisme berbagi state bawaan",
-              "route",
-              "migrasi"
+              "di platform target",
+              "flutter build appbundle"
             ],
             "a": 1,
             "explain": "InheritedWidget berbagi data."
@@ -1873,9 +1873,9 @@ const CONTENT_FLUTTER = [
             "q": "ValueNotifier/ChangeNotifier dipakai untuk",
             "options": [
               "memberitahukan perubahan",
-              "CSS",
-              "route",
-              "migrasi"
+              "Container/Padding",
+              "Navigator.pushNamed(context, '/x')",
+              "GlobalKey<FormState>"
             ],
             "a": 0,
             "explain": "Notifier memberi tahu listener."
@@ -1884,10 +1884,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Reactive rebuild berlebihan dapat",
             "options": [
-              "CSS",
-              "route",
+              "skalabilitas",
+              "keamanan",
               "memengaruhi performa",
-              "migrasi"
+              "TextField"
             ],
             "a": 2,
             "explain": "Rebuild berlebih membebani."
@@ -1896,10 +1896,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Memisahkan state UI dan domain membantu",
             "options": [
-              "CSS",
+              "map/where",
               "pengujian",
-              "route",
-              "migrasi"
+              "halaman spesifik",
+              "loading/error/data"
             ],
             "a": 1,
             "explain": "Pemisahan memudahkan test."
@@ -1908,10 +1908,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "State global untuk data bersama memakai",
             "options": [
-              "CSS",
+              "memerlukan pengecekan/cancel token",
               "provider/bloc/riverpod",
-              "route",
-              "migrasi"
+              "keandalan",
+              "platform (iOS/Android)"
             ],
             "a": 1,
             "explain": "Library membagikan state."
@@ -1927,10 +1927,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Operasi async mengembalikan",
             "options": [
-              "CSS",
-              "route",
+              "message passing",
+              "sumber data",
               "Future",
-              "migrasi"
+              "path_provider"
             ],
             "a": 2,
             "explain": "Future mewakili hasil async."
@@ -1939,22 +1939,22 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menunggu Future memakai",
             "options": [
-              "CSS",
+              "Dart",
               "await",
-              "route",
-              "migrasi"
+              "Row",
+              "ListTile"
             ],
             "a": 1,
             "explain": "await menunggu hasil."
           },
           {
             "type": "mc",
-            "q": "Fungsi async dideklarasikan dengan",
+            "q": "Kata kunci pada deklarasi fungsi Dart/Flutter agar dapat menggunakan `await` di dalamnya adalah",
             "options": [
-              "CSS",
-              "route",
+              "ya",
+              "error",
               "async",
-              "migrasi"
+              "pop(result)"
             ],
             "a": 2,
             "explain": "async menandai fungsi asynchronous."
@@ -1963,10 +1963,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Stream mengirim",
             "options": [
-              "CSS",
+              "engine render sendiri",
               "banyak nilai seiring waktu",
-              "route",
-              "migrasi"
+              "UI bergantung state berubah",
+              "membuka halaman spesifik dari tautan"
             ],
             "a": 1,
             "explain": "Stream menghasilkan rangkaian nilai."
@@ -1976,9 +1976,9 @@ const CONTENT_FLUTTER = [
             "q": "FutureBuilder dipakai untuk",
             "options": [
               "membangun UI dari Future",
-              "CSS",
-              "route",
-              "migrasi"
+              "route halaman Material",
+              "package cache (mis. cached_network_image)",
+              "dikonfigurasi di platform"
             ],
             "a": 0,
             "explain": "FutureBuilder merender berdasarkan Future."
@@ -1987,10 +1987,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menangani error Future memakai",
             "options": [
-              "CSS",
+              "fromJson factory",
               "try/catch atau catchError",
-              "route",
-              "migrasi"
+              "AnimationController",
+              "mockito/mocktail"
             ],
             "a": 1,
             "explain": "Penanganan error diperlukan."
@@ -1999,10 +1999,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menampilkan loading memakai",
             "options": [
-              "CSS",
+              "pesan pada field",
               "state loading pada FutureBuilder",
-              "route",
-              "migrasi"
+              "state management dengan dependensi eksplisit",
+              "pemuatan data awal"
             ],
             "a": 1,
             "explain": "Loading state memberi umpan balik."
@@ -2011,9 +2011,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Membatalkan operasi async",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "masalah performa",
+              "data relasional",
+              "keamanan/performa",
               "memerlukan pengecekan/cancel token"
             ],
             "a": 3,
@@ -2023,9 +2023,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "initState sering memicu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "paint dan shouldRepaint",
+              "Melihat perubahan kode dengan cepat saat pengembangan",
+              "penataan sumbu utama",
               "pemuatan data awal"
             ],
             "a": 3,
@@ -2035,10 +2035,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Await di build sebaiknya",
             "options": [
-              "CSS",
+              "tooltip/semantic label",
               "dihindari",
-              "route",
-              "migrasi"
+              "UI tersendat",
+              "provider/get_it"
             ],
             "a": 1,
             "explain": "Build harus sinkron."
@@ -2052,12 +2052,12 @@ const CONTENT_FLUTTER = [
         "exercises": [
           {
             "type": "mc",
-            "q": "Package HTTP umum adalah",
+            "q": "Nama paket resmi populer di pub.dev untuk melakukan permintaan jaringan REST (GET/POST) di Flutter adalah",
             "options": [
-              "CSS",
-              "route",
+              "sub-halaman",
+              "frame/waktu",
               "http",
-              "migrasi"
+              "pengujian"
             ],
             "a": 2,
             "explain": "Package http untuk request."
@@ -2067,9 +2067,9 @@ const CONTENT_FLUTTER = [
             "q": "Mengambil data JSON memakai",
             "options": [
               "http.get lalu jsonDecode",
-              "CSS",
-              "route",
-              "migrasi"
+              "GlobalKey<FormState>",
+              "EdgeInsets",
+              "Image.network('url')"
             ],
             "a": 0,
             "explain": "Request lalu decode JSON."
@@ -2078,10 +2078,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Model dari JSON memakai",
             "options": [
-              "CSS",
+              "banyak listener",
               "fromJson factory",
-              "route",
-              "migrasi"
+              "firebase_messaging",
+              "prediktabilitas"
             ],
             "a": 1,
             "explain": "fromJson membentuk model."
@@ -2090,10 +2090,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Mengirim data memakai",
             "options": [
-              "CSS",
-              "route",
+              "ICU/intl messages",
+              "async",
               "http.post",
-              "migrasi"
+              "mengganggu pengguna"
             ],
             "a": 2,
             "explain": "post mengirim data."
@@ -2104,8 +2104,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "pub",
+              "Image"
             ],
             "a": 1,
             "explain": "Status non-200 perlu ditangani."
@@ -2114,10 +2114,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Repository memisahkan",
             "options": [
-              "CSS",
-              "route",
+              "kontrol posisi scroll",
+              "kapan validasi berjalan",
               "akses API dari UI",
-              "migrasi"
+              "state lokal sederhana"
             ],
             "a": 2,
             "explain": "Repository mengabstraksi API."
@@ -2126,9 +2126,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Dio adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kode manual controller",
+              "berinteraksi dengan widget",
+              "dependency injection dan state",
               "package HTTP dengan fitur lanjutan"
             ],
             "a": 3,
@@ -2138,10 +2138,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menyimpan token aman memakai",
             "options": [
-              "CSS",
-              "route",
+              "penting",
+              "widget",
               "secure storage",
-              "migrasi"
+              "Stack"
             ],
             "a": 2,
             "explain": "Secure storage menyimpan token."
@@ -2151,9 +2151,9 @@ const CONTENT_FLUTTER = [
             "q": "Timeout request penting untuk",
             "options": [
               "keandalan",
-              "CSS",
-              "route",
-              "migrasi"
+              "await",
+              "fromJson factory",
+              "AnimationController"
             ],
             "a": 0,
             "explain": "Timeout mencegah menggantung."
@@ -2162,10 +2162,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Error jaringan harus",
             "options": [
-              "CSS",
-              "route",
+              "membangun UI dari Future",
+              "ripple saat ditekan",
               "ditangani dan diinformasikan",
-              "migrasi"
+              "konten melebihi ruang"
             ],
             "a": 2,
             "explain": "Error jelas membantu pengguna."
@@ -2182,9 +2182,9 @@ const CONTENT_FLUTTER = [
             "q": "AnimatedContainer dipakai untuk",
             "options": [
               "animasi properti",
-              "CSS",
-              "route",
-              "migrasi"
+              "memengaruhi performa",
+              "memerlukan pengecekan/cancel token",
+              "keandalan"
             ],
             "a": 0,
             "explain": "AnimatedContainer menganimasikan perubahan."
@@ -2193,10 +2193,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "AnimationController mengendalikan",
             "options": [
-              "CSS",
-              "route",
+              "mockito/mocktail",
+              "map/where",
               "animasi",
-              "migrasi"
+              "halaman spesifik"
             ],
             "a": 2,
             "explain": "Controller mengatur animasi."
@@ -2206,9 +2206,9 @@ const CONTENT_FLUTTER = [
             "q": "Tween mendefinisikan",
             "options": [
               "rentang nilai animasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "const widget dan pemisahan",
+              "kode native lintas platform",
+              "offline dan performa"
             ],
             "a": 0,
             "explain": "Tween menetapkan nilai animasi."
@@ -2217,9 +2217,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "GestureDetector menangani",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "state.uri.queryParameters",
+              "maxLength",
+              "pump navigasi",
               "gesture pengguna"
             ],
             "a": 3,
@@ -2230,9 +2230,9 @@ const CONTENT_FLUTTER = [
             "q": "InkWell memberi efek",
             "options": [
               "ripple saat ditekan",
-              "CSS",
-              "route",
-              "migrasi"
+              "rentang nilai animasi",
+              "mengisi ruang fleksibel",
+              "dikirim ke server"
             ],
             "a": 0,
             "explain": "InkWell memberi efek sentuh."
@@ -2241,10 +2241,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Hero menganimasikan",
             "options": [
-              "CSS",
+              "berinteraksi dengan widget",
               "transisi antar halaman",
-              "route",
-              "migrasi"
+              "dependency injection dan state",
+              "Dart ke kode native"
             ],
             "a": 1,
             "explain": "Hero membuat animasi transisi."
@@ -2254,9 +2254,9 @@ const CONTENT_FLUTTER = [
             "q": "Animation harus di-dispose",
             "options": [
               "tidak",
-              "CSS",
+              "await",
               "ya",
-              "route"
+              "Stack"
             ],
             "a": 2,
             "explain": "Controller perlu dispose."
@@ -2265,10 +2265,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "TickerProvider dibutuhkan oleh",
             "options": [
-              "CSS",
-              "route",
+              "prediktabilitas",
+              "performa",
               "AnimationController",
-              "migrasi"
+              "memecah komponen"
             ],
             "a": 2,
             "explain": "Controller membutuhkan vsync."
@@ -2278,9 +2278,9 @@ const CONTENT_FLUTTER = [
             "q": "Animasi berlebihan dapat",
             "options": [
               "mengganggu pengguna",
-              "CSS",
-              "route",
-              "migrasi"
+              "melepas resource",
+              "handler khusus",
+              "luar build"
             ],
             "a": 0,
             "explain": "Animasi harus fungsional."
@@ -2289,9 +2289,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Implicit animations mengurangi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "di platform target",
+              "flutter build appbundle",
+              "Widget yang membentuk widget tree",
               "kode manual controller"
             ],
             "a": 3,
@@ -2308,9 +2308,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "LayoutBuilder membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "sekali saat state dibuat",
+              "cara gambar mengisi ruang",
+              "builder, bukan children statis",
               "menyesuaikan layout berdasarkan ukuran"
             ],
             "a": 3,
@@ -2320,10 +2320,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "MediaQuery memberi",
             "options": [
-              "CSS",
+              "melihat perubahan cepat saat pengembangan",
               "ukuran layar dan info",
-              "route",
-              "migrasi"
+              "UI statis tanpa state",
+              "BuildContext yang valid"
             ],
             "a": 1,
             "explain": "MediaQuery menyediakan info layar."
@@ -2332,10 +2332,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Breakpoint responsif memisahkan",
             "options": [
-              "CSS",
-              "route",
+              "paint dan shouldRepaint",
+              "Melihat perubahan kode dengan cepat saat pengembangan",
               "layout per ukuran",
-              "migrasi"
+              "penataan sumbu utama"
             ],
             "a": 2,
             "explain": "Breakpoint menyesuaikan layout."
@@ -2345,9 +2345,9 @@ const CONTENT_FLUTTER = [
             "q": "Orientation memberi tahu",
             "options": [
               "orientasi perangkat",
-              "CSS",
-              "route",
-              "migrasi"
+              "http.get lalu jsonDecode",
+              "gesture pengguna",
+              "alur end-to-end"
             ],
             "a": 0,
             "explain": "Orientation mendeteksi portrait/landscape."
@@ -2357,9 +2357,9 @@ const CONTENT_FLUTTER = [
             "q": "Widget adaptif menyesuaikan",
             "options": [
               "platform (iOS/Android)",
-              "CSS",
-              "route",
-              "migrasi"
+              "banyak listener",
+              "firebase_messaging",
+              "prediktabilitas"
             ],
             "a": 0,
             "explain": "Adaptif menyesuaikan per platform."
@@ -2368,9 +2368,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Flex dan Expanded membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kompleksitas dan tim",
+              "package HTTP dengan fitur lanjutan",
+              "ukuran layar dan info",
               "mengisi ruang fleksibel"
             ],
             "a": 3,
@@ -2380,10 +2380,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Overflow terjadi bila",
             "options": [
-              "CSS",
-              "route",
+              "klien dan server",
+              "solusi state management populer",
               "konten melebihi ruang",
-              "migrasi"
+              "state loading pada FutureBuilder"
             ],
             "a": 2,
             "explain": "Overflow menandakan layout salah."
@@ -2392,10 +2392,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "SingleChildScrollView membantu",
             "options": [
-              "CSS",
-              "route",
+              "kondisi empty state",
+              "state dan history konsisten",
               "konten lebih panjang dari layar",
-              "migrasi"
+              "intl dan arb"
             ],
             "a": 2,
             "explain": "ScrollView menghindari overflow."
@@ -2406,8 +2406,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "await",
+              "Stack"
             ],
             "a": 1,
             "explain": "Uji di banyak ukuran."
@@ -2416,10 +2416,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Desain responsif meningkatkan",
             "options": [
-              "CSS",
+              "flutter_test",
               "pengalaman pengguna",
-              "route",
-              "migrasi"
+              "aliran event",
+              "workmanager/isolate"
             ],
             "a": 1,
             "explain": "Responsif memperbaiki UX."
@@ -2436,9 +2436,9 @@ const CONTENT_FLUTTER = [
             "q": "Test widget memakai",
             "options": [
               "flutter_test",
-              "CSS",
-              "route",
-              "migrasi"
+              "menurunkan performa",
+              "controller.text",
+              "ThemeData"
             ],
             "a": 0,
             "explain": "package flutter_test untuk widget test."
@@ -2449,8 +2449,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "flutter run:test",
               "flutter test",
-              "CSS",
-              "route"
+              "flutter run",
+              "kode native lintas platform"
             ],
             "a": 1,
             "explain": "flutter test menjalankan test."
@@ -2460,9 +2460,9 @@ const CONTENT_FLUTTER = [
             "q": "WidgetTester dipakai untuk",
             "options": [
               "berinteraksi dengan widget",
-              "CSS",
-              "route",
-              "migrasi"
+              "layout per ukuran",
+              "beberapa Future paralel",
+              "const widget dan pemisahan"
             ],
             "a": 0,
             "explain": "Tester berinteraksi dalam test."
@@ -2471,10 +2471,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "pumpWidget membangun",
             "options": [
-              "CSS",
-              "route",
+              "pemuatan data awal",
+              "kode manual controller",
               "widget tree untuk test",
-              "migrasi"
+              "berinteraksi dengan widget"
             ],
             "a": 2,
             "explain": "pumpWidget me-render widget."
@@ -2483,10 +2483,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "expect(finder, matcher) memeriksa",
             "options": [
-              "CSS",
-              "route",
+              "keandalan",
+              "Stream",
               "hasil",
-              "migrasi"
+              "dikelola"
             ],
             "a": 2,
             "explain": "expect memeriksa kondisi."
@@ -2495,9 +2495,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Integration test menguji",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "maxLength",
+              "pump navigasi",
+              "NumberFormat",
               "alur end-to-end"
             ],
             "a": 3,
@@ -2507,10 +2507,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Mocking API pada test memakai",
             "options": [
-              "CSS",
-              "route",
+              "mengakses tema",
+              "Icons.nama",
               "mockito/mocktail",
-              "migrasi"
+              "memakan memori"
             ],
             "a": 2,
             "explain": "Library mock menyediakan mock."
@@ -2519,10 +2519,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Golden test memeriksa",
             "options": [
-              "CSS",
-              "route",
+              "daftar berpetak",
+              "Navigator.push",
               "tampilan visual",
-              "migrasi"
+              "colorScheme"
             ],
             "a": 2,
             "explain": "Golden membandingkan gambar."
@@ -2531,9 +2531,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Test perilaku lebih stabil dari",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pubspec.yaml",
+              "ElevatedButton",
+              "AlertDialog",
               "test implementasi"
             ],
             "a": 3,
@@ -2543,9 +2543,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Coverage membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "flutter build apk",
+              "apakah perlu repaint",
+              "flutter create nama",
               "mengukur cakupan test"
             ],
             "a": 3,
@@ -2560,12 +2560,12 @@ const CONTENT_FLUTTER = [
         "exercises": [
           {
             "type": "mc",
-            "q": "StreamBuilder membangun UI dari",
+            "q": "Widget StreamBuilder membangun ulang antarmuka secara otomatis setiap kali ada event baru dari",
             "options": [
               "Stream",
-              "CSS",
-              "route",
-              "migrasi"
+              "di-resize",
+              "penting",
+              "Stack"
             ],
             "a": 0,
             "explain": "StreamBuilder merender dari stream."
@@ -2574,10 +2574,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "StreamController mengelola",
             "options": [
-              "CSS",
-              "route",
+              "TextField",
+              "CircularProgressIndicator",
               "aliran event",
-              "migrasi"
+              "Row/Column/Flex"
             ],
             "a": 2,
             "explain": "Controller mengelola stream."
@@ -2586,10 +2586,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Broadcast stream memungkinkan",
             "options": [
-              "CSS",
+              "Future",
               "banyak listener",
-              "route",
-              "migrasi"
+              "http.get lalu jsonDecode",
+              "gesture pengguna"
             ],
             "a": 1,
             "explain": "Broadcast untuk banyak listener."
@@ -2598,10 +2598,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menutup stream penting untuk",
             "options": [
-              "CSS",
+              "dikelola",
               "melepas resource",
-              "route",
-              "migrasi"
+              "tooltip/semantic label",
+              "UI tersendat"
             ],
             "a": 1,
             "explain": "Close melepas resource."
@@ -2610,9 +2610,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Transform stream memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kualitas UI",
+              "ICU/intl messages",
+              "async",
               "map/where"
             ],
             "a": 3,
@@ -2622,10 +2622,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menangani error stream memakai",
             "options": [
-              "CSS",
+              "animasi",
               "onError/handleError",
-              "route",
-              "migrasi"
+              "banyak listener",
+              "firebase_messaging"
             ],
             "a": 1,
             "explain": "Error stream perlu ditangani."
@@ -2634,10 +2634,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Future.wait menjalankan",
             "options": [
-              "CSS",
+              "widget tree untuk test",
               "beberapa Future paralel",
-              "route",
-              "migrasi"
+              "paralelisme terpisah memori",
+              "memanggil method native"
             ],
             "a": 1,
             "explain": "Future.wait menunggu paralel."
@@ -2646,10 +2646,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Zone menangani",
             "options": [
-              "CSS",
+              "useMaterial3",
               "konteks asynchronous",
-              "route",
-              "migrasi"
+              "errorBuilder",
+              "sub-halaman"
             ],
             "a": 1,
             "explain": "Zone mengatur konteks async."
@@ -2660,8 +2660,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "Text",
+              "pub"
             ],
             "a": 0,
             "explain": "Cancel subscription."
@@ -2670,10 +2670,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Backpressure pada stream perlu",
             "options": [
-              "CSS",
+              "selector",
               "dikelola",
-              "route",
-              "migrasi"
+              "masalah performa",
+              "data relasional"
             ],
             "a": 1,
             "explain": "Aliran deras perlu dikelola."
@@ -2689,9 +2689,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Background task memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "gesture pengguna",
+              "alur end-to-end",
+              "melepas resource",
               "workmanager/isolate"
             ],
             "a": 3,
@@ -2701,10 +2701,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Notifikasi push memakai",
             "options": [
-              "CSS",
+              "memberitahukan perubahan",
               "firebase_messaging",
-              "route",
-              "migrasi"
+              "try/catch atau catchError",
+              "secure storage"
             ],
             "a": 1,
             "explain": "FCM untuk push notif."
@@ -2713,10 +2713,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menyimpan token perangkat perlu",
             "options": [
-              "CSS",
-              "route",
+              "memanggil library C",
+              "konfigurasi build berbeda",
               "dikirim ke server",
-              "migrasi"
+              "efek visual lanjutan"
             ],
             "a": 2,
             "explain": "Token dikirim ke server."
@@ -2725,10 +2725,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menangani notifikasi di background perlu",
             "options": [
-              "CSS",
+              "tooltip/semantic label",
               "handler khusus",
-              "route",
-              "migrasi"
+              "UI tersendat",
+              "provider/get_it"
             ],
             "a": 1,
             "explain": "Handler background diperlukan."
@@ -2737,9 +2737,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Deep link dari notifikasi membuka",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "ConstrainedBox",
+              "lebih longgar (flexible)",
+              "menurunkan performa",
               "halaman spesifik"
             ],
             "a": 3,
@@ -2750,8 +2750,8 @@ const CONTENT_FLUTTER = [
             "q": "Izin runtime penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "await",
+              "Stack",
               "ya"
             ],
             "a": 3,
@@ -2761,10 +2761,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menangani status aplikasi memakai",
             "options": [
-              "CSS",
+              "ListView.builder",
               "WidgetsBindingObserver",
-              "route",
-              "migrasi"
+              "inputFormatters",
+              "animasi selesai"
             ],
             "a": 1,
             "explain": "Observer memantau lifecycle."
@@ -2775,8 +2775,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "Icon",
+              "UX"
             ],
             "a": 1,
             "explain": "Refresh saat resume."
@@ -2786,8 +2786,8 @@ const CONTENT_FLUTTER = [
             "q": "Battery/memori perlu diperhatikan",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "State",
+              "Icon",
               "ya"
             ],
             "a": 3,
@@ -2799,8 +2799,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "hasil",
+              "Card"
             ],
             "a": 0,
             "explain": "Uji di perangkat nyata."
@@ -2816,10 +2816,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Semantics widget membantu",
             "options": [
-              "CSS",
-              "route",
+              "CircularProgressIndicator",
+              "Row/Column/Flex",
               "aksesibilitas",
-              "migrasi"
+              "membersihkan resource"
             ],
             "a": 2,
             "explain": "Semantics memberi info aksesibel."
@@ -2828,10 +2828,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Label tombol ikon perlu",
             "options": [
-              "CSS",
-              "route",
+              "GlobalKey<FormState>",
+              "EdgeInsets",
               "tooltip/semantic label",
-              "migrasi"
+              "Image.network('url')"
             ],
             "a": 2,
             "explain": "Label membantu pembaca layar."
@@ -2841,8 +2841,8 @@ const CONTENT_FLUTTER = [
             "q": "Ukuran target sentuh minimal penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "Text",
+              "pub",
               "ya"
             ],
             "a": 3,
@@ -2853,8 +2853,8 @@ const CONTENT_FLUTTER = [
             "q": "Kontras warna memadai penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "async",
+              "await",
               "ya"
             ],
             "a": 3,
@@ -2865,9 +2865,9 @@ const CONTENT_FLUTTER = [
             "q": "Dukungan ukuran font besar perlu",
             "options": [
               "tidak",
-              "CSS",
+              "hasil",
               "ya",
-              "route"
+              "Card"
             ],
             "a": 2,
             "explain": "Respek pengaturan font."
@@ -2877,8 +2877,8 @@ const CONTENT_FLUTTER = [
             "q": "Semantics debug dapat diaktifkan",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "State",
+              "Icon",
               "ya"
             ],
             "a": 3,
@@ -2890,8 +2890,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "Dart",
+              "Row"
             ],
             "a": 0,
             "explain": "Urutan fokus logis."
@@ -2900,10 +2900,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "excludeSemantics berguna untuk",
             "options": [
-              "CSS",
+              "performa gambar kustom",
               "menyembunyikan elemen dekoratif",
-              "route",
-              "migrasi"
+              "melihat perubahan cepat saat pengembangan",
+              "UI statis tanpa state"
             ],
             "a": 1,
             "explain": "Elemen dekoratif bisa disembunyikan."
@@ -2914,8 +2914,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "await",
+              "Stack"
             ],
             "a": 1,
             "explain": "Uji aksesibilitas."
@@ -2925,8 +2925,8 @@ const CONTENT_FLUTTER = [
             "q": "Alternatif teks untuk gambar wajib",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "Card",
+              "Text",
               "ya"
             ],
             "a": 3,
@@ -2944,9 +2944,9 @@ const CONTENT_FLUTTER = [
             "q": "BLoC memakai",
             "options": [
               "event dan state terpisah",
-              "CSS",
-              "route",
-              "migrasi"
+              "daftar yang dapat digulir",
+              "package routing populer",
+              "kondisi empty state"
             ],
             "a": 0,
             "explain": "BLoC memisahkan event/state."
@@ -2955,10 +2955,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Riverpod menyediakan",
             "options": [
-              "CSS",
-              "route",
+              "State berubah dan UI perlu dibangun ulang",
+              "root aplikasi Material",
               "dependency injection dan state",
-              "migrasi"
+              "sekali saat state dibuat"
             ],
             "a": 2,
             "explain": "Riverpod menggabungkan DI/state."
@@ -2967,9 +2967,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Reducer pattern memusatkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "try/catch atau catchError",
+              "secure storage",
+              "orientasi perangkat",
               "transisi state"
             ],
             "a": 3,
@@ -2979,9 +2979,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Immutable state membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "inputFormatters",
+              "animasi selesai",
+              "intl DateFormat",
               "prediktabilitas"
             ],
             "a": 3,
@@ -2992,9 +2992,9 @@ const CONTENT_FLUTTER = [
             "q": "Memisahkan state UI/domain membantu",
             "options": [
               "pengujian",
-              "CSS",
-              "route",
-              "migrasi"
+              "frame/waktu",
+              "supportedLocales",
+              "dihindari"
             ],
             "a": 0,
             "explain": "Pemisahan memudahkan test."
@@ -3003,10 +3003,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Side effect sebaiknya di",
             "options": [
-              "CSS",
-              "route",
+              "Image.network('url')",
+              "urutan/perubahan dinamis",
               "luar build",
-              "migrasi"
+              "guard autentikasi"
             ],
             "a": 2,
             "explain": "Side effect di luar build."
@@ -3015,10 +3015,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Mengelola state async memerlukan",
             "options": [
-              "CSS",
+              "membersihkan resource",
               "loading/error/data",
-              "route",
-              "migrasi"
+              "TextEditingController",
+              "keyboardType"
             ],
             "a": 1,
             "explain": "State async lengkap."
@@ -3027,10 +3027,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Rebuild selektif memakai",
             "options": [
-              "CSS",
+              "Stack",
               "selector",
-              "route",
-              "migrasi"
+              "Drawer",
+              "Container decoration"
             ],
             "a": 1,
             "explain": "Selector mengurangi rebuild."
@@ -3041,8 +3041,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "Wrap",
+              "Form"
             ],
             "a": 0,
             "explain": "State global seperlunya."
@@ -3053,8 +3053,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "State",
+              "Icon"
             ],
             "a": 1,
             "explain": "Dokumentasi memudahkan tim."
@@ -3070,10 +3070,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Isolate dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "kode Dart + native",
+              "flutter build apk",
               "paralelisme terpisah memori",
-              "migrasi"
+              "apakah perlu repaint"
             ],
             "a": 2,
             "explain": "Isolate menjalankan kode terpisah."
@@ -3083,9 +3083,9 @@ const CONTENT_FLUTTER = [
             "q": "Isolate berkomunikasi lewat",
             "options": [
               "message passing",
-              "CSS",
-              "route",
-              "migrasi"
+              "rebuild berlebih",
+              "TextField",
+              "CircularProgressIndicator"
             ],
             "a": 0,
             "explain": "Isolate bertukar pesan."
@@ -3094,10 +3094,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "compute() membantu",
             "options": [
-              "CSS",
+              "konten melebihi ruang",
               "menjalankan fungsi berat di isolate",
-              "route",
-              "migrasi"
+              "menyembunyikan elemen dekoratif",
+              "domain, data, presentation"
             ],
             "a": 1,
             "explain": "compute menjalankan di isolate."
@@ -3106,10 +3106,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Pekerjaan berat di main isolate menyebabkan",
             "options": [
-              "CSS",
-              "route",
+              "platform (iOS/Android)",
+              "Stream",
               "UI tersendat",
-              "migrasi"
+              "dikelola"
             ],
             "a": 2,
             "explain": "Main isolate harus ringan."
@@ -3118,9 +3118,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Profiling memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Form",
+              "colorScheme",
+              "pengalaman pengguna",
               "DevTools"
             ],
             "a": 3,
@@ -3130,9 +3130,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Rebuild berlebihan diperbaiki dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "package HTTP dengan fitur lanjutan",
+              "ukuran layar dan info",
+              "mengukur cakupan test",
               "const widget dan pemisahan"
             ],
             "a": 3,
@@ -3142,10 +3142,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "const constructor membantu",
             "options": [
-              "CSS",
+              "ThemeData",
               "performa",
-              "route",
-              "migrasi"
+              "useMaterial3",
+              "errorBuilder"
             ],
             "a": 1,
             "explain": "Const widget tidak dibangun ulang."
@@ -3154,9 +3154,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "RepaintBoundary membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "AlertDialog",
+              "SizedBox",
+              "arguments",
               "mengurangi repaint"
             ],
             "a": 3,
@@ -3166,10 +3166,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Image berat sebaiknya",
             "options": [
-              "CSS",
+              "rebuild berlebih",
               "di-resize",
-              "route",
-              "migrasi"
+              "Text",
+              "TextField"
             ],
             "a": 1,
             "explain": "Resize menghemat memori."
@@ -3179,9 +3179,9 @@ const CONTENT_FLUTTER = [
             "q": "Frame drop menandakan",
             "options": [
               "masalah performa",
-              "CSS",
-              "route",
-              "migrasi"
+              "Padding",
+              "setState",
+              "Navigator.pushNamed(context, '/x')"
             ],
             "a": 0,
             "explain": "Frame drop menunjukkan lag."
@@ -3198,9 +3198,9 @@ const CONTENT_FLUTTER = [
             "q": "Pemisahan layer membantu",
             "options": [
               "pengujian dan perawatan",
-              "CSS",
-              "route",
-              "migrasi"
+              "mengukur cakupan test",
+              "menjalankan fungsi berat di isolate",
+              "aliran event dari native"
             ],
             "a": 0,
             "explain": "Layer terpisah mudah diuji."
@@ -3210,9 +3210,9 @@ const CONTENT_FLUTTER = [
             "q": "Clean architecture memisahkan",
             "options": [
               "domain, data, presentation",
-              "CSS",
-              "route",
-              "migrasi"
+              "transisi antar halaman",
+              "konten lebih panjang dari layar",
+              "event dan state terpisah"
             ],
             "a": 0,
             "explain": "Layer memisahkan tanggung jawab."
@@ -3221,9 +3221,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Repository mengabstraksi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "key-value sederhana",
+              "penting",
+              "widget",
               "sumber data"
             ],
             "a": 3,
@@ -3233,9 +3233,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Use case menampung",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "domain, data, presentation",
+              "codegen binding native",
+              "flutter build ios",
               "satu aturan bisnis"
             ],
             "a": 3,
@@ -3246,9 +3246,9 @@ const CONTENT_FLUTTER = [
             "q": "Dependency injection memakai",
             "options": [
               "provider/get_it",
-              "CSS",
-              "route",
-              "migrasi"
+              "Navigator.pushNamed(context, '/x')",
+              "GlobalKey<FormState>",
+              "EdgeInsets"
             ],
             "a": 0,
             "explain": "DI lewat provider/get_it."
@@ -3257,10 +3257,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Modularisasi fitur membantu",
             "options": [
-              "CSS",
-              "route",
+              "TextField",
+              "CircularProgressIndicator",
               "skalabilitas",
-              "migrasi"
+              "Row/Column/Flex"
             ],
             "a": 2,
             "explain": "Fitur modular memudahkan scaling."
@@ -3270,9 +3270,9 @@ const CONTENT_FLUTTER = [
             "q": "Menghindari god widget dengan",
             "options": [
               "memecah komponen",
-              "CSS",
-              "route",
-              "migrasi"
+              "kualitas UI",
+              "ICU/intl messages",
+              "http.post"
             ],
             "a": 0,
             "explain": "Pecah widget besar."
@@ -3281,10 +3281,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Model immutable membantu",
             "options": [
-              "CSS",
-              "route",
+              "errorBuilder",
+              "sub-halaman",
               "prediktabilitas",
-              "migrasi"
+              "focus traversal"
             ],
             "a": 2,
             "explain": "Immutable memudahkan reasoning."
@@ -3294,9 +3294,9 @@ const CONTENT_FLUTTER = [
             "q": "Error handling terpusat penting",
             "options": [
               "tidak",
-              "CSS",
+              "pub",
               "ya",
-              "route"
+              "Image"
             ],
             "a": 2,
             "explain": "Penanganan error terpusat."
@@ -3307,8 +3307,8 @@ const CONTENT_FLUTTER = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "Dart",
+              "Row"
             ],
             "a": 1,
             "explain": "Dokumentasi memudahkan kolaborasi."
@@ -3325,9 +3325,9 @@ const CONTENT_FLUTTER = [
             "q": "Platform channel menghubungkan",
             "options": [
               "Dart ke kode native",
-              "CSS",
-              "route",
-              "migrasi"
+              "berinteraksi dengan widget",
+              "dependency injection dan state",
+              "di platform target"
             ],
             "a": 0,
             "explain": "Channel menjembatani Dart dan native."
@@ -3336,10 +3336,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "MethodChannel dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "const widget dan pemisahan",
+              "kode native lintas platform",
               "memanggil method native",
-              "migrasi"
+              "offline dan performa"
             ],
             "a": 2,
             "explain": "MethodChannel memanggil native."
@@ -3348,9 +3348,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "EventChannel mengirim",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "memanggil library C",
+              "konfigurasi build berbeda",
+              "efek visual lanjutan",
               "aliran event dari native"
             ],
             "a": 3,
@@ -3360,10 +3360,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Plugin Flutter membungkus",
             "options": [
-              "CSS",
-              "route",
+              "paint dan shouldRepaint",
+              "Melihat perubahan kode dengan cepat saat pengembangan",
               "kode native lintas platform",
-              "migrasi"
+              "penataan sumbu utama"
             ],
             "a": 2,
             "explain": "Plugin menyatukan native."
@@ -3372,10 +3372,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menulis plugin memerlukan",
             "options": [
-              "CSS",
+              "launcher icon config",
               "kode Dart + native",
-              "route",
-              "migrasi"
+              "UI bersama (mis. bottom nav)",
+              "deteksi regresi visual"
             ],
             "a": 1,
             "explain": "Plugin butuh dua sisi."
@@ -3384,10 +3384,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Error channel harus",
             "options": [
-              "CSS",
-              "route",
+              "http.get lalu jsonDecode",
+              "gesture pengguna",
               "ditangani",
-              "migrasi"
+              "alur end-to-end"
             ],
             "a": 2,
             "explain": "Penanganan error penting."
@@ -3396,9 +3396,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Pigeon membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "event dan state",
+              "akses API dari UI",
+              "menyesuaikan layout berdasarkan ukuran",
               "codegen binding native"
             ],
             "a": 3,
@@ -3409,9 +3409,9 @@ const CONTENT_FLUTTER = [
             "q": "FFI memungkinkan",
             "options": [
               "memanggil library C",
-              "CSS",
-              "route",
-              "migrasi"
+              "rentang nilai animasi",
+              "mengisi ruang fleksibel",
+              "dikirim ke server"
             ],
             "a": 0,
             "explain": "FFI memanggil C langsung."
@@ -3421,9 +3421,9 @@ const CONTENT_FLUTTER = [
             "q": "Kode native harus diuji",
             "options": [
               "di platform target",
-              "CSS",
-              "route",
-              "migrasi"
+              "codegen binding native",
+              "flutter build ios",
+              "performa gambar kustom"
             ],
             "a": 0,
             "explain": "Uji di perangkat nyata."
@@ -3432,10 +3432,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Channel async dijalankan",
             "options": [
-              "CSS",
+              "otomasi build dan rilis",
               "di luar main isolate terkadang",
-              "route",
-              "migrasi"
+              "State berubah dan UI perlu dibangun ulang",
+              "root aplikasi Material"
             ],
             "a": 1,
             "explain": "Pemanggilan native bisa async."
@@ -3452,9 +3452,9 @@ const CONTENT_FLUTTER = [
             "q": "SharedPreferences menyimpan",
             "options": [
               "key-value sederhana",
-              "CSS",
-              "route",
-              "migrasi"
+              "UI tersendat",
+              "provider/get_it",
+              "di isolate/latar"
             ],
             "a": 0,
             "explain": "SharedPreferences untuk data kecil."
@@ -3463,9 +3463,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "SQLite via sqflite menyimpan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "alur end-to-end",
+              "melepas resource",
+              "handler khusus",
               "data relasional"
             ],
             "a": 3,
@@ -3476,9 +3476,9 @@ const CONTENT_FLUTTER = [
             "q": "Hive/Isar adalah",
             "options": [
               "database lokal cepat",
-              "CSS",
-              "route",
-              "migrasi"
+              "pemisah antar item",
+              "klien dan server",
+              "solusi state management populer"
             ],
             "a": 0,
             "explain": "Hive/Isar untuk lokal."
@@ -3487,10 +3487,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Menyimpan file memakai",
             "options": [
-              "CSS",
+              "inputFormatters",
               "path_provider",
-              "route",
-              "migrasi"
+              "animasi selesai",
+              "intl DateFormat"
             ],
             "a": 1,
             "explain": "path_provider memberi path."
@@ -3500,9 +3500,9 @@ const CONTENT_FLUTTER = [
             "q": "Data sensitif disimpan di",
             "options": [
               "secure storage",
-              "CSS",
-              "route",
-              "migrasi"
+              "formKey.currentState.validate()",
+              "BoxDecoration/Border",
+              "sliver kompleks"
             ],
             "a": 0,
             "explain": "Secure storage untuk rahasia."
@@ -3512,9 +3512,9 @@ const CONTENT_FLUTTER = [
             "q": "Migration skema lokal penting",
             "options": [
               "tidak",
-              "CSS",
+              "Text",
               "ya",
-              "route"
+              "pub"
             ],
             "a": 2,
             "explain": "Migrasi menjaga kompatibilitas data."
@@ -3523,9 +3523,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Query database sebaiknya",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "keamanan/performa",
+              "widget tree",
+              "Container/Padding",
               "di isolate/latar"
             ],
             "a": 3,
@@ -3535,10 +3535,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Cache lokal membantu",
             "options": [
-              "CSS",
+              "satu aturan bisnis",
               "offline dan performa",
-              "route",
-              "migrasi"
+              "memanggil library C",
+              "konfigurasi build berbeda"
             ],
             "a": 1,
             "explain": "Cache lokal mempercepat."
@@ -3548,8 +3548,8 @@ const CONTENT_FLUTTER = [
             "q": "Menutup koneksi DB penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "Row",
+              "Wrap",
               "ya"
             ],
             "a": 3,
@@ -3559,10 +3559,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Enkripsi lokal membantu",
             "options": [
-              "CSS",
-              "route",
+              "sumber data",
+              "path_provider",
               "keamanan",
-              "migrasi"
+              "menggambar kustom"
             ],
             "a": 2,
             "explain": "Enkripsi melindungi data."
@@ -3591,9 +3591,9 @@ const CONTENT_FLUTTER = [
             "q": "Build iOS memakai",
             "options": [
               "flutter ios",
-              "CSS",
+              "package cache (mis. cached_network_image)",
               "flutter build ios",
-              "route"
+              "dikonfigurasi di platform"
             ],
             "a": 2,
             "explain": "flutter build ios untuk iOS."
@@ -3603,9 +3603,9 @@ const CONTENT_FLUTTER = [
             "q": "Mengatur versi aplikasi di",
             "options": [
               "pubspec.yaml",
-              "CSS",
-              "route",
-              "migrasi"
+              "controller.text",
+              "ThemeData",
+              "useMaterial3"
             ],
             "a": 0,
             "explain": "pubspec mengatur versi."
@@ -3615,9 +3615,9 @@ const CONTENT_FLUTTER = [
             "q": "App signing Android diatur di",
             "options": [
               "build.gradle",
-              "CSS",
-              "route",
-              "migrasi"
+              "sliver kompleks",
+              "context.pop()/Navigator.pop",
+              "kualitas UI"
             ],
             "a": 0,
             "explain": "Gradle mengatur signing."
@@ -3627,9 +3627,9 @@ const CONTENT_FLUTTER = [
             "q": "Flavors memungkinkan",
             "options": [
               "konfigurasi build berbeda",
-              "CSS",
-              "route",
-              "migrasi"
+              "ditangani dan diinformasikan",
+              "layout per ukuran",
+              "beberapa Future paralel"
             ],
             "a": 0,
             "explain": "Flavor memisahkan build."
@@ -3639,9 +3639,9 @@ const CONTENT_FLUTTER = [
             "q": "Menghasilkan app bundle memakai",
             "options": [
               "flutter build appbundle",
-              "CSS",
-              "route",
-              "migrasi"
+              "konten lebih panjang dari layar",
+              "event dan state terpisah",
+              "satu aturan bisnis"
             ],
             "a": 0,
             "explain": "App bundle untuk Play Store."
@@ -3650,9 +3650,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "mengurangi ukuran build dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "luar build",
+              "mengurangi repaint",
+              "ditangani",
               "--split-per-abi"
             ],
             "a": 3,
@@ -3663,9 +3663,9 @@ const CONTENT_FLUTTER = [
             "q": "CI/CD membantu",
             "options": [
               "otomasi build dan rilis",
-              "CSS",
-              "route",
-              "migrasi"
+              "state management dengan dependensi eksplisit",
+              "pemuatan data awal",
+              "kode manual controller"
             ],
             "a": 0,
             "explain": "CI/CD mengotomasi."
@@ -3675,9 +3675,9 @@ const CONTENT_FLUTTER = [
             "q": "Menguji build rilis sebelum rilis",
             "options": [
               "tidak perlu",
-              "CSS",
+              "tampilan visual",
               "penting",
-              "route"
+              "onError/handleError"
             ],
             "a": 2,
             "explain": "Uji build rilis."
@@ -3687,9 +3687,9 @@ const CONTENT_FLUTTER = [
             "q": "Menjaga dependency mutakhir membantu",
             "options": [
               "keamanan/performa",
-              "CSS",
-              "route",
-              "migrasi"
+              "performa",
+              "memecah komponen",
+              "build.gradle"
             ],
             "a": 0,
             "explain": "Update dependency berkala."
@@ -3705,10 +3705,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "CustomPaint memungkinkan",
             "options": [
-              "CSS",
+              "context.pop()/Navigator.pop",
               "menggambar kustom",
-              "route",
-              "migrasi"
+              "kualitas UI",
+              "ICU/intl messages"
             ],
             "a": 1,
             "explain": "CustomPaint menggambar manual."
@@ -3717,10 +3717,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "CustomPainter mengimplementasikan",
             "options": [
-              "CSS",
+              "membuka halaman spesifik dari tautan",
               "paint dan shouldRepaint",
-              "route",
-              "migrasi"
+              "kontrol posisi scroll",
+              "kapan validasi berjalan"
             ],
             "a": 1,
             "explain": "Painter butuh paint modern."
@@ -3729,9 +3729,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Animasi kustom memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "dikonfigurasi di platform",
+              "menemukan widget berdasarkan tipe",
+              "event dan state",
               "AnimationController + CustomPainter"
             ],
             "a": 3,
@@ -3741,9 +3741,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Physics-based animation memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mengurangi repaint",
+              "ditangani",
+              "--split-per-abi",
               "Simulation"
             ],
             "a": 3,
@@ -3753,10 +3753,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "AnimatedBuilder mengurangi",
             "options": [
-              "CSS",
+              "loading/error/data",
               "rebuild berlebih",
-              "route",
-              "migrasi"
+              "di-resize",
+              "key-value sederhana"
             ],
             "a": 1,
             "explain": "AnimatedBuilder hanya rebuild bagian perlu."
@@ -3766,9 +3766,9 @@ const CONTENT_FLUTTER = [
             "q": "Menghindari kerja berat saat paint",
             "options": [
               "tidak perlu",
-              "CSS",
+              "rebuild berlebih",
               "penting",
-              "route"
+              "Text"
             ],
             "a": 2,
             "explain": "Paint harus ringan."
@@ -3777,9 +3777,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "shouldRepaint mengembalikan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "flutter build apk",
+              "flutter create nama",
+              "daftar yang dapat digulir",
               "apakah perlu repaint"
             ],
             "a": 3,
@@ -3789,10 +3789,10 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Layer caching membantu",
             "options": [
-              "CSS",
-              "route",
+              "Widget yang membentuk widget tree",
+              "kerangka halaman (appbar, body)",
               "performa gambar kustom",
-              "migrasi"
+              "widget perlu dirender"
             ],
             "a": 2,
             "explain": "Cache layer saat cocok."
@@ -3801,9 +3801,9 @@ const CONTENT_FLUTTER = [
             "type": "mc",
             "q": "Shader memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "flutter build ios",
+              "performa gambar kustom",
+              "melihat perubahan cepat saat pengembangan",
               "efek visual lanjutan"
             ],
             "a": 3,
@@ -3814,8 +3814,8 @@ const CONTENT_FLUTTER = [
             "q": "Mengukur performa animasi penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "await",
+              "Stack",
               "ya"
             ],
             "a": 3,

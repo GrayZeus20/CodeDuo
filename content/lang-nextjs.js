@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_NEXTJS = [
-{
+  {
     "id": "nextjs",
     "name": "Next.js",
     "icon": "▲",
@@ -188,7 +188,7 @@ const CONTENT_NEXTJS = [
               "A",
               "Link",
               "Nav",
-              "Route"
+              "useState"
             ],
             "a": 1,
             "explain": "Komponen Link melakukan navigasi client-side."
@@ -212,7 +212,7 @@ const CONTENT_NEXTJS = [
               "halaman error",
               "UI loading selama segmen dimuat",
               "konfigurasi",
-              "CSS"
+              "MSW atau stub"
             ],
             "a": 1,
             "explain": "loading.js memberi UI fallback saat konten menunggu."
@@ -222,7 +222,7 @@ const CONTENT_NEXTJS = [
             "q": "Berkas error.js menangani",
             "options": [
               "routing CSS",
-              "migrasi",
+              "mengetahui bagian yang teruji",
               "error pada segmen route",
               "build"
             ],
@@ -405,7 +405,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "layout.js di folder anak",
               "menulis HTML ulang",
-              "CSS",
+              "lingkungan yang mendukung render server",
               "route handler"
             ],
             "a": 0,
@@ -465,7 +465,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "window.location selalu",
               "href saja",
-              "CSS",
+              "middleware.js di root",
               "redirect() dari next/navigation"
             ],
             "a": 3,
@@ -532,7 +532,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "window.fetch selalu di browser",
               "jQuery",
-              "CSS",
+              "konfigurasi PostCSS/Tailwind",
               "fetch bawaan (async)"
             ],
             "a": 3,
@@ -543,8 +543,8 @@ const CONTENT_NEXTJS = [
             "q": "Fetch pada Server Component dapat di-cache/di-revalidasi dengan opsi",
             "options": [
               "only",
-              "css",
-              "route",
+              "revalidatePath/revalidateTag",
+              "next/dynamic",
               "cache dan next.revalidate"
             ],
             "a": 3,
@@ -590,7 +590,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Menampilkan status loading selama fetch dapat memakai",
             "options": [
-              "CSS",
+              "npx create-next-app",
               "loading.js atau Suspense",
               "route.js",
               "migration"
@@ -615,9 +615,9 @@ const CONTENT_NEXTJS = [
             "q": "Menghindari fetch berulang ke data yang sama pada server dibantu oleh",
             "options": [
               "menghapus fetch",
-              "CSS",
+              "Client Component",
               "cache bawaan Next.js",
-              "route"
+              "redirect() dari next/navigation"
             ],
             "a": 2,
             "explain": "Next.js menyimpan hasil fetch agar dipakai ulang."
@@ -627,9 +627,9 @@ const CONTENT_NEXTJS = [
             "q": "Parallel fetching dapat memakai",
             "options": [
               "loop tunggal",
-              "CSS",
+              "npm run start",
               "Promise.all di Server Component",
-              "route"
+              "data yang dapat diserialisasi"
             ],
             "a": 2,
             "explain": "Promise.all mengambil beberapa sumber secara bersamaan."
@@ -696,7 +696,7 @@ const CONTENT_NEXTJS = [
               "menghapus CSS",
               "merusak route",
               "tidak bisa memakai hooks client",
-              "migrasi"
+              "memuat kode sesuai kebutuhan"
             ],
             "a": 2,
             "explain": "Server Component tidak menjalankan kode client."
@@ -708,7 +708,7 @@ const CONTENT_NEXTJS = [
               "template string atau helper classnames",
               "string +",
               "json",
-              "route"
+              "menunda bagian tertentu tanpa menahan seluruh halaman"
             ],
             "a": 0,
             "explain": "Template string/helper memudahkan kelas kondisional."
@@ -731,8 +731,8 @@ const CONTENT_NEXTJS = [
             "options": [
               "next/image",
               "<img> biasa selalu",
-              "CSS",
-              "route"
+              "melanjutkan request",
+              "WebP/AVIF"
             ],
             "a": 0,
             "explain": "next/image menyediakan optimasi gambar."
@@ -741,7 +741,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Mengatur tema gelap biasanya lewat",
             "options": [
-              "route",
+              "'use server'",
               "metadata",
               "migration",
               "kelas pada root/html"
@@ -756,7 +756,7 @@ const CONTENT_NEXTJS = [
               "install sass",
               "tidak perlu apa pun",
               "hapus CSS",
-              "migrasi"
+              "new URL(request.url).searchParams"
             ],
             "a": 0,
             "explain": "Dukungan SCSS memerlukan paket sass."
@@ -857,9 +857,9 @@ const CONTENT_NEXTJS = [
             "q": "Route handler cocok untuk",
             "options": [
               "UI halaman",
-              "CSS",
+              "next.config.js",
               "endpoint API/server",
-              "migrasi"
+              "useState"
             ],
             "a": 2,
             "explain": "Route handler menangani API, bukan UI halaman."
@@ -883,7 +883,7 @@ const CONTENT_NEXTJS = [
               "redirect() di route.js",
               "window.location",
               "NextResponse.redirect",
-              "CSS"
+              "sebelum route dirender/ditangani"
             ],
             "a": 2,
             "explain": "Middleware memakai NextResponse untuk pengalihan."
@@ -960,7 +960,7 @@ const CONTENT_NEXTJS = [
             "q": "Menyimpan rahasia sebaiknya di",
             "options": [
               "kode klien",
-              "CSS",
+              "next.config.js",
               "environment/secret manager",
               "nama route"
             ],
@@ -1008,9 +1008,9 @@ const CONTENT_NEXTJS = [
             "q": "Mengaktifkan kompresi/pengaturan cache membantu",
             "options": [
               "menghapus route",
-              "migrasi",
+              "data konsisten dan cepat",
               "performa pengiriman aset",
-              "CSS"
+              "meng-cache hasil fungsi data"
             ],
             "a": 2,
             "explain": "Kompresi dan cache mempercepat pengiriman aset."
@@ -1041,7 +1041,7 @@ const CONTENT_NEXTJS = [
               "komponen React biasa",
               "class PHP",
               "file CSS",
-              "route"
+              "mengatur batas data dan interaksi"
             ],
             "a": 0,
             "explain": "Next.js memakai komponen React."
@@ -1075,7 +1075,7 @@ const CONTENT_NEXTJS = [
             "q": "Membagi komponen menjadi server + client membantu",
             "options": [
               "menghapus state",
-              "migrasi",
+              "server action atau route handler",
               "routing",
               "mengurangi JavaScript klien"
             ],
@@ -1087,7 +1087,7 @@ const CONTENT_NEXTJS = [
             "q": "Komponen di Next.js dapat diimpor dari",
             "options": [
               "hanya global",
-              "CSS",
+              "URL bisa diakses langsung",
               "route.js",
               "file lain dengan export/import"
             ],
@@ -1110,7 +1110,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Key pada daftar membantu",
             "options": [
-              "CSS",
+              "NextAuth/Auth.js",
               "routing",
               "rekonsiliasi item",
               "DB"
@@ -1125,7 +1125,7 @@ const CONTENT_NEXTJS = [
               "useServer",
               "useState",
               "metadata",
-              "route"
+              "async function Page()"
             ],
             "a": 1,
             "explain": "useState menyimpan state di komponen client."
@@ -1135,9 +1135,9 @@ const CONTENT_NEXTJS = [
             "q": "Context dapat dipakai di",
             "options": [
               "server component tanpa batas",
-              "CSS",
+              "await request.json()",
               "komponen client",
-              "route"
+              "dilempar ke layanan/queue"
             ],
             "a": 2,
             "explain": "Context memerlukan komponen client untuk perubahan dinamis."
@@ -1146,9 +1146,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Membuat komponen dapat dipakai ulang adalah tujuan",
             "options": [
-              "migrasi",
+              "next/dynamic",
               "routing",
-              "CSS",
+              "connection pooling",
               "komposisi komponen"
             ],
             "a": 3,
@@ -1203,7 +1203,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "pratinjau saat dibagikan di media sosial",
               "mengatur database",
-              "CSS",
+              "respons lebih cepat global",
               "routing"
             ],
             "a": 0,
@@ -1213,7 +1213,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "robots.txt dapat dikelola lewat",
             "options": [
-              "CSS",
+              "fetch di server component/route",
               "route.js saja",
               "metadata.robots atau berkas robots",
               "migration"
@@ -1225,7 +1225,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Sitemap dapat dibuat dengan",
             "options": [
-              "CSS",
+              "[locale]",
               "route.js wajib",
               "app/sitemap.js",
               "migration"
@@ -1240,7 +1240,7 @@ const CONTENT_NEXTJS = [
               "menghindari konten duplikat di mesin pencari",
               "mempercepat CSS",
               "routing",
-              "migrasi"
+              "konten awal tampil lebih cepat"
             ],
             "a": 0,
             "explain": "Canonical menandai URL utama konten."
@@ -1252,7 +1252,7 @@ const CONTENT_NEXTJS = [
               "ditulis manual wajib",
               "otomatis dikelola Next.js",
               "tidak mungkin",
-              "css"
+              "generateMetadata"
             ],
             "a": 1,
             "explain": "Next.js mengelola viewport default secara otomatis."
@@ -1273,8 +1273,8 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Judul unik per halaman penting untuk",
             "options": [
-              "migrasi",
-              "CSS",
+              "middleware atau konfigurasi",
+              "Vitest/Jest + Testing Library",
               "routing",
               "SEO dan orientasi pengguna"
             ],
@@ -1292,10 +1292,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Request memoization pada Next.js mencegah",
             "options": [
-              "CSS",
+              "memilih data seperlunya",
               "routing",
               "fetch ganda ke sumber sama dalam satu render",
-              "migrasi"
+              "mengukur efektivitas cache"
             ],
             "a": 2,
             "explain": "Next.js menyimpan hasil fetch dalam satu permintaan render."
@@ -1304,8 +1304,8 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Data cache Next.js dapat direvalidasi berbasis",
             "options": [
-              "CSS",
-              "route",
+              "dibagi antar pengguna",
+              "URL bisa diakses langsung",
               "waktu atau tag",
               "DB"
             ],
@@ -1330,8 +1330,8 @@ const CONTENT_NEXTJS = [
             "options": [
               "membuat route",
               "menyegarkan cache sebuah path",
-              "CSS",
-              "migrasi"
+              "tidak ditampilkan ke pengguna produksi",
+              "retry dan fallback terkontrol"
             ],
             "a": 1,
             "explain": "revalidatePath menyegarkan data untuk path tertentu."
@@ -1342,7 +1342,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "for loop",
               "setTimeout",
-              "CSS",
+              "desain tugas ringkas/queue",
               "Promise.all"
             ],
             "a": 3,
@@ -1354,8 +1354,8 @@ const CONTENT_NEXTJS = [
             "options": [
               "menambahkan await berlapis",
               "memulai fetch lebih awal/paralel",
-              "CSS",
-              "migrasi"
+              "memperbarui halaman statis setelah build",
+              "mengatur batas data dan interaksi"
             ],
             "a": 1,
             "explain": "Waterfall terjadi saat request menunggu berurutan."
@@ -1364,7 +1364,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Streaming UI dengan data memakai",
             "options": [
-              "CSS",
+              "Suspense dan async component",
               "Suspense di sekitar komponen async",
               "route.js",
               "middleware"
@@ -1379,7 +1379,7 @@ const CONTENT_NEXTJS = [
               "styling",
               "mutasi data dari form",
               "routing CSS",
-              "migrasi"
+              "data konsisten dan cepat"
             ],
             "a": 1,
             "explain": "Server Action menangani mutasi di server dari form."
@@ -1390,8 +1390,8 @@ const CONTENT_NEXTJS = [
             "options": [
               "window.reload selalu",
               "revalidatePath/Tag",
-              "CSS",
-              "migrasi"
+              "environment/secret manager",
+              "komposisi komponen"
             ],
             "a": 1,
             "explain": "Revalidasi menyegarkan cache setelah mutasi."
@@ -1401,7 +1401,7 @@ const CONTENT_NEXTJS = [
             "q": "Error fetching sebaiknya ditangani dengan",
             "options": [
               "mengabaikan",
-              "CSS",
+              "injeksi skrip",
               "reload selalu",
               "error boundary/penanganan eksplisit"
             ],
@@ -1420,7 +1420,7 @@ const CONTENT_NEXTJS = [
             "q": "Cache pada Next.js membantu",
             "options": [
               "menghapus data",
-              "migrasi",
+              "src, width, height (atau fill)",
               "routing",
               "mengurangi request dan mempercepat"
             ],
@@ -1445,7 +1445,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "selalu di-cache",
               "tanpa revalidate",
-              "CSS",
+              "membatasi akses berdasarkan login",
               "tidak di-cache agresif"
             ],
             "a": 3,
@@ -1457,8 +1457,8 @@ const CONTENT_NEXTJS = [
             "options": [
               "true bila berhasil",
               "data",
-              "CSS",
-              "route"
+              "objek JSON per bahasa",
+              "menghapus sesi di server dan cookie"
             ],
             "a": 0,
             "explain": "Fungsi revalidasi menandakan keberhasilan."
@@ -1470,7 +1470,7 @@ const CONTENT_NEXTJS = [
               "tags: [...] langsung",
               "next: { tags: [...] }",
               "cache-tags",
-              "route"
+              "server action atau route handler"
             ],
             "a": 1,
             "explain": "Opsi tags dipakai untuk revalidasi terarah."
@@ -1481,7 +1481,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "hasil render route statis",
               "password",
-              "CSS",
+              "build, bukan dibaca ulang saat runtime",
               "DB"
             ],
             "a": 0,
@@ -1493,7 +1493,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "sisi client untuk navigasi",
               "server saja",
-              "CSS",
+              "login sukses/gagal dan akses terproteksi",
               "DB"
             ],
             "a": 0,
@@ -1506,7 +1506,7 @@ const CONTENT_NEXTJS = [
               "cache: \"no-store\"",
               "cache: true",
               "revalidate: big",
-              "CSS"
+              "komponen client"
             ],
             "a": 0,
             "explain": "no-store memaksa data segar."
@@ -1515,7 +1515,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Menandai route sebagai dinamis dapat memakai",
             "options": [
-              "CSS",
+              "pratinjau saat dibagikan di media sosial",
               "metadata",
               "migration",
               "penggunaan API dinamis seperti cookies/headers"
@@ -1547,8 +1547,8 @@ const CONTENT_NEXTJS = [
             "q": "Server action adalah fungsi",
             "options": [
               "yang berjalan di server, dipanggil dari client",
-              "CSS",
-              "route",
+              "script tag di layout/page",
+              "mutasi data dari form",
               "migration"
             ],
             "a": 0,
@@ -1568,7 +1568,7 @@ const CONTENT_NEXTJS = [
           },
           {
             "type": "mc",
-            "q": "Form dapat memanggil server action lewat prop",
+            "q": "Atribut pada elemen <form> untuk memicu mutasi langsung di server (Server Function) adalah",
             "options": [
               "onSubmit wajib",
               "action",
@@ -1582,7 +1582,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "useFormStatus membantu mengetahui",
             "options": [
-              "CSS",
+              "mengurangi JavaScript klien",
               "routing",
               "status submit form",
               "DB"
@@ -1594,10 +1594,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "useFormState/useActionState memungkinkan",
             "options": [
-              "CSS",
+              "Promise.all di Server Component",
               "mengelola state hasil action",
               "routing",
-              "migrasi"
+              "npm run start"
             ],
             "a": 1,
             "explain": "Hook ini mengembalikan state hasil action."
@@ -1606,10 +1606,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Validasi pada server action tetap wajib karena",
             "options": [
-              "CSS",
+              "new Response(body, { status: 201 })",
               "routing",
               "data client tidak tepercaya",
-              "migrasi"
+              "logging dan monitoring"
             ],
             "a": 2,
             "explain": "Validasi server melindungi dari input berbahaya."
@@ -1618,9 +1618,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Setelah mutasi, menyegarkan data memakai",
             "options": [
-              "CSS",
+              "process.env.NAMA",
               "metadata",
-              "route",
+              "per request",
               "revalidatePath/Tag"
             ],
             "a": 3,
@@ -1633,7 +1633,7 @@ const CONTENT_NEXTJS = [
               "window.open",
               "redirect()",
               "href",
-              "CSS"
+              "useSearchParams"
             ],
             "a": 1,
             "explain": "redirect() mengalihkan setelah action."
@@ -1657,7 +1657,7 @@ const CONTENT_NEXTJS = [
               "mengandalkan UI",
               "tanpa validasi",
               "memeriksa autentikasi/otorisasi",
-              "CSS"
+              "endpoint API/server"
             ],
             "a": 2,
             "explain": "Action harus memverifikasi izin di server."
@@ -1675,7 +1675,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "CSS global",
               "routing saja",
-              "migrasi",
+              "install sass",
               "dukungan multibahasa"
             ],
             "a": 3,
@@ -1697,7 +1697,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Kamus terjemahan biasanya disimpan sebagai",
             "options": [
-              "CSS",
+              "escaping dan sanitasi",
               "route.js",
               "objek JSON per bahasa",
               "migration"
@@ -1723,7 +1723,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "menghapus CSS",
               "mengatur atribut lang html",
-              "migrasi",
+              "mencegah efek ganda saat retry",
               "routing"
             ],
             "a": 1,
@@ -1733,7 +1733,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "redirect ke locale default dilakukan di",
             "options": [
-              "CSS",
+              "menampilkan hasil sementara sebelum server merespons",
               "migration",
               "middleware atau layout",
               "route.js"
@@ -1745,9 +1745,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Format tanggal/angka per locale memakai",
             "options": [
-              "CSS",
+              "endpoint API/server",
               "Intl API",
-              "route",
+              "onClick",
               "migration"
             ],
             "a": 1,
@@ -1769,8 +1769,8 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Menyimpan preferensi bahasa pengguna dapat di",
             "options": [
-              "CSS",
-              "route",
+              "route handler",
+              "aksesibilitas",
               "migration",
               "cookie/profil"
             ],
@@ -1783,7 +1783,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "menghapus path",
               "reload saja",
-              "CSS",
+              "gambar mengisi kontainer",
               "mempertahankan path, mengganti locale"
             ],
             "a": 3,
@@ -1801,7 +1801,7 @@ const CONTENT_NEXTJS = [
             "q": "Autentikasi di Next.js sebaiknya ditegakkan di",
             "options": [
               "client saja",
-              "CSS",
+              "revalidateTag/Path",
               "migration",
               "server (middleware/route/server component)"
             ],
@@ -1814,8 +1814,8 @@ const CONTENT_NEXTJS = [
             "options": [
               "cookie httpOnly",
               "localStorage selalu",
-              "CSS",
-              "route"
+              "next.config.js",
+              "useState"
             ],
             "a": 0,
             "explain": "Cookie httpOnly lebih aman terhadap akses skrip."
@@ -1825,8 +1825,8 @@ const CONTENT_NEXTJS = [
             "q": "Middleware dapat dipakai untuk",
             "options": [
               "styling",
-              "migrasi",
-              "CSS",
+              "memilih data seperlunya",
+              "mengukur efektivitas cache",
               "membatasi akses berdasarkan login"
             ],
             "a": 3,
@@ -1849,7 +1849,7 @@ const CONTENT_NEXTJS = [
             "q": "Menangani callback login biasanya di",
             "options": [
               "route handler",
-              "CSS",
+              "saat build",
               "migration",
               "layout"
             ],
@@ -1872,9 +1872,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "CSRF protection penting pada",
             "options": [
-              "CSS",
+              "hash kuat (bcrypt/argon2)",
               "form mutasi",
-              "migrasi",
+              "diterapkan otomatis",
               "routing hanya"
             ],
             "a": 1,
@@ -1885,7 +1885,7 @@ const CONTENT_NEXTJS = [
             "q": "Membatasi area terproteksi dilakukan dengan",
             "options": [
               "menyembunyikan tautan saja",
-              "CSS",
+              "memuat kode sesuai kebutuhan",
               "memeriksa sesi sebelum render/handler",
               "migration"
             ],
@@ -1897,7 +1897,7 @@ const CONTENT_NEXTJS = [
             "q": "Logout sebaiknya",
             "options": [
               "hanya CSS",
-              "migrasi",
+              "izin per peran di server",
               "menghapus sesi di server dan cookie",
               "menghapus route"
             ],
@@ -1910,8 +1910,8 @@ const CONTENT_NEXTJS = [
             "options": [
               "izin per peran di server",
               "warna tombol",
-              "CSS",
-              "migrasi"
+              "berbagi layout/middleware per grup",
+              "Playwright atau Cypress"
             ],
             "a": 0,
             "explain": "RBAC memverifikasi izin per peran di server."
@@ -1940,9 +1940,9 @@ const CONTENT_NEXTJS = [
             "q": "Matcher middleware diatur lewat",
             "options": [
               "route.js",
-              "CSS",
+              "pemantauan status layanan",
               "export const config = { matcher: [...] }",
-              "migrasi"
+              "Menghubungkan HTML awal dengan JavaScript agar interaktif"
             ],
             "a": 2,
             "explain": "Konfigurasi matcher membatasi path yang diproses middleware."
@@ -1963,8 +1963,8 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "NextResponse.redirect() dipakai untuk",
             "options": [
-              "CSS",
-              "migrasi",
+              "sebelum route dirender/ditangani",
+              "performa",
               "pengalihan URL",
               "styling"
             ],
@@ -1977,8 +1977,8 @@ const CONTENT_NEXTJS = [
             "options": [
               "menyajikan konten berbeda tanpa mengubah URL",
               "menghapus route",
-              "CSS",
-              "migrasi"
+              "endpoint yang jarang dipanggil",
+              "pengujian dan konsistensi"
             ],
             "a": 0,
             "explain": "rewrite mengubah tujuan internal tanpa mengubah URL terlihat."
@@ -1988,8 +1988,8 @@ const CONTENT_NEXTJS = [
             "q": "Middleware cocok untuk",
             "options": [
               "query database berat",
-              "CSS",
-              "migrasi",
+              "render dinamis atau dukungan streaming",
+              "kebutuhan API dan latensi",
               "auth, i18n, A/B testing ringan"
             ],
             "a": 3,
@@ -1999,8 +1999,8 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Mengatur header keamanan dapat dilakukan di",
             "options": [
-              "CSS",
-              "migrasi",
+              "respons cepat dan beban server rendah",
+              "metrik performa nyata",
               "middleware atau konfigurasi",
               "metadata"
             ],
@@ -2012,9 +2012,9 @@ const CONTENT_NEXTJS = [
             "q": "Route group berguna untuk",
             "options": [
               "menghapus route",
-              "CSS",
+              "pengalaman performa pengguna",
               "berbagi layout/middleware per grup",
-              "migrasi"
+              "menunda bagian tertentu tanpa menahan seluruh halaman"
             ],
             "a": 2,
             "explain": "Route group mengelompokkan route dengan layout bersama."
@@ -2023,8 +2023,8 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Proteksi route dengan redirect saat tidak login memakai",
             "options": [
-              "CSS",
-              "migrasi",
+              "environment/secret manager",
+              "komposisi komponen",
               "metadata",
               "NextResponse.redirect di middleware"
             ],
@@ -2036,8 +2036,8 @@ const CONTENT_NEXTJS = [
             "q": "Middleware harus berhati-hati agar tidak",
             "options": [
               "membuat route",
-              "CSS",
-              "migrasi",
+              "escaping dan sanitasi",
+              "di cookie httpOnly bila memungkinkan",
               "memperlambat semua request"
             ],
             "a": 3,
@@ -2067,7 +2067,7 @@ const CONTENT_NEXTJS = [
             "q": "Mode fill pada next/image berguna untuk",
             "options": [
               "menghapus gambar",
-              "CSS",
+              "menjaga konsistensi operasi majemuk",
               "gambar mengisi kontainer",
               "routing"
             ],
@@ -2078,10 +2078,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Properti alt pada gambar penting untuk",
             "options": [
-              "CSS",
+              "route.js",
               "aksesibilitas",
               "routing",
-              "migrasi"
+              "(.)nama"
             ],
             "a": 1,
             "explain": "alt membantu pembaca layar memahami gambar."
@@ -2103,7 +2103,7 @@ const CONTENT_NEXTJS = [
             "q": "next/font membantu",
             "options": [
               "menulis SQL",
-              "CSS",
+              "routing, rendering server, dan optimasi bawaan",
               "mengoptimasi pemuatan font dan menghindari layout shift",
               "routing"
             ],
@@ -2127,9 +2127,9 @@ const CONTENT_NEXTJS = [
             "q": "Ukuran gambar yang tepat penting untuk",
             "options": [
               "performa",
-              "CSS",
+              "npx create-next-app",
               "routing",
-              "migrasi"
+              "(namagrup)"
             ],
             "a": 0,
             "explain": "Gambar terlalu besar memperlambat halaman."
@@ -2150,7 +2150,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Mengatur domain gambar eksternal dilakukan di",
             "options": [
-              "CSS",
+              "cookie httpOnly",
               "route.js",
               "migration",
               "next.config.js (images.remotePatterns)"
@@ -2163,7 +2163,7 @@ const CONTENT_NEXTJS = [
             "q": "Priority pada gambar hero membantu",
             "options": [
               "menghapus alt",
-              "CSS",
+              "memverifikasi autentikasi di server",
               "memuat gambar utama lebih awal",
               "routing"
             ],
@@ -2205,7 +2205,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Menguji route handler dapat memanggil",
             "options": [
-              "CSS",
+              "apa yang dilihat pengguna",
               "migration",
               "fungsi GET/POST secara langsung",
               "layout"
@@ -2217,9 +2217,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Mocking fetch pada test memakai",
             "options": [
-              "CSS",
+              "Vitest/Jest + Testing Library",
               "MSW atau stub",
-              "route",
+              "database uji terpisah",
               "migration"
             ],
             "a": 1,
@@ -2244,7 +2244,7 @@ const CONTENT_NEXTJS = [
               "struktur internal",
               "nama variabel",
               "apa yang dilihat pengguna",
-              "CSS"
+              "tidak dikirim ke browser"
             ],
             "a": 2,
             "explain": "Test perilaku lebih tahan refactor."
@@ -2256,7 +2256,7 @@ const CONTENT_NEXTJS = [
               "login sukses/gagal dan akses terproteksi",
               "hanya CSS",
               "hanya route",
-              "migrasi"
+              "export const revalidate"
             ],
             "a": 0,
             "explain": "Coverage auth memastikan akses terkendali."
@@ -2266,7 +2266,7 @@ const CONTENT_NEXTJS = [
             "q": "Seed data untuk E2E dapat memakai",
             "options": [
               "database produksi",
-              "CSS",
+              "umpan balik pengguna",
               "migration langsung ke prod",
               "database uji terpisah"
             ],
@@ -2278,7 +2278,7 @@ const CONTENT_NEXTJS = [
             "q": "Coverage membantu",
             "options": [
               "mempercepat CSS",
-              "migrasi",
+              "berbagi validasi dan otorisasi",
               "routing",
               "mengetahui bagian yang teruji"
             ],
@@ -2308,10 +2308,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Variabel environment server aman karena",
             "options": [
-              "CSS",
+              "berkas dan import di bawahnya",
               "tidak dikirim ke browser",
               "routing",
-              "migrasi"
+              "template string atau helper classnames"
             ],
             "a": 1,
             "explain": "Hanya variabel klien berawalan NEXT_PUBLIC_ yang diekspos."
@@ -2321,7 +2321,7 @@ const CONTENT_NEXTJS = [
             "q": "Nilai NEXT_PUBLIC_ di-embed saat",
             "options": [
               "setiap request",
-              "CSS",
+              "Promise.all di Server Component",
               "routing",
               "build, bukan dibaca ulang saat runtime"
             ],
@@ -2346,8 +2346,8 @@ const CONTENT_NEXTJS = [
             "options": [
               "window.env",
               "process.env.NAMA",
-              "CSS",
-              "route"
+              "'use server'",
+              "useRouter"
             ],
             "a": 1,
             "explain": "process.env tersedia di server."
@@ -2357,7 +2357,7 @@ const CONTENT_NEXTJS = [
             "q": "Membaca env NEXT_PUBLIC_ di client memakai",
             "options": [
               "window.env",
-              "CSS",
+              "connection pooling",
               "process.env.NEXT_PUBLIC_NAMA",
               "DB"
             ],
@@ -2369,7 +2369,7 @@ const CONTENT_NEXTJS = [
             "q": "Config berbeda per lingkungan (dev/staging/prod) memakai",
             "options": [
               "satu env untuk semua",
-              "CSS",
+              "Mengambil data di server tanpa mengirim seluruh logika ke browser",
               "migration",
               "berkas env terpisah"
             ],
@@ -2380,9 +2380,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Layanan seperti Vercel menyimpan env di",
             "options": [
-              "CSS",
+              "kerentanan keamanan",
               "pengaturan proyek/secret",
-              "route",
+              "dynamic import/lazy loading",
               "migration"
             ],
             "a": 1,
@@ -2393,8 +2393,8 @@ const CONTENT_NEXTJS = [
             "q": "Mengubah NEXT_PUBLIC_ memerlukan",
             "options": [
               "tidak apa-apa",
-              "CSS",
-              "migrasi",
+              "menampilkan halaman 404 kustom",
+              "export const metadata",
               "build ulang agar terpakai"
             ],
             "a": 3,
@@ -2405,9 +2405,9 @@ const CONTENT_NEXTJS = [
             "q": "Menyalahgunakan env untuk data sensitif di client berisiko",
             "options": [
               "kebocoran",
-              "CSS",
+              "@namaslot",
               "routing",
-              "migrasi"
+              "useSearchParams"
             ],
             "a": 0,
             "explain": "Data sensitif di klien bisa dibaca siapa pun."
@@ -2416,10 +2416,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Validasi keberadaan env saat start membantu",
             "options": [
-              "CSS",
+              "instance bisa berbeda tiap request",
               "routing",
               "mendeteksi konfigurasi hilang lebih awal",
-              "migrasi"
+              "mencegah mutasi ganda saat retry"
             ],
             "a": 2,
             "explain": "Validasi env mencegah kegagalan runtime."
@@ -2435,7 +2435,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Mutasi data dari client sebaiknya lewat",
             "options": [
-              "CSS",
+              "Suspense dan async component",
               "layout",
               "server action atau route handler",
               "metadata"
@@ -2448,9 +2448,9 @@ const CONTENT_NEXTJS = [
             "q": "Optimistic UI berarti",
             "options": [
               "menunggu server selalu",
-              "CSS",
+              "data konsisten dan cepat",
               "menampilkan hasil sementara sebelum server merespons",
-              "migrasi"
+              "meng-cache hasil fungsi data"
             ],
             "a": 2,
             "explain": "Optimistic UI memberi respons instan."
@@ -2460,8 +2460,8 @@ const CONTENT_NEXTJS = [
             "q": "Jika mutasi gagal, aplikasi perlu",
             "options": [
               "diam saja",
-              "CSS",
-              "migrasi",
+              "form mutasi",
+              "next/font/local",
               "mengembalikan state/rollback"
             ],
             "a": 3,
@@ -2471,7 +2471,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Menyegarkan data setelah mutasi memakai",
             "options": [
-              "CSS",
+              "'use client'",
               "revalidatePath/Tag",
               "metadata",
               "layout"
@@ -2486,7 +2486,7 @@ const CONTENT_NEXTJS = [
               "menulis CSS",
               "mengelola state optimistik",
               "routing",
-              "migrasi"
+              "autentikasi dan otorisasi"
             ],
             "a": 1,
             "explain": "Hook ini memungkinkan tampilan optimistik."
@@ -2495,10 +2495,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Mengunci tombol saat submit mencegah",
             "options": [
-              "CSS",
+              "dapat diserialisasi",
               "routing",
               "pengiriman ganda",
-              "migrasi"
+              "usePathname"
             ],
             "a": 2,
             "explain": "Menonaktifkan tombol mencegah duplikasi submit."
@@ -2507,9 +2507,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Validasi server-side tetap diperlukan meski ada validasi klien karena",
             "options": [
-              "CSS",
+              "di cookie httpOnly bila memungkinkan",
               "routing",
-              "migrasi",
+              "LCP dan bandwidth",
               "klien tidak tepercaya"
             ],
             "a": 3,
@@ -2520,9 +2520,9 @@ const CONTENT_NEXTJS = [
             "q": "Menampilkan pesan sukses/gagal mutasi penting untuk",
             "options": [
               "umpan balik pengguna",
-              "CSS",
+              "memuat kode sesuai kebutuhan",
               "routing",
-              "migrasi"
+              "menahan bagian lain ikut menunggu"
             ],
             "a": 0,
             "explain": "Umpan balik memberi kejelasan hasil aksi."
@@ -2531,10 +2531,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Mengubah data terkait setelah mutasi memerlukan",
             "options": [
-              "CSS",
+              "izin per peran di server",
               "revalidasi atau update cache lokal",
               "routing",
-              "migrasi"
+              "src, width, height (atau fill)"
             ],
             "a": 1,
             "explain": "Cache harus diperbarui agar konsisten."
@@ -2544,9 +2544,9 @@ const CONTENT_NEXTJS = [
             "q": "Idempotensi mutasi membantu",
             "options": [
               "mencegah efek ganda saat retry",
-              "CSS",
+              "berbagi layout/middleware per grup",
               "routing",
-              "migrasi"
+              "Playwright atau Cypress"
             ],
             "a": 0,
             "explain": "Operasi idempoten aman diulang."
@@ -2587,9 +2587,9 @@ const CONTENT_NEXTJS = [
             "q": "Partial Prerendering menggabungkan",
             "options": [
               "bagian statis dan dinamis dalam satu halaman",
-              "CSS",
-              "route",
-              "migrasi"
+              "data yang dapat diserialisasi",
+              "SEO dan orientasi pengguna",
+              "mengurangi request dan mempercepat"
             ],
             "a": 0,
             "explain": "PPR menyajikan shell statis dengan bagian dinamis."
@@ -2599,9 +2599,9 @@ const CONTENT_NEXTJS = [
             "q": "ISR (Incremental Static Regeneration) memungkinkan",
             "options": [
               "menghapus halaman",
-              "CSS",
+              "error tipe/import atau konfigurasi",
               "memperbarui halaman statis setelah build",
-              "migrasi"
+              "file lain dengan export/import"
             ],
             "a": 2,
             "explain": "ISR menyegarkan halaman statis tanpa rebuild penuh."
@@ -2624,7 +2624,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "export const mode",
               "export function render",
-              "CSS",
+              "Menghubungkan HTML awal dengan JavaScript agar interaktif",
               "export const dynamic"
             ],
             "a": 3,
@@ -2636,8 +2636,8 @@ const CONTENT_NEXTJS = [
             "options": [
               "respons cepat di dekat pengguna",
               "query database berat",
-              "CSS",
-              "migrasi"
+              "memperkecil JavaScript klien",
+              "tidak bisa memakai hooks client"
             ],
             "a": 0,
             "explain": "Edge menjalankan kode dekat pengguna untuk latensi rendah."
@@ -2648,7 +2648,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "export const env",
               "export const runtime",
-              "CSS",
+              "error pada segmen route",
               "route.js config"
             ],
             "a": 1,
@@ -2659,7 +2659,7 @@ const CONTENT_NEXTJS = [
             "q": "Streaming pada App Router memakai",
             "options": [
               "Suspense dan async component",
-              "CSS",
+              "pengujian dan konsistensi",
               "migration",
               "layout.js"
             ],
@@ -2671,9 +2671,9 @@ const CONTENT_NEXTJS = [
             "q": "Memilih mode rendering bergantung pada",
             "options": [
               "kebutuhan kesegaran data dan performa",
-              "CSS",
+              "kebutuhan API dan latensi",
               "warna",
-              "route"
+              "menjaga konsistensi operasi majemuk"
             ],
             "a": 0,
             "explain": "Data dinamis vs statis menentukan mode render."
@@ -2690,7 +2690,7 @@ const CONTENT_NEXTJS = [
             "q": "Memisahkan komponen server dan client membantu",
             "options": [
               "menghapus CSS",
-              "migrasi",
+              "respons cepat bagi pengguna global",
               "mengatur batas data dan interaksi",
               "routing"
             ],
@@ -2701,8 +2701,8 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Struktur fitur (feature folders) membantu",
             "options": [
-              "CSS",
-              "migrasi",
+              "menjaga konsistensi operasi majemuk",
+              "merilis fitur secara terkontrol",
               "navigasi dan perawatan kode besar",
               "routing"
             ],
@@ -2713,9 +2713,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Data access layer terpisah memudahkan",
             "options": [
-              "CSS",
+              "menahan bagian lain ikut menunggu",
               "routing",
-              "migrasi",
+              "latensi request pertama",
               "pengujian dan pemakaian ulang"
             ],
             "a": 3,
@@ -2725,10 +2725,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Caching berlapis perlu dipahami agar",
             "options": [
-              "CSS",
+              "API Node.js terbatas dan tanpa filesystem penuh",
               "routing",
               "data konsisten dan cepat",
-              "migrasi"
+              "akses data dan aturan otorisasi"
             ],
             "a": 2,
             "explain": "Beberapa lapisan cache harus konsisten."
@@ -2740,7 +2740,7 @@ const CONTENT_NEXTJS = [
               "duplikasi tanpa aturan",
               "tanpa validasi",
               "berbagi validasi dan otorisasi",
-              "CSS"
+              "routing, rendering server, dan optimasi bawaan"
             ],
             "a": 2,
             "explain": "Berbagi validasi menjaga konsistensi keamanan."
@@ -2749,10 +2749,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Memindahkan pekerjaan berat ke worker/queue membantu",
             "options": [
-              "CSS",
+              "npm run build",
               "routing",
               "respons request cepat",
-              "migrasi"
+              "event handler browser"
             ],
             "a": 2,
             "explain": "Queue memindahkan pekerjaan berat keluar dari request."
@@ -2761,7 +2761,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Menangani error terpusat di App Router memakai",
             "options": [
-              "CSS",
+              "pemulihan cepat saat rilis bermasalah",
               "route.js",
               "migration",
               "error.js dan penanganan eksplisit"
@@ -2773,9 +2773,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Observability produksi memerlukan",
             "options": [
-              "CSS",
+              "mengurangi risiko kebocoran",
               "routing",
-              "migrasi",
+              "UI yang dibagi antar-halaman anak",
               "log, metrik, dan tracing"
             ],
             "a": 3,
@@ -2786,9 +2786,9 @@ const CONTENT_NEXTJS = [
             "q": "Konfigurasi environment per tahap deploy penting untuk",
             "options": [
               "memisahkan dev/staging/produksi",
-              "CSS",
+              "otomatis dikelola Next.js",
               "routing",
-              "migrasi"
+              "memeriksa autentikasi/otorisasi"
             ],
             "a": 0,
             "explain": "Tiap tahap memakai konfigurasi berbeda."
@@ -2799,7 +2799,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "memilih data seperlunya",
               "mengirim semua relasi",
-              "CSS",
+              "memverifikasi autentikasi di server",
               "routing"
             ],
             "a": 0,
@@ -2818,8 +2818,8 @@ const CONTENT_NEXTJS = [
             "options": [
               "fetch cache menyimpan respons fetch; data cache dipakai API data lainnya",
               "tidak ada perbedaan",
-              "CSS",
-              "migrasi"
+              "orientasi tim dan perawatan",
+              "server dan client"
             ],
             "a": 0,
             "explain": "Fetch cache khusus respons fetch; data cache untuk akses data lain."
@@ -2829,9 +2829,9 @@ const CONTENT_NEXTJS = [
             "q": "`unstable_cache` dipakai untuk",
             "options": [
               "meng-cache hasil fungsi data",
-              "CSS",
+              "pemantauan status layanan",
               "routing",
-              "migrasi"
+              "Menghubungkan HTML awal dengan JavaScript agar interaktif"
             ],
             "a": 0,
             "explain": "unstable_cache menyimpan hasil fungsi data."
@@ -2842,7 +2842,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "revalidasi terarah",
               "menghapus semua data",
-              "CSS",
+              "fallback Suspense/loading.js",
               "routing"
             ],
             "a": 0,
@@ -2853,7 +2853,7 @@ const CONTENT_NEXTJS = [
             "q": "Router cache memengaruhi",
             "options": [
               "server DB",
-              "CSS",
+              "log dan tracing terdistribusi",
               "navigasi client yang cepat",
               "migration"
             ],
@@ -2865,8 +2865,8 @@ const CONTENT_NEXTJS = [
             "q": "Stale data pada router cache dapat disegarkan dengan",
             "options": [
               "revalidatePath/revalidateTag",
-              "CSS",
-              "migrasi",
+              "fetch bawaan (async)",
+              "styles.module.css",
               "metadata"
             ],
             "a": 0,
@@ -2878,7 +2878,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "menghapus DB",
               "respons lebih cepat global",
-              "CSS",
+              "render dinamis atau dukungan streaming",
               "routing"
             ],
             "a": 1,
@@ -2890,7 +2890,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "selalu kecil",
               "dibagi antar pengguna",
-              "CSS",
+              "respons cepat dan beban server rendah",
               "routing"
             ],
             "a": 1,
@@ -2902,7 +2902,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "mempercepat",
               "menurunkan performa",
-              "CSS",
+              "melanjutkan request",
               "routing"
             ],
             "a": 1,
@@ -2914,7 +2914,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "data real-time",
               "data yang berubah berkala",
-              "CSS",
+              "abstraksi data access dengan error handling",
               "routing"
             ],
             "a": 1,
@@ -2925,8 +2925,8 @@ const CONTENT_NEXTJS = [
             "q": "Memantau cache hit/miss membantu",
             "options": [
               "mengukur efektivitas cache",
-              "CSS",
-              "migrasi",
+              "escaping dan sanitasi",
+              "di cookie httpOnly bila memungkinkan",
               "routing"
             ],
             "a": 0,
@@ -2945,7 +2945,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "terekspos ke browser",
               "aman selalu",
-              "CSS",
+              "mengoptimasi pemuatan font dan menghindari layout shift",
               "routing"
             ],
             "a": 0,
@@ -2955,9 +2955,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Header keamanan seperti CSP membantu mencegah",
             "options": [
-              "CSS",
+              "styles.module.css",
               "injeksi skrip",
-              "migrasi",
+              "new URL(request.url).searchParams",
               "routing"
             ],
             "a": 1,
@@ -2968,8 +2968,8 @@ const CONTENT_NEXTJS = [
             "q": "Cookie sesi sebaiknya memakai",
             "options": [
               "plain text",
-              "CSS",
-              "route",
+              "mengetahui bagian yang teruji",
+              "mendeteksi konfigurasi hilang lebih awal",
               "httpOnly, secure, sameSite"
             ],
             "a": 3,
@@ -2980,9 +2980,9 @@ const CONTENT_NEXTJS = [
             "q": "Server action wajib memverifikasi",
             "options": [
               "autentikasi dan otorisasi",
-              "CSS",
+              "berkas env terpisah",
               "routing",
-              "migrasi"
+              "umpan balik pengguna"
             ],
             "a": 0,
             "explain": "Action bisa dipanggil klien sehingga harus memverifikasi izin."
@@ -2991,10 +2991,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Validasi input di server penting karena",
             "options": [
-              "CSS",
+              "mengelola state hasil action",
               "client tidak tepercaya",
               "routing",
-              "migrasi"
+              "mempertahankan path, mengganti locale"
             ],
             "a": 1,
             "explain": "Input dari klien bisa berbahaya."
@@ -3003,9 +3003,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Menyembunyikan tautan admin saja tidak cukup karena",
             "options": [
-              "CSS",
+              "middleware atau layout",
               "routing",
-              "migrasi",
+              "export const config = { matcher: [...] }",
               "URL bisa diakses langsung"
             ],
             "a": 3,
@@ -3015,10 +3015,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Content injection dapat dicegah dengan",
             "options": [
-              "CSS",
+              "menghapus sesi di server dan cookie",
               "routing",
               "escaping dan sanitasi",
-              "migrasi"
+              "memperlambat semua request"
             ],
             "a": 2,
             "explain": "Escaping/sanitasi mencegah XSS."
@@ -3027,10 +3027,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Rate limiting endpoint membantu mencegah",
             "options": [
-              "CSS",
+              "middleware atau konfigurasi",
               "routing",
               "penyalahgunaan dan brute force",
-              "migrasi"
+              "Vitest/Jest + Testing Library"
             ],
             "a": 2,
             "explain": "Rate limit membatasi request berlebihan."
@@ -3040,9 +3040,9 @@ const CONTENT_NEXTJS = [
             "q": "Dependency yang usang berisiko",
             "options": [
               "kerentanan keamanan",
-              "CSS",
+              "useState",
               "routing",
-              "migrasi"
+              "otomatis dikelola Next.js"
             ],
             "a": 0,
             "explain": "Pembaruan dependency menutup celah keamanan."
@@ -3053,7 +3053,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "tidak ditampilkan ke pengguna produksi",
               "selalu ditampilkan",
-              "CSS",
+              "respons lebih cepat global",
               "routing"
             ],
             "a": 0,
@@ -3084,7 +3084,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "dipisah pengelolaannya",
               "digabung selalu",
-              "CSS",
+              "params.locale",
               "routing"
             ],
             "a": 0,
@@ -3094,10 +3094,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Library data-fetching client (SWR/React Query) membantu",
             "options": [
-              "CSS",
+              "httpOnly, secure, sameSite",
               "routing",
               "cache dan revalidasi data client",
-              "migrasi"
+              "pengalaman performa pengguna"
             ],
             "a": 2,
             "explain": "Mereka mengelola cache/loading/error pada client."
@@ -3107,7 +3107,7 @@ const CONTENT_NEXTJS = [
             "q": "Hydration state dari server ke client dapat memakai",
             "options": [
               "window global",
-              "CSS",
+              "respons lebih cepat global",
               "migration",
               "data yang di-serialisasi di props"
             ],
@@ -3119,7 +3119,7 @@ const CONTENT_NEXTJS = [
             "q": "Integrasi API eksternal sebaiknya memakai",
             "options": [
               "panggilan langsung di mana-mana",
-              "CSS",
+              "fetch di server component/route",
               "routing",
               "abstraksi data access dengan error handling"
             ],
@@ -3131,7 +3131,7 @@ const CONTENT_NEXTJS = [
             "q": "Webhook masuk diverifikasi dengan",
             "options": [
               "menerima apa saja",
-              "CSS",
+              "environment/secret manager",
               "routing",
               "signature/token"
             ],
@@ -3144,7 +3144,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "fetch di server component/route",
               "window.fetch",
-              "CSS",
+              "konten awal tampil lebih cepat",
               "migration"
             ],
             "a": 0,
@@ -3156,7 +3156,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "localStorage selalu",
               "di cookie httpOnly bila memungkinkan",
-              "CSS",
+              "kecepatan elemen terbesar tampil",
               "routing"
             ],
             "a": 1,
@@ -3168,7 +3168,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "UI responsif sebelum konfirmasi server",
               "data pasti benar",
-              "CSS",
+              "mengoptimasi pemuatan font dan menghindari layout shift",
               "routing"
             ],
             "a": 0,
@@ -3180,7 +3180,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "mengabaikan",
               "retry dan fallback terkontrol",
-              "CSS",
+              "middleware atau konfigurasi",
               "routing"
             ],
             "a": 1,
@@ -3197,10 +3197,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Core Web Vitals mengukur",
             "options": [
-              "CSS",
+              "script tag di layout/page",
               "routing",
               "pengalaman performa pengguna",
-              "migrasi"
+              "mutasi data dari form"
             ],
             "a": 2,
             "explain": "CWV mengukur LCP, INP, CLS, dan metrik terkait."
@@ -3209,10 +3209,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "LCP berkaitan dengan",
             "options": [
-              "CSS",
+              "memulai fetch lebih awal/paralel",
               "routing",
               "kecepatan elemen terbesar tampil",
-              "migrasi"
+              "next: { tags: [...] }"
             ],
             "a": 2,
             "explain": "LCP mengukur kecepatan konten utama muncul."
@@ -3224,7 +3224,7 @@ const CONTENT_NEXTJS = [
               "menghapus CSS",
               "routing",
               "memuat kode sesuai kebutuhan",
-              "migrasi"
+              "bundel produksi teroptimasi"
             ],
             "a": 2,
             "explain": "Code splitting memperkecil bundel awal."
@@ -3235,7 +3235,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "link cdn",
               "next/dynamic",
-              "CSS",
+              "revalidatePath/revalidateTag",
               "migration"
             ],
             "a": 1,
@@ -3245,9 +3245,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Mengurangi JavaScript klien membantu",
             "options": [
-              "CSS",
+              "metadata.title",
               "routing",
-              "migrasi",
+              "error boundary/penanganan eksplisit",
               "mempercepat interaktivitas"
             ],
             "a": 3,
@@ -3257,10 +3257,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Memuat font dengan tepat membantu mencegah",
             "options": [
-              "CSS",
+              "error boundary",
               "routing",
               "layout shift",
-              "migrasi"
+              "revalidateTag/Path"
             ],
             "a": 2,
             "explain": "Optimasi font mengurangi CLS."
@@ -3270,7 +3270,7 @@ const CONTENT_NEXTJS = [
             "q": "Mengukur performa sebaiknya dengan",
             "options": [
               "menebak",
-              "CSS",
+              "menampilkan halaman 404 kustom",
               "profiling dan Lighthouse",
               "routing"
             ],
@@ -3281,10 +3281,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Mengoptimasi gambar membantu",
             "options": [
-              "CSS",
+              "berkas dan import di bawahnya",
               "routing",
               "LCP dan bandwidth",
-              "migrasi"
+              "template string atau helper classnames"
             ],
             "a": 2,
             "explain": "Gambar teroptimasi mempercepat LCP dan menghemat bandwidth."
@@ -3293,9 +3293,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Memanfaatkan cache statis membantu",
             "options": [
-              "CSS",
+              "Mengambil data di server tanpa mengirim seluruh logika ke browser",
               "routing",
-              "migrasi",
+              "html dan body",
               "respons cepat dan beban server rendah"
             ],
             "a": 3,
@@ -3305,10 +3305,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Menunda skrip non-kritis memakai",
             "options": [
-              "CSS",
+              "Client Component",
               "dynamic import/lazy loading",
               "routing",
-              "migrasi"
+              "redirect() dari next/navigation"
             ],
             "a": 1,
             "explain": "Skrip non-kritis dimuat belakangan."
@@ -3324,10 +3324,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Streaming memberi keuntungan",
             "options": [
-              "CSS",
+              "build, bukan dibaca ulang saat runtime",
               "routing",
               "konten awal tampil lebih cepat",
-              "migrasi"
+              "mengelola state optimistik"
             ],
             "a": 2,
             "explain": "Streaming mengirim bagian halaman saat siap."
@@ -3336,10 +3336,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Suspense boundary pada server memungkinkan",
             "options": [
-              "CSS",
+              "login sukses/gagal dan akses terproteksi",
               "menunda bagian tertentu tanpa menahan seluruh halaman",
               "routing",
-              "migrasi"
+              "berkas env terpisah"
             ],
             "a": 1,
             "explain": "Boundary terpisah menunda hanya bagian terkait."
@@ -3348,7 +3348,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "`loading.js` setara dengan",
             "options": [
-              "CSS",
+              "Playwright atau Cypress",
               "route handler",
               "Suspense di level segmen",
               "migration"
@@ -3360,10 +3360,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Menempatkan boundary terlalu tinggi dapat",
             "options": [
-              "CSS",
+              "src, width, height (atau fill)",
               "routing",
               "menahan bagian lain ikut menunggu",
-              "migrasi"
+              "MSW atau stub"
             ],
             "a": 2,
             "explain": "Fallback yang tinggi membuat seluruh area menunggu."
@@ -3373,9 +3373,9 @@ const CONTENT_NEXTJS = [
             "q": "Streaming memerlukan",
             "options": [
               "render dinamis atau dukungan streaming",
-              "CSS",
+              "server action atau route handler",
               "routing",
-              "migrasi"
+              "bagian statis dan dinamis dalam satu halaman"
             ],
             "a": 0,
             "explain": "Streaming butuh dukungan server/render."
@@ -3385,8 +3385,8 @@ const CONTENT_NEXTJS = [
             "q": "Error di dalam Suspense ditangani oleh",
             "options": [
               "Suspense sendiri",
-              "CSS",
-              "route",
+              "redirect() dari next/navigation",
+              "async function Page()",
               "error boundary"
             ],
             "a": 3,
@@ -3397,8 +3397,8 @@ const CONTENT_NEXTJS = [
             "q": "Menampilkan skeleton saat menunggu memakai",
             "options": [
               "fallback Suspense/loading.js",
-              "CSS",
-              "route",
+              "layout shift",
+              "webhook/queue layanan eksternal",
               "migration"
             ],
             "a": 0,
@@ -3409,7 +3409,7 @@ const CONTENT_NEXTJS = [
             "q": "Streaming berguna untuk halaman dengan",
             "options": [
               "data statis kecil",
-              "CSS",
+              "server action atau route handler",
               "routing",
               "data lambat bervariasi waktu muat"
             ],
@@ -3420,9 +3420,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Suspense bersarang memungkinkan",
             "options": [
-              "CSS",
+              "next.config.js",
               "routing",
-              "migrasi",
+              "useState",
               "fallback bertingkat"
             ],
             "a": 3,
@@ -3432,10 +3432,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Mengukur manfaat streaming dengan",
             "options": [
-              "CSS",
+              "mutasi data dari form",
               "metrik performa nyata",
               "routing",
-              "migrasi"
+              "sisi client untuk navigasi"
             ],
             "a": 1,
             "explain": "Pengukuran memastikan streaming memberi manfaat."
@@ -3452,7 +3452,7 @@ const CONTENT_NEXTJS = [
             "q": "Edge runtime berjalan",
             "options": [
               "hanya di database",
-              "CSS",
+              "membatasi akses berdasarkan login",
               "routing",
               "dekat pengguna secara geografis"
             ],
@@ -3464,7 +3464,7 @@ const CONTENT_NEXTJS = [
             "q": "Batasan edge runtime antara lain",
             "options": [
               "tanpa batasan",
-              "CSS",
+              "menyajikan konten berbeda tanpa mengubah URL",
               "routing",
               "API Node.js terbatas dan tanpa filesystem penuh"
             ],
@@ -3476,9 +3476,9 @@ const CONTENT_NEXTJS = [
             "q": "Serverless function cocok untuk",
             "options": [
               "endpoint yang jarang dipanggil",
-              "CSS",
+              "src, width, height (atau fill)",
               "routing",
-              "migrasi"
+              "MSW atau stub"
             ],
             "a": 0,
             "explain": "Serverless menangani beban tak terduga tanpa server tetap."
@@ -3487,10 +3487,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Cold start memengaruhi",
             "options": [
-              "CSS",
+              "Playwright atau Cypress",
               "routing",
               "latensi request pertama",
-              "migrasi"
+              "mengetahui bagian yang teruji"
             ],
             "a": 2,
             "explain": "Cold start menambah latensi awal."
@@ -3499,7 +3499,7 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Memilih runtime nodejs vs edge bergantung pada",
             "options": [
-              "CSS",
+              "login sukses/gagal dan akses terproteksi",
               "warna",
               "kebutuhan API dan latensi",
               "routing"
@@ -3511,10 +3511,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Koneksi database pada serverless perlu",
             "options": [
-              "CSS",
+              "konfigurasi PostCSS/Tailwind",
               "routing",
               "connection pooling",
-              "migrasi"
+              "await request.json()"
             ],
             "a": 2,
             "explain": "Pooling mengurangi overhead koneksi."
@@ -3523,10 +3523,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Menyimpan state antar request pada serverless berisiko karena",
             "options": [
-              "CSS",
+              "server action atau route handler",
               "routing",
               "instance bisa berbeda tiap request",
-              "migrasi"
+              "bagian statis dan dinamis dalam satu halaman"
             ],
             "a": 2,
             "explain": "Serverless tidak menjamin instance yang sama."
@@ -3535,9 +3535,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Caching di edge membantu",
             "options": [
-              "CSS",
+              "revalidasi atau update cache lokal",
               "routing",
-              "migrasi",
+              "export const runtime",
               "respons cepat bagi pengguna global"
             ],
             "a": 3,
@@ -3547,9 +3547,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Timeout pada function perlu ditangani dengan",
             "options": [
-              "CSS",
+              "hash kuat (bcrypt/argon2)",
               "routing",
-              "migrasi",
+              "diterapkan otomatis",
               "desain tugas ringkas/queue"
             ],
             "a": 3,
@@ -3559,10 +3559,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Observability pada edge memerlukan",
             "options": [
-              "CSS",
+              "mengatur batas data dan interaksi",
               "log dan tracing terdistribusi",
               "routing",
-              "migrasi"
+              "log, metrik, dan tracing"
             ],
             "a": 1,
             "explain": "Tracing membantu melacak request lintas node."
@@ -3578,10 +3578,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Data Access Layer (DAL) memusatkan",
             "options": [
-              "CSS",
+              "mengurangi risiko kebocoran",
               "routing",
               "akses data dan aturan otorisasi",
-              "migrasi"
+              "UI yang dibagi antar-halaman anak"
             ],
             "a": 2,
             "explain": "DAL memusatkan logika akses data."
@@ -3590,9 +3590,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Memisahkan DAL memudahkan",
             "options": [
-              "CSS",
+              "pemulihan cepat saat rilis bermasalah",
               "routing",
-              "migrasi",
+              "Route dinamis dengan parameter slug",
               "pengujian dan konsistensi"
             ],
             "a": 3,
@@ -3603,7 +3603,7 @@ const CONTENT_NEXTJS = [
             "q": "Server action sebaiknya memakai",
             "options": [
               "tanpa validasi",
-              "CSS",
+              "npm run build",
               "validasi dan otorisasi berlapis",
               "routing"
             ],
@@ -3614,10 +3614,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Transaksi database berguna untuk",
             "options": [
-              "CSS",
+              "routing, rendering server, dan optimasi bawaan",
               "routing",
               "menjaga konsistensi operasi majemuk",
-              "migrasi"
+              "UI loading selama segmen dimuat"
             ],
             "a": 2,
             "explain": "Transaksi menjaga atomisitas operasi."
@@ -3626,10 +3626,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Idempotency key membantu",
             "options": [
-              "CSS",
+              "API Node.js terbatas dan tanpa filesystem penuh",
               "routing",
               "mencegah mutasi ganda saat retry",
-              "migrasi"
+              "akses data dan aturan otorisasi"
             ],
             "a": 2,
             "explain": "Kunci idempotensi mencegah duplikasi."
@@ -3638,10 +3638,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Event-driven pada Next.js dapat memakai",
             "options": [
-              "CSS",
+              "dapat diserialisasi",
               "webhook/queue layanan eksternal",
               "routing",
-              "migrasi"
+              "usePathname"
             ],
             "a": 1,
             "explain": "Layanan seperti queue menangani event asinkron."
@@ -3652,7 +3652,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "loop query",
               "query gabungan/batch",
-              "CSS",
+              "rekonsiliasi item",
               "routing"
             ],
             "a": 1,
@@ -3664,7 +3664,7 @@ const CONTENT_NEXTJS = [
             "options": [
               "rollback saat gagal",
               "tanpa rollback",
-              "CSS",
+              "respons cepat bagi pengguna global",
               "routing"
             ],
             "a": 0,
@@ -3674,9 +3674,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Cache invalidation setelah mutasi memakai",
             "options": [
-              "CSS",
+              "desain tugas ringkas/queue",
               "routing",
-              "migrasi",
+              "npx create-next-app",
               "revalidateTag/Path"
             ],
             "a": 3,
@@ -3686,9 +3686,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Audit log mutasi membantu",
             "options": [
-              "CSS",
+              "performa pengiriman aset",
               "routing",
-              "migrasi",
+              "metadata.robots atau berkas robots",
               "pelacakan perubahan data"
             ],
             "a": 3,
@@ -3705,10 +3705,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Preview deployment membantu",
             "options": [
-              "CSS",
+              "UI loading selama segmen dimuat",
               "routing",
               "meninjau perubahan sebelum produksi",
-              "migrasi"
+              "berkas dan import di bawahnya"
             ],
             "a": 2,
             "explain": "Preview memberikan lingkungan uji per perubahan."
@@ -3718,9 +3718,9 @@ const CONTENT_NEXTJS = [
             "q": "Rollback deployment penting untuk",
             "options": [
               "pemulihan cepat saat rilis bermasalah",
-              "CSS",
+              "UI yang dibagi antar-halaman anak",
               "routing",
-              "migrasi"
+              "menampilkan halaman 404 kustom"
             ],
             "a": 0,
             "explain": "Rollback memulihkan versi stabil."
@@ -3729,10 +3729,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Health check memungkinkan",
             "options": [
-              "CSS",
+              "Route dinamis dengan parameter slug",
               "pemantauan status layanan",
               "routing",
-              "migrasi"
+              "optimasi gambar otomatis"
             ],
             "a": 1,
             "explain": "Health check memantau ketersediaan."
@@ -3741,10 +3741,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Feature flag membantu",
             "options": [
-              "CSS",
+              "Mengambil data di server tanpa mengirim seluruh logika ke browser",
               "merilis fitur secara terkontrol",
               "routing",
-              "migrasi"
+              "html dan body"
             ],
             "a": 1,
             "explain": "Feature flag mengaktifkan fitur untuk sebagian pengguna."
@@ -3753,10 +3753,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Logging terpusat membantu",
             "options": [
-              "CSS",
+              "mendukung deploy Next.js secara native",
               "diagnosis masalah lintas instance",
               "routing",
-              "migrasi"
+              "mengurangi JavaScript klien"
             ],
             "a": 1,
             "explain": "Log terpusat menggabungkan sumber terpisah."
@@ -3766,9 +3766,9 @@ const CONTENT_NEXTJS = [
             "q": "Mengelola migration DB saat deploy perlu",
             "options": [
               "urutan kompatibel agar tanpa downtime",
-              "CSS",
+              "berkas CSS diimport sesuai aturan (module/global di root)",
               "routing",
-              "migrasi"
+              "bundel produksi teroptimasi"
             ],
             "a": 0,
             "explain": "Migrasi bertahap menjaga layanan tetap hidup."
@@ -3778,9 +3778,9 @@ const CONTENT_NEXTJS = [
             "q": "Secret rotation penting untuk",
             "options": [
               "mengurangi risiko kebocoran",
-              "CSS",
+              "fetch(url, { next: { revalidate: 60 } })",
               "routing",
-              "migrasi"
+              "new Response(body, { status: 201 })"
             ],
             "a": 0,
             "explain": "Rotasi kunci membatasi dampak kebocoran."
@@ -3789,9 +3789,9 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Memantau error rate membantu",
             "options": [
-              "CSS",
+              "kebocoran",
               "routing",
-              "migrasi",
+              "revalidatePath/revalidateTag",
               "mendeteksi regresi"
             ],
             "a": 3,
@@ -3801,10 +3801,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Backup database penting untuk",
             "options": [
-              "CSS",
+              "fallback bertingkat",
               "routing",
               "pemulihan data",
-              "migrasi"
+              "params"
             ],
             "a": 2,
             "explain": "Backup melindungi dari kehilangan data."
@@ -3813,10 +3813,10 @@ const CONTENT_NEXTJS = [
             "type": "mc",
             "q": "Dokumentasi arsitektur membantu",
             "options": [
-              "CSS",
+              "waktu atau tag",
               "orientasi tim dan perawatan",
               "routing",
-              "migrasi"
+              "tidak di-cache agresif"
             ],
             "a": 1,
             "explain": "Dokumentasi mempermudah kolaborasi."

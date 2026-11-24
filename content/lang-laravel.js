@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_LARAVEL = [
-{
+  {
     "id": "laravel",
     "name": "Laravel",
     "icon": "🅻",
@@ -1592,7 +1592,7 @@ const CONTENT_LARAVEL = [
           },
           {
             "type": "mc",
-            "q": "Aturan validasi untuk nullable (boleh kosong) memakai",
+            "q": "Aturan validasi Laravel agar suatu field diperbolehkan bernilai kosong (null) adalah",
             "options": [
               "nullable",
               "optional",

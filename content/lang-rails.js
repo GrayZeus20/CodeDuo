@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_RAILS = [
-{
+  {
     "id": "rails",
     "name": "Ruby on Rails",
     "icon": "🛤️",
@@ -71,8 +71,8 @@ const CONTENT_RAILS = [
             "q": "Konvensi over configuration berarti",
             "options": [
               "tanpa konfigurasi",
-              "CSS",
-              "route",
+              "rails generate job Nama",
+              "digest nama berkas",
               "default wajar mengurangi konfigurasi"
             ],
             "a": 3,
@@ -106,9 +106,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Bundler dipakai untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "digest nama berkas",
+              "memproses job penting lebih dulu",
+              "konten tak tepercaya",
               "mengelola gem dependency"
             ],
             "a": 3,
@@ -197,7 +197,7 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Controller bertanggung jawab atas",
             "options": [
-              "CSS",
+              "data ke tabel terpisah",
               "alur request dan respons",
               "skema",
               "aset"
@@ -212,7 +212,7 @@ const CONTENT_RAILS = [
               "skema DB",
               "routing",
               "tampilan",
-              "migrasi"
+              "keandalan"
             ],
             "a": 2,
             "explain": "View merender tampilan."
@@ -222,8 +222,8 @@ const CONTENT_RAILS = [
             "q": "Action pada controller adalah",
             "options": [
               "file CSS",
-              "route",
-              "migrasi",
+              "alur request dan respons",
+              "dibagikan ke view",
               "method publik penangan request"
             ],
             "a": 3,
@@ -512,9 +512,9 @@ const CONTENT_RAILS = [
             "q": "Instance variable dari controller dapat diakses view karena",
             "options": [
               "global",
-              "CSS",
+              "rescue_from dan format respons",
               "dibagikan ke view",
-              "route"
+              "navigasi halaman cepat"
             ],
             "a": 2,
             "explain": "Instance variable controller diteruskan ke view."
@@ -856,9 +856,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Yield pada layout berarti",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "aplikasi web full-stack cepat",
+              "penanganan idempoten dan verifikasi",
+              "rails server (rails s)",
               "tempat konten view disisipkan"
             ],
             "a": 3,
@@ -995,8 +995,8 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menampilkan error validasi biasanya dari",
             "options": [
-              "CSS",
-              "route",
+              "blok resources",
+              "before_action",
               "objek model (errors)",
               "params saja"
             ],
@@ -1007,7 +1007,7 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "form_with mengarah ke action berdasarkan",
             "options": [
-              "CSS",
+              "konfigurasi backend queue",
               "params",
               "skema",
               "record dan konvensi route"
@@ -1020,9 +1020,9 @@ const CONTENT_RAILS = [
             "q": "Strong parameters tetap wajib pada",
             "options": [
               "view saja",
-              "CSS",
+              "mencegah berkas berbahaya",
               "action yang menerima input",
-              "route"
+              "diagnosis lintas server"
             ],
             "a": 2,
             "explain": "Input harus difilter di server."
@@ -1146,10 +1146,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Validasi di sisi klien tidak menggantikan",
             "options": [
-              "CSS",
-              "route",
+              "form.text_area",
+              "after_create",
               "validasi server",
-              "migrasi"
+              "Post.count"
             ],
             "a": 2,
             "explain": "Validasi server wajib untuk keamanan."
@@ -1240,7 +1240,7 @@ const CONTENT_RAILS = [
               "ActiveRecord::RecordNotFound",
               "nil",
               "error CSS",
-              "route"
+              "logika tampilan"
             ],
             "a": 0,
             "explain": "find yang gagal melempar RecordNotFound."
@@ -1249,10 +1249,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menggabungkan kondisi memakai",
             "options": [
-              "CSS",
+              ".html.erb",
               "chaining where",
-              "route",
-              "migrasi"
+              "form_with model: @post",
+              "objek model (errors)"
             ],
             "a": 1,
             "explain": "Query dapat dirangkai."
@@ -1261,10 +1261,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Raw SQL dapat dijalankan dengan",
             "options": [
-              "CSS",
+              "stylesheet_link_tag / javascript_include_tag",
               "ActiveRecord::Base.connection.execute / find_by_sql",
-              "route",
-              "migrasi"
+              "Pundit / CanCanCan",
+              "includes/preload/eager_load"
             ],
             "a": 1,
             "explain": "find_by_sql menjalankan SQL kustom."
@@ -1273,10 +1273,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menghindari N+1 memakai",
             "options": [
-              "CSS",
+              "performa penting",
               "includes",
-              "route",
-              "migrasi"
+              "keandalan",
+              "konsistensi gaya"
             ],
             "a": 1,
             "explain": "includes melakukan eager loading."
@@ -1318,7 +1318,7 @@ const CONTENT_RAILS = [
             "options": [
               "belongs_to",
               "has_one",
-              "CSS",
+              "rails generate mailer Nama",
               "has_many :through / has_and_belongs_to_many"
             ],
             "a": 3,
@@ -1376,10 +1376,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Anti N+1 di view membutuhkan",
             "options": [
-              "CSS",
+              "perilaku JavaScript kecil",
               "eager loading di controller",
-              "route",
-              "migrasi"
+              "dapat diulang saat retry",
+              "new dan edit"
             ],
             "a": 1,
             "explain": "Muat relasi sebelum render."
@@ -1388,10 +1388,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Counter cache menyimpan",
             "options": [
-              "CSS",
+              "length: { maximum: 100 }",
               "jumlah relasi di kolom induk",
-              "route",
-              "migrasi"
+              "paranoia atau discard",
+              "rails generate mailer Nama"
             ],
             "a": 1,
             "explain": "Counter cache menambah kolom jumlah untuk performa."
@@ -1400,10 +1400,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Validasi relasi wajib memakai",
             "options": [
-              "CSS",
+              "uniqueness: true",
               "belongs_to_required_by_default",
-              "route",
-              "migrasi"
+              "ActiveRecord::Base.connection.execute / find_by_sql",
+              "includes(:komentar)"
             ],
             "a": 1,
             "explain": "Rails modern mewajibkan belongs_to secara default."
@@ -1421,8 +1421,8 @@ const CONTENT_RAILS = [
             "options": [
               "each_save",
               "update_all",
-              "CSS",
-              "route"
+              "add_reference / references",
+              "render \"partial\""
             ],
             "a": 1,
             "explain": "update_all memperbarui massal tanpa callback."
@@ -1446,7 +1446,7 @@ const CONTENT_RAILS = [
               "mean",
               "average(:nilai)",
               "avg",
-              "CSS"
+              "after_create"
             ],
             "a": 1,
             "explain": "average menghitung rata-rata."
@@ -1455,10 +1455,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Group query memakai",
             "options": [
-              "CSS",
-              "route",
+              "joins dengan SQL/Arel",
+              "ActiveSupport::Notifications",
               "group(:kategori).count",
-              "migrasi"
+              "performa penting"
             ],
             "a": 2,
             "explain": "group+count mengelompokkan."
@@ -1468,8 +1468,8 @@ const CONTENT_RAILS = [
             "q": "Mencari dengan beberapa id memakai",
             "options": [
               "find_ids",
-              "CSS",
-              "route",
+              "performa",
+              "Active Record",
               "where(id: [1,2,3])"
             ],
             "a": 3,
@@ -1479,10 +1479,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Transaksi database memakai",
             "options": [
-              "CSS",
+              "stylesheet_link_tag / javascript_include_tag",
               "ActiveRecord::Base.transaction",
-              "route",
-              "migrasi"
+              "Pundit / CanCanCan",
+              "render @posts"
             ],
             "a": 1,
             "explain": "transaction menjaga atomisitas."
@@ -1491,9 +1491,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Enum pada model memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "throughput dan beban DB",
+              "Turbo dan Stimulus",
+              "membangun query kompleks secara aman",
               "enum status: { ... }"
             ],
             "a": 3,
@@ -1504,9 +1504,9 @@ const CONTENT_RAILS = [
             "q": "Soft delete memakai gem",
             "options": [
               "paranoia atau discard",
-              "CSS",
-              "route",
-              "migrasi"
+              "importmap atau jsbundling",
+              "dilewati bila pakai token auth",
+              "opsi route umum"
             ],
             "a": 0,
             "explain": "Gem menyediakan soft delete."
@@ -1516,9 +1516,9 @@ const CONTENT_RAILS = [
             "q": "Membatasi query dengan raw condition aman memakai",
             "options": [
               "where(\"x = #{val}\")",
-              "CSS",
+              "jumlah koneksi DB",
               "where(\"x = ?\", val)",
-              "route"
+              "job bisa diulang"
             ],
             "a": 2,
             "explain": "Parameter placeholder mencegah injeksi."
@@ -1527,9 +1527,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Mengambil record atau membuatnya memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Post.where(aktif: true)",
+              "db/schema.rb",
+              "otomatis disertakan",
               "find_or_create_by"
             ],
             "a": 3,
@@ -1583,9 +1583,9 @@ const CONTENT_RAILS = [
             "q": "Fixture menyediakan",
             "options": [
               "data awal untuk test",
-              "CSS",
-              "route",
-              "migrasi"
+              "validates :nama, presence: true",
+              "enum status: { ... }",
+              "rescue_from dan format respons"
             ],
             "a": 0,
             "explain": "Fixture menyiapkan data test."
@@ -1594,10 +1594,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Test controller/system menguji",
             "options": [
-              "CSS",
-              "route",
+              "enum status: { ... }",
+              "rescue_from dan format respons",
               "alur HTTP dan UI",
-              "migrasi"
+              "navigasi halaman cepat"
             ],
             "a": 2,
             "explain": "Test sistem menguji alur dari pengguna."
@@ -1606,10 +1606,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Assertion status respons memakai",
             "options": [
-              "CSS",
-              "route",
+              "app/models",
+              "resources :posts",
               "assert_response :success",
-              "migrasi"
+              "render 'nama_view'"
             ],
             "a": 2,
             "explain": "assert_response memeriksa status."
@@ -1618,10 +1618,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Test helper untuk request memakai",
             "options": [
-              "CSS",
-              "route",
+              "includes/preload/eager_load",
+              "logika di model/service",
               "get/patch/post",
-              "migrasi"
+              "SQL injection"
             ],
             "a": 2,
             "explain": "Helper request melakukan HTTP dalam test."
@@ -1630,10 +1630,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Coverage diukur dengan",
             "options": [
-              "CSS",
+              "Post.all",
               "SimpleCov",
-              "route",
-              "migrasi"
+              "Post.where(aktif: true)",
+              "db/schema.rb"
             ],
             "a": 1,
             "explain": "SimpleCov mengukur cakupan."
@@ -1643,8 +1643,8 @@ const CONTENT_RAILS = [
             "q": "Test yang baik menguji",
             "options": [
               "detail internal",
-              "CSS",
-              "route",
+              "background job",
+              "pemulihan data",
               "perilaku"
             ],
             "a": 3,
@@ -1654,9 +1654,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Database test terpisah mencegah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "rescue_from dan format respons",
+              "navigasi halaman cepat",
+              "bundle exec sidekiq",
               "mengotori data development"
             ],
             "a": 3,
@@ -1700,7 +1700,7 @@ const CONTENT_RAILS = [
               "resource dibuat",
               "error",
               "redirect",
-              "CSS"
+              "Post.order(created_at: :desc)"
             ],
             "a": 0,
             "explain": "201 Created menandakan pembuatan."
@@ -1711,8 +1711,8 @@ const CONTENT_RAILS = [
             "options": [
               "view",
               "API",
-              "CSS",
-              "route"
+              "type",
+              "Ruby"
             ],
             "a": 1,
             "explain": "Filter input di server."
@@ -1721,9 +1721,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Serializer membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mass assignment berbahaya",
+              "kompatibel dan bertahap",
+              "backend bawaan berbasis DB/Redis",
               "membentuk output JSON"
             ],
             "a": 3,
@@ -1734,9 +1734,9 @@ const CONTENT_RAILS = [
             "q": "Versioning API memakai",
             "options": [
               "namespace /api/v1",
-              "CSS",
-              "route",
-              "migrasi"
+              "Active Record",
+              "config/routes.rb",
+              "Post.all"
             ],
             "a": 0,
             "explain": "Namespace versi memisahkan API."
@@ -1745,9 +1745,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Autentikasi API umum memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "optional: true",
+              "average(:nilai)",
+              "assert_response :success",
               "token/JWT"
             ],
             "a": 3,
@@ -1757,10 +1757,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Pagination API memakai",
             "options": [
-              "CSS",
+              "pekerjaan berat",
               "kaminari/will_paginate",
-              "route",
-              "migrasi"
+              "credentials",
+              "konsistensi skema"
             ],
             "a": 1,
             "explain": "Gem pagination membantu."
@@ -1769,9 +1769,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "CORS diatur dengan gem",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "turbo_frame_tag",
+              "find_each / in_batches",
+              "orientasi tim",
               "rack-cors"
             ],
             "a": 3,
@@ -1782,9 +1782,9 @@ const CONTENT_RAILS = [
             "q": "Menangani error API konsisten memakai",
             "options": [
               "mengabaikan",
-              "CSS",
+              "rails generate model Post",
               "rescue_from dan format respons",
-              "route"
+              "validates :nama, presence: true"
             ],
             "a": 2,
             "explain": "rescue_from memusatkan penanganan error."
@@ -1815,7 +1815,7 @@ const CONTENT_RAILS = [
               "send_now",
               "async_send",
               "deliver_later",
-              "CSS"
+              "profiler/APM"
             ],
             "a": 2,
             "explain": "deliver_later mengirim lewat job queue."
@@ -1851,7 +1851,7 @@ const CONTENT_RAILS = [
               "Job.run_now",
               "Job.perform_later",
               "job.send",
-              "CSS"
+              "form.check_box"
             ],
             "a": 1,
             "explain": "perform_later mengantrikan job."
@@ -1861,9 +1861,9 @@ const CONTENT_RAILS = [
             "q": "Konfigurasi queue adapter berada di",
             "options": [
               "config/application.rb / config/queue.yml",
-              "CSS",
-              "route",
-              "migrasi"
+              "logika di model/service",
+              "set(wait_until:) / cron",
+              "konsistensi rilis"
             ],
             "a": 0,
             "explain": "Adapter queue dikonfigurasi di Rails config."
@@ -1884,9 +1884,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Konfigurasi SMTP berada di",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "constraints",
+              "layout \"nama\"",
+              "lebih efisien",
               "config/environments"
             ],
             "a": 3,
@@ -1896,10 +1896,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Retry job gagal diatur oleh",
             "options": [
-              "CSS",
-              "route",
+              "log atau gem seperti bullet",
+              "mencegah berkas berbahaya",
               "konfigurasi backend queue",
-              "migrasi"
+              "diagnosis lintas server"
             ],
             "a": 2,
             "explain": "Backend queue mengatur retry."
@@ -1908,9 +1908,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Active Job memberi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "logika bisnis di model/service",
+              "default wajar mengurangi konfigurasi",
+              "namespace :admin do ... end",
               "abstraksi backend queue"
             ],
             "a": 3,
@@ -1927,10 +1927,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Asset pipeline dikelola oleh",
             "options": [
-              "CSS",
+              "app/views/..._mailer",
               "Propshaft/Sprockets",
-              "route",
-              "migrasi"
+              "before_action :authenticate_user!",
+              "langsung (sinkron)"
             ],
             "a": 1,
             "explain": "Rails memakai pipeline aset."
@@ -1939,9 +1939,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Membundel JavaScript/CSS modern dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "rails generate model Post",
+              "validates :nama, presence: true",
+              "enum status: { ... }",
               "importmap atau jsbundling"
             ],
             "a": 3,
@@ -1951,10 +1951,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menggunakan gem cssbundling membantu",
             "options": [
-              "CSS",
+              "backend bawaan berbasis DB/Redis",
               "mengelola build CSS",
-              "route",
-              "migrasi"
+              "retry dengan backoff",
+              "ORM untuk berinteraksi dengan model dan database"
             ],
             "a": 1,
             "explain": "cssbundling memproses CSS."
@@ -1963,10 +1963,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menautkan aset di view memakai",
             "options": [
-              "CSS",
-              "route",
+              "uniqueness: true",
+              "ActiveRecord::Base.connection.execute / find_by_sql",
               "stylesheet_link_tag / javascript_include_tag",
-              "migrasi"
+              "includes(:komentar)"
             ],
             "a": 2,
             "explain": "Helper view menautkan aset."
@@ -1978,7 +1978,7 @@ const CONTENT_RAILS = [
               "rails precompile:assets",
               "rake assets:pre",
               "rails assets:precompile",
-              "CSS"
+              "rails db:seed"
             ],
             "a": 2,
             "explain": "assets:precompile menyiapkan aset produksi."
@@ -1999,10 +1999,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Turbo mengelola",
             "options": [
-              "CSS",
+              "new dan edit",
               "navigasi halaman cepat",
-              "route",
-              "migrasi"
+              "memecah tanggung jawab",
+              "dipantau dan ditangani"
             ],
             "a": 1,
             "explain": "Turbo mempercepat navigasi."
@@ -2011,10 +2011,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Stimulus untuk",
             "options": [
-              "CSS",
+              "enum status: { ... }",
               "perilaku JavaScript kecil",
-              "route",
-              "migrasi"
+              "rescue_from dan format respons",
+              "navigasi halaman cepat"
             ],
             "a": 1,
             "explain": "Stimulus mengelola interaksi kecil."
@@ -2023,10 +2023,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Cache asset di produksi memakai",
             "options": [
-              "CSS",
-              "route",
+              "ORM untuk berinteraksi dengan model dan database",
+              "alur request dan respons",
               "digest nama berkas",
-              "migrasi"
+              "dibagikan ke view"
             ],
             "a": 2,
             "explain": "Digest mencegah cache basi."
@@ -2035,10 +2035,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Mengelola aset di CDN memerlukan",
             "options": [
-              "CSS",
-              "route",
+              "Job.perform_later",
+              "defaults",
               "konfigurasi asset_host",
-              "migrasi"
+              "logika tampilan"
             ],
             "a": 2,
             "explain": "asset_host mengarahkan aset ke CDN."
@@ -2056,8 +2056,8 @@ const CONTENT_RAILS = [
             "options": [
               "rails generate authentication",
               "gem devise wajib",
-              "CSS",
-              "route"
+              "rails new nama",
+              "method publik penangan request"
             ],
             "a": 0,
             "explain": "Rails 7+ punya generator authentication."
@@ -2078,10 +2078,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menampilkan halaman hanya untuk login memakai",
             "options": [
-              "CSS",
-              "route",
+              "find_or_create_by",
+              "ActionController::API",
               "before_action :authenticate_user!",
-              "migrasi"
+              "Propshaft/Sprockets"
             ],
             "a": 2,
             "explain": "before_action membatasi akses."
@@ -2091,9 +2091,9 @@ const CONTENT_RAILS = [
             "q": "Session login biasanya disimpan di",
             "options": [
               "cookie terenkripsi",
-              "CSS",
-              "route",
-              "migrasi"
+              "ActiveSupport::Notifications",
+              "performa penting",
+              "keandalan"
             ],
             "a": 0,
             "explain": "Rails memakai cookie sesi."
@@ -2105,7 +2105,7 @@ const CONTENT_RAILS = [
               "md5",
               "has_secure_password (bcrypt)",
               "plain",
-              "CSS"
+              "respond_to"
             ],
             "a": 1,
             "explain": "has_secure_password memakai bcrypt."
@@ -2115,9 +2115,9 @@ const CONTENT_RAILS = [
             "q": "Membatasi akses admin memakai",
             "options": [
               "menyembunyikan tautan saja",
-              "CSS",
+              "memproses job penting lebih dulu",
               "otorisasi per peran",
-              "route"
+              "konten tak tepercaya"
             ],
             "a": 2,
             "explain": "Otorisasi harus ditegakkan di server."
@@ -2126,10 +2126,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Gem otorisasi populer adalah",
             "options": [
-              "CSS",
-              "route",
+              "render \"partial\"",
+              "form.select",
               "Pundit / CanCanCan",
-              "migrasi"
+              "model.valid?"
             ],
             "a": 2,
             "explain": "Pundit/CanCanCan menangani otorisasi."
@@ -2138,9 +2138,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "CSRF protection untuk API JSON bisa",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tabel event log",
+              "rails new nama",
+              "method publik penangan request",
               "dilewati bila pakai token auth"
             ],
             "a": 3,
@@ -2150,9 +2150,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Mencegah session fixation dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "digest nama berkas",
+              "memproses job penting lebih dulu",
+              "konten tak tepercaya",
               "reset_session setelah login"
             ],
             "a": 3,
@@ -2162,9 +2162,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Membatasi percobaan login membantu mencegah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "optional: true",
+              "average(:nilai)",
+              "assert_response :success",
               "brute force"
             ],
             "a": 3,
@@ -2182,9 +2182,9 @@ const CONTENT_RAILS = [
             "q": "Active Job menyediakan",
             "options": [
               "abstraksi backend queue",
-              "CSS",
-              "route",
-              "migrasi"
+              "rails generate job Nama",
+              "digest nama berkas",
+              "memproses job penting lebih dulu"
             ],
             "a": 0,
             "explain": "Active Job menyeragamkan API job."
@@ -2194,9 +2194,9 @@ const CONTENT_RAILS = [
             "q": "Sidekiq membutuhkan",
             "options": [
               "Redis",
-              "CSS",
-              "route",
-              "migrasi"
+              "cache block",
+              "bagian view",
+              "profiler/APM"
             ],
             "a": 0,
             "explain": "Sidekiq memakai Redis sebagai backend."
@@ -2206,8 +2206,8 @@ const CONTENT_RAILS = [
             "q": "Menjalankan worker Sidekiq memakai",
             "options": [
               "rails worker",
-              "CSS",
-              "route",
+              "rails server (rails s)",
+              "URL ke action controller",
               "bundle exec sidekiq"
             ],
             "a": 3,
@@ -2218,8 +2218,8 @@ const CONTENT_RAILS = [
             "q": "perform_later mengantrikan job",
             "options": [
               "secara sinkron",
-              "CSS",
-              "route",
+              "has_secure_password (bcrypt)",
+              "dashboard/monitoring",
               "secara asinkron"
             ],
             "a": 3,
@@ -2229,10 +2229,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "perform_now menjalankan job",
             "options": [
-              "CSS",
+              "profiler/APM",
               "langsung (sinkron)",
-              "route",
-              "migrasi"
+              "throttling/backoff",
+              "performa"
             ],
             "a": 1,
             "explain": "perform_now mengeksekusi segera."
@@ -2241,10 +2241,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Opsi retry job diatur oleh",
             "options": [
-              "CSS",
-              "route",
+              "render json: data",
+              "deliver_later",
               "konfigurasi backend",
-              "migrasi"
+              "stylesheet_link_tag / javascript_include_tag"
             ],
             "a": 2,
             "explain": "Backend mengatur kebijakan retry."
@@ -2253,9 +2253,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Job idempoten penting karena",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "format: { with: /.../ }",
+              "where(\"x = ?\", val)",
+              "rails generate job Nama",
               "dapat diulang saat retry"
             ],
             "a": 3,
@@ -2265,9 +2265,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Antrean prioritas membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "penanganan idempoten dan verifikasi",
+              "rails server (rails s)",
+              "URL ke action controller",
               "memproses job penting lebih dulu"
             ],
             "a": 3,
@@ -2278,9 +2278,9 @@ const CONTENT_RAILS = [
             "q": "Memantau job gagal memakai",
             "options": [
               "dashboard/monitoring",
-              "CSS",
-              "route",
-              "migrasi"
+              "logika di model/service",
+              "SQL injection",
+              "set(wait_until:) / cron"
             ],
             "a": 0,
             "explain": "Dashboard memantau antrean."
@@ -2290,9 +2290,9 @@ const CONTENT_RAILS = [
             "q": "Menjadwalkan job memakai",
             "options": [
               "set(wait:)",
-              "CSS",
-              "route",
-              "migrasi"
+              "form.check_box",
+              "model.errors.full_messages",
+              "Post.offset(20)"
             ],
             "a": 0,
             "explain": "set dengan wait menjadwalkan job."
@@ -2308,9 +2308,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Constraint pada route memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "background job",
+              "pemulihan data",
+              "lock_version",
               "constraints"
             ],
             "a": 3,
@@ -2320,10 +2320,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Route default (format) diatur dengan",
             "options": [
-              "CSS",
-              "route",
+              "form.check_box",
+              "Post.offset(20)",
               "defaults",
-              "migrasi"
+              "optional: true"
             ],
             "a": 2,
             "explain": "defaults menetapkan nilai default route."
@@ -2332,10 +2332,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Nested resources memakai",
             "options": [
-              "CSS",
-              "route",
+              "konten tak tepercaya",
+              "mass assignment berbahaya",
               "resources :posts do resources :comments end",
-              "migrasi"
+              "kompatibel dan bertahap"
             ],
             "a": 2,
             "explain": "Nested resources membuat route anak."
@@ -2344,9 +2344,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Shallow nested membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tabel event log",
+              "rails new nama",
+              "method publik penangan request",
               "menghindari URL terlalu dalam"
             ],
             "a": 3,
@@ -2356,9 +2356,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Route concern membagikan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kompatibel dan bertahap",
+              "backend bawaan berbasis DB/Redis",
+              "retry dengan backoff",
               "opsi route umum"
             ],
             "a": 3,
@@ -2368,9 +2368,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Mount engine di route memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Minitest",
+              "deliver_later",
+              "set(wait:)",
               "mount"
             ],
             "a": 3,
@@ -2380,9 +2380,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Redirect route memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "bagian view",
+              "profiler/APM",
+              "throttling/backoff",
               "redirect"
             ],
             "a": 3,
@@ -2392,10 +2392,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Route untuk API sering memakai",
             "options": [
-              "CSS",
-              "route",
+              "Post.limit(10)",
+              "belongs_to",
               "namespace :api",
-              "migrasi"
+              "select(:id, :nama)"
             ],
             "a": 2,
             "explain": "Namespace memisahkan API."
@@ -2404,10 +2404,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Melihat route spesifik memakai",
             "options": [
-              "CSS",
-              "route",
+              "dapat diulang saat retry",
+              "new dan edit",
               "rails routes -g pola",
-              "migrasi"
+              "memecah tanggung jawab"
             ],
             "a": 2,
             "explain": "Filter membantu menemukan route."
@@ -2416,10 +2416,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Route wildcard memakai",
             "options": [
-              "CSS",
+              "namespace :api",
               "*path",
-              "route",
-              "migrasi"
+              "cache block",
+              "bagian view"
             ],
             "a": 1,
             "explain": "Wildcard menangkap sisa path."
@@ -2436,9 +2436,9 @@ const CONTENT_RAILS = [
             "q": "Collection partial memakai",
             "options": [
               "render @posts",
-              "CSS",
-              "route",
-              "migrasi"
+              "injeksi skrip",
+              "session/cache bersama",
+              "--api"
             ],
             "a": 0,
             "explain": "render koleksi merender partial per item."
@@ -2447,10 +2447,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Layout kustom memakai",
             "options": [
-              "CSS",
+              "<%= nilai %>",
               "layout \"nama\"",
-              "route",
-              "migrasi"
+              "form.text_field",
+              "uniqueness: true"
             ],
             "a": 1,
             "explain": "layout memilih layout."
@@ -2459,10 +2459,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Content_for/yield membantu",
             "options": [
-              "CSS",
+              "eager loading di controller",
               "menyisipkan blok konten di layout",
-              "route",
-              "migrasi"
+              "mengotori data development",
+              "importmap atau jsbundling"
             ],
             "a": 1,
             "explain": "content_for menyiapkan blok untuk layout."
@@ -2471,10 +2471,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Local variabel partial dikirim via",
             "options": [
-              "CSS",
-              "route",
+              "params",
+              "post.save",
               "locals",
-              "migrasi"
+              "add_column"
             ],
             "a": 2,
             "explain": "locals meneruskan variabel ke partial."
@@ -2483,9 +2483,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Helper view didefinisikan di",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "langsung (sinkron)",
+              "redirect",
+              "presenter/helper",
               "app/helpers"
             ],
             "a": 3,
@@ -2495,9 +2495,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menghindari logika berat di view dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tampilan",
+              "get 'posts/:id'",
+              "params.require(:post).permit(:judul)",
               "presenter/helper"
             ],
             "a": 3,
@@ -2507,10 +2507,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Cache fragment view memakai",
             "options": [
-              "CSS",
+              "test/models",
               "cache block",
-              "route",
-              "migrasi"
+              "resource dibuat",
+              "Sidekiq"
             ],
             "a": 1,
             "explain": "cache di view menyimpan fragmen."
@@ -2519,9 +2519,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Partial untuk form dapat dipakai ulang untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "rescue_from dan format respons",
+              "navigasi halaman cepat",
+              "bundle exec sidekiq",
               "new dan edit"
             ],
             "a": 3,
@@ -2532,9 +2532,9 @@ const CONTENT_RAILS = [
             "q": "Turbo Frame di view memakai tag",
             "options": [
               "turbo_frame_tag",
-              "CSS",
-              "route",
-              "migrasi"
+              "Post.where(aktif: true)",
+              "db/schema.rb",
+              "otomatis disertakan"
             ],
             "a": 0,
             "explain": "Helper turbo frame menyiapkan frame."
@@ -2543,10 +2543,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Escaping harus tetap dipakai untuk",
             "options": [
-              "CSS",
+              "dilewati bila pakai token auth",
               "konten tak tepercaya",
-              "route",
-              "migrasi"
+              "opsi route umum",
+              "jumlah koneksi DB"
             ],
             "a": 1,
             "explain": "Escaping mencegah XSS."
@@ -2562,9 +2562,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menyertakan relasi untuk menghindari N+1 memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "blok resources",
+              "before_action",
+              "post.destroy",
               "includes/preload/eager_load"
             ],
             "a": 3,
@@ -2576,8 +2576,8 @@ const CONTENT_RAILS = [
             "options": [
               "sama saja",
               "eager_load memakai LEFT JOIN, preload query terpisah",
-              "CSS",
-              "route"
+              "ya, sesuai nama action",
+              "record dan konvensi route"
             ],
             "a": 1,
             "explain": "eager_load join; preload query terpisah."
@@ -2587,9 +2587,9 @@ const CONTENT_RAILS = [
             "q": "Menggunakan exists? daripada present? pada relasi karena",
             "options": [
               "lebih lambat",
-              "CSS",
+              "keandalan",
               "lebih efisien",
-              "route"
+              "konsistensi gaya"
             ],
             "a": 2,
             "explain": "exists? menghindari memuat semua record."
@@ -2598,10 +2598,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Memilih kolom untuk mengurangi payload memakai",
             "options": [
-              "CSS",
+              "rack-cors",
               "select",
-              "route",
-              "migrasi"
+              "*path",
+              "turbo_frame_tag"
             ],
             "a": 1,
             "explain": "select membatasi kolom termuat."
@@ -2610,10 +2610,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menambah index untuk kolom yang sering difilter membantu",
             "options": [
-              "CSS",
-              "route",
+              "form.submit",
+              "before_save",
               "performa query",
-              "migrasi"
+              "Post.first"
             ],
             "a": 2,
             "explain": "Index mempercepat pencarian."
@@ -2623,9 +2623,9 @@ const CONTENT_RAILS = [
             "q": "Menghindari query di view penting karena",
             "options": [
               "memperlambat render",
-              "CSS",
-              "route",
-              "migrasi"
+              "callback job/pipeline",
+              "menyamakan struktur",
+              "key gabungan"
             ],
             "a": 0,
             "explain": "Query di view menyulitkan optimasi."
@@ -2634,10 +2634,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Page caching/method caching memakai",
             "options": [
-              "CSS",
-              "route",
+              "post.update(...)",
+              "string",
               "cache block/redis",
-              "migrasi"
+              "app/views/layouts/application.html.erb"
             ],
             "a": 2,
             "explain": "Cache menyimpan hasil mahal."
@@ -2646,10 +2646,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Batched processing memakai",
             "options": [
-              "CSS",
-              "route",
+              "memperlambat render",
+              "perilaku antar model/controller",
               "find_each / in_batches",
-              "migrasi"
+              "config.force_ssl"
             ],
             "a": 2,
             "explain": "find_each memproses bertahap."
@@ -2659,9 +2659,9 @@ const CONTENT_RAILS = [
             "q": "Mengukur query memakai",
             "options": [
               "log atau gem seperti bullet",
-              "CSS",
-              "route",
-              "migrasi"
+              "perubahan besar sekaligus",
+              "development, test, production",
+              "rails generate scaffold Post"
             ],
             "a": 0,
             "explain": "Bullet membantu mendeteksi N+1."
@@ -2670,10 +2670,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Connection pooling mengatur",
             "options": [
-              "CSS",
-              "route",
+              "mengemas satu operasi bisnis",
+              "throughput dan beban DB",
               "jumlah koneksi DB",
-              "migrasi"
+              "Turbo dan Stimulus"
             ],
             "a": 2,
             "explain": "Pooling membatasi/mengatur koneksi."
@@ -2690,8 +2690,8 @@ const CONTENT_RAILS = [
             "q": "Fat model skin controller menyarankan",
             "options": [
               "semua di controller",
-              "CSS",
-              "route",
+              "blok resources",
+              "before_action",
               "logika di model/service"
             ],
             "a": 3,
@@ -2701,9 +2701,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Service object membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "rescue_from dan format respons",
+              "navigasi halaman cepat",
+              "bundle exec sidekiq",
               "mengemas satu operasi bisnis"
             ],
             "a": 3,
@@ -2713,10 +2713,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Form object mengelola",
             "options": [
-              "CSS",
-              "route",
+              "navigasi halaman cepat",
+              "bundle exec sidekiq",
               "validasi dan proses form kompleks",
-              "migrasi"
+              "menyisipkan blok konten di layout"
             ],
             "a": 2,
             "explain": "Form object menangani form non-trivial."
@@ -2725,10 +2725,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Query object memusatkan",
             "options": [
-              "CSS",
+              "namespace :api",
               "query kompleks",
-              "route",
-              "migrasi"
+              "cache block",
+              "cache block/redis"
             ],
             "a": 1,
             "explain": "Query object mengelompokkan query."
@@ -2737,10 +2737,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Presenter mengelola",
             "options": [
-              "CSS",
+              "bagian view",
               "logika tampilan",
-              "route",
-              "migrasi"
+              "profiler/APM",
+              "throttling/backoff"
             ],
             "a": 1,
             "explain": "Presenter memisahkan logika presentasi."
@@ -2749,10 +2749,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Namespace modul pada app membantu",
             "options": [
-              "CSS",
-              "route",
+              "Post.limit(10)",
+              "belongs_to",
               "pengelompokan domain",
-              "migrasi"
+              "select(:id, :nama)"
             ],
             "a": 2,
             "explain": "Module mengelompokkan kode per domain."
@@ -2761,10 +2761,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Concerns berbagi",
             "options": [
-              "CSS",
+              "konsistensi gaya",
               "perilaku antar model/controller",
-              "route",
-              "migrasi"
+              "PostsController",
+              "garis bawah (_nama.html.erb)"
             ],
             "a": 1,
             "explain": "Concern membagikan perilaku."
@@ -2773,9 +2773,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menghindari god object dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "ORM untuk berinteraksi dengan model dan database",
+              "alur request dan respons",
+              "dibagikan ke view",
               "memecah tanggung jawab"
             ],
             "a": 3,
@@ -2786,9 +2786,9 @@ const CONTENT_RAILS = [
             "q": "Membatasi callback kompleks membantu",
             "options": [
               "prediktabilitas",
-              "CSS",
-              "route",
-              "migrasi"
+              "includes/preload/eager_load",
+              "logika di model/service",
+              "SQL injection"
             ],
             "a": 0,
             "explain": "Callback berlebihan menyulitkan pelacakan."
@@ -2797,10 +2797,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Dokumentasi arsitektur aplikasi membantu",
             "options": [
-              "CSS",
+              "Post.all",
               "orientasi tim",
-              "route",
-              "migrasi"
+              "Post.where(aktif: true)",
+              "db/schema.rb"
             ],
             "a": 1,
             "explain": "Dokumentasi memudahkan kolaborasi."
@@ -2817,9 +2817,9 @@ const CONTENT_RAILS = [
             "q": "Strong parameters melindungi dari",
             "options": [
               "mass assignment berbahaya",
-              "CSS",
-              "route",
-              "migrasi"
+              "record dan konvensi route",
+              "eager loading di controller",
+              "mengotori data development"
             ],
             "a": 0,
             "explain": "Permit membatasi atribut."
@@ -2831,7 +2831,7 @@ const CONTENT_RAILS = [
               "SQL injection",
               "race condition",
               "XSS",
-              "CSS"
+              "Sidekiq"
             ],
             "a": 2,
             "explain": "Escaping mencegah XSS."
@@ -2840,10 +2840,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Query berparameter melindungi dari",
             "options": [
-              "CSS",
+              "config/routes.rb",
               "SQL injection",
-              "route",
-              "migrasi"
+              "Post.all",
+              "Post.where(aktif: true)"
             ],
             "a": 1,
             "explain": "Parameter memisahkan data dari query."
@@ -2852,9 +2852,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "CSRF protection melindungi dari",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "eager loading di controller",
+              "mengotori data development",
+              "importmap atau jsbundling",
               "request lintas situs"
             ],
             "a": 3,
@@ -2866,8 +2866,8 @@ const CONTENT_RAILS = [
             "options": [
               "credentials/secret manager",
               "kode sumber",
-              "CSS",
-              "route"
+              "db/migrate",
+              "garis bawah (_nama.html.erb)"
             ],
             "a": 0,
             "explain": "Rahasia disimpan terenkripsi/di luar kode."
@@ -2876,9 +2876,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Membatasi parameter upload penting untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mengemas satu operasi bisnis",
+              "throughput dan beban DB",
+              "Turbo dan Stimulus",
               "mencegah berkas berbahaya"
             ],
             "a": 3,
@@ -2888,10 +2888,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Content Security Policy membantu mencegah",
             "options": [
-              "CSS",
-              "route",
+              "form.select",
+              "model.valid?",
               "injeksi skrip",
-              "migrasi"
+              "Post.limit(10)"
             ],
             "a": 2,
             "explain": "CSP membatasi sumber skrip."
@@ -2900,9 +2900,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Mengatur header keamanan memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pemulihan cepat",
+              "SQL langsung/Arel",
+              "bagian view",
               "konfigurasi Rails/initializer"
             ],
             "a": 3,
@@ -2913,9 +2913,9 @@ const CONTENT_RAILS = [
             "q": "Force SSL pada produksi memakai",
             "options": [
               "config.force_ssl",
-              "CSS",
-              "route",
-              "migrasi"
+              "has_many",
+              "update_all",
+              "Minitest"
             ],
             "a": 0,
             "explain": "force_ssl mengalihkan ke HTTPS."
@@ -2924,9 +2924,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Review dependency rutin untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "performa penting",
+              "keandalan",
+              "konsistensi gaya",
               "menutup kerentanan"
             ],
             "a": 3,
@@ -2943,10 +2943,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Sidekiq memakai backend",
             "options": [
-              "CSS",
+              "namespace :api",
               "Redis",
-              "route",
-              "migrasi"
+              "cache block",
+              "bagian view"
             ],
             "a": 1,
             "explain": "Sidekiq memakai Redis."
@@ -2956,8 +2956,8 @@ const CONTENT_RAILS = [
             "q": "Tugas berat dipindah ke",
             "options": [
               "request utama",
-              "CSS",
-              "route",
+              "test implementasi",
+              "blok resources",
               "background job"
             ],
             "a": 3,
@@ -2967,10 +2967,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Idempotensi job penting karena",
             "options": [
-              "CSS",
+              "penanganan idempoten dan verifikasi",
               "job bisa diulang",
-              "route",
-              "migrasi"
+              "rails server (rails s)",
+              "URL ke action controller"
             ],
             "a": 1,
             "explain": "Retry job memerlukan desain idempoten."
@@ -2979,10 +2979,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Mengatur concurrency worker memengaruhi",
             "options": [
-              "CSS",
+              "format: { with: /.../ }",
               "throughput dan beban DB",
-              "route",
-              "migrasi"
+              "where(\"x = ?\", val)",
+              "rails generate job Nama"
             ],
             "a": 1,
             "explain": "Concurrency menentukan paralelisme."
@@ -2991,10 +2991,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Connection pool DB harus sesuai",
             "options": [
-              "CSS",
-              "route",
+              "URL ke action controller",
+              "rails generate migration Nama",
               "jumlah thread worker",
-              "migrasi"
+              "length: { maximum: 100 }"
             ],
             "a": 2,
             "explain": "Pool terlalu kecil menyebabkan antrean."
@@ -3004,9 +3004,9 @@ const CONTENT_RAILS = [
             "q": "Dead job perlu",
             "options": [
               "dipantau dan ditangani",
-              "CSS",
-              "route",
-              "migrasi"
+              "rails generate job Nama",
+              "digest nama berkas",
+              "memproses job penting lebih dulu"
             ],
             "a": 0,
             "explain": "Dead queue memerlukan pemantauan."
@@ -3015,10 +3015,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Scheduled job memakai",
             "options": [
-              "CSS",
+              "presenter/helper",
               "set(wait_until:) / cron",
-              "route",
-              "migrasi"
+              "memperlambat render",
+              "perilaku antar model/controller"
             ],
             "a": 1,
             "explain": "Penjadwalan job memakai opsi wait atau cron."
@@ -3027,10 +3027,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Memantau queue memakai",
             "options": [
-              "CSS",
+              "get 'posts/:id'",
               "dashboard/layanan monitoring",
-              "route",
-              "migrasi"
+              "params.require(:post).permit(:judul)",
+              "post.update(...)"
             ],
             "a": 1,
             "explain": "Dashboard mengawasi antrean."
@@ -3039,10 +3039,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Scaling horizontal aplikasi memerlukan",
             "options": [
-              "CSS",
+              "respond_to",
               "session/cache bersama",
-              "route",
-              "migrasi"
+              "db/migrate",
+              "garis bawah (_nama.html.erb)"
             ],
             "a": 1,
             "explain": "State bersama menjaga konsistensi antar instance."
@@ -3052,9 +3052,9 @@ const CONTENT_RAILS = [
             "q": "Job berantai memakai",
             "options": [
               "callback job/pipeline",
-              "CSS",
-              "route",
-              "migrasi"
+              "Pundit / CanCanCan",
+              "set(wait:)",
+              "render @posts"
             ],
             "a": 0,
             "explain": "Rangkaian job memerlukan koordinasi."
@@ -3072,8 +3072,8 @@ const CONTENT_RAILS = [
             "options": [
               "menghapus tabel dulu",
               "kompatibel dan bertahap",
-              "CSS",
-              "route"
+              "namespace :admin do ... end",
+              "tempat konten view disisipkan"
             ],
             "a": 1,
             "explain": "Migrasi bertahap menjaga tanpa downtime."
@@ -3082,10 +3082,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menyetel environment produksi memakai",
             "options": [
-              "CSS",
-              "route",
+              "form.check_box",
+              "model.errors.full_messages",
               "config/environments/production.rb",
-              "migrasi"
+              "Post.offset(20)"
             ],
             "a": 2,
             "explain": "Konfigurasi produksi berada di environment."
@@ -3094,9 +3094,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Precompile aset sebelum rilis dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "rails test",
+              "Minitest",
+              "render json: data",
               "rails assets:precompile"
             ],
             "a": 3,
@@ -3106,10 +3106,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Health check membantu",
             "options": [
-              "CSS",
+              "konfigurasi backend queue",
               "memantau kesiapan layanan",
-              "route",
-              "migrasi"
+              "rails generate authentication",
+              "resources :posts do resources :comments end"
             ],
             "a": 1,
             "explain": "Health check mendeteksi masalah."
@@ -3119,9 +3119,9 @@ const CONTENT_RAILS = [
             "q": "Rollback rilis penting untuk",
             "options": [
               "pemulihan cepat",
-              "CSS",
-              "route",
-              "migrasi"
+              "Job.perform_later",
+              "konfigurasi asset_host",
+              "defaults"
             ],
             "a": 0,
             "explain": "Rollback memulihkan versi stabil."
@@ -3130,10 +3130,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Logging terpusat membantu",
             "options": [
-              "CSS",
+              "default wajar mengurangi konfigurasi",
               "diagnosis lintas server",
-              "route",
-              "migrasi"
+              "namespace :admin do ... end",
+              "tempat konten view disisipkan"
             ],
             "a": 1,
             "explain": "Log terpusat memudahkan diagnosis."
@@ -3142,10 +3142,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Backup database penting untuk",
             "options": [
-              "CSS",
+              "group(:kategori).count",
               "pemulihan data",
-              "route",
-              "migrasi"
+              "get/patch/post",
+              "namespace /api/v1"
             ],
             "a": 1,
             "explain": "Backup melindungi data."
@@ -3154,10 +3154,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menyimpan secret di credentials memakai",
             "options": [
-              "CSS",
+              "rails assets:precompile",
               "rails credentials",
-              "route",
-              "migrasi"
+              "Rails.cache",
+              "mock/stub HTTP"
             ],
             "a": 1,
             "explain": "Rails credentials menyimpan rahasia terenkripsi."
@@ -3166,9 +3166,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Pemantauan error memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "eager_load memakai LEFT JOIN, preload query terpisah",
+              "request lintas situs",
+              "memantau kesiapan layanan",
               "layanan seperti Sentry"
             ],
             "a": 3,
@@ -3178,10 +3178,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Dokumentasi proses deploy membantu",
             "options": [
-              "CSS",
-              "route",
+              "cache block",
+              "cache block/redis",
               "konsistensi rilis",
-              "migrasi"
+              "prediktabilitas"
             ],
             "a": 2,
             "explain": "Dokumentasi menyamakan langkah rilis."
@@ -3198,8 +3198,8 @@ const CONTENT_RAILS = [
             "q": "Hotwire terdiri dari",
             "options": [
               "React dan Vue",
-              "CSS",
-              "route",
+              "development, test, production",
+              "rails generate scaffold Post",
               "Turbo dan Stimulus"
             ],
             "a": 3,
@@ -3209,10 +3209,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Turbo Frames memungkinkan",
             "options": [
-              "CSS",
+              "mengotori data development",
               "memperbarui sebagian halaman",
-              "route",
-              "migrasi"
+              "importmap atau jsbundling",
+              "dilewati bila pakai token auth"
             ],
             "a": 1,
             "explain": "Turbo Frames memperbarui fragmen."
@@ -3222,9 +3222,9 @@ const CONTENT_RAILS = [
             "q": "Turbo Streams mengirim",
             "options": [
               "pembaruan HTML via websocket/SSE",
-              "CSS",
-              "route",
-              "migrasi"
+              "importmap atau jsbundling",
+              "dilewati bila pakai token auth",
+              "opsi route umum"
             ],
             "a": 0,
             "explain": "Turbo Streams memperbarui DOM real-time."
@@ -3233,9 +3233,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Action Cable menangani",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "cache block/redis",
+              "prediktabilitas",
+              "menutup kerentanan",
               "websocket"
             ],
             "a": 3,
@@ -3245,10 +3245,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Solid Queue/Cache/Cable pada Rails modern",
             "options": [
-              "CSS",
-              "route",
+              "Turbo dan Stimulus",
+              "membangun query kompleks secara aman",
               "backend bawaan berbasis DB/Redis",
-              "migrasi"
+              "pengujian dan pemakaian ulang"
             ],
             "a": 2,
             "explain": "Rails modern menyertakan backend bawaan."
@@ -3257,10 +3257,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Importmap menghindari",
             "options": [
-              "CSS",
+              "rails generate scaffold Post",
               "bundler berat untuk JavaScript",
-              "route",
-              "migrasi"
+              "raw/html_safe hanya untuk konten tepercaya",
+              "has_many :through / has_and_belongs_to_many"
             ],
             "a": 1,
             "explain": "Importmap memuat modul tanpa bundling penuh."
@@ -3270,9 +3270,9 @@ const CONTENT_RAILS = [
             "q": "API-only mode dibuat dengan flag",
             "options": [
               "--no-view",
-              "CSS",
+              "perilaku",
               "--api",
-              "route"
+              "namespace :api"
             ],
             "a": 2,
             "explain": "Flag --api membuat aplikasi ringan API."
@@ -3282,9 +3282,9 @@ const CONTENT_RAILS = [
             "q": "Memilih Rails untuk",
             "options": [
               "aplikasi web full-stack cepat",
-              "CSS",
-              "route",
-              "migrasi"
+              "dilewati bila pakai token auth",
+              "opsi route umum",
+              "jumlah koneksi DB"
             ],
             "a": 0,
             "explain": "Rails unggul untuk web full-stack."
@@ -3293,10 +3293,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Konvensi membantu tim karena",
             "options": [
-              "CSS",
-              "route",
+              "before_action :authenticate_user!",
+              "langsung (sinkron)",
               "menyamakan struktur",
-              "migrasi"
+              "redirect"
             ],
             "a": 2,
             "explain": "Konvensi memudahkan kolaborasi."
@@ -3306,9 +3306,9 @@ const CONTENT_RAILS = [
             "q": "Memahami Ruby mempercepat Rails karena",
             "options": [
               "framework dibangun dengan Ruby",
-              "CSS",
-              "route",
-              "migrasi"
+              "membangun query kompleks secara aman",
+              "pengujian dan pemakaian ulang",
+              "mengelola gem dependency"
             ],
             "a": 0,
             "explain": "Pemahaman bahasa mempermudah framework."
@@ -3324,10 +3324,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Arel dipakai untuk",
             "options": [
-              "CSS",
+              "paranoia atau discard",
               "membangun query kompleks secara aman",
-              "route",
-              "migrasi"
+              "rails generate mailer Nama",
+              "perilaku JavaScript kecil"
             ],
             "a": 1,
             "explain": "Arel menyusun query programatik."
@@ -3336,10 +3336,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Lateral join/advanced join memakai",
             "options": [
-              "CSS",
+              "db/migrate",
               "joins dengan SQL/Arel",
-              "route",
-              "migrasi"
+              "garis bawah (_nama.html.erb)",
+              "form.check_box"
             ],
             "a": 1,
             "explain": "Join lanjutan memakai SQL/Arel."
@@ -3349,9 +3349,9 @@ const CONTENT_RAILS = [
             "q": "Common Table Expression memerlukan",
             "options": [
               "SQL langsung/Arel",
-              "CSS",
-              "route",
-              "migrasi"
+              "orientasi tim",
+              "background job",
+              "pemulihan data"
             ],
             "a": 0,
             "explain": "CTE membutuhkan SQL."
@@ -3360,9 +3360,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Optimistic locking memakai kolom",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "model.valid?",
+              "Post.limit(10)",
+              "belongs_to",
               "lock_version"
             ],
             "a": 3,
@@ -3372,9 +3372,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Pessimistic locking memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "API",
+              "Redis",
+              "defaults",
               "lock!"
             ],
             "a": 3,
@@ -3384,22 +3384,22 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Single-table inheritance memakai kolom",
             "options": [
-              "CSS",
+              "app/models",
               "type",
-              "route",
-              "migrasi"
+              ".html.erb",
+              "SimpleCov"
             ],
             "a": 1,
             "explain": "STI memakai kolom type."
           },
           {
             "type": "mc",
-            "q": "Polymorphic inverse_of memakai",
+            "q": "Opsi asosiasi ActiveRecord untuk mengoptimalkan relasi dua arah polimorfik di memori adalah",
             "options": [
-              "CSS",
+              "app/assets/images",
               "inverse_of",
-              "route",
-              "migrasi"
+              "brute force",
+              "constraints"
             ],
             "a": 1,
             "explain": "inverse_of menyambungkan dua sisi relasi."
@@ -3409,9 +3409,9 @@ const CONTENT_RAILS = [
             "q": "Delegated types memisahkan",
             "options": [
               "data ke tabel terpisah",
-              "CSS",
-              "route",
-              "migrasi"
+              "konten tak tepercaya",
+              "mass assignment berbahaya",
+              "kompatibel dan bertahap"
             ],
             "a": 0,
             "explain": "Delegated types memisahkan penyimpanan."
@@ -3420,10 +3420,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Composite primary key (Rails 7.1+) memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "blok resources",
+              "before_action",
               "key gabungan",
-              "migrasi"
+              "post.destroy"
             ],
             "a": 2,
             "explain": "Composite key memakai beberapa kolom."
@@ -3433,9 +3433,9 @@ const CONTENT_RAILS = [
             "q": "Mengukur query dengan",
             "options": [
               "ActiveSupport::Notifications",
-              "CSS",
-              "route",
-              "migrasi"
+              "konfigurasi backend",
+              "namespace :api",
+              "cache block"
             ],
             "a": 0,
             "explain": "Notifications mengukur durasi query."
@@ -3451,10 +3451,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Fragment caching menyimpan",
             "options": [
-              "CSS",
-              "route",
+              "pekerjaan berat",
+              "credentials",
               "bagian view",
-              "migrasi"
+              "konsistensi skema"
             ],
             "a": 2,
             "explain": "Fragment caching menyimpan potongan view."
@@ -3463,10 +3463,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Cache store populer adalah",
             "options": [
-              "CSS",
+              "optional: true",
               "Redis/Memcached",
-              "route",
-              "migrasi"
+              "average(:nilai)",
+              "assert_response :success"
             ],
             "a": 1,
             "explain": "Redis/Memcached sebagai cache store."
@@ -3475,9 +3475,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Cache expiration memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "konsistensi rilis",
+              "lock!",
+              "Net::HTTP atau Faraday",
               "expires_in"
             ],
             "a": 3,
@@ -3487,10 +3487,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Cache key berbasis model memakai",
             "options": [
-              "CSS",
+              "otomatis disertakan",
               "cache [model, ...]",
-              "route",
-              "migrasi"
+              "if: / unless:",
+              "ActiveRecord::RecordNotFound"
             ],
             "a": 1,
             "explain": "Cache key model otomatis diperbarui saat berubah."
@@ -3500,9 +3500,9 @@ const CONTENT_RAILS = [
             "q": "Russian doll caching berarti",
             "options": [
               "cache bersarang",
-              "CSS",
-              "route",
-              "migrasi"
+              "query kompleks",
+              "credentials/secret manager",
+              "dashboard/layanan monitoring"
             ],
             "a": 0,
             "explain": "Cache bersarang memanfaatkan fragmen."
@@ -3511,9 +3511,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Low-level caching memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Post.order(created_at: :desc)",
+              ".html.erb",
+              "form_with model: @post",
               "Rails.cache"
             ],
             "a": 3,
@@ -3523,10 +3523,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "ETag/conditional GET membantu",
             "options": [
-              "CSS",
+              "framework dibangun dengan Ruby",
               "revalidasi respons cache",
-              "route",
-              "migrasi"
+              "logika bisnis di model/service",
+              "default wajar mengurangi konfigurasi"
             ],
             "a": 1,
             "explain": "ETag mendukung cache HTTP."
@@ -3535,10 +3535,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menghindari N+1 termasuk",
             "options": [
-              "CSS",
-              "route",
+              "resource :profil",
+              "redirect_to path",
               "performa penting",
-              "migrasi"
+              "Post.create(...)"
             ],
             "a": 2,
             "explain": "Eager loading menghindari N+1."
@@ -3548,9 +3548,9 @@ const CONTENT_RAILS = [
             "q": "Mengukur performa dengan",
             "options": [
               "profiler/APM",
-              "CSS",
-              "route",
-              "migrasi"
+              "Devise",
+              "secara asinkron",
+              "mount"
             ],
             "a": 0,
             "explain": "APM melacak performa."
@@ -3560,9 +3560,9 @@ const CONTENT_RAILS = [
             "q": "Background job memindahkan",
             "options": [
               "pekerjaan berat",
-              "CSS",
-              "route",
-              "migrasi"
+              "keterbacaan",
+              "app/views",
+              "root 'home#index'"
             ],
             "a": 0,
             "explain": "Job memindahkan beban dari request."
@@ -3578,10 +3578,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "HTTP request keluar memakai",
             "options": [
-              "CSS",
+              "Redis/Memcached",
               "Net::HTTP atau Faraday",
-              "route",
-              "migrasi"
+              "pekerjaan berat",
+              "credentials"
             ],
             "a": 1,
             "explain": "Library HTTP menangani request keluar."
@@ -3591,9 +3591,9 @@ const CONTENT_RAILS = [
             "q": "Verifikasi webhook masuk memakai",
             "options": [
               "signature/token",
-              "CSS",
-              "route",
-              "migrasi"
+              "test/models",
+              "resource dibuat",
+              "Sidekiq"
             ],
             "a": 0,
             "explain": "Verifikasi memastikan sumber sah."
@@ -3603,9 +3603,9 @@ const CONTENT_RAILS = [
             "q": "Menerima webhook sebaiknya memproses",
             "options": [
               "secara async",
-              "CSS",
-              "route",
-              "migrasi"
+              "set(wait_until:) / cron",
+              "konsistensi rilis",
+              "lock!"
             ],
             "a": 0,
             "explain": "Proses async mencegah timeout."
@@ -3614,10 +3614,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Mengulang request gagal memakai",
             "options": [
-              "CSS",
+              "diagnosis lintas server",
               "retry dengan backoff",
-              "route",
-              "migrasi"
+              "aplikasi web full-stack cepat",
+              "penanganan idempoten dan verifikasi"
             ],
             "a": 1,
             "explain": "Retry dengan jeda."
@@ -3626,10 +3626,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Storing event untuk audit memakai",
             "options": [
-              "CSS",
+              "format: { with: /.../ }",
               "tabel event log",
-              "route",
-              "migrasi"
+              "where(\"x = ?\", val)",
+              "rails generate job Nama"
             ],
             "a": 1,
             "explain": "Event log menyimpan riwayat."
@@ -3638,9 +3638,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Integrasi pembayaran perlu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "rails server (rails s)",
+              "URL ke action controller",
+              "rails generate migration Nama",
               "penanganan idempoten dan verifikasi"
             ],
             "a": 3,
@@ -3650,10 +3650,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menguji integrasi memakai",
             "options": [
-              "CSS",
-              "route",
+              "performa",
+              "Active Record",
               "mock/stub HTTP",
-              "migrasi"
+              "config/routes.rb"
             ],
             "a": 2,
             "explain": "Mock HTTP menghindari panggilan nyata pada test."
@@ -3662,10 +3662,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menangani timeout penting untuk",
             "options": [
-              "CSS",
+              "Pundit / CanCanCan",
               "keandalan",
-              "route",
-              "migrasi"
+              "set(wait:)",
+              "render @posts"
             ],
             "a": 1,
             "explain": "Timeout mencegah request menggantung."
@@ -3674,10 +3674,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Rate limit API eksternal memerlukan",
             "options": [
-              "CSS",
-              "route",
+              "namespace /api/v1",
+              "config/application.rb / config/queue.yml",
               "throttling/backoff",
-              "migrasi"
+              "secara asinkron"
             ],
             "a": 2,
             "explain": "Backoff menghormati limit pihak ketiga."
@@ -3686,10 +3686,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Rahasia API disimpan di",
             "options": [
-              "CSS",
+              "app/controllers",
               "credentials",
-              "route",
-              "migrasi"
+              "resource :profil",
+              "redirect_to path"
             ],
             "a": 1,
             "explain": "Credentials menyimpan rahasia."
@@ -3705,10 +3705,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Thin controller berarti",
             "options": [
-              "CSS",
-              "route",
+              "memantau kesiapan layanan",
+              "bundler berat untuk JavaScript",
               "logika bisnis di model/service",
-              "migrasi"
+              "tabel event log"
             ],
             "a": 2,
             "explain": "Controller tipis memindahkan logika."
@@ -3718,9 +3718,9 @@ const CONTENT_RAILS = [
             "q": "Validasi kompleks dipindah ke",
             "options": [
               "form object/service",
-              "CSS",
-              "route",
-              "migrasi"
+              "redirect",
+              "presenter/helper",
+              "memperlambat render"
             ],
             "a": 0,
             "explain": "Form object memusatkan validasi."
@@ -3729,10 +3729,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Menghindari callback berlebih membantu",
             "options": [
-              "CSS",
+              "add_column",
               "keterbacaan",
-              "route",
-              "migrasi"
+              "<% kode %>",
+              "form.submit"
             ],
             "a": 1,
             "explain": "Callback berlebih menyulitkan."
@@ -3741,9 +3741,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Nama method deskriptif membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pengelompokan domain",
+              "konfigurasi Rails/initializer",
+              "callback job/pipeline",
               "pemeliharaan"
             ],
             "a": 3,
@@ -3753,10 +3753,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Test perilaku lebih stabil dari",
             "options": [
-              "CSS",
-              "route",
+              "ActiveSupport::Notifications",
+              "performa penting",
               "test implementasi",
-              "migrasi"
+              "keandalan"
             ],
             "a": 2,
             "explain": "Perilaku jarang berubah dibanding implementasi."
@@ -3765,9 +3765,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "RuboCop menjaga",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "find_or_create_by",
+              "ActionController::API",
+              "rack-cors",
               "konsistensi gaya"
             ],
             "a": 3,
@@ -3777,9 +3777,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Membatasi query di view memperbaiki",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "test implementasi",
+              "app",
+              "ERB",
               "performa"
             ],
             "a": 3,
@@ -3789,9 +3789,9 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Dokumentasi migration penting untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "config/environments",
+              "cookie terenkripsi",
+              "konfigurasi backend",
               "konsistensi skema"
             ],
             "a": 3,
@@ -3801,10 +3801,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Pemisahan domain membantu",
             "options": [
-              "CSS",
+              "format: { with: /.../ }",
               "pengujian dan pemakaian ulang",
-              "route",
-              "migrasi"
+              "where(\"x = ?\", val)",
+              "rails generate job Nama"
             ],
             "a": 1,
             "explain": "Domain terpisah mudah diuji."
@@ -3813,10 +3813,10 @@ const CONTENT_RAILS = [
             "type": "mc",
             "q": "Refactor bertahap lebih aman dari",
             "options": [
-              "CSS",
-              "route",
+              "penanganan idempoten dan verifikasi",
+              "rails server (rails s)",
               "perubahan besar sekaligus",
-              "migrasi"
+              "URL ke action controller"
             ],
             "a": 2,
             "explain": "Perubahan bertahap mudah diverifikasi."

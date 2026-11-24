@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_C = [
-{
+  {
     "id": "c",
     "name": "C",
     "icon": "🔧",
@@ -23,8 +23,8 @@ const CONTENT_C = [
             "q": "C adalah bahasa",
             "options": [
               "interpreted",
-              "CSS",
-              "route",
+              "pemakaian sebelum definisi",
+              "ukuran member tertentu",
               "compiled dan prosedural"
             ],
             "a": 3,
@@ -61,7 +61,7 @@ const CONTENT_C = [
               "gcc/clang",
               "javac",
               "node",
-              "CSS"
+              "atomic/C11"
             ],
             "a": 0,
             "explain": "Compiler C seperti gcc."
@@ -72,8 +72,8 @@ const CONTENT_C = [
             "options": [
               "<iostream>",
               "<stdio.h>",
-              "CSS",
-              "route"
+              "switch/case",
+              "scanf"
             ],
             "a": 1,
             "explain": "stdio.h menyediakan IO."
@@ -85,7 +85,7 @@ const CONTENT_C = [
               "func main()",
               "int main(void)",
               "def main()",
-              "CSS"
+              "tanpa type-check"
             ],
             "a": 1,
             "explain": "C memakai int main."
@@ -97,7 +97,7 @@ const CONTENT_C = [
               "printf()",
               "echo()",
               "print()",
-              "CSS"
+              "newline otomatis"
             ],
             "a": 0,
             "explain": "C memakai printf."
@@ -107,9 +107,9 @@ const CONTENT_C = [
             "q": "Mengakhiri statement memakai",
             "options": [
               ".",
-              "CSS",
+              ".h",
               ";",
-              "route"
+              "%f"
             ],
             "a": 2,
             "explain": "C memakai titik koma."
@@ -118,10 +118,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "C dikenal karena",
             "options": [
-              "CSS",
+              "data dan pointer next",
               "kontrol memori dan performa",
-              "route",
-              "migrasi"
+              "urutan lock konsisten",
+              "input jadi format"
             ],
             "a": 1,
             "explain": "C dekat ke hardware."
@@ -132,8 +132,8 @@ const CONTENT_C = [
             "options": [
               "#",
               "// dan /* */",
-              "CSS",
-              "route"
+              "prev dan next",
+              "alternatif include guard"
             ],
             "a": 1,
             "explain": "C mendukung dua gaya komentar."
@@ -152,7 +152,7 @@ const CONTENT_C = [
               "Integer",
               "int",
               "long only",
-              "CSS"
+              "fwrite"
             ],
             "a": 1,
             "explain": "C memakai int."
@@ -164,7 +164,7 @@ const CONTENT_C = [
               "string",
               "Str",
               "char",
-              "CSS"
+              "%f"
             ],
             "a": 2,
             "explain": "C memakai char."
@@ -175,7 +175,7 @@ const CONTENT_C = [
             "options": [
               "decimal",
               "real",
-              "CSS",
+              "menginisialisasi nol",
               "float/double"
             ],
             "a": 3,
@@ -186,8 +186,8 @@ const CONTENT_C = [
             "q": "Tipe boolean memakai",
             "options": [
               "bool native selalu",
-              "CSS",
-              "route",
+              "pointer next",
+              "disarankan",
               "int / <stdbool.h>"
             ],
             "a": 3,
@@ -200,7 +200,7 @@ const CONTENT_C = [
               "tipe nama;",
               "var nama",
               "let nama",
-              "CSS"
+              "|= (1<<n)"
             ],
             "a": 0,
             "explain": "C memakai tipe eksplisit."
@@ -212,7 +212,7 @@ const CONTENT_C = [
               "final",
               "const atau #define",
               "val",
-              "CSS"
+              "break agar tidak fallthrough"
             ],
             "a": 1,
             "explain": "C memakai const/#define."
@@ -223,8 +223,8 @@ const CONTENT_C = [
             "options": [
               "size()",
               "sizeof",
-              "CSS",
-              "route"
+              "untuk optimasi",
+              "socket()"
             ],
             "a": 1,
             "explain": "sizeof mengukur byte."
@@ -236,7 +236,7 @@ const CONTENT_C = [
               "%d",
               "%s",
               "%f",
-              "CSS"
+              "UB"
             ],
             "a": 0,
             "explain": "%d untuk int."
@@ -248,7 +248,7 @@ const CONTENT_C = [
               "%s",
               "%d",
               "%c",
-              "CSS"
+              "++"
             ],
             "a": 0,
             "explain": "%s untuk string."
@@ -260,7 +260,7 @@ const CONTENT_C = [
               "%f",
               "%d",
               "%s",
-              "CSS"
+              "build"
             ],
             "a": 0,
             "explain": "%f untuk float/double."
@@ -279,7 +279,7 @@ const CONTENT_C = [
               "/",
               "mod",
               "%",
-              "CSS"
+              ";"
             ],
             "a": 2,
             "explain": "C memakai %."
@@ -290,8 +290,8 @@ const CONTENT_C = [
             "options": [
               "++",
               "+=1 only",
-              "CSS",
-              "route"
+              "dicek",
+              "%"
             ],
             "a": 0,
             "explain": "C memakai ++."
@@ -302,8 +302,8 @@ const CONTENT_C = [
             "options": [
               "and or not",
               "&& || !",
-              "CSS",
-              "route"
+              "tidak menunjuk apa pun",
+              "kode error terakhir"
             ],
             "a": 1,
             "explain": "C memakai && || !."
@@ -314,8 +314,8 @@ const CONTENT_C = [
             "options": [
               "== != < >",
               "===",
-              "CSS",
-              "route"
+              "struct Nama { ... };",
+              "build system generator"
             ],
             "a": 0,
             "explain": "C memakai ==."
@@ -324,10 +324,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Bitwise memakai",
             "options": [
-              "CSS",
-              "route",
+              "prev dan next",
+              "alternatif include guard",
               "& | ^ ~",
-              "migrasi"
+              "struct + pointer"
             ],
             "a": 2,
             "explain": "C mendukung bitwise."
@@ -336,10 +336,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Shift memakai",
             "options": [
-              "CSS",
-              "route",
+              "dianjurkan",
+              "mikrokontroler",
               "<< >>",
-              "migrasi"
+              "server"
             ],
             "a": 2,
             "explain": "Shift bit."
@@ -349,9 +349,9 @@ const CONTENT_C = [
             "q": "Ternary memakai",
             "options": [
               "if()",
-              "CSS",
+              "di loop",
               "? :",
-              "route"
+              "UB"
             ],
             "a": 2,
             "explain": "C memakai ?:."
@@ -361,9 +361,9 @@ const CONTENT_C = [
             "q": "Assignment majemuk memakai",
             "options": [
               "+= -= *=",
-              "CSS",
-              "route",
-              "migrasi"
+              "data dan pointer next",
+              "urutan lock konsisten",
+              "input jadi format"
             ],
             "a": 0,
             "explain": "C mendukung +=."
@@ -372,9 +372,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Operator sizeof menghasilkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "alias tipe",
+              "hati-hati free",
+              "status fungsi",
               "ukuran byte"
             ],
             "a": 3,
@@ -384,10 +384,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Cast eksplisit memakai",
             "options": [
-              "CSS",
-              "route",
+              "program proses",
+              "-O2/-O3",
               "(tipe) nilai",
-              "migrasi"
+              "realloc"
             ],
             "a": 2,
             "explain": "C memakai cast."
@@ -404,8 +404,8 @@ const CONTENT_C = [
             "q": "Percabangan memakai",
             "options": [
               "if/elif",
-              "CSS",
-              "route",
+              "pthread",
+              "ya (promotion)",
               "if/else if/else"
             ],
             "a": 3,
@@ -416,8 +416,8 @@ const CONTENT_C = [
             "q": "Switch memakai",
             "options": [
               "when",
-              "CSS",
-              "route",
+              "padding/alignment",
+              "tipe (*nama)(params)",
               "switch/case"
             ],
             "a": 3,
@@ -427,10 +427,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "case butuh",
             "options": [
-              "CSS",
+              "input jadi format",
               "break agar tidak fallthrough",
-              "route",
-              "migrasi"
+              "Dereference dapat menghasilkan undefined behavior",
+              "& | ^ ~"
             ],
             "a": 1,
             "explain": "break mencegah fallthrough."
@@ -440,8 +440,8 @@ const CONTENT_C = [
             "q": "Perulangan for memakai",
             "options": [
               "for x in",
-              "CSS",
-              "route",
+              "data antar proses",
+              "Dilepas dengan `free` saat tidak dipakai lagi",
               "for (init; cond; step)"
             ],
             "a": 3,
@@ -451,10 +451,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "while mengulang selama",
             "options": [
-              "CSS",
+              "newline otomatis",
               "kondisi benar",
-              "route",
-              "migrasi"
+              "ke string",
+              "strcmp"
             ],
             "a": 1,
             "explain": "While bergantung kondisi."
@@ -464,9 +464,9 @@ const CONTENT_C = [
             "q": "do-while menjalankan",
             "options": [
               "minimal sekali",
-              "CSS",
-              "route",
-              "migrasi"
+              "_Thread_local",
+              "tanpa type-check",
+              "isalpha/toupper"
             ],
             "a": 0,
             "explain": "Minimal sekali."
@@ -476,9 +476,9 @@ const CONTENT_C = [
             "q": "break/continue berlaku",
             "options": [
               "di loop",
-              "CSS",
-              "route",
-              "migrasi"
+              "konversi sempit",
+              "strcat",
+              "alamat fungsi"
             ],
             "a": 0,
             "explain": "Mengatur loop."
@@ -487,10 +487,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "goto ada tetapi",
             "options": [
-              "CSS",
-              "route",
+              "makro aman",
+              "kesalahan memori",
               "sebaiknya dihindari",
-              "migrasi"
+              "debugging/link"
             ],
             "a": 2,
             "explain": "Hindari goto."
@@ -500,9 +500,9 @@ const CONTENT_C = [
             "q": "Loop tak hingga memakai",
             "options": [
               "while(1) / for(;;)",
-              "CSS",
-              "route",
-              "migrasi"
+              "dipakai",
+              "ketergantungan struct",
+              "compare function"
             ],
             "a": 0,
             "explain": "Loop tak hingga."
@@ -514,7 +514,7 @@ const CONTENT_C = [
               "true",
               "undefined",
               "false",
-              "CSS"
+              "-Wall -Wextra"
             ],
             "a": 2,
             "explain": "C menganggap 0 false."
@@ -533,7 +533,7 @@ const CONTENT_C = [
               "input()",
               "scanf",
               "gets only",
-              "CSS"
+              "sqrt/pow"
             ],
             "a": 1,
             "explain": "scanf membaca."
@@ -543,9 +543,9 @@ const CONTENT_C = [
             "q": "Format scanf int memakai",
             "options": [
               "%s",
-              "CSS",
+              "false",
               "%d",
-              "route"
+              "void"
             ],
             "a": 2,
             "explain": "%d untuk int."
@@ -556,8 +556,8 @@ const CONTENT_C = [
             "options": [
               "%s",
               "%d",
-              "CSS",
-              "route"
+              ";",
+              "ya"
             ],
             "a": 0,
             "explain": "%s untuk string."
@@ -566,10 +566,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "printf tidak menambah",
             "options": [
-              "CSS",
-              "route",
+              "strcpy/strncpy",
+              "nilai (by value)",
               "newline otomatis",
-              "migrasi"
+              "bersama"
             ],
             "a": 2,
             "explain": "Tambahkan \\n manual."
@@ -579,9 +579,9 @@ const CONTENT_C = [
             "q": "Mencetak ke stderr memakai",
             "options": [
               "fprintf(stderr, ...)",
-              "CSS",
-              "route",
-              "migrasi"
+              "status fungsi",
+              "malloc/calloc",
+              "pthread_mutex"
             ],
             "a": 0,
             "explain": "fprintf stderr."
@@ -590,9 +590,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "putchar mencetak",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "realloc",
+              "ukuran byte",
+              "sebaiknya dihindari",
               "satu karakter"
             ],
             "a": 3,
@@ -602,10 +602,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "getchar membaca",
             "options": [
-              "CSS",
+              "sinkronisasi",
               "satu karakter",
-              "route",
-              "migrasi"
+              "\"rb\"/\"wb\"",
+              "#ifndef/#define/#endif"
             ],
             "a": 1,
             "explain": "getchar karakter."
@@ -614,10 +614,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "scanf mengembalikan",
             "options": [
-              "CSS",
-              "route",
+              "optimasi lintas modul",
+              "node + pointer",
               "jumlah item terbaca",
-              "migrasi"
+              "// dan /* */"
             ],
             "a": 2,
             "explain": "Cek kembalian scanf."
@@ -627,8 +627,8 @@ const CONTENT_C = [
             "q": "Buffer input penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "dicek",
+              "%",
               "ya"
             ],
             "a": 3,
@@ -638,10 +638,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "fflush(stdout) memaksa",
             "options": [
-              "CSS",
+              "deteksi kebocoran",
               "flush output",
-              "route",
-              "migrasi"
+              "_Thread_local",
+              "tanpa type-check"
             ],
             "a": 1,
             "explain": "Flush output."
@@ -658,8 +658,8 @@ const CONTENT_C = [
             "q": "Konversi int ke float otomatis",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "while(1) / for(;;)",
+              "flush output",
               "ya (promotion)"
             ],
             "a": 3,
@@ -670,8 +670,8 @@ const CONTENT_C = [
             "q": "Cast eksplisit memakai",
             "options": [
               "cast(x)",
-              "CSS",
-              "route",
+              "#ifndef/#define/#endif",
+              "strlen/strcpy",
               "(float)x"
             ],
             "a": 3,
@@ -681,9 +681,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "atoi mengubah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "& | ^ ~",
+              "alamat elemen pertama",
+              ". (atau -> untuk pointer)",
               "string ke int"
             ],
             "a": 3,
@@ -693,10 +693,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "atof mengubah",
             "options": [
-              "CSS",
+              "== != < >",
               "string ke float",
-              "route",
-              "migrasi"
+              "struct Nama { ... };",
+              "build system generator"
             ],
             "a": 1,
             "explain": "atof konversi."
@@ -705,9 +705,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "sprintf memformat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "bersama",
+              "edge case",
+              "pesan error",
               "ke string"
             ],
             "a": 3,
@@ -718,9 +718,9 @@ const CONTENT_C = [
             "q": "Truncation terjadi saat",
             "options": [
               "konversi sempit",
-              "CSS",
-              "route",
-              "migrasi"
+              "handler khusus",
+              "transfer data",
+              "^= (1<<n)"
             ],
             "a": 0,
             "explain": "Konversi menyempit."
@@ -729,10 +729,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Integer overflow memicu",
             "options": [
-              "CSS",
-              "route",
+              "void",
+              "&",
               "UB",
-              "migrasi"
+              "++"
             ],
             "a": 2,
             "explain": "Overflow UB."
@@ -741,10 +741,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "sizeof memberi",
             "options": [
-              "CSS",
-              "route",
+              "volatile pointer",
+              "client",
               "ukuran byte",
-              "migrasi"
+              "&= ~(1<<n)"
             ],
             "a": 2,
             "explain": "sizeof byte."
@@ -754,9 +754,9 @@ const CONTENT_C = [
             "q": "Cek konversi penting",
             "options": [
               "tidak",
-              "CSS",
+              "++",
               "ya",
-              "route"
+              "..."
             ],
             "a": 2,
             "explain": "Validasi konversi."
@@ -767,8 +767,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "fgets",
+              "build"
             ],
             "a": 1,
             "explain": "strtol deteksi error."
@@ -785,9 +785,9 @@ const CONTENT_C = [
             "q": "Array dideklarasikan memakai",
             "options": [
               "int[] arr",
-              "CSS",
+              "makro terdefinisi",
               "int arr[10];",
-              "route"
+              "sqrt/pow"
             ],
             "a": 2,
             "explain": "C memakai [ukuran]."
@@ -798,8 +798,8 @@ const CONTENT_C = [
             "options": [
               "0",
               "1",
-              "CSS",
-              "route"
+              "&",
+              "++"
             ],
             "a": 0,
             "explain": "C memakai index 0."
@@ -809,9 +809,9 @@ const CONTENT_C = [
             "q": "Nama array merujuk",
             "options": [
               "alamat elemen pertama",
-              "CSS",
-              "route",
-              "migrasi"
+              ". (atau -> untuk pointer)",
+              "objek ke program",
+              "perilaku tak terdefinisi"
             ],
             "a": 0,
             "explain": "Array meluruh jadi pointer."
@@ -820,10 +820,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "String C adalah",
             "options": [
-              "CSS",
+              "pointer ke struct",
               "array char dengan null terminator",
-              "route",
-              "migrasi"
+              "free tidak dipanggil",
+              "API sistem Unix"
             ],
             "a": 1,
             "explain": "String C diakhiri \\0."
@@ -833,9 +833,9 @@ const CONTENT_C = [
             "q": "Panjang string memakai",
             "options": [
               ".length",
-              "CSS",
+              "status fungsi",
               "strlen()",
-              "route"
+              "malloc/calloc"
             ],
             "a": 2,
             "explain": "strlen menghitung."
@@ -844,10 +844,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Menyalin string memakai",
             "options": [
-              "CSS",
-              "route",
+              "realloc",
+              "ukuran byte",
               "strcpy/strncpy",
-              "migrasi"
+              "sebaiknya dihindari"
             ],
             "a": 2,
             "explain": "strcpy menyalin."
@@ -858,8 +858,8 @@ const CONTENT_C = [
             "options": [
               "strcmp",
               "==",
-              "CSS",
-              "route"
+              "pointer next",
+              "disarankan"
             ],
             "a": 0,
             "explain": "strcmp membandingkan isi."
@@ -868,9 +868,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Menggabungkan string memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "proses baru",
+              "perf/gprof",
+              "FIFO",
               "strcat"
             ],
             "a": 3,
@@ -881,9 +881,9 @@ const CONTENT_C = [
             "q": "Membaca baris memakai",
             "options": [
               "gets (tidak aman)",
-              "CSS",
+              "dicek",
               "fgets",
-              "route"
+              "gcc/clang"
             ],
             "a": 2,
             "explain": "fgets lebih aman."
@@ -892,10 +892,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Array 2D memakai",
             "options": [
-              "CSS",
+              "deteksi kebocoran",
               "int m[2][2]",
-              "route",
-              "migrasi"
+              "_Thread_local",
+              "feof"
             ],
             "a": 1,
             "explain": "C memakai dua kurung."
@@ -914,7 +914,7 @@ const CONTENT_C = [
               "tipe nama(params)",
               "function nama",
               "def nama",
-              "CSS"
+              "disarankan"
             ],
             "a": 0,
             "explain": "C memakai tipe balik."
@@ -923,10 +923,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Deklarasi fungsi (prototype) memungkinkan",
             "options": [
-              "CSS",
+              "// dan /* */",
               "pemakaian sebelum definisi",
-              "route",
-              "migrasi"
+              "for (init; cond; step)",
+              "mengubah nilai asli"
             ],
             "a": 1,
             "explain": "Prototype deklarasi."
@@ -936,9 +936,9 @@ const CONTENT_C = [
             "q": "Fungsi tanpa nilai balik memakai",
             "options": [
               "null",
-              "CSS",
+              "socket()",
               "void",
-              "route"
+              "perawatan"
             ],
             "a": 2,
             "explain": "C memakai void."
@@ -949,8 +949,8 @@ const CONTENT_C = [
             "options": [
               "nilai (by value)",
               "referensi otomatis",
-              "CSS",
-              "route"
+              "printf()",
+              "sizeof"
             ],
             "a": 0,
             "explain": "C default by value."
@@ -959,9 +959,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Mengirim pointer memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Dereference dapat menghasilkan undefined behavior",
+              "& | ^ ~",
+              "alamat elemen pertama",
               "mengubah nilai asli"
             ],
             "a": 3,
@@ -971,10 +971,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Fungsi variadic memakai",
             "options": [
-              "CSS",
+              "JTAG/SWD",
               "...",
-              "route",
-              "migrasi"
+              "dicek",
+              "scanf"
             ],
             "a": 1,
             "explain": "C mendukung variadic."
@@ -984,9 +984,9 @@ const CONTENT_C = [
             "q": "Rekursi memungkinkan",
             "options": [
               "fungsi memanggil dirinya",
-              "CSS",
-              "route",
-              "migrasi"
+              "kontrol memori dan performa",
+              "break agar tidak fallthrough",
+              "pemakaian sebelum definisi"
             ],
             "a": 0,
             "explain": "Rekursi dukung."
@@ -996,9 +996,9 @@ const CONTENT_C = [
             "q": "Nama fungsi merujuk",
             "options": [
               "alamat fungsi",
-              "CSS",
-              "route",
-              "migrasi"
+              "socket()",
+              "perawatan",
+              "memori"
             ],
             "a": 0,
             "explain": "Fungsi punya alamat."
@@ -1007,10 +1007,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Fungsi harus dideklarasikan sebelum",
             "options": [
-              "CSS",
+              "handler khusus",
               "dipakai",
-              "route",
-              "migrasi"
+              "transfer data",
+              "^= (1<<n)"
             ],
             "a": 1,
             "explain": "Prototype diperlukan."
@@ -1020,9 +1020,9 @@ const CONTENT_C = [
             "q": "Header untuk fungsi adalah",
             "options": [
               "deklarasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "strlen()",
+              "void",
+              "alias tipe"
             ],
             "a": 0,
             "explain": "Header berisi deklarasi."
@@ -1040,8 +1040,8 @@ const CONTENT_C = [
             "options": [
               "alamat memori",
               "nilai",
-              "CSS",
-              "route"
+              "fread",
+              "makro terdefinisi"
             ],
             "a": 0,
             "explain": "Pointer menyimpan alamat."
@@ -1053,7 +1053,7 @@ const CONTENT_C = [
               "*",
               "->",
               "&",
-              "CSS"
+              "++"
             ],
             "a": 2,
             "explain": "Operator & mengambil alamat."
@@ -1065,7 +1065,7 @@ const CONTENT_C = [
               "&",
               "->",
               "*",
-              "CSS"
+              ";"
             ],
             "a": 2,
             "explain": "Operator * mengakses nilai."
@@ -1076,8 +1076,8 @@ const CONTENT_C = [
             "options": [
               "int *p",
               "int &p",
-              "CSS",
-              "route"
+              "(float)x",
+              "strcpy/strncpy"
             ],
             "a": 0,
             "explain": "C memakai int *."
@@ -1086,10 +1086,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Pointer NULL menandakan",
             "options": [
-              "CSS",
-              "route",
+              "for (init; cond; step)",
+              "mengubah nilai asli",
               "tidak menunjuk apa pun",
-              "migrasi"
+              "data dan pointer next"
             ],
             "a": 2,
             "explain": "NULL pointer kosong."
@@ -1098,9 +1098,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Pointer aritmetika memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "int *p",
+              "padding/alignment",
+              "tipe (*nama)(params)",
               "navigasi array"
             ],
             "a": 3,
@@ -1112,8 +1112,8 @@ const CONTENT_C = [
             "options": [
               "int &&",
               "int **",
-              "CSS",
-              "route"
+              "banyak socket",
+              "flag efisien"
             ],
             "a": 1,
             "explain": "C memakai **."
@@ -1122,9 +1122,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Pointer fungsi memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "nilai (salinan)",
+              "definisi",
+              "ukuran alokasi",
               "callback"
             ],
             "a": 3,
@@ -1134,10 +1134,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Dereference pointer invalid menyebabkan",
             "options": [
-              "CSS",
+              "int arr[10];",
               "undefined behavior",
-              "route",
-              "migrasi"
+              "int m[2][2]",
+              "deklarasi"
             ],
             "a": 1,
             "explain": "Perilaku tak terdefinisi."
@@ -1148,8 +1148,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "LIFO",
+              "<< >>"
             ],
             "a": 0,
             "explain": "Inisialisasi penting."
@@ -1166,8 +1166,8 @@ const CONTENT_C = [
             "q": "Struct didefinisikan memakai",
             "options": [
               "class Nama",
-              "CSS",
-              "route",
+              "Alamat suatu objek atau fungsi",
+              "const atau #define",
               "struct Nama { ... };"
             ],
             "a": 3,
@@ -1177,10 +1177,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Mengakses member memakai",
             "options": [
-              "CSS",
+              "Mengambil alamat value",
               ". (atau -> untuk pointer)",
-              "route",
-              "migrasi"
+              "&& || !",
+              "string ke int"
             ],
             "a": 1,
             "explain": "Dot/arrow mengakses."
@@ -1189,10 +1189,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Arrow (->) dipakai untuk",
             "options": [
-              "CSS",
+              "array + hash",
               "pointer ke struct",
-              "route",
-              "migrasi"
+              "kontrol memori dan performa",
+              "break agar tidak fallthrough"
             ],
             "a": 1,
             "explain": "Arrow untuk pointer."
@@ -1201,9 +1201,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "typedef membuat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "penjadwalan",
+              "banyak socket",
+              "flag efisien",
               "alias tipe"
             ],
             "a": 3,
@@ -1214,8 +1214,8 @@ const CONTENT_C = [
             "q": "Union memakai memori",
             "options": [
               "terpisah",
-              "CSS",
-              "route",
+              "pthread_create",
+              "fopen",
               "bersama"
             ],
             "a": 3,
@@ -1226,8 +1226,8 @@ const CONTENT_C = [
             "q": "Struct dapat bersarang",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "<< >>",
+              ";",
               "ya"
             ],
             "a": 3,
@@ -1237,10 +1237,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Ukuran struct memengaruhi",
             "options": [
-              "CSS",
-              "route",
+              "compare function",
+              "deteksi kebocoran",
               "padding/alignment",
-              "migrasi"
+              "_Thread_local"
             ],
             "a": 2,
             "explain": "Padding struct."
@@ -1249,9 +1249,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Bit-field memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Dereference dapat menghasilkan undefined behavior",
+              "& | ^ ~",
+              "alamat elemen pertama",
               "ukuran member tertentu"
             ],
             "a": 3,
@@ -1261,9 +1261,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Struct dikirim ke fungsi secara",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "(tipe) nilai",
+              "while(1) / for(;;)",
+              "flush output",
               "nilai (salinan)"
             ],
             "a": 3,
@@ -1273,10 +1273,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Forward declaration membantu",
             "options": [
-              "CSS",
+              "makro terdefinisi",
               "ketergantungan struct",
-              "route",
-              "migrasi"
+              "sqrt/pow",
+              "preprocess/compile/assemble/link"
             ],
             "a": 1,
             "explain": "Deklarasi maju."
@@ -1292,10 +1292,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Node linked list berisi",
             "options": [
-              "CSS",
-              "route",
+              "const atau #define",
+              "jumlah item terbaca",
               "data dan pointer next",
-              "migrasi"
+              "fungsi memanggil dirinya"
             ],
             "a": 2,
             "explain": "Node data+next."
@@ -1304,9 +1304,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Menambah node memerlukan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".so/.dll",
+              "pthread_join",
+              "fclose",
               "alokasi memori"
             ],
             "a": 3,
@@ -1316,10 +1316,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Traversal memakai",
             "options": [
-              "CSS",
+              "kode error",
               "pointer next",
-              "route",
-              "migrasi"
+              "int main(void)",
+              "tipe nama;"
             ],
             "a": 1,
             "explain": "Traversal next."
@@ -1330,8 +1330,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              ".a",
+              "fopen"
             ],
             "a": 1,
             "explain": "Free setelah selesai."
@@ -1340,10 +1340,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Double linked list punya",
             "options": [
-              "CSS",
-              "route",
+              "Dereference dapat menghasilkan undefined behavior",
+              "& | ^ ~",
               "prev dan next",
-              "migrasi"
+              "alamat elemen pertama"
             ],
             "a": 2,
             "explain": "Double list."
@@ -1352,10 +1352,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Cyclic structure perlu",
             "options": [
-              "CSS",
-              "route",
+              "dipakai",
+              "int **",
               "hati-hati free",
-              "migrasi"
+              "ketergantungan struct"
             ],
             "a": 2,
             "explain": "Hindari loop free."
@@ -1364,10 +1364,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Sentinel node memudahkan",
             "options": [
-              "CSS",
-              "route",
+              "berbeda distribusi",
+              "JTAG/SWD",
               "edge case",
-              "migrasi"
+              "skalabilitas"
             ],
             "a": 2,
             "explain": "Sentinel."
@@ -1378,8 +1378,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              ";",
+              "%d"
             ],
             "a": 1,
             "explain": "Kelola head/tail."
@@ -1389,8 +1389,8 @@ const CONTENT_C = [
             "q": "Menguji struktur penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "wajib",
+              ".h",
               "ya"
             ],
             "a": 3,
@@ -1401,8 +1401,8 @@ const CONTENT_C = [
             "q": "Dokumentasi penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "...",
+              "lock",
               "ya"
             ],
             "a": 3,
@@ -1419,9 +1419,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Pointer fungsi dideklarasikan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "navigasi array",
+              "nilai (salinan)",
+              "definisi",
               "tipe (*nama)(params)"
             ],
             "a": 3,
@@ -1431,10 +1431,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Callback memakai",
             "options": [
-              "CSS",
-              "route",
+              "urutan byte",
+              "memori/berkas",
               "pointer fungsi",
-              "migrasi"
+              "dicek"
             ],
             "a": 2,
             "explain": "Callback pointer."
@@ -1443,9 +1443,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "qsort menerima",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "deteksi kebocoran",
+              "_Thread_local",
+              "tanpa type-check",
               "compare function"
             ],
             "a": 3,
@@ -1456,9 +1456,9 @@ const CONTENT_C = [
             "q": "Function pointer dalam struct memungkinkan",
             "options": [
               "vtable",
-              "CSS",
-              "route",
-              "migrasi"
+              "deteksi",
+              "<stdio.h>",
+              "kondisi benar"
             ],
             "a": 0,
             "explain": "Vtable pola."
@@ -1469,8 +1469,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "disarankan",
-              "CSS",
-              "route"
+              "pthread_create",
+              "fopen"
             ],
             "a": 1,
             "explain": "Set NULL."
@@ -1479,10 +1479,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Typedef memudahkan",
             "options": [
-              "CSS",
+              "tipe nama;",
               "pointer fungsi",
-              "route",
-              "migrasi"
+              "<< >>",
+              "minimal sekali"
             ],
             "a": 1,
             "explain": "Typedef."
@@ -1492,8 +1492,8 @@ const CONTENT_C = [
             "q": "Callback harus divalidasi",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "dicek",
+              "%",
               "ya"
             ],
             "a": 3,
@@ -1504,8 +1504,8 @@ const CONTENT_C = [
             "q": "Kesalahan signature berbahaya",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "UB",
+              "fgets",
               "ya"
             ],
             "a": 3,
@@ -1517,8 +1517,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              ".c",
+              "int"
             ],
             "a": 1,
             "explain": "Uji callback."
@@ -1529,8 +1529,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "lock",
+              "fread"
             ],
             "a": 0,
             "explain": "Dokumentasi."
@@ -1547,8 +1547,8 @@ const CONTENT_C = [
             "q": "C tidak punya exception",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "dicek",
+              "%",
               "ya"
             ],
             "a": 3,
@@ -1558,10 +1558,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Kode balik menandakan",
             "options": [
-              "CSS",
-              "route",
+              "<< >>",
+              "minimal sekali",
               "status fungsi",
-              "migrasi"
+              "fprintf(stderr, ...)"
             ],
             "a": 2,
             "explain": "Return menandai status."
@@ -1571,9 +1571,9 @@ const CONTENT_C = [
             "q": "errno menyimpan",
             "options": [
               "kode error terakhir",
-              "CSS",
-              "route",
-              "migrasi"
+              "tidak menunjuk apa pun",
+              "object dan library",
+              "array + hash"
             ],
             "a": 0,
             "explain": "errno error."
@@ -1582,10 +1582,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "perror mencetak",
             "options": [
-              "CSS",
+              "satu karakter",
               "pesan error",
-              "route",
-              "migrasi"
+              "fgets",
+              "dipakai"
             ],
             "a": 1,
             "explain": "perror pesan."
@@ -1595,9 +1595,9 @@ const CONTENT_C = [
             "q": "Cek NULL setelah malloc penting",
             "options": [
               "tidak",
-              "CSS",
+              "build",
               "ya",
-              "route"
+              "feof"
             ],
             "a": 2,
             "explain": "Cek alokasi."
@@ -1607,9 +1607,9 @@ const CONTENT_C = [
             "q": "goto cleanup pola umum",
             "options": [
               "tidak",
-              "CSS",
+              "dicek",
               "ya",
-              "route"
+              "%"
             ],
             "a": 2,
             "explain": "Goto untuk cleanup."
@@ -1619,9 +1619,9 @@ const CONTENT_C = [
             "q": "Menghindari mengabaikan error",
             "options": [
               "tidak",
-              "CSS",
+              "fopen",
               "penting",
-              "route"
+              "open/read/write"
             ],
             "a": 2,
             "explain": "Tangani error."
@@ -1632,8 +1632,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "++",
+              "..."
             ],
             "a": 1,
             "explain": "Reset errno."
@@ -1643,8 +1643,8 @@ const CONTENT_C = [
             "q": "Uji jalur error penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              ";",
+              "%d",
               "ya"
             ],
             "a": 3,
@@ -1656,8 +1656,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "++",
+              "..."
             ],
             "a": 0,
             "explain": "Dokumentasi."
@@ -1673,10 +1673,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Header berisi",
             "options": [
-              "CSS",
-              "route",
+              "free",
+              "sinkronisasi",
               "deklarasi",
-              "migrasi"
+              "\"rb\"/\"wb\""
             ],
             "a": 2,
             "explain": "Deklarasi di header."
@@ -1686,9 +1686,9 @@ const CONTENT_C = [
             "q": "Sumber berisi",
             "options": [
               "definisi",
-              "CSS",
-              "route",
-              "migrasi"
+              "int",
+              "(tipe) nilai",
+              "while(1) / for(;;)"
             ],
             "a": 0,
             "explain": "Definisi di .c."
@@ -1698,9 +1698,9 @@ const CONTENT_C = [
             "q": "Makefile mengotomasi",
             "options": [
               "build",
-              "CSS",
-              "route",
-              "migrasi"
+              "hati-hati free",
+              "status fungsi",
+              "malloc/calloc"
             ],
             "a": 0,
             "explain": "Makefile build."
@@ -1709,9 +1709,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "CMake adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "free tidak dipanggil",
+              "API sistem Unix",
+              "Mengambil alamat value",
               "build system generator"
             ],
             "a": 3,
@@ -1734,8 +1734,8 @@ const CONTENT_C = [
             "q": "Shared library berekstensi",
             "options": [
               ".a",
-              "CSS",
-              "route",
+              "&= ~(1<<n)",
+              "proses baru",
               ".so/.dll"
             ],
             "a": 3,
@@ -1745,9 +1745,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Linking menghubungkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "data dan pointer next",
+              "urutan lock konsisten",
+              "input jadi format",
               "objek ke program"
             ],
             "a": 3,
@@ -1758,8 +1758,8 @@ const CONTENT_C = [
             "q": "Menjaga deklarasi konsisten",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "LIFO",
+              "<< >>",
               "ya"
             ],
             "a": 3,
@@ -1771,8 +1771,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "UB",
+              "fgets"
             ],
             "a": 1,
             "explain": "Include guard."
@@ -1783,8 +1783,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "++",
+              "..."
             ],
             "a": 1,
             "explain": "Dokumentasi."
@@ -1800,10 +1800,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Alokasi memori memakai",
             "options": [
-              "CSS",
-              "route",
+              "multiple definition",
+              "pengurutan",
               "malloc/calloc",
-              "migrasi"
+              "-Wall -Wextra"
             ],
             "a": 2,
             "explain": "malloc mengalokasi."
@@ -1814,8 +1814,8 @@ const CONTENT_C = [
             "options": [
               "delete",
               "free",
-              "CSS",
-              "route"
+              "<< >>",
+              "strcat"
             ],
             "a": 1,
             "explain": "C memakai free."
@@ -1824,10 +1824,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "calloc berbeda karena",
             "options": [
-              "CSS",
-              "route",
+              "open/read/write",
+              "makro aman",
               "menginisialisasi nol",
-              "migrasi"
+              "kesalahan memori"
             ],
             "a": 2,
             "explain": "calloc zero-init."
@@ -1836,9 +1836,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "realloc mengubah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "<stdio.h>",
+              "int / <stdbool.h>",
+              "kondisi benar",
               "ukuran alokasi"
             ],
             "a": 3,
@@ -1848,10 +1848,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Memory leak terjadi bila",
             "options": [
-              "CSS",
-              "route",
+              "array + hash",
+              "kontrol memori dan performa",
               "free tidak dipanggil",
-              "migrasi"
+              "break agar tidak fallthrough"
             ],
             "a": 2,
             "explain": "Lupa free."
@@ -1861,9 +1861,9 @@ const CONTENT_C = [
             "q": "Double free berbahaya",
             "options": [
               "tidak",
-              "CSS",
+              ".a",
               "ya",
-              "route"
+              "fopen"
             ],
             "a": 2,
             "explain": "Double free UB."
@@ -1874,8 +1874,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "++",
+              "..."
             ],
             "a": 1,
             "explain": "Use after free UB."
@@ -1884,10 +1884,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "malloc dapat mengembalikan",
             "options": [
-              "CSS",
-              "route",
+              "data antar proses",
+              "Dilepas dengan `free` saat tidak dipakai lagi",
               "NULL bila gagal",
-              "migrasi"
+              "== != < >"
             ],
             "a": 2,
             "explain": "Cek NULL."
@@ -1896,10 +1896,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "sizeof membantu",
             "options": [
-              "CSS",
-              "route",
+              "realloc",
+              "ukuran byte",
               "ukuran alokasi",
-              "migrasi"
+              "sebaiknya dihindari"
             ],
             "a": 2,
             "explain": "sizeof mengukur."
@@ -1909,9 +1909,9 @@ const CONTENT_C = [
             "q": "Valgrind membantu",
             "options": [
               "deteksi kebocoran",
-              "CSS",
-              "route",
-              "migrasi"
+              "status fungsi",
+              "malloc/calloc",
+              "pthread_mutex"
             ],
             "a": 0,
             "explain": "Valgrind analisis memori."
@@ -1928,9 +1928,9 @@ const CONTENT_C = [
             "q": "Thread POSIX memakai",
             "options": [
               "pthread_create",
-              "CSS",
-              "route",
-              "migrasi"
+              "float/double",
+              "switch/case",
+              "scanf"
             ],
             "a": 0,
             "explain": "pthread_create."
@@ -1940,9 +1940,9 @@ const CONTENT_C = [
             "q": "Join thread memakai",
             "options": [
               "pthread_join",
-              "CSS",
-              "route",
-              "migrasi"
+              "tanpa type-check",
+              "isalpha/toupper",
+              "kebocoran memori"
             ],
             "a": 0,
             "explain": "pthread_join."
@@ -1952,9 +1952,9 @@ const CONTENT_C = [
             "q": "Mutex memakai",
             "options": [
               "pthread_mutex",
-              "CSS",
-              "route",
-              "migrasi"
+              "kondisi benar",
+              "newline otomatis",
+              "ke string"
             ],
             "a": 0,
             "explain": "pthread_mutex."
@@ -1964,9 +1964,9 @@ const CONTENT_C = [
             "q": "Condition variable membantu",
             "options": [
               "sinkronisasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "assert",
+              "kesalahan memori",
+              "debugging/link"
             ],
             "a": 0,
             "explain": "Condvar."
@@ -1975,9 +1975,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Race condition dihindari dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "& (1<<n)",
+              "performa",
+              ".c",
               "lock"
             ],
             "a": 3,
@@ -1987,10 +1987,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Atomic operations memakai",
             "options": [
-              "CSS",
+              "tipe (*nama)(params)",
               "atomic/C11",
-              "route",
-              "migrasi"
+              "penting",
+              "menginisialisasi nol"
             ],
             "a": 1,
             "explain": "Atomics C11."
@@ -1999,10 +1999,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Deadlock dihindari",
             "options": [
-              "CSS",
+              "object dan library",
               "urutan lock konsisten",
-              "route",
-              "migrasi"
+              "array + hash",
+              "kontrol memori dan performa"
             ],
             "a": 1,
             "explain": "Urutan lock."
@@ -2013,8 +2013,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              ";",
+              "%d"
             ],
             "a": 1,
             "explain": "Testing."
@@ -2023,10 +2023,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "TLS memakai",
             "options": [
-              "CSS",
+              "preprocess/compile/assemble/link",
               "_Thread_local",
-              "route",
-              "migrasi"
+              "volatile pointer",
+              "client"
             ],
             "a": 1,
             "explain": "Thread local."
@@ -2036,9 +2036,9 @@ const CONTENT_C = [
             "q": "Dokumentasi penting",
             "options": [
               "tidak",
-              "CSS",
+              "void",
               "ya",
-              "route"
+              "&"
             ],
             "a": 2,
             "explain": "Dokumentasi."
@@ -2054,10 +2054,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Membuka berkas memakai",
             "options": [
-              "CSS",
-              "route",
+              "int **",
+              "build",
               "fopen",
-              "migrasi"
+              "_Thread_local"
             ],
             "a": 2,
             "explain": "fopen membuka."
@@ -2066,10 +2066,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Menutup berkas memakai",
             "options": [
-              "CSS",
-              "route",
+              "JTAG/SWD",
+              "skalabilitas",
               "fclose",
-              "migrasi"
+              "urutan byte"
             ],
             "a": 2,
             "explain": "fclose menutup."
@@ -2078,10 +2078,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Membaca baris memakai",
             "options": [
-              "CSS",
+              "vtable",
               "fgets",
-              "route",
-              "migrasi"
+              ".a",
+              "pthread_create"
             ],
             "a": 1,
             "explain": "fgets membaca."
@@ -2091,9 +2091,9 @@ const CONTENT_C = [
             "q": "Menulis memakai",
             "options": [
               "fprintf/fwrite",
-              "CSS",
-              "route",
-              "migrasi"
+              "memori",
+              "komunikasi jaringan",
+              "deteksi"
             ],
             "a": 0,
             "explain": "fprintf/fwrite."
@@ -2103,8 +2103,8 @@ const CONTENT_C = [
             "q": "Mode biner memakai",
             "options": [
               "\"r\"/\"w\"",
-              "CSS",
-              "route",
+              "pthread_join",
+              "fclose",
               "\"rb\"/\"wb\""
             ],
             "a": 3,
@@ -2114,10 +2114,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Membaca blok memakai",
             "options": [
-              "CSS",
+              "LIFO",
               "fread",
-              "route",
-              "migrasi"
+              "int main(void)",
+              "tipe nama;"
             ],
             "a": 1,
             "explain": "fread membaca blok."
@@ -2126,10 +2126,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Menulis blok memakai",
             "options": [
-              "CSS",
+              "makro/konstanta",
               "fwrite",
-              "route",
-              "migrasi"
+              "malloc/atoi/exit",
+              "pencarian biner"
             ],
             "a": 1,
             "explain": "fwrite menulis blok."
@@ -2138,9 +2138,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Memeriksa akhir file memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "sizeof",
+              "? :",
+              "di loop",
               "feof"
             ],
             "a": 3,
@@ -2151,8 +2151,8 @@ const CONTENT_C = [
             "q": "Error IO harus dicek",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              ".h",
+              "char",
               "ya"
             ],
             "a": 3,
@@ -2162,10 +2162,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "File descriptor (POSIX) memakai",
             "options": [
-              "CSS",
-              "route",
+              "penting",
+              "menginisialisasi nol",
               "open/read/write",
-              "migrasi"
+              "makro terdefinisi"
             ],
             "a": 2,
             "explain": "Syscall POSIX."
@@ -2181,10 +2181,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "#include menyertakan",
             "options": [
-              "CSS",
+              "assert",
               "header",
-              "route",
-              "migrasi"
+              "kesalahan memori",
+              "debugging/link"
             ],
             "a": 1,
             "explain": "#include header."
@@ -2193,10 +2193,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "#define membuat",
             "options": [
-              "CSS",
+              "konversi sempit",
               "makro/konstanta",
-              "route",
-              "migrasi"
+              "strcat",
+              "alamat fungsi"
             ],
             "a": 1,
             "explain": "#define makro."
@@ -2205,9 +2205,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Include guard memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tanpa type-check",
+              "isalpha/toupper",
+              "kebocoran memori",
               "#ifndef/#define/#endif"
             ],
             "a": 3,
@@ -2217,10 +2217,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "#ifdef memeriksa",
             "options": [
-              "CSS",
+              "kondisi benar",
               "makro terdefinisi",
-              "route",
-              "migrasi"
+              "newline otomatis",
+              "ke string"
             ],
             "a": 1,
             "explain": "#ifdef kondisional."
@@ -2229,10 +2229,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Makro fungsi memakai",
             "options": [
-              "CSS",
+              "perawatan",
               "#define F(x) ...",
-              "route",
-              "migrasi"
+              "memori",
+              "komunikasi jaringan"
             ],
             "a": 1,
             "explain": "Makro fungsi."
@@ -2242,9 +2242,9 @@ const CONTENT_C = [
             "q": "Makro berisiko karena",
             "options": [
               "tanpa type-check",
-              "CSS",
-              "route",
-              "migrasi"
+              "alokasi memori",
+              "vtable",
+              "pthread_create"
             ],
             "a": 0,
             "explain": "Makro tidak type-safe."
@@ -2253,10 +2253,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "inline function menggantikan",
             "options": [
-              "CSS",
+              "berbeda distribusi",
               "makro aman",
-              "route",
-              "migrasi"
+              "JTAG/SWD",
+              "skalabilitas"
             ],
             "a": 1,
             "explain": "Inline lebih aman."
@@ -2266,9 +2266,9 @@ const CONTENT_C = [
             "q": "#pragma once adalah",
             "options": [
               "alternatif include guard",
-              "CSS",
-              "route",
-              "migrasi"
+              "for (init; cond; step)",
+              "mengubah nilai asli",
+              "data dan pointer next"
             ],
             "a": 0,
             "explain": "Banyak compiler mendukung."
@@ -2277,9 +2277,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Header sebaiknya berisi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "printf()",
+              "sizeof",
+              "di loop",
               "deklarasi"
             ],
             "a": 3,
@@ -2289,9 +2289,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Definisi di header bisa memicu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "if/else if/else",
+              "ya (promotion)",
+              "strlen()",
               "multiple definition"
             ],
             "a": 3,
@@ -2309,9 +2309,9 @@ const CONTENT_C = [
             "q": "stdlib.h menyediakan",
             "options": [
               "malloc/atoi/exit",
-              "CSS",
-              "route",
-              "migrasi"
+              "strlen()",
+              "alias tipe",
+              "hati-hati free"
             ],
             "a": 0,
             "explain": "stdlib utilitas."
@@ -2320,10 +2320,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "string.h menyediakan",
             "options": [
-              "CSS",
-              "route",
+              "preprocess/compile/assemble/link",
+              "volatile pointer",
               "strlen/strcpy",
-              "migrasi"
+              "client"
             ],
             "a": 2,
             "explain": "string.h manip string."
@@ -2332,9 +2332,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "math.h menyediakan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "while(1) / for(;;)",
+              "flush output",
+              "tipe nama(params)",
               "sqrt/pow"
             ],
             "a": 3,
@@ -2345,9 +2345,9 @@ const CONTENT_C = [
             "q": "time.h menyediakan",
             "options": [
               "time/clock",
-              "CSS",
-              "route",
-              "migrasi"
+              "#ifndef/#define/#endif",
+              "strlen/strcpy",
+              "angka acak"
             ],
             "a": 0,
             "explain": "time.h waktu."
@@ -2356,9 +2356,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "ctype.h menyediakan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "ukuran byte",
+              "sebaiknya dihindari",
+              "int arr[10];",
               "isalpha/toupper"
             ],
             "a": 3,
@@ -2366,12 +2366,12 @@ const CONTENT_C = [
           },
           {
             "type": "mc",
-            "q": "assert.h menyediakan",
+            "q": "Header standar `<assert.h>` di bahasa C menyediakan makro diagnostik runtime bernama",
             "options": [
-              "CSS",
-              "route",
+              "pthread_mutex",
+              "fprintf/fwrite",
               "assert",
-              "migrasi"
+              "makro/konstanta"
             ],
             "a": 2,
             "explain": "assert debugging."
@@ -2381,9 +2381,9 @@ const CONTENT_C = [
             "q": "qsort untuk",
             "options": [
               "pengurutan",
-              "CSS",
-              "route",
-              "migrasi"
+              "FIFO",
+              "printf()",
+              "sizeof"
             ],
             "a": 0,
             "explain": "qsort generic."
@@ -2392,10 +2392,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "bsearch untuk",
             "options": [
-              "CSS",
-              "route",
+              "disarankan",
+              ".so/.dll",
               "pencarian biner",
-              "migrasi"
+              "pthread_join"
             ],
             "a": 2,
             "explain": "bsearch biner."
@@ -2404,9 +2404,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "rand/srand untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "feof",
+              "tanpa type-check",
+              "isalpha/toupper",
               "angka acak"
             ],
             "a": 3,
@@ -2418,8 +2418,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "%",
+              "scanf"
             ],
             "a": 0,
             "explain": "Man pages."
@@ -2437,8 +2437,8 @@ const CONTENT_C = [
             "options": [
               "-O2",
               "-g",
-              "CSS",
-              "route"
+              ";",
+              "%d"
             ],
             "a": 1,
             "explain": "-g simbol debug."
@@ -2447,9 +2447,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "GDB adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "char",
+              "if/else if/else",
+              "false",
               "debugger"
             ],
             "a": 3,
@@ -2459,10 +2459,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Valgrind mendeteksi",
             "options": [
-              "CSS",
-              "route",
+              "penting",
+              "menginisialisasi nol",
               "kebocoran memori",
-              "migrasi"
+              "makro terdefinisi"
             ],
             "a": 2,
             "explain": "Valgrind memori."
@@ -2471,10 +2471,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "AddressSanitizer mendeteksi",
             "options": [
-              "CSS",
-              "route",
+              "komunikasi proses",
+              "performa",
               "kesalahan memori",
-              "migrasi"
+              "(tipe) nilai"
             ],
             "a": 2,
             "explain": "ASan deteksi."
@@ -2483,9 +2483,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Warning compiler memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kesalahan memori",
+              "debugging/link",
+              "penjadwalan",
               "-Wall -Wextra"
             ],
             "a": 3,
@@ -2495,10 +2495,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Static analyzer membantu",
             "options": [
-              "CSS",
+              "newline otomatis",
               "menemukan bug",
-              "route",
-              "migrasi"
+              "ke string",
+              "strcmp"
             ],
             "a": 1,
             "explain": "Analyzer bug."
@@ -2509,8 +2509,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "dianjurkan",
-              "CSS",
-              "route"
+              "tanpa type-check",
+              "isalpha/toupper"
             ],
             "a": 1,
             "explain": "Warning penting."
@@ -2521,8 +2521,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "%",
+              "scanf"
             ],
             "a": 0,
             "explain": "Memahami memori."
@@ -2532,9 +2532,9 @@ const CONTENT_C = [
             "q": "Membaca core dump membantu",
             "options": [
               "tidak",
-              "CSS",
+              "0",
               "ya",
-              "route"
+              "dicek"
             ],
             "a": 2,
             "explain": "Core dump debugging."
@@ -2544,9 +2544,9 @@ const CONTENT_C = [
             "q": "Testing otomatis penting",
             "options": [
               "tidak",
-              "CSS",
+              "LIFO",
               "ya",
-              "route"
+              "<< >>"
             ],
             "a": 2,
             "explain": "Uji program."
@@ -2562,9 +2562,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Compiler C menjalankan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "float/double",
+              "strcpy/strncpy",
+              "nilai (by value)",
               "preprocess/compile/assemble/link"
             ],
             "a": 3,
@@ -2575,9 +2575,9 @@ const CONTENT_C = [
             "q": "Preprocessor mengolah",
             "options": [
               "makro/include",
-              "CSS",
-              "route",
-              "migrasi"
+              "_Thread_local",
+              "tanpa type-check",
+              "isalpha/toupper"
             ],
             "a": 0,
             "explain": "Preprocessor makro."
@@ -2586,10 +2586,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Assembler menghasilkan",
             "options": [
-              "CSS",
-              "route",
+              "pthread",
+              "wajib",
               "object file",
-              "migrasi"
+              "char"
             ],
             "a": 2,
             "explain": "Object file."
@@ -2598,10 +2598,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Linker menggabungkan",
             "options": [
-              "CSS",
-              "route",
+              "pemakaian sebelum definisi",
+              "ukuran member tertentu",
               "object dan library",
-              "migrasi"
+              "NULL bila gagal"
             ],
             "a": 2,
             "explain": "Linker gabung."
@@ -2610,9 +2610,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "LTO memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "string ke float",
+              "struct Nama { ... };",
+              "build system generator",
               "optimasi lintas modul"
             ],
             "a": 3,
@@ -2622,10 +2622,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Symbol table membantu",
             "options": [
-              "CSS",
-              "route",
+              "padding/alignment",
+              "tipe (*nama)(params)",
               "debugging/link",
-              "migrasi"
+              "penting"
             ],
             "a": 2,
             "explain": "Symbol table."
@@ -2634,9 +2634,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Static vs dynamic linking",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "makro/include",
+              "handler khusus",
+              "transfer data",
               "berbeda distribusi"
             ],
             "a": 3,
@@ -2647,8 +2647,8 @@ const CONTENT_C = [
             "q": "Header kompatibel penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "*",
+              "free",
               "ya"
             ],
             "a": 3,
@@ -2660,8 +2660,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              ".a",
+              "fopen"
             ],
             "a": 0,
             "explain": "Flag compiler."
@@ -2671,9 +2671,9 @@ const CONTENT_C = [
             "q": "Dokumentasi build penting",
             "options": [
               "tidak",
-              "CSS",
+              "LIFO",
               "ya",
-              "route"
+              "<< >>"
             ],
             "a": 2,
             "explain": "Dokumentasi."
@@ -2689,9 +2689,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "UB berarti",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "data antar proses",
+              "Dilepas dengan `free` saat tidak dipakai lagi",
+              "== != < >",
               "perilaku tak terdefinisi"
             ],
             "a": 3,
@@ -2701,10 +2701,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Overflow signed int adalah",
             "options": [
-              "CSS",
-              "route",
+              "dicek",
+              "%",
               "UB",
-              "migrasi"
+              "scanf"
             ],
             "a": 2,
             "explain": "UB untuk signed."
@@ -2713,9 +2713,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Dereference NULL adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".a",
+              "fopen",
+              "wajib",
               "UB"
             ],
             "a": 3,
@@ -2725,9 +2725,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Strict aliasing melanggar",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "++",
+              "...",
+              "lock",
               "UB"
             ],
             "a": 3,
@@ -2738,9 +2738,9 @@ const CONTENT_C = [
             "q": "Compiler mengandalkan UB",
             "options": [
               "untuk optimasi",
-              "CSS",
-              "route",
-              "migrasi"
+              ".so/.dll",
+              "pthread_join",
+              "fclose"
             ],
             "a": 0,
             "explain": "Optimasi berasumsi tanpa UB."
@@ -2749,9 +2749,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "UBSan mendeteksi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "LIFO",
+              "<< >>",
+              ";",
               "UB"
             ],
             "a": 3,
@@ -2762,9 +2762,9 @@ const CONTENT_C = [
             "q": "Menghindari UB penting",
             "options": [
               "tidak",
-              "CSS",
+              "++",
               "ya",
-              "route"
+              "..."
             ],
             "a": 2,
             "explain": "Hindari UB."
@@ -2774,9 +2774,9 @@ const CONTENT_C = [
             "q": "Menulis kode portabel",
             "options": [
               "tidak",
-              "CSS",
+              "printf()",
               "disarankan",
-              "route"
+              "sizeof"
             ],
             "a": 2,
             "explain": "Portabilitas."
@@ -2787,8 +2787,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "LIFO",
+              "<< >>"
             ],
             "a": 1,
             "explain": "Review."
@@ -2799,8 +2799,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              ".a",
+              "fopen"
             ],
             "a": 1,
             "explain": "Testing."
@@ -2817,9 +2817,9 @@ const CONTENT_C = [
             "q": "Embedded C berjalan di",
             "options": [
               "mikrokontroler",
-              "CSS",
-              "route",
-              "migrasi"
+              "fclose",
+              "header",
+              "multiple definition"
             ],
             "a": 0,
             "explain": "Embedded mikrokontroler."
@@ -2828,10 +2828,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Register akses memakai",
             "options": [
-              "CSS",
-              "route",
+              "di loop",
+              "satu karakter",
               "volatile pointer",
-              "migrasi"
+              "dipakai"
             ],
             "a": 2,
             "explain": "Volatile untuk register."
@@ -2840,9 +2840,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Interrupt memerlukan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "malloc/atoi/exit",
+              "pencarian biner",
+              "menemukan bug",
               "handler khusus"
             ],
             "a": 3,
@@ -2852,10 +2852,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Memori terbatas menuntut",
             "options": [
-              "CSS",
+              "int arr[10];",
               "efisiensi",
-              "route",
-              "migrasi"
+              "int m[2][2]",
+              "deklarasi"
             ],
             "a": 1,
             "explain": "Efisiensi memori."
@@ -2864,10 +2864,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "RTOS membantu",
             "options": [
-              "CSS",
-              "route",
+              "ketergantungan struct",
+              "compare function",
               "penjadwalan",
-              "migrasi"
+              "build"
             ],
             "a": 2,
             "explain": "RTOS."
@@ -2877,9 +2877,9 @@ const CONTENT_C = [
             "q": "Cross-compiling penting",
             "options": [
               "tidak",
-              "CSS",
+              "++",
               "ya",
-              "route"
+              "..."
             ],
             "a": 2,
             "explain": "Cross compile."
@@ -2888,10 +2888,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Debugging hardware memakai",
             "options": [
-              "CSS",
-              "route",
+              "pthread_create",
+              "fopen",
               "JTAG/SWD",
-              "migrasi"
+              "open/read/write"
             ],
             "a": 2,
             "explain": "Debug hardware."
@@ -2901,9 +2901,9 @@ const CONTENT_C = [
             "q": "Kode portabel penting",
             "options": [
               "tidak",
-              "CSS",
+              "<< >>",
               "ya",
-              "route"
+              ";"
             ],
             "a": 2,
             "explain": "Portabilitas."
@@ -2914,8 +2914,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              ";",
+              "%d"
             ],
             "a": 1,
             "explain": "Dokumentasi."
@@ -2926,8 +2926,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "free",
+              "LIFO"
             ],
             "a": 0,
             "explain": "Uji di target."
@@ -2943,10 +2943,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Socket dibuat dengan",
             "options": [
-              "CSS",
-              "route",
+              "deteksi",
+              "<stdio.h>",
               "socket()",
-              "migrasi"
+              "int / <stdbool.h>"
             ],
             "a": 2,
             "explain": "socket syscall."
@@ -2955,10 +2955,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Bind/Listen menghubungkan",
             "options": [
-              "CSS",
+              "compare function",
               "server",
-              "route",
-              "migrasi"
+              "build",
+              "_Thread_local"
             ],
             "a": 1,
             "explain": "Server bind."
@@ -2968,9 +2968,9 @@ const CONTENT_C = [
             "q": "connect menghubungkan",
             "options": [
               "client",
-              "CSS",
-              "route",
-              "migrasi"
+              "urutan byte",
+              "memori/berkas",
+              "dicek"
             ],
             "a": 0,
             "explain": "Client connect."
@@ -2979,10 +2979,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "send/recv untuk",
             "options": [
-              "CSS",
-              "route",
+              "navigasi array",
+              "nilai (salinan)",
               "transfer data",
-              "migrasi"
+              "pointer fungsi"
             ],
             "a": 2,
             "explain": "Transfer data."
@@ -2992,9 +2992,9 @@ const CONTENT_C = [
             "q": "Endianness jaringan memakai",
             "options": [
               "big-endian",
-              "CSS",
-              "route",
-              "migrasi"
+              "penjadwalan",
+              "banyak socket",
+              "flag efisien"
             ],
             "a": 0,
             "explain": "Network byte order."
@@ -3003,10 +3003,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "select/poll mengelola",
             "options": [
-              "CSS",
-              "route",
+              "strcmp",
+              "int *p",
               "banyak socket",
-              "migrasi"
+              "padding/alignment"
             ],
             "a": 2,
             "explain": "Multiplexing."
@@ -3015,10 +3015,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Non-blocking IO memungkinkan",
             "options": [
-              "CSS",
+              "kebocoran memori",
               "skalabilitas",
-              "route",
-              "migrasi"
+              "object file",
+              "efisiensi"
             ],
             "a": 1,
             "explain": "Non-blocking."
@@ -3028,9 +3028,9 @@ const CONTENT_C = [
             "q": "Menangani partial read penting",
             "options": [
               "tidak",
-              "CSS",
+              "scanf",
               "ya",
-              "route"
+              "*"
             ],
             "a": 2,
             "explain": "Cek kembalian."
@@ -3041,8 +3041,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "dicek",
+              "%"
             ],
             "a": 0,
             "explain": "Testing."
@@ -3053,8 +3053,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "LIFO",
+              "<< >>"
             ],
             "a": 0,
             "explain": "Dokumentasi."
@@ -3072,8 +3072,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "++",
+              "..."
             ],
             "a": 1,
             "explain": "Nama deskriptif."
@@ -3084,8 +3084,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              ";",
+              "%d"
             ],
             "a": 1,
             "explain": "Komentar jelas."
@@ -3094,9 +3094,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Modularisasi membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "alamat memori",
+              "undefined behavior",
+              "pointer next",
               "perawatan"
             ],
             "a": 3,
@@ -3107,8 +3107,8 @@ const CONTENT_C = [
             "q": "Fungsi kecil fokus penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "FIFO",
+              "? :",
               "ya"
             ],
             "a": 3,
@@ -3119,9 +3119,9 @@ const CONTENT_C = [
             "q": "Consistent style penting",
             "options": [
               "tidak",
-              "CSS",
+              "fread",
               "ya",
-              "route"
+              "-g"
             ],
             "a": 2,
             "explain": "Konsistensi."
@@ -3132,8 +3132,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "false",
+              "void"
             ],
             "a": 0,
             "explain": "Analyzer."
@@ -3144,8 +3144,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "free",
+              "LIFO"
             ],
             "a": 0,
             "explain": "Testing."
@@ -3155,8 +3155,8 @@ const CONTENT_C = [
             "q": "Review kode penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "int",
+              "%s",
               "ya"
             ],
             "a": 3,
@@ -3168,8 +3168,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              ".c",
+              "int"
             ],
             "a": 1,
             "explain": "Dokumentasi."
@@ -3179,9 +3179,9 @@ const CONTENT_C = [
             "q": "Refactor bertahap aman",
             "options": [
               "tidak",
-              "CSS",
+              "...",
               "ya",
-              "route"
+              "lock"
             ],
             "a": 2,
             "explain": "Bertahap."
@@ -3198,9 +3198,9 @@ const CONTENT_C = [
             "q": "Menetapkan bit memakai",
             "options": [
               "|= (1<<n)",
-              "CSS",
-              "route",
-              "migrasi"
+              "atomic/C11",
+              "fwrite",
+              "#define F(x) ..."
             ],
             "a": 0,
             "explain": "Set bit dengan OR."
@@ -3210,9 +3210,9 @@ const CONTENT_C = [
             "q": "Menghapus bit memakai",
             "options": [
               "&= ~(1<<n)",
-              "CSS",
-              "route",
-              "migrasi"
+              "char",
+              "if/else if/else",
+              "false"
             ],
             "a": 0,
             "explain": "Clear bit dengan AND NOT."
@@ -3221,10 +3221,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Membalik bit memakai",
             "options": [
-              "CSS",
-              "route",
+              "tanpa type-check",
+              "isalpha/toupper",
               "^= (1<<n)",
-              "migrasi"
+              "kebocoran memori"
             ],
             "a": 2,
             "explain": "Toggle bit dengan XOR."
@@ -3233,9 +3233,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Memeriksa bit memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "switch/case",
+              "scanf",
+              "(float)x",
               "& (1<<n)"
             ],
             "a": 3,
@@ -3245,9 +3245,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Bitmask membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "bersama",
+              "edge case",
+              "pesan error",
               "flag efisien"
             ],
             "a": 3,
@@ -3257,9 +3257,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Endianness memengaruhi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "transfer data",
+              "^= (1<<n)",
+              "program proses",
               "urutan byte"
             ],
             "a": 3,
@@ -3269,9 +3269,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Bit-field hemat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "penting",
+              "lock",
+              "fread",
               "memori"
             ],
             "a": 3,
@@ -3281,10 +3281,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Shift hati-hati pada",
             "options": [
-              "CSS",
+              "komunikasi proses",
               "signed/overflow",
-              "route",
-              "migrasi"
+              "performa",
+              "(tipe) nilai"
             ],
             "a": 1,
             "explain": "UB pada shift."
@@ -3294,8 +3294,8 @@ const CONTENT_C = [
             "q": "XOR untuk swap elegan",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "0",
+              "dicek",
               "ya"
             ],
             "a": 3,
@@ -3306,8 +3306,8 @@ const CONTENT_C = [
             "q": "Dokumentasi bitmask penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "LIFO",
+              "<< >>",
               "ya"
             ],
             "a": 3,
@@ -3324,10 +3324,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "POSIX menyediakan",
             "options": [
-              "CSS",
+              "// dan /* */",
               "API sistem Unix",
-              "route",
-              "migrasi"
+              "for (init; cond; step)",
+              "mengubah nilai asli"
             ],
             "a": 1,
             "explain": "POSIX API."
@@ -3336,10 +3336,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "fork membuat",
             "options": [
-              "CSS",
-              "route",
+              "pointer next",
+              "disarankan",
               "proses baru",
-              "migrasi"
+              ".so/.dll"
             ],
             "a": 2,
             "explain": "fork proses."
@@ -3348,10 +3348,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "exec mengganti",
             "options": [
-              "CSS",
+              "perf/gprof",
               "program proses",
-              "route",
-              "migrasi"
+              "printf()",
+              "sizeof"
             ],
             "a": 1,
             "explain": "exec program."
@@ -3360,10 +3360,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Pipe mengalirkan",
             "options": [
-              "CSS",
+              "== != < >",
               "data antar proses",
-              "route",
-              "migrasi"
+              "string ke float",
+              "struct Nama { ... };"
             ],
             "a": 1,
             "explain": "Pipe data."
@@ -3372,9 +3372,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Signal memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "ukuran byte",
+              "sebaiknya dihindari",
+              "int arr[10];",
               "komunikasi proses"
             ],
             "a": 3,
@@ -3384,10 +3384,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Thread POSIX memakai",
             "options": [
-              "CSS",
-              "route",
+              "\"rb\"/\"wb\"",
+              "strlen/strcpy",
               "pthread",
-              "migrasi"
+              "angka acak"
             ],
             "a": 2,
             "explain": "pthread thread."
@@ -3396,10 +3396,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Mutex/monitor",
             "options": [
-              "CSS",
+              "(tipe) nilai",
               "sinkronisasi",
-              "route",
-              "migrasi"
+              "while(1) / for(;;)",
+              "flush output"
             ],
             "a": 1,
             "explain": "Sinkronisasi thread."
@@ -3408,9 +3408,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "mmap memetakan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "sqrt/pow",
+              "preprocess/compile/assemble/link",
+              "volatile pointer",
               "memori/berkas"
             ],
             "a": 3,
@@ -3421,9 +3421,9 @@ const CONTENT_C = [
             "q": "socket untuk",
             "options": [
               "komunikasi jaringan",
-              "CSS",
-              "route",
-              "migrasi"
+              "ya (promotion)",
+              "strlen()",
+              "alias tipe"
             ],
             "a": 0,
             "explain": "Socket jaringan."
@@ -3433,9 +3433,9 @@ const CONTENT_C = [
             "q": "errno memberi",
             "options": [
               "kode error",
-              "CSS",
-              "route",
-              "migrasi"
+              "makro/include",
+              "handler khusus",
+              "transfer data"
             ],
             "a": 0,
             "explain": "errno error."
@@ -3451,10 +3451,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Profil memakai",
             "options": [
-              "CSS",
-              "route",
+              "fgets",
+              "dipakai",
               "perf/gprof",
-              "migrasi"
+              "int **"
             ],
             "a": 2,
             "explain": "Profiler C."
@@ -3463,10 +3463,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Optimasi compiler memakai",
             "options": [
-              "CSS",
-              "route",
+              "-Wall -Wextra",
+              "berbeda distribusi",
               "-O2/-O3",
-              "migrasi"
+              "JTAG/SWD"
             ],
             "a": 2,
             "explain": "Flag optimasi."
@@ -3476,9 +3476,9 @@ const CONTENT_C = [
             "q": "Cache locality memengaruhi",
             "options": [
               "performa",
-              "CSS",
-              "route",
-              "migrasi"
+              "fprintf(stderr, ...)",
+              "konversi sempit",
+              "strcat"
             ],
             "a": 0,
             "explain": "Locality cache."
@@ -3488,8 +3488,8 @@ const CONTENT_C = [
             "q": "Struktur data tepat penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "wajib",
+              ".h",
               "ya"
             ],
             "a": 3,
@@ -3501,8 +3501,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "dicek",
+              "%"
             ],
             "a": 1,
             "explain": "Minimalkan alokasi."
@@ -3511,9 +3511,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Inline function membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "signed/overflow",
+              "kode error",
+              "LIFO",
               "performa"
             ],
             "a": 3,
@@ -3524,8 +3524,8 @@ const CONTENT_C = [
             "q": "Branch prediction penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              ".a",
+              "fopen",
               "ya"
             ],
             "a": 3,
@@ -3537,8 +3537,8 @@ const CONTENT_C = [
             "options": [
               "wajib",
               "tidak",
-              "CSS",
-              "route"
+              "socket()",
+              "perawatan"
             ],
             "a": 0,
             "explain": "Ukur dulu."
@@ -3548,9 +3548,9 @@ const CONTENT_C = [
             "q": "Simon/UB harus dihindari",
             "options": [
               "tidak",
-              "CSS",
+              "LIFO",
               "ya",
-              "route"
+              "<< >>"
             ],
             "a": 2,
             "explain": "Hindari UB."
@@ -3560,8 +3560,8 @@ const CONTENT_C = [
             "q": "Vectorization compiler otomatis",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "%d",
+              ".a",
               "ya"
             ],
             "a": 3,
@@ -3580,8 +3580,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              ".a",
+              "fopen"
             ],
             "a": 1,
             "explain": "Overflow UB."
@@ -3591,9 +3591,9 @@ const CONTENT_C = [
             "q": "strncpy lebih aman dari strcpy",
             "options": [
               "tidak",
-              "CSS",
+              "LIFO",
               "ya",
-              "route"
+              "<< >>"
             ],
             "a": 2,
             "explain": "Batasi panjang."
@@ -3603,9 +3603,9 @@ const CONTENT_C = [
             "q": "gets tidak aman",
             "options": [
               "tidak",
-              "CSS",
+              "UB",
               "ya",
-              "route"
+              "fgets"
             ],
             "a": 2,
             "explain": "gets tidak aman."
@@ -3615,9 +3615,9 @@ const CONTENT_C = [
             "q": "Format string berbahaya bila",
             "options": [
               "input jadi format",
-              "CSS",
-              "route",
-              "migrasi"
+              "// dan /* */",
+              "for (init; cond; step)",
+              "mengubah nilai asli"
             ],
             "a": 0,
             "explain": "Jangan pakai input sebagai format."
@@ -3626,10 +3626,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Integer overflow harus",
             "options": [
-              "CSS",
+              "tipe nama;",
               "dicek",
-              "route",
-              "migrasi"
+              "<< >>",
+              "minimal sekali"
             ],
             "a": 1,
             "explain": "Cek overflow."
@@ -3639,8 +3639,8 @@ const CONTENT_C = [
             "q": "Validasi input penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "dicek",
+              "%",
               "ya"
             ],
             "a": 3,
@@ -3651,8 +3651,8 @@ const CONTENT_C = [
             "q": "Sanitasi penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "++",
+              "...",
               "ya"
             ],
             "a": 3,
@@ -3663,9 +3663,9 @@ const CONTENT_C = [
             "q": "AddressSanitizer membantu",
             "options": [
               "deteksi",
-              "CSS",
-              "route",
-              "migrasi"
+              "pthread_create",
+              "fopen",
+              "open/read/write"
             ],
             "a": 0,
             "explain": "ASan mendeteksi."
@@ -3676,8 +3676,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "dicek",
+              "%"
             ],
             "a": 1,
             "explain": "Testing."
@@ -3688,8 +3688,8 @@ const CONTENT_C = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "build",
+              "feof"
             ],
             "a": 1,
             "explain": "Warning penting."
@@ -3705,10 +3705,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Linked list memakai",
             "options": [
-              "CSS",
+              "fungsi memanggil dirinya",
               "struct + pointer",
-              "route",
-              "migrasi"
+              "prev dan next",
+              "alternatif include guard"
             ],
             "a": 1,
             "explain": "List lewat pointer."
@@ -3717,10 +3717,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Stack memakai",
             "options": [
-              "CSS",
-              "route",
+              "angka acak",
+              "dianjurkan",
               "LIFO",
-              "migrasi"
+              "server"
             ],
             "a": 2,
             "explain": "Stack LIFO."
@@ -3729,10 +3729,10 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Queue memakai",
             "options": [
-              "CSS",
+              "disarankan",
               "FIFO",
-              "route",
-              "migrasi"
+              ".so/.dll",
+              "fclose"
             ],
             "a": 1,
             "explain": "Queue FIFO."
@@ -3742,9 +3742,9 @@ const CONTENT_C = [
             "q": "Hash table memakai",
             "options": [
               "array + hash",
-              "CSS",
-              "route",
-              "migrasi"
+              ". (atau -> untuk pointer)",
+              "objek ke program",
+              "perilaku tak terdefinisi"
             ],
             "a": 0,
             "explain": "Hash table."
@@ -3753,9 +3753,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Tree memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pointer ke struct",
+              "free tidak dipanggil",
+              "API sistem Unix",
               "node + pointer"
             ],
             "a": 3,
@@ -3765,9 +3765,9 @@ const CONTENT_C = [
             "type": "mc",
             "q": "Dynamic array memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "handler khusus",
+              "transfer data",
+              "^= (1<<n)",
               "realloc"
             ],
             "a": 3,
@@ -3778,8 +3778,8 @@ const CONTENT_C = [
             "q": "Manajemen memori penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "*",
+              "free",
               "ya"
             ],
             "a": 3,
@@ -3791,8 +3791,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              ".c",
+              "int"
             ],
             "a": 0,
             "explain": "Pilih struktur."
@@ -3803,8 +3803,8 @@ const CONTENT_C = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "lock",
+              "fread"
             ],
             "a": 0,
             "explain": "Testing."
@@ -3814,8 +3814,8 @@ const CONTENT_C = [
             "q": "Dokumentasi penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "wajib",
+              ".h",
               "ya"
             ],
             "a": 3,

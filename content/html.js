@@ -2796,7 +2796,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Gunakan media query pada source di dalam picture:\n<source ___=\"(max-width: 600px)\" srcset=\"mobile.jpg\">",
+            "q": "Tambahkan atribut kondisi ukuran layar pada elemen source di dalam picture:\n<source ___=\"(max-width: 600px)\" srcset=\"mobile.jpg\">",
             "code": "<source ___=\"(max-width: 600px)\" srcset=\"mobile.jpg\">",
             "accept": [
               "media"
@@ -7126,7 +7126,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Kurangi lebar penuh dengan padding 40px menggunakan calc:\nwidth: ___(100% - 40px);",
+            "q": "Hitung lebar penuh dikurangi 40px secara dinamis menggunakan fungsi matematika CSS:\nwidth: ___(100% - 40px);",
             "code": "width: ___(100% - 40px);",
             "accept": [
               "calc"
@@ -7187,7 +7187,7 @@ const CONTENT_HTML = [
           },
           {
             "type": "fill",
-            "q": "Gunakan subgrid pada kolom anak:\n.card {\n  grid-template-columns: ___;\n}",
+            "q": "Buat kolom anak mewarisi garis kisi dari grid induknya:\n.card {\n  grid-template-columns: ___;\n}",
             "code": ".card {\n  grid-template-columns: ___;\n}",
             "accept": [
               "subgrid"

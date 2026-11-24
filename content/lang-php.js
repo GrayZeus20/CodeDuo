@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_PHP = [
-{
+  {
     "id": "php",
     "name": "PHP",
     "icon": "🐘",
@@ -22,7 +22,7 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "PHP paling umum digunakan untuk",
             "options": [
-              "CSS",
+              "Memproses request dan menghasilkan respons web",
               "pemrosesan web di server",
               "routing CSS",
               "HTML statis"
@@ -60,7 +60,7 @@ const CONTENT_PHP = [
             "options": [
               "node file.php",
               "python file.php",
-              "CSS",
+              "PHP-FPM + Nginx/Apache",
               "php file.php"
             ],
             "a": 3,
@@ -73,7 +73,7 @@ const CONTENT_PHP = [
               ";",
               ".",
               "newline only",
-              "CSS"
+              "ya"
             ],
             "a": 0,
             "explain": "PHP memakai titik koma."
@@ -97,7 +97,7 @@ const CONTENT_PHP = [
               "CSS only",
               "SQL only",
               "HTML",
-              "CSS"
+              "trait/use"
             ],
             "a": 2,
             "explain": "PHP bisa disisipkan di HTML."
@@ -120,7 +120,7 @@ const CONTENT_PHP = [
             "options": [
               "puts",
               "console.log",
-              "CSS",
+              "return",
               "echo/print"
             ],
             "a": 3,
@@ -132,8 +132,8 @@ const CONTENT_PHP = [
             "options": [
               "// atau #",
               "--",
-              "CSS",
-              "route"
+              "Exception",
+              "prepare/execute"
             ],
             "a": 0,
             "explain": "PHP memakai // atau #."
@@ -152,7 +152,7 @@ const CONTENT_PHP = [
               "$nama = nilai;",
               "let $nama",
               "var $nama",
-              "CSS"
+              "akses bersama"
             ],
             "a": 0,
             "explain": "PHP memakai $ otomatis."
@@ -164,7 +164,7 @@ const CONTENT_PHP = [
               "String",
               "string",
               "text",
-              "CSS"
+              "__construct()"
             ],
             "a": 1,
             "explain": "PHP memakai string."
@@ -176,7 +176,7 @@ const CONTENT_PHP = [
               "int",
               "Integer",
               "long",
-              "CSS"
+              "ganda"
             ],
             "a": 0,
             "explain": "PHP memakai int."
@@ -187,7 +187,7 @@ const CONTENT_PHP = [
             "options": [
               "double only",
               "decimal",
-              "CSS",
+              "komputasi",
               "float"
             ],
             "a": 3,
@@ -200,7 +200,7 @@ const CONTENT_PHP = [
               "boolean",
               "bit",
               "bool",
-              "CSS"
+              "eksekusi"
             ],
             "a": 2,
             "explain": "PHP memakai bool."
@@ -212,7 +212,7 @@ const CONTENT_PHP = [
               "null",
               "nil",
               "None",
-              "CSS"
+              "injeksi"
             ],
             "a": 0,
             "explain": "PHP memakai null."
@@ -223,8 +223,8 @@ const CONTENT_PHP = [
             "options": [
               "gettype/is_*",
               "typeof",
-              "CSS",
-              "route"
+              "fn($x) => ...",
+              "namespace"
             ],
             "a": 0,
             "explain": "PHP memakai gettype/is_*."
@@ -235,8 +235,8 @@ const CONTENT_PHP = [
             "options": [
               "(int)/(string)/settype",
               "cast()",
-              "CSS",
-              "route"
+              "\"$nama\" atau \"{$nama}\"",
+              "rand/mt_rand"
             ],
             "a": 0,
             "explain": "PHP memakai cast."
@@ -248,7 +248,7 @@ const CONTENT_PHP = [
               "#{}",
               "\"$nama\" atau \"{$nama}\"",
               "<% %>",
-              "CSS"
+              "struktur folder"
             ],
             "a": 1,
             "explain": "PHP menginterpolasi di kutip ganda."
@@ -258,8 +258,8 @@ const CONTENT_PHP = [
             "q": "PHP bertipe",
             "options": [
               "statis",
-              "CSS",
-              "route",
+              "(int)/(float)",
+              "implode()",
               "dinamis"
             ],
             "a": 3,
@@ -276,10 +276,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Form HTML mengirim data ke",
             "options": [
-              "CSS",
+              "entry point",
               "action",
-              "route",
-              "migrasi"
+              "abstract class",
+              "throw"
             ],
             "a": 1,
             "explain": "Action menunjuk tujuan."
@@ -290,8 +290,8 @@ const CONTENT_PHP = [
             "options": [
               "PUT only",
               "GET/POST",
-              "CSS",
-              "route"
+              "kontrak",
+              "f(...)"
             ],
             "a": 1,
             "explain": "GET/POST umum."
@@ -300,10 +300,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Membaca input form memakai",
             "options": [
-              "CSS",
-              "route",
+              "Xdebug/Blackfire",
+              "ORM Laravel",
               "$_POST/$_GET",
-              "migrasi"
+              "json_decode"
             ],
             "a": 2,
             "explain": "Superglobal form."
@@ -313,9 +313,9 @@ const CONTENT_PHP = [
             "q": "Validasi sisi server wajib",
             "options": [
               "tidak",
-              "CSS",
+              "match",
               "ya",
-              "route"
+              "XSS"
             ],
             "a": 2,
             "explain": "Validasi server wajib."
@@ -324,10 +324,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Escape output form memakai",
             "options": [
-              "CSS",
+              "function() use($x)",
               "htmlspecialchars()",
-              "route",
-              "migrasi"
+              "session_start()",
+              "namespace/class"
             ],
             "a": 1,
             "explain": "htmlspecialchars mencegah XSS."
@@ -336,10 +336,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Menangani file upload memakai",
             "options": [
-              "CSS",
+              "new PDO(...)",
               "$_FILES",
-              "route",
-              "migrasi"
+              "$_SESSION['k'] = v",
+              "penanganan server"
             ],
             "a": 1,
             "explain": "Data upload di $_FILES."
@@ -348,9 +348,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Memeriksa method dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "akses data",
+              "anotasi docblock",
+              "password_verify",
               "$_SERVER['REQUEST_METHOD']"
             ],
             "a": 3,
@@ -360,10 +360,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Redirect setelah submit memakai",
             "options": [
-              "CSS",
-              "route",
+              "$_SERVER['REQUEST_METHOD']",
+              "strtoupper()",
               "header('Location: ...')",
-              "migrasi"
+              "array_filter()"
             ],
             "a": 2,
             "explain": "Header redirect."
@@ -374,8 +374,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "beban",
+              "HTML"
             ],
             "a": 0,
             "explain": "Field wajib divalidasi."
@@ -385,9 +385,9 @@ const CONTENT_PHP = [
             "q": "CSRF token pada form penting",
             "options": [
               "tidak",
-              "CSS",
+              "array",
               "ya",
-              "route"
+              "UTC"
             ],
             "a": 2,
             "explain": "Token CSRF."
@@ -404,9 +404,9 @@ const CONTENT_PHP = [
             "q": "Pembulatan memakai",
             "options": [
               "round/floor/ceil",
-              "CSS",
-              "route",
-              "migrasi"
+              "cookie",
+              "assertSame/assertEquals",
+              "asinkron"
             ],
             "a": 0,
             "explain": "Fungsi pembulatan."
@@ -415,9 +415,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Nilai absolut memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "class otomatis",
+              "autoloader",
+              "alur request",
               "abs()"
             ],
             "a": 3,
@@ -429,8 +429,8 @@ const CONTENT_PHP = [
             "options": [
               "^",
               "pow()/**",
-              "CSS",
-              "route"
+              "array_filter()",
+              "kondisi benar"
             ],
             "a": 1,
             "explain": "pow atau **."
@@ -440,8 +440,8 @@ const CONTENT_PHP = [
             "q": "Akar memakai",
             "options": [
               "root()",
-              "CSS",
-              "route",
+              "versi",
+              "token/JWT",
               "sqrt()"
             ],
             "a": 3,
@@ -452,9 +452,9 @@ const CONTENT_PHP = [
             "q": "Nilai acak memakai",
             "options": [
               "rand/mt_rand",
-              "CSS",
-              "route",
-              "migrasi"
+              "beberapa tipe",
+              "konsistensi",
+              "password_hash"
             ],
             "a": 0,
             "explain": "Fungsi acak."
@@ -465,8 +465,8 @@ const CONTENT_PHP = [
             "options": [
               "mod()",
               "%",
-              "CSS",
-              "route"
+              "::",
+              "??"
             ],
             "a": 1,
             "explain": "PHP memakai %."
@@ -475,10 +475,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Format angka memakai",
             "options": [
-              "CSS",
-              "route",
+              "$_POST/$_GET",
+              "abs()",
               "number_format",
-              "migrasi"
+              "min()"
             ],
             "a": 2,
             "explain": "number_format."
@@ -487,9 +487,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Bilangan maksimum memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "$_FILES",
+              "rand/mt_rand",
+              "strlen()",
               "max()"
             ],
             "a": 3,
@@ -500,9 +500,9 @@ const CONTENT_PHP = [
             "q": "Bilangan minimum memakai",
             "options": [
               "min()",
-              "CSS",
-              "route",
-              "migrasi"
+              "cookie",
+              "asinkron",
+              "display_errors"
             ],
             "a": 0,
             "explain": "min fungsi."
@@ -511,10 +511,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Konversi string ke angka",
             "options": [
-              "CSS",
-              "route",
+              "class otomatis",
+              "$_FILES[...]['size']",
               "(int)/(float)",
-              "migrasi"
+              "autoloader"
             ],
             "a": 2,
             "explain": "Cast eksplisit."
@@ -533,7 +533,7 @@ const CONTENT_PHP = [
               "+",
               ".",
               "&&",
-              "CSS"
+              "??"
             ],
             "a": 1,
             "explain": "PHP memakai titik."
@@ -545,7 +545,7 @@ const CONTENT_PHP = [
               ".length",
               "len()",
               "strlen()",
-              "CSS"
+              "alur request"
             ],
             "a": 2,
             "explain": "strlen memberi panjang."
@@ -557,7 +557,7 @@ const CONTENT_PHP = [
               "strtoupper()",
               "toUpper()",
               "upper()",
-              "CSS"
+              "pengelolaan dependensi"
             ],
             "a": 0,
             "explain": "strtoupper."
@@ -568,8 +568,8 @@ const CONTENT_PHP = [
             "options": [
               "trim()",
               "strip()",
-              "CSS",
-              "route"
+              "bool",
+              "GET/POST"
             ],
             "a": 0,
             "explain": "trim memangkas."
@@ -579,8 +579,8 @@ const CONTENT_PHP = [
             "q": "Mengganti memakai",
             "options": [
               "replace()",
-              "CSS",
-              "route",
+              "$_GET",
+              "penyertaan berulang",
               "str_replace()"
             ],
             "a": 3,
@@ -592,8 +592,8 @@ const CONTENT_PHP = [
             "options": [
               "explode()",
               "split()",
-              "CSS",
-              "route"
+              "fetch/fetchAll",
+              "setcookie()"
             ],
             "a": 0,
             "explain": "explode memecah."
@@ -604,8 +604,8 @@ const CONTENT_PHP = [
             "options": [
               "implode()",
               "join_only",
-              "CSS",
-              "route"
+              "beban",
+              "dependency"
             ],
             "a": 0,
             "explain": "implode menggabungkan."
@@ -616,8 +616,8 @@ const CONTENT_PHP = [
             "options": [
               "format()",
               "sprintf()",
-              "CSS",
-              "route"
+              "str_contains()",
+              "array_merge()"
             ],
             "a": 1,
             "explain": "sprintf memformat."
@@ -628,8 +628,8 @@ const CONTENT_PHP = [
             "options": [
               "str_contains()",
               "includes()",
-              "CSS",
-              "route"
+              "class Nama {}",
+              "trait/use"
             ],
             "a": 0,
             "explain": "str_contains memeriksa."
@@ -640,8 +640,8 @@ const CONTENT_PHP = [
             "options": [
               "ganda",
               "tunggal",
-              "CSS",
-              "route"
+              "skalabilitas",
+              "?->"
             ],
             "a": 0,
             "explain": "Kutip ganda mendukung interpolasi."
@@ -659,7 +659,7 @@ const CONTENT_PHP = [
             "options": [
               "{1,2,3}",
               "(1,2,3)",
-              "CSS",
+              "number_format",
               "[1,2,3] / array()"
             ],
             "a": 3,
@@ -669,10 +669,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Array asosiatif memakai",
             "options": [
-              "CSS",
-              "route",
+              "bug statis",
+              "validasi path",
               "['a' => 1]",
-              "migrasi"
+              "performa"
             ],
             "a": 2,
             "explain": "PHP memakai =>."
@@ -684,7 +684,7 @@ const CONTENT_PHP = [
               "push()",
               "append()",
               "[] = / array_push",
-              "CSS"
+              "kondisi ? a : b"
             ],
             "a": 2,
             "explain": "PHP memakai []."
@@ -696,7 +696,7 @@ const CONTENT_PHP = [
               ".length",
               "count()",
               "size()",
-              "CSS"
+              "di loop"
             ],
             "a": 1,
             "explain": "count menghitung."
@@ -707,8 +707,8 @@ const CONTENT_PHP = [
             "options": [
               "for each",
               "foreach",
-              "CSS",
-              "route"
+              ".php",
+              "// atau #"
             ],
             "a": 1,
             "explain": "PHP memakai foreach."
@@ -719,8 +719,8 @@ const CONTENT_PHP = [
             "options": [
               "array_keys()",
               "keys()",
-              "CSS",
-              "route"
+              "Xdebug/phpdbg",
+              "disarankan"
             ],
             "a": 0,
             "explain": "array_keys daftar key."
@@ -731,8 +731,8 @@ const CONTENT_PHP = [
             "options": [
               "merge()",
               "array_merge()",
-              "CSS",
-              "route"
+              "php.ini",
+              "data besar"
             ],
             "a": 1,
             "explain": "array_merge menggabungkan."
@@ -743,8 +743,8 @@ const CONTENT_PHP = [
             "options": [
               "filter()",
               "array_filter()",
-              "CSS",
-              "route"
+              "sqrt()",
+              "sprintf()"
             ],
             "a": 1,
             "explain": "array_filter menyaring."
@@ -754,9 +754,9 @@ const CONTENT_PHP = [
             "q": "Mengubah array memakai",
             "options": [
               "map()",
-              "CSS",
+              "struktur folder",
               "array_map()",
-              "route"
+              "entry point"
             ],
             "a": 2,
             "explain": "array_map transformasi."
@@ -765,9 +765,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Array multidimensi memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "(int)/(float)",
+              "implode()",
+              "foreach",
               "array bersarang"
             ],
             "a": 3,
@@ -786,8 +786,8 @@ const CONTENT_PHP = [
             "options": [
               "if/elseif/else",
               "if/elif",
-              "CSS",
-              "route"
+              "$_FILES",
+              "rand/mt_rand"
             ],
             "a": 0,
             "explain": "PHP memakai elseif."
@@ -797,9 +797,9 @@ const CONTENT_PHP = [
             "q": "Percabangan multi memakai",
             "options": [
               "when",
-              "CSS",
+              "namespace",
               "switch",
-              "route"
+              "konflik nama"
             ],
             "a": 2,
             "explain": "PHP memakai switch."
@@ -810,8 +810,8 @@ const CONTENT_PHP = [
             "options": [
               "for (...)",
               "for x in",
-              "CSS",
-              "route"
+              "IntlDateFormatter",
+              "catch (Tipe $e)"
             ],
             "a": 0,
             "explain": "For klasik."
@@ -820,10 +820,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "foreach mengiterasi",
             "options": [
-              "CSS",
+              "beberapa tipe",
               "array",
-              "route",
-              "migrasi"
+              "konsistensi",
+              "password_hash"
             ],
             "a": 1,
             "explain": "foreach untuk array."
@@ -832,9 +832,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "while mengulang selama",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "if/elseif/else",
+              "...$args",
+              "tersedia global",
               "kondisi benar"
             ],
             "a": 3,
@@ -844,10 +844,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "do-while menjalankan",
             "options": [
-              "CSS",
+              "date('Y-m-d')",
               "minimal sekali",
-              "route",
-              "migrasi"
+              "selalu",
+              "akses database"
             ],
             "a": 1,
             "explain": "Minimal sekali."
@@ -856,10 +856,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "break/continue berlaku",
             "options": [
-              "CSS",
+              "regenerasi ID",
               "di loop",
-              "route",
-              "migrasi"
+              "PHPStan/Psalm",
+              "dihindari"
             ],
             "a": 1,
             "explain": "Mengatur loop."
@@ -869,8 +869,8 @@ const CONTENT_PHP = [
             "q": "Ternary memakai",
             "options": [
               "if(a,b)",
-              "CSS",
-              "route",
+              "URL ke controller",
+              "template engine Laravel",
               "kondisi ? a : b"
             ],
             "a": 3,
@@ -882,7 +882,7 @@ const CONTENT_PHP = [
             "options": [
               "?:",
               "||",
-              "CSS",
+              "<?php",
               "??"
             ],
             "a": 3,
@@ -890,12 +890,12 @@ const CONTENT_PHP = [
           },
           {
             "type": "mc",
-            "q": "Match (PHP 8) memakai",
+            "q": "Ekspresi percabangan ketat dengan nilai kembali yang diperkenalkan di PHP 8 adalah",
             "options": [
               "match",
               "switch only",
-              "CSS",
-              "route"
+              "logika bisnis",
+              "immutable"
             ],
             "a": 0,
             "explain": "PHP 8 punya match."
@@ -913,7 +913,7 @@ const CONTENT_PHP = [
             "options": [
               "def nama",
               "fun nama",
-              "CSS",
+              "session_start()",
               "function nama()"
             ],
             "a": 3,
@@ -924,8 +924,8 @@ const CONTENT_PHP = [
             "q": "Nilai balik memakai",
             "options": [
               "yield only",
-              "CSS",
-              "route",
+              "dinamis",
+              "strtoupper()",
               "return"
             ],
             "a": 3,
@@ -936,9 +936,9 @@ const CONTENT_PHP = [
             "q": "Parameter default memakai",
             "options": [
               ":",
-              "CSS",
+              ";",
               "=",
-              "route"
+              "ya"
             ],
             "a": 2,
             "explain": "Nilai default dengan =."
@@ -947,10 +947,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Type hint parameter memungkinkan",
             "options": [
-              "CSS",
+              "$_SESSION['k'] = v",
               "deklarasi tipe",
-              "route",
-              "migrasi"
+              "penanganan server",
+              "state test"
             ],
             "a": 1,
             "explain": "PHP mendukung type hint."
@@ -959,10 +959,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Return type memakai",
             "options": [
-              "CSS",
-              "route",
+              "abstract class",
+              "strtotime/DateTime",
               "function f(): int",
-              "migrasi"
+              "SQL injection"
             ],
             "a": 2,
             "explain": "Return type setelah :."
@@ -972,8 +972,8 @@ const CONTENT_PHP = [
             "q": "Variadic memakai",
             "options": [
               "$args...",
-              "CSS",
-              "route",
+              "foreach",
+              "switch",
               "...$args"
             ],
             "a": 3,
@@ -983,10 +983,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Arrow function memakai",
             "options": [
-              "CSS",
+              "$_POST/$_GET",
               "fn($x) => ...",
-              "route",
-              "migrasi"
+              "abs()",
+              "min()"
             ],
             "a": 1,
             "explain": "PHP 7.4+ fn()."
@@ -996,9 +996,9 @@ const CONTENT_PHP = [
             "q": "Closure memakai",
             "options": [
               "lambda",
-              "CSS",
+              "produksi",
               "function() use($x)",
-              "route"
+              "prepared statement"
             ],
             "a": 2,
             "explain": "Closure memakai use."
@@ -1007,9 +1007,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Named argument (PHP 8) memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Parameter query URL",
+              "terpisah dari global",
+              "menangkap beberapa tipe",
               "menyebut nama parameter"
             ],
             "a": 3,
@@ -1020,8 +1020,8 @@ const CONTENT_PHP = [
             "q": "Variabel scope fungsi",
             "options": [
               "selalu global",
-              "CSS",
-              "route",
+              "kondisi ? a : b",
+              "URL ke controller",
               "terpisah dari global"
             ],
             "a": 3,
@@ -1040,7 +1040,7 @@ const CONTENT_PHP = [
             "options": [
               "$_FORM",
               "$_DATA",
-              "CSS",
+              "for (...)",
               "$_POST"
             ],
             "a": 3,
@@ -1052,7 +1052,7 @@ const CONTENT_PHP = [
             "options": [
               "$_QUERY",
               "$_URL",
-              "CSS",
+              "new PDO(...)",
               "$_GET"
             ],
             "a": 3,
@@ -1064,7 +1064,7 @@ const CONTENT_PHP = [
             "options": [
               "$_SESS",
               "$_STORE",
-              "CSS",
+              "escaping output",
               "$_SESSION"
             ],
             "a": 3,
@@ -1076,8 +1076,8 @@ const CONTENT_PHP = [
             "options": [
               "$_COOKIE",
               "$_COOK",
-              "CSS",
-              "route"
+              "pow()/**",
+              "(int)/(float)"
             ],
             "a": 0,
             "explain": "PHP memakai $_COOKIE."
@@ -1087,9 +1087,9 @@ const CONTENT_PHP = [
             "q": "Upload file diakses via",
             "options": [
               "$_UPLOAD",
-              "CSS",
+              "number_format",
               "$_FILES",
-              "route"
+              "trim()"
             ],
             "a": 2,
             "explain": "PHP memakai $_FILES."
@@ -1098,9 +1098,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Method request memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "data/logika",
+              "new Nama()",
+              "beginTransaction/commit",
               "$_SERVER['REQUEST_METHOD']"
             ],
             "a": 3,
@@ -1110,10 +1110,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Superglobal bersifat",
             "options": [
-              "CSS",
+              "PHPUnit",
               "tersedia global",
-              "route",
-              "migrasi"
+              "proses/FPM",
+              "akses data"
             ],
             "a": 1,
             "explain": "Superglobal tersedia di mana saja."
@@ -1123,9 +1123,9 @@ const CONTENT_PHP = [
             "q": "Validasi input superglobal penting",
             "options": [
               "tidak",
-              "CSS",
+              "$",
               "ya",
-              "route"
+              "int"
             ],
             "a": 2,
             "explain": "Input tidak tepercaya."
@@ -1134,10 +1134,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Menyanitasi output mencegah",
             "options": [
-              "CSS",
+              "otomasi",
               "XSS",
-              "route",
-              "migrasi"
+              ".php",
+              "ya"
             ],
             "a": 1,
             "explain": "Escaping mencegah XSS."
@@ -1147,9 +1147,9 @@ const CONTENT_PHP = [
             "q": "Session dimulai dengan",
             "options": [
               "session_start()",
-              "CSS",
-              "route",
-              "migrasi"
+              "array bersarang",
+              "di loop",
+              "function f(): int"
             ],
             "a": 0,
             "explain": "session_start memulai."
@@ -1167,7 +1167,7 @@ const CONTENT_PHP = [
             "options": [
               "import",
               "use",
-              "CSS",
+              "akses JS",
               "include/require"
             ],
             "a": 3,
@@ -1178,9 +1178,9 @@ const CONTENT_PHP = [
             "q": "Perbedaan include dan require",
             "options": [
               "sama saja",
-              "CSS",
+              "menyebut nama parameter",
               "require gagal fatal, include warning",
-              "route"
+              "konstruktor dan property"
             ],
             "a": 2,
             "explain": "require fatal saat gagal."
@@ -1189,10 +1189,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "once mencegah",
             "options": [
-              "CSS",
-              "route",
+              "pow()/**",
+              "(int)/(float)",
               "penyertaan berulang",
-              "migrasi"
+              "implode()"
             ],
             "a": 2,
             "explain": "once mencegah duplikasi."
@@ -1201,10 +1201,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "require_once variasi yang",
             "options": [
-              "CSS",
+              "composer install --no-dev",
               "aman dari duplikasi",
-              "route",
-              "migrasi"
+              "Jenis argumen atau nilai balik yang diharapkan",
+              "Swoole/ReactPHP"
             ],
             "a": 1,
             "explain": "require_once aman."
@@ -1213,9 +1213,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Autoload memuat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "extends",
+              "date_default_timezone_set",
+              "Exception/Error",
               "class otomatis"
             ],
             "a": 3,
@@ -1226,9 +1226,9 @@ const CONTENT_PHP = [
             "q": "Composer autoload memudahkan",
             "options": [
               "memuat class",
-              "CSS",
-              "route",
-              "migrasi"
+              "pemanggilan jelas",
+              "escaping output",
+              "Xdebug/Blackfire"
             ],
             "a": 0,
             "explain": "Composer autoload."
@@ -1237,22 +1237,22 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "__DIR__ memberi",
             "options": [
-              "CSS",
+              "request",
               "direktori berkas",
-              "route",
-              "migrasi"
+              "Content-Type: application/json",
+              "dinamis"
             ],
             "a": 1,
             "explain": "__DIR__ direktori."
           },
           {
             "type": "mc",
-            "q": "Namespace memakai",
+            "q": "Kata kunci PHP untuk mengelompokkan kelas agar tidak terjadi bentrok nama antar pustaka adalah",
             "options": [
               "namespace",
-              "CSS",
-              "route",
-              "migrasi"
+              "array_keys()",
+              "for (...)",
+              "function nama()"
             ],
             "a": 0,
             "explain": "PHP memakai namespace."
@@ -1261,10 +1261,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "use mengimpor",
             "options": [
-              "CSS",
+              "json_decode",
               "namespace/class",
-              "route",
-              "migrasi"
+              "string",
+              "\"$nama\" atau \"{$nama}\""
             ],
             "a": 1,
             "explain": "use mengimpor."
@@ -1274,8 +1274,8 @@ const CONTENT_PHP = [
             "q": "Menghindari include berlebih",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "switch",
+              "match",
               "penting"
             ],
             "a": 3,
@@ -1292,9 +1292,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Berkas upload tersedia di",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kontrak",
+              "f(...)",
+              "produksi",
               "$_FILES"
             ],
             "a": 3,
@@ -1304,10 +1304,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Memindahkan file memakai",
             "options": [
-              "CSS",
+              "entry point",
               "move_uploaded_file",
-              "route",
-              "migrasi"
+              "abstract class",
+              "strtotime/DateTime"
             ],
             "a": 1,
             "explain": "move_uploaded_file."
@@ -1316,10 +1316,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Memeriksa ukuran memakai",
             "options": [
-              "CSS",
+              "implode()",
               "$_FILES[...]['size']",
-              "route",
-              "migrasi"
+              "foreach",
+              "fn($x) => ..."
             ],
             "a": 1,
             "explain": "Size pada array."
@@ -1329,8 +1329,8 @@ const CONTENT_PHP = [
             "q": "Memeriksa tipe MIME",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "Xdebug/Blackfire",
+              "ORM Laravel",
               "penting"
             ],
             "a": 3,
@@ -1340,10 +1340,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Nama file harus",
             "options": [
-              "CSS",
-              "route",
+              "komputasi",
+              "versi",
               "disanitasi",
-              "migrasi"
+              "token/JWT"
             ],
             "a": 2,
             "explain": "Sanitasi nama."
@@ -1354,8 +1354,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "wajib",
+              ".php"
             ],
             "a": 1,
             "explain": "Simpan aman."
@@ -1365,9 +1365,9 @@ const CONTENT_PHP = [
             "q": "Batas ukuran upload diatur di",
             "options": [
               "php.ini",
-              "CSS",
-              "route",
-              "migrasi"
+              "$_SESSION",
+              "class otomatis",
+              "autoloader"
             ],
             "a": 0,
             "explain": "Konfigurasi php.ini."
@@ -1378,8 +1378,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "null",
+              "abs()"
             ],
             "a": 0,
             "explain": "Filter ekstensi."
@@ -1390,8 +1390,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "UTC",
+              "wajib"
             ],
             "a": 0,
             "explain": "Tangani error."
@@ -1402,8 +1402,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "HTTPS",
+              "job"
             ],
             "a": 1,
             "explain": "Scan opsional."
@@ -1419,22 +1419,22 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Namespace menghindari",
             "options": [
-              "CSS",
+              "akses data",
               "konflik nama",
-              "route",
-              "migrasi"
+              "komponen",
+              "anotasi docblock"
             ],
             "a": 1,
             "explain": "Namespace mencegah konflik."
           },
           {
             "type": "mc",
-            "q": "Mendefinisikan namespace memakai",
+            "q": "Deklarasi ruang nama di baris atas berkas PHP ditulis menggunakan kata kunci",
             "options": [
               "namespace",
-              "CSS",
-              "route",
-              "migrasi"
+              "dinamis",
+              "strtoupper()",
+              "ganda"
             ],
             "a": 0,
             "explain": "Kata kunci namespace."
@@ -1443,10 +1443,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Mengimpor class memakai",
             "options": [
-              "CSS",
+              "::",
               "use",
-              "route",
-              "migrasi"
+              "performa",
+              "`$`"
             ],
             "a": 1,
             "explain": "use mengimpor."
@@ -1455,10 +1455,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Autoload memuat class",
             "options": [
-              "CSS",
-              "route",
+              "new PDO(...)",
+              "$_SESSION['k'] = v",
               "otomatis",
-              "migrasi"
+              "penanganan server"
             ],
             "a": 2,
             "explain": "Autoload class."
@@ -1467,10 +1467,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "PSR-4 standar",
             "options": [
-              "CSS",
+              "getMessage()",
               "autoload",
-              "route",
-              "migrasi"
+              "alternatif MySQL",
+              "akses JS"
             ],
             "a": 1,
             "explain": "PSR-4 standar."
@@ -1479,10 +1479,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Spl_autoload_register mendaftarkan",
             "options": [
-              "CSS",
+              "validasi path",
               "autoloader",
-              "route",
-              "migrasi"
+              "performa",
+              "repository package"
             ],
             "a": 1,
             "explain": "Daftar autoloader."
@@ -1492,9 +1492,9 @@ const CONTENT_PHP = [
             "q": "Nama class berhubungan dengan",
             "options": [
               "struktur folder",
-              "CSS",
-              "route",
-              "migrasi"
+              "trim()",
+              "[1,2,3] / array()",
+              "array_map()"
             ],
             "a": 0,
             "explain": "Struktur folder."
@@ -1505,8 +1505,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "data/logika",
+              "new Nama()"
             ],
             "a": 1,
             "explain": "Gunakan wajar."
@@ -1517,8 +1517,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "null",
+              "abs()"
             ],
             "a": 1,
             "explain": "Dokumentasi."
@@ -1528,8 +1528,8 @@ const CONTENT_PHP = [
             "q": "Uji autoload penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "HTTPS",
+              "job",
               "ya"
             ],
             "a": 3,
@@ -1546,9 +1546,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "json_encode mengubah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "composer install --no-dev",
+              "Jenis argumen atau nilai balik yang diharapkan",
+              "aman dari duplikasi",
               "data ke JSON"
             ],
             "a": 3,
@@ -1558,10 +1558,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "json_decode mengubah",
             "options": [
-              "CSS",
+              "Parameter query URL",
               "JSON ke data",
-              "route",
-              "migrasi"
+              "terpisah dari global",
+              "menangkap beberapa tipe"
             ],
             "a": 1,
             "explain": "Decode JSON."
@@ -1570,10 +1570,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "json_decode assoc true memberi",
             "options": [
-              "CSS",
-              "route",
+              "use",
+              "__construct()",
               "array",
-              "migrasi"
+              "::"
             ],
             "a": 2,
             "explain": "Assoc array."
@@ -1583,8 +1583,8 @@ const CONTENT_PHP = [
             "q": "Header JSON wajib diset",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "%",
+              "ganda",
               "ya"
             ],
             "a": 3,
@@ -1595,8 +1595,8 @@ const CONTENT_PHP = [
             "q": "Error JSON dicek",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              ";",
+              "array",
               "ya"
             ],
             "a": 3,
@@ -1607,8 +1607,8 @@ const CONTENT_PHP = [
             "q": "Menangani payload besar",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "state test",
+              "akses bersama",
               "penting"
             ],
             "a": 3,
@@ -1618,10 +1618,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Streaming JSON memungkinkan",
             "options": [
-              "CSS",
+              "throw",
               "data besar",
-              "route",
-              "migrasi"
+              "SQL injection",
+              "injeksi"
             ],
             "a": 1,
             "explain": "Streaming opsional."
@@ -1631,9 +1631,9 @@ const CONTENT_PHP = [
             "q": "Validasi data JSON penting",
             "options": [
               "tidak",
-              "CSS",
+              "match",
               "ya",
-              "route"
+              "XSS"
             ],
             "a": 2,
             "explain": "Validasi input."
@@ -1642,9 +1642,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Menyimpan JSON di DB",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "explode()",
+              "count()",
+              "if/elseif/else",
               "perlu pertimbangan"
             ],
             "a": 3,
@@ -1656,8 +1656,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "<?php",
+              "."
             ],
             "a": 0,
             "explain": "Format tanggal."
@@ -1674,9 +1674,9 @@ const CONTENT_PHP = [
             "q": "MVC memisahkan",
             "options": [
               "Model/View/Controller",
-              "CSS",
-              "route",
-              "migrasi"
+              "function() use($x)",
+              "session_start()",
+              "namespace/class"
             ],
             "a": 0,
             "explain": "MVC memisahkan tanggung jawab."
@@ -1685,10 +1685,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Model bertanggung jawab",
             "options": [
-              "CSS",
+              "new PDO(...)",
               "data/logika",
-              "route",
-              "migrasi"
+              "$_SESSION['k'] = v",
+              "penanganan server"
             ],
             "a": 1,
             "explain": "Model data."
@@ -1697,10 +1697,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "View bertanggung jawab",
             "options": [
-              "CSS",
-              "route",
+              "akses data",
+              "komponen",
               "tampilan",
-              "migrasi"
+              "anotasi docblock"
             ],
             "a": 2,
             "explain": "View tampilan."
@@ -1709,9 +1709,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Controller mengatur",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "dinamis",
+              "$_SERVER['REQUEST_METHOD']",
+              "strtoupper()",
               "alur request"
             ],
             "a": 3,
@@ -1721,9 +1721,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Front controller memusatkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "abstract class",
+              "strtotime/DateTime",
+              "throw",
               "entry point"
             ],
             "a": 3,
@@ -1733,10 +1733,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Router memetakan",
             "options": [
-              "CSS",
+              "aman dari duplikasi",
               "URL ke controller",
-              "route",
-              "migrasi"
+              "composer install --no-dev",
+              "Jenis argumen atau nilai balik yang diharapkan"
             ],
             "a": 1,
             "explain": "Router URL."
@@ -1745,10 +1745,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Template engine membantu",
             "options": [
-              "CSS",
-              "route",
+              "Xdebug/Blackfire",
+              "ORM Laravel",
               "pemisahan view",
-              "migrasi"
+              "json_decode"
             ],
             "a": 2,
             "explain": "Template view."
@@ -1759,8 +1759,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "match",
+              "XSS"
             ],
             "a": 0,
             "explain": "Framework MVC."
@@ -1771,8 +1771,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "wajib",
+              ".php"
             ],
             "a": 0,
             "explain": "Dokumentasi."
@@ -1783,8 +1783,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "versi",
+              "bool"
             ],
             "a": 1,
             "explain": "Test per layer."
@@ -1802,8 +1802,8 @@ const CONTENT_PHP = [
             "options": [
               "class Nama {}",
               "struct Nama",
-              "CSS",
-              "route"
+              "data/logika",
+              "new Nama()"
             ],
             "a": 0,
             "explain": "PHP memakai class."
@@ -1813,8 +1813,8 @@ const CONTENT_PHP = [
             "q": "Konstruktor memakai",
             "options": [
               "constructor()",
-              "CSS",
-              "route",
+              "trim()",
+              "[1,2,3] / array()",
               "__construct()"
             ],
             "a": 3,
@@ -1825,8 +1825,8 @@ const CONTENT_PHP = [
             "q": "Membuat objek memakai",
             "options": [
               "Nama()",
-              "CSS",
-              "route",
+              "validasi path",
+              "performa",
               "new Nama()"
             ],
             "a": 3,
@@ -1836,10 +1836,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Visibility meliputi",
             "options": [
-              "CSS",
+              "getMessage()",
               "public/protected/private",
-              "route",
-              "migrasi"
+              "alternatif MySQL",
+              "PHPUnit mock/createMock"
             ],
             "a": 1,
             "explain": "PHP punya tiga visibility."
@@ -1849,9 +1849,9 @@ const CONTENT_PHP = [
             "q": "Property promotion (PHP 8) mempersingkat",
             "options": [
               "konstruktor dan property",
-              "CSS",
-              "route",
-              "migrasi"
+              "Jenis argumen atau nilai balik yang diharapkan",
+              "aman dari duplikasi",
+              "composer install --no-dev"
             ],
             "a": 0,
             "explain": "Promotion menghemat kode."
@@ -1860,22 +1860,22 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Interface memakai",
             "options": [
-              "CSS",
+              "// atau #",
               "interface/implements",
-              "route",
-              "migrasi"
+              "gettype/is_*",
+              "pow()/**"
             ],
             "a": 1,
             "explain": "PHP memakai interface."
           },
           {
             "type": "mc",
-            "q": "Abstract class memakai",
+            "q": "Kelas dasar PHP yang tidak dapat diinstansiasi langsung dan mewajibkan subclass melengkapi metodenya memakai",
             "options": [
-              "CSS",
-              "route",
+              "disarankan",
+              "pemanggilan jelas",
               "abstract class",
-              "migrasi"
+              "escaping output"
             ],
             "a": 2,
             "explain": "PHP memakai abstract."
@@ -1886,8 +1886,8 @@ const CONTENT_PHP = [
             "options": [
               "implements",
               "extends",
-              "CSS",
-              "route"
+              "data besar",
+              "pemisahan view"
             ],
             "a": 1,
             "explain": "PHP memakai extends."
@@ -1897,9 +1897,9 @@ const CONTENT_PHP = [
             "q": "Trait memakai",
             "options": [
               "trait/use",
-              "CSS",
-              "route",
-              "migrasi"
+              "kontrak",
+              "f(...)",
+              "produksi"
             ],
             "a": 0,
             "explain": "PHP memakai trait."
@@ -1910,8 +1910,8 @@ const CONTENT_PHP = [
             "options": [
               "::",
               "->",
-              "CSS",
-              "route"
+              "throw",
+              "?->"
             ],
             "a": 0,
             "explain": "PHP memakai :: untuk static."
@@ -1929,8 +1929,8 @@ const CONTENT_PHP = [
             "options": [
               "now()",
               "date()",
-              "CSS",
-              "route"
+              "disanitasi",
+              "struktur folder"
             ],
             "a": 1,
             "explain": "date() memberi tanggal."
@@ -1940,9 +1940,9 @@ const CONTENT_PHP = [
             "q": "Timestamp memakai",
             "options": [
               "time()",
-              "CSS",
-              "route",
-              "migrasi"
+              "pekerjaan berat",
+              "kontrak",
+              "f(...)"
             ],
             "a": 0,
             "explain": "time() timestamp."
@@ -1951,9 +1951,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Format tanggal memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "echo/print",
+              "$_POST/$_GET",
+              "abs()",
               "date('Y-m-d')"
             ],
             "a": 3,
@@ -1964,9 +1964,9 @@ const CONTENT_PHP = [
             "q": "Mem-parse tanggal memakai",
             "options": [
               "strtotime/DateTime",
-              "CSS",
-              "route",
-              "migrasi"
+              "minimal sekali",
+              "deklarasi tipe",
+              "$_SESSION"
             ],
             "a": 0,
             "explain": "strtotime/DateTime."
@@ -1977,8 +1977,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "UTC",
+              "wajib"
             ],
             "a": 0,
             "explain": "Immutable lebih aman."
@@ -1988,9 +1988,9 @@ const CONTENT_PHP = [
             "q": "Timezone diatur dengan",
             "options": [
               "date_default_timezone_set",
-              "CSS",
-              "route",
-              "migrasi"
+              "password_verify",
+              "komputasi",
+              "token/JWT"
             ],
             "a": 0,
             "explain": "Atur timezone."
@@ -1999,10 +1999,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Selisih waktu memakai",
             "options": [
-              "CSS",
-              "route",
+              "strtoupper()",
+              "ganda",
               "DateInterval",
-              "migrasi"
+              "array_filter()"
             ],
             "a": 2,
             "explain": "Interval selisih."
@@ -2011,10 +2011,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Format internasional memakai",
             "options": [
-              "CSS",
-              "route",
+              "Model/View/Controller",
+              "__construct()",
               "IntlDateFormatter",
-              "migrasi"
+              "catch (Tipe $e)"
             ],
             "a": 2,
             "explain": "Intl formatter."
@@ -2023,10 +2023,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Menyimpan waktu di DB memakai",
             "options": [
-              "CSS",
-              "route",
+              "beban",
+              "HTML",
               "UTC",
-              "migrasi"
+              "float"
             ],
             "a": 2,
             "explain": "UTC konsisten."
@@ -2037,8 +2037,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              ";",
+              "array"
             ],
             "a": 1,
             "explain": "Uji tanggal."
@@ -2055,9 +2055,9 @@ const CONTENT_PHP = [
             "q": "Menangkap exception memakai",
             "options": [
               "try/rescue",
-              "CSS",
+              "proses/FPM",
               "try/catch",
-              "route"
+              "akses data"
             ],
             "a": 2,
             "explain": "PHP memakai try/catch."
@@ -2066,10 +2066,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "finally dijalankan",
             "options": [
-              "CSS",
-              "route",
+              "otomatis",
+              "data/logika",
               "selalu",
-              "migrasi"
+              "new Nama()"
             ],
             "a": 2,
             "explain": "finally selalu."
@@ -2080,8 +2080,8 @@ const CONTENT_PHP = [
             "options": [
               "raise",
               "throw",
-              "CSS",
-              "route"
+              "use",
+              "__construct()"
             ],
             "a": 1,
             "explain": "PHP memakai throw."
@@ -2090,21 +2090,21 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Exception mewarisi",
             "options": [
-              "CSS",
+              "dinamis",
               "Exception/Error",
-              "route",
-              "migrasi"
+              "$_SERVER['REQUEST_METHOD']",
+              "strtoupper()"
             ],
             "a": 1,
             "explain": "PHP punya Exception/Error."
           },
           {
             "type": "mc",
-            "q": "Custom exception mewarisi",
+            "q": "Kelas galat buatan sendiri di PHP umumnya mewarisi kelas bawaan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "try/catch",
+              "getMessage()",
+              "alternatif MySQL",
               "Exception"
             ],
             "a": 3,
@@ -2114,10 +2114,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Menangkap tipe spesifik memakai",
             "options": [
-              "CSS",
-              "route",
+              "di loop",
+              "function f(): int",
               "catch (Tipe $e)",
-              "migrasi"
+              "$_COOKIE"
             ],
             "a": 2,
             "explain": "Catch menyebut tipe."
@@ -2126,10 +2126,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Multiple catch memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "error mode exception",
+              "Memisahkan query SQL dari nilai input",
               "menangkap beberapa tipe",
-              "migrasi"
+              "require gagal fatal, include warning"
             ],
             "a": 2,
             "explain": "Beberapa catch."
@@ -2139,8 +2139,8 @@ const CONTENT_PHP = [
             "q": "Mengabaikan exception berisiko",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "`$`",
+              "null",
               "ya"
             ],
             "a": 3,
@@ -2150,10 +2150,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "set_exception_handler menangani",
             "options": [
-              "CSS",
+              "php.ini",
               "global",
-              "route",
-              "migrasi"
+              "data besar",
+              "pemisahan view"
             ],
             "a": 1,
             "explain": "Handler global."
@@ -2163,9 +2163,9 @@ const CONTENT_PHP = [
             "q": "Pesan exception memakai",
             "options": [
               ".message",
-              "CSS",
+              "sqrt()",
               "getMessage()",
-              "route"
+              "sprintf()"
             ],
             "a": 2,
             "explain": "getMessage memberi pesan."
@@ -2181,10 +2181,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "PDO menyediakan",
             "options": [
-              "CSS",
+              "komponen reusable",
               "akses database",
-              "route",
-              "migrasi"
+              "json_encode",
+              "<?php"
             ],
             "a": 1,
             "explain": "PDO abstraksi DB."
@@ -2194,9 +2194,9 @@ const CONTENT_PHP = [
             "q": "Prepared statement mencegah",
             "options": [
               "SQL injection",
-              "CSS",
-              "route",
-              "migrasi"
+              "count()",
+              "if/elseif/else",
+              "...$args"
             ],
             "a": 0,
             "explain": "Parameter terikat."
@@ -2207,8 +2207,8 @@ const CONTENT_PHP = [
             "options": [
               "new DB(...)",
               "new PDO(...)",
-              "CSS",
-              "route"
+              "namespace",
+              "konflik nama"
             ],
             "a": 1,
             "explain": "PDO constructor."
@@ -2217,10 +2217,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Menjalankan query memakai",
             "options": [
-              "CSS",
-              "route",
+              "injeksi",
+              "regenerasi ID",
               "prepare/execute",
-              "migrasi"
+              "PHPStan/Psalm"
             ],
             "a": 2,
             "explain": "prepare+execute."
@@ -2229,9 +2229,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Mengambil hasil memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "baca/tulis",
+              "beberapa tipe",
+              "konsistensi",
               "fetch/fetchAll"
             ],
             "a": 3,
@@ -2241,10 +2241,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Transaksi memakai",
             "options": [
-              "CSS",
-              "route",
+              "\"$nama\" atau \"{$nama}\"",
+              "rand/mt_rand",
               "beginTransaction/commit",
-              "migrasi"
+              "str_contains()"
             ],
             "a": 2,
             "explain": "Transaksi DB."
@@ -2253,10 +2253,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Error handling memakai",
             "options": [
-              "CSS",
-              "route",
+              "terpisah dari global",
+              "menangkap beberapa tipe",
               "error mode exception",
-              "migrasi"
+              "Parameter query URL"
             ],
             "a": 2,
             "explain": "Exception mode."
@@ -2265,10 +2265,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Mysqli adalah",
             "options": [
-              "CSS",
-              "route",
+              "__construct()",
+              "IntlDateFormatter",
               "alternatif MySQL",
-              "migrasi"
+              "catch (Tipe $e)"
             ],
             "a": 2,
             "explain": "mysqli khusus MySQL."
@@ -2277,10 +2277,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "ORM populer PHP adalah",
             "options": [
-              "CSS",
+              "beginTransaction/commit",
               "Eloquent/Doctrine",
-              "route",
-              "migrasi"
+              "cookie",
+              "assertSame/assertEquals"
             ],
             "a": 1,
             "explain": "Eloquent/Doctrine."
@@ -2290,9 +2290,9 @@ const CONTENT_PHP = [
             "q": "Binding parameter mencegah",
             "options": [
               "injeksi",
-              "CSS",
-              "route",
-              "migrasi"
+              "komputasi",
+              "versi",
+              "token/JWT"
             ],
             "a": 0,
             "explain": "Binding aman."
@@ -2308,10 +2308,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Memulai session memakai",
             "options": [
-              "CSS",
-              "route",
+              "keamanan/performa",
+              "bug statis",
               "session_start()",
-              "migrasi"
+              "validasi path"
             ],
             "a": 2,
             "explain": "session_start."
@@ -2320,10 +2320,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Menyimpan session memakai",
             "options": [
-              "CSS",
+              "try/catch",
               "$_SESSION['k'] = v",
-              "route",
-              "migrasi"
+              "getMessage()",
+              "alternatif MySQL"
             ],
             "a": 1,
             "explain": "Assignment session."
@@ -2332,10 +2332,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Menghapus session memakai",
             "options": [
-              "CSS",
+              "array bersarang",
               "unset/session_destroy",
-              "route",
-              "migrasi"
+              "function f(): int",
+              "$_COOKIE"
             ],
             "a": 1,
             "explain": "unset/destroy."
@@ -2346,8 +2346,8 @@ const CONTENT_PHP = [
             "options": [
               "cookie()",
               "setcookie()",
-              "CSS",
-              "route"
+              "otomasi",
+              ".php"
             ],
             "a": 1,
             "explain": "PHP memakai setcookie."
@@ -2356,10 +2356,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Session ID disimpan di",
             "options": [
-              "CSS",
-              "route",
+              "int",
+              "dinamis",
               "cookie",
-              "migrasi"
+              "strtoupper()"
             ],
             "a": 2,
             "explain": "Session ID via cookie."
@@ -2369,9 +2369,9 @@ const CONTENT_PHP = [
             "q": "HttpOnly mencegah",
             "options": [
               "akses JS",
-              "CSS",
-              "route",
-              "migrasi"
+              "PHPUnit",
+              "proses/FPM",
+              "akses data"
             ],
             "a": 0,
             "explain": "HttpOnly melindungi cookie."
@@ -2380,10 +2380,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Secure flag memaksa",
             "options": [
-              "CSS",
-              "route",
+              "penting",
+              "otomatis",
               "HTTPS",
-              "migrasi"
+              "data/logika"
             ],
             "a": 2,
             "explain": "Secure untuk HTTPS."
@@ -2392,10 +2392,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Session fixation dicegah dengan",
             "options": [
-              "CSS",
+              "header('Location: ...')",
               "regenerasi ID",
-              "route",
-              "migrasi"
+              "number_format",
+              "trim()"
             ],
             "a": 1,
             "explain": "Regenerasi ID."
@@ -2404,10 +2404,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Session tamper-proof perlu",
             "options": [
-              "CSS",
+              "pow()/**",
               "penanganan server",
-              "route",
-              "migrasi"
+              "(int)/(float)",
+              "implode()"
             ],
             "a": 1,
             "explain": "Session di server."
@@ -2418,8 +2418,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "env",
+              ";"
             ],
             "a": 0,
             "explain": "Timeout session."
@@ -2437,7 +2437,7 @@ const CONTENT_PHP = [
             "options": [
               "Jest",
               "RSpec",
-              "CSS",
+              "count()",
               "PHPUnit"
             ],
             "a": 3,
@@ -2447,10 +2447,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Menjalankan test memakai",
             "options": [
-              "CSS",
-              "route",
+              "komponen reusable",
+              "json_encode",
               "phpunit/vendor/bin/phpunit",
-              "migrasi"
+              "$nama = nilai;"
             ],
             "a": 2,
             "explain": "PHPUnit runner."
@@ -2459,10 +2459,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Assertion memakai",
             "options": [
-              "CSS",
+              "regenerasi ID",
               "assertSame/assertEquals",
-              "route",
-              "migrasi"
+              "PHPStan/Psalm",
+              "dihindari"
             ],
             "a": 1,
             "explain": "PHPUnit assertions."
@@ -2471,10 +2471,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Mocking memakai",
             "options": [
-              "CSS",
+              "namespace",
               "PHPUnit mock/createMock",
-              "route",
-              "migrasi"
+              "konflik nama",
+              "perlu pertimbangan"
             ],
             "a": 1,
             "explain": "Mock bawaan."
@@ -2483,9 +2483,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Coverage memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "\"$nama\" atau \"{$nama}\"",
+              "$_FILES",
+              "rand/mt_rand",
               "Xdebug/phpdbg"
             ],
             "a": 3,
@@ -2495,10 +2495,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Static analysis memakai",
             "options": [
-              "CSS",
+              "baca/tulis",
               "PHPStan/Psalm",
-              "route",
-              "migrasi"
+              "beberapa tipe",
+              "konsistensi"
             ],
             "a": 1,
             "explain": "PHPStan/Psalm."
@@ -2509,8 +2509,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "::",
+              "`$`"
             ],
             "a": 0,
             "explain": "Perilaku stabil."
@@ -2521,8 +2521,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "ganda",
+              "="
             ],
             "a": 1,
             "explain": "CI otomasi."
@@ -2532,9 +2532,9 @@ const CONTENT_PHP = [
             "q": "Fixture menyiapkan",
             "options": [
               "state test",
-              "CSS",
-              "route",
-              "migrasi"
+              "trait/use",
+              "DateInterval",
+              "Exception"
             ],
             "a": 0,
             "explain": "Fixture state."
@@ -2545,8 +2545,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "array",
+              "UTC"
             ],
             "a": 0,
             "explain": "Kontrak API."
@@ -2563,9 +2563,9 @@ const CONTENT_PHP = [
             "q": "PHP umumnya menangani konkurensi via",
             "options": [
               "proses/FPM",
-              "CSS",
-              "route",
-              "migrasi"
+              "beban",
+              "dependency",
+              "http_response_code"
             ],
             "a": 0,
             "explain": "PHP-FPM mengelola proses."
@@ -2574,10 +2574,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Async PHP memakai",
             "options": [
-              "CSS",
+              "str_contains()",
               "Swoole/ReactPHP",
-              "route",
-              "migrasi"
+              "array_merge()",
+              "return"
             ],
             "a": 1,
             "explain": "Async library PHP."
@@ -2587,9 +2587,9 @@ const CONTENT_PHP = [
             "q": "Coro/Generator memungkinkan",
             "options": [
               "asinkron",
-              "CSS",
-              "route",
-              "migrasi"
+              "$_GET",
+              "penyertaan berulang",
+              "move_uploaded_file"
             ],
             "a": 0,
             "explain": "Generator untuk async."
@@ -2598,10 +2598,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Queue memindahkan",
             "options": [
-              "CSS",
+              "fetch/fetchAll",
               "pekerjaan berat",
-              "route",
-              "migrasi"
+              "setcookie()",
+              "phpunit/vendor/bin/phpunit"
             ],
             "a": 1,
             "explain": "Queue job."
@@ -2610,9 +2610,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Worker queue memproses",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "sqrt()",
+              "use",
+              "::",
               "job"
             ],
             "a": 3,
@@ -2622,10 +2622,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Race condition harus",
             "options": [
-              "CSS",
+              "tersedia global",
               "dihindari",
-              "route",
-              "migrasi"
+              "direktori berkas",
+              "php.ini"
             ],
             "a": 1,
             "explain": "Sinkronisasi."
@@ -2634,10 +2634,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Locking membantu",
             "options": [
-              "CSS",
-              "route",
+              "class Nama {}",
+              "trait/use",
               "akses bersama",
-              "migrasi"
+              "DateInterval"
             ],
             "a": 2,
             "explain": "Locking data."
@@ -2648,8 +2648,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "?->",
+              "token"
             ],
             "a": 1,
             "explain": "Mencegah menggantung."
@@ -2660,8 +2660,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "throw",
+              "?->"
             ],
             "a": 1,
             "explain": "Monitoring."
@@ -2671,9 +2671,9 @@ const CONTENT_PHP = [
             "q": "Graceful shutdown penting",
             "options": [
               "tidak",
-              "CSS",
+              "<?php",
               "ya",
-              "route"
+              "."
             ],
             "a": 2,
             "explain": "Shutdown aman."
@@ -2689,10 +2689,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Repository memisahkan",
             "options": [
-              "CSS",
-              "route",
+              "$_GET",
+              "penyertaan berulang",
               "akses data",
-              "migrasi"
+              "move_uploaded_file"
             ],
             "a": 2,
             "explain": "Repository data."
@@ -2702,9 +2702,9 @@ const CONTENT_PHP = [
             "q": "Service layer menampung",
             "options": [
               "logika bisnis",
-              "CSS",
-              "route",
-              "migrasi"
+              "Composer",
+              "GET/POST",
+              "round/floor/ceil"
             ],
             "a": 0,
             "explain": "Service bisnis."
@@ -2713,9 +2713,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "DI container membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "password_hash",
+              "dependency",
+              "http_response_code",
               "pengelolaan dependensi"
             ],
             "a": 3,
@@ -2725,10 +2725,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Interface memisahkan",
             "options": [
-              "CSS",
-              "route",
+              "catch (Tipe $e)",
+              "fetch/fetchAll",
               "kontrak",
-              "migrasi"
+              "setcookie()"
             ],
             "a": 2,
             "explain": "Interface kontrak."
@@ -2739,8 +2739,8 @@ const CONTENT_PHP = [
             "options": [
               "disarankan",
               "tidak",
-              "CSS",
-              "route"
+              "min()",
+              "explode()"
             ],
             "a": 0,
             "explain": "Domain bersih."
@@ -2749,10 +2749,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Modularisasi membantu",
             "options": [
-              "CSS",
+              "prepared statement",
               "skalabilitas",
-              "route",
-              "migrasi"
+              "eksekusi",
+              "komponen reusable"
             ],
             "a": 1,
             "explain": "Modul."
@@ -2761,10 +2761,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "CQRS memisahkan",
             "options": [
-              "CSS",
+              "asinkron",
               "baca/tulis",
-              "route",
-              "migrasi"
+              "pengelolaan dependensi",
+              "konstanta bertipe"
             ],
             "a": 1,
             "explain": "CQRS."
@@ -2773,9 +2773,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Event memisahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "autoloader",
+              "alur request",
+              "interface/implements",
               "komponen"
             ],
             "a": 3,
@@ -2787,8 +2787,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              ";",
+              "array"
             ],
             "a": 1,
             "explain": "Dokumentasi."
@@ -2798,9 +2798,9 @@ const CONTENT_PHP = [
             "q": "Refactor bertahap aman",
             "options": [
               "tidak",
-              "CSS",
+              "beban",
               "ya",
-              "route"
+              "HTML"
             ],
             "a": 2,
             "explain": "Bertahap."
@@ -2816,9 +2816,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "readonly property (8.1) memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "for (...)",
+              "function nama()",
+              "function() use($x)",
               "immutable"
             ],
             "a": 3,
@@ -2828,10 +2828,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "enum (8.1) untuk",
             "options": [
-              "CSS",
+              "date_default_timezone_set",
               "konstanta bertipe",
-              "route",
-              "migrasi"
+              "Exception/Error",
+              "new PDO(...)"
             ],
             "a": 1,
             "explain": "Enum bertipe."
@@ -2840,10 +2840,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "first-class callable syntax memakai",
             "options": [
-              "CSS",
+              "env",
               "f(...)",
-              "route",
-              "migrasi"
+              "escaping output",
+              "Xdebug/Blackfire"
             ],
             "a": 1,
             "explain": "Callable syntax."
@@ -2852,10 +2852,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "fibers (8.1) memungkinkan",
             "options": [
-              "CSS",
+              "pow()/**",
               "asinkron",
-              "route",
-              "migrasi"
+              "(int)/(float)",
+              "implode()"
             ],
             "a": 1,
             "explain": "Fibers async."
@@ -2864,9 +2864,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "match expression lebih ringkas dari",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "disanitasi",
+              "struktur folder",
+              "entry point",
               "switch"
             ],
             "a": 3,
@@ -2876,10 +2876,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "named arguments memudahkan",
             "options": [
-              "CSS",
+              "PHPUnit mock/createMock",
               "pemanggilan jelas",
-              "route",
-              "migrasi"
+              "pekerjaan berat",
+              "kontrak"
             ],
             "a": 1,
             "explain": "Named args."
@@ -2889,8 +2889,8 @@ const CONTENT_PHP = [
             "q": "nullsafe operator memakai",
             "options": [
               "->?",
-              "CSS",
-              "route",
+              "`$`",
+              "abs()",
               "?->"
             ],
             "a": 3,
@@ -2901,9 +2901,9 @@ const CONTENT_PHP = [
             "q": "union types memungkinkan",
             "options": [
               "beberapa tipe",
-              "CSS",
-              "route",
-              "migrasi"
+              "minimal sekali",
+              "deklarasi tipe",
+              "$_SESSION"
             ],
             "a": 0,
             "explain": "Union types."
@@ -2913,9 +2913,9 @@ const CONTENT_PHP = [
             "q": "attributes menggantikan",
             "options": [
               "anotasi docblock",
-              "CSS",
-              "route",
-              "migrasi"
+              "global",
+              "beginTransaction/commit",
+              "cookie"
             ],
             "a": 0,
             "explain": "Attributes native."
@@ -2924,10 +2924,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Update PHP penting",
             "options": [
-              "CSS",
-              "route",
+              "format",
+              "password_verify",
               "keamanan/performa",
-              "migrasi"
+              "komputasi"
             ],
             "a": 2,
             "explain": "Versi baru."
@@ -2943,9 +2943,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Server PHP umum memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "php file.php",
+              "dinamis",
+              "$_SERVER['REQUEST_METHOD']",
               "PHP-FPM + Nginx/Apache"
             ],
             "a": 3,
@@ -2955,9 +2955,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Konfigurasi produksi menonaktifkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "time()",
+              "try/catch",
+              "getMessage()",
               "display_errors"
             ],
             "a": 3,
@@ -2967,10 +2967,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "OpCache diaktifkan di",
             "options": [
-              "CSS",
-              "route",
+              "array bersarang",
+              "di loop",
               "produksi",
-              "migrasi"
+              "function f(): int"
             ],
             "a": 2,
             "explain": "OpCache produksi."
@@ -2979,9 +2979,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Dependency dipasang dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pemrosesan web di server",
+              "data ke JSON",
+              "tipe dan ukuran",
               "composer install --no-dev"
             ],
             "a": 3,
@@ -2991,9 +2991,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Environment dipisah via",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "int",
+              "dinamis",
+              "ganda",
               "env"
             ],
             "a": 3,
@@ -3004,9 +3004,9 @@ const CONTENT_PHP = [
             "q": "Logging terpusat penting",
             "options": [
               "tidak",
-              "CSS",
+              "versi",
               "ya",
-              "route"
+              "bool"
             ],
             "a": 2,
             "explain": "Log terpusat."
@@ -3017,8 +3017,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "UTC",
+              "wajib"
             ],
             "a": 0,
             "explain": "Health check."
@@ -3027,10 +3027,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Rolling deploy meminimalkan",
             "options": [
-              "CSS",
-              "route",
+              "number_format",
+              "trim()",
               "downtime",
-              "migrasi"
+              "[1,2,3] / array()"
             ],
             "a": 2,
             "explain": "Rolling deploy."
@@ -3040,9 +3040,9 @@ const CONTENT_PHP = [
             "q": "Migrasi DB bertahap",
             "options": [
               "tidak",
-              "CSS",
+              "trait/use",
               "penting",
-              "route"
+              "DateInterval"
             ],
             "a": 2,
             "explain": "Migrasi aman."
@@ -3052,9 +3052,9 @@ const CONTENT_PHP = [
             "q": "Backup penting",
             "options": [
               "tidak",
-              "CSS",
+              "array",
               "ya",
-              "route"
+              "UTC"
             ],
             "a": 2,
             "explain": "Backup data."
@@ -3070,10 +3070,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "PSR standar menjaga",
             "options": [
-              "CSS",
-              "route",
+              "if/elseif/else",
+              "...$args",
               "konsistensi",
-              "migrasi"
+              "tersedia global"
             ],
             "a": 2,
             "explain": "PSR konsistensi."
@@ -3083,9 +3083,9 @@ const CONTENT_PHP = [
             "q": "PHP-CS-Fixer menyeragamkan",
             "options": [
               "format",
-              "CSS",
-              "route",
-              "migrasi"
+              "date('Y-m-d')",
+              "selalu",
+              "akses database"
             ],
             "a": 0,
             "explain": "Fixer format."
@@ -3094,10 +3094,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "PHPStan/Psalm menemukan",
             "options": [
-              "CSS",
-              "route",
+              "regenerasi ID",
+              "dihindari",
               "bug statis",
-              "migrasi"
+              "skalabilitas"
             ],
             "a": 2,
             "explain": "Static analysis."
@@ -3106,9 +3106,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Rector membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "json_encode",
+              "<?php",
+              "$nama = nilai;",
               "refactor"
             ],
             "a": 3,
@@ -3119,8 +3119,8 @@ const CONTENT_PHP = [
             "q": "Menghindari god class",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "$_FILES",
+              "rand/mt_rand",
               "penting"
             ],
             "a": 3,
@@ -3132,8 +3132,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "versi",
+              "bool"
             ],
             "a": 0,
             "explain": "Nama deskriptif."
@@ -3143,8 +3143,8 @@ const CONTENT_PHP = [
             "q": "Test regresi penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "::",
+              "`$`",
               "ya"
             ],
             "a": 3,
@@ -3156,8 +3156,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "beban",
+              "HTML"
             ],
             "a": 0,
             "explain": "Review."
@@ -3168,8 +3168,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "versi",
+              "bool"
             ],
             "a": 0,
             "explain": "Dokumentasi."
@@ -3179,8 +3179,8 @@ const CONTENT_PHP = [
             "q": "CI otomasi penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "token",
+              "$",
               "ya"
             ],
             "a": 3,
@@ -3197,10 +3197,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "SQL injection dicegah dengan",
             "options": [
-              "CSS",
-              "route",
+              "autoload",
+              "tampilan",
               "prepared statement",
-              "migrasi"
+              "public/protected/private"
             ],
             "a": 2,
             "explain": "Parameter terikat."
@@ -3209,10 +3209,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "XSS dicegah dengan",
             "options": [
-              "CSS",
+              "str_replace()",
               "escaping output",
-              "route",
-              "migrasi"
+              "['a' => 1]",
+              "array bersarang"
             ],
             "a": 1,
             "explain": "Escaping output."
@@ -3222,9 +3222,9 @@ const CONTENT_PHP = [
             "q": "CSRF dicegah dengan",
             "options": [
               "token",
-              "CSS",
-              "route",
-              "migrasi"
+              "HTML",
+              "float",
+              "action"
             ],
             "a": 0,
             "explain": "Token CSRF."
@@ -3235,8 +3235,8 @@ const CONTENT_PHP = [
             "options": [
               "password_hash",
               "md5",
-              "CSS",
-              "route"
+              "Swoole/ReactPHP",
+              "logika bisnis"
             ],
             "a": 0,
             "explain": "password_hash aman."
@@ -3245,9 +3245,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Memverifikasi password memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Exception",
+              "prepare/execute",
+              "unset/session_destroy",
               "password_verify"
             ],
             "a": 3,
@@ -3259,8 +3259,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "UTC",
+              "wajib"
             ],
             "a": 1,
             "explain": "Hindari eval."
@@ -3269,10 +3269,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Upload divalidasi",
             "options": [
-              "CSS",
-              "route",
+              "Memisahkan query SQL dari nilai input",
+              "require gagal fatal, include warning",
               "tipe dan ukuran",
-              "migrasi"
+              "error mode exception"
             ],
             "a": 2,
             "explain": "Validasi upload."
@@ -3281,9 +3281,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Path traversal dicegah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "token",
+              "eager loading",
+              "request",
               "validasi path"
             ],
             "a": 3,
@@ -3294,9 +3294,9 @@ const CONTENT_PHP = [
             "q": "Secrets disimpan di",
             "options": [
               "environment/secret manager",
-              "CSS",
-              "route",
-              "migrasi"
+              "disarankan",
+              "pemanggilan jelas",
+              "escaping output"
             ],
             "a": 0,
             "explain": "Rahasia aman."
@@ -3306,9 +3306,9 @@ const CONTENT_PHP = [
             "q": "Dependency scanning penting",
             "options": [
               "tidak",
-              "CSS",
+              "beban",
               "ya",
-              "route"
+              "HTML"
             ],
             "a": 2,
             "explain": "Scan dependency."
@@ -3324,10 +3324,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "OpCache mempercepat",
             "options": [
-              "CSS",
+              "getMessage()",
               "eksekusi",
-              "route",
-              "migrasi"
+              "alternatif MySQL",
+              "akses JS"
             ],
             "a": 1,
             "explain": "OpCache cache bytecode."
@@ -3337,9 +3337,9 @@ const CONTENT_PHP = [
             "q": "Profiling memakai",
             "options": [
               "Xdebug/Blackfire",
-              "CSS",
-              "route",
-              "migrasi"
+              "validasi path",
+              "performa",
+              "repository package"
             ],
             "a": 0,
             "explain": "Profiler PHP."
@@ -3348,10 +3348,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Query N+1 dihindari dengan",
             "options": [
-              "CSS",
-              "route",
+              "trim()",
+              "[1,2,3] / array()",
               "eager loading",
-              "migrasi"
+              "array_map()"
             ],
             "a": 2,
             "explain": "Eager loading."
@@ -3360,9 +3360,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Caching mengurangi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "data/logika",
+              "new Nama()",
+              "date()",
               "beban"
             ],
             "a": 3,
@@ -3373,9 +3373,9 @@ const CONTENT_PHP = [
             "q": "Mengurangi alokasi",
             "options": [
               "tidak",
-              "CSS",
+              "data besar",
               "penting",
-              "route"
+              "pemisahan view"
             ],
             "a": 2,
             "explain": "Alokasi berpengaruh."
@@ -3385,9 +3385,9 @@ const CONTENT_PHP = [
             "q": "JIT (PHP 8) membantu",
             "options": [
               "komputasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "disarankan",
+              "pemanggilan jelas",
+              "escaping output"
             ],
             "a": 0,
             "explain": "JIT PHP 8."
@@ -3397,9 +3397,9 @@ const CONTENT_PHP = [
             "q": "Batching query membantu",
             "options": [
               "performa",
-              "CSS",
-              "route",
-              "migrasi"
+              "// atau #",
+              "gettype/is_*",
+              "pow()/**"
             ],
             "a": 0,
             "explain": "Batch mengurangi roundtrip."
@@ -3409,9 +3409,9 @@ const CONTENT_PHP = [
             "q": "Ukur sebelum optimasi",
             "options": [
               "tidak",
-              "CSS",
+              "$_COOKIE",
               "wajib",
-              "route"
+              "memuat class"
             ],
             "a": 2,
             "explain": "Ukur dulu."
@@ -3421,8 +3421,8 @@ const CONTENT_PHP = [
             "q": "Session storage efisien",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "Xdebug/Blackfire",
+              "ORM Laravel",
               "penting"
             ],
             "a": 3,
@@ -3433,9 +3433,9 @@ const CONTENT_PHP = [
             "q": "Load balancing membantu",
             "options": [
               "skalabilitas",
-              "CSS",
-              "route",
-              "migrasi"
+              "implode()",
+              "foreach",
+              "switch"
             ],
             "a": 0,
             "explain": "Load balancer."
@@ -3452,9 +3452,9 @@ const CONTENT_PHP = [
             "q": "Laravel adalah",
             "options": [
               "framework PHP populer",
-              "CSS",
-              "route",
-              "migrasi"
+              "error mode exception",
+              "Memisahkan query SQL dari nilai input",
+              "require gagal fatal, include warning"
             ],
             "a": 0,
             "explain": "Laravel framework."
@@ -3463,10 +3463,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Symfony menyediakan",
             "options": [
-              "CSS",
-              "route",
+              "sprintf()",
+              "array_keys()",
               "komponen reusable",
-              "migrasi"
+              "for (...)"
             ],
             "a": 2,
             "explain": "Symfony komponen."
@@ -3475,10 +3475,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Eloquent adalah",
             "options": [
-              "CSS",
+              "eager loading",
               "ORM Laravel",
-              "route",
-              "migrasi"
+              "request",
+              "Content-Type: application/json"
             ],
             "a": 1,
             "explain": "Eloquent ORM."
@@ -3487,10 +3487,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Blade adalah",
             "options": [
-              "CSS",
+              "aman dari duplikasi",
               "template engine Laravel",
-              "route",
-              "migrasi"
+              "composer install --no-dev",
+              "Jenis argumen atau nilai balik yang diharapkan"
             ],
             "a": 1,
             "explain": "Blade template."
@@ -3499,10 +3499,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Middleware memproses",
             "options": [
-              "CSS",
+              "$_POST",
               "request",
-              "route",
-              "migrasi"
+              "include/require",
+              "penting"
             ],
             "a": 1,
             "explain": "Middleware request."
@@ -3511,9 +3511,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Routing memetakan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "template engine Laravel",
+              "kondisi ? a : b",
+              ".php",
               "URL ke controller"
             ],
             "a": 3,
@@ -3525,8 +3525,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "logika bisnis",
+              "immutable"
             ],
             "a": 1,
             "explain": "DI container."
@@ -3536,8 +3536,8 @@ const CONTENT_PHP = [
             "q": "Testing framework penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "<?php",
+              ".",
               "ya"
             ],
             "a": 3,
@@ -3548,8 +3548,8 @@ const CONTENT_PHP = [
             "q": "Dokumentasi framework penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "throw",
+              "?->",
               "ya"
             ],
             "a": 3,
@@ -3560,9 +3560,9 @@ const CONTENT_PHP = [
             "q": "Pilih framework sesuai kebutuhan",
             "options": [
               "tidak",
-              "CSS",
+              "wajib",
               "ya",
-              "route"
+              ".php"
             ],
             "a": 2,
             "explain": "Sesuai kebutuhan."
@@ -3578,9 +3578,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "composer.json mendefinisikan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "autoloader",
+              "alur request",
+              "interface/implements",
               "dependency"
             ],
             "a": 3,
@@ -3590,10 +3590,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "composer.lock mengunci",
             "options": [
-              "CSS",
-              "route",
+              "asinkron",
+              "display_errors",
               "versi",
-              "migrasi"
+              "refactor"
             ],
             "a": 2,
             "explain": "Lock versi."
@@ -3602,10 +3602,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "composer install memasang",
             "options": [
-              "CSS",
-              "route",
+              "prepared statement",
+              "eksekusi",
               "dependency",
-              "migrasi"
+              "komponen reusable"
             ],
             "a": 2,
             "explain": "Install dependency."
@@ -3614,10 +3614,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "composer update memperbarui",
             "options": [
-              "CSS",
+              "min()",
               "dependency",
-              "route",
-              "migrasi"
+              "explode()",
+              "count()"
             ],
             "a": 1,
             "explain": "Update dependency."
@@ -3626,10 +3626,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Autoload PSR-4 memudahkan",
             "options": [
-              "CSS",
-              "route",
+              "catch (Tipe $e)",
+              "fetch/fetchAll",
               "memuat class",
-              "migrasi"
+              "setcookie()"
             ],
             "a": 2,
             "explain": "PSR-4 autoload."
@@ -3638,10 +3638,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Packagist adalah",
             "options": [
-              "CSS",
+              "password_hash",
               "repository package",
-              "route",
-              "migrasi"
+              "dependency",
+              "http_response_code"
             ],
             "a": 1,
             "explain": "Packagist registry."
@@ -3652,8 +3652,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "bool",
+              "max()"
             ],
             "a": 0,
             "explain": "Semver."
@@ -3664,8 +3664,8 @@ const CONTENT_PHP = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "$_GET",
+              "penyertaan berulang"
             ],
             "a": 0,
             "explain": "Scan dependency."
@@ -3674,10 +3674,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Script composer membantu",
             "options": [
-              "CSS",
+              "strtoupper()",
               "otomasi",
-              "route",
-              "migrasi"
+              "ganda",
+              "array_filter()"
             ],
             "a": 1,
             "explain": "Composer scripts."
@@ -3687,9 +3687,9 @@ const CONTENT_PHP = [
             "q": "Dokumentasi proyek penting",
             "options": [
               "tidak",
-              "CSS",
+              "use",
               "ya",
-              "route"
+              "::"
             ],
             "a": 2,
             "explain": "Dokumentasi."
@@ -3705,10 +3705,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Mengembalikan JSON memakai",
             "options": [
-              "CSS",
-              "route",
+              "prepare/execute",
+              "unset/session_destroy",
               "json_encode",
-              "migrasi"
+              "PHPUnit"
             ],
             "a": 2,
             "explain": "json_encode."
@@ -3717,10 +3717,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Membaca JSON memakai",
             "options": [
-              "CSS",
-              "route",
+              "eager loading",
+              "request",
               "json_decode",
-              "migrasi"
+              "Content-Type: application/json"
             ],
             "a": 2,
             "explain": "json_decode."
@@ -3729,9 +3729,9 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Header JSON memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "array_keys()",
+              "function nama()",
+              "function() use($x)",
               "Content-Type: application/json"
             ],
             "a": 3,
@@ -3741,10 +3741,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Status HTTP memakai",
             "options": [
-              "CSS",
+              "pemisahan view",
               "http_response_code",
-              "route",
-              "migrasi"
+              "extends",
+              "date_default_timezone_set"
             ],
             "a": 1,
             "explain": "Atur status."
@@ -3753,10 +3753,10 @@ const CONTENT_PHP = [
             "type": "mc",
             "q": "Autentikasi API memakai",
             "options": [
-              "CSS",
+              "tampilan",
               "token/JWT",
-              "route",
-              "migrasi"
+              "public/protected/private",
+              "time()"
             ],
             "a": 1,
             "explain": "Token API."
@@ -3767,8 +3767,8 @@ const CONTENT_PHP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "`$`",
+              "null"
             ],
             "a": 1,
             "explain": "Validasi server."
@@ -3779,8 +3779,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "float",
+              "HTTPS"
             ],
             "a": 0,
             "explain": "Kompatibilitas."
@@ -3791,8 +3791,8 @@ const CONTENT_PHP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "UTC",
+              "wajib"
             ],
             "a": 0,
             "explain": "Header CORS."
@@ -3802,9 +3802,9 @@ const CONTENT_PHP = [
             "q": "Rate limiting penting",
             "options": [
               "tidak",
-              "CSS",
+              "beban",
               "ya",
-              "route"
+              "HTML"
             ],
             "a": 2,
             "explain": "Batasi request."
@@ -3814,9 +3814,9 @@ const CONTENT_PHP = [
             "q": "Dokumentasi API penting",
             "options": [
               "tidak",
-              "CSS",
+              "HTTPS",
               "ya",
-              "route"
+              "job"
             ],
             "a": 2,
             "explain": "OpenAPI."

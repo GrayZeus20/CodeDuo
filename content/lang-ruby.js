@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_RUBY = [
-{
+  {
     "id": "ruby",
     "name": "Ruby",
     "icon": "💎",
@@ -109,7 +109,7 @@ const CONTENT_RUBY = [
               "hanya primitif",
               "file",
               "objek",
-              "route"
+              "huruf kapital"
             ],
             "a": 2,
             "explain": "Ruby murni berorientasi objek; hampir semua adalah objek."
@@ -720,7 +720,7 @@ const CONTENT_RUBY = [
               "objek yang membungkus blok kode",
               "variabel global",
               "file",
-              "route"
+              "Potongan kode yang dapat diberikan ke metode"
             ],
             "a": 0,
             "explain": "Lambda/proc membungkus kode yang bisa dipanggil."
@@ -949,8 +949,8 @@ const CONTENT_RUBY = [
             "options": [
               "namespace dan mixin",
               "database",
-              "CSS",
-              "route"
+              "loop do ... end",
+              "class Anak < Induk"
             ],
             "a": 0,
             "explain": "Module mengelompokkan kode dan membagikan perilaku."
@@ -997,8 +997,8 @@ const CONTENT_RUBY = [
             "options": [
               "menghapus kelas",
               "berbagi method antar kelas tanpa pewarisan ganda",
-              "CSS",
-              "route"
+              "objek yang membungkus blok kode",
+              "format(\"%d\", n) atau sprintf"
             ],
             "a": 1,
             "explain": "Mixin berbagi perilaku lewat module."
@@ -1135,8 +1135,8 @@ const CONTENT_RUBY = [
             "q": "Jangan gunakan rescue kosong karena",
             "options": [
               "mempercepat",
-              "CSS",
-              "route",
+              "before(:each)",
+              "heredoc",
               "menyembunyikan error"
             ],
             "a": 3,
@@ -1148,8 +1148,8 @@ const CONTENT_RUBY = [
             "options": [
               "try/catch",
               "begin/rescue atau method modifier rescue",
-              "CSS",
-              "route"
+              "class Anak < Induk",
+              "objek yang mewakili error"
             ],
             "a": 1,
             "explain": "Ruby mendukung begin/rescue dan modifier rescue."
@@ -1548,7 +1548,7 @@ const CONTENT_RUBY = [
             "options": [
               "menulis CSS",
               "membuat route",
-              "migrasi",
+              "array grup tangkapan",
               "menulis kode yang memodifikasi/perluas kode saat runtime"
             ],
             "a": 3,
@@ -1559,8 +1559,8 @@ const CONTENT_RUBY = [
             "q": "method_missing dipakai untuk",
             "options": [
               "menghapus kelas",
-              "CSS",
-              "route",
+              ".gsub( pola, ganti )",
+              "kondisi ? a : b",
               "menangani panggilan method yang tidak ada"
             ],
             "a": 3,
@@ -1571,9 +1571,9 @@ const CONTENT_RUBY = [
             "q": "define_method membuat method secara",
             "options": [
               "statis",
-              "CSS",
+              ".any?",
               "dinamis",
-              "route"
+              ".call"
             ],
             "a": 2,
             "explain": "define_method mendefinisikan method saat runtime."
@@ -1583,8 +1583,8 @@ const CONTENT_RUBY = [
             "q": "send memungkinkan memanggil method secara",
             "options": [
               "hanya publik",
-              "CSS",
-              "route",
+              "{ nama: \"Budi\" }",
+              "sah, mis. puts \"x\" if kondisi",
               "dinamis termasuk private"
             ],
             "a": 3,
@@ -1595,8 +1595,8 @@ const CONTENT_RUBY = [
             "q": "respond_to? memeriksa",
             "options": [
               "ukuran objek",
-              "CSS",
-              "route",
+              "menjalankan pekerjaan bersamaan dalam proses",
+              "menyusun objek daripada mewarisi dalam",
               "apakah objek punya method"
             ],
             "a": 3,
@@ -1608,8 +1608,8 @@ const CONTENT_RUBY = [
             "options": [
               "konstanta",
               "variabel instance",
-              "CSS",
-              "route"
+              "\"a\"..\"z\"",
+              ".gsub(/pola/, ganti)"
             ],
             "a": 1,
             "explain": "instance_variable_get mengambil nilai variabel instance."
@@ -1620,8 +1620,8 @@ const CONTENT_RUBY = [
             "options": [
               "tidak mungkin",
               "reopening class",
-              "CSS",
-              "route"
+              "tidak bocor",
+              "sanitasi/validasi path"
             ],
             "a": 1,
             "explain": "Ruby mengizinkan membuka ulang kelas."
@@ -1630,9 +1630,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Refinements dipakai untuk",
             "options": [
-              "CSS",
+              "while kondisi ... end",
               "routing",
-              "migrasi",
+              "{ |x| ... } atau do |x| ... end",
               "modifikasi scoped tanpa efek global"
             ],
             "a": 3,
@@ -1642,9 +1642,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Membuat DSL di Ruby umumnya memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "membuat thread berlebihan",
+              "method module mendahului kelas",
+              "backtrace dan konteks",
               "block dan metaprogramming"
             ],
             "a": 3,
@@ -1655,8 +1655,8 @@ const CONTENT_RUBY = [
             "q": "Metaprogramming berlebihan berisiko",
             "options": [
               "selalu cepat",
-              "CSS",
-              "route",
+              "nilai ekspresi terakhir yang dieksekusi",
+              "memutasi objek atau versi berisiko",
               "kode sulit dipahami dan di-debug"
             ],
             "a": 3,
@@ -1783,8 +1783,8 @@ const CONTENT_RUBY = [
             "options": [
               "berkas bisa tidak ada/tanpa izin",
               "selalu berhasil",
-              "CSS",
-              "route"
+              "lambda ketat jumlah argumen, proc longgar",
+              "apakah objek punya method"
             ],
             "a": 0,
             "explain": "Operasi IO bisa gagal sehingga perlu penanganan."
@@ -1822,7 +1822,7 @@ const CONTENT_RUBY = [
           },
           {
             "type": "mc",
-            "q": "Menjalankan test RSpec memakai perintah",
+            "q": "Perintah CLI untuk mengeksekusi seluruh berkas pengujian spesifikasi di Ruby adalah",
             "options": [
               "rspec",
               "test run",
@@ -1849,9 +1849,9 @@ const CONTENT_RUBY = [
             "q": "Test double/mock berguna untuk",
             "options": [
               "mengganti dependensi saat test",
-              "CSS",
-              "route",
-              "migrasi"
+              "mengurangi mutasi dan alokasi",
+              "terbaca dan terdokumentasi",
+              "form mutasi web"
             ],
             "a": 0,
             "explain": "Mock menggantikan dependensi nyata."
@@ -1860,9 +1860,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Coverage test diukur dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "{ |a, b| ... }",
+              "kode sulit dipahami dan di-debug",
+              "bundle exec rake",
               "alat seperti SimpleCov"
             ],
             "a": 3,
@@ -1874,8 +1874,8 @@ const CONTENT_RUBY = [
             "options": [
               "perilaku yang diharapkan",
               "detail internal",
-              "CSS",
-              "route"
+              "kompatibilitas klien lama",
+              "mengeksekusi blok dalam konteks objek"
             ],
             "a": 0,
             "explain": "Test perilaku lebih tahan perubahan."
@@ -1908,9 +1908,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Menjalankan test otomatis saat berkas berubah dapat memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "perilaku yang diharapkan",
+              "perbandingan tiga arah",
+              "awal dan akhir baris",
               "guard atau watcher"
             ],
             "a": 3,
@@ -1927,9 +1927,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Gemfile mendefinisikan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "attr_writer",
+              "CamelCase",
+              "dinamis",
               "dependency proyek"
             ],
             "a": 3,
@@ -2079,8 +2079,8 @@ const CONTENT_RUBY = [
             "q": "Or-assignment (||=) dipakai untuk",
             "options": [
               "menghapus nilai",
-              "CSS",
-              "route",
+              "memilih atribut yang diekspos",
+              "kebocoran dan objek berlebih",
               "menetapkan nilai bila belum ada"
             ],
             "a": 3,
@@ -2126,10 +2126,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Operator \"spaceship\" (<=>) dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "otomasi tugas proyek",
+              "objek yang tidak lagi dirujuk",
               "perbandingan tiga arah",
-              "migrasi"
+              "API dinamis ringkas"
             ],
             "a": 2,
             "explain": "<=> mengembalikan -1, 0, atau 1."
@@ -2138,9 +2138,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Operator &&= dan ||= umum untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "begin/rescue atau method modifier rescue",
+              "nilai dari block",
+              "block dan metaprogramming",
               "memperbarui nilai kondisional"
             ],
             "a": 3,
@@ -2152,8 +2152,8 @@ const CONTENT_RUBY = [
             "options": [
               "diabaikan pada if satu baris",
               "wajib selalu",
-              "CSS",
-              "route"
+              "retry di rescue dengan batas",
+              "default yang wajar mengurangi konfigurasi"
             ],
             "a": 0,
             "explain": "then sering opsional."
@@ -2182,9 +2182,9 @@ const CONTENT_RUBY = [
             "q": "Set dipakai untuk",
             "options": [
               "koleksi tanpa duplikat",
-              "CSS",
-              "route",
-              "migrasi"
+              "terbaca dan terdokumentasi",
+              "form mutasi web",
+              "framework web untuk Ruby"
             ],
             "a": 0,
             "explain": "Set menjaga keunikan elemen."
@@ -2278,8 +2278,8 @@ const CONTENT_RUBY = [
             "q": "Set menghapus duplikat sehingga",
             "options": [
               "menyimpan semua",
-              "CSS",
-              "route",
+              "objek yang tidak lagi dirujuk",
+              "API dinamis ringkas",
               "tidak menyimpan elemen ganda"
             ],
             "a": 3,
@@ -2289,9 +2289,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Membandingkan set memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "dinamis",
+              "Dir.pwd",
+              "before(:each)",
               "subset?/superset?"
             ],
             "a": 3,
@@ -2356,9 +2356,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Grup tangkapan diakses dari",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ":nama",
+              "elsif",
+              "*args",
               "MatchData"
             ],
             "a": 3,
@@ -2368,10 +2368,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Regexp.escape berguna untuk",
             "options": [
-              "CSS",
+              "apakah objek punya method",
               "menyanitasi string agar jadi pola literal",
-              "route",
-              "migrasi"
+              "alat seperti SimpleCov",
+              "nilai ekspresi terakhir dikembalikan"
             ],
             "a": 1,
             "explain": "Escape mencegah karakter khusus regex."
@@ -2382,7 +2382,7 @@ const CONTENT_RUBY = [
             "options": [
               "global",
               "multiline saja",
-              "CSS",
+              "menambah fitur/library",
               "case-insensitive"
             ],
             "a": 3,
@@ -2392,10 +2392,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Anchor ^ dan $ cocok dengan",
             "options": [
-              "CSS",
-              "route",
+              "menangani panggilan method yang tidak ada",
+              "berkas bisa tidak ada/tanpa izin",
               "awal dan akhir baris",
-              "migrasi"
+              "nil dan false"
             ],
             "a": 2,
             "explain": "Anchor menandai batas baris."
@@ -2404,10 +2404,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "MatchData#captures memberi",
             "options": [
-              "CSS",
-              "route",
+              "konsisten dan deskriptif",
+              "lint dan konsistensi gaya",
               "array grup tangkapan",
-              "migrasi"
+              "huruf kecil atau _"
             ],
             "a": 2,
             "explain": "captures mengembalikan grup tangkapan."
@@ -2417,9 +2417,9 @@ const CONTENT_RUBY = [
             "q": "Regex berlebihan bisa menyebabkan",
             "options": [
               "backtracking berat/performa",
-              "CSS",
-              "route",
-              "migrasi"
+              "before(:each)",
+              "case-insensitive",
+              "hash[:a][:b]"
             ],
             "a": 0,
             "explain": "Pola rumit bisa lambat pada input tertentu."
@@ -2435,10 +2435,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Kelas Struct memudahkan",
             "options": [
-              "CSS",
+              "memilih atribut yang diekspos",
               "membuat kelas data dengan accessor",
-              "route",
-              "migrasi"
+              "kebocoran dan objek berlebih",
+              "perilaku dinamis mudah salah"
             ],
             "a": 1,
             "explain": "Struct menghasilkan accessor otomatis."
@@ -2562,10 +2562,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Thread di Ruby memungkinkan",
             "options": [
-              "CSS",
+              "dicatat dan diberi kebijakan retry",
               "menjalankan pekerjaan bersamaan dalam proses",
-              "route",
-              "migrasi"
+              "Rails ditulis dengan Ruby",
+              "streaming data besar"
             ],
             "a": 1,
             "explain": "Thread menjalankan kode paralel dalam proses."
@@ -2574,10 +2574,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "GVL (Global VM Lock) memengaruhi",
             "options": [
-              "CSS",
+              "begin ... rescue ... end",
               "routing",
               "paralelisme thread untuk kode murni Ruby",
-              "migrasi"
+              "lambda {} atau -> {}"
             ],
             "a": 2,
             "explain": "GVL membatasi eksekusi paralel CPU pada Ruby MRI."
@@ -2587,9 +2587,9 @@ const CONTENT_RUBY = [
             "q": "Fiber memungkinkan",
             "options": [
               "penjalanan coroutine kooperatif",
-              "CSS",
+              "menangkap tipe yang tepat",
               "routing",
-              "migrasi"
+              "otomasi tugas proyek"
             ],
             "a": 0,
             "explain": "Fiber menyediakan konkurensi kooperatif."
@@ -2599,9 +2599,9 @@ const CONTENT_RUBY = [
             "q": "Ractor (Ruby 3) memungkinkan",
             "options": [
               "paralelisme tanpa berbagi memori",
-              "CSS",
+              "berbagi method antar kelas tanpa pewarisan ganda",
               "routing",
-              "migrasi"
+              "format(\"%d\", n) atau sprintf"
             ],
             "a": 0,
             "explain": "Ractor menyediakan isolasi untuk paralelisme."
@@ -2610,10 +2610,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Async gem membantu",
             "options": [
-              "CSS",
+              "profiler memori",
               "IO asynchronous",
               "routing",
-              "migrasi"
+              "framework web"
             ],
             "a": 1,
             "explain": "Async memudahkan pemrograman IO asinkron."
@@ -2622,10 +2622,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Race condition diatasi dengan",
             "options": [
-              "CSS",
+              "tidak bocor",
               "sinkronisasi (mutex)",
               "routing",
-              "migrasi"
+              "sanitasi/validasi path"
             ],
             "a": 1,
             "explain": "Mutex menjaga akses data bersama."
@@ -2635,9 +2635,9 @@ const CONTENT_RUBY = [
             "q": "Mutex pada Ruby dipakai via",
             "options": [
               "Lock.new",
-              "CSS",
+              "RSpec",
               "Mutex.new",
-              "route"
+              "\"a\"..\"z\""
             ],
             "a": 2,
             "explain": "Mutex menyediakan penguncian."
@@ -2646,9 +2646,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Mengelola thread pool menghindari",
             "options": [
-              "CSS",
+              "class E < StandardError; end",
               "routing",
-              "migrasi",
+              "return di lambda kembali dari lambda, di proc dari method",
               "membuat thread berlebihan"
             ],
             "a": 3,
@@ -2658,10 +2658,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Menangani exception di thread penting agar",
             "options": [
-              "CSS",
+              "pengujian dan pemakaian ulang",
               "routing",
               "tidak menggagalkan proses diam-diam",
-              "migrasi"
+              "Symbol hemat memori untuk key tetap"
             ],
             "a": 2,
             "explain": "Exception di thread perlu ditangani/dilaporkan."
@@ -2671,9 +2671,9 @@ const CONTENT_RUBY = [
             "q": "Queue thread-safe disediakan oleh",
             "options": [
               "Array saja",
-              "CSS",
+              ".find",
               "Thread::Queue",
-              "route"
+              "&block"
             ],
             "a": 2,
             "explain": "Thread::Queue aman antar thread."
@@ -2691,8 +2691,8 @@ const CONTENT_RUBY = [
             "options": [
               "wajib tipe statis",
               "bergantung pada perilaku (method), bukan tipe",
-              "CSS",
-              "route"
+              "Rails ditulis dengan Ruby",
+              "streaming data besar"
             ],
             "a": 1,
             "explain": "Ruby mementingkan perilaku objek."
@@ -2703,7 +2703,7 @@ const CONTENT_RUBY = [
             "options": [
               "selalu mewarisi",
               "pakai global",
-              "CSS",
+              "format(\"%d\", n) atau sprintf",
               "menyusun objek daripada mewarisi dalam"
             ],
             "a": 3,
@@ -2714,9 +2714,9 @@ const CONTENT_RUBY = [
             "q": "Polymorphism di Ruby dicapai dengan",
             "options": [
               "tipe statis",
-              "CSS",
+              "memilih atribut yang diekspos",
               "method sama pada objek berbeda",
-              "route"
+              "kebocoran dan objek berlebih"
             ],
             "a": 2,
             "explain": "Objek berbeda merespons method yang sama."
@@ -2725,9 +2725,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Struct/SStruct dipakai untuk",
             "options": [
-              "CSS",
+              "lambda {} atau -> {}",
               "routing",
-              "migrasi",
+              "dinamis termasuk private",
               "membuat kelas data ringkas"
             ],
             "a": 3,
@@ -2761,10 +2761,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Freez/z-frozen objek membantu",
             "options": [
-              "CSS",
+              "otomasi tugas proyek",
               "immutability dan keamanan",
               "routing",
-              "migrasi"
+              "objek yang tidak lagi dirujuk"
             ],
             "a": 1,
             "explain": "Objek beku tidak bisa diubah."
@@ -2775,8 +2775,8 @@ const CONTENT_RUBY = [
             "options": [
               "ActiveSupport (Rails)",
               "Ruby murni saja",
-              "CSS",
-              "route"
+              "hash[:nama]",
+              ".message"
             ],
             "a": 0,
             "explain": "ActiveSupport menambah method seperti present?/blank?."
@@ -2786,9 +2786,9 @@ const CONTENT_RUBY = [
             "q": "Module prepend berbeda dari include karena",
             "options": [
               "method module mendahului kelas",
-              "CSS",
+              "retry di rescue dengan batas",
               "routing",
-              "migrasi"
+              "default yang wajar mengurangi konfigurasi"
             ],
             "a": 0,
             "explain": "prepend menempatkan module di depan rantai."
@@ -2797,9 +2797,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Banyaknya abstraksi berlebihan berisiko",
             "options": [
-              "CSS",
+              "[1,2].map(&:to_s)",
               "routing",
-              "migrasi",
+              "File.foreach",
               "over-engineering"
             ],
             "a": 3,
@@ -2817,9 +2817,9 @@ const CONTENT_RUBY = [
             "q": "Profiling membantu menemukan",
             "options": [
               "bagian kode tersingkat/lambat",
-              "CSS",
+              ".gsub(/pola/, ganti)",
               "routing",
-              "migrasi"
+              "def m(nama:)"
             ],
             "a": 0,
             "explain": "Profiler menunjukkan hot spot performa."
@@ -2829,9 +2829,9 @@ const CONTENT_RUBY = [
             "q": "Objek alokasi berlebih memengaruhi",
             "options": [
               "GC dan memori",
-              "CSS",
+              "Proc.new {} atau proc {}",
               "routing",
-              "migrasi"
+              "menangani panggilan method yang tidak ada"
             ],
             "a": 0,
             "explain": "Alokasi tinggi membebani garbage collector."
@@ -2841,9 +2841,9 @@ const CONTENT_RUBY = [
             "q": "String building berulang sebaiknya memakai",
             "options": [
               "Array#join dari pada + di loop",
-              "CSS",
+              "pengujian dan pemakaian ulang",
               "routing",
-              "migrasi"
+              "Symbol hemat memori untuk key tetap"
             ],
             "a": 0,
             "explain": "join lebih efisien daripada konkatenasi di loop."
@@ -2852,10 +2852,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Lazy enumerator membantu",
             "options": [
-              "CSS",
+              "lambda ketat jumlah argumen, proc longgar",
               "memproses data besar secara streaming",
               "routing",
-              "migrasi"
+              "apakah objek punya method"
             ],
             "a": 1,
             "explain": "Lazy menunda evaluasi sehingga hemat memori."
@@ -2865,9 +2865,9 @@ const CONTENT_RUBY = [
             "q": "Membatasi query berulang (N+1) di Rails memakai",
             "options": [
               "includes/eager loading",
-              "CSS",
+              ".length atau .size",
               "routing",
-              "migrasi"
+              "(1..5).each"
             ],
             "a": 0,
             "explain": "Eager loading mengurangi query berulang."
@@ -2877,8 +2877,8 @@ const CONTENT_RUBY = [
             "q": "Benchmarking memakai",
             "options": [
               "puts time saja",
-              "CSS",
-              "route",
+              "initialize",
+              "include",
               "Benchmark.measure"
             ],
             "a": 3,
@@ -2889,9 +2889,9 @@ const CONTENT_RUBY = [
             "q": "Caching hasil mahal memakai",
             "options": [
               "cache librari/memoization",
-              "CSS",
+              "File.read(\"nama.txt\")",
               "routing",
-              "migrasi"
+              "Dir.mkdir(path)"
             ],
             "a": 0,
             "explain": "Cache/memoization menghindari perhitungan ulang."
@@ -2900,10 +2900,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Memory leak dapat dideteksi dengan",
             "options": [
-              "CSS",
+              "File.read(\"nama.txt\")",
               "profiler memori",
               "routing",
-              "migrasi"
+              "Dir.mkdir(path)"
             ],
             "a": 1,
             "explain": "Profiler memori membantu menemukan kebocoran."
@@ -2912,9 +2912,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Menggunakan frozen string literal membantu",
             "options": [
-              "CSS",
+              "Mutex.new",
               "routing",
-              "migrasi",
+              "Benchmark.measure",
               "mengurangi alokasi"
             ],
             "a": 3,
@@ -2926,8 +2926,8 @@ const CONTENT_RUBY = [
             "options": [
               "pengukuran nyata",
               "tebakan",
-              "CSS",
-              "route"
+              "Mutex.new",
+              "Benchmark.measure"
             ],
             "a": 0,
             "explain": "Optimasi berbasis data lebih efektif."
@@ -2943,10 +2943,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Hierarki exception penting agar",
             "options": [
-              "CSS",
+              "otomasi tugas proyek",
               "routing",
               "menangkap tipe yang tepat",
-              "migrasi"
+              "objek yang tidak lagi dirujuk"
             ],
             "a": 2,
             "explain": "Tangkap exception sesuai tingkat abstraksi."
@@ -2955,10 +2955,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "rescue StandardError lebih aman daripada",
             "options": [
-              "CSS",
+              "ORM Rails",
               "routing",
               "rescue Exception",
-              "migrasi"
+              "library yaml"
             ],
             "a": 2,
             "explain": "Exception mencakup sinyal sistem; hindari menangkap semuanya."
@@ -2967,9 +2967,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Custom error dengan konteks membantu",
             "options": [
-              "CSS",
+              "IO asynchronous",
               "routing",
-              "migrasi",
+              "rescue Exception",
               "debugging"
             ],
             "a": 3,
@@ -2979,10 +2979,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Retry terkontrol memakai",
             "options": [
-              "CSS",
+              "objek yang mewakili error",
               "retry di rescue dengan batas",
               "routing",
-              "migrasi"
+              "lambda ketat jumlah argumen, proc longgar"
             ],
             "a": 1,
             "explain": "Retry perlu batas agar tidak berulang tanpa akhir."
@@ -2991,9 +2991,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Ensure cocok untuk",
             "options": [
-              "CSS",
+              "[1,2].map(&:to_s)",
               "routing",
-              "migrasi",
+              "File.foreach",
               "membersihkan resource"
             ],
             "a": 3,
@@ -3003,10 +3003,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Exception di background job perlu",
             "options": [
-              "CSS",
+              "lambda {} atau -> {}",
               "routing",
               "dicatat dan diberi kebijakan retry",
-              "migrasi"
+              "dinamis termasuk private"
             ],
             "a": 2,
             "explain": "Job gagal perlu pemantauan dan retry."
@@ -3015,9 +3015,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Logging exception dengan",
             "options": [
-              "CSS",
+              "Rails ditulis dengan Ruby",
               "routing",
-              "migrasi",
+              "streaming data besar",
               "backtrace dan konteks"
             ],
             "a": 3,
@@ -3027,10 +3027,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Membungkus error menjadi domain error membantu",
             "options": [
-              "CSS",
+              "format(\"%d\", n) atau sprintf",
               "routing",
               "memisahkan detail implementasi",
-              "migrasi"
+              "menulis kode yang memodifikasi/perluas kode saat runtime"
             ],
             "a": 2,
             "explain": "Wrapping menjaga lapisan tetap bersih."
@@ -3039,10 +3039,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Menghindari rescue yang menelan error adalah best practice",
             "options": [
-              "CSS",
+              "memproses data besar secara streaming",
               "routing",
               "agar masalah tidak tersembunyi",
-              "migrasi"
+              "request dan respons"
             ],
             "a": 2,
             "explain": "Rescue luas menyembunyikan bug."
@@ -3051,10 +3051,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Error yang dapat dipulihkan vs fatal perlu",
             "options": [
-              "CSS",
+              "library json (to_json/JSON.parse)",
               "routing",
               "dibedakan penanganannya",
-              "migrasi"
+              "query berparameter"
             ],
             "a": 2,
             "explain": "Strategi penanganan berbeda sesuai sifat error."
@@ -3073,7 +3073,7 @@ const CONTENT_RUBY = [
               "bahasa",
               "database",
               "framework web",
-              "CSS"
+              "File.exist?(path)"
             ],
             "a": 2,
             "explain": "Rails dibangun di atas Ruby."
@@ -3082,7 +3082,7 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Logika model pada Rails berada di",
             "options": [
-              "CSS",
+              "subset?/superset?",
               "routes",
               "app/models",
               "public"
@@ -3094,7 +3094,7 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Controller pada Rails menangani",
             "options": [
-              "CSS",
+              "paralelisme tanpa berbagi memori",
               "skema",
               "request dan respons",
               "aset"
@@ -3120,8 +3120,8 @@ const CONTENT_RUBY = [
             "options": [
               "compiler Ruby",
               "ORM Rails",
-              "CSS",
-              "route"
+              "ganda (\"...\")",
+              "[1, 2, 3]"
             ],
             "a": 1,
             "explain": "Active Record memetakan model ke database."
@@ -3130,10 +3130,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Rake task umum untuk",
             "options": [
-              "CSS",
-              "route",
+              "kondisi ? a : b",
+              "objek yang membungkus blok kode",
               "otomasi tugas proyek",
-              "migrasi"
+              "berbagi method antar kelas tanpa pewarisan ganda"
             ],
             "a": 2,
             "explain": "Rake menjalankan task otomasi."
@@ -3144,8 +3144,8 @@ const CONTENT_RUBY = [
             "options": [
               "tanpa konfigurasi",
               "default yang wajar mengurangi konfigurasi",
-              "CSS",
-              "route"
+              ".sort_by { |k,v| v }",
+              "bergantung pada perilaku (method), bukan tipe"
             ],
             "a": 1,
             "explain": "Konvensi mengurangi kebutuhan konfigurasi eksplisit."
@@ -3154,9 +3154,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Gem berguna di Rails maupun Ruby murni untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "query berparameter",
+              "debug gem",
+              "ganda (\"...\")",
               "menambah fitur/library"
             ],
             "a": 3,
@@ -3167,9 +3167,9 @@ const CONTENT_RUBY = [
             "q": "Memahami Ruby memudahkan memakai Rails karena",
             "options": [
               "Rails ditulis dengan Ruby",
-              "CSS",
-              "route",
-              "migrasi"
+              "objek yang tidak lagi dirujuk",
+              "API dinamis ringkas",
+              "dapat mengeksekusi objek"
             ],
             "a": 0,
             "explain": "Pemahaman bahasa mempercepat kerja framework."
@@ -3178,10 +3178,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Memisahkan domain Ruby murni dari Rails membantu",
             "options": [
-              "CSS",
+              "menulis kode yang memodifikasi/perluas kode saat runtime",
               "pengujian dan pemakaian ulang",
-              "route",
-              "migrasi"
+              "File.open(path) { |f| ... }",
+              "gem 'nama', '~> 1.2'"
             ],
             "a": 1,
             "explain": "Domain murni mudah diuji di luar Rails."
@@ -3197,10 +3197,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "JSON pada Ruby diproses dengan",
             "options": [
-              "CSS",
-              "route",
+              "predikat (mengembalikan boolean)",
+              "attr_accessor",
               "library json (to_json/JSON.parse)",
-              "migrasi"
+              "variabel instance"
             ],
             "a": 2,
             "explain": "Ruby memakai library json."
@@ -3235,8 +3235,8 @@ const CONTENT_RUBY = [
             "options": [
               "JSON.parse(s, symbolize_names: true)",
               "JSON.parse_symbols",
-              "CSS",
-              "route"
+              "variabel instance",
+              "File.exist?(path)"
             ],
             "a": 0,
             "explain": "symbolize_names menghasilkan key Symbol."
@@ -3245,10 +3245,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Serialisasi objek untuk API biasanya memakai",
             "options": [
-              "CSS",
+              "IO asynchronous",
               "serializer/as_json",
-              "route",
-              "migrasi"
+              "bagian kode tersingkat/lambat",
+              "rescue Exception"
             ],
             "a": 1,
             "explain": "Serializer membentuk representasi JSON objek."
@@ -3257,10 +3257,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "YAML didukung Ruby lewat",
             "options": [
-              "CSS",
-              "route",
+              "nama:",
+              "subset?/superset?",
               "library yaml",
-              "migrasi"
+              "backtracking berat/performa"
             ],
             "a": 2,
             "explain": "Library yaml memproses YAML."
@@ -3271,8 +3271,8 @@ const CONTENT_RUBY = [
             "options": [
               "mengirim semua",
               "memilih atribut yang diekspos",
-              "CSS",
-              "route"
+              "penjalanan coroutine kooperatif",
+              "membuat kelas data ringkas"
             ],
             "a": 1,
             "explain": "Hanya atribut yang aman yang dikirim."
@@ -3281,10 +3281,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Menangani payload besar perlu",
             "options": [
-              "CSS",
-              "route",
+              "ORM Rails",
+              "library yaml",
               "streaming/pagination",
-              "migrasi"
+              "semantic versioning"
             ],
             "a": 2,
             "explain": "Pagination/streaming menjaga memori."
@@ -3293,10 +3293,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Validasi input API penting karena",
             "options": [
-              "CSS",
+              "membuat thread berlebihan",
               "client tidak tepercaya",
-              "route",
-              "migrasi"
+              "method module mendahului kelas",
+              "backtrace dan konteks"
             ],
             "a": 1,
             "explain": "Input eksternal bisa berbahaya."
@@ -3305,9 +3305,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Versioning API membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "nilai ekspresi terakhir yang dieksekusi",
+              "memutasi objek atau versi berisiko",
+              "method, konstanta, dan kelas bersarang",
               "kompatibilitas klien lama"
             ],
             "a": 3,
@@ -3324,9 +3324,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Garbage collector Ruby mengelola",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "client tidak tepercaya",
+              "GC otomatis berjalan",
+              "divalidasi dan di-escape",
               "objek yang tidak lagi dirujuk"
             ],
             "a": 3,
@@ -3336,10 +3336,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Menandai objek beku membantu",
             "options": [
-              "CSS",
-              "route",
+              "nilai dari block",
+              "block dan metaprogramming",
               "mengurangi mutasi dan alokasi",
-              "migrasi"
+              "guard atau watcher"
             ],
             "a": 2,
             "explain": "Objek beku tidak bisa diubah."
@@ -3360,10 +3360,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Memory bloat dapat dikurangi dengan",
             "options": [
-              "CSS",
+              "menulis kode yang memodifikasi/perluas kode saat runtime",
               "streaming data besar",
-              "route",
-              "migrasi"
+              "File.open(path) { |f| ... }",
+              "gem 'nama', '~> 1.2'"
             ],
             "a": 1,
             "explain": "Streaming menghindari memuat semua ke memori."
@@ -3374,8 +3374,8 @@ const CONTENT_RUBY = [
             "options": [
               "dipakai ulang",
               "dibuat terus",
-              "CSS",
-              "route"
+              "library json (to_json/JSON.parse)",
+              "GC.stat"
             ],
             "a": 0,
             "explain": "Pemakaian ulang mengurangi alokasi."
@@ -3385,9 +3385,9 @@ const CONTENT_RUBY = [
             "q": "Symbol vs String untuk key garis besar",
             "options": [
               "String selalu hemat",
-              "CSS",
+              "Proc.new {} atau proc {}",
               "Symbol hemat memori untuk key tetap",
-              "route"
+              "menangani panggilan method yang tidak ada"
             ],
             "a": 2,
             "explain": "Symbol cocok untuk key tetap."
@@ -3396,10 +3396,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Profiler memori membantu menemukan",
             "options": [
-              "CSS",
-              "route",
+              "pengujian dan pemakaian ulang",
+              "Symbol hemat memori untuk key tetap",
               "kebocoran dan objek berlebih",
-              "migrasi"
+              "migrasi pemakaian API lama"
             ],
             "a": 2,
             "explain": "Profiler memori melacak alokasi."
@@ -3409,9 +3409,9 @@ const CONTENT_RUBY = [
             "q": "Menutup resource penting agar",
             "options": [
               "tidak bocor",
-              "CSS",
-              "route",
-              "migrasi"
+              "attr_accessor",
+              "raise",
+              ".chomp"
             ],
             "a": 0,
             "explain": "Resource perlu dilepas."
@@ -3420,10 +3420,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Caching berlebihan dapat",
             "options": [
-              "CSS",
+              "[1,2].map(&:to_s)",
               "menghabiskan memori",
-              "route",
-              "migrasi"
+              "File.foreach",
+              "assert_equal"
             ],
             "a": 1,
             "explain": "Cache tanpa batas memakan memori."
@@ -3433,9 +3433,9 @@ const CONTENT_RUBY = [
             "q": "Menjalankan GC manual jarang perlu karena",
             "options": [
               "GC tidak ada",
-              "CSS",
+              "kode sulit dipahami dan di-debug",
               "GC otomatis berjalan",
-              "route"
+              "bundle exec rake"
             ],
             "a": 2,
             "explain": "GC berjalan otomatis."
@@ -3452,9 +3452,9 @@ const CONTENT_RUBY = [
             "q": "DSL di Ruby dibangun dengan",
             "options": [
               "block dan metaprogramming",
-              "CSS",
-              "route",
-              "migrasi"
+              "arr << nilai atau arr.push",
+              "loop do ... end",
+              "class Anak < Induk"
             ],
             "a": 0,
             "explain": "Block dan metaprogramming membentuk DSL."
@@ -3463,9 +3463,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "instance_eval membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "membuat kelas data dengan accessor",
+              "membuat thread berlebihan",
+              "method module mendahului kelas",
               "mengeksekusi blok dalam konteks objek"
             ],
             "a": 3,
@@ -3475,10 +3475,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "method_missing untuk DSL memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "immutable dan ringan dipakai sebagai key",
+              "nilai ekspresi terakhir yang dieksekusi",
               "API dinamis ringkas",
-              "migrasi"
+              "memutasi objek atau versi berisiko"
             ],
             "a": 2,
             "explain": "method_missing menangkap method dinamis."
@@ -3487,10 +3487,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "DSL sebaiknya tetap",
             "options": [
-              "CSS",
+              "awal dan akhir baris",
               "terbaca dan terdokumentasi",
-              "route",
-              "migrasi"
+              "penjalanan coroutine kooperatif",
+              "membuat kelas data ringkas"
             ],
             "a": 1,
             "explain": "Keterbacaan penting pada DSL."
@@ -3500,9 +3500,9 @@ const CONTENT_RUBY = [
             "q": "Keyword argument pada DSL membantu",
             "options": [
               "kejelasan pemanggilan",
-              "CSS",
-              "route",
-              "migrasi"
+              "brute force/abuse",
+              "konsistensi tim",
+              "block_given?"
             ],
             "a": 0,
             "explain": "Keyword argument memperjelas parameter."
@@ -3512,9 +3512,9 @@ const CONTENT_RUBY = [
             "q": "Nama method API sebaiknya",
             "options": [
               "konsisten dan deskriptif",
-              "CSS",
-              "route",
-              "migrasi"
+              "tidak menyimpan elemen ganda",
+              "menjalankan pekerjaan bersamaan dalam proses",
+              "menyusun objek daripada mewarisi dalam"
             ],
             "a": 0,
             "explain": "Konsistensi memudahkan pemakaian."
@@ -3523,10 +3523,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Versioning API Ruby memakai",
             "options": [
-              "CSS",
-              "route",
+              "case-insensitive",
+              "hash[:a][:b]",
               "semantic versioning",
-              "migrasi"
+              "over-engineering"
             ],
             "a": 2,
             "explain": "Semantic versioning menandai perubahan."
@@ -3535,10 +3535,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Deprecation warnings membantu",
             "options": [
-              "CSS",
+              "koleksi tanpa duplikat",
               "migrasi pemakaian API lama",
-              "route",
-              "migrasi"
+              ".each { |k, v| ... }",
+              "tidak menggagalkan proses diam-diam"
             ],
             "a": 1,
             "explain": "Peringatan deprecation memandu pengguna API."
@@ -3548,9 +3548,9 @@ const CONTENT_RUBY = [
             "q": "Dokumentasi API Ruby dapat memakai",
             "options": [
               "RDoc/YARD",
-              "CSS",
-              "route",
-              "migrasi"
+              ".uniq",
+              "dinamis",
+              "Dir.pwd"
             ],
             "a": 0,
             "explain": "RDoc/YARD menghasilkan dokumentasi."
@@ -3560,9 +3560,9 @@ const CONTENT_RUBY = [
             "q": "Menguji DSL penting karena",
             "options": [
               "perilaku dinamis mudah salah",
-              "CSS",
-              "route",
-              "migrasi"
+              "memperbarui nilai kondisional",
+              "array grup tangkapan",
+              "paralelisme tanpa berbagi memori"
             ],
             "a": 0,
             "explain": "Test menjaga keandalan DSL."
@@ -3579,8 +3579,8 @@ const CONTENT_RUBY = [
             "q": "Input pengguna harus",
             "options": [
               "dipercaya selalu",
-              "CSS",
-              "route",
+              "begin/rescue atau method modifier rescue",
+              "nilai dari block",
               "divalidasi dan di-escape"
             ],
             "a": 3,
@@ -3590,10 +3590,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "eval pada input pengguna berisiko",
             "options": [
-              "CSS",
-              "route",
+              "otomasi tugas proyek",
+              "objek yang tidak lagi dirujuk",
               "eksekusi kode berbahaya",
-              "migrasi"
+              "API dinamis ringkas"
             ],
             "a": 2,
             "explain": "eval dapat mengeksekusi kode berbahaya."
@@ -3602,10 +3602,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Marshal.load pada data tak tepercaya berbahaya karena",
             "options": [
-              "CSS",
-              "route",
+              "objek yang mewakili error",
+              "lambda ketat jumlah argumen, proc longgar",
               "dapat mengeksekusi objek",
-              "migrasi"
+              "apakah objek punya method"
             ],
             "a": 2,
             "explain": "Deserialisasi tak aman bisa berbahaya; gunakan JSON."
@@ -3616,8 +3616,8 @@ const CONTENT_RUBY = [
             "options": [
               "konkatenasi string",
               "query berparameter",
-              "CSS",
-              "route"
+              "dinamis",
+              "Dir.pwd"
             ],
             "a": 1,
             "explain": "Parameter memisahkan data dari query."
@@ -3626,10 +3626,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "YAML.load berisiko pada sumber tak tepercaya sehingga gunakan",
             "options": [
-              "CSS",
+              "Integer",
               "safe_load",
-              "route",
-              "migrasi"
+              ".strip",
+              ".map"
             ],
             "a": 1,
             "explain": "safe_load membatasi kelas yang diizinkan."
@@ -3639,9 +3639,9 @@ const CONTENT_RUBY = [
             "q": "Path traversal dicegah dengan",
             "options": [
               "sanitasi/validasi path",
-              "CSS",
-              "route",
-              "migrasi"
+              "block_given?",
+              "diberi private/protected",
+              "menyembunyikan error"
             ],
             "a": 0,
             "explain": "Validasi mencegah akses di luar direktori."
@@ -3652,8 +3652,8 @@ const CONTENT_RUBY = [
             "options": [
               "kode sumber",
               "environment/secret manager",
-              "CSS",
-              "route"
+              "pengukuran nyata",
+              "Action View"
             ],
             "a": 1,
             "explain": "Rahasia dijaga di luar kode."
@@ -3662,9 +3662,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Rate limiting membantu mencegah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kejelasan pemanggilan",
+              "konsistensi tim",
+              "Integer",
               "brute force/abuse"
             ],
             "a": 3,
@@ -3674,10 +3674,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "CSRF token diperlukan pada",
             "options": [
-              "CSS",
-              "route",
+              "module Nama ... end",
+              "class E < StandardError; end",
               "form mutasi web",
-              "migrasi"
+              "return di lambda kembali dari lambda, di proc dari method"
             ],
             "a": 2,
             "explain": "Token CSRF melindungi dari request lintas situs."
@@ -3687,9 +3687,9 @@ const CONTENT_RUBY = [
             "q": "Dependency usang berisiko",
             "options": [
               "kerentanan keamanan",
-              "CSS",
-              "route",
-              "migrasi"
+              "Hash.new(0)",
+              "sinkronisasi (mutex)",
+              "includes/eager loading"
             ],
             "a": 0,
             "explain": "Update dependency menutup celah."
@@ -3705,10 +3705,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "RuboCop dipakai untuk",
             "options": [
-              "CSS",
+              "framework web untuk Ruby",
               "lint dan konsistensi gaya",
-              "route",
-              "migrasi"
+              "arr << nilai atau arr.push",
+              "loop do ... end"
             ],
             "a": 1,
             "explain": "RuboCop memeriksa gaya dan potensi masalah."
@@ -3719,8 +3719,8 @@ const CONTENT_RUBY = [
             "options": [
               "format()",
               "-a / -A",
-              "CSS",
-              "route"
+              "describe/context",
+              "nama:"
             ],
             "a": 1,
             "explain": "Flag autofix memperbaiki pelanggaran."
@@ -3729,9 +3729,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Rake adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "true dan false",
+              "if kondisi ... end",
+              "ekspresi terakhir (atau return)",
               "task runner Ruby"
             ],
             "a": 3,
@@ -3741,10 +3741,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Debugging modern Ruby memakai",
             "options": [
-              "CSS",
-              "route",
+              "rescue Exception",
+              "ORM Rails",
               "debug gem",
-              "migrasi"
+              "library yaml"
             ],
             "a": 2,
             "explain": "Gem debug menyediakan breakpoint."
@@ -3753,10 +3753,10 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "IRB dapat diperkuat dengan",
             "options": [
-              "CSS",
-              "route",
+              "query berparameter",
+              "debug gem",
               "pry/irb enhancements",
-              "migrasi"
+              "ganda (\"...\")"
             ],
             "a": 2,
             "explain": "Pry memperkaya REPL."
@@ -3767,8 +3767,8 @@ const CONTENT_RUBY = [
             "options": [
               "gem new",
               "bundle gem nama",
-              "CSS",
-              "route"
+              "perbandingan tiga arah",
+              "awal dan akhir baris"
             ],
             "a": 1,
             "explain": "bundle gem men-scaffold gem baru."
@@ -3779,8 +3779,8 @@ const CONTENT_RUBY = [
             "options": [
               "gem push",
               "gem publish",
-              "CSS",
-              "route"
+              "attr_accessor",
+              "raise"
             ],
             "a": 0,
             "explain": "gem push mengunggah gem ke server."
@@ -3789,9 +3789,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Integrasi CI menjalankan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "diabaikan pada if satu baris",
+              "membuat kelas data dengan accessor",
+              "membuat thread berlebihan",
               "test dan lint otomatis"
             ],
             "a": 3,
@@ -3801,9 +3801,9 @@ const CONTENT_RUBY = [
             "type": "mc",
             "q": "Menjaga versi Ruby memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "File.read(\"nama.txt\")",
+              "Dir.mkdir(path)",
+              "Gemfile.lock",
               "berkas .ruby-version"
             ],
             "a": 3,
@@ -3814,9 +3814,9 @@ const CONTENT_RUBY = [
             "q": "Dokumentasi tooling membantu",
             "options": [
               "konsistensi tim",
-              "CSS",
-              "route",
-              "migrasi"
+              "Gemfile.lock",
+              ".merge",
+              "Mutex.new"
             ],
             "a": 0,
             "explain": "Dokumentasi menyamakan cara kerja tim."

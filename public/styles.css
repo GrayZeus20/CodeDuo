@@ -4814,3 +4814,12 @@ html.reduced-motion .buddy__sparkles-wrap { display: none; }
     margin-left: 0;
   }
 }
+
+.bibit-brain-box.is-off {
+  opacity: 0.78;
+}
+.bibit-brain-box.is-off .bibit-brain-badge {
+  background: var(--bg-soft);
+  color: var(--muted);
+  border: 1px solid var(--line);
+}

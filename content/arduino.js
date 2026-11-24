@@ -1105,7 +1105,7 @@ const CONTENT_ARDUINO = [
           },
           {
             "type": "mc",
-            "q": "Rangkaian: tombol menyalakan LED. Saat tombol ditekan, LED harus…",
+            "q": "Rangkaian: tombol terhubung sebagai sakelar kendali lampu indikator. Saat tombol ditekan, kondisi LED seharusnya…",
             "options": [
               "mati",
               "menyala",

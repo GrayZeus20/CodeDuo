@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_CPP = [
-{
+  {
     "id": "cpp",
     "name": "C++",
     "icon": "➕",
@@ -24,8 +24,8 @@ const CONTENT_CPP = [
             "options": [
               "compiled berorientasi objek",
               "interpreted",
-              "CSS",
-              "route"
+              "sama dengan class",
+              "std::cin >> / getline"
             ],
             "a": 0,
             "explain": "C++ dikompilasi dan OOP."
@@ -47,8 +47,8 @@ const CONTENT_CPP = [
             "q": "Header C++ umumnya",
             "options": [
               ".hh only",
-              "CSS",
-              "route",
+              "algoritma",
+              "aliran data",
               ".h/.hpp"
             ],
             "a": 3,
@@ -61,7 +61,7 @@ const CONTENT_CPP = [
               "gcc only",
               "javac",
               "g++/clang++",
-              "CSS"
+              "manual new/delete"
             ],
             "a": 2,
             "explain": "Compiler C++."
@@ -71,9 +71,9 @@ const CONTENT_CPP = [
             "q": "Header IO C++ adalah",
             "options": [
               "<stdio.h>",
-              "CSS",
+              "sering",
               "<iostream>",
-              "route"
+              "inferensi tipe"
             ],
             "a": 2,
             "explain": "C++ memakai iostream."
@@ -84,8 +84,8 @@ const CONTENT_CPP = [
             "options": [
               "func main()",
               "int main()",
-              "CSS",
-              "route"
+              "kepemilikan tunggal",
+              "std::ios::binary"
             ],
             "a": 1,
             "explain": "Entry point int main."
@@ -97,7 +97,7 @@ const CONTENT_CPP = [
               "printf always",
               "std::cout",
               "echo",
-              "CSS"
+              "bool"
             ],
             "a": 1,
             "explain": "C++ memakai cout."
@@ -108,7 +108,7 @@ const CONTENT_CPP = [
             "options": [
               "main",
               "C++",
-              "CSS",
+              "panjang",
               "std"
             ],
             "a": 3,
@@ -118,10 +118,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "C++ mendukung",
             "options": [
-              "CSS",
-              "route",
+              "Array dinamis yang dapat bertambah ukurannya",
+              "nama sama beda parameter",
               "OOP, generics, dan fungsional",
-              "migrasi"
+              "referensi tak bisa null"
             ],
             "a": 2,
             "explain": "C++ multiparadigma."
@@ -130,10 +130,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Standard library C++ adalah",
             "options": [
-              "CSS",
-              "route",
+              "alias",
+              "state",
               "STL",
-              "migrasi"
+              "panjang"
             ],
             "a": 2,
             "explain": "STL koleksi/algoritma."
@@ -152,7 +152,7 @@ const CONTENT_CPP = [
               "int",
               "Integer",
               "long only",
-              "CSS"
+              "umum"
             ],
             "a": 0,
             "explain": "C++ memakai int."
@@ -164,7 +164,7 @@ const CONTENT_CPP = [
               "string",
               "char",
               "Str",
-              "CSS"
+              "RAII"
             ],
             "a": 1,
             "explain": "C++ memakai char."
@@ -175,7 +175,7 @@ const CONTENT_CPP = [
             "options": [
               "Boolean",
               "bit",
-              "CSS",
+              "std::stoi",
               "bool"
             ],
             "a": 3,
@@ -188,7 +188,7 @@ const CONTENT_CPP = [
               "final",
               "val",
               "const/constexpr",
-              "CSS"
+              "konfigurasi"
             ],
             "a": 2,
             "explain": "C++ memakai const/constexpr."
@@ -198,8 +198,8 @@ const CONTENT_CPP = [
             "q": "Deklarasi variabel",
             "options": [
               "var nama",
-              "CSS",
-              "route",
+              "operator kustom",
+              "hash",
               "tipe nama;"
             ],
             "a": 3,
@@ -209,22 +209,22 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "auto memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "UB/memori",
+              "std::error_code",
               "inferensi tipe",
-              "migrasi"
+              "iterasi"
             ],
             "a": 2,
             "explain": "C++11 auto inferensi."
           },
           {
             "type": "mc",
-            "q": "nullptr menggantikan",
+            "q": "Literal pointer kosong modern di C++11 (`nullptr`) menggantikan makro lama",
             "options": [
               "void",
-              "CSS",
+              "override",
               "NULL",
-              "route"
+              "ukuran"
             ],
             "a": 2,
             "explain": "C++11 nullptr."
@@ -234,9 +234,9 @@ const CONTENT_CPP = [
             "q": "Ukuran tipe memakai",
             "options": [
               "size()",
-              "CSS",
+              "pesan error",
               "sizeof",
-              "route"
+              "iterator"
             ],
             "a": 2,
             "explain": "sizeof byte."
@@ -247,8 +247,8 @@ const CONTENT_CPP = [
             "options": [
               "C cast only",
               "static_cast/dynamic_cast",
-              "CSS",
-              "route"
+              "class Nama {}",
+              "array dinamis"
             ],
             "a": 1,
             "explain": "C++ cast eksplisit."
@@ -259,8 +259,8 @@ const CONTENT_CPP = [
             "options": [
               "*",
               "&",
-              "CSS",
-              "route"
+              "UB",
+              "template<typename T>"
             ],
             "a": 1,
             "explain": "C++ referensi memakai &."
@@ -278,8 +278,8 @@ const CONTENT_CPP = [
             "options": [
               "if/else if/else",
               "if/elif",
-              "CSS",
-              "route"
+              "salinan string",
+              "hasil async"
             ],
             "a": 0,
             "explain": "C++ memakai else if."
@@ -289,8 +289,8 @@ const CONTENT_CPP = [
             "q": "Switch memakai",
             "options": [
               "when",
-              "CSS",
-              "route",
+              "nullptr",
+              ".find()",
               "switch/case"
             ],
             "a": 3,
@@ -301,9 +301,9 @@ const CONTENT_CPP = [
             "q": "Perulangan for memakai",
             "options": [
               "for x in",
-              "CSS",
+              "mmap",
               "for (...)",
-              "route"
+              "clang-format"
             ],
             "a": 2,
             "explain": "For klasik."
@@ -312,9 +312,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Range-based for memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "koleksi key-value terurut",
+              "pointer ke const",
+              "fungsi per elemen",
               "for (auto x : c)"
             ],
             "a": 3,
@@ -324,10 +324,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "while mengulang selama",
             "options": [
-              "CSS",
-              "route",
+              "antar muka",
+              "mengakses member",
               "kondisi benar",
-              "migrasi"
+              "<iostream>"
             ],
             "a": 2,
             "explain": "While bergantung."
@@ -336,9 +336,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "do-while menjalankan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kesalahan memori",
+              "state",
+              "shared_ptr",
               "minimal sekali"
             ],
             "a": 3,
@@ -348,9 +348,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "break/continue berlaku",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "perf/VTune",
+              "satu instance",
+              "over-engineering",
               "di loop"
             ],
             "a": 3,
@@ -362,8 +362,8 @@ const CONTENT_CPP = [
             "options": [
               "? :",
               "if()",
-              "CSS",
-              "route"
+              "keamanan",
+              "T&&"
             ],
             "a": 0,
             "explain": "C++ memakai ?:."
@@ -374,8 +374,8 @@ const CONTENT_CPP = [
             "options": [
               "&& || !",
               "and or not always",
-              "CSS",
-              "route"
+              "class Anak : public Induk",
+              "tidak mengubah objek"
             ],
             "a": 0,
             "explain": "C++ memakai && || !."
@@ -386,8 +386,8 @@ const CONTENT_CPP = [
             "options": [
               "{}",
               "[]",
-              "CSS",
-              "route"
+              "umum",
+              "char"
             ],
             "a": 0,
             "explain": "C++11 {} init."
@@ -404,8 +404,8 @@ const CONTENT_CPP = [
             "q": "Mendefinisikan fungsi memakai",
             "options": [
               "function nama",
-              "CSS",
-              "route",
+              "if/else if/else",
+              "inlining",
               "tipe nama(params) {}"
             ],
             "a": 3,
@@ -415,10 +415,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Default argument memungkinkan",
             "options": [
-              "CSS",
+              "menyalin objek",
               "parameter opsional",
-              "route",
-              "migrasi"
+              "is_open()",
+              "pemilihan overload"
             ],
             "a": 1,
             "explain": "Default argument."
@@ -427,10 +427,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Function overloading memungkinkan",
             "options": [
-              "CSS",
+              "Satu pemilik eksklusif mengelola resource",
               "nama sama beda parameter",
-              "route",
-              "migrasi"
+              "&& || !",
+              "diinisialisasi saat dibuat"
             ],
             "a": 1,
             "explain": "Overload fungsi."
@@ -441,8 +441,8 @@ const CONTENT_CPP = [
             "options": [
               "tipe&",
               "tipe*",
-              "CSS",
-              "route"
+              "class generik",
+              "try/catch"
             ],
             "a": 0,
             "explain": "C++ memakai tipe&."
@@ -452,9 +452,9 @@ const CONTENT_CPP = [
             "q": "Pass by value berarti",
             "options": [
               "referensi",
-              "CSS",
+              ": member(nilai)",
               "salinan",
-              "route"
+              "alias"
             ],
             "a": 2,
             "explain": "By value salinan."
@@ -464,9 +464,9 @@ const CONTENT_CPP = [
             "q": "Pass by reference memungkinkan",
             "options": [
               "mengubah asli",
-              "CSS",
-              "route",
-              "migrasi"
+              "tidak melempar",
+              "comparator/predikat",
+              "std::filesystem"
             ],
             "a": 0,
             "explain": "Referensi memberi efek."
@@ -475,9 +475,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "const reference menghindari",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "fungsi/method",
+              "unik terurut",
+              "alamat",
               "salinan mahal"
             ],
             "a": 3,
@@ -488,9 +488,9 @@ const CONTENT_CPP = [
             "q": "inline menyarankan",
             "options": [
               "inlining",
-              "CSS",
-              "route",
-              "migrasi"
+              "std::vector::at",
+              "build",
+              "nilai opsional"
             ],
             "a": 0,
             "explain": "Inline hint."
@@ -500,9 +500,9 @@ const CONTENT_CPP = [
             "q": "Lambda memakai",
             "options": [
               "function()",
-              "CSS",
+              "hasil async",
               "[capture](params) {}",
-              "route"
+              "tanpa virtual"
             ],
             "a": 2,
             "explain": "C++11 lambda."
@@ -511,9 +511,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Variadic template memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "std::string",
+              "membatasi modifikasi",
+              "evaluasi compile-time",
               "parameter variabel"
             ],
             "a": 3,
@@ -532,8 +532,8 @@ const CONTENT_CPP = [
             "options": [
               "struct only",
               "class Nama {}",
-              "CSS",
-              "route"
+              "tanpa virtual",
+              "algoritma"
             ],
             "a": 1,
             "explain": "C++ memakai class."
@@ -544,8 +544,8 @@ const CONTENT_CPP = [
             "options": [
               "constructor",
               "sama dengan class",
-              "CSS",
-              "route"
+              "valid tapi tak ditentukan",
+              "Array dinamis yang dapat bertambah ukurannya"
             ],
             "a": 1,
             "explain": "Konstruktor nama class."
@@ -555,8 +555,8 @@ const CONTENT_CPP = [
             "q": "Destruktor memakai",
             "options": [
               "destroy()",
-              "CSS",
-              "route",
+              "over-engineering",
+              "sering",
               "~Nama()"
             ],
             "a": 3,
@@ -567,9 +567,9 @@ const CONTENT_CPP = [
             "q": "Membuat objek memakai",
             "options": [
               "Nama obj; / new Nama()",
-              "CSS",
-              "route",
-              "migrasi"
+              "pointer ke const",
+              "fungsi per elemen",
+              "Merupakan alias yang harus terikat pada objek saat inisialisasi"
             ],
             "a": 0,
             "explain": "Stack atau heap."
@@ -578,9 +578,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Access specifier meliputi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "union type-safe",
+              "sinkronisasi",
+              "objek kompleks",
               "public/private/protected"
             ],
             "a": 3,
@@ -592,8 +592,8 @@ const CONTENT_CPP = [
             "options": [
               "extends",
               "class Anak : public Induk",
-              "CSS",
-              "route"
+              "for (auto x : c)",
+              "koleksi key-value terurut"
             ],
             "a": 1,
             "explain": "C++ memakai :."
@@ -602,22 +602,22 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Method virtual memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "std::thread",
+              "deteksi race",
               "dynamic dispatch",
-              "migrasi"
+              "vektorisasi"
             ],
             "a": 2,
             "explain": "Virtual method."
           },
           {
             "type": "mc",
-            "q": "Override memakai kata kunci",
+            "q": "Specifier C++11 pada metode turunan untuk memastikan metode tersebut menimpa fungsi virtual induk adalah",
             "options": [
               "@override",
               "override",
-              "CSS",
-              "route"
+              "membatasi modifikasi",
+              "evaluasi compile-time"
             ],
             "a": 1,
             "explain": "C++11 override."
@@ -627,9 +627,9 @@ const CONTENT_CPP = [
             "q": "Constructor member init list memakai",
             "options": [
               ": member(nilai)",
-              "CSS",
-              "route",
-              "migrasi"
+              "std::vector::at",
+              "nilai opsional",
+              "-O2/-O3"
             ],
             "a": 0,
             "explain": "Init list konstruktor."
@@ -638,9 +638,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "this adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tidak mengubah objek",
+              "objek dapat dipindah",
+              "Satu pemilik eksklusif mengelola resource",
               "pointer ke objek"
             ],
             "a": 3,
@@ -658,9 +658,9 @@ const CONTENT_CPP = [
             "q": "Struct di C++ mirip class karena",
             "options": [
               "default public",
-              "CSS",
-              "route",
-              "migrasi"
+              "std::to_string",
+              "template/CRTP",
+              "akses memori"
             ],
             "a": 0,
             "explain": "Struct default public."
@@ -669,9 +669,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Enum class lebih aman karena",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "operasi atomik",
+              "optimasi",
+              "efisiensi",
               "scoped"
             ],
             "a": 3,
@@ -681,10 +681,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Mengakses member struct memakai",
             "options": [
-              "CSS",
+              "alamat",
               ". / ->",
-              "route",
-              "migrasi"
+              "dihindari",
+              "umum"
             ],
             "a": 1,
             "explain": "Dot/arrow."
@@ -693,10 +693,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Struct dapat berisi",
             "options": [
-              "CSS",
-              "route",
+              "nilai opsional",
+              "RAII",
               "method",
-              "migrasi"
+              "-O2/-O3"
             ],
             "a": 2,
             "explain": "Struct dapat method."
@@ -705,9 +705,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Aggregate initialization memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "throw",
+              "nilai",
+              "build",
               "{}"
             ],
             "a": 3,
@@ -717,9 +717,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Enum memberi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "komputasi compile-time",
+              "std::cout",
+              "tipe nama;",
               "nama konstanta"
             ],
             "a": 3,
@@ -729,10 +729,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Struct padding memengaruhi",
             "options": [
-              "CSS",
-              "route",
+              "dipasangkan",
+              "GoogleMock",
               "ukuran",
-              "migrasi"
+              "reference cycle"
             ],
             "a": 2,
             "explain": "Padding ukuran."
@@ -741,10 +741,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "typedef/using membuat",
             "options": [
-              "CSS",
-              "route",
+              "objek kompleks",
+              ".h/.hpp",
               "alias",
-              "migrasi"
+              "int"
             ],
             "a": 2,
             "explain": "Alias tipe."
@@ -754,9 +754,9 @@ const CONTENT_CPP = [
             "q": "Menghindari struct raksasa",
             "options": [
               "tidak",
-              "CSS",
+              "perilaku khusus",
               "penting",
-              "route"
+              "std::exception"
             ],
             "a": 2,
             "explain": "Pecah struct."
@@ -767,8 +767,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "*",
+              "std"
             ],
             "a": 0,
             "explain": "Dokumentasi."
@@ -785,9 +785,9 @@ const CONTENT_CPP = [
             "q": "Operator overloading memungkinkan",
             "options": [
               "operator kustom",
-              "CSS",
-              "route",
-              "migrasi"
+              "destructor/copy/move",
+              "otomatis",
+              "batasan template"
             ],
             "a": 0,
             "explain": "Overload operator."
@@ -796,10 +796,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "operator+ didefinisikan sebagai",
             "options": [
-              "CSS",
+              "switch/case",
               "fungsi/method",
-              "route",
-              "migrasi"
+              "tipe nama(params) {}",
+              "[capture](params) {}"
             ],
             "a": 1,
             "explain": "Definisi operator."
@@ -809,8 +809,8 @@ const CONTENT_CPP = [
             "q": "Konvensi operator penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "std",
+              "*",
               "ya"
             ],
             "a": 3,
@@ -821,9 +821,9 @@ const CONTENT_CPP = [
             "q": "Friend function memungkinkan",
             "options": [
               "akses private",
-              "CSS",
-              "route",
-              "migrasi"
+              "sizeof",
+              "minimal sekali",
+              "salinan"
             ],
             "a": 0,
             "explain": "Friend akses."
@@ -833,9 +833,9 @@ const CONTENT_CPP = [
             "q": "Operator harus masuk akal",
             "options": [
               "tidak",
-              "CSS",
+              "umum",
               "ya",
-              "route"
+              "char"
             ],
             "a": 2,
             "explain": "Jangan membingungkan."
@@ -844,10 +844,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Stream operator <<",
             "options": [
-              "CSS",
+              "efisiensi",
               "sering dioverload",
-              "route",
-              "migrasi"
+              "int main()",
+              "const/constexpr"
             ],
             "a": 1,
             "explain": "Overload <<."
@@ -856,10 +856,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Comparator operator",
             "options": [
-              "CSS",
-              "route",
+              "std::stoi",
+              "polimorfisme runtime",
               "sering dipakai",
-              "migrasi"
+              "kesalahan memori"
             ],
             "a": 2,
             "explain": "Comparator."
@@ -868,10 +868,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Overloading berlebihan berisiko",
             "options": [
-              "CSS",
-              "route",
+              "pembuatan objek",
+              "komposisi algoritma",
               "kebingungan",
-              "migrasi"
+              ".cpp"
             ],
             "a": 2,
             "explain": "Gunakan wajar."
@@ -881,8 +881,8 @@ const CONTENT_CPP = [
             "q": "Testing operator penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "T&&",
+              "int",
               "ya"
             ],
             "a": 3,
@@ -893,9 +893,9 @@ const CONTENT_CPP = [
             "q": "Dokumentasi penting",
             "options": [
               "tidak",
-              "CSS",
+              "wajib",
               "ya",
-              "route"
+              "bool"
             ],
             "a": 2,
             "explain": "Dokumentasi."
@@ -911,10 +911,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Vector adalah",
             "options": [
-              "CSS",
-              "route",
+              "v[i] / v.at(i)",
+              "std::to_string",
               "array dinamis",
-              "migrasi"
+              "template/CRTP"
             ],
             "a": 2,
             "explain": "vector dinamis."
@@ -924,9 +924,9 @@ const CONTENT_CPP = [
             "q": "Map adalah",
             "options": [
               "koleksi key-value terurut",
-              "CSS",
-              "route",
-              "migrasi"
+              "pointer ke const",
+              "fungsi per elemen",
+              "Merupakan alias yang harus terikat pada objek saat inisialisasi"
             ],
             "a": 0,
             "explain": "map terurut."
@@ -936,9 +936,9 @@ const CONTENT_CPP = [
             "q": "unordered_map memakai",
             "options": [
               "hash",
-              "CSS",
-              "route",
-              "migrasi"
+              ".substr()",
+              "abstract",
+              "dipasangkan"
             ],
             "a": 0,
             "explain": "unordered hash."
@@ -948,9 +948,9 @@ const CONTENT_CPP = [
             "q": "Set menyimpan",
             "options": [
               "unik terurut",
-              "CSS",
-              "route",
-              "migrasi"
+              "sinkronisasi",
+              "realloc",
+              "objek kompleks"
             ],
             "a": 0,
             "explain": "set unik."
@@ -960,8 +960,8 @@ const CONTENT_CPP = [
             "q": "Menambah vector memakai",
             "options": [
               "append",
-              "CSS",
-              "route",
+              ": member(nilai)",
+              "alias",
               "push_back"
             ],
             "a": 3,
@@ -973,8 +973,8 @@ const CONTENT_CPP = [
             "options": [
               ".length",
               ".size()",
-              "CSS",
-              "route"
+              "tidak melempar",
+              "comparator/predikat"
             ],
             "a": 1,
             "explain": "size()."
@@ -984,9 +984,9 @@ const CONTENT_CPP = [
             "q": "Iterasi container memakai",
             "options": [
               "iterator/range for",
-              "CSS",
-              "route",
-              "migrasi"
+              "fungsi/method",
+              "unik terurut",
+              ".size()/.length()"
             ],
             "a": 0,
             "explain": "Iterator/range-for."
@@ -996,9 +996,9 @@ const CONTENT_CPP = [
             "q": "Mengakses vector memakai",
             "options": [
               "v.get(i)",
-              "CSS",
+              "std::vector::at",
               "v[i] / v.at(i)",
-              "route"
+              "build"
             ],
             "a": 2,
             "explain": "Operator [] atau at()."
@@ -1009,8 +1009,8 @@ const CONTENT_CPP = [
             "options": [
               "std::string",
               "char* only",
-              "CSS",
-              "route"
+              "if/else if/else",
+              "inlining"
             ],
             "a": 0,
             "explain": "C++ memakai std::string."
@@ -1019,10 +1019,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Container memerlukan",
             "options": [
-              "CSS",
-              "route",
+              "menyalin objek",
+              "is_open()",
               "#include sesuai",
-              "migrasi"
+              "pemilihan overload"
             ],
             "a": 2,
             "explain": "Sertakan header."
@@ -1040,8 +1040,8 @@ const CONTENT_CPP = [
             "options": [
               "nilai",
               "alamat",
-              "CSS",
-              "route"
+              "string",
+              "waktu kompilasi"
             ],
             "a": 1,
             "explain": "Pointer alamat."
@@ -1050,10 +1050,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Referensi adalah",
             "options": [
-              "CSS",
+              "parameter opsional",
               "alias objek",
-              "route",
-              "migrasi"
+              "parameter variabel",
+              "default public"
             ],
             "a": 1,
             "explain": "Referensi alias."
@@ -1062,9 +1062,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Referensi harus",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "fungsi per elemen",
+              "Merupakan alias yang harus terikat pada objek saat inisialisasi",
+              "sama dengan class",
               "diinisialisasi saat dibuat"
             ],
             "a": 3,
@@ -1075,9 +1075,9 @@ const CONTENT_CPP = [
             "q": "Pointer dapat",
             "options": [
               "nullptr",
-              "CSS",
-              "route",
-              "migrasi"
+              "dynamic dispatch",
+              "nama konstanta",
+              "akses private"
             ],
             "a": 0,
             "explain": "Pointer boleh nullptr."
@@ -1086,10 +1086,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Bar operator &",
             "options": [
-              "CSS",
+              "clang-format",
               "mengambil alamat",
-              "route",
-              "migrasi"
+              "std::thread",
+              "deteksi race"
             ],
             "a": 1,
             "explain": "& ambil alamat."
@@ -1100,7 +1100,7 @@ const CONTENT_CPP = [
             "options": [
               "&",
               "->",
-              "CSS",
+              "ya",
               "*"
             ],
             "a": 3,
@@ -1110,9 +1110,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Arrow dipakai untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "referensi tak bisa null",
+              "delete tidak dipanggil",
+              "build system generator",
               "pointer ke objek"
             ],
             "a": 3,
@@ -1122,9 +1122,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Reference vs pointer",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "perilaku tak terdefinisi",
+              "Masa hidup objek berakhir",
+              "Nama obj; / new Nama()",
               "referensi tak bisa null"
             ],
             "a": 3,
@@ -1135,9 +1135,9 @@ const CONTENT_CPP = [
             "q": "Pointer ke const",
             "options": [
               "membatasi modifikasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "std::mutex",
+              "perf/VTune",
+              "satu instance"
             ],
             "a": 0,
             "explain": "Pointer const."
@@ -1148,8 +1148,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "T&&",
+              "int"
             ],
             "a": 1,
             "explain": "Kelola memori."
@@ -1165,10 +1165,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Menggabungkan string memakai",
             "options": [
-              "CSS",
+              "std::ios::binary",
               "+ / append",
-              "route",
-              "migrasi"
+              "perilaku khusus",
+              "std::exception"
             ],
             "a": 1,
             "explain": "C++ string mendukung +."
@@ -1178,9 +1178,9 @@ const CONTENT_CPP = [
             "q": "Panjang string memakai",
             "options": [
               ".len()",
-              "CSS",
+              "salinan mahal",
               ".size()/.length()",
-              "route"
+              "dynamic dispatch"
             ],
             "a": 2,
             "explain": "size/length."
@@ -1190,8 +1190,8 @@ const CONTENT_CPP = [
             "q": "Mengambil substring memakai",
             "options": [
               ".slice()",
-              "CSS",
-              "route",
+              "gcov/llvm-cov",
+              "unique_ptr",
               ".substr()"
             ],
             "a": 3,
@@ -1202,9 +1202,9 @@ const CONTENT_CPP = [
             "q": "Mencari substring memakai",
             "options": [
               ".indexOf()",
-              "CSS",
+              "std",
               ".find()",
-              "route"
+              "inferensi tipe"
             ],
             "a": 2,
             "explain": "find mencari."
@@ -1215,8 +1215,8 @@ const CONTENT_CPP = [
             "options": [
               "std::cin >> / getline",
               "scanf only",
-              "CSS",
-              "route"
+              "Masa hidup objek pemiliknya",
+              "for (auto x : c)"
             ],
             "a": 0,
             "explain": "cin/getline."
@@ -1226,8 +1226,8 @@ const CONTENT_CPP = [
             "q": "Output memakai",
             "options": [
               "printf only",
-              "CSS",
-              "route",
+              "override",
+              "ukuran",
               "std::cout"
             ],
             "a": 3,
@@ -1237,10 +1237,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Format output memakai",
             "options": [
-              "CSS",
-              "route",
+              "OOP, generics, dan fungsional",
+              "pointer ke objek",
               "std::format (C++20) / printf",
-              "migrasi"
+              "ubah di method const"
             ],
             "a": 2,
             "explain": "Format output."
@@ -1251,8 +1251,8 @@ const CONTENT_CPP = [
             "options": [
               "std::stoi",
               "atoi only",
-              "CSS",
-              "route"
+              "tipe&",
+              "class Nama {}"
             ],
             "a": 0,
             "explain": "stoi konversi."
@@ -1263,8 +1263,8 @@ const CONTENT_CPP = [
             "options": [
               "std::to_string",
               "str()",
-              "CSS",
-              "route"
+              "konfigurasi",
+              "preprocessor include"
             ],
             "a": 0,
             "explain": "to_string."
@@ -1275,8 +1275,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "state",
+              "range"
             ],
             "a": 0,
             "explain": "std::string dapat diubah."
@@ -1292,9 +1292,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "const member function berarti",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "perilaku tak terdefinisi",
+              "Masa hidup objek berakhir",
+              "Nama obj; / new Nama()",
               "tidak mengubah objek"
             ],
             "a": 3,
@@ -1304,10 +1304,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "const reference menghindari",
             "options": [
-              "CSS",
-              "route",
+              "unik terurut",
+              "alamat",
               "salinan",
-              "migrasi"
+              ".size()/.length()"
             ],
             "a": 2,
             "explain": "Const ref."
@@ -1316,9 +1316,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "mutable memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Merupakan alias yang harus terikat pada objek saat inisialisasi",
+              "sama dengan class",
+              "std::cin >> / getline",
               "ubah di method const"
             ],
             "a": 3,
@@ -1328,10 +1328,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "constexpr memungkinkan",
             "options": [
-              "CSS",
+              "sering dipakai",
               "evaluasi compile-time",
-              "route",
-              "migrasi"
+              "iterator/range for",
+              "mengambil alamat"
             ],
             "a": 1,
             "explain": "constexpr."
@@ -1341,9 +1341,9 @@ const CONTENT_CPP = [
             "q": "const correctness meningkatkan",
             "options": [
               "keamanan",
-              "CSS",
-              "route",
-              "migrasi"
+              "comparator/predikat",
+              "std::filesystem",
+              "konfigurasi"
             ],
             "a": 0,
             "explain": "Keamanan."
@@ -1354,8 +1354,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "hash",
+              "T&&"
             ],
             "a": 0,
             "explain": "Konsistensi."
@@ -1364,10 +1364,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "const_cast sebaiknya",
             "options": [
-              "CSS",
-              "route",
+              "try/catch",
+              "elemen",
               "dihindari",
-              "migrasi"
+              "UB/memori"
             ],
             "a": 2,
             "explain": "Hindari const_cast."
@@ -1377,9 +1377,9 @@ const CONTENT_CPP = [
             "q": "Pointer const berbeda dari",
             "options": [
               "pointer ke const",
-              "CSS",
-              "route",
-              "migrasi"
+              "Array dinamis yang dapat bertambah ukurannya",
+              "nama sama beda parameter",
+              "referensi tak bisa null"
             ],
             "a": 0,
             "explain": "Perbedaan const."
@@ -1390,8 +1390,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "*",
+              "std"
             ],
             "a": 0,
             "explain": "Testing."
@@ -1401,9 +1401,9 @@ const CONTENT_CPP = [
             "q": "Dokumentasi penting",
             "options": [
               "tidak",
-              "CSS",
+              "async",
               "ya",
-              "route"
+              "{}"
             ],
             "a": 2,
             "explain": "Dokumentasi."
@@ -1420,9 +1420,9 @@ const CONTENT_CPP = [
             "q": "Virtual function memungkinkan",
             "options": [
               "dynamic dispatch",
-              "CSS",
-              "route",
-              "migrasi"
+              "string",
+              "waktu kompilasi",
+              "exception safety"
             ],
             "a": 0,
             "explain": "Virtual dispatch."
@@ -1431,9 +1431,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Pure virtual membuat class",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "parameter opsional",
+              "parameter variabel",
+              "default public",
               "abstract"
             ],
             "a": 3,
@@ -1443,9 +1443,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Virtual destructor penting pada",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "std::exception",
+              "kemunculan",
+              "POSIX/Winsock",
               "base class"
             ],
             "a": 3,
@@ -1456,9 +1456,9 @@ const CONTENT_CPP = [
             "q": "Objective polymorphism",
             "options": [
               "polimorfisme runtime",
-              "CSS",
-              "route",
-              "migrasi"
+              "dynamic dispatch",
+              "nama konstanta",
+              "akses private"
             ],
             "a": 0,
             "explain": "Runtime poly."
@@ -1467,10 +1467,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Static polymorphism via",
             "options": [
-              "CSS",
+              "clang-format",
               "template/CRTP",
-              "route",
-              "migrasi"
+              "std::thread",
+              "deteksi race"
             ],
             "a": 1,
             "explain": "Static poly."
@@ -1479,10 +1479,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Slicing object terjadi saat",
             "options": [
-              "CSS",
+              "Merupakan alias yang harus terikat pada objek saat inisialisasi",
               "pass by value base",
-              "route",
-              "migrasi"
+              "sama dengan class",
+              "std::cin >> / getline"
             ],
             "a": 1,
             "explain": "Object slicing."
@@ -1492,8 +1492,8 @@ const CONTENT_CPP = [
             "q": "Composition over inheritance",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "vcpkg/conan",
+              "salinan string",
               "disarankan"
             ],
             "a": 3,
@@ -1503,9 +1503,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Multiple inheritance berisiko",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".size()",
+              "nullptr",
+              ".find()",
               "diamond problem"
             ],
             "a": 3,
@@ -1515,10 +1515,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Interface via abstract class",
             "options": [
-              "CSS",
+              "std::mutex",
               "umum",
-              "route",
-              "migrasi"
+              "perf/VTune",
+              "sering"
             ],
             "a": 1,
             "explain": "Interface abstrak."
@@ -1528,8 +1528,8 @@ const CONTENT_CPP = [
             "q": "Testing polymorphic penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "T&&",
+              "int",
               "ya"
             ],
             "a": 3,
@@ -1547,9 +1547,9 @@ const CONTENT_CPP = [
             "q": "new/delete manual harus",
             "options": [
               "dipasangkan",
-              "CSS",
-              "route",
-              "migrasi"
+              "<iostream>",
+              "bool",
+              "salinan mahal"
             ],
             "a": 0,
             "explain": "Pasangkan new/delete."
@@ -1558,10 +1558,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Smart pointer menggantikan",
             "options": [
-              "CSS",
-              "route",
+              "GoogleTest/Catch2",
+              "kepemilikan tunggal",
               "manual new/delete",
-              "migrasi"
+              "std::ios::binary"
             ],
             "a": 2,
             "explain": "Smart pointer."
@@ -1570,9 +1570,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Memory leak terjadi bila",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pointer ke const",
+              "fungsi per elemen",
+              "Merupakan alias yang harus terikat pada objek saat inisialisasi",
               "delete tidak dipanggil"
             ],
             "a": 3,
@@ -1582,10 +1582,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Valgrind/ASan mendeteksi",
             "options": [
-              "CSS",
+              "shared_ptr",
               "kesalahan memori",
-              "route",
-              "migrasi"
+              "deep copy",
+              "template<typename T>"
             ],
             "a": 1,
             "explain": "Deteksi."
@@ -1594,10 +1594,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Alignment memengaruhi",
             "options": [
-              "CSS",
-              "route",
+              "tanpa virtual",
+              "algoritma",
               "akses memori",
-              "migrasi"
+              "aliran data"
             ],
             "a": 2,
             "explain": "Alignment."
@@ -1606,10 +1606,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Arena/pool alokasi memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "membatasi modifikasi",
+              "evaluasi compile-time",
               "performa",
-              "migrasi"
+              "disarankan"
             ],
             "a": 2,
             "explain": "Pool."
@@ -1619,8 +1619,8 @@ const CONTENT_CPP = [
             "q": "Menghindari alokasi berlebih",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "over-engineering",
+              "sering",
               "penting"
             ],
             "a": 3,
@@ -1632,8 +1632,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "async",
+              "{}"
             ],
             "a": 1,
             "explain": "Allocator."
@@ -1644,8 +1644,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "int",
+              "hash"
             ],
             "a": 1,
             "explain": "Testing."
@@ -1656,8 +1656,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "*",
+              "std"
             ],
             "a": 1,
             "explain": "Dokumentasi."
@@ -1674,8 +1674,8 @@ const CONTENT_CPP = [
             "q": "Framework test populer",
             "options": [
               "Jest",
-              "CSS",
-              "route",
+              "iterator",
+              "networking async",
               "GoogleTest/Catch2"
             ],
             "a": 3,
@@ -1685,9 +1685,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Assertion memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "ukuran",
+              "sering dioverload",
+              ".size()",
               "EXPECT_EQ/ASSERT"
             ],
             "a": 3,
@@ -1698,9 +1698,9 @@ const CONTENT_CPP = [
             "q": "Mocking memakai",
             "options": [
               "GoogleMock",
-              "CSS",
-              "route",
-              "migrasi"
+              "panjang",
+              "range",
+              "mmap"
             ],
             "a": 0,
             "explain": "GoogleMock."
@@ -1709,10 +1709,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Coverage memakai",
             "options": [
-              "CSS",
+              "class Nama {}",
               "gcov/llvm-cov",
-              "route",
-              "migrasi"
+              "scoped",
+              "array dinamis"
             ],
             "a": 1,
             "explain": "Coverage tool."
@@ -1721,9 +1721,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Test fixture menyiapkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "std::exception",
+              "kemunculan",
+              "POSIX/Winsock",
               "state"
             ],
             "a": 3,
@@ -1733,10 +1733,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Sanitizer membantu",
             "options": [
-              "CSS",
-              "route",
+              "salinan mahal",
+              "dynamic dispatch",
               "deteksi bug",
-              "migrasi"
+              "nama konstanta"
             ],
             "a": 2,
             "explain": "Sanitizer."
@@ -1747,8 +1747,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "async",
+              "{}"
             ],
             "a": 1,
             "explain": "Perilaku."
@@ -1758,9 +1758,9 @@ const CONTENT_CPP = [
             "q": "CI menjalankan test",
             "options": [
               "tidak",
-              "CSS",
+              "inferensi tipe",
               "penting",
-              "route"
+              "for (...)"
             ],
             "a": 2,
             "explain": "CI."
@@ -1769,10 +1769,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Test performa memakai",
             "options": [
-              "CSS",
+              "polimorfisme statis",
               "benchmark",
-              "route",
-              "migrasi"
+              "efisiensi",
+              "int main()"
             ],
             "a": 1,
             "explain": "Benchmark."
@@ -1783,8 +1783,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "std",
+              "*"
             ],
             "a": 0,
             "explain": "Dokumentasi."
@@ -1800,9 +1800,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "RAII berarti",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "std::cin >> / getline",
+              "buffer tanpa salinan",
+              "OOP, generics, dan fungsional",
               "resource terikat masa hidup objek"
             ],
             "a": 3,
@@ -1812,10 +1812,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "unique_ptr menandakan",
             "options": [
-              "CSS",
-              "route",
+              "std::forward",
+              "waktu kompilasi",
               "kepemilikan tunggal",
-              "migrasi"
+              "exception safety"
             ],
             "a": 2,
             "explain": "Unique kepemilikan tunggal."
@@ -1824,10 +1824,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "shared_ptr memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "g++/clang++",
+              "static_cast/dynamic_cast",
               "kepemilikan bersama",
-              "migrasi"
+              "di loop"
             ],
             "a": 2,
             "explain": "Shared bersama."
@@ -1836,9 +1836,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "weak_ptr memecah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "performa",
+              "benchmark",
+              "kepemilikan resource",
               "reference cycle"
             ],
             "a": 3,
@@ -1848,9 +1848,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "make_unique membuat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "class Nama {}",
+              "scoped",
+              "array dinamis",
               "unique_ptr"
             ],
             "a": 3,
@@ -1860,10 +1860,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "make_shared membuat",
             "options": [
-              "CSS",
-              "route",
+              "panjang",
+              "range",
               "shared_ptr",
-              "migrasi"
+              "mmap"
             ],
             "a": 2,
             "explain": "make_shared."
@@ -1872,10 +1872,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Smart pointer mengurangi",
             "options": [
-              "CSS",
+              "salinan mahal",
               "kebocoran memori",
-              "route",
-              "migrasi"
+              "dynamic dispatch",
+              "nama konstanta"
             ],
             "a": 1,
             "explain": "Hindari leak."
@@ -1884,9 +1884,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Destructor dipanggil saat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "build system generator",
+              "compiled berorientasi objek",
+              "class Anak : public Induk",
               "objek keluar scope"
             ],
             "a": 3,
@@ -1896,9 +1896,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "new/delete manual sebaiknya",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "async",
+              "operasi atomik",
+              "optimasi",
               "dihindari"
             ],
             "a": 3,
@@ -1909,8 +1909,8 @@ const CONTENT_CPP = [
             "q": "Resource management penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "umum",
+              "char",
               "ya"
             ],
             "a": 3,
@@ -1927,10 +1927,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Move semantics memindahkan",
             "options": [
-              "CSS",
-              "route",
+              "iterator/range for",
+              "mengambil alamat",
               "kepemilikan resource",
-              "migrasi"
+              "std::stoi"
             ],
             "a": 2,
             "explain": "Move memindah resource."
@@ -1939,10 +1939,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::move menandai",
             "options": [
-              "CSS",
-              "route",
+              "tidak mengubah objek",
+              "Satu pemilik eksklusif mengelola resource",
               "objek dapat dipindah",
-              "migrasi"
+              "&& || !"
             ],
             "a": 2,
             "explain": "std::move cast rvalue."
@@ -1953,8 +1953,8 @@ const CONTENT_CPP = [
             "options": [
               "T&&",
               "T&",
-              "CSS",
-              "route"
+              "umum",
+              "iterator"
             ],
             "a": 0,
             "explain": "C++11 T&&."
@@ -1964,9 +1964,9 @@ const CONTENT_CPP = [
             "q": "Copy constructor dipanggil saat",
             "options": [
               "menyalin objek",
-              "CSS",
-              "route",
-              "migrasi"
+              "optimasi",
+              "polimorfisme statis",
+              "efisiensi"
             ],
             "a": 0,
             "explain": "Copy saat menyalin."
@@ -1976,9 +1976,9 @@ const CONTENT_CPP = [
             "q": "Move constructor menghindari",
             "options": [
               "salinan mahal",
-              "CSS",
-              "route",
-              "migrasi"
+              "override",
+              "ukuran",
+              "sering dioverload"
             ],
             "a": 0,
             "explain": "Move efisien."
@@ -1988,9 +1988,9 @@ const CONTENT_CPP = [
             "q": "Rule of five mencakup",
             "options": [
               "destructor/copy/move",
-              "CSS",
-              "route",
-              "migrasi"
+              "UB/memori",
+              "std::error_code",
+              "iterasi"
             ],
             "a": 0,
             "explain": "Lima fungsi khusus."
@@ -1999,9 +1999,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Perfect forwarding memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "operator kustom",
+              "#include sesuai",
+              "+ / append",
               "std::forward"
             ],
             "a": 3,
@@ -2012,9 +2012,9 @@ const CONTENT_CPP = [
             "q": "Setelah move objek",
             "options": [
               "valid tapi tak ditentukan",
-              "CSS",
-              "route",
-              "migrasi"
+              "objek keluar scope",
+              "Masa hidup objek pemiliknya",
+              "for (auto x : c)"
             ],
             "a": 0,
             "explain": "Moved-from state."
@@ -2024,9 +2024,9 @@ const CONTENT_CPP = [
             "q": "Move menghindari",
             "options": [
               "deep copy",
-              "CSS",
-              "route",
-              "migrasi"
+              "kepemilikan resource",
+              "std::ofstream",
+              "template"
             ],
             "a": 0,
             "explain": "Hindari deep copy."
@@ -2037,8 +2037,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "umum",
+              "char"
             ],
             "a": 0,
             "explain": "RVO."
@@ -2054,10 +2054,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Membaca berkas memakai",
             "options": [
-              "CSS",
-              "route",
+              "benchmark",
+              "kepemilikan resource",
               "std::ifstream",
-              "migrasi"
+              "std::ofstream"
             ],
             "a": 2,
             "explain": "ifstream membaca."
@@ -2066,9 +2066,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Menulis berkas memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "komputasi compile-time",
+              "std::cout",
+              "tipe nama;",
               "std::ofstream"
             ],
             "a": 3,
@@ -2078,10 +2078,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Mode biner memakai",
             "options": [
-              "CSS",
+              "std::forward",
               "std::ios::binary",
-              "route",
-              "migrasi"
+              "string",
+              "waktu kompilasi"
             ],
             "a": 1,
             "explain": "ios binary."
@@ -2090,10 +2090,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Memeriksa berkas terbuka",
             "options": [
-              "CSS",
-              "route",
+              "char",
+              "static_cast/dynamic_cast",
               "is_open()",
-              "migrasi"
+              "di loop"
             ],
             "a": 2,
             "explain": "is_open."
@@ -2102,21 +2102,21 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Stream RAII menutup",
             "options": [
-              "CSS",
+              "perilaku khusus",
               "otomatis",
-              "route",
-              "migrasi"
+              "std::exception",
+              "kemunculan"
             ],
             "a": 1,
             "explain": "RAII close."
           },
           {
             "type": "mc",
-            "q": "Stringstream memformat",
+            "q": "Kelas `std::stringstream` di C++ dipakai untuk memformat dan mengurai data layaknya stream ke dalam",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "for (...)",
+              "default public",
+              "penting",
               "string"
             ],
             "a": 3,
@@ -2127,9 +2127,9 @@ const CONTENT_CPP = [
             "q": "Menangani error stream penting",
             "options": [
               "tidak",
-              "CSS",
+              "range",
               "ya",
-              "route"
+              "UB"
             ],
             "a": 2,
             "explain": "Error stream."
@@ -2140,8 +2140,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "wajib",
+              "bool"
             ],
             "a": 1,
             "explain": "Close."
@@ -2151,9 +2151,9 @@ const CONTENT_CPP = [
             "q": "Testing IO penting",
             "options": [
               "tidak",
-              "CSS",
+              "char",
               "ya",
-              "route"
+              "umum"
             ],
             "a": 2,
             "explain": "Testing."
@@ -2163,9 +2163,9 @@ const CONTENT_CPP = [
             "q": "Dokumentasi penting",
             "options": [
               "tidak",
-              "CSS",
+              "throw",
               "ya",
-              "route"
+              "nilai"
             ],
             "a": 2,
             "explain": "Dokumentasi."
@@ -2181,9 +2181,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Template fungsi memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "salinan string",
+              "hasil async",
+              "tanpa virtual",
               "template<typename T>"
             ],
             "a": 3,
@@ -2194,9 +2194,9 @@ const CONTENT_CPP = [
             "q": "Template class memungkinkan",
             "options": [
               "class generik",
-              "CSS",
-              "route",
-              "migrasi"
+              "nullptr",
+              ".find()",
+              "base class"
             ],
             "a": 0,
             "explain": "Class template."
@@ -2206,9 +2206,9 @@ const CONTENT_CPP = [
             "q": "STL berbasis",
             "options": [
               "template",
-              "CSS",
-              "route",
-              "migrasi"
+              "mmap",
+              "clang-format",
+              "std::thread"
             ],
             "a": 0,
             "explain": "STL berbasis template."
@@ -2218,9 +2218,9 @@ const CONTENT_CPP = [
             "q": "Spesialisasi template memungkinkan",
             "options": [
               "perilaku khusus",
-              "CSS",
-              "route",
-              "migrasi"
+              "array dinamis",
+              "std::string",
+              "membatasi modifikasi"
             ],
             "a": 0,
             "explain": "Specialization."
@@ -2229,9 +2229,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "SFINAE memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "antar muka",
+              "mengakses member",
+              "<iostream>",
               "pemilihan overload"
             ],
             "a": 3,
@@ -2241,10 +2241,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Concepts (C++20) memudahkan",
             "options": [
-              "CSS",
-              "route",
+              "kesalahan memori",
+              "shared_ptr",
               "batasan template",
-              "migrasi"
+              "deep copy"
             ],
             "a": 2,
             "explain": "Concepts."
@@ -2253,9 +2253,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Template memengaruhi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "perf/VTune",
+              "satu instance",
+              "over-engineering",
               "waktu kompilasi"
             ],
             "a": 3,
@@ -2266,9 +2266,9 @@ const CONTENT_CPP = [
             "q": "Error template bisa",
             "options": [
               "panjang",
-              "CSS",
-              "route",
-              "migrasi"
+              "keamanan",
+              "diamond problem",
+              "GoogleTest/Catch2"
             ],
             "a": 0,
             "explain": "Error panjang."
@@ -2279,8 +2279,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "throw",
+              "nilai"
             ],
             "a": 0,
             "explain": "Biasakan wajar."
@@ -2290,9 +2290,9 @@ const CONTENT_CPP = [
             "q": "Dokumentasi template penting",
             "options": [
               "tidak",
-              "CSS",
+              "umum",
               "ya",
-              "route"
+              "char"
             ],
             "a": 2,
             "explain": "Dokumentasi."
@@ -2310,8 +2310,8 @@ const CONTENT_CPP = [
             "options": [
               "try/catch",
               "try/rescue",
-              "CSS",
-              "route"
+              ".size()/.length()",
+              "dihindari"
             ],
             "a": 0,
             "explain": "C++ memakai try/catch."
@@ -2322,8 +2322,8 @@ const CONTENT_CPP = [
             "options": [
               "raise",
               "throw",
-              "CSS",
-              "route"
+              "RAII",
+              "-O2/-O3"
             ],
             "a": 1,
             "explain": "C++ memakai throw."
@@ -2332,10 +2332,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Standard exception memakai",
             "options": [
-              "CSS",
+              "iterator/range for",
               "std::exception",
-              "route",
-              "migrasi"
+              "mengambil alamat",
+              "std::stoi"
             ],
             "a": 1,
             "explain": "std::exception."
@@ -2344,9 +2344,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "what() memberi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "konfigurasi",
+              "preprocessor include",
+              "tugas async",
               "pesan error"
             ],
             "a": 3,
@@ -2357,9 +2357,9 @@ const CONTENT_CPP = [
             "q": "Exception safety penting",
             "options": [
               "tidak",
-              "CSS",
+              "hash",
               "ya",
-              "route"
+              "T&&"
             ],
             "a": 2,
             "explain": "Exception safety."
@@ -2368,10 +2368,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "noexcept menandai",
             "options": [
-              "CSS",
-              "route",
+              "UB/memori",
+              "std::error_code",
               "tidak melempar",
-              "migrasi"
+              "iterasi"
             ],
             "a": 2,
             "explain": "noexcept."
@@ -2380,10 +2380,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "RAII menjaga",
             "options": [
-              "CSS",
+              "override",
               "exception safety",
-              "route",
-              "migrasi"
+              "ukuran",
+              "sering dioverload"
             ],
             "a": 1,
             "explain": "RAII safety."
@@ -2392,10 +2392,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Custom exception mewarisi",
             "options": [
-              "CSS",
-              "route",
+              "pesan error",
+              "iterator",
               "std::exception",
-              "migrasi"
+              "networking async"
             ],
             "a": 2,
             "explain": "Mewarisi std::exception."
@@ -2406,8 +2406,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "tipe&",
+              "class Nama {}"
             ],
             "a": 1,
             "explain": "Jangan sembunyikan."
@@ -2417,8 +2417,8 @@ const CONTENT_CPP = [
             "q": "Testing exception penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "range",
+              "UB",
               "ya"
             ],
             "a": 3,
@@ -2435,9 +2435,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::sort mengurutkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "build",
+              "nilai opsional",
+              "RAII",
               "range"
             ],
             "a": 3,
@@ -2447,10 +2447,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::find mencari",
             "options": [
-              "CSS",
+              ": member(nilai)",
               "elemen",
-              "route",
-              "migrasi"
+              "alias",
+              "sering dipakai"
             ],
             "a": 1,
             "explain": "find elemen."
@@ -2459,10 +2459,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::transform mentransformasi",
             "options": [
-              "CSS",
-              "route",
+              "tidak melempar",
+              "konfigurasi",
               "range",
-              "migrasi"
+              "tugas async"
             ],
             "a": 2,
             "explain": "transform."
@@ -2471,10 +2471,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::accumulate mengakumulasi",
             "options": [
-              "CSS",
+              "salinan",
               "nilai",
-              "route",
-              "migrasi"
+              "~Nama()",
+              ". / ->"
             ],
             "a": 1,
             "explain": "accumulate."
@@ -2483,10 +2483,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::for_each menjalankan",
             "options": [
-              "CSS",
-              "route",
+              "perilaku tak terdefinisi",
+              "Masa hidup objek berakhir",
               "fungsi per elemen",
-              "migrasi"
+              "Nama obj; / new Nama()"
             ],
             "a": 2,
             "explain": "for_each."
@@ -2496,9 +2496,9 @@ const CONTENT_CPP = [
             "q": "std::count menghitung",
             "options": [
               "kemunculan",
-              "CSS",
-              "route",
-              "migrasi"
+              "v[i] / v.at(i)",
+              "std::to_string",
+              "template/CRTP"
             ],
             "a": 0,
             "explain": "count."
@@ -2507,10 +2507,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::remove_if menyaring",
             "options": [
-              "CSS",
+              "clang-tidy",
               "elemen",
-              "route",
-              "migrasi"
+              "async",
+              "operasi atomik"
             ],
             "a": 1,
             "explain": "remove_if."
@@ -2520,9 +2520,9 @@ const CONTENT_CPP = [
             "q": "Algoritma menerima",
             "options": [
               "iterator",
-              "CSS",
-              "route",
-              "migrasi"
+              "fungsi/method",
+              "unik terurut",
+              "alamat"
             ],
             "a": 0,
             "explain": "Algoritma iterator."
@@ -2531,9 +2531,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Lambda membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "aliran data",
+              "g++/clang++",
+              "static_cast/dynamic_cast",
               "comparator/predikat"
             ],
             "a": 3,
@@ -2543,10 +2543,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Ranges (C++20) memudahkan",
             "options": [
-              "CSS",
+              "disarankan",
               "komposisi",
-              "route",
-              "migrasi"
+              "performa",
+              "benchmark"
             ],
             "a": 1,
             "explain": "Ranges."
@@ -2562,10 +2562,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "UB berarti",
             "options": [
-              "CSS",
+              "&& || !",
               "perilaku tak terdefinisi",
-              "route",
-              "migrasi"
+              "diinisialisasi saat dibuat",
+              "pass by value base"
             ],
             "a": 1,
             "explain": "UB."
@@ -2574,10 +2574,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Use after free adalah",
             "options": [
-              "CSS",
-              "route",
+              "state",
+              "range",
               "UB",
-              "migrasi"
+              "mmap"
             ],
             "a": 2,
             "explain": "UB."
@@ -2586,9 +2586,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Data race adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "std",
+              "*",
+              "std::mutex",
               "UB"
             ],
             "a": 3,
@@ -2598,9 +2598,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "UBSan/ASan mendeteksi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "+ / append",
+              "keamanan",
+              "diamond problem",
               "UB/memori"
             ],
             "a": 3,
@@ -2612,8 +2612,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "char",
+              "umum"
             ],
             "a": 1,
             "explain": "Hindari UB."
@@ -2624,8 +2624,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "async",
+              "{}"
             ],
             "a": 0,
             "explain": "Aman=optimizable."
@@ -2634,9 +2634,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Smart pointer membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mmap",
+              "clang-format",
+              "std::thread",
               "keamanan"
             ],
             "a": 3,
@@ -2646,9 +2646,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Bounds checking memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "array dinamis",
+              "std::string",
+              "membatasi modifikasi",
               "std::vector::at"
             ],
             "a": 3,
@@ -2659,9 +2659,9 @@ const CONTENT_CPP = [
             "q": "Review kode penting",
             "options": [
               "tidak",
-              "CSS",
+              "int",
               "ya",
-              "route"
+              "hash"
             ],
             "a": 2,
             "explain": "Review."
@@ -2672,8 +2672,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "wajib",
+              "bool"
             ],
             "a": 0,
             "explain": "Testing."
@@ -2690,9 +2690,9 @@ const CONTENT_CPP = [
             "q": "Socket API tersedia lewat",
             "options": [
               "POSIX/Winsock",
-              "CSS",
-              "route",
-              "migrasi"
+              "salinan",
+              "~Nama()",
+              ". / ->"
             ],
             "a": 0,
             "explain": "Socket API."
@@ -2701,10 +2701,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Asio/Boost.Asio untuk",
             "options": [
-              "CSS",
+              "class generik",
               "networking async",
-              "route",
-              "migrasi"
+              "try/catch",
+              "elemen"
             ],
             "a": 1,
             "explain": "Asio async."
@@ -2713,9 +2713,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Filesystem C++17 memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ": member(nilai)",
+              "sering dipakai",
+              "iterator/range for",
               "std::filesystem"
             ],
             "a": 3,
@@ -2725,9 +2725,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Thread lokal memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tidak melempar",
+              "comparator/predikat",
+              "std::filesystem",
               "thread_local"
             ],
             "a": 3,
@@ -2737,9 +2737,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Shared memory memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "alamat",
+              "dihindari",
+              "umum",
               "mmap"
             ],
             "a": 3,
@@ -2750,9 +2750,9 @@ const CONTENT_CPP = [
             "q": "Menangani error sistem memakai",
             "options": [
               "std::error_code",
-              "CSS",
-              "route",
-              "migrasi"
+              "std::vector::at",
+              "nilai opsional",
+              "-O2/-O3"
             ],
             "a": 0,
             "explain": "error_code."
@@ -2762,9 +2762,9 @@ const CONTENT_CPP = [
             "q": "Portabilitas penting",
             "options": [
               "tidak",
-              "CSS",
+              "*",
               "ya",
-              "route"
+              "std"
             ],
             "a": 2,
             "explain": "Portabilitas."
@@ -2775,8 +2775,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "async",
+              "{}"
             ],
             "a": 0,
             "explain": "Testing."
@@ -2786,9 +2786,9 @@ const CONTENT_CPP = [
             "q": "Dokumentasi penting",
             "options": [
               "tidak",
-              "CSS",
+              "std",
               "ya",
-              "route"
+              "*"
             ],
             "a": 2,
             "explain": "Dokumentasi."
@@ -2799,8 +2799,8 @@ const CONTENT_CPP = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              ".find()",
+              "base class"
             ],
             "a": 0,
             "explain": "Buffer jaringan perlu hati-hati."
@@ -2816,10 +2816,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "CMake adalah",
             "options": [
-              "CSS",
+              "compiled berorientasi objek",
               "build system generator",
-              "route",
-              "migrasi"
+              "class Anak : public Induk",
+              "tidak mengubah objek"
             ],
             "a": 1,
             "explain": "CMake generator."
@@ -2828,9 +2828,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Makefile mengotomasi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "T&&",
+              "std::exception",
+              "kemunculan",
               "build"
             ],
             "a": 3,
@@ -2841,9 +2841,9 @@ const CONTENT_CPP = [
             "q": "Modules (C++20) menggantikan",
             "options": [
               "include",
-              "CSS",
-              "route",
-              "migrasi"
+              "<iostream>",
+              "bool",
+              "? :"
             ],
             "a": 0,
             "explain": "Modules."
@@ -2852,10 +2852,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Package manager populer",
             "options": [
-              "CSS",
-              "route",
+              "shared_ptr",
+              "deep copy",
               "vcpkg/conan",
-              "migrasi"
+              "template<typename T>"
             ],
             "a": 2,
             "explain": "vcpkg/conan."
@@ -2864,10 +2864,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Preset CMake membantu",
             "options": [
-              "CSS",
-              "route",
+              "std::thread",
+              "deteksi race",
               "konfigurasi",
-              "migrasi"
+              "vektorisasi"
             ],
             "a": 2,
             "explain": "CMake presets."
@@ -2876,10 +2876,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Header-only library",
             "options": [
-              "CSS",
+              "disarankan",
               "umum",
-              "route",
-              "migrasi"
+              "performa",
+              "benchmark"
             ],
             "a": 1,
             "explain": "Header-only."
@@ -2889,8 +2889,8 @@ const CONTENT_CPP = [
             "q": "Cross-compiling penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "char",
+              "umum",
               "ya"
             ],
             "a": 3,
@@ -2902,8 +2902,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "async",
+              "{}"
             ],
             "a": 0,
             "explain": "CI."
@@ -2914,8 +2914,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "async",
+              "{}"
             ],
             "a": 1,
             "explain": "Dokumentasi."
@@ -2926,8 +2926,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "*",
+              "std"
             ],
             "a": 0,
             "explain": "Build reproducible."
@@ -2945,8 +2945,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "std",
+              "*"
             ],
             "a": 0,
             "explain": "Nama deskriptif."
@@ -2956,9 +2956,9 @@ const CONTENT_CPP = [
             "q": "RAII konsisten penting",
             "options": [
               "tidak",
-              "CSS",
+              "{}",
               "ya",
-              "route"
+              "async"
             ],
             "a": 2,
             "explain": "RAII konsisten."
@@ -2967,9 +2967,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Static analysis memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".size()/.length()",
+              "dihindari",
+              "umum",
               "clang-tidy"
             ],
             "a": 3,
@@ -2979,9 +2979,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Formatter memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "-O2/-O3",
+              "pembuatan objek",
+              "komposisi algoritma",
               "clang-format"
             ],
             "a": 3,
@@ -2993,8 +2993,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "state",
+              "range"
             ],
             "a": 1,
             "explain": "Bertahap."
@@ -3005,8 +3005,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "wajib",
+              "bool"
             ],
             "a": 1,
             "explain": "Regresi."
@@ -3017,8 +3017,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "hash",
+              "T&&"
             ],
             "a": 0,
             "explain": "Review."
@@ -3029,8 +3029,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "std",
+              "*"
             ],
             "a": 1,
             "explain": "Dokumentasi."
@@ -3041,8 +3041,8 @@ const CONTENT_CPP = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "override",
+              "ukuran"
             ],
             "a": 0,
             "explain": "Sederhana."
@@ -3053,8 +3053,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "pesan error",
+              "iterator"
             ],
             "a": 1,
             "explain": "Ukur."
@@ -3070,9 +3070,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "auto memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "perf/VTune",
+              "satu instance",
+              "over-engineering",
               "inferensi tipe"
             ],
             "a": 3,
@@ -3080,12 +3080,12 @@ const CONTENT_CPP = [
           },
           {
             "type": "mc",
-            "q": "nullptr menggantikan",
+            "q": "Di C++ modern, `nullptr` direkomendasikan sebagai pengganti aman bagi makro pointer lama",
             "options": [
-              "CSS",
-              "route",
+              "keamanan",
+              "T&&",
               "NULL",
-              "migrasi"
+              "kemunculan"
             ],
             "a": 2,
             "explain": "nullptr type-safe."
@@ -3094,9 +3094,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Range-based for memperpendek",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "salinan string",
+              "hasil async",
+              "tanpa virtual",
               "iterasi"
             ],
             "a": 3,
@@ -3106,10 +3106,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::optional mewakili",
             "options": [
-              "CSS",
-              "route",
+              "nullptr",
+              ".find()",
               "nilai opsional",
-              "migrasi"
+              "base class"
             ],
             "a": 2,
             "explain": "optional."
@@ -3118,10 +3118,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::variant untuk",
             "options": [
-              "CSS",
+              "kondisi benar",
               "union type-safe",
-              "route",
-              "migrasi"
+              "class Nama {}",
+              "scoped"
             ],
             "a": 1,
             "explain": "variant."
@@ -3130,10 +3130,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::string_view menghindari",
             "options": [
-              "CSS",
+              "kepemilikan bersama",
               "salinan string",
-              "route",
-              "migrasi"
+              "menyalin objek",
+              "is_open()"
             ],
             "a": 1,
             "explain": "string_view efisien."
@@ -3142,9 +3142,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Concepts membatasi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "antar muka",
+              "mengakses member",
+              "<iostream>",
               "template"
             ],
             "a": 3,
@@ -3154,10 +3154,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Modules menggantikan",
             "options": [
-              "CSS",
+              "kesalahan memori",
               "preprocessor include",
-              "route",
-              "migrasi"
+              "shared_ptr",
+              "deep copy"
             ],
             "a": 1,
             "explain": "C++20 modules."
@@ -3166,10 +3166,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::format memformat",
             "options": [
-              "CSS",
+              "waktu kompilasi",
               "string",
-              "route",
-              "migrasi"
+              "exception safety",
+              "komposisi"
             ],
             "a": 1,
             "explain": "C++20 format."
@@ -3178,10 +3178,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Coroutines mendukung",
             "options": [
-              "CSS",
+              "default public",
               "async",
-              "route",
-              "migrasi"
+              "penting",
+              "kebingungan"
             ],
             "a": 1,
             "explain": "C++20 coroutines."
@@ -3198,9 +3198,9 @@ const CONTENT_CPP = [
             "q": "Thread memakai",
             "options": [
               "std::thread",
-              "CSS",
-              "route",
-              "migrasi"
+              "evaluasi compile-time",
+              "disarankan",
+              "performa"
             ],
             "a": 0,
             "explain": "std::thread."
@@ -3209,9 +3209,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Mutex memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "deteksi race",
+              "vektorisasi",
+              "abstraksi runtime",
               "std::mutex"
             ],
             "a": 3,
@@ -3221,10 +3221,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "lock_guard mengunci",
             "options": [
-              "CSS",
-              "route",
+              "unique_ptr",
+              "string",
               "RAII",
-              "migrasi"
+              "komposisi"
             ],
             "a": 2,
             "explain": "lock_guard RAII."
@@ -3234,9 +3234,9 @@ const CONTENT_CPP = [
             "q": "unique_lock fleksibel",
             "options": [
               "tidak",
-              "CSS",
+              "char",
               "ya",
-              "route"
+              "umum"
             ],
             "a": 2,
             "explain": "unique_lock."
@@ -3246,9 +3246,9 @@ const CONTENT_CPP = [
             "q": "condition_variable membantu",
             "options": [
               "sinkronisasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "kebingungan",
+              "v[i] / v.at(i)",
+              "std::to_string"
             ],
             "a": 0,
             "explain": "condition_variable."
@@ -3257,9 +3257,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "future/promise untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "thread_local",
+              "clang-tidy",
+              "async",
               "hasil async"
             ],
             "a": 3,
@@ -3270,9 +3270,9 @@ const CONTENT_CPP = [
             "q": "async menjalankan",
             "options": [
               "tugas async",
-              "CSS",
-              "route",
-              "migrasi"
+              "alias objek",
+              ".substr()",
+              "abstract"
             ],
             "a": 0,
             "explain": "std::async."
@@ -3282,9 +3282,9 @@ const CONTENT_CPP = [
             "q": "atomic untuk",
             "options": [
               "operasi atomik",
-              "CSS",
-              "route",
-              "migrasi"
+              "union type-safe",
+              "sinkronisasi",
+              "realloc"
             ],
             "a": 0,
             "explain": "std::atomic."
@@ -3294,9 +3294,9 @@ const CONTENT_CPP = [
             "q": "Data race harus",
             "options": [
               "dihindari",
-              "CSS",
-              "route",
-              "migrasi"
+              "pemilihan overload",
+              "pesan error",
+              "iterator"
             ],
             "a": 0,
             "explain": "Hindari race."
@@ -3306,9 +3306,9 @@ const CONTENT_CPP = [
             "q": "Thread sanitizer membantu",
             "options": [
               "deteksi race",
-              "CSS",
-              "route",
-              "migrasi"
+              "kondisi benar",
+              "tipe&",
+              "class Nama {}"
             ],
             "a": 0,
             "explain": "TSan."
@@ -3324,10 +3324,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Profiling memakai",
             "options": [
-              "CSS",
+              "EXPECT_EQ/ASSERT",
               "perf/VTune",
-              "route",
-              "migrasi"
+              "kepemilikan bersama",
+              "menyalin objek"
             ],
             "a": 1,
             "explain": "Profiler C++."
@@ -3337,9 +3337,9 @@ const CONTENT_CPP = [
             "q": "Optimasi compiler memakai",
             "options": [
               "-O2/-O3",
-              "CSS",
-              "route",
-              "migrasi"
+              "int main()",
+              "const/constexpr",
+              "if/else if/else"
             ],
             "a": 0,
             "explain": "Flag optimasi."
@@ -3349,9 +3349,9 @@ const CONTENT_CPP = [
             "q": "Move semantics menghindari",
             "options": [
               "salinan",
-              "CSS",
-              "route",
-              "migrasi"
+              "kebocoran memori",
+              "std::ifstream",
+              "class generik"
             ],
             "a": 0,
             "explain": "Move efisien."
@@ -3361,9 +3361,9 @@ const CONTENT_CPP = [
             "q": "Cache locality penting",
             "options": [
               "tidak",
-              "CSS",
+              "hash",
               "ya",
-              "route"
+              "T&&"
             ],
             "a": 2,
             "explain": "Locality cache."
@@ -3372,9 +3372,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Reserve vector menghindari",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "otomatis",
+              "batasan template",
+              "tidak melempar",
               "realloc"
             ],
             "a": 3,
@@ -3385,9 +3385,9 @@ const CONTENT_CPP = [
             "q": "Inline function membantu",
             "options": [
               "performa",
-              "CSS",
-              "route",
-              "migrasi"
+              "tipe nama(params) {}",
+              "[capture](params) {}",
+              ": member(nilai)"
             ],
             "a": 0,
             "explain": "Inline kecil."
@@ -3397,9 +3397,9 @@ const CONTENT_CPP = [
             "q": "Template mempercepat",
             "options": [
               "tanpa virtual",
-              "CSS",
-              "route",
-              "migrasi"
+              "throw",
+              "nilai",
+              "std::vector::at"
             ],
             "a": 0,
             "explain": "Template statis."
@@ -3409,8 +3409,8 @@ const CONTENT_CPP = [
             "q": "Ukur sebelum optimasi",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "method",
+              "fungsi/method",
               "wajib"
             ],
             "a": 3,
@@ -3420,9 +3420,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "PGO membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "array dinamis",
+              "std::string",
+              "membatasi modifikasi",
               "optimasi"
             ],
             "a": 3,
@@ -3432,10 +3432,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "SIMD memungkinkan",
             "options": [
-              "CSS",
+              "vcpkg/conan",
               "vektorisasi",
-              "route",
-              "migrasi"
+              "salinan string",
+              "hasil async"
             ],
             "a": 1,
             "explain": "SIMD."
@@ -3451,10 +3451,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Singleton memastikan",
             "options": [
-              "CSS",
+              "salinan mahal",
               "satu instance",
-              "route",
-              "migrasi"
+              "dynamic dispatch",
+              "nama konstanta"
             ],
             "a": 1,
             "explain": "Singleton."
@@ -3463,9 +3463,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Factory memusatkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "std::ios::binary",
+              "perilaku khusus",
+              "std::exception",
               "pembuatan objek"
             ],
             "a": 3,
@@ -3475,9 +3475,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Builder memudahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "inferensi tipe",
+              "for (...)",
+              "parameter opsional",
               "objek kompleks"
             ],
             "a": 3,
@@ -3489,8 +3489,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "async",
+              "{}"
             ],
             "a": 1,
             "explain": "Observer."
@@ -3499,9 +3499,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Strategy menukar",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "ukuran",
+              "sering dioverload",
+              ".size()",
               "algoritma"
             ],
             "a": 3,
@@ -3511,10 +3511,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Adapter menjembatani",
             "options": [
-              "CSS",
+              "iterator",
               "antar muka",
-              "route",
-              "migrasi"
+              "networking async",
+              "vcpkg/conan"
             ],
             "a": 1,
             "explain": "Adapter."
@@ -3524,9 +3524,9 @@ const CONTENT_CPP = [
             "q": "CRTP memungkinkan",
             "options": [
               "polimorfisme statis",
-              "CSS",
-              "route",
-              "migrasi"
+              "class Nama {}",
+              "array dinamis",
+              "std::string"
             ],
             "a": 0,
             "explain": "CRTP."
@@ -3535,10 +3535,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Type erasure memungkinkan",
             "options": [
-              "CSS",
+              "panjang",
               "abstraksi runtime",
-              "route",
-              "migrasi"
+              "clang-format",
+              "std::thread"
             ],
             "a": 1,
             "explain": "Type erasure."
@@ -3548,9 +3548,9 @@ const CONTENT_CPP = [
             "q": "Pola berlebihan berisiko",
             "options": [
               "over-engineering",
-              "CSS",
-              "route",
-              "migrasi"
+              "realloc",
+              "objek kompleks",
+              "invalidasi/realloc"
             ],
             "a": 0,
             "explain": "Gunakan wajar."
@@ -3561,8 +3561,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "*",
+              "std"
             ],
             "a": 1,
             "explain": "Dokumentasi."
@@ -3578,10 +3578,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::ranges (C++20) memudahkan",
             "options": [
-              "CSS",
+              "pemilihan overload",
               "komposisi algoritma",
-              "route",
-              "migrasi"
+              "pesan error",
+              "iterator"
             ],
             "a": 1,
             "explain": "Ranges compose."
@@ -3591,9 +3591,9 @@ const CONTENT_CPP = [
             "q": "Views bersifat lazy",
             "options": [
               "tidak",
-              "CSS",
+              "async",
               "ya",
-              "route"
+              "{}"
             ],
             "a": 2,
             "explain": "Views lazy."
@@ -3602,9 +3602,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "std::span mengakses",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "OOP, generics, dan fungsional",
+              "pointer ke objek",
+              "ubah di method const",
               "buffer tanpa salinan"
             ],
             "a": 3,
@@ -3615,9 +3615,9 @@ const CONTENT_CPP = [
             "q": "Iterator invalidation berbahaya",
             "options": [
               "tidak",
-              "CSS",
+              "tipe&",
               "ya",
-              "route"
+              "throw"
             ],
             "a": 2,
             "explain": "Invalidation."
@@ -3626,10 +3626,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Reserve menghindari",
             "options": [
-              "CSS",
+              "kepemilikan tunggal",
               "invalidasi/realloc",
-              "route",
-              "migrasi"
+              "std::ios::binary",
+              "perilaku khusus"
             ],
             "a": 1,
             "explain": "Reserve."
@@ -3640,8 +3640,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "bool",
+              "&"
             ],
             "a": 1,
             "explain": "Comparator."
@@ -3652,8 +3652,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "manual new/delete",
+              "gcov/llvm-cov"
             ],
             "a": 1,
             "explain": "Ukur performa."
@@ -3664,8 +3664,8 @@ const CONTENT_CPP = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "std",
+              "*"
             ],
             "a": 1,
             "explain": "Dokumentasi."
@@ -3674,10 +3674,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Pipe operator memungkinkan komposisi",
             "options": [
-              "CSS",
+              "operasi atomik",
               "aliran data",
-              "route",
-              "migrasi"
+              "optimasi",
+              "polimorfisme statis"
             ],
             "a": 1,
             "explain": "Pipe compose."
@@ -3686,10 +3686,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Projection pada ranges membantu",
             "options": [
-              "CSS",
-              "route",
+              "std::to_string",
+              "template/CRTP",
               "mengakses member",
-              "migrasi"
+              "akses memori"
             ],
             "a": 2,
             "explain": "Projection member."
@@ -3705,9 +3705,9 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Embedded C++ menuntut",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "destructor/copy/move",
+              "otomatis",
+              "batasan template",
               "efisiensi"
             ],
             "a": 3,
@@ -3717,10 +3717,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "Tanpa RTTI/exception membantu",
             "options": [
-              "CSS",
+              "switch/case",
               "ukuran",
-              "route",
-              "migrasi"
+              ": member(nilai)",
+              "alias"
             ],
             "a": 1,
             "explain": "Kurangi overhead."
@@ -3729,10 +3729,10 @@ const CONTENT_CPP = [
             "type": "mc",
             "q": "constexpr membantu",
             "options": [
-              "CSS",
-              "route",
+              "template",
+              "std::vector::at",
               "komputasi compile-time",
-              "migrasi"
+              "nilai opsional"
             ],
             "a": 2,
             "explain": "constexpr."
@@ -3743,8 +3743,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "umum",
+              "char"
             ],
             "a": 0,
             "explain": "RAII."
@@ -3754,9 +3754,9 @@ const CONTENT_CPP = [
             "q": "Alokasi dinamis dibatasi",
             "options": [
               "sering",
-              "CSS",
-              "route",
-              "migrasi"
+              "exception safety",
+              "komposisi",
+              "thread_local"
             ],
             "a": 0,
             "explain": "Batasi alokasi."
@@ -3766,8 +3766,8 @@ const CONTENT_CPP = [
             "q": "Testing di target penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "*",
+              "std",
               "ya"
             ],
             "a": 3,
@@ -3778,9 +3778,9 @@ const CONTENT_CPP = [
             "q": "Dokumentasi penting",
             "options": [
               "tidak",
-              "CSS",
+              "int",
               "ya",
-              "route"
+              "hash"
             ],
             "a": 2,
             "explain": "Dokumentasi."
@@ -3791,8 +3791,8 @@ const CONTENT_CPP = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "wajib",
+              "bool"
             ],
             "a": 0,
             "explain": "Ukur resource."
@@ -3803,8 +3803,8 @@ const CONTENT_CPP = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "#include sesuai",
+              "+ / append"
             ],
             "a": 0,
             "explain": "Hindari overhead."
@@ -3814,9 +3814,9 @@ const CONTENT_CPP = [
             "q": "Interrupt-safe code penting",
             "options": [
               "tidak",
-              "CSS",
+              "wajib",
               "ya",
-              "route"
+              "bool"
             ],
             "a": 2,
             "explain": "Interrupt safe."

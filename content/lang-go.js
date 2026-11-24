@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_GO = [
-{
+  {
     "id": "go",
     "name": "Go",
     "icon": "🐹",
@@ -34,7 +34,7 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Go dikenal dengan dukungan bawaan untuk",
             "options": [
-              "CSS",
+              "fmt.Errorf dengan %w",
               "SQL engine",
               "concurrency (goroutine)",
               "GUI"
@@ -97,7 +97,7 @@ const CONTENT_GO = [
               "compiled dan statically typed",
               "interpreted",
               "tanpa tipe",
-              "CSS"
+              "mengubah nilai asli"
             ],
             "a": 0,
             "explain": "Go dikompilasi dengan tipe statis."
@@ -243,7 +243,7 @@ const CONTENT_GO = [
           },
           {
             "type": "mc",
-            "q": "Tipe array berukuran tetap disebut",
+            "q": "Struktur koleksi berurutan di Go yang panjangnya bersifat tetap sejak deklarasi adalah",
             "options": [
               "slice",
               "array",
@@ -279,7 +279,7 @@ const CONTENT_GO = [
               "if kondisi { }",
               "if (kondisi) { }",
               "if kondisi then",
-              "CSS"
+              "saling menunggu tanpa kemajuan"
             ],
             "a": 0,
             "explain": "Go memakai if kondisi { }."
@@ -289,8 +289,8 @@ const CONTENT_GO = [
             "q": "Kurung kurawal pada if bersifat",
             "options": [
               "opsional",
-              "CSS",
-              "route",
+              "polimorfisme",
+              "modul/package",
               "wajib"
             ],
             "a": 3,
@@ -314,8 +314,8 @@ const CONTENT_GO = [
             "options": [
               "semua case",
               "hanya case pertama cocok (tanpa fallthrough default)",
-              "CSS",
-              "route"
+              "diawali huruf kapital",
+              "mengimplementasikan semua method"
             ],
             "a": 1,
             "explain": "Go tidak fallthrough otomatis."
@@ -325,8 +325,8 @@ const CONTENT_GO = [
             "q": "switch tanpa kondisi setara",
             "options": [
               "error",
-              "CSS",
-              "route",
+              "context akar",
+              "http.Handler pembungkus",
               "switch true"
             ],
             "a": 3,
@@ -336,10 +336,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Break menghentikan",
             "options": [
-              "CSS",
-              "route",
+              "durasi",
+              "request",
               "loop/switch",
-              "migrasi"
+              "memakai sinkronisasi"
             ],
             "a": 2,
             "explain": "break keluar dari loop/switch."
@@ -348,10 +348,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Continue melanjutkan ke",
             "options": [
-              "CSS",
+              "menambah konteks",
               "iterasi berikutnya",
-              "route",
-              "migrasi"
+              "error kompilasi",
+              "melepas resource"
             ],
             "a": 1,
             "explain": "continue melompati sisa iterasi."
@@ -360,10 +360,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Range pada slice memberi",
             "options": [
-              "CSS",
-              "route",
+              "mewarisi field/method via komposisi",
+              "*T yang menunjuk zero value",
               "index dan nilai",
-              "migrasi"
+              "mengembalikan nilai error"
             ],
             "a": 2,
             "explain": "for range mengembalikan index dan elemen."
@@ -372,10 +372,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Label pada loop memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "[]int{...}",
+              "jarang disarankan",
               "break/continue loop luar",
-              "migrasi"
+              "func literal"
             ],
             "a": 2,
             "explain": "Label menandai loop target."
@@ -385,9 +385,9 @@ const CONTENT_GO = [
             "q": "Goto ada di Go tetapi",
             "options": [
               "jarang disarankan",
-              "CSS",
-              "route",
-              "migrasi"
+              "loop/switch",
+              "huruf kecil",
+              "cap(s)"
             ],
             "a": 0,
             "explain": "Hindari goto berlebihan."
@@ -429,7 +429,7 @@ const CONTENT_GO = [
             "options": [
               "tidak",
               "hanya pointer",
-              "CSS",
+              "int",
               "ya"
             ],
             "a": 3,
@@ -439,10 +439,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Nilai balik kedua biasanya untuk",
             "options": [
-              "CSS",
-              "route",
+              "cara berhenti",
+              "import",
               "error",
-              "migrasi"
+              "const"
             ],
             "a": 2,
             "explain": "Konvensi Go mengembalikan error sebagai nilai kedua."
@@ -478,7 +478,7 @@ const CONTENT_GO = [
               "lambda",
               "func literal",
               "arrow",
-              "CSS"
+              "switch true"
             ],
             "a": 1,
             "explain": "Go memakai func literal untuk closure."
@@ -487,10 +487,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Nilai balik bernama memudahkan",
             "options": [
-              "CSS",
+              "unit eksekusi ringan",
               "return tanpa argumen",
-              "route",
-              "migrasi"
+              "menunggu beberapa operasi channel",
+              "menangani error banyak goroutine"
             ],
             "a": 1,
             "explain": "Named return memungkinkan return kosong."
@@ -499,10 +499,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "defer dipakai untuk",
             "options": [
-              "CSS",
+              "if kondisi { }",
               "menjalankan kode saat fungsi selesai",
-              "route",
-              "migrasi"
+              "func (r Receiver) Nama()",
+              "mengubah nilai asli"
             ],
             "a": 1,
             "explain": "defer menunda eksekusi sampai fungsi selesai."
@@ -513,8 +513,8 @@ const CONTENT_GO = [
             "options": [
               "tidak bisa dipakai",
               "dapat disimpan di variabel",
-              "CSS",
-              "route"
+              "menunggu beberapa operasi channel",
+              "menangani error banyak goroutine"
             ],
             "a": 1,
             "explain": "Fungsi dapat dipakai sebagai nilai."
@@ -578,10 +578,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Embedding struct memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "var nama string",
+              "type Nama struct { ... }",
               "mewarisi field/method via komposisi",
-              "migrasi"
+              "alamat memori nilai"
             ],
             "a": 2,
             "explain": "Embedding meniru pewarisan lewat komposisi."
@@ -590,9 +590,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Tag struct dipakai untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "penyalinan besar",
+              "v := <-ch",
+              "json.Marshal",
               "metadata (mis. JSON)"
             ],
             "a": 3,
@@ -605,7 +605,7 @@ const CONTENT_GO = [
               "nil",
               "error",
               "nilai default semua field",
-              "CSS"
+              "compiled dan statically typed"
             ],
             "a": 2,
             "explain": "Struct selalu punya zero value."
@@ -617,7 +617,7 @@ const CONTENT_GO = [
               "diawali huruf kapital",
               "diawali garis bawah",
               "selalu",
-              "CSS"
+              "go test -race"
             ],
             "a": 0,
             "explain": "Huruf kapital menandai field/meotd diekspor."
@@ -641,7 +641,7 @@ const CONTENT_GO = [
               "Nama[]",
               "list Nama",
               "[]Nama{...}",
-              "CSS"
+              "package nama"
             ],
             "a": 2,
             "explain": "Slice of struct memakai []Nama."
@@ -659,7 +659,7 @@ const CONTENT_GO = [
             "options": [
               "dict{string:int}",
               "hash[string,int]",
-              "CSS",
+              "package nama",
               "map[string]int{}"
             ],
             "a": 3,
@@ -672,7 +672,7 @@ const CONTENT_GO = [
               "m[\"k\"] = v",
               "m.add(k,v)",
               "m.put()",
-              "CSS"
+              "fmt.Errorf dengan %w"
             ],
             "a": 0,
             "explain": "Assignment menambah/mengganti nilai."
@@ -684,7 +684,7 @@ const CONTENT_GO = [
               "m.has(k)",
               "m.exists(k)",
               "v, ok := m[k]",
-              "CSS"
+              "keamanan tipe dan performa"
             ],
             "a": 2,
             "explain": "Comma-ok mengecek keberadaan key."
@@ -696,7 +696,7 @@ const CONTENT_GO = [
               "m.remove(k)",
               "m.del(k)",
               "delete(m, k)",
-              "CSS"
+              "polimorfisme"
             ],
             "a": 2,
             "explain": "delete menghapus key."
@@ -708,7 +708,7 @@ const CONTENT_GO = [
               "s.add(x)",
               "s.push(x)",
               "append(s, x)",
-              "CSS"
+              "penyalinan besar"
             ],
             "a": 2,
             "explain": "append menambah elemen."
@@ -719,7 +719,7 @@ const CONTENT_GO = [
             "options": [
               "s.length",
               "s.size",
-              "CSS",
+              "metadata request",
               "len(s)"
             ],
             "a": 3,
@@ -731,7 +731,7 @@ const CONTENT_GO = [
             "options": [
               "s.cap",
               "capacity(s)",
-              "CSS",
+              "fungsi cancel",
               "cap(s)"
             ],
             "a": 3,
@@ -743,7 +743,7 @@ const CONTENT_GO = [
             "options": [
               "new([]int)",
               "slice(10)",
-              "CSS",
+              "membersihkan dependency",
               "make([]int, 0, 10)"
             ],
             "a": 3,
@@ -755,7 +755,7 @@ const CONTENT_GO = [
             "options": [
               "dst = src selalu",
               "clone()",
-              "CSS",
+              "close(ch)",
               "copy(dst, src)"
             ],
             "a": 3,
@@ -768,7 +768,7 @@ const CONTENT_GO = [
               "list tertaut",
               "view atas array dengan len dan cap",
               "hash",
-              "CSS"
+              "kondisi tak terpulihkan"
             ],
             "a": 1,
             "explain": "Slice mereferensikan array dengan len/cap."
@@ -787,7 +787,7 @@ const CONTENT_GO = [
               "*x",
               "x.addr",
               "&x",
-              "CSS"
+              "panic"
             ],
             "a": 2,
             "explain": "Operator & mengambil alamat."
@@ -799,7 +799,7 @@ const CONTENT_GO = [
               "&p",
               "p.value",
               "*p",
-              "CSS"
+              "int"
             ],
             "a": 2,
             "explain": "Operator * mengakses nilai pointer."
@@ -810,7 +810,7 @@ const CONTENT_GO = [
             "options": [
               "&int",
               "int*",
-              "CSS",
+              "ya, penting",
               "*int"
             ],
             "a": 3,
@@ -822,8 +822,8 @@ const CONTENT_GO = [
             "options": [
               "nilai salinan",
               "alamat memori nilai",
-              "CSS",
-              "route"
+              "logging, metrics, tracing",
+              "Deadline dan sinyal pembatalan"
             ],
             "a": 1,
             "explain": "Pointer menyimpan alamat."
@@ -834,8 +834,8 @@ const CONTENT_GO = [
             "options": [
               "salinan",
               "mengubah nilai asli",
-              "CSS",
-              "route"
+              "dari package lain",
+              "tidak pernah selesai"
             ],
             "a": 1,
             "explain": "Pointer memungkinkan mutasi nilai asli."
@@ -846,7 +846,7 @@ const CONTENT_GO = [
             "options": [
               "0",
               "error",
-              "CSS",
+              "ch <- v",
               "nil"
             ],
             "a": 3,
@@ -871,7 +871,7 @@ const CONTENT_GO = [
               "(*p).field wajib",
               "p.field",
               "p->field",
-              "CSS"
+              "field comparable"
             ],
             "a": 1,
             "explain": "Go otomatis mendereferensi pointer."
@@ -881,9 +881,9 @@ const CONTENT_GO = [
             "q": "Pointer berlebihan menyulitkan",
             "options": [
               "keterbacaan",
-              "CSS",
-              "route",
-              "migrasi"
+              "modul/package",
+              "argumen pertama",
+              "{id}"
             ],
             "a": 0,
             "explain": "Gunakan pointer sesuai kebutuhan."
@@ -894,8 +894,8 @@ const CONTENT_GO = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "panic",
+              "t.Run"
             ],
             "a": 0,
             "explain": "Jangan pakai pointer ke interface."
@@ -914,7 +914,7 @@ const CONTENT_GO = [
               "type Nama interface { ... }",
               "interface Nama {}",
               "class Nama interface",
-              "CSS"
+              "statis dan mandiri"
             ],
             "a": 0,
             "explain": "Interface memakai type ... interface."
@@ -924,8 +924,8 @@ const CONTENT_GO = [
             "q": "Tipe memenuhi interface bila",
             "options": [
               "didaftarkan manual",
-              "CSS",
-              "route",
+              "nilai dinamis bertipe",
+              "variabel error pembanding",
               "mengimplementasikan semua method"
             ],
             "a": 3,
@@ -936,8 +936,8 @@ const CONTENT_GO = [
             "q": "Interface kosong interface{} berarti",
             "options": [
               "tanpa method saja",
-              "CSS",
-              "route",
+              "layanan inti tetap jalan",
+              "mengurangi alokasi objek berulang",
               "tipe apa saja"
             ],
             "a": 3,
@@ -950,7 +950,7 @@ const CONTENT_GO = [
               "v.(Tipe)",
               "v as Tipe",
               "cast(v)",
-              "CSS"
+              "import"
             ],
             "a": 0,
             "explain": "Type assertion memeriksa tipe konkret."
@@ -962,7 +962,7 @@ const CONTENT_GO = [
               "switch type(x)",
               "case type",
               "switch v := x.(type)",
-              "CSS"
+              "runtime scheduler Go"
             ],
             "a": 2,
             "explain": "Type switch memeriksa tipe dinamis."
@@ -974,7 +974,7 @@ const CONTENT_GO = [
               "Err() error",
               "Error() string",
               "Message()",
-              "CSS"
+              "throughput"
             ],
             "a": 1,
             "explain": "error membutuhkan method Error() string."
@@ -984,9 +984,9 @@ const CONTENT_GO = [
             "q": "Mengembalikan error nil berarti",
             "options": [
               "error fatal",
-              "CSS",
+              "versi binary & skema kompatibel",
               "tidak ada error",
-              "route"
+              "keamanan tipe dan performa"
             ],
             "a": 2,
             "explain": "nil menandakan keberhasilan."
@@ -997,8 +997,8 @@ const CONTENT_GO = [
             "options": [
               "nilai dinamis bertipe",
               "hanya pointer",
-              "CSS",
-              "route"
+              "mengembalikan nilai error",
+              "modul dan dependency"
             ],
             "a": 0,
             "explain": "Interface menyimpan tipe dan nilai dinamis."
@@ -1007,9 +1007,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Interface memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tipe dinamis",
+              "net/http/pprof & runtime/pprof",
+              "alokasi stack",
               "polimorfisme"
             ],
             "a": 3,
@@ -1020,9 +1020,9 @@ const CONTENT_GO = [
             "q": "Error wrapping memakai",
             "options": [
               "fmt.Errorf dengan %w",
-              "CSS",
-              "route",
-              "migrasi"
+              "jumlah P/prosesor logis",
+              "akses data",
+              "mengurangi alokasi"
             ],
             "a": 0,
             "explain": "Verb %w membungkus error."
@@ -1040,7 +1040,7 @@ const CONTENT_GO = [
             "options": [
               "exception",
               "panic selalu",
-              "CSS",
+              "modul dan dependency",
               "mengembalikan nilai error"
             ],
             "a": 3,
@@ -1053,7 +1053,7 @@ const CONTENT_GO = [
               "try/catch",
               "except",
               "if err != nil",
-              "CSS"
+              "versi binary & skema kompatibel"
             ],
             "a": 2,
             "explain": "Pola umum memeriksa err != nil."
@@ -1064,7 +1064,7 @@ const CONTENT_GO = [
             "options": [
               "new Error",
               "throw",
-              "CSS",
+              "membersihkan dependency",
               "errors.New(\"...\")"
             ],
             "a": 3,
@@ -1076,8 +1076,8 @@ const CONTENT_GO = [
             "options": [
               "kondisi tak terpulihkan",
               "error biasa",
-              "CSS",
-              "route"
+              "statis dan mandiri",
+              "introspeksi tipe saat runtime"
             ],
             "a": 0,
             "explain": "panic untuk kondisi fatal."
@@ -1086,10 +1086,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "recover dipakai untuk",
             "options": [
-              "CSS",
+              "tidak ada error",
               "memulihkan dari panic",
-              "route",
-              "migrasi"
+              "mengambil tipe error tertentu",
+              "panic menjatuhkan server"
             ],
             "a": 1,
             "explain": "recover menangani panic pada defer."
@@ -1099,9 +1099,9 @@ const CONTENT_GO = [
             "q": "errors.Is dipakai untuk",
             "options": [
               "membandingkan error target",
-              "CSS",
-              "route",
-              "migrasi"
+              "layanan inti tetap jalan",
+              "mengurangi alokasi objek berulang",
+              "import dari luar modul"
             ],
             "a": 0,
             "explain": "errors.Is memeriksa rantai error."
@@ -1111,9 +1111,9 @@ const CONTENT_GO = [
             "q": "errors.As dipakai untuk",
             "options": [
               "mengambil tipe error tertentu",
-              "CSS",
-              "route",
-              "migrasi"
+              "switch v := x.(type)",
+              "membandingkan error target",
+              "request dan status"
             ],
             "a": 0,
             "explain": "errors.As mengekstrak tipe error."
@@ -1122,10 +1122,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Mengabaikan error berbahaya karena",
             "options": [
-              "CSS",
-              "route",
+              "banyak metadata",
+              "make(chan T, n)",
               "menyembunyikan masalah",
-              "migrasi"
+              "json.Unmarshal"
             ],
             "a": 2,
             "explain": "Error yang diabaikan bisa memicu bug."
@@ -1135,9 +1135,9 @@ const CONTENT_GO = [
             "q": "Error wrapping memungkinkan",
             "options": [
               "menambah konteks",
-              "CSS",
-              "route",
-              "migrasi"
+              "make(chan T)",
+              "context",
+              "r.URL.Query().Get(...)"
             ],
             "a": 0,
             "explain": "Wrapping menambah konteks."
@@ -1146,9 +1146,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Sentinel error adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "at-least-once + idempoten",
+              "goroutine dihentikan sementara",
+              "dihindari bila memungkinkan",
               "variabel error pembanding"
             ],
             "a": 3,
@@ -1168,7 +1168,7 @@ const CONTENT_GO = [
               "import nama",
               "package nama",
               "module nama",
-              "CSS"
+              "protoc"
             ],
             "a": 1,
             "explain": "Deklarasi package di awal berkas."
@@ -1189,10 +1189,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "go.mod mengelola",
             "options": [
-              "CSS",
-              "route",
+              "var nama string",
+              "type Nama struct { ... }",
               "modul dan dependency",
-              "migrasi"
+              "alamat memori nilai"
             ],
             "a": 2,
             "explain": "go.mod mendefinisikan modul."
@@ -1204,7 +1204,7 @@ const CONTENT_GO = [
               "go add",
               "go get",
               "go install:new",
-              "CSS"
+              "go mod"
             ],
             "a": 1,
             "explain": "go get menambah dependency."
@@ -1213,10 +1213,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Mengimpor package memakai path",
             "options": [
-              "CSS",
+              "Redis/etcd",
               "modul/package",
-              "route",
-              "migrasi"
+              "deployment",
+              "pprof"
             ],
             "a": 1,
             "explain": "Import memakai path modul."
@@ -1228,7 +1228,7 @@ const CONTENT_GO = [
               "garis bawah",
               "huruf kapital",
               "@",
-              "CSS"
+              "multi-stage build"
             ],
             "a": 1,
             "explain": "Identifier kapital diekspor."
@@ -1238,9 +1238,9 @@ const CONTENT_GO = [
             "q": "init() dijalankan",
             "options": [
               "saat package diinisialisasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "Deadline dan sinyal pembatalan",
+              "menjalankan kode saat fungsi selesai",
+              "v, ok := m[k]"
             ],
             "a": 0,
             "explain": "init dijalankan otomatis."
@@ -1250,9 +1250,9 @@ const CONTENT_GO = [
             "q": "go mod tidy dipakai untuk",
             "options": [
               "membersihkan dependency",
-              "CSS",
-              "route",
-              "migrasi"
+              "alokasi berlebihan",
+              "GOOS/GOARCH",
+              "urutan kompatibel"
             ],
             "a": 0,
             "explain": "tidy merapikan go.mod."
@@ -1262,9 +1262,9 @@ const CONTENT_GO = [
             "q": "Vendor directory dipakai untuk",
             "options": [
               "menyalin dependency",
-              "CSS",
-              "route",
-              "migrasi"
+              "performa fungsi",
+              "abstraksi DB",
+              "pembatalan/timeout"
             ],
             "a": 0,
             "explain": "Vendor menyimpan salinan dependency."
@@ -1273,10 +1273,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Import cycle menyebabkan",
             "options": [
-              "CSS",
-              "route",
+              "env/flag",
+              "throughput",
               "error kompilasi",
-              "migrasi"
+              "melepas koneksi"
             ],
             "a": 2,
             "explain": "Import melingkar tidak diizinkan."
@@ -1293,9 +1293,9 @@ const CONTENT_GO = [
             "q": "context.Background membuat",
             "options": [
               "context akar",
-              "CSS",
-              "route",
-              "migrasi"
+              "menyalin dependency",
+              "metadata request",
+              "mencatat status"
             ],
             "a": 0,
             "explain": "Background adalah context akar."
@@ -1304,10 +1304,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "context.WithCancel memberi",
             "options": [
-              "CSS",
-              "route",
+              "http.ServeMux",
+              "semua field",
               "fungsi cancel",
-              "migrasi"
+              "ch <- v"
             ],
             "a": 2,
             "explain": "WithCancel menyediakan cancel."
@@ -1316,9 +1316,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "ctx.Done() mengembalikan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "if err != nil",
+              "saat package diinisialisasi",
+              "jika disimpan sebagai value di map",
               "channel sinyal selesai"
             ],
             "a": 3,
@@ -1328,9 +1328,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Meneruskan context sebaiknya sebagai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "v.(Tipe)",
+              "package nama",
+              "context akar",
               "argumen pertama"
             ],
             "a": 3,
@@ -1341,9 +1341,9 @@ const CONTENT_GO = [
             "q": "Jangan menyimpan context di struct",
             "options": [
               "salah",
-              "CSS",
+              "*int",
               "benar",
-              "route"
+              "huruf kapital"
             ],
             "a": 2,
             "explain": "Context diteruskan, bukan disimpan."
@@ -1352,9 +1352,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "context.WithTimeout membatasi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "keterbacaan",
+              "menambah konteks",
+              "error kompilasi",
               "durasi"
             ],
             "a": 3,
@@ -1365,9 +1365,9 @@ const CONTENT_GO = [
             "q": "context.WithValue cocok untuk",
             "options": [
               "metadata request",
-              "CSS",
-              "route",
-              "migrasi"
+              "delete(m, k)",
+              "polimorfisme",
+              "modul/package"
             ],
             "a": 0,
             "explain": "Value untuk data lintas fungsi."
@@ -1377,9 +1377,9 @@ const CONTENT_GO = [
             "q": "Pembatalan harus dihormati di IO",
             "options": [
               "tidak",
-              "CSS",
+              "Test",
               "ya",
-              "route"
+              "GC"
             ],
             "a": 2,
             "explain": "Operasi IO harus cek ctx."
@@ -1388,9 +1388,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "WithValue berlebihan menyulitkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "json.Marshal",
+              "io.ReadAll(r.Body)",
+              "[T any]",
               "keterbacaan"
             ],
             "a": 3,
@@ -1400,10 +1400,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Memanggil cancel penting untuk",
             "options": [
-              "CSS",
+              "non-blocking",
               "melepas resource",
-              "route",
-              "migrasi"
+              "http.ListenAndServe",
+              "menambah kompleksitas"
             ],
             "a": 1,
             "explain": "Cancel melepas resource."
@@ -1419,10 +1419,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Middleware HTTP adalah",
             "options": [
-              "CSS",
+              "menganalisis memori",
               "http.Handler pembungkus",
-              "route",
-              "migrasi"
+              "ketergantungan langsung",
+              "prometheus client"
             ],
             "a": 1,
             "explain": "Middleware membungkus handler."
@@ -1431,10 +1431,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Membuat middleware memakai",
             "options": [
-              "CSS",
-              "route",
+              "unit eksekusi ringan",
+              "menunggu beberapa operasi channel",
               "fungsi yang menerima dan mengembalikan Handler",
-              "migrasi"
+              "menangani error banyak goroutine"
             ],
             "a": 2,
             "explain": "Signature middleware Go."
@@ -1443,9 +1443,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Routing memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "GOOS/GOARCH",
+              "urutan kompatibel",
+              "interface{}",
               "http.ServeMux"
             ],
             "a": 3,
@@ -1457,8 +1457,8 @@ const CONTENT_GO = [
             "options": [
               ":id",
               "{id}",
-              "CSS",
-              "route"
+              "deployment",
+              "pprof"
             ],
             "a": 1,
             "explain": "Go 1.22 mendukung pola path."
@@ -1467,10 +1467,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Middleware logging mencatat",
             "options": [
-              "CSS",
+              "overhead per operasi",
               "request dan status",
-              "route",
-              "migrasi"
+              "var nama string",
+              "type Nama struct { ... }"
             ],
             "a": 1,
             "explain": "Log mencatat detail request."
@@ -1480,9 +1480,9 @@ const CONTENT_GO = [
             "q": "Middleware recover mencegah",
             "options": [
               "panic menjatuhkan server",
-              "CSS",
-              "route",
-              "migrasi"
+              "dari package lain",
+              "tidak pernah selesai",
+              "deadline dan pembatalan"
             ],
             "a": 0,
             "explain": "Recover menangani panic."
@@ -1493,8 +1493,8 @@ const CONTENT_GO = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "&x",
+              "main"
             ],
             "a": 1,
             "explain": "Urutan menentukan alur."
@@ -1503,10 +1503,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "CORS middleware mengatur",
             "options": [
-              "CSS",
-              "route",
+              "performa fungsi",
+              "abstraksi DB",
               "header origin",
-              "migrasi"
+              "pembatalan/timeout"
             ],
             "a": 2,
             "explain": "Header CORS diatur middleware."
@@ -1515,10 +1515,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Rate limiting middleware membatasi",
             "options": [
-              "CSS",
-              "route",
+              "throughput",
+              "melepas koneksi",
               "request",
-              "migrasi"
+              "konsistensi format"
             ],
             "a": 2,
             "explain": "Membatasi frekuensi."
@@ -1527,10 +1527,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Response writer wrapper memungkinkan",
             "options": [
-              "CSS",
+              "blank import",
               "mencatat status",
-              "route",
-              "migrasi"
+              "join/query batch",
+              "struct konkret"
             ],
             "a": 1,
             "explain": "Wrapper memantau respons."
@@ -1546,9 +1546,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Anonymous struct berguna untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "bila didesain demikian",
+              "menerima sampai channel ditutup",
+              "jumlah pekerja bersamaan",
               "struktur data sekali pakai"
             ],
             "a": 3,
@@ -1559,9 +1559,9 @@ const CONTENT_GO = [
             "q": "Embedding interface memungkinkan",
             "options": [
               "komposisi method",
-              "CSS",
-              "route",
-              "migrasi"
+              "field comparable",
+              "make(chan T)",
+              "context"
             ],
             "a": 0,
             "explain": "Interface dapat diembed."
@@ -1570,9 +1570,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Method value vs method expression",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "dari package lain",
+              "tidak pernah selesai",
+              "deadline dan pembatalan",
               "bound vs unbound"
             ],
             "a": 3,
@@ -1583,9 +1583,9 @@ const CONTENT_GO = [
             "q": "Struct tidak bisa diubah setelah di-map",
             "options": [
               "jika disimpan sebagai value di map",
-              "CSS",
-              "route",
-              "migrasi"
+              "overhead per operasi",
+              "var nama string",
+              "type Nama struct { ... }"
             ],
             "a": 0,
             "explain": "Nilai struct di map tidak addressable."
@@ -1594,10 +1594,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Struct comparison dengan == memerlukan",
             "options": [
-              "CSS",
-              "route",
+              "argumen pertama",
+              "penyalinan besar",
               "field comparable",
-              "migrasi"
+              "v := <-ch"
             ],
             "a": 2,
             "explain": "Field harus comparable."
@@ -1606,10 +1606,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Copy struct menyalin",
             "options": [
-              "CSS",
+              "menyalin dependency",
               "semua field",
-              "route",
-              "migrasi"
+              "metadata request",
+              "mencatat status"
             ],
             "a": 1,
             "explain": "Assignment menyalin seluruh struct."
@@ -1618,10 +1618,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Pointer ke struct menghindari",
             "options": [
-              "CSS",
+              "header origin",
               "penyalinan besar",
-              "route",
-              "migrasi"
+              "banyak metadata",
+              "make(chan T, n)"
             ],
             "a": 1,
             "explain": "Pointer menghindari copy."
@@ -1630,10 +1630,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Struct tag ganda memungkinkan",
             "options": [
-              "CSS",
+              "melepas resource",
               "banyak metadata",
-              "route",
-              "migrasi"
+              "komposisi method",
+              "dibatasi (pool/semaphore)"
             ],
             "a": 1,
             "explain": "Tag dapat memuat beberapa key."
@@ -1643,9 +1643,9 @@ const CONTENT_GO = [
             "q": "Unexported field tidak bisa diakses",
             "options": [
               "dari package lain",
-              "CSS",
-              "route",
-              "migrasi"
+              "melindungi data bersama",
+              "mendistribusikan lalu menggabungkan hasil",
+              "mencegah koneksi menggantung"
             ],
             "a": 0,
             "explain": "Unexported bersifat private."
@@ -1655,9 +1655,9 @@ const CONTENT_GO = [
             "q": "Zero value struct tetap aman dipakai",
             "options": [
               "bila didesain demikian",
-              "CSS",
-              "route",
-              "migrasi"
+              "Deadline dan sinyal pembatalan",
+              "menjalankan kode saat fungsi selesai",
+              "v, ok := m[k]"
             ],
             "a": 0,
             "explain": "Desain struct yang siap pakai."
@@ -1687,8 +1687,8 @@ const CONTENT_GO = [
             "options": [
               "proses terpisah",
               "unit eksekusi ringan",
-              "CSS",
-              "route"
+              "kondisi tak terpulihkan",
+              "channel sinyal selesai"
             ],
             "a": 1,
             "explain": "Goroutine ringan dibanding thread."
@@ -1697,10 +1697,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Main menunggu goroutine bila",
             "options": [
-              "CSS",
+              "logika bisnis",
               "memakai sinkronisasi",
-              "route",
-              "migrasi"
+              "strings.Builder",
+              "*sql.Rows"
             ],
             "a": 1,
             "explain": "Program berakhir saat main selesai."
@@ -1710,9 +1710,9 @@ const CONTENT_GO = [
             "q": "waitGroup dipakai untuk",
             "options": [
               "menunggu beberapa goroutine",
-              "CSS",
-              "route",
-              "migrasi"
+              "memulihkan dari panic",
+              "fungsi yang menerima dan mengembalikan Handler",
+              "bila didesain demikian"
             ],
             "a": 0,
             "explain": "WaitGroup menunggu goroutine selesai."
@@ -1723,8 +1723,8 @@ const CONTENT_GO = [
             "options": [
               "ya, penting",
               "tidak perlu",
-              "CSS",
-              "route"
+              "jumlah P/prosesor logis",
+              "akses data"
             ],
             "a": 0,
             "explain": "Add harus dipanggil sebelum go."
@@ -1733,10 +1733,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Data race terjadi ketika",
             "options": [
-              "CSS",
-              "route",
+              "membandingkan error target",
+              "request dan status",
               "akses bersamaan tanpa sinkronisasi",
-              "migrasi"
+              "unit eksekusi ringan"
             ],
             "a": 2,
             "explain": "Akses data bersama tanpa sinkronisasi."
@@ -1745,9 +1745,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Mutex dipakai untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "introspeksi tipe saat runtime",
+              "constructor dan interface",
+              "Mengirim nilai dan berkoordinasi antar goroutine",
               "melindungi data bersama"
             ],
             "a": 3,
@@ -1757,10 +1757,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Detektor data race dijalankan dengan",
             "options": [
-              "CSS",
-              "route",
+              "mengambil tipe error tertentu",
+              "panic menjatuhkan server",
               "go test -race",
-              "migrasi"
+              "menunggu beberapa goroutine"
             ],
             "a": 2,
             "explain": "Flag -race mendeteksi race."
@@ -1769,10 +1769,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Goroutine yang bocor terjadi bila",
             "options": [
-              "CSS",
-              "route",
+              "statis dan mandiri",
+              "introspeksi tipe saat runtime",
               "tidak pernah selesai",
-              "migrasi"
+              "constructor dan interface"
             ],
             "a": 2,
             "explain": "Goroutine menggantung memboroskan memory."
@@ -1781,10 +1781,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Jumlah goroutine berlebihan perlu",
             "options": [
-              "CSS",
+              "(r *Tipe)",
               "dibatasi (pool/semaphore)",
-              "route",
-              "migrasi"
+              "append(s, x)",
+              "fmt.Errorf dengan %w"
             ],
             "a": 1,
             "explain": "Batasi konkurensi."
@@ -1803,7 +1803,7 @@ const CONTENT_GO = [
               "new chan",
               "make(chan T)",
               "chan T{}",
-              "CSS"
+              "mencatat status"
             ],
             "a": 1,
             "explain": "make membuat channel."
@@ -1814,7 +1814,7 @@ const CONTENT_GO = [
             "options": [
               "ch.send(v)",
               "ch.put(v)",
-              "CSS",
+              "http.ServeMux",
               "ch <- v"
             ],
             "a": 3,
@@ -1826,7 +1826,7 @@ const CONTENT_GO = [
             "options": [
               "ch.recv(v)",
               "ch.get()",
-              "CSS",
+              "durasi",
               "v := <-ch"
             ],
             "a": 3,
@@ -1839,7 +1839,7 @@ const CONTENT_GO = [
               "new chan T n",
               "make(chan T, n)",
               "chan T buffer n",
-              "CSS"
+              "context akar"
             ],
             "a": 1,
             "explain": "Argumen kedua kapasitas buffer."
@@ -1850,7 +1850,7 @@ const CONTENT_GO = [
             "options": [
               "ch.close()",
               "ch.end()",
-              "CSS",
+              "context",
               "close(ch)"
             ],
             "a": 3,
@@ -1860,10 +1860,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Pola for range pada channel",
             "options": [
-              "CSS",
-              "route",
+              "tidak pernah selesai",
+              "deadline dan pembatalan",
               "menerima sampai channel ditutup",
-              "migrasi"
+              "func Map[T, U any](...)"
             ],
             "a": 2,
             "explain": "Range membaca sampai close."
@@ -1872,10 +1872,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "select dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "var nama string",
+              "type Nama struct { ... }",
               "menunggu beberapa operasi channel",
-              "migrasi"
+              "alamat memori nilai"
             ],
             "a": 2,
             "explain": "select memilih channel yang siap."
@@ -1884,10 +1884,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Default pada select memungkinkan",
             "options": [
-              "CSS",
+              "penyalinan besar",
               "non-blocking",
-              "route",
-              "migrasi"
+              "v := <-ch",
+              "json.Marshal"
             ],
             "a": 1,
             "explain": "Default membuat jalur non-blocking."
@@ -1898,7 +1898,7 @@ const CONTENT_GO = [
             "options": [
               "nil",
               "error",
-              "CSS",
+              "&x",
               "panic"
             ],
             "a": 3,
@@ -1908,9 +1908,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Channel adalah cara Go untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "secara bertahap lewat channel",
+              "go test -cover",
+              "instance tidak sehat",
               "berbagi data dengan komunikasi"
             ],
             "a": 3,
@@ -1927,9 +1927,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Worker pool memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "statis dan mandiri",
+              "introspeksi tipe saat runtime",
+              "constructor dan interface",
               "goroutine dengan channel job"
             ],
             "a": 3,
@@ -1939,10 +1939,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Fan-out/fan-in berarti",
             "options": [
-              "CSS",
-              "route",
+              "tidak ada error",
+              "mengambil tipe error tertentu",
               "mendistribusikan lalu menggabungkan hasil",
-              "migrasi"
+              "panic menjatuhkan server"
             ],
             "a": 2,
             "explain": "Fan-out pekerja, fan-in hasil."
@@ -1951,9 +1951,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Pipeline memproses data",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "layanan inti tetap jalan",
+              "mengurangi alokasi objek berulang",
+              "import dari luar modul",
               "secara bertahap lewat channel"
             ],
             "a": 3,
@@ -1963,10 +1963,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "context.Context dipakai untuk",
             "options": [
-              "CSS",
+              "switch v := x.(type)",
               "deadline dan pembatalan",
-              "route",
-              "migrasi"
+              "membandingkan error target",
+              "request dan status"
             ],
             "a": 1,
             "explain": "Context membawa pembatalan."
@@ -1975,10 +1975,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Pembatalan goroutine menghormati",
             "options": [
-              "CSS",
+              "alokasi stack",
               "context",
-              "route",
-              "migrasi"
+              "db.SetMaxOpenConns",
+              "komentar package"
             ],
             "a": 1,
             "explain": "Goroutine harus cek ctx.Done()."
@@ -1987,10 +1987,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Semaphore membatasi",
             "options": [
-              "CSS",
+              "mengembalikan nilai error",
               "jumlah pekerja bersamaan",
-              "route",
-              "migrasi"
+              "modul dan dependency",
+              "bound vs unbound"
             ],
             "a": 1,
             "explain": "Semaphore mengatur konkurensi."
@@ -1999,10 +1999,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "errgroup memudahkan",
             "options": [
-              "CSS",
+              "versi binary & skema kompatibel",
               "menangani error banyak goroutine",
-              "route",
-              "migrasi"
+              "keamanan tipe dan performa",
+              "domain dari transport"
             ],
             "a": 1,
             "explain": "errgroup menyatukan error goroutine."
@@ -2011,10 +2011,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Timeout memakai",
             "options": [
-              "CSS",
-              "route",
+              "melepas koneksi",
+              "konsistensi format",
               "context.WithTimeout",
-              "migrasi"
+              "concurrency (goroutine)"
             ],
             "a": 2,
             "explain": "WithTimeout membatasi waktu."
@@ -2023,10 +2023,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Mutex vs channel",
             "options": [
-              "CSS",
-              "route",
+              "span antar service",
+              "goroutine, M, P",
               "mutex untuk state; channel untuk komunikasi",
-              "migrasi"
+              "reuse tanpa duplikasi"
             ],
             "a": 2,
             "explain": "Pilih sesuai kebutuhan."
@@ -2035,10 +2035,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Deadlock terjadi bila",
             "options": [
-              "CSS",
+              "type Nama interface { ... }",
               "saling menunggu tanpa kemajuan",
-              "route",
-              "migrasi"
+              "if err != nil",
+              "saat package diinisialisasi"
             ],
             "a": 1,
             "explain": "Deadlock menghentikan progres."
@@ -2057,7 +2057,7 @@ const CONTENT_GO = [
               "json.EncodeJSON",
               "json.Marshal",
               "toJSON()",
-              "CSS"
+              "menyalin dependency"
             ],
             "a": 1,
             "explain": "json.Marshal menghasilkan bytes JSON."
@@ -2069,7 +2069,7 @@ const CONTENT_GO = [
               "json.Unmarshal",
               "json.DecodeJSON",
               "fromJSON()",
-              "CSS"
+              "fungsi cancel"
             ],
             "a": 0,
             "explain": "json.Unmarshal mengisi struct."
@@ -2081,7 +2081,7 @@ const CONTENT_GO = [
               "`json:\"nama\"`",
               "`name=\"json\"`",
               "({json})",
-              "CSS"
+              "melepas resource"
             ],
             "a": 0,
             "explain": "Tag menentukan nama field JSON."
@@ -2093,7 +2093,7 @@ const CONTENT_GO = [
               "http.Server.start",
               "http.ListenAndServe",
               "server.run",
-              "CSS"
+              "argumen pertama"
             ],
             "a": 1,
             "explain": "ListenAndServe menjalankan server."
@@ -2102,9 +2102,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Handler adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "field comparable",
+              "make(chan T)",
+              "r.URL.Query().Get(...)",
               "fungsi http.HandlerFunc"
             ],
             "a": 3,
@@ -2115,9 +2115,9 @@ const CONTENT_GO = [
             "q": "Membaca query memakai",
             "options": [
               "r.query",
-              "CSS",
+              "header origin",
               "r.URL.Query().Get(...)",
-              "route"
+              "banyak metadata"
             ],
             "a": 2,
             "explain": "URL.Query membaca parameter."
@@ -2127,8 +2127,8 @@ const CONTENT_GO = [
             "q": "Encoding/json mengabaikan field unexported",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "1.18",
+              ":=",
               "ya"
             ],
             "a": 3,
@@ -2140,8 +2140,8 @@ const CONTENT_GO = [
             "options": [
               "w.status = code",
               "w.WriteHeader(code)",
-              "CSS",
-              "route"
+              "memakai sinkronisasi",
+              "close(ch)"
             ],
             "a": 1,
             "explain": "WriteHeader menetapkan status."
@@ -2150,10 +2150,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Timeout server penting untuk",
             "options": [
-              "CSS",
-              "route",
+              "mengambil tipe error tertentu",
+              "panic menjatuhkan server",
               "mencegah koneksi menggantung",
-              "migrasi"
+              "menunggu beberapa goroutine"
             ],
             "a": 2,
             "explain": "Timeout menjaga resource."
@@ -2164,8 +2164,8 @@ const CONTENT_GO = [
             "options": [
               "r.body.string()",
               "io.ReadAll(r.Body)",
-              "CSS",
-              "route"
+              "non-blocking",
+              "http.ListenAndServe"
             ],
             "a": 1,
             "explain": "io.ReadAll membaca body."
@@ -2179,12 +2179,12 @@ const CONTENT_GO = [
         "exercises": [
           {
             "type": "mc",
-            "q": "Testing memakai package",
+            "q": "Paket standar Go yang diimpor untuk menulis unit pengujian otomatis adalah",
             "options": [
               "assert",
               "jest",
               "testing",
-              "CSS"
+              "backoff"
             ],
             "a": 2,
             "explain": "Go memakai package testing."
@@ -2220,7 +2220,7 @@ const CONTENT_GO = [
               "go run test",
               "test go",
               "go test",
-              "CSS"
+              "go mod"
             ],
             "a": 2,
             "explain": "go test menjalankan test."
@@ -2230,9 +2230,9 @@ const CONTENT_GO = [
             "q": "Coverage memakai",
             "options": [
               "go cover",
-              "CSS",
+              "membandingkan error target",
               "go test -cover",
-              "route"
+              "request dan status"
             ],
             "a": 2,
             "explain": "Flag -cover menampilkan cakupan."
@@ -2243,8 +2243,8 @@ const CONTENT_GO = [
             "options": [
               "t.Run",
               "sub()",
-              "CSS",
-              "route"
+              "interface{}",
+              "blank import"
             ],
             "a": 0,
             "explain": "t.Run membuat subtest."
@@ -2256,7 +2256,7 @@ const CONTENT_GO = [
               "bench",
               "Benchmark",
               "Bench",
-              "CSS"
+              "latensi"
             ],
             "a": 1,
             "explain": "Fungsi benchmark diawali Benchmark."
@@ -2267,8 +2267,8 @@ const CONTENT_GO = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "|",
+              "const"
             ],
             "a": 1,
             "explain": "Table-driven test idiomatik."
@@ -2277,10 +2277,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Mocking memakai interface",
             "options": [
-              "CSS",
-              "route",
+              "pprof",
+              ".go",
               "ya",
-              "migrasi"
+              "bool"
             ],
             "a": 2,
             "explain": "Interface memudahkan mock."
@@ -2289,10 +2289,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Race test memakai",
             "options": [
-              "CSS",
+              "dihindari bila memungkinkan",
               "go test -race",
-              "route",
-              "migrasi"
+              "overhead per operasi",
+              "var nama string"
             ],
             "a": 1,
             "explain": "Flag -race mendeteksi race."
@@ -2311,7 +2311,7 @@ const CONTENT_GO = [
               "1.0",
               "1.18",
               "2.0",
-              "CSS"
+              "import"
             ],
             "a": 1,
             "explain": "Generics tersedia sejak Go 1.18."
@@ -2332,10 +2332,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Constraint dasar any berarti",
             "options": [
-              "CSS",
+              "goroutine dengan channel job",
               "tipe apa saja",
-              "route",
-              "migrasi"
+              "saling menunggu tanpa kemajuan",
+              "span antar service"
             ],
             "a": 1,
             "explain": "any/interface{} menerima semua."
@@ -2344,10 +2344,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Constraint comparable dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              ".proto",
+              "backoff",
               "perbandingan ==",
-              "migrasi"
+              "alokasi/overhead"
             ],
             "a": 2,
             "explain": "comparable mendukung ==."
@@ -2358,8 +2358,8 @@ const CONTENT_GO = [
             "options": [
               "func Map<T,U>()",
               "func Map[T, U any](...)",
-              "CSS",
-              "route"
+              "mendistribusikan lalu menggabungkan hasil",
+              "mencegah koneksi menggantung"
             ],
             "a": 1,
             "explain": "Fungsi generik memakai type parameter."
@@ -2368,10 +2368,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Type set interface memungkinkan",
             "options": [
-              "CSS",
+              "os.WriteFile",
               "membatasi tipe",
-              "route",
-              "migrasi"
+              "HTTP/2 dan Protobuf",
+              "crypto/tls"
             ],
             "a": 1,
             "explain": "Constraint membatasi tipe."
@@ -2381,9 +2381,9 @@ const CONTENT_GO = [
             "q": "Generics menghindari",
             "options": [
               "duplikasi kode tipe",
-              "CSS",
-              "route",
-              "migrasi"
+              "secara bertahap lewat channel",
+              "go test -cover",
+              "instance tidak sehat"
             ],
             "a": 0,
             "explain": "Generics mengurangi duplikasi."
@@ -2392,10 +2392,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Generics berlebihan dapat",
             "options": [
-              "CSS",
-              "route",
+              "os.ReadFile",
+              "path/filepath",
               "menambah kompleksitas",
-              "migrasi"
+              "gorilla/websocket"
             ],
             "a": 2,
             "explain": "Gunakan bila perlu."
@@ -2405,9 +2405,9 @@ const CONTENT_GO = [
             "q": "Inferensi tipe pada generics memungkinkan",
             "options": [
               "memanggil tanpa tipe eksplisit",
-              "CSS",
-              "route",
-              "migrasi"
+              "deadline dan pembatalan",
+              "func Map[T, U any](...)",
+              "layanan inti tetap jalan"
             ],
             "a": 0,
             "explain": "Tipe sering bisa diinferensi."
@@ -2418,8 +2418,8 @@ const CONTENT_GO = [
             "options": [
               "salah",
               "benar",
-              "CSS",
-              "route"
+              "Test",
+              "os.Stdin"
             ],
             "a": 1,
             "explain": "Method harus ada pada constraint."
@@ -2437,8 +2437,8 @@ const CONTENT_GO = [
             "options": [
               "os.read",
               "os.ReadFile",
-              "CSS",
-              "route"
+              "latensi",
+              "Shutdown(context)"
             ],
             "a": 1,
             "explain": "os.ReadFile membaca seluruh berkas."
@@ -2448,9 +2448,9 @@ const CONTENT_GO = [
             "q": "Menulis berkas memakai",
             "options": [
               "os.write",
-              "CSS",
+              "cascading failure",
               "os.WriteFile",
-              "route"
+              "operasional"
             ],
             "a": 2,
             "explain": "os.WriteFile menulis berkas."
@@ -2460,8 +2460,8 @@ const CONTENT_GO = [
             "q": "Membuka berkas memakai",
             "options": [
               "os.get",
-              "CSS",
-              "route",
+              "backoff",
+              "alokasi/overhead",
               "os.Open"
             ],
             "a": 3,
@@ -2471,10 +2471,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "defer file.Close() penting untuk",
             "options": [
-              "CSS",
-              "route",
+              "mencegah menggantung",
+              "penggunaan memori",
               "melepas resource",
-              "migrasi"
+              "Redis/etcd"
             ],
             "a": 2,
             "explain": "Close wajib dilepas."
@@ -2483,10 +2483,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "bufio.Scanner dipakai untuk",
             "options": [
-              "CSS",
+              "pprof",
               "membaca baris",
-              "route",
-              "migrasi"
+              "http.Server.Shutdown",
+              "pengukuran"
             ],
             "a": 1,
             "explain": "Scanner membaca per baris."
@@ -2496,9 +2496,9 @@ const CONTENT_GO = [
             "q": "Membuat direktori memakai",
             "options": [
               "os.createDir",
-              "CSS",
+              "urutan kompatibel",
               "os.MkdirAll",
-              "route"
+              "interface{}"
             ],
             "a": 2,
             "explain": "MkdirAll membuat direktori rekursif."
@@ -2508,9 +2508,9 @@ const CONTENT_GO = [
             "q": "Memeriksa error IO wajib",
             "options": [
               "tidak",
-              "CSS",
+              "int",
               "ya",
-              "route"
+              "*p"
             ],
             "a": 2,
             "explain": "Error IO perlu diperiksa."
@@ -2519,10 +2519,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "io.Copy dipakai untuk",
             "options": [
-              "CSS",
+              "ketergantungan langsung",
               "menyalin stream",
-              "route",
-              "migrasi"
+              "prometheus client",
+              "performa fungsi"
             ],
             "a": 1,
             "explain": "io.Copy menyalin aliran."
@@ -2531,9 +2531,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Membaca dari stdin memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "abstraksi DB",
+              "pembatalan/timeout",
+              "cara berhenti",
               "os.Stdin"
             ],
             "a": 3,
@@ -2543,10 +2543,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Path file memakai package",
             "options": [
-              "CSS",
+              "strings.Builder",
               "path/filepath",
-              "route",
-              "migrasi"
+              "*sql.Rows",
+              "kesederhanaan"
             ],
             "a": 1,
             "explain": "filepath menangani path lintas OS."
@@ -2563,9 +2563,9 @@ const CONTENT_GO = [
             "q": "gRPC memakai",
             "options": [
               "HTTP/2 dan Protobuf",
-              "CSS",
-              "route",
-              "migrasi"
+              "jarang disarankan",
+              "func literal",
+              "m[\"k\"] = v"
             ],
             "a": 0,
             "explain": "gRPC memakai HTTP/2 + protobuf."
@@ -2575,8 +2575,8 @@ const CONTENT_GO = [
             "q": "Protobuf didefinisikan di",
             "options": [
               ".gproto",
-              "CSS",
-              "route",
+              "error",
+              "huruf kecil",
               ".proto"
             ],
             "a": 3,
@@ -2586,9 +2586,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Codegen gRPC memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "penyalinan besar",
+              "v := <-ch",
+              "json.Marshal",
               "protoc"
             ],
             "a": 3,
@@ -2598,10 +2598,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "HTTP client memakai",
             "options": [
-              "CSS",
+              "dibatasi (pool/semaphore)",
               "net/http.Client",
-              "route",
-              "migrasi"
+              "fungsi http.HandlerFunc",
+              "os.ReadFile"
             ],
             "a": 1,
             "explain": "http.Client untuk request."
@@ -2610,10 +2610,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Timeout client penting untuk",
             "options": [
-              "CSS",
+              "http.ServeMux",
               "mencegah menggantung",
-              "route",
-              "migrasi"
+              "semua field",
+              "ch <- v"
             ],
             "a": 1,
             "explain": "Timeout menjaga keandalan."
@@ -2622,10 +2622,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Reuse client memungkinkan",
             "options": [
-              "CSS",
+              "mencatat status",
               "connection pooling",
-              "route",
-              "migrasi"
+              "ya, penting",
+              "non-blocking"
             ],
             "a": 1,
             "explain": "Client dipakai ulang untuk pooling."
@@ -2634,10 +2634,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Websocket didukung via library",
             "options": [
-              "CSS",
-              "route",
+              "context akar",
+              "http.Handler pembungkus",
               "gorilla/websocket",
-              "migrasi"
+              "field comparable"
             ],
             "a": 2,
             "explain": "Library menyediakan websocket."
@@ -2647,9 +2647,9 @@ const CONTENT_GO = [
             "q": "TLS server memakai",
             "options": [
               "crypto/tls",
-              "CSS",
-              "route",
-              "migrasi"
+              "durasi",
+              "request",
+              "memakai sinkronisasi"
             ],
             "a": 0,
             "explain": "crypto/tls menangani TLS."
@@ -2658,10 +2658,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Retry client perlu",
             "options": [
-              "CSS",
-              "route",
+              "menambah konteks",
+              "error kompilasi",
               "backoff",
-              "migrasi"
+              "melepas resource"
             ],
             "a": 2,
             "explain": "Backoff menghindari lonjakan."
@@ -2670,9 +2670,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Load balancing antar server memerlukan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "huruf kapital",
+              "header origin",
+              "banyak metadata",
               "resolver/health check"
             ],
             "a": 3,
@@ -2689,10 +2689,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "GOGC mengatur",
             "options": [
-              "CSS",
+              "_test.go",
               "target GC",
-              "route",
-              "migrasi"
+              "membatasi tipe",
+              "menyalin stream"
             ],
             "a": 1,
             "explain": "GOGC menyesuaikan frekuensi GC."
@@ -2702,9 +2702,9 @@ const CONTENT_GO = [
             "q": "memory limit runtime membatasi",
             "options": [
               "penggunaan memori",
-              "CSS",
-              "route",
-              "migrasi"
+              "r.URL.Query().Get(...)",
+              "Benchmark",
+              "os.WriteFile"
             ],
             "a": 0,
             "explain": "Memory limit mengatur batas."
@@ -2713,10 +2713,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Objek besar berdampak pada",
             "options": [
-              "CSS",
+              "\"\"",
               "GC",
-              "route",
-              "migrasi"
+              "ya",
+              "nil"
             ],
             "a": 1,
             "explain": "Objek besar menambah beban GC."
@@ -2726,9 +2726,9 @@ const CONTENT_GO = [
             "q": "Mengurangi pointer density membantu",
             "options": [
               "GC",
-              "CSS",
-              "route",
-              "migrasi"
+              "1.18",
+              ":=",
+              "array"
             ],
             "a": 0,
             "explain": "Pointer density memengaruhi GC."
@@ -2738,8 +2738,8 @@ const CONTENT_GO = [
             "q": "Free memory tidak langsung kembali OS selalu",
             "options": [
               "salah",
-              "CSS",
-              "route",
+              "path/filepath",
+              "abstraksi DB",
               "benar"
             ],
             "a": 3,
@@ -2749,9 +2749,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "pprof heap membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "membaca baris",
+              "resolver/health check",
+              "latensi",
               "menganalisis memori"
             ],
             "a": 3,
@@ -2762,9 +2762,9 @@ const CONTENT_GO = [
             "q": "Allocation profiling menemukan",
             "options": [
               "alokasi berlebihan",
-              "CSS",
-              "route",
-              "migrasi"
+              "crypto/tls",
+              "GOOS/GOARCH",
+              "urutan kompatibel"
             ],
             "a": 0,
             "explain": "Profile menemukan alokasi."
@@ -2774,9 +2774,9 @@ const CONTENT_GO = [
             "q": "Batching mengurangi",
             "options": [
               "alokasi/overhead",
-              "CSS",
-              "route",
-              "migrasi"
+              "net/http.Client",
+              "target GC",
+              "retry aman"
             ],
             "a": 0,
             "explain": "Batch mengurangi overhead."
@@ -2786,8 +2786,8 @@ const CONTENT_GO = [
             "q": "Mengukur sebelum tuning",
             "options": [
               "tidak perlu",
-              "CSS",
-              "route",
+              "make(chan T)",
+              "context",
               "wajib"
             ],
             "a": 3,
@@ -2798,9 +2798,9 @@ const CONTENT_GO = [
             "q": "GC pause singkat membantu",
             "options": [
               "latensi",
-              "CSS",
-              "route",
-              "migrasi"
+              "benar",
+              "header origin",
+              "banyak metadata"
             ],
             "a": 0,
             "explain": "Pause singkat menjaga latensi."
@@ -2816,10 +2816,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Idempotensi penting untuk",
             "options": [
-              "CSS",
-              "route",
+              "r.URL.Query().Get(...)",
+              "Benchmark",
               "retry aman",
-              "migrasi"
+              "os.WriteFile"
             ],
             "a": 2,
             "explain": "Retry memerlukan idempotensi."
@@ -2828,10 +2828,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Distributed lock memakai",
             "options": [
-              "CSS",
+              "_test.go",
               "Redis/etcd",
-              "route",
-              "migrasi"
+              "membatasi tipe",
+              "menyalin stream"
             ],
             "a": 1,
             "explain": "Lock terdistribusi perlu store bersama."
@@ -2840,9 +2840,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Circuit breaker mencegah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "os.Open",
+              ".proto",
+              "backoff",
               "cascading failure"
             ],
             "a": 3,
@@ -2852,10 +2852,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Retry dengan jitter membantu",
             "options": [
-              "CSS",
+              "struktur data sekali pakai",
               "menghindari thundering herd",
-              "route",
-              "migrasi"
+              "akses bersamaan tanpa sinkronisasi",
+              "goroutine dengan channel job"
             ],
             "a": 1,
             "explain": "Jitter menyebar retry."
@@ -2865,9 +2865,9 @@ const CONTENT_GO = [
             "q": "Timeout antar layanan wajib",
             "options": [
               "tidak",
-              "CSS",
+              "Test",
               "ya",
-              "route"
+              "GC"
             ],
             "a": 2,
             "explain": "Timeout mencegah menggantung."
@@ -2876,10 +2876,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Tracing terdistribusi menghubungkan",
             "options": [
-              "CSS",
+              "dari package lain",
               "span antar service",
-              "route",
-              "migrasi"
+              "tidak pernah selesai",
+              "deadline dan pembatalan"
             ],
             "a": 1,
             "explain": "Tracing melacak request lintas layanan."
@@ -2888,10 +2888,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Message queue memutus",
             "options": [
-              "CSS",
-              "route",
+              "fungsi http.HandlerFunc",
+              "os.ReadFile",
               "ketergantungan langsung",
-              "migrasi"
+              "path/filepath"
             ],
             "a": 2,
             "explain": "Queue memisahkan pengirim/penerima."
@@ -2901,9 +2901,9 @@ const CONTENT_GO = [
             "q": "Exactly-once sangat sulit; umumnya",
             "options": [
               "at-least-once + idempoten",
-              "CSS",
-              "route",
-              "migrasi"
+              "jika disimpan sebagai value di map",
+              "go test -race",
+              "secara bertahap lewat channel"
             ],
             "a": 0,
             "explain": "Praktik umum at-least-once."
@@ -2912,9 +2912,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Health check membantu deteksi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pendek dan jelas",
+              "hanya case pertama cocok (tanpa fallthrough default)",
+              "mewarisi field/method via komposisi",
               "instance tidak sehat"
             ],
             "a": 3,
@@ -2924,9 +2924,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Graceful degradation menjaga",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "unit eksekusi ringan",
+              "menunggu beberapa operasi channel",
+              "menangani error banyak goroutine",
               "layanan inti tetap jalan"
             ],
             "a": 3,
@@ -2943,10 +2943,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Binary Go mudah dideploy karena",
             "options": [
-              "CSS",
+              "unit eksekusi ringan",
               "statis dan mandiri",
-              "route",
-              "migrasi"
+              "menunggu beberapa operasi channel",
+              "menangani error banyak goroutine"
             ],
             "a": 1,
             "explain": "Binary statis tanpa runtime."
@@ -2956,9 +2956,9 @@ const CONTENT_GO = [
             "q": "Cross-compile memakai",
             "options": [
               "GOOS/GOARCH",
-              "CSS",
-              "route",
-              "migrasi"
+              "w.WriteHeader(code)",
+              "1.18",
+              "os.Open"
             ],
             "a": 0,
             "explain": "Env GOOS/GOARCH mengatur target."
@@ -2967,9 +2967,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Docker image Go bisa sangat kecil dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "`json:\"nama\"`",
+              "_test.go",
+              "membatasi tipe",
               "multi-stage build"
             ],
             "a": 3,
@@ -2979,10 +2979,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Graceful shutdown memakai",
             "options": [
-              "CSS",
+              "context",
               "Shutdown(context)",
-              "route",
-              "migrasi"
+              "r.URL.Query().Get(...)",
+              "Benchmark"
             ],
             "a": 1,
             "explain": "Shutdown menuntaskan request."
@@ -2991,9 +2991,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Signal handling memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "make(chan T, n)",
+              "json.Unmarshal",
+              "testing",
               "os/signal"
             ],
             "a": 3,
@@ -3003,9 +3003,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Config via environment memudahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "dibatasi (pool/semaphore)",
+              "panic",
+              "fungsi http.HandlerFunc",
               "deployment"
             ],
             "a": 3,
@@ -3015,10 +3015,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Logging terstruktur membantu",
             "options": [
-              "CSS",
-              "route",
+              "penyalinan besar",
+              "v := <-ch",
               "operasional",
-              "migrasi"
+              "json.Marshal"
             ],
             "a": 2,
             "explain": "Log terstruktur memudahkan analisis."
@@ -3027,10 +3027,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Metrics endpoint memakai",
             "options": [
-              "CSS",
+              "mencatat status",
               "prometheus client",
-              "route",
-              "migrasi"
+              "ya, penting",
+              "non-blocking"
             ],
             "a": 1,
             "explain": "Client prometheus menyediakan metrics."
@@ -3039,9 +3039,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Migration DB saat deploy perlu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "http.ServeMux",
+              "semua field",
+              "ch <- v",
               "urutan kompatibel"
             ],
             "a": 3,
@@ -3051,10 +3051,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Rollback memerlukan",
             "options": [
-              "CSS",
+              "compiled dan statically typed",
               "versi binary & skema kompatibel",
-              "route",
-              "migrasi"
+              "dapat disimpan di variabel",
+              "view atas array dengan len dan cap"
             ],
             "a": 1,
             "explain": "Rollback butuh kompatibilitas."
@@ -3070,10 +3070,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Goroutine dijadwalkan oleh",
             "options": [
-              "CSS",
-              "route",
+              "tipe apa saja",
+              "memulihkan dari panic",
               "runtime scheduler Go",
-              "migrasi"
+              "fungsi yang menerima dan mengembalikan Handler"
             ],
             "a": 2,
             "explain": "Scheduler mengelola goroutine."
@@ -3083,9 +3083,9 @@ const CONTENT_GO = [
             "q": "GOMAXPROCS mengatur",
             "options": [
               "jumlah P/prosesor logis",
-              "CSS",
-              "route",
-              "migrasi"
+              "alokasi stack",
+              "db.SetMaxOpenConns",
+              "komentar package"
             ],
             "a": 0,
             "explain": "GOMAXPROCS menentukan paralelisme."
@@ -3095,9 +3095,9 @@ const CONTENT_GO = [
             "q": "Model GMP terdiri dari",
             "options": [
               "goroutine, M, P",
-              "CSS",
-              "route",
-              "migrasi"
+              "switch v := x.(type)",
+              "membandingkan error target",
+              "request dan status"
             ],
             "a": 0,
             "explain": "Scheduler memakai G, M, P."
@@ -3106,10 +3106,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Preemption memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "instance tidak sehat",
+              "alokasi stack vs heap",
               "goroutine dihentikan sementara",
-              "migrasi"
+              "cmd, internal, pkg"
             ],
             "a": 2,
             "explain": "Preemption menjaga keadilan."
@@ -3118,9 +3118,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Garbage collector Go adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "konsistensi format",
+              "concurrency (goroutine)",
+              "func nama() {}",
               "concurrent mark-sweep"
             ],
             "a": 3,
@@ -3130,9 +3130,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Menurunkan alokasi membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "gofmt",
+              "panic",
+              "t.Run",
               "GC"
             ],
             "a": 3,
@@ -3142,10 +3142,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Escape analysis menentukan",
             "options": [
-              "CSS",
+              "mengimplementasikan semua method",
               "alokasi stack vs heap",
-              "route",
-              "migrasi"
+              "kondisi tak terpulihkan",
+              "channel sinyal selesai"
             ],
             "a": 1,
             "explain": "Escape analysis menentukan lokasi alokasi."
@@ -3154,10 +3154,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "sync.Pool dipakai untuk",
             "options": [
-              "CSS",
+              "span antar service",
               "mengurangi alokasi objek berulang",
-              "route",
-              "migrasi"
+              "goroutine, M, P",
+              "reuse tanpa duplikasi"
             ],
             "a": 1,
             "explain": "sync.Pool memakai ulang objek."
@@ -3167,8 +3167,8 @@ const CONTENT_GO = [
             "q": "Goroutine stack bersifat",
             "options": [
               "tetap besar",
-              "CSS",
-              "route",
+              "penggunaan memori",
+              "Redis/etcd",
               "tumbuh dinamis"
             ],
             "a": 3,
@@ -3178,10 +3178,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Profil CPU/memori tersedia via",
             "options": [
-              "CSS",
+              "akses data",
               "pprof",
-              "route",
-              "migrasi"
+              "SQL injection",
+              "pemakai"
             ],
             "a": 1,
             "explain": "pprof menyediakan profil."
@@ -3197,9 +3197,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Package reflect memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "goroutine dihentikan sementara",
+              "dihindari bila memungkinkan",
+              "overhead per operasi",
               "introspeksi tipe saat runtime"
             ],
             "a": 3,
@@ -3210,9 +3210,9 @@ const CONTENT_GO = [
             "q": "reflect.TypeOf mengembalikan",
             "options": [
               "tipe dinamis",
-              "CSS",
-              "route",
-              "migrasi"
+              "menambah konteks",
+              "error kompilasi",
+              "melepas resource"
             ],
             "a": 0,
             "explain": "TypeOf memberi tipe."
@@ -3221,10 +3221,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Reflection mengorbankan",
             "options": [
-              "CSS",
-              "route",
+              "goroutine, M, P",
+              "reuse tanpa duplikasi",
               "keamanan tipe dan performa",
-              "migrasi"
+              "GC dan kecepatan"
             ],
             "a": 2,
             "explain": "Reflection lebih lambat/rawan."
@@ -3234,9 +3234,9 @@ const CONTENT_GO = [
             "q": "Struct tag dibaca via reflect",
             "options": [
               "tidak",
-              "CSS",
+              "gofmt",
               "ya",
-              "route"
+              "panic"
             ],
             "a": 2,
             "explain": "Tag dibaca lewat reflection."
@@ -3258,9 +3258,9 @@ const CONTENT_GO = [
             "q": "Constraint ~T berarti",
             "options": [
               "tipe dengan underlying T",
-              "CSS",
-              "route",
-              "migrasi"
+              "mengambil tipe error tertentu",
+              "panic menjatuhkan server",
+              "menunggu beberapa goroutine"
             ],
             "a": 0,
             "explain": "~ mencakup tipe turunan underlying."
@@ -3269,10 +3269,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Generic di kumpulan data memudahkan",
             "options": [
-              "CSS",
-              "route",
+              "alokasi stack vs heap",
+              "cmd, internal, pkg",
               "reuse tanpa duplikasi",
-              "migrasi"
+              "performa dan keamanan"
             ],
             "a": 2,
             "explain": "Generics memangkas duplikasi."
@@ -3281,10 +3281,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Reflection berlebihan sebaiknya",
             "options": [
-              "CSS",
-              "route",
+              "membandingkan error target",
+              "request dan status",
               "dihindari bila memungkinkan",
-              "migrasi"
+              "unit eksekusi ringan"
             ],
             "a": 2,
             "explain": "Gunakan generics/interfaces bila bisa."
@@ -3296,7 +3296,7 @@ const CONTENT_GO = [
               "string",
               "int",
               "interface{}",
-              "CSS"
+              "context"
             ],
             "a": 2,
             "explain": "any = interface{}."
@@ -3306,9 +3306,9 @@ const CONTENT_GO = [
             "q": "Interface constraint dapat memuat method",
             "options": [
               "tidak",
-              "CSS",
+              "int",
               "ya",
-              "route"
+              "wajib"
             ],
             "a": 2,
             "explain": "Constraint dapat mewajibkan method."
@@ -3324,10 +3324,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Layout proyek umum memisahkan",
             "options": [
-              "CSS",
+              "diawali huruf kapital",
               "cmd, internal, pkg",
-              "route",
-              "migrasi"
+              "mengimplementasikan semua method",
+              "kondisi tak terpulihkan"
             ],
             "a": 1,
             "explain": "Struktur standar Go memisahkan peran."
@@ -3337,9 +3337,9 @@ const CONTENT_GO = [
             "q": "internal/ mencegah",
             "options": [
               "import dari luar modul",
-              "CSS",
-              "route",
-              "migrasi"
+              "saling menunggu tanpa kemajuan",
+              "span antar service",
+              "goroutine, M, P"
             ],
             "a": 0,
             "explain": "internal membatasi import eksternal."
@@ -3348,10 +3348,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Dependency injection sering memakai",
             "options": [
-              "CSS",
-              "route",
+              "nilai default semua field",
+              "type Nama interface { ... }",
               "constructor dan interface",
-              "migrasi"
+              "if err != nil"
             ],
             "a": 2,
             "explain": "DI via constructor/interface."
@@ -3361,9 +3361,9 @@ const CONTENT_GO = [
             "q": "Repository pattern memisahkan",
             "options": [
               "akses data",
-              "CSS",
-              "route",
-              "migrasi"
+              "durasi",
+              "request",
+              "memakai sinkronisasi"
             ],
             "a": 0,
             "explain": "Repository mengabstraksi data."
@@ -3372,10 +3372,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Service layer menampung",
             "options": [
-              "CSS",
+              "http.ServeMux",
               "logika bisnis",
-              "route",
-              "migrasi"
+              "semua field",
+              "ch <- v"
             ],
             "a": 1,
             "explain": "Service menampung aturan bisnis."
@@ -3385,9 +3385,9 @@ const CONTENT_GO = [
             "q": "Clean architecture mengisolasi",
             "options": [
               "domain dari transport",
-              "CSS",
-              "route",
-              "migrasi"
+              "menangani error banyak goroutine",
+              "memanggil tanpa tipe eksplisit",
+              "versi binary & skema kompatibel"
             ],
             "a": 0,
             "explain": "Domain terpisah dari detail."
@@ -3397,8 +3397,8 @@ const CONTENT_GO = [
             "q": "Interface kecil lebih idiomatik",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "&x",
+              "main",
               "ya"
             ],
             "a": 3,
@@ -3408,9 +3408,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Konfigurasi memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "panic",
+              "t.Run",
+              "os.ReadFile",
               "env/flag"
             ],
             "a": 3,
@@ -3421,9 +3421,9 @@ const CONTENT_GO = [
             "q": "Graceful shutdown memakai",
             "options": [
               "http.Server.Shutdown",
-              "CSS",
-              "route",
-              "migrasi"
+              "func nama() {}",
+              "Nama{...}",
+              "delete(m, k)"
             ],
             "a": 0,
             "explain": "Shutdown menuntaskan request."
@@ -3433,9 +3433,9 @@ const CONTENT_GO = [
             "q": "Observability memakai",
             "options": [
               "logging, metrics, tracing",
-              "CSS",
-              "route",
-              "migrasi"
+              "duplikasi kode tipe",
+              "statis dan mandiri",
+              "introspeksi tipe saat runtime"
             ],
             "a": 0,
             "explain": "Observability tiga pilar."
@@ -3452,9 +3452,9 @@ const CONTENT_GO = [
             "q": "Profiling memakai package",
             "options": [
               "net/http/pprof & runtime/pprof",
-              "CSS",
-              "route",
-              "migrasi"
+              "errors.New(\"...\")",
+              "membersihkan dependency",
+              "memakai sinkronisasi"
             ],
             "a": 0,
             "explain": "pprof untuk profil."
@@ -3464,9 +3464,9 @@ const CONTENT_GO = [
             "q": "Benchmark mengukur",
             "options": [
               "performa fungsi",
-              "CSS",
-              "route",
-              "migrasi"
+              "copy(dst, src)",
+              "v.(Tipe)",
+              "package nama"
             ],
             "a": 0,
             "explain": "Benchmark mengukur operasi."
@@ -3475,10 +3475,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Menghindari alokasi di loop membantu",
             "options": [
-              "CSS",
-              "route",
+              "performa dan keamanan",
+              "if kondisi { }",
               "GC dan kecepatan",
-              "migrasi"
+              "func (r Receiver) Nama()"
             ],
             "a": 2,
             "explain": "Alokasi lebih sedikit lebih cepat."
@@ -3488,9 +3488,9 @@ const CONTENT_GO = [
             "q": "Preallocate slice memakai",
             "options": [
               "make([]T)",
-              "CSS",
+              "[]Nama{...}",
               "make([]T, 0, n)",
-              "route"
+              "make([]int, 0, 10)"
             ],
             "a": 2,
             "explain": "Kapasitas awal mengurangi realloc."
@@ -3499,10 +3499,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "sync.Pool membantu",
             "options": [
-              "CSS",
+              "error kompilasi",
               "mengurangi alokasi",
-              "route",
-              "migrasi"
+              "melepas resource",
+              "komposisi method"
             ],
             "a": 1,
             "explain": "Pool memakai ulang objek."
@@ -3511,9 +3511,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "String concatenation di loop sebaiknya",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "modul/package",
+              "argumen pertama",
+              "penyalinan besar",
               "strings.Builder"
             ],
             "a": 3,
@@ -3523,9 +3523,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Mutex contention mengurangi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "menyembunyikan masalah",
+              "menyalin dependency",
+              "metadata request",
               "throughput"
             ],
             "a": 3,
@@ -3535,9 +3535,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Batching mengurangi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "dari package lain",
+              "tidak pernah selesai",
+              "deadline dan pembatalan",
               "overhead per operasi"
             ],
             "a": 3,
@@ -3547,10 +3547,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Optimasi berbasis",
             "options": [
-              "CSS",
-              "route",
+              "array",
+              "break/continue loop luar",
               "pengukuran",
-              "migrasi"
+              "...tipe"
             ],
             "a": 2,
             "explain": "Ukur sebelum optimasi."
@@ -3559,10 +3559,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Escape analysis membantu",
             "options": [
-              "CSS",
+              "return",
               "alokasi stack",
-              "route",
-              "migrasi"
+              "(r *Tipe)",
+              "append(s, x)"
             ],
             "a": 1,
             "explain": "Hindari escape agar stack dipakai."
@@ -3579,9 +3579,9 @@ const CONTENT_GO = [
             "q": "Package database/sql menyediakan",
             "options": [
               "abstraksi DB",
-              "CSS",
-              "route",
-              "migrasi"
+              "r.URL.Query().Get(...)",
+              "Benchmark",
+              "os.WriteFile"
             ],
             "a": 0,
             "explain": "database/sql menyediakan interface DB."
@@ -3591,9 +3591,9 @@ const CONTENT_GO = [
             "q": "Driver DB diimpor secara",
             "options": [
               "blank import",
-              "CSS",
-              "route",
-              "migrasi"
+              "_test.go",
+              "membatasi tipe",
+              "menyalin stream"
             ],
             "a": 0,
             "explain": "Blank import mendaftarkan driver."
@@ -3603,9 +3603,9 @@ const CONTENT_GO = [
             "q": "Query berparameter mencegah",
             "options": [
               "SQL injection",
-              "CSS",
-              "route",
-              "migrasi"
+              "panic",
+              "fungsi http.HandlerFunc",
+              "t.Run"
             ],
             "a": 0,
             "explain": "Parameter memisahkan data."
@@ -3614,10 +3614,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "db.Query mengembalikan",
             "options": [
-              "CSS",
-              "route",
+              "json.Unmarshal",
+              "testing",
               "*sql.Rows",
-              "migrasi"
+              "perbandingan =="
             ],
             "a": 2,
             "explain": "Query mengembalikan rows."
@@ -3626,10 +3626,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Menutup rows penting untuk",
             "options": [
-              "CSS",
-              "route",
+              "ya, penting",
+              "non-blocking",
               "melepas koneksi",
-              "migrasi"
+              "http.ListenAndServe"
             ],
             "a": 2,
             "explain": "Rows perlu ditutup."
@@ -3638,9 +3638,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Transaksi memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "v := <-ch",
+              "json.Marshal",
+              "io.ReadAll(r.Body)",
               "db.Begin"
             ],
             "a": 3,
@@ -3650,9 +3650,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Prepared statement membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "index dan nilai",
+              "nilai default semua field",
+              "type Nama interface { ... }",
               "performa dan keamanan"
             ],
             "a": 3,
@@ -3662,10 +3662,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Connection pool diatur via",
             "options": [
-              "CSS",
+              "semua field",
               "db.SetMaxOpenConns",
-              "route",
-              "migrasi"
+              "ch <- v",
+              "context.WithTimeout"
             ],
             "a": 1,
             "explain": "SetMaxOpenConns membatasi pool."
@@ -3674,10 +3674,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "context pada query memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "penggunaan memori",
+              "Redis/etcd",
               "pembatalan/timeout",
-              "migrasi"
+              "deployment"
             ],
             "a": 2,
             "explain": "Context membatalkan query."
@@ -3686,9 +3686,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Menghindari N+1 memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "alokasi/overhead",
+              "multi-stage build",
+              "jumlah P/prosesor logis",
               "join/query batch"
             ],
             "a": 3,
@@ -3705,10 +3705,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Error harus menambah konteks memakai",
             "options": [
-              "CSS",
+              "db.Begin",
               "fmt.Errorf dengan %w",
-              "route",
-              "migrasi"
+              "potensi bug",
+              "(r *Tipe)"
             ],
             "a": 1,
             "explain": "Wrapping menambah konteks."
@@ -3717,9 +3717,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Interface didefinisikan di sisi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Goroutine",
+              "array",
+              "...tipe",
               "pemakai"
             ],
             "a": 3,
@@ -3730,9 +3730,9 @@ const CONTENT_GO = [
             "q": "Nama package sebaiknya",
             "options": [
               "pendek dan jelas",
-              "CSS",
-              "route",
-              "migrasi"
+              "saat package diinisialisasi",
+              "jika disimpan sebagai value di map",
+              "go test -race"
             ],
             "a": 0,
             "explain": "Nama package ringkas."
@@ -3743,8 +3743,8 @@ const CONTENT_GO = [
             "options": [
               "benar",
               "salah",
-              "CSS",
-              "route"
+              "Google",
+              "string"
             ],
             "a": 0,
             "explain": "panic untuk kondisi tak terpulihkan."
@@ -3753,10 +3753,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Go proverbs menekankan",
             "options": [
-              "CSS",
-              "route",
+              "import",
+              "const",
               "kesederhanaan",
-              "migrasi"
+              "loop/switch"
             ],
             "a": 2,
             "explain": "Kesederhanaan idiomatik di Go."
@@ -3765,9 +3765,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "gofmt/goimports menjaga",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "func nama() {}",
+              "Nama{...}",
+              "delete(m, k)",
               "konsistensi format"
             ],
             "a": 3,
@@ -3778,9 +3778,9 @@ const CONTENT_GO = [
             "q": "go vet memeriksa",
             "options": [
               "potensi bug",
-              "CSS",
-              "route",
-              "migrasi"
+              "strconv.Itoa",
+              "iterasi berikutnya",
+              "nama tipe"
             ],
             "a": 0,
             "explain": "go vet menemukan masalah."
@@ -3789,9 +3789,9 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Dokumentasi package diawali",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "return",
+              "(r *Tipe)",
+              "append(s, x)",
               "komentar package"
             ],
             "a": 3,
@@ -3801,10 +3801,10 @@ const CONTENT_GO = [
             "type": "mc",
             "q": "Goroutine harus punya",
             "options": [
-              "CSS",
-              "route",
+              "GOOS/GOARCH",
+              "urutan kompatibel",
               "cara berhenti",
-              "migrasi"
+              "interface{}"
             ],
             "a": 2,
             "explain": "Hindari goroutine bocor."
@@ -3814,9 +3814,9 @@ const CONTENT_GO = [
             "q": "Mengembalikan interface vs struct: umumkan",
             "options": [
               "struct konkret",
-              "CSS",
-              "route",
-              "migrasi"
+              "deployment",
+              "pprof",
+              "http.Server.Shutdown"
             ],
             "a": 0,
             "explain": "Biasakan mengembalikan tipe konkret."

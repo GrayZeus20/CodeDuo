@@ -10,7 +10,7 @@ import {
   setBuddySize,
   toggleMute,
   exportSaveData, importSaveData,
-  getLearnedConcepts, onBuddyTap,
+  getLearnedConcepts, isBibitMlEnabled, toggleBibitMl,
   getTheme, setTheme,
 } from '../store.js';
 import TopicIcon from './TopicIcon.jsx';
@@ -89,22 +89,13 @@ export default function Profile() {
   const topicsDone = path.filter((id) => isTopicDone(id)).length;
   const fileInputRef = useRef(null);
   const notifTimerRef = useRef(null);
-  const chatTimerRef = useRef(null);
   const [importStatus, setImportStatus] = useState(null);
   const [volumePct, setVolumePct] = useState(() => Math.round(SFX.getVolume() * 100));
   const [notifCfg, setNotifCfg] = useState(getNotificationSettings);
   const [notifPerm, setNotifPerm] = useState(getPermissionStatus);
   const [testNotifMsg, setTestNotifMsg] = useState(null);
   const learnedConcepts = getLearnedConcepts();
-  const [chatFeedback, setChatFeedback] = useState(null);
-
-  const onPromptBibitChat = () => {
-    SFX.happy();
-    onBuddyTap();
-    setChatFeedback('Bibit merespons materi yang baru dipelajari! Cek balon obrolan Bibit 💬');
-    if (chatTimerRef.current) clearTimeout(chatTimerRef.current);
-    chatTimerRef.current = setTimeout(() => setChatFeedback(null), 4500);
-  };
+  const bibitMlOn = isBibitMlEnabled();
 
   useEffect(() => {
     const unsub = subscribeNotifications(() => {
@@ -114,7 +105,6 @@ export default function Profile() {
     return () => {
       unsub();
       if (notifTimerRef.current) clearTimeout(notifTimerRef.current);
-      if (chatTimerRef.current) clearTimeout(chatTimerRef.current);
     };
   }, []);
 
@@ -422,30 +412,43 @@ export default function Profile() {
             />
           </Row>
 
-          {/* Otak Belajar Bibit (Machine Learning) */}
-          <div className="bibit-brain-box">
+          {/* Otak Belajar Bibit (Machine Learning Otomatis + Sakelar On/Off) */}
+          <div className={'bibit-brain-box' + (bibitMlOn ? '' : ' is-off')}>
             <div className="bibit-brain-header">
               <span className="bibit-brain-title">
                 🧠 Otak Belajar Bibit
               </span>
-              <span className="bibit-brain-badge">🤖 On-Device ML</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span className="bibit-brain-badge">{bibitMlOn ? '🤖 ML Aktif' : 'Nonaktif'}</span>
+                <Switch
+                  checked={bibitMlOn}
+                  label="Pembelajaran ML Bibit otomatis"
+                  onChange={() => {
+                    const next = toggleBibitMl();
+                    if (next) SFX.pick();
+                    else SFX.back();
+                  }}
+                />
+              </div>
             </div>
             <p className="bibit-brain-desc">
-              Obrolan dan ekspresi Bibit bertambah secara cerdas mengikuti soal dan konsep koding yang baru saja kamu pelajari.
+              {bibitMlOn
+                ? 'Otomatis belajar dari halaman Materi yang kamu baca dan soal latihan yang dikerjakan — tanpa perlu tombol manual.'
+                : 'Pembelajaran ML dimatikan. Bibit tidak menyerap materi baru dan menggunakan dialog standar.'}
             </p>
             <div className="bibit-brain-stats">
               <span className="bibit-brain-stat">
                 📚 <b>{learnedConcepts.length}</b> konsep diserap
               </span>
               <span className="bibit-brain-stat">
-                ⚡ <b>Adaptive Weights</b> aktif
+                ⚡ <b>{bibitMlOn ? 'Auto-Learning Aktif' : 'Auto-Learning Dijeda'}</b>
               </span>
             </div>
 
             {learnedConcepts.length > 0 ? (
               <>
                 <div style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--muted)', marginBottom: '6px' }}>
-                  Materi terakhir yang dipelajari Bibit:
+                  Materi terakhir yang otomatis dipelajari Bibit:
                 </div>
                 <div className="bibit-concept-chips">
                   {learnedConcepts.slice(0, 6).map((c) => (
@@ -455,25 +458,12 @@ export default function Profile() {
                     </span>
                   ))}
                 </div>
-                <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap', marginTop: '6px' }}>
-                  <button
-                    type="button"
-                    className="btn btn--ghost btn--sm"
-                    onClick={onPromptBibitChat}
-                    style={{ fontSize: '0.76rem', padding: '5px 10px' }}
-                  >
-                    💬 Ajak Bibit Ngobrol Materi
-                  </button>
-                  {chatFeedback && (
-                    <span style={{ fontSize: '0.76rem', color: '#15803d', fontWeight: 600 }}>
-                      {chatFeedback}
-                    </span>
-                  )}
-                </div>
               </>
             ) : (
               <p className="muted" style={{ fontSize: '0.76rem', margin: 0 }}>
-                Bibit belum menyerap materi baru. Selesaikan 1 kuis untuk mulai melatih memori konsep Bibit!
+                {bibitMlOn
+                  ? 'Buka halaman Materi atau kerjakan 1 latihan — Bibit akan otomatis menyerap konsepnya!'
+                  : 'Aktifkan sakelar di atas agar Bibit otomatis belajar dari materimu.'}
               </p>
             )}
           </div>

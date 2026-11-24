@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_DART = [
-{
+  {
     "id": "dart",
     "name": "Dart",
     "icon": "🎯",
@@ -37,7 +37,7 @@ const CONTENT_DART = [
               "Laravel",
               "Rails",
               "Flutter",
-              "CSS"
+              "where(...)"
             ],
             "a": 2,
             "explain": "Dart adalah bahasa utama Flutter."
@@ -61,7 +61,7 @@ const CONTENT_DART = [
               "dart run file.dart",
               "node file.dart",
               "php file.dart",
-              "CSS"
+              "dart test"
             ],
             "a": 0,
             "explain": "dart run menjalankan berkas."
@@ -73,7 +73,7 @@ const CONTENT_DART = [
               "tanpa tipe",
               "statically typed dengan inferensi",
               "murni dinamis",
-              "CSS"
+              "tidak diedit manual"
             ],
             "a": 1,
             "explain": "Dart bertipe statis dengan inferensi."
@@ -106,10 +106,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "pubspec.yaml mendefinisikan",
             "options": [
-              "CSS",
-              "route",
+              "tipe aman dan pemakaian ulang",
+              "rangkaian operasi pada objek",
               "dependency dan metadata",
-              "migrasi"
+              "menjalankan fungsi di isolate"
             ],
             "a": 2,
             "explain": "pubspec mendefinisikan proyek."
@@ -175,7 +175,7 @@ const CONTENT_DART = [
             "options": [
               "sama saja",
               "final compile-time",
-              "CSS",
+              "dependency dan metadata",
               "const dikompilasi-time, final runtime"
             ],
             "a": 3,
@@ -246,9 +246,9 @@ const CONTENT_DART = [
             "q": "Inferensi tipe memakai",
             "options": [
               "var/final tanpa tipe",
-              "CSS",
-              "route",
-              "migrasi"
+              "close()",
+              "di isolate",
+              "bisa memengaruhi"
             ],
             "a": 0,
             "explain": "Dart menginferensi tipe."
@@ -260,7 +260,7 @@ const CONTENT_DART = [
               "final",
               "const",
               "var",
-              "CSS"
+              "@override"
             ],
             "a": 1,
             "explain": "const untuk konstanta compile-time."
@@ -302,8 +302,8 @@ const CONTENT_DART = [
             "options": [
               "backtick",
               "tiga kutip (''')",
-              "CSS",
-              "route"
+              "di isolate",
+              "bisa memengaruhi"
             ],
             "a": 1,
             "explain": "Dart memakai triple quote."
@@ -315,7 +315,7 @@ const CONTENT_DART = [
               ".toUpperCase()",
               ".upper()",
               ".big()",
-              "CSS"
+              "perawatan"
             ],
             "a": 0,
             "explain": "toUpperCase menaikkan huruf."
@@ -326,7 +326,7 @@ const CONTENT_DART = [
             "options": [
               ".strip()",
               ".cut()",
-              "CSS",
+              "isolate",
               ".trim()"
             ],
             "a": 3,
@@ -339,7 +339,7 @@ const CONTENT_DART = [
               ".replaceAll()",
               ".gsub()",
               ".swap()",
-              "CSS"
+              "Flutter"
             ],
             "a": 0,
             "explain": "replaceAll mengganti semua."
@@ -351,7 +351,7 @@ const CONTENT_DART = [
               ".explode()",
               ".split()",
               ".divide()",
-              "CSS"
+              "Future"
             ],
             "a": 1,
             "explain": "split memecah string."
@@ -363,7 +363,7 @@ const CONTENT_DART = [
               ".length",
               ".len()",
               ".size",
-              "CSS"
+              "benar"
             ],
             "a": 0,
             "explain": "length memberi panjang."
@@ -375,7 +375,7 @@ const CONTENT_DART = [
               ".includes()",
               ".contains()",
               ".has()",
-              "CSS"
+              "banyak nilai"
             ],
             "a": 1,
             "explain": "contains memeriksa substring."
@@ -387,7 +387,7 @@ const CONTENT_DART = [
               "raw\"...\"",
               "r\"...\"",
               "C\"\"",
-              "CSS"
+              "mockito/mocktail"
             ],
             "a": 1,
             "explain": "Awalan r membuat raw string."
@@ -416,9 +416,9 @@ const CONTENT_DART = [
             "q": "Operator ! (null assertion) dipakai untuk",
             "options": [
               "menyatakan nilai tidak null",
-              "CSS",
-              "route",
-              "migrasi"
+              "dependency dan metadata",
+              "beberapa cara membuat objek",
+              "beberapa Future paralel"
             ],
             "a": 0,
             "explain": "! menegaskan non-null."
@@ -427,10 +427,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Operator ?? memberi",
             "options": [
-              "CSS",
-              "route",
+              "package collection groupBy",
+              "dart pub publish",
               "nilai default bila null",
-              "migrasi"
+              "switch dengan pattern"
             ],
             "a": 2,
             "explain": "?? memberi fallback."
@@ -439,10 +439,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Operator ?. dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "nilai yang tersedia nanti",
+              "stream dari iterable",
               "akses aman bila null",
-              "migrasi"
+              "method pada tipe yang ada"
             ],
             "a": 2,
             "explain": "?. mengakses aman."
@@ -451,10 +451,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Null safety mencegah",
             "options": [
-              "CSS",
-              "route",
+              "API publik jelas",
+              "statically typed dengan inferensi",
               "null error saat runtime",
-              "migrasi"
+              "variabel di lingkupnya"
             ],
             "a": 2,
             "explain": "Null safety mencegah null dereference."
@@ -463,9 +463,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Variabel nullable harus diinisialisasi atau",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "if/else",
+              "Stream",
+              "try/catch",
               "diberi null"
             ],
             "a": 3,
@@ -475,10 +475,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "late dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "pemeliharaan",
+              "keandalan",
               "inisialisasi tertunda",
-              "migrasi"
+              "where(...)"
             ],
             "a": 2,
             "explain": "late menunda inisialisasi."
@@ -487,9 +487,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Mengakses nilai nullable tanpa cek memicu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "ditangani",
+              "memboroskan resource",
+              "mockito/mocktail",
               "error kompilasi"
             ],
             "a": 3,
@@ -499,9 +499,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "`??=` menetapkan bila",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "selalu",
+              "Map",
+              "penting",
               "null"
             ],
             "a": 3,
@@ -511,10 +511,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Null safety membantu",
             "options": [
-              "CSS",
-              "route",
+              "pengujian",
+              "main()",
               "keandalan",
-              "migrasi"
+              ".contains()"
             ],
             "a": 2,
             "explain": "Null safety meningkatkan keandalan."
@@ -557,7 +557,7 @@ const CONTENT_DART = [
               "{1,2,3}",
               "[1,2,3]",
               "(1,2,3)",
-              "CSS"
+              "() {}"
             ],
             "a": 0,
             "explain": "Set literal memakai {}."
@@ -569,7 +569,7 @@ const CONTENT_DART = [
               "list.push(x)",
               "list << x",
               "list.add(x)",
-              "CSS"
+              "method biasa"
             ],
             "a": 2,
             "explain": "add menambah elemen."
@@ -580,7 +580,7 @@ const CONTENT_DART = [
             "options": [
               "list.size",
               "list.count",
-              "CSS",
+              ".contains()",
               "list.length"
             ],
             "a": 3,
@@ -591,9 +591,9 @@ const CONTENT_DART = [
             "q": "Mengubah list memakai",
             "options": [
               "list.each(...)",
-              "CSS",
+              "menjadi broadcast",
               "list.map(...)",
-              "route"
+              "penting"
             ],
             "a": 2,
             "explain": "map mentransformasi list."
@@ -604,8 +604,8 @@ const CONTENT_DART = [
             "options": [
               "filter(...)",
               "where(...)",
-              "CSS",
-              "route"
+              "klasifikasi error",
+              "<T extends Batas>"
             ],
             "a": 1,
             "explain": "where menyaring."
@@ -616,7 +616,7 @@ const CONTENT_DART = [
             "options": [
               "map.key[]",
               "map->key",
-              "CSS",
+              "stream/listener",
               "map['key']"
             ],
             "a": 3,
@@ -638,9 +638,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Koleksi immutable dibuat memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "menghindari duplikasi",
+              "menambah kompleksitas",
+              "[...a, ...b]",
               "const/List.unmodifiable"
             ],
             "a": 3,
@@ -708,7 +708,7 @@ const CONTENT_DART = [
               "must",
               "required",
               "need",
-              "CSS"
+              "berkala"
             ],
             "a": 1,
             "explain": "required menandai wajib."
@@ -731,7 +731,7 @@ const CONTENT_DART = [
             "options": [
               "lambda",
               "arrow",
-              "CSS",
+              ".split()",
               "() {}"
             ],
             "a": 3,
@@ -741,10 +741,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Closure menangkap",
             "options": [
-              "CSS",
+              "method pada tipe yang ada",
               "variabel di lingkupnya",
-              "route",
-              "migrasi"
+              "package collection groupBy",
+              "dart pub publish"
             ],
             "a": 1,
             "explain": "Closure menangkap variabel sekitar."
@@ -753,10 +753,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Fungsi first-class berarti",
             "options": [
-              "CSS",
-              "route",
+              "kode manual",
+              "method biasa",
               "bisa disimpan/dikirim",
-              "migrasi"
+              "tipe elemen"
             ],
             "a": 2,
             "explain": "Fungsi adalah nilai."
@@ -766,9 +766,9 @@ const CONTENT_DART = [
             "q": "Tipe fungsi ditulis seperti",
             "options": [
               "func<int>",
-              "CSS",
+              ".toUpperCase()",
               "int Function(int)",
-              "route"
+              "{1,2,3}"
             ],
             "a": 2,
             "explain": "Tipe fungsi memakai Function."
@@ -787,7 +787,7 @@ const CONTENT_DART = [
               "def Nama()",
               "class Nama {}",
               "struct Nama",
-              "CSS"
+              "klasifikasi error"
             ],
             "a": 1,
             "explain": "Dart memakai class."
@@ -799,7 +799,7 @@ const CONTENT_DART = [
               "constructor Nama",
               "Nama() {}",
               "init Nama",
-              "CSS"
+              "regresi visual"
             ],
             "a": 1,
             "explain": "Konstruktor bernama sama dengan class."
@@ -808,9 +808,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Constructor named memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Tipe yang dapat berisi null dan yang tidak",
+              "nilai default bila null",
+              "kondisi ? a : b",
               "beberapa cara membuat objek"
             ],
             "a": 3,
@@ -834,7 +834,7 @@ const CONTENT_DART = [
             "options": [
               "implements",
               "with",
-              "CSS",
+              "mocktail/mockito",
               "extends"
             ],
             "a": 3,
@@ -847,7 +847,7 @@ const CONTENT_DART = [
               "implements",
               "extends",
               "with",
-              "CSS"
+              "keandalan"
             ],
             "a": 0,
             "explain": "implements untuk interface."
@@ -859,7 +859,7 @@ const CONTENT_DART = [
               "extends",
               "implements",
               "with",
-              "CSS"
+              "konsistensi"
             ],
             "a": 2,
             "explain": "with menambahkan mixin."
@@ -871,7 +871,7 @@ const CONTENT_DART = [
               "parent(...)",
               "super(...)",
               "base(...)",
-              "CSS"
+              "over-engineering"
             ],
             "a": 1,
             "explain": "super memanggil induk."
@@ -882,8 +882,8 @@ const CONTENT_DART = [
             "options": [
               "@override",
               "override()",
-              "CSS",
-              "route"
+              "cakupan",
+              "model berubah"
             ],
             "a": 0,
             "explain": "Anotasi @override menandai override."
@@ -893,9 +893,9 @@ const CONTENT_DART = [
             "q": "Getter/setter memakai",
             "options": [
               "attr",
-              "CSS",
+              "list.add(x)",
               "get/set",
-              "route"
+              "tipe nama() {}"
             ],
             "a": 2,
             "explain": "Dart memakai get/set."
@@ -913,7 +913,7 @@ const CONTENT_DART = [
             "options": [
               "when",
               "unless",
-              "CSS",
+              "<T extends Batas>",
               "if/else"
             ],
             "a": 3,
@@ -923,10 +923,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Switch di Dart modern mendukung",
             "options": [
-              "CSS",
+              "statically typed dengan inferensi",
               "pattern ke ekspresi",
-              "route",
-              "migrasi"
+              "variabel di lingkupnya",
+              "nilai yang tersedia nanti"
             ],
             "a": 1,
             "explain": "Switch modern mendukung pattern."
@@ -936,9 +936,9 @@ const CONTENT_DART = [
             "q": "Perulangan for memakai",
             "options": [
               "for i in",
-              "CSS",
+              "elemen pertama cocok",
               "for (var i ...)",
-              "route"
+              "algoritma dapat ditukar"
             ],
             "a": 2,
             "explain": "for klasik memakai (init; cond; step)."
@@ -947,10 +947,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "for-in mengiterasi",
             "options": [
-              "CSS",
-              "route",
+              "tipe elemen",
+              "pewarisan berlebihan",
               "elemen koleksi",
-              "migrasi"
+              "keamanan data"
             ],
             "a": 2,
             "explain": "for-in mengiterasi koleksi."
@@ -959,9 +959,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "while mengulang selama",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pubspec.yaml",
+              "pub.dev",
+              "prediktabilitas",
               "kondisi benar"
             ],
             "a": 3,
@@ -972,9 +972,9 @@ const CONTENT_DART = [
             "q": "break/continue berlaku",
             "options": [
               "di loop",
-              "CSS",
-              "route",
-              "migrasi"
+              "fungsi<T>(...)",
+              "menghapus duplikat",
+              ".timeout(...)"
             ],
             "a": 0,
             "explain": "break/continue mengatur loop."
@@ -985,8 +985,8 @@ const CONTENT_DART = [
             "options": [
               "kondisi ? a : b",
               "if(a,b)",
-              "CSS",
-              "route"
+              "beberapa cara membuat objek",
+              "beberapa Future paralel"
             ],
             "a": 0,
             "explain": "Ternary memilih nilai."
@@ -995,10 +995,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Assert dipakai untuk",
             "options": [
-              "CSS",
+              "dart pub publish",
               "memeriksa kondisi saat debug",
-              "route",
-              "migrasi"
+              "switch dengan pattern",
+              "dependency dan metadata"
             ],
             "a": 1,
             "explain": "assert memeriksa saat debug."
@@ -1008,9 +1008,9 @@ const CONTENT_DART = [
             "q": "Menangani null pada kondisi memakai",
             "options": [
               "if (x != null)",
-              "CSS",
-              "route",
-              "migrasi"
+              "Error untuk bug program, Exception untuk kondisi",
+              "tipe non-null semua objek",
+              "mereduksi koleksi ke satu nilai"
             ],
             "a": 0,
             "explain": "Cek null penting."
@@ -1020,9 +1020,9 @@ const CONTENT_DART = [
             "q": "Labeled statement memungkinkan",
             "options": [
               "break/continue bertarget",
-              "CSS",
-              "route",
-              "migrasi"
+              "menambah kompleksitas",
+              "[...a, ...b]",
+              "banyak listener"
             ],
             "a": 0,
             "explain": "Label memberi target."
@@ -1038,10 +1038,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Future mewakili",
             "options": [
-              "CSS",
-              "route",
+              "memanggil library native",
+              "pengembangan dengan hot reload",
               "nilai yang tersedia nanti",
-              "migrasi"
+              "Menulis alur asynchronous dengan gaya berurutan"
             ],
             "a": 2,
             "explain": "Future hasil async."
@@ -1050,10 +1050,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "await dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "<T extends Batas>",
+              "operator",
               "menunggu Future",
-              "migrasi"
+              "dengan map/where"
             ],
             "a": 2,
             "explain": "await menunggu hasil."
@@ -1063,9 +1063,9 @@ const CONTENT_DART = [
             "q": "Fungsi async mengembalikan",
             "options": [
               "Future",
-              "CSS",
-              "route",
-              "migrasi"
+              "tipe elemen",
+              "keamanan data",
+              "stream cepat"
             ],
             "a": 0,
             "explain": "async mengembalikan Future."
@@ -1075,9 +1075,9 @@ const CONTENT_DART = [
             "q": "async* menghasilkan",
             "options": [
               "Stream",
-              "CSS",
-              "route",
-              "migrasi"
+              "code generation",
+              "data besar",
+              "package lokal"
             ],
             "a": 0,
             "explain": "async* menghasilkan Stream."
@@ -1086,10 +1086,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Stream mengirim",
             "options": [
-              "CSS",
+              "fromJson/toJson",
               "banyak nilai",
-              "route",
-              "migrasi"
+              "DevTools",
+              "kompatibilitas"
             ],
             "a": 1,
             "explain": "Stream mengirim rangkaian nilai."
@@ -1098,10 +1098,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "then dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "const/List.unmodifiable",
+              "implements",
               "chaining Future",
-              "migrasi"
+              "kondisi benar"
             ],
             "a": 2,
             "explain": "then merangkai Future."
@@ -1111,9 +1111,9 @@ const CONTENT_DART = [
             "q": "catchError menangani",
             "options": [
               "error Future",
-              "CSS",
-              "route",
-              "migrasi"
+              "tipe nama() {}",
+              "bisa disimpan/dikirim",
+              "di loop"
             ],
             "a": 0,
             "explain": "catchError menangani kegagalan."
@@ -1122,10 +1122,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "await hanya boleh di",
             "options": [
-              "CSS",
+              "pemeriksaan tipe",
               "fungsi async",
-              "route",
-              "migrasi"
+              "penanganan exhaustif",
+              "listener"
             ],
             "a": 1,
             "explain": "await di dalam async."
@@ -1134,10 +1134,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Future.wait menjalankan",
             "options": [
-              "CSS",
-              "route",
+              "kode untuk diproses generator",
+              "variasi objek immutable",
               "beberapa Future paralel",
-              "migrasi"
+              "const dikompilasi-time, final runtime"
             ],
             "a": 2,
             "explain": "Future.wait menunggu paralel."
@@ -1147,9 +1147,9 @@ const CONTENT_DART = [
             "q": "Mengabaikan Future tanpa await dapat",
             "options": [
               "menyembunyikan error",
-              "CSS",
-              "route",
-              "migrasi"
+              "list.map(...)",
+              "class Nama {}",
+              "@override"
             ],
             "a": 0,
             "explain": "Unawaited Future bisa bermasalah."
@@ -1168,7 +1168,7 @@ const CONTENT_DART = [
               "raise",
               "throw",
               "panic",
-              "CSS"
+              "extends"
             ],
             "a": 1,
             "explain": "Dart memakai throw."
@@ -1180,7 +1180,7 @@ const CONTENT_DART = [
               "try/rescue",
               "try/catch",
               "except",
-              "CSS"
+              "operator"
             ],
             "a": 1,
             "explain": "Dart memakai try/catch."
@@ -1189,10 +1189,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "finally dijalankan",
             "options": [
-              "CSS",
+              "versi constraint",
               "selalu",
-              "route",
-              "migrasi"
+              "pemeliharaan",
+              ".dart"
             ],
             "a": 1,
             "explain": "finally selalu dijalankan."
@@ -1201,9 +1201,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "on dipakai untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "akses aman bila null",
+              "memeriksa kondisi saat debug",
+              "factory dari map",
               "menangkap tipe spesifik"
             ],
             "a": 3,
@@ -1213,10 +1213,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "rethrow dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "DevTools",
+              "kompatibilitas",
               "meneruskan exception",
-              "migrasi"
+              "kualitas kode"
             ],
             "a": 2,
             "explain": "rethrow meneruskan."
@@ -1225,10 +1225,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Exception kustom memakai",
             "options": [
-              "CSS",
-              "route",
+              "immutable data class",
+              "Hanya dapat diberi nilai sekali",
               "class X implements Exception",
-              "migrasi"
+              "menyatakan nilai tidak null"
             ],
             "a": 2,
             "explain": "Exception kustom implement Exception."
@@ -1237,9 +1237,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Error vs Exception",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "for (var i ...)",
+              "class X implements Exception",
+              "tipe aman dan pemakaian ulang",
               "Error untuk bug program, Exception untuk kondisi"
             ],
             "a": 3,
@@ -1249,10 +1249,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Menangkap terlalu luas berisiko",
             "options": [
-              "CSS",
+              "data besar",
               "menyembunyikan bug",
-              "route",
-              "migrasi"
+              "package lokal",
+              "pengujian"
             ],
             "a": 1,
             "explain": "Catch luas menyembunyikan masalah."
@@ -1261,9 +1261,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Async exception ditangani dengan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "build.yaml",
+              "CPU-bound",
+              "switch exhaustif",
               "try/catch pada await"
             ],
             "a": 3,
@@ -1274,9 +1274,9 @@ const CONTENT_DART = [
             "q": "Pesan exception diakses dengan",
             "options": [
               ".toString()",
-              "CSS",
-              "route",
-              "migrasi"
+              "class Nama {}",
+              "@override",
+              "menunggu Future"
             ],
             "a": 0,
             "explain": "toString memberi pesan."
@@ -1294,7 +1294,7 @@ const CONTENT_DART = [
             "options": [
               "JSON.parse",
               "decode()",
-              "CSS",
+              "debugging",
               "jsonDecode"
             ],
             "a": 3,
@@ -1307,7 +1307,7 @@ const CONTENT_DART = [
               "JSON.stringify",
               "jsonEncode",
               "encode()",
-              "CSS"
+              "list.map(...)"
             ],
             "a": 1,
             "explain": "jsonEncode ke string."
@@ -1316,10 +1316,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Model fromJson biasanya",
             "options": [
-              "CSS",
+              "for (var i ...)",
               "factory dari map",
-              "route",
-              "migrasi"
+              "class X implements Exception",
+              "tipe aman dan pemakaian ulang"
             ],
             "a": 1,
             "explain": "fromJson membentuk model."
@@ -1328,10 +1328,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "toJson mengembalikan",
             "options": [
-              "CSS",
-              "route",
+              "waktu",
+              "keamanan",
               "Map",
-              "migrasi"
+              "null"
             ],
             "a": 2,
             "explain": "toJson menghasilkan Map."
@@ -1342,8 +1342,8 @@ const CONTENT_DART = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "bool",
+              "?"
             ],
             "a": 1,
             "explain": "Field bisa null."
@@ -1352,9 +1352,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Codegen json_serializable menghemat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "error",
+              "menambah kompleksitas",
+              "[...a, ...b]",
               "kode manual"
             ],
             "a": 3,
@@ -1364,9 +1364,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Nested JSON memerlukan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "try/catch dengan await",
+              "pemeriksaan tipe",
+              "penanganan exhaustif",
               "parsing bertingkat"
             ],
             "a": 3,
@@ -1377,8 +1377,8 @@ const CONTENT_DART = [
             "q": "List JSON diparsing per elemen",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "with",
+              ".dart",
               "ya"
             ],
             "a": 3,
@@ -1389,8 +1389,8 @@ const CONTENT_DART = [
             "q": "Validasi data JSON penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "() {}",
+              "GC",
               "ya"
             ],
             "a": 3,
@@ -1402,8 +1402,8 @@ const CONTENT_DART = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "pub",
+              "..."
             ],
             "a": 1,
             "explain": "Tangani error parsing."
@@ -1419,9 +1419,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Sink adalah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "method pada tipe yang ada",
+              "package collection groupBy",
+              "dart pub publish",
               "tujuan aliran data"
             ],
             "a": 3,
@@ -1431,10 +1431,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "StreamSubscription memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "kode manual",
+              "method biasa",
               "mengelola langganan",
-              "migrasi"
+              "konteks"
             ],
             "a": 2,
             "explain": "Subscription mengelola listener."
@@ -1443,9 +1443,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "pause/resume subscription memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "parsing bertingkat",
+              "member asli",
+              "try/catch dengan await",
               "kontrol aliran"
             ],
             "a": 3,
@@ -1456,8 +1456,8 @@ const CONTENT_DART = [
             "q": "cancel subscription penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "pub",
+              "...",
               "ya"
             ],
             "a": 3,
@@ -1467,10 +1467,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Stream.fromIterable membuat",
             "options": [
-              "CSS",
+              "Menulis alur asynchronous dengan gaya berurutan",
               "stream dari iterable",
-              "route",
-              "migrasi"
+              "null error saat runtime",
+              "if (x != null)"
             ],
             "a": 1,
             "explain": "Membungkus iterable."
@@ -1480,9 +1480,9 @@ const CONTENT_DART = [
             "q": "Stream.periodic mengirim",
             "options": [
               "berkala",
-              "CSS",
-              "route",
-              "migrasi"
+              ".trim()",
+              "diberi null",
+              "list.add(x)"
             ],
             "a": 0,
             "explain": "Periodic mengirim berkala."
@@ -1491,9 +1491,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "asBroadcastStream mengubah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".replaceAll()",
+              "inisialisasi tertunda",
+              "list.length",
               "menjadi broadcast"
             ],
             "a": 3,
@@ -1504,8 +1504,8 @@ const CONTENT_DART = [
             "q": "Menangani onDone penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "error",
+              "pub",
               "ya"
             ],
             "a": 3,
@@ -1517,8 +1517,8 @@ const CONTENT_DART = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "GC",
+              "const"
             ],
             "a": 0,
             "explain": "Transform mengolah."
@@ -1528,9 +1528,9 @@ const CONTENT_DART = [
             "q": "Menggabungkan stream memakai",
             "options": [
               "package stream_transform/async",
-              "CSS",
-              "route",
-              "migrasi"
+              "kontrol aliran",
+              "utility global",
+              "kondisi koleksi"
             ],
             "a": 0,
             "explain": "Library menyediakan combine."
@@ -1546,10 +1546,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Extension menambah",
             "options": [
-              "CSS",
-              "route",
+              "kontrak yang harus diimplementasikan",
+              "nilai awal berbeda tipe",
               "method pada tipe ada",
-              "migrasi"
+              "memanggil library native"
             ],
             "a": 2,
             "explain": "Extension memperluas tipe."
@@ -1558,10 +1558,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Extension dipanggil seperti",
             "options": [
-              "CSS",
-              "route",
+              "parsing bertingkat",
+              "member asli",
               "method biasa",
-              "migrasi"
+              "try/catch dengan await"
             ],
             "a": 2,
             "explain": "Extension dipanggil seperti method."
@@ -1570,10 +1570,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Extension tidak bisa override",
             "options": [
-              "CSS",
+              ".trim()",
               "member asli",
-              "route",
-              "migrasi"
+              "diberi null",
+              "list.add(x)"
             ],
             "a": 1,
             "explain": "Tidak bisa mengalahkan member asli."
@@ -1582,10 +1582,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Extension bertipe generic memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "Error untuk bug program, Exception untuk kondisi",
+              "tipe non-null semua objek",
               "perilaku lintas tipe",
-              "migrasi"
+              "mereduksi koleksi ke satu nilai"
             ],
             "a": 2,
             "explain": "Extension generik."
@@ -1594,9 +1594,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Utility helper membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tiga kutip (''')",
+              "{'a': 1}",
+              "elemen koleksi",
               "menghindari duplikasi"
             ],
             "a": 3,
@@ -1606,10 +1606,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Fungsi top-level membantu",
             "options": [
-              "CSS",
+              "lookupFunction",
               "utility global",
-              "route",
-              "migrasi"
+              "extension/wrapper",
+              "alur penuh"
             ],
             "a": 1,
             "explain": "Fungsi top-level berguna."
@@ -1618,10 +1618,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Const string untuk pesan membantu",
             "options": [
-              "CSS",
-              "route",
+              "kode manual",
+              "method biasa",
               "konsistensi",
-              "migrasi"
+              "konteks"
             ],
             "a": 2,
             "explain": "Konstanta pesan."
@@ -1632,8 +1632,8 @@ const CONTENT_DART = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              ".toUpperCase()",
+              "{1,2,3}"
             ],
             "a": 0,
             "explain": "Jaga util terfokus."
@@ -1643,8 +1643,8 @@ const CONTENT_DART = [
             "q": "Dokumentasi helper penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "[]",
+              "error",
               "ya"
             ],
             "a": 3,
@@ -1656,8 +1656,8 @@ const CONTENT_DART = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "wajib",
+              "var"
             ],
             "a": 0,
             "explain": "Uji helper."
@@ -1673,10 +1673,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Custom exception membantu",
             "options": [
-              "CSS",
-              "route",
+              "bisa memengaruhi",
+              "dipertimbangkan",
               "klasifikasi error",
-              "migrasi"
+              "constructor/provider"
             ],
             "a": 2,
             "explain": "Exception kustom memisahkan jenis."
@@ -1685,10 +1685,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Wrapping error membantu",
             "options": [
-              "CSS",
-              "route",
+              "null",
+              ".trim()",
               "konteks",
-              "migrasi"
+              "diberi null"
             ],
             "a": 2,
             "explain": "Wrapping menambah konteks."
@@ -1698,20 +1698,20 @@ const CONTENT_DART = [
             "q": "Menangani error async memakai",
             "options": [
               "try/catch dengan await",
-              "CSS",
-              "route",
-              "migrasi"
+              "try/catch pada await",
+              "parsing bertingkat",
+              "member asli"
             ],
             "a": 0,
             "explain": "Await di dalam try."
           },
           {
             "type": "mc",
-            "q": "Future.catchError menangani",
+            "q": "Metode `Future.catchError` digunakan untuk menangkap dan menangani",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "akses data",
+              "await/pump",
+              "DevTools",
               "error"
             ],
             "a": 3,
@@ -1722,9 +1722,9 @@ const CONTENT_DART = [
             "q": "Stack trace berguna untuk",
             "options": [
               "debugging",
-              "CSS",
-              "route",
-              "migrasi"
+              "bool",
+              ".toUpperCase()",
+              "{1,2,3}"
             ],
             "a": 0,
             "explain": "Stack trace melacak sumber."
@@ -1735,8 +1735,8 @@ const CONTENT_DART = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              ".dart",
+              "${}"
             ],
             "a": 1,
             "explain": "Error jelas membantu."
@@ -1746,9 +1746,9 @@ const CONTENT_DART = [
             "q": "Logging error produksi penting",
             "options": [
               "tidak",
-              "CSS",
+              "int",
               "ya",
-              "route"
+              "+"
             ],
             "a": 2,
             "explain": "Log membantu diagnosis."
@@ -1759,8 +1759,8 @@ const CONTENT_DART = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "double",
+              "tiga kutip (''')"
             ],
             "a": 0,
             "explain": "Jangan telan error."
@@ -1771,8 +1771,8 @@ const CONTENT_DART = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "GC",
+              "const"
             ],
             "a": 1,
             "explain": "Assert untuk debug."
@@ -1782,8 +1782,8 @@ const CONTENT_DART = [
             "q": "Menguji jalur error penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              ".dart",
+              "${}",
               "ya"
             ],
             "a": 3,
@@ -1802,8 +1802,8 @@ const CONTENT_DART = [
             "options": [
               "class Box<T>",
               "class Box[T]",
-              "CSS",
-              "route"
+              "close()",
+              "di isolate"
             ],
             "a": 0,
             "explain": "Dart memakai <T>."
@@ -1812,10 +1812,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Generic membantu",
             "options": [
-              "CSS",
+              "yang selesai pertama",
               "tipe aman dan pemakaian ulang",
-              "route",
-              "migrasi"
+              "kode untuk diproses generator",
+              "variasi objek immutable"
             ],
             "a": 1,
             "explain": "Generics menjaga tipe."
@@ -1826,8 +1826,8 @@ const CONTENT_DART = [
             "options": [
               "fungsi<T>(...)",
               "fungsi[T]",
-              "CSS",
-              "route"
+              "super(...)",
+              "break/continue bertarget"
             ],
             "a": 0,
             "explain": "Fungsi dapat generik."
@@ -1836,10 +1836,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Batasan tipe generic memakai",
             "options": [
-              "CSS",
+              "keamanan",
               "<T extends Batas>",
-              "route",
-              "migrasi"
+              "perawatan",
+              "JavaScript/native"
             ],
             "a": 1,
             "explain": "extends membatasi T."
@@ -1848,10 +1848,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "List<T> menjamin",
             "options": [
-              "CSS",
+              "get/set",
               "tipe elemen",
-              "route",
-              "migrasi"
+              "Future",
+              "throw"
             ],
             "a": 1,
             "explain": "List<T> bertipe."
@@ -1860,9 +1860,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "dynamic mematikan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "prediktabilitas",
+              "Flutter",
+              "final/const",
               "pemeriksaan tipe"
             ],
             "a": 3,
@@ -1872,10 +1872,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Object adalah",
             "options": [
-              "CSS",
+              "beberapa Future paralel",
               "tipe non-null semua objek",
-              "route",
-              "migrasi"
+              "method pada tipe ada",
+              "membuat objek dengan logika khusus"
             ],
             "a": 1,
             "explain": "Object menampung semua non-null."
@@ -1885,9 +1885,9 @@ const CONTENT_DART = [
             "q": "Generics berlebihan dapat",
             "options": [
               "menambah kompleksitas",
-              "CSS",
-              "route",
-              "migrasi"
+              "baru/eksperimental",
+              "aksesibilitas",
+              "mengurangi testabilitas"
             ],
             "a": 0,
             "explain": "Gunakan sesuai kebutuhan."
@@ -1896,9 +1896,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Tipe koleksi kosong sebaiknya",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pemeliharaan",
+              ".dart",
+              "String",
               "eksplisit"
             ],
             "a": 3,
@@ -1908,10 +1908,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Mixin dengan generic memungkinkan",
             "options": [
-              "CSS",
+              "ditangani",
               "perilaku bertipe",
-              "route",
-              "migrasi"
+              "memboroskan resource",
+              "mockito/mocktail"
             ],
             "a": 1,
             "explain": "Mixin dapat generik."
@@ -1927,10 +1927,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Abstract class dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "kode untuk diproses generator",
+              "variasi objek immutable",
               "kontrak yang harus diimplementasikan",
-              "migrasi"
+              "const dikompilasi-time, final runtime"
             ],
             "a": 2,
             "explain": "Abstract class mendefinisikan kontrak."
@@ -1940,9 +1940,9 @@ const CONTENT_DART = [
             "q": "Interface di Dart dibuat dengan",
             "options": [
               "interface keyword",
-              "CSS",
+              "jsonDecode",
               "abstract class/implements",
-              "route"
+              "kontrol aliran"
             ],
             "a": 2,
             "explain": "Implicit interface via class."
@@ -1952,9 +1952,9 @@ const CONTENT_DART = [
             "q": "Mixin berbeda dari class karena",
             "options": [
               "tidak bisa diinstansiasi sendiri",
-              "CSS",
-              "route",
-              "migrasi"
+              "dependency dan metadata",
+              "beberapa cara membuat objek",
+              "beberapa Future paralel"
             ],
             "a": 0,
             "explain": "Mixin menambah perilaku."
@@ -1963,10 +1963,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Extension menambah",
             "options": [
-              "CSS",
+              "membuat objek dengan logika khusus",
               "method pada tipe yang ada",
-              "route",
-              "migrasi"
+              "yang selesai pertama",
+              "kode untuk diproses generator"
             ],
             "a": 1,
             "explain": "Extension memperluas tipe."
@@ -1975,10 +1975,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Factory constructor dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "class X implements Exception",
+              "tipe aman dan pemakaian ulang",
               "membuat objek dengan logika khusus",
-              "migrasi"
+              "rangkaian operasi pada objek"
             ],
             "a": 2,
             "explain": "Factory mengontrol pembuatan."
@@ -1987,10 +1987,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Static member milik",
             "options": [
-              "CSS",
+              "menjalankan fungsi di isolate",
               "class, bukan instance",
-              "route",
-              "migrasi"
+              "tidak diedit manual",
+              "Tipe yang dapat berisi null dan yang tidak"
             ],
             "a": 1,
             "explain": "Static milik class."
@@ -1999,9 +1999,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Cascade operator (..) memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "class, bukan instance",
+              "paralelisme terpisah memori",
+              "immutable data class",
               "rangkaian operasi pada objek"
             ],
             "a": 3,
@@ -2012,8 +2012,8 @@ const CONTENT_DART = [
             "q": "Operator overloading memakai",
             "options": [
               "overload",
-              "CSS",
-              "route",
+              "var",
+              "var/final tanpa tipe",
               "operator"
             ],
             "a": 3,
@@ -2023,9 +2023,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Composition lebih disukai daripada",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "unit test",
+              "tanpa build_runner",
+              "compatible layout",
               "pewarisan berlebihan"
             ],
             "a": 3,
@@ -2035,10 +2035,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Sealed class memungkinan",
             "options": [
-              "CSS",
+              ".toUpperCase()",
               "penanganan exhaustif",
-              "route",
-              "migrasi"
+              "{1,2,3}",
+              "const/List.unmodifiable"
             ],
             "a": 1,
             "explain": "Sealed mendukung switch lengkap."
@@ -2056,8 +2056,8 @@ const CONTENT_DART = [
             "options": [
               "a + b always",
               "[...a, ...b]",
-              "CSS",
-              "route"
+              "fromJson/toJson",
+              "DevTools"
             ],
             "a": 1,
             "explain": "Spread menggabungkan list."
@@ -2066,10 +2066,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "reduce dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "rangkaian operasi pada objek",
+              "menjalankan fungsi di isolate",
               "mereduksi koleksi ke satu nilai",
-              "migrasi"
+              "tidak diedit manual"
             ],
             "a": 2,
             "explain": "reduce mengakumulasi."
@@ -2079,9 +2079,9 @@ const CONTENT_DART = [
             "q": "fold memungkinkan",
             "options": [
               "nilai awal berbeda tipe",
-              "CSS",
-              "route",
-              "migrasi"
+              "for (var i ...)",
+              "class X implements Exception",
+              "tipe aman dan pemakaian ulang"
             ],
             "a": 0,
             "explain": "fold memiliki initial value."
@@ -2090,10 +2090,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "any/every memeriksa",
             "options": [
-              "CSS",
+              "model berubah",
               "kondisi koleksi",
-              "route",
-              "migrasi"
+              "StringBuffer",
+              "pengguna"
             ],
             "a": 1,
             "explain": "any/every memeriksa kondisi."
@@ -2102,10 +2102,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "firstWhere mencari",
             "options": [
-              "CSS",
-              "route",
+              "perilaku lintas tipe",
+              "class, bukan instance",
               "elemen pertama cocok",
-              "migrasi"
+              "paralelisme terpisah memori"
             ],
             "a": 2,
             "explain": "firstWhere mengembalikan yang pertama cocok."
@@ -2115,9 +2115,9 @@ const CONTENT_DART = [
             "q": "Mengelompokkan memakai",
             "options": [
               "package collection groupBy",
-              "CSS",
-              "route",
-              "migrasi"
+              "const dikompilasi-time, final runtime",
+              "pattern ke ekspresi",
+              "menangkap tipe spesifik"
             ],
             "a": 0,
             "explain": "Package collection menyediakan groupBy."
@@ -2126,10 +2126,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Mengurutkan memakai",
             "options": [
-              "CSS",
+              "kode boilerplate",
               "sort(compare)",
-              "route",
-              "migrasi"
+              "event loop",
+              "keamanan"
             ],
             "a": 1,
             "explain": "sort memakai comparator."
@@ -2138,9 +2138,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Set membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "eksplisit",
+              "kondisi koleksi",
+              "close()",
               "menghapus duplikat"
             ],
             "a": 3,
@@ -2150,10 +2150,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Map entries dapat diubah",
             "options": [
-              "CSS",
+              "fungsi<T>(...)",
               "dengan map/where",
-              "route",
-              "migrasi"
+              "abstract class/implements",
+              "menghapus duplikat"
             ],
             "a": 1,
             "explain": "Map dapat ditransformasi."
@@ -2162,9 +2162,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Unmodifiable collection membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "map['key']",
+              "required",
+              "_ (garis bawah)",
               "keamanan data"
             ],
             "a": 3,
@@ -2181,22 +2181,22 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Stream.listen mendaftarkan",
             "options": [
-              "CSS",
+              "pembuatan objek",
               "listener",
-              "route",
-              "migrasi"
+              "mocktail/mockito",
+              "pubspec.yaml"
             ],
             "a": 1,
             "explain": "listen menerima event."
           },
           {
             "type": "mc",
-            "q": "StreamController mengelola",
+            "q": "Kelas `StreamController` di Dart bertugas membuat, memasukkan data, dan mengendalikan aliran",
             "options": [
-              "CSS",
+              ".length",
               "stream",
-              "route",
-              "migrasi"
+              "keandalan",
+              "where(...)"
             ],
             "a": 1,
             "explain": "Controller membuat stream."
@@ -2206,9 +2206,9 @@ const CONTENT_DART = [
             "q": "Broadcast stream untuk",
             "options": [
               "banyak listener",
-              "CSS",
-              "route",
-              "migrasi"
+              "berkala",
+              "konsistensi",
+              "class Box<T>"
             ],
             "a": 0,
             "explain": "Broadcast multi listener."
@@ -2217,10 +2217,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Menutup StreamController dengan",
             "options": [
-              "CSS",
+              "wajib",
               "close()",
-              "route",
-              "migrasi"
+              "over-engineering",
+              "dry-run"
             ],
             "a": 1,
             "explain": "close menutup stream."
@@ -2230,9 +2230,9 @@ const CONTENT_DART = [
             "q": "await for mengiterasi",
             "options": [
               "Stream",
-              "CSS",
-              "route",
-              "migrasi"
+              "operator",
+              "dengan map/where",
+              "ditangani"
             ],
             "a": 0,
             "explain": "await for membaca stream."
@@ -2241,9 +2241,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "StreamTransformer mengubah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "stream/listener",
+              "regresi visual",
+              "/// komentar",
               "aliran"
             ],
             "a": 3,
@@ -2253,10 +2253,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Future.any mengembalikan",
             "options": [
-              "CSS",
-              "route",
+              "if (x != null)",
+              "tujuan aliran data",
               "yang selesai pertama",
-              "migrasi"
+              "tidak bisa diinstansiasi sendiri"
             ],
             "a": 2,
             "explain": "Future.any balapan."
@@ -2265,10 +2265,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Timeout Future memakai",
             "options": [
-              "CSS",
+              "menjadi broadcast",
               ".timeout(...)",
-              "route",
-              "migrasi"
+              "penting",
+              "fungsi<T>(...)"
             ],
             "a": 1,
             "explain": "timeout membatasi."
@@ -2277,9 +2277,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Error stream perlu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "{1,2,3}",
+              "const/List.unmodifiable",
+              "() {}",
               "ditangani"
             ],
             "a": 3,
@@ -2290,9 +2290,9 @@ const CONTENT_DART = [
             "q": "Backpressure perlu dikelola pada",
             "options": [
               "stream cepat",
-              "CSS",
-              "route",
-              "migrasi"
+              "method biasa",
+              "konteks",
+              "tipe elemen"
             ],
             "a": 0,
             "explain": "Aliran deras perlu kontrol."
@@ -2308,10 +2308,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Isolate dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "statically typed dengan inferensi",
+              "variabel di lingkupnya",
               "paralelisme terpisah memori",
-              "migrasi"
+              "nilai yang tersedia nanti"
             ],
             "a": 2,
             "explain": "Isolate memisahkan memori."
@@ -2320,10 +2320,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Isolate berkomunikasi lewat",
             "options": [
-              "CSS",
-              "route",
+              "list.add(x)",
+              "tipe nama() {}",
               "message passing",
-              "migrasi"
+              "bisa disimpan/dikirim"
             ],
             "a": 2,
             "explain": "Isolate bertukar pesan."
@@ -2333,9 +2333,9 @@ const CONTENT_DART = [
             "q": "Isolate.run mempermudah",
             "options": [
               "menjalankan fungsi di isolate",
-              "CSS",
-              "route",
-              "migrasi"
+              "dart pub publish",
+              "switch dengan pattern",
+              "dependency dan metadata"
             ],
             "a": 0,
             "explain": "Isolate.run menjalankan sekali."
@@ -2344,10 +2344,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "SendPort/ReceivePort dipakai untuk",
             "options": [
-              "CSS",
+              "await/pump",
               "komunikasi",
-              "route",
-              "migrasi"
+              "fromJson/toJson",
+              "DevTools"
             ],
             "a": 1,
             "explain": "Port untuk komunikasi."
@@ -2356,10 +2356,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Pekerjaan CPU berat sebaiknya",
             "options": [
-              "CSS",
-              "route",
+              "alur penuh",
+              "code generation",
               "di isolate",
-              "migrasi"
+              "data besar"
             ],
             "a": 2,
             "explain": "Hindari memblokir UI."
@@ -2370,8 +2370,8 @@ const CONTENT_DART = [
             "options": [
               "salah",
               "benar",
-              "CSS",
-              "route"
+              "konteks",
+              "tipe elemen"
             ],
             "a": 1,
             "explain": "Isolate tidak berbagi memori."
@@ -2380,9 +2380,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "compute pada Flutter memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "klasifikasi error",
+              "<T extends Batas>",
+              "operator",
               "isolate"
             ],
             "a": 3,
@@ -2392,10 +2392,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Membuat isolate berlebihan",
             "options": [
-              "CSS",
+              "{'a': 1}",
               "memboroskan resource",
-              "route",
-              "migrasi"
+              "extends",
+              "elemen koleksi"
             ],
             "a": 1,
             "explain": "Batasi jumlah isolate."
@@ -2404,10 +2404,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Data yang dikirim harus",
             "options": [
-              "CSS",
+              "dry-run",
               "dapat diserialisasi",
-              "route",
-              "migrasi"
+              "build.yaml",
+              "CPU-bound"
             ],
             "a": 1,
             "explain": "Pesan harus serializable."
@@ -2416,9 +2416,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Isolate membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "class Box<T>",
+              "perilaku bertipe",
+              "sort(compare)",
               "performa"
             ],
             "a": 3,
@@ -2435,10 +2435,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Package test dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "pemeriksaan tipe",
+              "penanganan exhaustif",
               "unit test",
-              "migrasi"
+              "listener"
             ],
             "a": 2,
             "explain": "package:test untuk unit test."
@@ -2448,9 +2448,9 @@ const CONTENT_DART = [
             "q": "Menjalankan test memakai",
             "options": [
               "dart run test",
-              "CSS",
+              "git URL",
               "dart test",
-              "route"
+              "dart run file.dart"
             ],
             "a": 2,
             "explain": "dart test menjalankan."
@@ -2460,9 +2460,9 @@ const CONTENT_DART = [
             "q": "Mengelompokkan test memakai",
             "options": [
               "group",
-              "CSS",
-              "route",
-              "migrasi"
+              "() {}",
+              "implements",
+              "kondisi benar"
             ],
             "a": 0,
             "explain": "group mengelompokkan."
@@ -2473,8 +2473,8 @@ const CONTENT_DART = [
             "options": [
               "assert_test",
               "expect",
-              "CSS",
-              "route"
+              "fromJson/toJson",
+              "DevTools"
             ],
             "a": 1,
             "explain": "expect memeriksa."
@@ -2483,10 +2483,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Test async memakai",
             "options": [
-              "CSS",
-              "route",
+              "code generation",
+              "data besar",
               "async/await di test",
-              "migrasi"
+              "package lokal"
             ],
             "a": 2,
             "explain": "Test mendukung async."
@@ -2495,10 +2495,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Mocking memakai",
             "options": [
-              "CSS",
-              "route",
+              "tipe elemen",
+              "pewarisan berlebihan",
               "mockito/mocktail",
-              "migrasi"
+              "keamanan data"
             ],
             "a": 2,
             "explain": "Library mock."
@@ -2507,10 +2507,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Coverage memakai",
             "options": [
-              "CSS",
-              "route",
+              "<T extends Batas>",
+              "operator",
               "--coverage",
-              "migrasi"
+              "dengan map/where"
             ],
             "a": 2,
             "explain": "Flag coverage."
@@ -2520,8 +2520,8 @@ const CONTENT_DART = [
             "q": "Test perilaku lebih stabil",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "...",
+              "=",
               "ya"
             ],
             "a": 3,
@@ -2532,9 +2532,9 @@ const CONTENT_DART = [
             "q": "Setup/teardown membantu",
             "options": [
               "isolasi test",
-              "CSS",
-              "route",
-              "migrasi"
+              "build.yaml",
+              "CPU-bound",
+              "switch exhaustif"
             ],
             "a": 0,
             "explain": "Isolasi antar test."
@@ -2545,8 +2545,8 @@ const CONTENT_DART = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "benar",
+              "waktu"
             ],
             "a": 0,
             "explain": "CI menjalankan test."
@@ -2562,9 +2562,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Static metaprogramming bertujuan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "menjalankan fungsi di isolate",
+              "tidak diedit manual",
+              "Tipe yang dapat berisi null dan yang tidak",
               "memindahkan codegen ke compile-time"
             ],
             "a": 3,
@@ -2574,10 +2574,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Manfaat metaprogramming statis",
             "options": [
-              "CSS",
+              "sort(compare)",
               "tanpa build_runner",
-              "route",
-              "migrasi"
+              "baru/eksperimental",
+              "aksesibilitas"
             ],
             "a": 1,
             "explain": "Mengurangi langkah build."
@@ -2588,8 +2588,8 @@ const CONTENT_DART = [
             "options": [
               "tidak pernah",
               "bisa memengaruhi",
-              "CSS",
-              "route"
+              "CPU-bound",
+              "switch exhaustif"
             ],
             "a": 1,
             "explain": "Proses compile bisa terdampak."
@@ -2600,8 +2600,8 @@ const CONTENT_DART = [
             "options": [
               "baru/eksperimental",
               "sangat lama",
-              "CSS",
-              "route"
+              "class Nama {}",
+              "@override"
             ],
             "a": 0,
             "explain": "Perkembangan awal."
@@ -2610,10 +2610,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Membaca kode saat compile membutuhkan",
             "options": [
-              "CSS",
-              "route",
+              "versi constraint",
+              "pemeliharaan",
               "API metaprogramming",
-              "migrasi"
+              ".length"
             ],
             "a": 2,
             "explain": "Perlu API khusus."
@@ -2624,8 +2624,8 @@ const CONTENT_DART = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "benar",
+              "waktu"
             ],
             "a": 1,
             "explain": "Kompatibilitas dijaga."
@@ -2635,9 +2635,9 @@ const CONTENT_DART = [
             "q": "Codegen tetap relevan untuk",
             "options": [
               "kasus kompleks",
-              "CSS",
-              "route",
-              "migrasi"
+              "menghapus duplikat",
+              ".timeout(...)",
+              "isolate"
             ],
             "a": 0,
             "explain": "Codegen masih dipakai."
@@ -2647,9 +2647,9 @@ const CONTENT_DART = [
             "q": "Menguji hasil generate penting",
             "options": [
               "tidak",
-              "CSS",
+              "const",
               "ya",
-              "route"
+              "[]"
             ],
             "a": 2,
             "explain": "Uji hasil."
@@ -2660,8 +2660,8 @@ const CONTENT_DART = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              ".dart",
+              "${}"
             ],
             "a": 0,
             "explain": "Dokumentasi penting."
@@ -2672,8 +2672,8 @@ const CONTENT_DART = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "int",
+              "+"
             ],
             "a": 0,
             "explain": "Pantau perkembangan."
@@ -2689,9 +2689,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "FFI memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "const dikompilasi-time, final runtime",
+              "pattern ke ekspresi",
+              "menangkap tipe spesifik",
               "memanggil library native"
             ],
             "a": 3,
@@ -2701,9 +2701,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "dart:ffi menyediakan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "debugging",
+              "eksplisit",
+              "kondisi koleksi",
               "binding native"
             ],
             "a": 3,
@@ -2715,8 +2715,8 @@ const CONTENT_DART = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "[]",
+              "error"
             ],
             "a": 0,
             "explain": "Memori native manual."
@@ -2725,10 +2725,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Memanggil fungsi C memakai",
             "options": [
-              "CSS",
-              "route",
+              "dry-run",
+              "build.yaml",
               "lookupFunction",
-              "migrasi"
+              "CPU-bound"
             ],
             "a": 2,
             "explain": "lookupFunction mengikat."
@@ -2737,9 +2737,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Struct native harus",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "list.add(x)",
+              "tipe nama() {}",
+              "bisa disimpan/dikirim",
               "compatible layout"
             ],
             "a": 3,
@@ -2751,8 +2751,8 @@ const CONTENT_DART = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "bool",
+              "?"
             ],
             "a": 0,
             "explain": "Uji di target."
@@ -2762,9 +2762,9 @@ const CONTENT_DART = [
             "q": "Portabilitas FFI perlu",
             "options": [
               "dipertimbangkan",
-              "CSS",
-              "route",
-              "migrasi"
+              "menambah kompleksitas",
+              "[...a, ...b]",
+              "banyak listener"
             ],
             "a": 0,
             "explain": "Perhatikan platform."
@@ -2775,8 +2775,8 @@ const CONTENT_DART = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "=>",
+              "int"
             ],
             "a": 1,
             "explain": "JS interop terpisah."
@@ -2786,8 +2786,8 @@ const CONTENT_DART = [
             "q": "Menjaga binding tetap sinkron penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              ".dart",
+              "${}",
               "ya"
             ],
             "a": 3,
@@ -2799,8 +2799,8 @@ const CONTENT_DART = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "() {}",
+              "GC"
             ],
             "a": 0,
             "explain": "Dokumentasi jelas."
@@ -2816,9 +2816,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Semantics membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".contains()",
+              "[1,2,3]",
+              "map['key']",
               "aksesibilitas"
             ],
             "a": 3,
@@ -2829,9 +2829,9 @@ const CONTENT_DART = [
             "q": "Label tombol ikon diperlukan",
             "options": [
               "tidak",
-              "CSS",
+              "wajib",
               "ya",
-              "route"
+              "var"
             ],
             "a": 2,
             "explain": "Label membantu pembaca layar."
@@ -2842,8 +2842,8 @@ const CONTENT_DART = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "klasifikasi error",
+              "<T extends Batas>"
             ],
             "a": 0,
             "explain": "Kontras membantu."
@@ -2853,8 +2853,8 @@ const CONTENT_DART = [
             "q": "Ukuran target sentuh memadai",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "stream/listener",
+              "regresi visual",
               "penting"
             ],
             "a": 3,
@@ -2866,8 +2866,8 @@ const CONTENT_DART = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "extension/wrapper",
+              "alur penuh"
             ],
             "a": 1,
             "explain": "Respek pengaturan."
@@ -2878,8 +2878,8 @@ const CONTENT_DART = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "r\"...\"",
+              "{'a': 1}"
             ],
             "a": 1,
             "explain": "Urutan fokus logis."
@@ -2890,8 +2890,8 @@ const CONTENT_DART = [
             "options": [
               "opsional",
               "wajib",
-              "CSS",
-              "route"
+              "{1,2,3}",
+              "() {}"
             ],
             "a": 1,
             "explain": "Gambar perlu alt."
@@ -2901,8 +2901,8 @@ const CONTENT_DART = [
             "q": "Uji dengan pembaca layar",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "method biasa",
+              "konteks",
               "penting"
             ],
             "a": 3,
@@ -2914,8 +2914,8 @@ const CONTENT_DART = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "int",
+              "+"
             ],
             "a": 1,
             "explain": "Uji RTL."
@@ -2926,8 +2926,8 @@ const CONTENT_DART = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "pub",
+              "..."
             ],
             "a": 0,
             "explain": "Bagian kualitas."
@@ -2944,9 +2944,9 @@ const CONTENT_DART = [
             "q": "Strategy pattern memungkinkan",
             "options": [
               "algoritma dapat ditukar",
-              "CSS",
-              "route",
-              "migrasi"
+              "akses aman bila null",
+              "memeriksa kondisi saat debug",
+              "factory dari map"
             ],
             "a": 0,
             "explain": "Strategy menukar algoritma."
@@ -2955,10 +2955,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Factory pattern memusatkan",
             "options": [
-              "CSS",
-              "route",
+              "error kompilasi",
+              "list.map(...)",
               "pembuatan objek",
-              "migrasi"
+              "class Nama {}"
             ],
             "a": 2,
             "explain": "Factory memusatkan pembuatan."
@@ -2967,10 +2967,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Observer memakai",
             "options": [
-              "CSS",
+              "inisialisasi tertunda",
               "stream/listener",
-              "route",
-              "migrasi"
+              "list.length",
+              "int Function(int)"
             ],
             "a": 1,
             "explain": "Observer via stream."
@@ -2980,9 +2980,9 @@ const CONTENT_DART = [
             "q": "Decorator memakai",
             "options": [
               "extension/wrapper",
-              "CSS",
-              "route",
-              "migrasi"
+              "mengurangi testabilitas",
+              "kode boilerplate",
+              "event loop"
             ],
             "a": 0,
             "explain": "Decorator membungkus."
@@ -2991,9 +2991,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Repository memisahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "keandalan",
+              "where(...)",
+              "Nama() {}",
               "akses data"
             ],
             "a": 3,
@@ -3003,10 +3003,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Dependency injection memakai",
             "options": [
-              "CSS",
+              "mocktail/mockito",
               "constructor/provider",
-              "route",
-              "migrasi"
+              "pubspec.yaml",
+              "pub.dev"
             ],
             "a": 1,
             "explain": "DI via constructor."
@@ -3015,10 +3015,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Singleton dihindari bila",
             "options": [
-              "CSS",
-              "route",
+              "over-engineering",
+              "build.yaml",
               "mengurangi testabilitas",
-              "migrasi"
+              "CPU-bound"
             ],
             "a": 2,
             "explain": "Hindari global berlebih."
@@ -3029,8 +3029,8 @@ const CONTENT_DART = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "benar",
+              "waktu"
             ],
             "a": 1,
             "explain": "Komposisi fleksibel."
@@ -3039,10 +3039,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Pola berlebihan berisiko",
             "options": [
-              "CSS",
+              "{1,2,3}",
               "over-engineering",
-              "route",
-              "migrasi"
+              "const/List.unmodifiable",
+              "implements"
             ],
             "a": 1,
             "explain": "Gunakan seperlunya."
@@ -3052,9 +3052,9 @@ const CONTENT_DART = [
             "q": "Dokumentasi pola membantu tim",
             "options": [
               "tidak",
-              "CSS",
+              "pub",
               "ya",
-              "route"
+              "..."
             ],
             "a": 2,
             "explain": "Dokumentasi penting."
@@ -3070,10 +3070,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Mocking dependency memakai",
             "options": [
-              "CSS",
-              "route",
+              "code generation",
+              "data besar",
               "mocktail/mockito",
-              "migrasi"
+              "package lokal"
             ],
             "a": 2,
             "explain": "Library mock."
@@ -3082,9 +3082,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Golden file test membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "extends",
+              "elemen koleksi",
+              "banyak nilai",
               "regresi visual"
             ],
             "a": 3,
@@ -3094,10 +3094,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Integration test menguji",
             "options": [
-              "CSS",
-              "route",
+              "<T extends Batas>",
+              "operator",
               "alur penuh",
-              "migrasi"
+              "dengan map/where"
             ],
             "a": 2,
             "explain": "Integrasi end-to-end."
@@ -3106,9 +3106,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Test async perlu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "/// komentar",
+              "mengurangi alokasi",
+              "versi constraint",
               "await/pump"
             ],
             "a": 3,
@@ -3118,10 +3118,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Coverage membantu",
             "options": [
-              "CSS",
-              "route",
+              "map['key']",
+              "required",
               "cakupan",
-              "migrasi"
+              "_ (garis bawah)"
             ],
             "a": 2,
             "explain": "Coverage mengukur."
@@ -3131,8 +3131,8 @@ const CONTENT_DART = [
             "q": "Test deterministik penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "wajib",
+              "var",
               "ya"
             ],
             "a": 3,
@@ -3144,8 +3144,8 @@ const CONTENT_DART = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "pubspec.yaml",
+              "pub.dev"
             ],
             "a": 1,
             "explain": "CI otomasi."
@@ -3154,9 +3154,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Test performa bisa menambah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "where(...)",
+              "{}",
+              "Nama() {}",
               "waktu"
             ],
             "a": 3,
@@ -3167,8 +3167,8 @@ const CONTENT_DART = [
             "q": "Menghindari flaky test",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "int Function(int)",
+              "super(...)",
               "penting"
             ],
             "a": 3,
@@ -3180,8 +3180,8 @@ const CONTENT_DART = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "pub",
+              "..."
             ],
             "a": 1,
             "explain": "Dokumentasi jelas."
@@ -3197,10 +3197,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Publikasi package memakai",
             "options": [
-              "CSS",
+              "menjalankan fungsi di isolate",
               "dart pub publish",
-              "route",
-              "migrasi"
+              "tidak diedit manual",
+              "Tipe yang dapat berisi null dan yang tidak"
             ],
             "a": 1,
             "explain": "pub publish."
@@ -3209,9 +3209,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Sebelum publish wajib",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "operator",
+              "dengan map/where",
+              "ditangani",
               "dry-run"
             ],
             "a": 3,
@@ -3221,10 +3221,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Berkas wajib package",
             "options": [
-              "CSS",
-              "route",
+              "extends",
+              "elemen koleksi",
               "pubspec.yaml",
-              "migrasi"
+              "banyak nilai"
             ],
             "a": 2,
             "explain": "pubspec wajib."
@@ -3234,8 +3234,8 @@ const CONTENT_DART = [
             "q": "Menjaga versi semver",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "data besar",
+              "package lokal",
               "penting"
             ],
             "a": 3,
@@ -3245,10 +3245,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Dokumentasi API memakai",
             "options": [
-              "CSS",
-              "route",
+              "pewarisan berlebihan",
+              "keamanan data",
               "/// komentar",
-              "migrasi"
+              "stream cepat"
             ],
             "a": 2,
             "explain": "Komentar dokumentasi."
@@ -3258,8 +3258,8 @@ const CONTENT_DART = [
             "q": "Contoh penggunaan membantu",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "() {}",
+              "GC",
               "ya"
             ],
             "a": 3,
@@ -3270,9 +3270,9 @@ const CONTENT_DART = [
             "q": "License wajib",
             "options": [
               "tidak",
-              "CSS",
+              "pub",
               "ya",
-              "route"
+              "..."
             ],
             "a": 2,
             "explain": "Sertakan lisensi."
@@ -3282,8 +3282,8 @@ const CONTENT_DART = [
             "q": "Changelog membantu pengguna",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "int",
+              "+",
               "ya"
             ],
             "a": 3,
@@ -3295,8 +3295,8 @@ const CONTENT_DART = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "with",
+              "di loop"
             ],
             "a": 0,
             "explain": "Minimalkan dependency."
@@ -3307,8 +3307,8 @@ const CONTENT_DART = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "StringBuffer",
+              "pengguna"
             ],
             "a": 0,
             "explain": "Ikuti pedoman."
@@ -3325,9 +3325,9 @@ const CONTENT_DART = [
             "q": "Build_runner menjalankan",
             "options": [
               "code generation",
-              "CSS",
-              "route",
-              "migrasi"
+              ".trim()",
+              "diberi null",
+              "list.add(x)"
             ],
             "a": 0,
             "explain": "build_runner menjalankan generator."
@@ -3336,10 +3336,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Package json_serializable menghasilkan",
             "options": [
-              "CSS",
-              "route",
+              "try/catch pada await",
+              "parsing bertingkat",
               "fromJson/toJson",
-              "migrasi"
+              "member asli"
             ],
             "a": 2,
             "explain": "Generator JSON."
@@ -3348,10 +3348,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Annotations menandai",
             "options": [
-              "CSS",
-              "route",
+              "dart pub publish",
+              "switch dengan pattern",
               "kode untuk diproses generator",
-              "migrasi"
+              "dependency dan metadata"
             ],
             "a": 2,
             "explain": "Anotasi memicu codegen."
@@ -3360,9 +3360,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "freezed membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "beberapa cara membuat objek",
+              "beberapa Future paralel",
+              "method pada tipe ada",
               "immutable data class"
             ],
             "a": 3,
@@ -3373,9 +3373,9 @@ const CONTENT_DART = [
             "q": "Codegen perlu dijalankan ulang saat",
             "options": [
               "model berubah",
-              "CSS",
-              "route",
-              "migrasi"
+              "menyembunyikan bug",
+              "kode manual",
+              "method biasa"
             ],
             "a": 0,
             "explain": "Regenerasi setelah perubahan."
@@ -3384,10 +3384,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Metaprogramming statis mengurangi",
             "options": [
-              "CSS",
-              "route",
+              "isolasi test",
+              "lookupFunction",
               "kode boilerplate",
-              "migrasi"
+              "extension/wrapper"
             ],
             "a": 2,
             "explain": "Codegen mengurangi boilerplate."
@@ -3396,9 +3396,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Kode hasil generate sebaiknya",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "menangkap tipe spesifik",
+              "perilaku lintas tipe",
+              "class, bukan instance",
               "tidak diedit manual"
             ],
             "a": 3,
@@ -3409,8 +3409,8 @@ const CONTENT_DART = [
             "q": "Menjaga versi generator penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "bool",
+              "?",
               "ya"
             ],
             "a": 3,
@@ -3420,9 +3420,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Build konfigurasi diatur di",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "jsonEncode",
+              "berkala",
+              "konsistensi",
               "build.yaml"
             ],
             "a": 3,
@@ -3432,10 +3432,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Memahami output generator membantu",
             "options": [
-              "CSS",
-              "route",
+              "API metaprogramming",
+              "wajib",
               "debugging",
-              "migrasi"
+              "over-engineering"
             ],
             "a": 2,
             "explain": "Pahami hasil generate."
@@ -3451,10 +3451,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Compiler AOT menghasilkan",
             "options": [
-              "CSS",
+              "mereduksi koleksi ke satu nilai",
               "kode native cepat",
-              "route",
-              "migrasi"
+              "memindahkan codegen ke compile-time",
+              "Nilai bertipe T yang tersedia setelah operasi asynchronous selesai"
             ],
             "a": 1,
             "explain": "AOT untuk produksi."
@@ -3464,9 +3464,9 @@ const CONTENT_DART = [
             "q": "JIT cocok untuk",
             "options": [
               "pengembangan dengan hot reload",
-              "CSS",
-              "route",
-              "migrasi"
+              "kondisi ? a : b",
+              "Error untuk bug program, Exception untuk kondisi",
+              "tipe non-null semua objek"
             ],
             "a": 0,
             "explain": "JIT untuk dev."
@@ -3476,9 +3476,9 @@ const CONTENT_DART = [
             "q": "Alokasi berlebih memengaruhi",
             "options": [
               "GC",
-              "CSS",
-              "route",
-              "migrasi"
+              "=>",
+              "int",
+              "+"
             ],
             "a": 0,
             "explain": "Alokasi menambah beban."
@@ -3488,9 +3488,9 @@ const CONTENT_DART = [
             "q": "const membantu",
             "options": [
               "mengurangi alokasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "kode boilerplate",
+              "event loop",
+              "keamanan"
             ],
             "a": 0,
             "explain": "Const menghindari objek baru."
@@ -3500,9 +3500,9 @@ const CONTENT_DART = [
             "q": "Lazy collection membantu",
             "options": [
               "data besar",
-              "CSS",
-              "route",
-              "migrasi"
+              "model berubah",
+              "StringBuffer",
+              "pengguna"
             ],
             "a": 0,
             "explain": "Lazy menunda evaluasi."
@@ -3511,10 +3511,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Profiling memakai",
             "options": [
-              "CSS",
-              "route",
+              "menambah kompleksitas",
+              "[...a, ...b]",
               "DevTools",
-              "migrasi"
+              "banyak listener"
             ],
             "a": 2,
             "explain": "DevTools menyediakan profil."
@@ -3524,8 +3524,8 @@ const CONTENT_DART = [
             "q": "Mengukur sebelum optimasi",
             "options": [
               "tidak perlu",
-              "CSS",
-              "route",
+              "listener",
+              "performa",
               "wajib"
             ],
             "a": 3,
@@ -3535,10 +3535,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "String concatenation di loop sebaiknya",
             "options": [
-              "CSS",
+              "tipe nama() {}",
               "StringBuffer",
-              "route",
-              "migrasi"
+              "bisa disimpan/dikirim",
+              "error Future"
             ],
             "a": 1,
             "explain": "StringBuffer efisien."
@@ -3548,9 +3548,9 @@ const CONTENT_DART = [
             "q": "Async IO tidak memblokir",
             "options": [
               "event loop",
-              "CSS",
-              "route",
-              "migrasi"
+              "const/List.unmodifiable",
+              "() {}",
+              "implements"
             ],
             "a": 0,
             "explain": "IO async non-blocking."
@@ -3559,10 +3559,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Isolate membantu pekerjaan",
             "options": [
-              "CSS",
+              "fromJson/toJson",
               "CPU-bound",
-              "route",
-              "migrasi"
+              "DevTools",
+              "kompatibilitas"
             ],
             "a": 1,
             "explain": "Isolate untuk CPU berat."
@@ -3578,10 +3578,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Package dipublikasikan ke",
             "options": [
-              "CSS",
-              "route",
+              "extends",
+              "elemen koleksi",
               "pub.dev",
-              "migrasi"
+              "banyak nilai"
             ],
             "a": 2,
             "explain": "pub.dev registry."
@@ -3590,9 +3590,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Dependency di pubspec berisi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "dengan map/where",
+              "ditangani",
+              "memboroskan resource",
               "versi constraint"
             ],
             "a": 3,
@@ -3602,10 +3602,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "path dependency dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "versi constraint",
+              "pemeliharaan",
               "package lokal",
-              "migrasi"
+              ".dart"
             ],
             "a": 2,
             "explain": "path untuk lokal."
@@ -3615,9 +3615,9 @@ const CONTENT_DART = [
             "q": "git dependency memakai",
             "options": [
               "git URL",
-              "CSS",
-              "route",
-              "migrasi"
+              "dart run file.dart",
+              "dart test",
+              "[...a, ...b]"
             ],
             "a": 0,
             "explain": "git untuk repo langsung."
@@ -3626,10 +3626,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Menulis package perlu",
             "options": [
-              "CSS",
-              "route",
+              "mereduksi koleksi ke satu nilai",
+              "memindahkan codegen ke compile-time",
               "API publik jelas",
-              "migrasi"
+              "kode native cepat"
             ],
             "a": 2,
             "explain": "API jelas penting."
@@ -3638,10 +3638,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Semantic versioning membantu",
             "options": [
-              "CSS",
+              "implements",
               "kompatibilitas",
-              "route",
-              "migrasi"
+              "kondisi benar",
+              "chaining Future"
             ],
             "a": 1,
             "explain": "Semver menjaga kompatibilitas."
@@ -3651,9 +3651,9 @@ const CONTENT_DART = [
             "q": "Menguji package penting",
             "options": [
               "tidak",
-              "CSS",
+              ".dart",
               "ya",
-              "route"
+              "${}"
             ],
             "a": 2,
             "explain": "Uji package."
@@ -3662,10 +3662,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Dokumentasi package membantu",
             "options": [
-              "CSS",
-              "route",
+              "package lokal",
+              "pengujian",
               "pengguna",
-              "migrasi"
+              "main()"
             ],
             "a": 2,
             "explain": "Dokumentasi memudahkan."
@@ -3675,9 +3675,9 @@ const CONTENT_DART = [
             "q": "Menghindari dependency berlebih",
             "options": [
               "tidak",
-              "CSS",
+              "CPU-bound",
               "penting",
-              "route"
+              "switch exhaustif"
             ],
             "a": 2,
             "explain": "Minimalkan dependency."
@@ -3686,10 +3686,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Menjaga dependency mutakhir",
             "options": [
-              "CSS",
-              "route",
+              "class Nama {}",
+              "@override",
               "keamanan",
-              "migrasi"
+              "menunggu Future"
             ],
             "a": 2,
             "explain": "Update berkala."
@@ -3706,9 +3706,9 @@ const CONTENT_DART = [
             "q": "Sealed class mendukung",
             "options": [
               "switch exhaustif",
-              "CSS",
-              "route",
-              "migrasi"
+              ".toUpperCase()",
+              "{1,2,3}",
+              "const/List.unmodifiable"
             ],
             "a": 0,
             "explain": "Sealed memudahkan pattern matching."
@@ -3718,9 +3718,9 @@ const CONTENT_DART = [
             "q": "Pattern matching memakai",
             "options": [
               "switch dengan pattern",
-              "CSS",
-              "route",
-              "migrasi"
+              "tujuan aliran data",
+              "tidak bisa diinstansiasi sendiri",
+              "elemen pertama cocok"
             ],
             "a": 0,
             "explain": "Pattern matching di switch."
@@ -3729,10 +3729,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Immutable model membantu",
             "options": [
-              "CSS",
-              "route",
+              "try/catch pada await",
+              "parsing bertingkat",
               "prediktabilitas",
-              "migrasi"
+              "member asli"
             ],
             "a": 2,
             "explain": "Immutable memudahkan reasoning."
@@ -3741,10 +3741,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "copyWith memudahkan",
             "options": [
-              "CSS",
-              "route",
+              "nilai awal berbeda tipe",
+              "memanggil library native",
               "variasi objek immutable",
-              "migrasi"
+              "pengembangan dengan hot reload"
             ],
             "a": 2,
             "explain": "copyWith membuat salinan berubah."
@@ -3753,10 +3753,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Nama jelas membantu",
             "options": [
-              "CSS",
+              "bisa memengaruhi",
               "pemeliharaan",
-              "route",
-              "migrasi"
+              "dipertimbangkan",
+              "constructor/provider"
             ],
             "a": 1,
             "explain": "Nama deskriptif."
@@ -3765,10 +3765,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Memisahkan domain dan IO membantu",
             "options": [
-              "CSS",
+              "null",
               "pengujian",
-              "route",
-              "migrasi"
+              ".trim()",
+              "diberi null"
             ],
             "a": 1,
             "explain": "Pemisahan memudahkan test."
@@ -3778,9 +3778,9 @@ const CONTENT_DART = [
             "q": "Linter (dart analyze) membantu",
             "options": [
               "kualitas kode",
-              "CSS",
-              "route",
-              "migrasi"
+              "var/final tanpa tipe",
+              ".replaceAll()",
+              "inisialisasi tertunda"
             ],
             "a": 0,
             "explain": "Analyzer menemukan masalah."
@@ -3789,9 +3789,9 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "dart format menyeragamkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".toString()",
+              "mengelola langganan",
+              "menghindari duplikasi",
               "format kode"
             ],
             "a": 3,
@@ -3801,10 +3801,10 @@ const CONTENT_DART = [
             "type": "mc",
             "q": "Menghindari kode duplikat membantu",
             "options": [
-              "CSS",
+              "jsonDecode",
               "perawatan",
-              "route",
-              "migrasi"
+              "kontrol aliran",
+              "utility global"
             ],
             "a": 1,
             "explain": "DRY."
@@ -3814,9 +3814,9 @@ const CONTENT_DART = [
             "q": "Dokumentasi API memakai",
             "options": [
               "/// komentar",
-              "CSS",
-              "route",
-              "migrasi"
+              "baru/eksperimental",
+              "aksesibilitas",
+              "mengurangi testabilitas"
             ],
             "a": 0,
             "explain": "Komentar dokumentasi."

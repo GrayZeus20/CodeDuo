@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_PYTHON = [
-{
+  {
     "id": "python",
     "name": "Python",
     "icon": "🐍",
@@ -36,7 +36,7 @@ const CONTENT_PYTHON = [
             "options": [
               "mudah dibaca",
               "penuh simbol",
-              "CSS",
+              ".strip()",
               "SQL"
             ],
             "a": 0,
@@ -61,7 +61,7 @@ const CONTENT_PYTHON = [
               "python file.py",
               "node file.py",
               "php file.py",
-              "CSS"
+              "python / ipython"
             ],
             "a": 0,
             "explain": "Perintah python menjalankan."
@@ -72,7 +72,7 @@ const CONTENT_PYTHON = [
             "options": [
               "irb",
               "node",
-              "CSS",
+              "python file.py",
               "python / ipython"
             ],
             "a": 3,
@@ -83,9 +83,9 @@ const CONTENT_PYTHON = [
             "q": "Python adalah bahasa",
             "options": [
               "compiled statis",
-              "CSS",
+              "& | ^ ~",
               "interpreted dan dinamis",
-              "route"
+              "argumen posisional variabel"
             ],
             "a": 2,
             "explain": "Python diinterpretasi, bertipe dinamis."
@@ -109,7 +109,7 @@ const CONTENT_PYTHON = [
               "python venv new",
               "pip venv",
               "python -m venv",
-              "CSS"
+              "nama = nilai"
             ],
             "a": 2,
             "explain": "venv membuat environment."
@@ -121,7 +121,7 @@ const CONTENT_PYTHON = [
               "//",
               "#",
               "--",
-              "CSS"
+              "is"
             ],
             "a": 1,
             "explain": "Python memakai #."
@@ -131,9 +131,9 @@ const CONTENT_PYTHON = [
             "q": "Python banyak dipakai untuk",
             "options": [
               "otomasi, web, dan data science",
-              "CSS",
-              "route",
-              "migrasi"
+              "a if cond else b",
+              "mengubah variabel luar",
+              "beberapa coroutine paralel"
             ],
             "a": 0,
             "explain": "Python serbaguna."
@@ -222,8 +222,8 @@ const CONTENT_PYTHON = [
             "q": "Mengubah tipe memakai",
             "options": [
               "cast()",
-              "CSS",
-              "route",
+              "input()",
+              ".strip()",
               "int()/str()/float()"
             ],
             "a": 3,
@@ -234,9 +234,9 @@ const CONTENT_PYTHON = [
             "q": "Type hint tersedia via",
             "options": [
               "anotasi tipe",
-              "CSS",
-              "route",
-              "migrasi"
+              "generator",
+              ".strptime()",
+              "konstruktor"
             ],
             "a": 0,
             "explain": "Python mendukung type hint."
@@ -247,8 +247,8 @@ const CONTENT_PYTHON = [
             "options": [
               "type()/isinstance()",
               "typeof",
-              "CSS",
-              "route"
+              "dokumentasi/alat",
+              "Django/Flask/FastAPI"
             ],
             "a": 0,
             "explain": "type/isinstance memeriksa tipe."
@@ -258,9 +258,9 @@ const CONTENT_PYTHON = [
             "q": "String immutable",
             "options": [
               "tidak",
-              "CSS",
+              "nilai",
               "ya",
-              "route"
+              "bool"
             ],
             "a": 2,
             "explain": "String Python tidak berubah."
@@ -279,7 +279,7 @@ const CONTENT_PYTHON = [
               "puts",
               "echo",
               "print()",
-              "CSS"
+              "'a'"
             ],
             "a": 2,
             "explain": "Python memakai print()."
@@ -291,7 +291,7 @@ const CONTENT_PYTHON = [
               "input()",
               "gets()",
               "scan()",
-              "CSS"
+              "remove()/pop()"
             ],
             "a": 0,
             "explain": "input() membaca input."
@@ -301,8 +301,8 @@ const CONTENT_PYTHON = [
             "q": "input() mengembalikan",
             "options": [
               "int",
-              "CSS",
-              "route",
+              ".strftime()",
+              "class Nama:",
               "string"
             ],
             "a": 3,
@@ -313,9 +313,9 @@ const CONTENT_PYTHON = [
             "q": "Memformat output memakai",
             "options": [
               "f-string/format",
-              "CSS",
-              "route",
-              "migrasi"
+              "and/or/not",
+              ".upper()",
+              "s[1:3]"
             ],
             "a": 0,
             "explain": "Python memakai f-string."
@@ -325,9 +325,9 @@ const CONTENT_PYTHON = [
             "q": "Mengonversi input ke int memakai",
             "options": [
               "input().int",
-              "CSS",
+              "sinkronisasi",
               "int(input())",
-              "route"
+              "eksplorasi"
             ],
             "a": 2,
             "explain": "Konversi eksplisit."
@@ -337,9 +337,9 @@ const CONTENT_PYTHON = [
             "q": "Menulis ke stderr memakai",
             "options": [
               "sys.stderr",
-              "CSS",
-              "route",
-              "migrasi"
+              "re.sub",
+              "generator",
+              ".strptime()"
             ],
             "a": 0,
             "explain": "sys.stderr untuk error."
@@ -349,9 +349,9 @@ const CONTENT_PYTHON = [
             "q": "print default menambah",
             "options": [
               "newline",
-              "CSS",
-              "route",
-              "migrasi"
+              "performa",
+              "perawatan",
+              "poetry/uv"
             ],
             "a": 0,
             "explain": "print menambah baris baru."
@@ -361,9 +361,9 @@ const CONTENT_PYTHON = [
             "q": "Mengatur separator print memakai",
             "options": [
               "sep=",
-              "CSS",
-              "route",
-              "migrasi"
+              "re.findall",
+              "memori",
+              "instance"
             ],
             "a": 0,
             "explain": "sep mengatur pemisah."
@@ -372,10 +372,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Mengatur akhir print memakai",
             "options": [
-              "CSS",
-              "route",
+              ".upper()",
+              "s[1:3]",
               "end=",
-              "migrasi"
+              "{'a': 1}"
             ],
             "a": 2,
             "explain": "end mengatur akhir."
@@ -384,9 +384,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Keluar program memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "build",
+              "safe_load",
+              "perhitungan mahal",
               "sys.exit()"
             ],
             "a": 3,
@@ -405,7 +405,7 @@ const CONTENT_PYTHON = [
             "options": [
               "/",
               "%",
-              "CSS",
+              "re",
               "//"
             ],
             "a": 3,
@@ -417,7 +417,7 @@ const CONTENT_PYTHON = [
             "options": [
               "//",
               "mod",
-              "CSS",
+              "is",
               "%"
             ],
             "a": 3,
@@ -430,7 +430,7 @@ const CONTENT_PYTHON = [
               "^",
               "**",
               "pow only",
-              "CSS"
+              "@nama"
             ],
             "a": 1,
             "explain": "Python memakai **."
@@ -441,8 +441,8 @@ const CONTENT_PYTHON = [
             "options": [
               "==/!=/</>",
               "===",
-              "CSS",
-              "route"
+              "wajib",
+              "skalabilitas"
             ],
             "a": 0,
             "explain": "Python memakai ==."
@@ -453,8 +453,8 @@ const CONTENT_PYTHON = [
             "options": [
               "and/or/not",
               "&&/||/!",
-              "CSS",
-              "route"
+              "(?P<name>...)",
+              "kombinasi/permutasi"
             ],
             "a": 0,
             "explain": "Python memakai and/or/not."
@@ -464,8 +464,8 @@ const CONTENT_PYTHON = [
             "q": "Membership memakai",
             "options": [
               "contains",
-              "CSS",
-              "route",
+              "str",
+              "**",
               "in"
             ],
             "a": 3,
@@ -477,8 +477,8 @@ const CONTENT_PYTHON = [
             "options": [
               "===",
               "is",
-              "CSS",
-              "route"
+              "bool",
+              "end="
             ],
             "a": 1,
             "explain": "is membandingkan identitas."
@@ -488,9 +488,9 @@ const CONTENT_PYTHON = [
             "q": "Bitwise memakai",
             "options": [
               "& | ^ ~",
-              "CSS",
-              "route",
-              "migrasi"
+              "if __name__ == '__main__'",
+              "tidak ada exception",
+              "Membentuk list dari iterable dengan ekspresi ringkas"
             ],
             "a": 0,
             "explain": "Python mendukung bitwise."
@@ -499,10 +499,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Assignment majemuk memakai",
             "options": [
-              "CSS",
-              "route",
+              "reproduksibilitas",
+              "validasi path",
               "+=/-=/...",
-              "migrasi"
+              "akses data"
             ],
             "a": 2,
             "explain": "Python mendukung +=."
@@ -514,7 +514,7 @@ const CONTENT_PYTHON = [
               "->",
               ":=",
               "=>",
-              "CSS"
+              "lazy"
             ],
             "a": 1,
             "explain": "Python 3.8+ memakai :=."
@@ -530,9 +530,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Interpolasi modern memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "dependency",
+              "decorator factory",
+              "kombinasi cartesian",
               "f-string"
             ],
             "a": 3,
@@ -545,7 +545,7 @@ const CONTENT_PYTHON = [
               "&&",
               "concat",
               "+",
-              "CSS"
+              "in"
             ],
             "a": 2,
             "explain": "Operator + menggabungkan."
@@ -556,7 +556,7 @@ const CONTENT_PYTHON = [
             "options": [
               ".upper",
               ".big()",
-              "CSS",
+              "pembersihan",
               ".upper()"
             ],
             "a": 3,
@@ -569,7 +569,7 @@ const CONTENT_PYTHON = [
               ".trim()",
               ".cut()",
               ".strip()",
-              "CSS"
+              "def"
             ],
             "a": 2,
             "explain": "strip memangkas."
@@ -581,7 +581,7 @@ const CONTENT_PYTHON = [
               ".replace()",
               ".gsub()",
               ".swap()",
-              "CSS"
+              "newline"
             ],
             "a": 0,
             "explain": "replace mengganti."
@@ -593,7 +593,7 @@ const CONTENT_PYTHON = [
               ".explode()",
               ".split()",
               ".divide()",
-              "CSS"
+              "exception"
             ],
             "a": 1,
             "explain": "split memecah."
@@ -603,8 +603,8 @@ const CONTENT_PYTHON = [
             "q": "Menggabungkan list string memakai",
             "options": [
               ".concat()",
-              "CSS",
-              "route",
+              "len()",
+              "list[1:3]",
               "\"\".join(list)"
             ],
             "a": 3,
@@ -617,7 +617,7 @@ const CONTENT_PYTHON = [
               ".length",
               "len()",
               ".size",
-              "CSS"
+              "RCE"
             ],
             "a": 1,
             "explain": "len() memberi panjang."
@@ -627,9 +627,9 @@ const CONTENT_PYTHON = [
             "q": "String indexing memakai",
             "options": [
               "s.at(0)",
-              "CSS",
+              "pengujian",
               "s[0]",
-              "route"
+              "coroutine"
             ],
             "a": 2,
             "explain": "Indexing dengan []."
@@ -639,9 +639,9 @@ const CONTENT_PYTHON = [
             "q": "Slicing memakai",
             "options": [
               "s.sub(1,3)",
-              "CSS",
+              "re.sub",
               "s[1:3]",
-              "route"
+              "generator"
             ],
             "a": 2,
             "explain": "Slicing memakai [start:end]."
@@ -660,7 +660,7 @@ const CONTENT_PYTHON = [
               "(1,2,3)",
               "[1,2,3]",
               "{1,2,3}",
-              "CSS"
+              "sebagian argumen"
             ],
             "a": 1,
             "explain": "List memakai []."
@@ -671,8 +671,8 @@ const CONTENT_PYTHON = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "pip",
+              "//"
             ],
             "a": 1,
             "explain": "List dapat diubah."
@@ -684,7 +684,7 @@ const CONTENT_PYTHON = [
               "(1,2,3)",
               "[1,2,3]",
               "{1,2,3}",
-              "CSS"
+              "{k:v for ...}"
             ],
             "a": 0,
             "explain": "Tuple memakai ()."
@@ -694,9 +694,9 @@ const CONTENT_PYTHON = [
             "q": "Tuple immutable",
             "options": [
               "tidak",
-              "CSS",
+              "build",
               "ya",
-              "route"
+              "#"
             ],
             "a": 2,
             "explain": "Tuple tidak berubah."
@@ -707,7 +707,7 @@ const CONTENT_PYTHON = [
             "options": [
               "push()",
               ".add()",
-              "CSS",
+              "resource otomatis",
               "append()"
             ],
             "a": 3,
@@ -718,9 +718,9 @@ const CONTENT_PYTHON = [
             "q": "Mengakses list memakai",
             "options": [
               "list.get(0)",
-              "CSS",
+              "input()",
               "list[0]",
-              "route"
+              "end="
             ],
             "a": 2,
             "explain": "List diakses dengan []."
@@ -732,7 +732,7 @@ const CONTENT_PYTHON = [
               ".length",
               "len()",
               ".size",
-              "CSS"
+              "generator"
             ],
             "a": 1,
             "explain": "len() memberi panjang."
@@ -742,9 +742,9 @@ const CONTENT_PYTHON = [
             "q": "Slicing memakai",
             "options": [
               "list.sub",
-              "CSS",
+              "eksplorasi",
               "list[1:3]",
-              "route"
+              "black/ruff format"
             ],
             "a": 2,
             "explain": "Slicing list."
@@ -754,8 +754,8 @@ const CONTENT_PYTHON = [
             "q": "Menghapus elemen memakai",
             "options": [
               "delete only",
-              "CSS",
-              "route",
+              "coroutine",
+              "sinkronisasi",
               "remove()/pop()"
             ],
             "a": 3,
@@ -765,10 +765,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "List comprehension memakai",
             "options": [
-              "CSS",
+              "context manager dari generator",
               "[x for x in ...]",
-              "route",
-              "migrasi"
+              "URL ke handler",
+              "otomasi, web, dan data science"
             ],
             "a": 1,
             "explain": "Python menyediakan comprehension."
@@ -787,7 +787,7 @@ const CONTENT_PYTHON = [
               "{'a': 1}",
               "[a:1]",
               "(a:1)",
-              "CSS"
+              "iterable"
             ],
             "a": 0,
             "explain": "Dict memakai {} dengan key-value."
@@ -798,8 +798,8 @@ const CONTENT_PYTHON = [
             "options": [
               "d[k] always",
               "d['k'] / d.get('k')",
-              "CSS",
-              "route"
+              "boilerplate",
+              "request"
             ],
             "a": 1,
             "explain": "Dict diakses dengan get/[]."
@@ -810,8 +810,8 @@ const CONTENT_PYTHON = [
             "options": [
               "d.add(k,v)",
               "d['k'] = v",
-              "CSS",
-              "route"
+              "objek iterable",
+              "return"
             ],
             "a": 1,
             "explain": "Assignment menambah key."
@@ -822,7 +822,7 @@ const CONTENT_PYTHON = [
             "options": [
               "[1,2,3]",
               "(1,2,3)",
-              "CSS",
+              "black/ruff",
               "{1,2,3}"
             ],
             "a": 3,
@@ -832,10 +832,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Set menghapus",
             "options": [
-              "CSS",
+              "string",
               "duplikat",
-              "route",
-              "migrasi"
+              "sys.exit()",
+              ".replace()"
             ],
             "a": 1,
             "explain": "Set unik."
@@ -844,10 +844,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Iterasi dict memakai",
             "options": [
-              "CSS",
-              "route",
+              "Menandai struktur blok kode",
+              "nama = nilai",
               "for k in d",
-              "migrasi"
+              "menyebut nama parameter"
             ],
             "a": 2,
             "explain": "Iterasi memberi key."
@@ -856,10 +856,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "items() pada dict memberi",
             "options": [
-              "CSS",
-              "route",
+              "dokumentasi/alat",
+              "Django/Flask/FastAPI",
               "pasangan key-value",
-              "migrasi"
+              "int()/str()/float()"
             ],
             "a": 2,
             "explain": "items mengembalikan pasangan."
@@ -868,10 +868,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Dict comprehension memakai",
             "options": [
-              "CSS",
+              "memori",
               "{k:v for ...}",
-              "route",
-              "migrasi"
+              "selisih waktu",
+              "instance"
             ],
             "a": 1,
             "explain": "Dict comprehension."
@@ -880,10 +880,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Operasi set memakai",
             "options": [
-              "CSS",
+              "for k in d",
               "| & -",
-              "route",
-              "migrasi"
+              "from mod import f",
+              "{x for x in ...}"
             ],
             "a": 1,
             "explain": "Operasi himpunan."
@@ -892,9 +892,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Key dict harus",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "datetime.now()",
+              "pencatatan",
+              "self/cls",
               "hashable"
             ],
             "a": 3,
@@ -913,7 +913,7 @@ const CONTENT_PYTHON = [
             "options": [
               "if/elseif",
               "switch",
-              "CSS",
+              "ruff/flake8",
               "if/elif/else"
             ],
             "a": 3,
@@ -923,10 +923,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Indentasi berfungsi sebagai",
             "options": [
-              "CSS",
-              "route",
+              "urutan angka",
+              "dependency",
               "penanda blok",
-              "migrasi"
+              "decorator factory"
             ],
             "a": 2,
             "explain": "Python memakai indentasi."
@@ -935,10 +935,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Perulangan for mengiterasi",
             "options": [
-              "CSS",
-              "route",
+              "konstanta",
+              "float",
               "objek iterable",
-              "migrasi"
+              "print()"
             ],
             "a": 2,
             "explain": "for mengiterasi iterable."
@@ -947,10 +947,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "range() menghasilkan",
             "options": [
-              "CSS",
+              "berurutan",
               "urutan angka",
-              "route",
-              "migrasi"
+              "pembersihan",
+              "re.search/match"
             ],
             "a": 1,
             "explain": "range membuat urutan."
@@ -959,10 +959,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "while mengulang selama",
             "options": [
-              "CSS",
+              "getter",
               "kondisi benar",
-              "route",
-              "migrasi"
+              "exception",
+              "unittest"
             ],
             "a": 1,
             "explain": "while bergantung kondisi."
@@ -971,10 +971,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "break/continue berlaku",
             "options": [
-              "CSS",
-              "route",
+              "int",
+              "newline",
               "di loop",
-              "migrasi"
+              "==/!=/</>"
             ],
             "a": 2,
             "explain": "Mengatur loop."
@@ -984,9 +984,9 @@ const CONTENT_PYTHON = [
             "q": "enumerate memberi",
             "options": [
               "index dan nilai",
-              "CSS",
-              "route",
-              "migrasi"
+              "urutan tak terbatas",
+              "GIL untuk CPU-bound",
+              "interpreted dan dinamis"
             ],
             "a": 0,
             "explain": "enumerate pasangan index-nilai."
@@ -996,9 +996,9 @@ const CONTENT_PYTHON = [
             "q": "zip menggabungkan",
             "options": [
               "dua iterable",
-              "CSS",
-              "route",
-              "migrasi"
+              "f-string",
+              "len()",
+              "list[1:3]"
             ],
             "a": 0,
             "explain": "zip memasangkan."
@@ -1008,9 +1008,9 @@ const CONTENT_PYTHON = [
             "q": "Ternary memakai",
             "options": [
               "a if cond else b",
-              "CSS",
-              "route",
-              "migrasi"
+              "argumen keyword variabel",
+              "context manager dari generator",
+              "URL ke handler"
             ],
             "a": 0,
             "explain": "Python memakai if-else ekspresi."
@@ -1020,9 +1020,9 @@ const CONTENT_PYTHON = [
             "q": "match (3.10+) memakai",
             "options": [
               "pattern matching",
-              "CSS",
-              "route",
-              "migrasi"
+              "komputasi numerik",
+              "pengujian",
+              "mypy/pyright"
             ],
             "a": 0,
             "explain": "Python mendukung match."
@@ -1041,7 +1041,7 @@ const CONTENT_PYTHON = [
               "def nama():",
               "function nama()",
               "fun nama()",
-              "CSS"
+              "pool eksekutor"
             ],
             "a": 0,
             "explain": "Python memakai def."
@@ -1051,8 +1051,8 @@ const CONTENT_PYTHON = [
             "q": "Nilai balik memakai",
             "options": [
               "yield only",
-              "CSS",
-              "route",
+              "re.search/match",
+              "lazy",
               "return"
             ],
             "a": 3,
@@ -1063,9 +1063,9 @@ const CONTENT_PYTHON = [
             "q": "Parameter default memakai",
             "options": [
               ":",
-              "CSS",
+              "is",
               "=",
-              "route"
+              "re"
             ],
             "a": 2,
             "explain": "Nilai default dengan =."
@@ -1074,10 +1074,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Keyword argument memungkinkan",
             "options": [
-              "CSS",
+              "interpreted dan dinamis",
               "menyebut nama parameter",
-              "route",
-              "migrasi"
+              "| & -",
+              "if __name__ == '__main__'"
             ],
             "a": 1,
             "explain": "Keyword argument memperjelas."
@@ -1086,10 +1086,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "*args menampung",
             "options": [
-              "CSS",
+              "fungsi yang membungkus fungsi lain",
               "argumen posisional variabel",
-              "route",
-              "migrasi"
+              "build dari sumber",
+              "Mengisolasi dependency antarproyek"
             ],
             "a": 1,
             "explain": "*args variadik posisional."
@@ -1098,10 +1098,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "**kwargs menampung",
             "options": [
-              "CSS",
-              "route",
+              "Guido van Rossum",
+              "for k in d",
               "argumen keyword variabel",
-              "migrasi"
+              "from mod import f"
             ],
             "a": 2,
             "explain": "**kwargs keyword variabel."
@@ -1110,10 +1110,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Lambda memakai",
             "options": [
-              "CSS",
+              "kondisi benar",
               "lambda x: expr",
-              "route",
-              "migrasi"
+              "isolasi dependency",
+              "logging/auth/caching"
             ],
             "a": 1,
             "explain": "Python memakai lambda."
@@ -1122,10 +1122,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Docstring memakai",
             "options": [
-              "CSS",
-              "route",
+              "mypy/pyright",
+              "coroutine",
               "triple quote",
-              "migrasi"
+              "sinkronisasi"
             ],
             "a": 2,
             "explain": "Docstring memakai \"\"\"."
@@ -1135,9 +1135,9 @@ const CONTENT_PYTHON = [
             "q": "Fungsi adalah first-class",
             "options": [
               "tidak",
-              "CSS",
+              "lazy",
               "ya",
-              "route"
+              "cls"
             ],
             "a": 2,
             "explain": "Fungsi dapat dipakai sebagai nilai."
@@ -1147,8 +1147,8 @@ const CONTENT_PYTHON = [
             "q": "Mutable default argument berisiko",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "def",
+              "float",
               "ya"
             ],
             "a": 3,
@@ -1168,7 +1168,7 @@ const CONTENT_PYTHON = [
               "import",
               "require",
               "use",
-              "CSS"
+              "kondisi benar"
             ],
             "a": 0,
             "explain": "Python memakai import."
@@ -1178,9 +1178,9 @@ const CONTENT_PYTHON = [
             "q": "Mengimpor fungsi memakai",
             "options": [
               "from mod import f",
-              "CSS",
-              "route",
-              "migrasi"
+              "otomasi, web, dan data science",
+              "a if cond else b",
+              "mengubah variabel luar"
             ],
             "a": 0,
             "explain": "From-import memilih nama."
@@ -1189,10 +1189,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Membuat module berarti",
             "options": [
-              "CSS",
+              "remove()/pop()",
               "membuat berkas .py",
-              "route",
-              "migrasi"
+              "{k:v for ...}",
+              "di loop"
             ],
             "a": 1,
             "explain": "Module adalah berkas .py."
@@ -1201,9 +1201,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Package Python berisi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "metadata/build",
+              "parameterized query",
+              "performa",
               "__init__.py/folder"
             ],
             "a": 3,
@@ -1213,10 +1213,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Menjalankan script sebagai main memakai",
             "options": [
-              "CSS",
+              "mengubah variabel luar",
               "if __name__ == '__main__'",
-              "route",
-              "migrasi"
+              "beberapa coroutine paralel",
+              "Guido van Rossum"
             ],
             "a": 1,
             "explain": "Guard main mencegah eksekusi saat import."
@@ -1225,9 +1225,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "pip install memasang",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "sep=",
+              "and/or/not",
+              ".upper()",
               "package"
             ],
             "a": 3,
@@ -1237,9 +1237,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "requirements.txt mencatat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kombinasi cartesian",
+              "suppress/teruskan",
+              "re.sub",
               "dependency"
             ],
             "a": 3,
@@ -1249,9 +1249,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "VIRTUAL_ENV penting untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "TypeVar/Generic",
+              "mudah dibaca",
+              "input()",
               "isolasi dependency"
             ],
             "a": 3,
@@ -1261,10 +1261,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Module standar untuk sistem memakai",
             "options": [
-              "CSS",
-              "route",
+              "pengujian",
+              "mypy/pyright",
               "os/sys",
-              "migrasi"
+              "coroutine"
             ],
             "a": 2,
             "explain": "os/sys standard library."
@@ -1274,8 +1274,8 @@ const CONTENT_PYTHON = [
             "q": "Menghindari import melingkar",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "dependency",
+              "decorator factory",
               "penting"
             ],
             "a": 3,
@@ -1293,9 +1293,9 @@ const CONTENT_PYTHON = [
             "q": "Decorator adalah",
             "options": [
               "fungsi yang membungkus fungsi lain",
-              "CSS",
-              "route",
-              "migrasi"
+              "a if cond else b",
+              "mengubah variabel luar",
+              "beberapa coroutine paralel"
             ],
             "a": 0,
             "explain": "Decorator membungkus fungsi."
@@ -1304,10 +1304,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Decorator diterapkan memakai",
             "options": [
-              "CSS",
-              "route",
+              "generator",
+              ".strptime()",
               "@nama",
-              "migrasi"
+              "konstruktor"
             ],
             "a": 2,
             "explain": "Python memakai @."
@@ -1316,10 +1316,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "functools.wraps menjaga",
             "options": [
-              "CSS",
-              "route",
+              "eksplorasi",
+              "black/ruff format",
               "metadata fungsi",
-              "migrasi"
+              "string"
             ],
             "a": 2,
             "explain": "wraps mempertahankan metadata."
@@ -1329,9 +1329,9 @@ const CONTENT_PYTHON = [
             "q": "Closure menangkap",
             "options": [
               "variabel lingkup",
-              "CSS",
-              "route",
-              "migrasi"
+              "logging/auth/caching",
+              "sebagian argumen",
+              "beberapa resource"
             ],
             "a": 0,
             "explain": "Closure menangkap variabel."
@@ -1341,9 +1341,9 @@ const CONTENT_PYTHON = [
             "q": "nonlocal dipakai untuk",
             "options": [
               "mengubah variabel luar",
-              "CSS",
-              "route",
-              "migrasi"
+              "argumen posisional variabel",
+              "iterable beda panjang",
+              "async dan validasi otomatis"
             ],
             "a": 0,
             "explain": "nonlocal mengubah variabel enclosing."
@@ -1353,9 +1353,9 @@ const CONTENT_PYTHON = [
             "q": "Decorator berparameter memerlukan",
             "options": [
               "decorator factory",
-              "CSS",
-              "route",
-              "migrasi"
+              "{k:v for ...}",
+              "di loop",
+              "triple quote"
             ],
             "a": 0,
             "explain": "Factory untuk argumen."
@@ -1365,9 +1365,9 @@ const CONTENT_PYTHON = [
             "q": "Decorator berguna untuk",
             "options": [
               "logging/auth/caching",
-              "CSS",
-              "route",
-              "migrasi"
+              "safe_load",
+              "perhitungan mahal",
+              "ketergantungan konkret"
             ],
             "a": 0,
             "explain": "Decorator untuk lintas-potong."
@@ -1376,9 +1376,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "functools.lru_cache membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "and/or/not",
+              ".upper()",
+              "s[1:3]",
               "cache hasil"
             ],
             "a": 3,
@@ -1388,10 +1388,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Decorator berlebihan dapat",
             "options": [
-              "CSS",
-              "route",
+              "class Nama:",
+              "resource otomatis",
               "menyulitkan debugging",
-              "migrasi"
+              "readline/iterasi"
             ],
             "a": 2,
             "explain": "Gunakan seperlunya."
@@ -1401,9 +1401,9 @@ const CONTENT_PYTHON = [
             "q": "Menulis decorator yang baik perlu",
             "options": [
               "test",
-              "CSS",
-              "route",
-              "migrasi"
+              "bool",
+              "input()",
+              "end="
             ],
             "a": 0,
             "explain": "Uji decorator."
@@ -1420,9 +1420,9 @@ const CONTENT_PYTHON = [
             "q": "itertools.chain menggabungkan",
             "options": [
               "iterable",
-              "CSS",
-              "route",
-              "migrasi"
+              "s[0]",
+              "remove()/pop()",
+              "{k:v for ...}"
             ],
             "a": 0,
             "explain": "chain menggabungkan."
@@ -1431,9 +1431,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "itertools.groupby mengelompokkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "metadata/build",
+              "parameterized query",
+              "performa",
               "berurutan"
             ],
             "a": 3,
@@ -1443,10 +1443,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "itertools.product menghasilkan",
             "options": [
-              "CSS",
+              "kondisi benar",
               "kombinasi cartesian",
-              "route",
-              "migrasi"
+              "lambda x: expr",
+              "isolasi dependency"
             ],
             "a": 1,
             "explain": "product cartesian."
@@ -1456,9 +1456,9 @@ const CONTENT_PYTHON = [
             "q": "itertools.islice memotong",
             "options": [
               "iterable",
-              "CSS",
-              "route",
-              "migrasi"
+              "mypy/pyright",
+              "coroutine",
+              "sinkronisasi"
             ],
             "a": 0,
             "explain": "islice memotong."
@@ -1468,9 +1468,9 @@ const CONTENT_PYTHON = [
             "q": "functools.partial membekukan",
             "options": [
               "sebagian argumen",
-              "CSS",
-              "route",
-              "migrasi"
+              "kombinasi cartesian",
+              "suppress/teruskan",
+              "re.sub"
             ],
             "a": 0,
             "explain": "partial membekukan argumen."
@@ -1480,9 +1480,9 @@ const CONTENT_PYTHON = [
             "q": "functools.reduce mengakumulasi",
             "options": [
               "nilai",
-              "CSS",
-              "route",
-              "migrasi"
+              "mudah dibaca",
+              "bool",
+              "input()"
             ],
             "a": 0,
             "explain": "reduce akumulasi."
@@ -1491,10 +1491,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "functools.total_ordering mengisi",
             "options": [
-              "CSS",
-              "route",
+              ".strftime()",
+              "class Nama:",
               "operasi perbandingan",
-              "migrasi"
+              "resource otomatis"
             ],
             "a": 2,
             "explain": "total_ordering melengkapi."
@@ -1504,9 +1504,9 @@ const CONTENT_PYTHON = [
             "q": "itertools.count menghasilkan",
             "options": [
               "urutan tak terbatas",
-              "CSS",
-              "route",
-              "migrasi"
+              "GIL untuk CPU-bound",
+              "interpreted dan dinamis",
+              "| & -"
             ],
             "a": 0,
             "explain": "count tak terbatas."
@@ -1515,9 +1515,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "itertools.zip_longest memadukan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mengubah variabel luar",
+              "beberapa coroutine paralel",
+              "Guido van Rossum",
               "iterable beda panjang"
             ],
             "a": 3,
@@ -1527,9 +1527,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Fungsi helper mengurangi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "list[1:3]",
+              "pasangan key-value",
+              "kondisi benar",
               "duplikasi"
             ],
             "a": 3,
@@ -1546,10 +1546,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "with memakai",
             "options": [
-              "CSS",
-              "route",
+              "int(input())",
+              "\"\".join(list)",
               "context manager",
-              "migrasi"
+              "list[0]"
             ],
             "a": 2,
             "explain": "with menggunakan context manager."
@@ -1558,10 +1558,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "__enter__/__exit__ mendefinisikan",
             "options": [
-              "CSS",
+              "kombinasi/permutasi",
               "context manager",
-              "route",
-              "migrasi"
+              "acak aman",
+              "method induk"
             ],
             "a": 1,
             "explain": "__enter__/__exit__ protokol."
@@ -1571,9 +1571,9 @@ const CONTENT_PYTHON = [
             "q": "contextlib.contextmanager membuat",
             "options": [
               "context manager dari generator",
-              "CSS",
-              "route",
-              "migrasi"
+              "menyebut nama parameter",
+              "urutan tak terbatas",
+              "GIL untuk CPU-bound"
             ],
             "a": 0,
             "explain": "contextmanager dekorator."
@@ -1582,10 +1582,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "with menjamin",
             "options": [
-              "CSS",
+              "debugging",
               "pembersihan",
-              "route",
-              "migrasi"
+              "utilitas path",
+              "banyak kasus"
             ],
             "a": 1,
             "explain": "with menjamin cleanup."
@@ -1594,9 +1594,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Menangani exception di __exit__ memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "skalabilitas",
+              "Sphinx/MkDocs",
+              "HTTP async",
               "suppress/teruskan"
             ],
             "a": 3,
@@ -1606,9 +1606,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "with dapat menangani",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "penanda blok",
+              "def nama():",
+              "__init__.py/folder",
               "beberapa resource"
             ],
             "a": 3,
@@ -1618,10 +1618,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Nested with dapat",
             "options": [
-              "CSS",
+              "structural typing",
               "disederhanakan",
-              "route",
-              "migrasi"
+              "ORM/admin",
+              "type()/isinstance()"
             ],
             "a": 1,
             "explain": "Menggabungkan with."
@@ -1631,9 +1631,9 @@ const CONTENT_PYTHON = [
             "q": "Context manager berguna untuk",
             "options": [
               "lock/file/transaksi",
-              "CSS",
-              "route",
-              "migrasi"
+              "duplikasi",
+              "async with",
+              "datetime"
             ],
             "a": 0,
             "explain": "Lintas resource."
@@ -1644,8 +1644,8 @@ const CONTENT_PYTHON = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "RCE",
+              ".py"
             ],
             "a": 0,
             "explain": "Uji perilaku."
@@ -1655,9 +1655,9 @@ const CONTENT_PYTHON = [
             "q": "Async context manager memakai",
             "options": [
               "async with",
-              "CSS",
-              "route",
-              "migrasi"
+              "type()/isinstance()",
+              "sys.stderr",
+              "f-string"
             ],
             "a": 0,
             "explain": "Async dengan async with."
@@ -1674,9 +1674,9 @@ const CONTENT_PYTHON = [
             "q": "Module regex memakai",
             "options": [
               "re",
-              "CSS",
-              "route",
-              "migrasi"
+              ".py",
+              "None",
+              "is"
             ],
             "a": 0,
             "explain": "Python memakai re."
@@ -1685,10 +1685,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Mencari kecocokan memakai",
             "options": [
-              "CSS",
+              "re.sub",
               "re.search/match",
-              "route",
-              "migrasi"
+              "generator",
+              ".strptime()"
             ],
             "a": 1,
             "explain": "search/match mencari."
@@ -1698,9 +1698,9 @@ const CONTENT_PYTHON = [
             "q": "Mengganti memakai",
             "options": [
               "re.sub",
-              "CSS",
-              "route",
-              "migrasi"
+              "performa",
+              "perawatan",
+              "poetry/uv"
             ],
             "a": 0,
             "explain": "sub mengganti."
@@ -1709,9 +1709,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Menemukan semua memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "isolasi dependency",
+              "logging/auth/caching",
+              "sebagian argumen",
               "re.findall"
             ],
             "a": 3,
@@ -1721,9 +1721,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Compile pola memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pytest",
+              "build",
+              "safe_load",
               "re.compile"
             ],
             "a": 3,
@@ -1735,8 +1735,8 @@ const CONTENT_PYTHON = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "nilai",
+              "bool"
             ],
             "a": 0,
             "explain": "r\"...\" menghindari escape."
@@ -1745,9 +1745,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Grup bernama memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".strftime()",
+              "class Nama:",
+              "resource otomatis",
               "(?P<name>...)"
             ],
             "a": 3,
@@ -1759,8 +1759,8 @@ const CONTENT_PYTHON = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "sep=",
+              "RCE"
             ],
             "a": 0,
             "explain": "Backtracking berat."
@@ -1770,8 +1770,8 @@ const CONTENT_PYTHON = [
             "q": "Modifier flags seperti IGNORECASE",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "wajib",
+              "int",
               "ya"
             ],
             "a": 3,
@@ -1783,8 +1783,8 @@ const CONTENT_PYTHON = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "bool",
+              "end="
             ],
             "a": 1,
             "explain": "Uji pola."
@@ -1798,11 +1798,11 @@ const CONTENT_PYTHON = [
         "exercises": [
           {
             "type": "mc",
-            "q": "List comprehension menghasilkan",
+            "q": "Ekspresi `[x * 2 for x in range(5)]` di Python menghasilkan struktur data bertipe",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "request",
+              "int",
+              "ya",
               "list"
             ],
             "a": 3,
@@ -1814,7 +1814,7 @@ const CONTENT_PYTHON = [
             "options": [
               "[]",
               "{}",
-              "CSS",
+              "re",
               "()"
             ],
             "a": 3,
@@ -1825,9 +1825,9 @@ const CONTENT_PYTHON = [
             "q": "Generator bersifat",
             "options": [
               "eager",
-              "CSS",
+              "async def",
               "lazy",
-              "route"
+              "hati-hati"
             ],
             "a": 2,
             "explain": "Generator mengevaluasi lazy."
@@ -1836,10 +1836,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "yield menghasilkan",
             "options": [
-              "CSS",
-              "route",
+              "return",
+              "package",
               "generator",
-              "migrasi"
+              "variabel lingkup"
             ],
             "a": 2,
             "explain": "yield membuat generator."
@@ -1848,10 +1848,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Generator menghemat",
             "options": [
-              "CSS",
+              "duplikat",
               "memori",
-              "route",
-              "migrasi"
+              "urutan angka",
+              "dependency"
             ],
             "a": 1,
             "explain": "Lazy hemat memori."
@@ -1860,10 +1860,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Dict comprehension memakai",
             "options": [
-              "CSS",
+              "json.dump",
               "{k:v for ...}",
-              "route",
-              "migrasi"
+              "coverage.py",
+              "komputasi numerik"
             ],
             "a": 1,
             "explain": "Dict comprehension."
@@ -1872,9 +1872,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Set comprehension memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "otomasi, web, dan data science",
+              "a if cond else b",
+              "mengubah variabel luar",
               "{x for x in ...}"
             ],
             "a": 3,
@@ -1884,10 +1884,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Comprehension bersarang bisa",
             "options": [
-              "CSS",
-              "route",
+              "id unik",
+              "getter",
               "kurang terbaca",
-              "migrasi"
+              "exception"
             ],
             "a": 2,
             "explain": "Nested comprehension sulit dibaca."
@@ -1896,10 +1896,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "itertools membantu",
             "options": [
-              "CSS",
-              "route",
+              "datetime.now()",
+              "pencatatan",
               "kombinasi/permutasi",
-              "migrasi"
+              "self/cls"
             ],
             "a": 2,
             "explain": "itertools berguna."
@@ -1909,9 +1909,9 @@ const CONTENT_PYTHON = [
             "q": "Mengonsumsi generator sekali saja",
             "options": [
               "tidak",
-              "CSS",
+              "def",
               "ya",
-              "route"
+              "float"
             ],
             "a": 2,
             "explain": "Generator sekali pakai."
@@ -1927,10 +1927,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Module waktu memakai",
             "options": [
-              "CSS",
-              "route",
+              "pengujian",
+              "mypy/pyright",
               "datetime",
-              "migrasi"
+              "coroutine"
             ],
             "a": 2,
             "explain": "Python memakai datetime."
@@ -1940,9 +1940,9 @@ const CONTENT_PYTHON = [
             "q": "Waktu sekarang memakai",
             "options": [
               "datetime.now()",
-              "CSS",
-              "route",
-              "migrasi"
+              "decorator factory",
+              "kombinasi cartesian",
+              "suppress/teruskan"
             ],
             "a": 0,
             "explain": "now mengambil waktu."
@@ -1951,10 +1951,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Format tanggal memakai",
             "options": [
-              "CSS",
+              "machine learning",
               ".strftime()",
-              "route",
-              "migrasi"
+              "TypeVar/Generic",
+              "mudah dibaca"
             ],
             "a": 1,
             "explain": "strftime memformat."
@@ -1964,9 +1964,9 @@ const CONTENT_PYTHON = [
             "q": "Parse tanggal memakai",
             "options": [
               ".strptime()",
-              "CSS",
-              "route",
-              "migrasi"
+              "lazy",
+              ".strftime()",
+              "class Nama:"
             ],
             "a": 0,
             "explain": "strptime mem-parse."
@@ -1977,8 +1977,8 @@ const CONTENT_PYTHON = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "'a'",
+              "build"
             ],
             "a": 0,
             "explain": "Gunakan timezone."
@@ -1987,9 +1987,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "timedelta untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "==/!=/</>",
+              "remove()/pop()",
+              "{k:v for ...}",
               "selisih waktu"
             ],
             "a": 3,
@@ -2000,9 +2000,9 @@ const CONTENT_PYTHON = [
             "q": "random untuk",
             "options": [
               "angka acak",
-              "CSS",
-              "route",
-              "migrasi"
+              "unittest",
+              "metadata/build",
+              "parameterized query"
             ],
             "a": 0,
             "explain": "random module."
@@ -2011,10 +2011,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "secret untuk",
             "options": [
-              "CSS",
+              "pasangan key-value",
               "acak aman",
-              "route",
-              "migrasi"
+              "kondisi benar",
+              "lambda x: expr"
             ],
             "a": 1,
             "explain": "secrets untuk kripto."
@@ -2023,10 +2023,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "uuid untuk",
             "options": [
-              "CSS",
+              "dependency",
               "id unik",
-              "route",
-              "migrasi"
+              "decorator factory",
+              "kombinasi cartesian"
             ],
             "a": 1,
             "explain": "uuid membuat id."
@@ -2035,10 +2035,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "logging untuk",
             "options": [
-              "CSS",
+              "menunggu coroutine",
               "pencatatan",
-              "route",
-              "migrasi"
+              "pool eksekutor",
+              "machine learning"
             ],
             "a": 1,
             "explain": "logging standar."
@@ -2055,9 +2055,9 @@ const CONTENT_PYTHON = [
             "q": "Mendefinisikan class memakai",
             "options": [
               "struct Nama",
-              "CSS",
+              "komputasi numerik",
               "class Nama:",
-              "route"
+              "pengujian"
             ],
             "a": 2,
             "explain": "Python memakai class."
@@ -2066,10 +2066,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "__init__ adalah",
             "options": [
-              "CSS",
-              "route",
+              "len()",
+              "list[1:3]",
               "konstruktor",
-              "migrasi"
+              "pasangan key-value"
             ],
             "a": 2,
             "explain": "__init__ inisialisasi."
@@ -2079,9 +2079,9 @@ const CONTENT_PYTHON = [
             "q": "self merujuk",
             "options": [
               "instance",
-              "CSS",
-              "route",
-              "migrasi"
+              "menunggu coroutine",
+              "pool eksekutor",
+              "machine learning"
             ],
             "a": 0,
             "explain": "self menunjuk instance."
@@ -2091,8 +2091,8 @@ const CONTENT_PYTHON = [
             "q": "Inheritance memakai",
             "options": [
               "extends",
-              "CSS",
-              "route",
+              "dependency",
+              "decorator factory",
               "class Anak(Induk):"
             ],
             "a": 3,
@@ -2102,9 +2102,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "super() memanggil",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "float",
+              "print()",
+              "and/or/not",
               "method induk"
             ],
             "a": 3,
@@ -2114,10 +2114,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "@property membuat",
             "options": [
-              "CSS",
+              "pembersihan",
               "getter",
-              "route",
-              "migrasi"
+              "re.search/match",
+              "lazy"
             ],
             "a": 1,
             "explain": "property membuat getter."
@@ -2126,10 +2126,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "@staticmethod tidak menerima",
             "options": [
-              "CSS",
-              "route",
+              "==/!=/</>",
+              "s[0]",
               "self/cls",
-              "migrasi"
+              "remove()/pop()"
             ],
             "a": 2,
             "explain": "staticmethod tanpa self."
@@ -2138,10 +2138,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "@classmethod menerima",
             "options": [
-              "CSS",
+              "self/cls",
               "cls",
-              "route",
-              "migrasi"
+              "'a'",
+              "pytest"
             ],
             "a": 1,
             "explain": "classmethod menerima cls."
@@ -2150,10 +2150,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Dunder method seperti __str__ mengubah",
             "options": [
-              "CSS",
-              "route",
+              "duplikat",
+              "urutan angka",
               "perilaku bawaan",
-              "migrasi"
+              "dependency"
             ],
             "a": 2,
             "explain": "Dunder mengubah perilaku."
@@ -2163,9 +2163,9 @@ const CONTENT_PYTHON = [
             "q": "Mixin memakai",
             "options": [
               "multiple inheritance",
-              "CSS",
-              "route",
-              "migrasi"
+              "json.dump",
+              "coverage.py",
+              "komputasi numerik"
             ],
             "a": 0,
             "explain": "Mixin via multiple inheritance."
@@ -2183,8 +2183,8 @@ const CONTENT_PYTHON = [
             "options": [
               "try/except",
               "try/catch",
-              "CSS",
-              "route"
+              "dokumentasi/alat",
+              "Django/Flask/FastAPI"
             ],
             "a": 0,
             "explain": "Python memakai except."
@@ -2193,9 +2193,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "finally dijalankan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "memori",
+              "selisih waktu",
+              "instance",
               "selalu"
             ],
             "a": 3,
@@ -2205,9 +2205,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "else pada try dijalankan bila",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "GIL untuk CPU-bound",
+              "interpreted dan dinamis",
+              "| & -",
               "tidak ada exception"
             ],
             "a": 3,
@@ -2217,21 +2217,21 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "raise melempar",
             "options": [
-              "CSS",
+              "cache hasil",
               "exception",
-              "route",
-              "migrasi"
+              "nilai",
+              "disederhanakan"
             ],
             "a": 1,
             "explain": "raise melempar."
           },
           {
             "type": "mc",
-            "q": "Custom exception mewarisi",
+            "q": "Saat mendefinisikan galat kustom di Python, kelas baru sebaiknya mewarisi kelas dasar",
             "options": [
               "Error wajib",
-              "CSS",
-              "route",
+              "[1,2,3]",
+              "d['k'] / d.get('k')",
               "Exception"
             ],
             "a": 3,
@@ -2241,10 +2241,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Menangkap tipe spesifik memakai",
             "options": [
-              "CSS",
-              "route",
+              "environment/secret manager",
+              "CPU-bound",
               "except Tipe",
-              "migrasi"
+              "disarankan"
             ],
             "a": 2,
             "explain": "except menyebut tipe."
@@ -2253,9 +2253,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "with menutup",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "string",
+              "sys.exit()",
+              ".replace()",
               "resource otomatis"
             ],
             "a": 3,
@@ -2265,9 +2265,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Menangkap terlalu luas berisiko",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "unittest.mock",
+              "kompatibilitas",
+              "hash kuat",
               "menyembunyikan bug"
             ],
             "a": 3,
@@ -2278,9 +2278,9 @@ const CONTENT_PYTHON = [
             "q": "Exception chaining memakai",
             "options": [
               "raise ... from",
-              "CSS",
-              "route",
-              "migrasi"
+              "disederhanakan",
+              "re.compile",
+              "kurang terbaca"
             ],
             "a": 0,
             "explain": "from merantai exception."
@@ -2289,9 +2289,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Traceback berguna untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "int()/str()/float()",
+              "f-string/format",
+              "+=/-=/...",
               "debugging"
             ],
             "a": 3,
@@ -2308,10 +2308,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Membaca berkas memakai",
             "options": [
-              "CSS",
+              "kompatibilitas",
               "open() dengan with",
-              "route",
-              "migrasi"
+              "hash kuat",
+              "skalabilitas"
             ],
             "a": 1,
             "explain": "with open membaca."
@@ -2323,7 +2323,7 @@ const CONTENT_PYTHON = [
               "'r'",
               "'a'",
               "'w'",
-              "CSS"
+              "(1,2,3)"
             ],
             "a": 2,
             "explain": "'w' menulis (overwrite)."
@@ -2335,7 +2335,7 @@ const CONTENT_PYTHON = [
               "'w'",
               "'r'",
               "'a'",
-              "CSS"
+              "def"
             ],
             "a": 2,
             "explain": "'a' menambah di akhir."
@@ -2344,9 +2344,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Membaca baris memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "int()/str()/float()",
+              "f-string/format",
+              "+=/-=/...",
               "readline/iterasi"
             ],
             "a": 3,
@@ -2357,9 +2357,9 @@ const CONTENT_PYTHON = [
             "q": "Membaca semua memakai",
             "options": [
               "read()",
-              "CSS",
-              "route",
-              "migrasi"
+              "re.compile",
+              "kurang terbaca",
+              "angka acak"
             ],
             "a": 0,
             "explain": "read membaca seluruhnya."
@@ -2370,8 +2370,8 @@ const CONTENT_PYTHON = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "#",
+              "%"
             ],
             "a": 0,
             "explain": "Tentukan encoding."
@@ -2380,10 +2380,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "pathlib memudahkan",
             "options": [
-              "CSS",
-              "route",
+              "penting",
+              "menyulitkan debugging",
               "manipulasi path",
-              "migrasi"
+              "operasi perbandingan"
             ],
             "a": 2,
             "explain": "pathlib untuk path."
@@ -2393,9 +2393,9 @@ const CONTENT_PYTHON = [
             "q": "os.path menyediakan",
             "options": [
               "utilitas path",
-              "CSS",
-              "route",
-              "migrasi"
+              "CPU-bound",
+              "disarankan",
+              "kualitas commit"
             ],
             "a": 0,
             "explain": "os.path utilities."
@@ -2405,9 +2405,9 @@ const CONTENT_PYTHON = [
             "q": "Menulis JSON memakai",
             "options": [
               "json.dump",
-              "CSS",
-              "route",
-              "migrasi"
+              "d['k'] = v",
+              "penanda blok",
+              "def nama():"
             ],
             "a": 0,
             "explain": "json.dump menulis."
@@ -2418,8 +2418,8 @@ const CONTENT_PYTHON = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "def",
+              "float"
             ],
             "a": 0,
             "explain": "Tangani error IO."
@@ -2448,20 +2448,20 @@ const CONTENT_PYTHON = [
             "q": "Framework populer adalah",
             "options": [
               "pytest",
-              "CSS",
-              "route",
-              "migrasi"
+              "except Tipe",
+              "'a'",
+              "build"
             ],
             "a": 0,
             "explain": "pytest populer."
           },
           {
             "type": "mc",
-            "q": "Menjalankan pytest memakai",
+            "q": "Perintah CLI populer di ekosistem Python untuk menjalankan pengujian unit otomatis adalah",
             "options": [
               "python test",
-              "CSS",
-              "route",
+              "print()",
+              "sep=",
               "pytest"
             ],
             "a": 3,
@@ -2469,12 +2469,12 @@ const CONTENT_PYTHON = [
           },
           {
             "type": "mc",
-            "q": "Assertion memakai",
+            "q": "Kata kunci Python untuk memverifikasi apakah suatu kondisi pengujian bernilai benar adalah",
             "options": [
               "assert",
               "expect",
-              "CSS",
-              "route"
+              "lazy",
+              ".strftime()"
             ],
             "a": 0,
             "explain": "Python memakai assert."
@@ -2483,10 +2483,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Mocking memakai",
             "options": [
-              "CSS",
+              "suppress/teruskan",
               "unittest.mock",
-              "route",
-              "migrasi"
+              "re.sub",
+              "generator"
             ],
             "a": 1,
             "explain": "unittest.mock."
@@ -2495,10 +2495,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Fixture pada pytest memakai",
             "options": [
-              "CSS",
+              "coroutine",
               "@pytest.fixture",
-              "route",
-              "migrasi"
+              "sinkronisasi",
+              "eksplorasi"
             ],
             "a": 1,
             "explain": "Fixture menyiapkan state."
@@ -2507,9 +2507,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Parametrize memudahkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "lambda x: expr",
+              "isolasi dependency",
+              "logging/auth/caching",
               "banyak kasus"
             ],
             "a": 3,
@@ -2519,9 +2519,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Coverage memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "parameterized query",
+              "performa",
+              "perawatan",
               "coverage.py"
             ],
             "a": 3,
@@ -2532,8 +2532,8 @@ const CONTENT_PYTHON = [
             "q": "Test perilaku lebih stabil",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "pip",
+              "//",
               "ya"
             ],
             "a": 3,
@@ -2544,8 +2544,8 @@ const CONTENT_PYTHON = [
             "q": "CI menjalankan test penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "+",
+              "s[0]",
               "ya"
             ],
             "a": 3,
@@ -2562,9 +2562,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "pyproject.toml mendefinisikan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "append()",
+              "{1,2,3}",
+              "objek iterable",
               "metadata/build"
             ],
             "a": 3,
@@ -2574,10 +2574,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Membangun package memakai",
             "options": [
-              "CSS",
+              "validasi path",
               "build",
-              "route",
-              "migrasi"
+              "akses data",
+              "black/ruff"
             ],
             "a": 1,
             "explain": "Module build membuat dist."
@@ -2587,9 +2587,9 @@ const CONTENT_PYTHON = [
             "q": "Menerbitkan ke PyPI memakai",
             "options": [
               "twine",
-              "CSS",
-              "route",
-              "migrasi"
+              "int(input())",
+              ":=",
+              "\"\".join(list)"
             ],
             "a": 0,
             "explain": "twine upload."
@@ -2598,10 +2598,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Versioning semantic membantu",
             "options": [
-              "CSS",
-              "route",
+              "debugging",
+              "utilitas path",
               "kompatibilitas",
-              "migrasi"
+              "banyak kasus"
             ],
             "a": 2,
             "explain": "Semver."
@@ -2610,10 +2610,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Mengunci dependency penting",
             "options": [
-              "CSS",
+              "structural typing",
               "reproduksibilitas",
-              "route",
-              "migrasi"
+              "ORM/admin",
+              "type()/isinstance()"
             ],
             "a": 1,
             "explain": "Lock dependency."
@@ -2622,10 +2622,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Wheel adalah",
             "options": [
-              "CSS",
-              "route",
+              "kombinasi/permutasi",
+              "acak aman",
               "distribusi binary",
-              "migrasi"
+              "method induk"
             ],
             "a": 2,
             "explain": "Wheel paket binary."
@@ -2635,9 +2635,9 @@ const CONTENT_PYTHON = [
             "q": "Source distribution memungkinkan",
             "options": [
               "build dari sumber",
-              "CSS",
-              "route",
-              "migrasi"
+              "context manager dari generator",
+              "URL ke handler",
+              "otomasi, web, dan data science"
             ],
             "a": 0,
             "explain": "Sdist sumber."
@@ -2648,8 +2648,8 @@ const CONTENT_PYTHON = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "test",
+              "list"
             ],
             "a": 0,
             "explain": "Uji instalasi."
@@ -2659,9 +2659,9 @@ const CONTENT_PYTHON = [
             "q": "Dokumentasi package penting",
             "options": [
               "tidak",
-              "CSS",
+              "bool",
               "ya",
-              "route"
+              "end="
             ],
             "a": 2,
             "explain": "Dokumentasi jelas."
@@ -2672,8 +2672,8 @@ const CONTENT_PYTHON = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "lazy",
+              "cls"
             ],
             "a": 0,
             "explain": "Sertakan lisensi."
@@ -2689,10 +2689,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "eval/exec pada input berisiko",
             "options": [
-              "CSS",
+              "//",
               "RCE",
-              "route",
-              "migrasi"
+              ".split()",
+              "append()"
             ],
             "a": 1,
             "explain": "eval berbahaya."
@@ -2701,10 +2701,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "SQL injection dicegah dengan",
             "options": [
-              "CSS",
+              "re.compile",
               "parameterized query",
-              "route",
-              "migrasi"
+              "kurang terbaca",
+              "angka acak"
             ],
             "a": 1,
             "explain": "Parameter query."
@@ -2715,8 +2715,8 @@ const CONTENT_PYTHON = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "re",
+              "()"
             ],
             "a": 1,
             "explain": "pickle berbahaya."
@@ -2725,9 +2725,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "yaml.load berisiko; gunakan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "multiple inheritance",
+              "raise ... from",
+              "manipulasi path",
               "safe_load"
             ],
             "a": 3,
@@ -2738,9 +2738,9 @@ const CONTENT_PYTHON = [
             "q": "Secrets disimpan di",
             "options": [
               "environment/secret manager",
-              "CSS",
-              "route",
-              "migrasi"
+              "pattern matching",
+              "membuat berkas .py",
+              "async with"
             ],
             "a": 0,
             "explain": "Rahasia aman."
@@ -2750,9 +2750,9 @@ const CONTENT_PYTHON = [
             "q": "Menyimpan password memakai",
             "options": [
               "hash kuat",
-              "CSS",
-              "route",
-              "migrasi"
+              "kompatibilitas",
+              "wajib",
+              "skalabilitas"
             ],
             "a": 0,
             "explain": "Hashing."
@@ -2762,9 +2762,9 @@ const CONTENT_PYTHON = [
             "q": "Dependency scanning penting",
             "options": [
               "tidak",
-              "CSS",
+              "RCE",
               "ya",
-              "route"
+              ".py"
             ],
             "a": 2,
             "explain": "Scan dependency."
@@ -2773,10 +2773,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Path traversal dicegah dengan",
             "options": [
-              "CSS",
+              "kualitas commit",
               "validasi path",
-              "route",
-              "migrasi"
+              "multiprocessing",
+              "array numerik"
             ],
             "a": 1,
             "explain": "Validasi path."
@@ -2787,8 +2787,8 @@ const CONTENT_PYTHON = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "bool",
+              "end="
             ],
             "a": 0,
             "explain": "Hindari rahasia di log."
@@ -2798,9 +2798,9 @@ const CONTENT_PYTHON = [
             "q": "Audit berkala penting",
             "options": [
               "tidak",
-              "CSS",
+              "#",
               "ya",
-              "route"
+              "%"
             ],
             "a": 2,
             "explain": "Audit rutin."
@@ -2816,10 +2816,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Profiling memakai",
             "options": [
-              "CSS",
+              "f-string",
               "cProfile",
-              "route",
-              "migrasi"
+              "len()",
+              "list[1:3]"
             ],
             "a": 1,
             "explain": "cProfile profil."
@@ -2829,9 +2829,9 @@ const CONTENT_PYTHON = [
             "q": "Vectorization mempercepat",
             "options": [
               "komputasi numerik",
-              "CSS",
-              "route",
-              "migrasi"
+              "json.dump",
+              "coverage.py",
+              "pengujian"
             ],
             "a": 0,
             "explain": "NumPy vectorization."
@@ -2840,10 +2840,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Mengurangi alokasi membantu",
             "options": [
-              "CSS",
+              "duplikat",
               "performa",
-              "route",
-              "migrasi"
+              "urutan angka",
+              "dependency"
             ],
             "a": 1,
             "explain": "Alokasi berpengaruh."
@@ -2854,8 +2854,8 @@ const CONTENT_PYTHON = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "logika bisnis",
+              "ruff/flake8"
             ],
             "a": 1,
             "explain": "Tipe memengaruhi."
@@ -2864,10 +2864,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Caching membantu",
             "options": [
-              "CSS",
+              "async def",
               "perhitungan mahal",
-              "route",
-              "migrasi"
+              "hati-hati",
+              "visualisasi"
             ],
             "a": 1,
             "explain": "Cache mahal."
@@ -2877,8 +2877,8 @@ const CONTENT_PYTHON = [
             "q": "Generator hemat memori",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "re",
+              "()",
               "ya"
             ],
             "a": 3,
@@ -2889,9 +2889,9 @@ const CONTENT_PYTHON = [
             "q": "Cython/C extension mempercepat",
             "options": [
               "CPU-bound",
-              "CSS",
-              "route",
-              "migrasi"
+              "request",
+              "newline",
+              "==/!=/</>"
             ],
             "a": 0,
             "explain": "Extension native."
@@ -2901,9 +2901,9 @@ const CONTENT_PYTHON = [
             "q": "Multiprocessing untuk CPU",
             "options": [
               "tidak",
-              "CSS",
+              "id unik",
               "penting",
-              "route"
+              "getter"
             ],
             "a": 2,
             "explain": "Paralel proses."
@@ -2914,8 +2914,8 @@ const CONTENT_PYTHON = [
             "options": [
               "wajib",
               "tidak",
-              "CSS",
-              "route"
+              "exception",
+              "'w'"
             ],
             "a": 0,
             "explain": "Ukur dulu."
@@ -2925,9 +2925,9 @@ const CONTENT_PYTHON = [
             "q": "Bottleneck jaringan berbeda dari CPU",
             "options": [
               "tidak",
-              "CSS",
+              "len()",
               "ya",
-              "route"
+              "def"
             ],
             "a": 2,
             "explain": "Diagnosis tepat."
@@ -2944,9 +2944,9 @@ const CONTENT_PYTHON = [
             "q": "Repository memisahkan",
             "options": [
               "akses data",
-              "CSS",
-              "route",
-              "migrasi"
+              "{k:v for ...}",
+              "di loop",
+              "triple quote"
             ],
             "a": 0,
             "explain": "Repository data."
@@ -2955,10 +2955,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Service layer menampung",
             "options": [
-              "CSS",
-              "route",
+              "pytest",
+              "build",
               "logika bisnis",
-              "migrasi"
+              "safe_load"
             ],
             "a": 2,
             "explain": "Service bisnis."
@@ -2967,10 +2967,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Dependency injection memudahkan",
             "options": [
-              "CSS",
-              "route",
+              "and/or/not",
+              ".upper()",
               "pengujian",
-              "migrasi"
+              "s[1:3]"
             ],
             "a": 2,
             "explain": "DI mudah diuji."
@@ -2980,9 +2980,9 @@ const CONTENT_PYTHON = [
             "q": "Pemisahan layer membantu",
             "options": [
               "perawatan",
-              "CSS",
-              "route",
-              "migrasi"
+              "class Nama:",
+              "resource otomatis",
+              "readline/iterasi"
             ],
             "a": 0,
             "explain": "Pemisahan layer."
@@ -2991,9 +2991,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Protocol typing mengurangi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mudah dibaca",
+              ".strip()",
+              "d['k'] / d.get('k')",
               "ketergantungan konkret"
             ],
             "a": 3,
@@ -3005,8 +3005,8 @@ const CONTENT_PYTHON = [
             "options": [
               "tidak",
               "disarankan",
-              "CSS",
-              "route"
+              "suppress/teruskan",
+              "re.sub"
             ],
             "a": 1,
             "explain": "Komposisi fleksibel."
@@ -3016,9 +3016,9 @@ const CONTENT_PYTHON = [
             "q": "Domain bebas framework",
             "options": [
               "tidak",
-              "CSS",
+              "coroutine",
               "disarankan",
-              "route"
+              "sinkronisasi"
             ],
             "a": 2,
             "explain": "Domain bersih."
@@ -3028,9 +3028,9 @@ const CONTENT_PYTHON = [
             "q": "Modularisasi membantu",
             "options": [
               "skalabilitas",
-              "CSS",
-              "route",
-              "migrasi"
+              "lambda x: expr",
+              "isolasi dependency",
+              "logging/auth/caching"
             ],
             "a": 0,
             "explain": "Modul besar."
@@ -3040,8 +3040,8 @@ const CONTENT_PYTHON = [
             "q": "Dokumentasi arsitektur penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "#",
+              "%",
               "ya"
             ],
             "a": 3,
@@ -3053,8 +3053,8 @@ const CONTENT_PYTHON = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "RCE",
+              ".py"
             ],
             "a": 1,
             "explain": "Bertahap."
@@ -3070,10 +3070,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Formatter populer adalah",
             "options": [
-              "CSS",
+              "re.search/match",
               "black/ruff",
-              "route",
-              "migrasi"
+              "lazy",
+              ".strftime()"
             ],
             "a": 1,
             "explain": "Black/Ruff format."
@@ -3083,9 +3083,9 @@ const CONTENT_PYTHON = [
             "q": "Linter populer adalah",
             "options": [
               "ruff/flake8",
-              "CSS",
-              "route",
-              "migrasi"
+              "float",
+              "print()",
+              "sep="
             ],
             "a": 0,
             "explain": "Ruff/Flake8 lint."
@@ -3095,9 +3095,9 @@ const CONTENT_PYTHON = [
             "q": "Type checker adalah",
             "options": [
               "mypy/pyright",
-              "CSS",
-              "route",
-              "migrasi"
+              "dependency",
+              "decorator factory",
+              "kombinasi cartesian"
             ],
             "a": 0,
             "explain": "Mypy/Pyright."
@@ -3106,9 +3106,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Dependency manager modern",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pool eksekutor",
+              "machine learning",
+              "TypeVar/Generic",
               "poetry/uv"
             ],
             "a": 3,
@@ -3118,10 +3118,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Notebook untuk",
             "options": [
-              "CSS",
+              "metadata/build",
               "eksplorasi data",
-              "route",
-              "migrasi"
+              "parameterized query",
+              "performa"
             ],
             "a": 1,
             "explain": "Jupyter."
@@ -3132,8 +3132,8 @@ const CONTENT_PYTHON = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "def",
+              "float"
             ],
             "a": 0,
             "explain": "CI otomasi."
@@ -3143,9 +3143,9 @@ const CONTENT_PYTHON = [
             "q": "Pre-commit membantu",
             "options": [
               "kualitas commit",
-              "CSS",
-              "route",
-              "migrasi"
+              "self/cls",
+              "except Tipe",
+              "pytest"
             ],
             "a": 0,
             "explain": "Pre-commit hooks."
@@ -3155,9 +3155,9 @@ const CONTENT_PYTHON = [
             "q": "Mengelola versi Python penting",
             "options": [
               "tidak",
-              "CSS",
+              "+",
               "ya",
-              "route"
+              "s[0]"
             ],
             "a": 2,
             "explain": "Versi konsisten."
@@ -3166,10 +3166,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Dokumentasi memakai",
             "options": [
-              "CSS",
-              "route",
+              "TypeVar/Generic",
+              "mudah dibaca",
               "Sphinx/MkDocs",
-              "migrasi"
+              "input()"
             ],
             "a": 2,
             "explain": "Dokumentasi tool."
@@ -3179,9 +3179,9 @@ const CONTENT_PYTHON = [
             "q": "Menjaga dependency minimal",
             "options": [
               "tidak",
-              "CSS",
+              ".strftime()",
               "penting",
-              "route"
+              "class Nama:"
             ],
             "a": 2,
             "explain": "Minimalkan dependency."
@@ -3198,9 +3198,9 @@ const CONTENT_PYTHON = [
             "q": "Async dideklarasikan dengan",
             "options": [
               "async def",
-              "CSS",
-              "route",
-              "migrasi"
+              "menyulitkan debugging",
+              "operasi perbandingan",
+              "lock/file/transaksi"
             ],
             "a": 0,
             "explain": "async def membuat coroutine."
@@ -3209,10 +3209,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "await dipakai untuk",
             "options": [
-              "CSS",
-              "route",
+              "disarankan",
+              "kualitas commit",
               "menunggu coroutine",
-              "migrasi"
+              "multiprocessing"
             ],
             "a": 2,
             "explain": "await menunggu."
@@ -3221,9 +3221,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Event loop menjalankan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kurang terbaca",
+              "angka acak",
+              "class Anak(Induk):",
               "coroutine"
             ],
             "a": 3,
@@ -3233,10 +3233,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "asyncio.run menjalankan",
             "options": [
-              "CSS",
-              "route",
+              "tipe statis",
+              "validasi data",
               "program async",
-              "migrasi"
+              "anotasi tipe"
             ],
             "a": 2,
             "explain": "asyncio.run entrypoint."
@@ -3246,9 +3246,9 @@ const CONTENT_PYTHON = [
             "q": "asyncio.gather menjalankan",
             "options": [
               "beberapa coroutine paralel",
-              "CSS",
-              "route",
-              "migrasi"
+              "urutan tak terbatas",
+              "GIL untuk CPU-bound",
+              "interpreted dan dinamis"
             ],
             "a": 0,
             "explain": "gather paralel."
@@ -3259,8 +3259,8 @@ const CONTENT_PYTHON = [
             "options": [
               "IO-bound",
               "CPU-bound",
-              "CSS",
-              "route"
+              "instance",
+              "multiple inheritance"
             ],
             "a": 0,
             "explain": "Async untuk IO."
@@ -3269,9 +3269,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "CPU-bound sebaiknya memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "if/elif/else",
+              "pattern matching",
+              "membuat berkas .py",
               "multiprocessing"
             ],
             "a": 3,
@@ -3281,9 +3281,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "aiohttp/httpx untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "unittest.mock",
+              "kompatibilitas",
+              "hash kuat",
               "HTTP async"
             ],
             "a": 3,
@@ -3294,8 +3294,8 @@ const CONTENT_PYTHON = [
             "q": "Menangani timeout async",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "IO-bound",
+              "untuk paralelisme",
               "penting"
             ],
             "a": 3,
@@ -3305,9 +3305,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Mencampur sync dan async perlu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "import",
+              "penting",
+              "menyulitkan debugging",
               "hati-hati"
             ],
             "a": 3,
@@ -3325,9 +3325,9 @@ const CONTENT_PYTHON = [
             "q": "Threading Python dibatasi oleh",
             "options": [
               "GIL untuk CPU-bound",
-              "CSS",
-              "route",
-              "migrasi"
+              "python -m venv",
+              "index dan nilai",
+              "fungsi yang membungkus fungsi lain"
             ],
             "a": 0,
             "explain": "GIL membatasi CPU paralel."
@@ -3337,8 +3337,8 @@ const CONTENT_PYTHON = [
             "q": "Threading cocok untuk",
             "options": [
               "CPU-bound",
-              "CSS",
-              "route",
+              "anotasi tipe",
+              "int(input())",
               "IO-bound"
             ],
             "a": 3,
@@ -3350,8 +3350,8 @@ const CONTENT_PYTHON = [
             "options": [
               "IO-bound",
               "CPU-bound",
-              "CSS",
-              "route"
+              "class Anak(Induk):",
+              "try/except"
             ],
             "a": 1,
             "explain": "Multiprocessing untuk CPU."
@@ -3361,9 +3361,9 @@ const CONTENT_PYTHON = [
             "q": "concurrent.futures menyediakan",
             "options": [
               "pool eksekutor",
-              "CSS",
-              "route",
-              "migrasi"
+              "+=/-=/...",
+              ".split()",
+              "append()"
             ],
             "a": 0,
             "explain": "Futures menyediakan pool."
@@ -3372,9 +3372,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Race condition mengharuskan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "@pytest.fixture",
+              "reproduksibilitas",
+              "validasi path",
               "sinkronisasi"
             ],
             "a": 3,
@@ -3384,10 +3384,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Queue thread-safe membantu",
             "options": [
-              "CSS",
+              "penanda blok",
               "komunikasi",
-              "route",
-              "migrasi"
+              "def nama():",
+              "__init__.py/folder"
             ],
             "a": 1,
             "explain": "Queue mengkoordinasikan."
@@ -3397,9 +3397,9 @@ const CONTENT_PYTHON = [
             "q": "Sub-interpreter/GIL-free berkembang",
             "options": [
               "untuk paralelisme",
-              "CSS",
-              "route",
-              "migrasi"
+              "skalabilitas",
+              "Sphinx/MkDocs",
+              "HTTP async"
             ],
             "a": 0,
             "explain": "Perkembangan Python baru."
@@ -3409,9 +3409,9 @@ const CONTENT_PYTHON = [
             "q": "Mengukur beban penting",
             "options": [
               "tidak",
-              "CSS",
+              "test",
               "ya",
-              "route"
+              "list"
             ],
             "a": 2,
             "explain": "Ukur sebelum optimasi."
@@ -3422,8 +3422,8 @@ const CONTENT_PYTHON = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "structural typing",
+              "ORM/admin"
             ],
             "a": 0,
             "explain": "Tutup executor."
@@ -3433,8 +3433,8 @@ const CONTENT_PYTHON = [
             "q": "Menghindari shared mutable global",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "kombinasi/permutasi",
+              "acak aman",
               "penting"
             ],
             "a": 3,
@@ -3451,9 +3451,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "NumPy menyediakan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "except Tipe",
+              "pytest",
+              "build",
               "array numerik"
             ],
             "a": 3,
@@ -3463,10 +3463,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Pandas menyediakan",
             "options": [
-              "CSS",
-              "route",
+              "print()",
+              "sep=",
               "DataFrame",
-              "migrasi"
+              "and/or/not"
             ],
             "a": 2,
             "explain": "Pandas DataFrame."
@@ -3475,10 +3475,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Vectorization membantu",
             "options": [
-              "CSS",
-              "route",
+              "lazy",
+              ".strftime()",
               "performa",
-              "migrasi"
+              "class Nama:"
             ],
             "a": 2,
             "explain": "Vectorization cepat."
@@ -3487,10 +3487,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Matplotlib untuk",
             "options": [
-              "CSS",
-              "route",
+              "machine learning",
+              "TypeVar/Generic",
               "visualisasi",
-              "migrasi"
+              "mudah dibaca"
             ],
             "a": 2,
             "explain": "Matplotlib plotting."
@@ -3500,9 +3500,9 @@ const CONTENT_PYTHON = [
             "q": "scikit-learn untuk",
             "options": [
               "machine learning",
-              "CSS",
-              "route",
-              "migrasi"
+              "coroutine",
+              "sinkronisasi",
+              "eksplorasi"
             ],
             "a": 0,
             "explain": "sklearn ML."
@@ -3513,8 +3513,8 @@ const CONTENT_PYTHON = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "def",
+              "float"
             ],
             "a": 0,
             "explain": "Bersihkan data."
@@ -3525,8 +3525,8 @@ const CONTENT_PYTHON = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "parameterized query",
+              "performa"
             ],
             "a": 1,
             "explain": "Kelola memori."
@@ -3535,10 +3535,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Type data DataFrame memengaruhi",
             "options": [
-              "CSS",
-              "route",
+              "s[0]",
+              "remove()/pop()",
               "performa",
-              "migrasi"
+              "{k:v for ...}"
             ],
             "a": 2,
             "explain": "Tipe data memengaruhi."
@@ -3548,9 +3548,9 @@ const CONTENT_PYTHON = [
             "q": "Notebook memudahkan",
             "options": [
               "eksplorasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "and/or/not",
+              ".upper()",
+              "s[1:3]"
             ],
             "a": 0,
             "explain": "Jupyter untuk eksplorasi."
@@ -3560,9 +3560,9 @@ const CONTENT_PYTHON = [
             "q": "Reproducibility penting",
             "options": [
               "tidak",
-              "CSS",
+              "cls",
               "ya",
-              "route"
+              "twine"
             ],
             "a": 2,
             "explain": "Pin versi dependency."
@@ -3578,10 +3578,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Type hint membantu",
             "options": [
-              "CSS",
-              "route",
+              "acak aman",
+              "method induk",
               "dokumentasi/alat",
-              "migrasi"
+              "selalu"
             ],
             "a": 2,
             "explain": "Type hint memberi info."
@@ -3590,10 +3590,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "mypy memeriksa",
             "options": [
-              "CSS",
+              "\"\".join(list)",
               "tipe statis",
-              "route",
-              "migrasi"
+              "list[0]",
+              "duplikat"
             ],
             "a": 1,
             "explain": "mypy static checking."
@@ -3602,10 +3602,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Protocol mendukung",
             "options": [
-              "CSS",
-              "route",
+              "duplikasi",
+              "async with",
               "structural typing",
-              "migrasi"
+              "datetime"
             ],
             "a": 2,
             "explain": "Protocol typing struktural."
@@ -3615,9 +3615,9 @@ const CONTENT_PYTHON = [
             "q": "dataclass mengurangi",
             "options": [
               "boilerplate",
-              "CSS",
-              "route",
-              "migrasi"
+              "ORM/admin",
+              "type()/isinstance()",
+              "sys.stderr"
             ],
             "a": 0,
             "explain": "dataclass ringkas."
@@ -3626,10 +3626,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Enum untuk",
             "options": [
-              "CSS",
+              "def nama():",
               "konstanta",
-              "route",
-              "migrasi"
+              "__init__.py/folder",
+              "metadata fungsi"
             ],
             "a": 1,
             "explain": "Enum konstanta."
@@ -3638,9 +3638,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Type generics memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Sphinx/MkDocs",
+              "HTTP async",
+              "DataFrame",
               "TypeVar/Generic"
             ],
             "a": 3,
@@ -3652,8 +3652,8 @@ const CONTENT_PYTHON = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              ".split()",
+              "append()"
             ],
             "a": 1,
             "explain": "Konsistensi penting."
@@ -3662,9 +3662,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Linter memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "reproduksibilitas",
+              "validasi path",
+              "akses data",
               "ruff/flake8"
             ],
             "a": 3,
@@ -3674,9 +3674,9 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Formatter memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "anotasi tipe",
+              "int(input())",
+              "\"\".join(list)",
               "black/ruff format"
             ],
             "a": 3,
@@ -3687,8 +3687,8 @@ const CONTENT_PYTHON = [
             "q": "Menghindari any secara berlebihan",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "try/except",
+              "debugging",
               "penting"
             ],
             "a": 3,
@@ -3705,10 +3705,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Framework web populer adalah",
             "options": [
-              "CSS",
-              "route",
+              "safe_load",
+              "perhitungan mahal",
               "Django/Flask/FastAPI",
-              "migrasi"
+              "ketergantungan konkret"
             ],
             "a": 2,
             "explain": "Framework web Python."
@@ -3717,10 +3717,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "FastAPI unggul pada",
             "options": [
-              "CSS",
-              "route",
+              "for k in d",
+              "from mod import f",
               "async dan validasi otomatis",
-              "migrasi"
+              "{x for x in ...}"
             ],
             "a": 2,
             "explain": "FastAPI async + validasi."
@@ -3729,10 +3729,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Pydantic untuk",
             "options": [
-              "CSS",
+              "program async",
               "validasi data",
-              "route",
-              "migrasi"
+              "komunikasi",
+              "dokumentasi/alat"
             ],
             "a": 1,
             "explain": "Pydantic validasi."
@@ -3741,10 +3741,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Django menyediakan",
             "options": [
-              "CSS",
+              "beberapa resource",
               "ORM/admin",
-              "route",
-              "migrasi"
+              "re.findall",
+              "memori"
             ],
             "a": 1,
             "explain": "Django ORM/admin."
@@ -3753,10 +3753,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Routing memetakan",
             "options": [
-              "CSS",
-              "route",
+              "{x for x in ...}",
+              "Menandai struktur blok kode",
               "URL ke handler",
-              "migrasi"
+              "nama = nilai"
             ],
             "a": 2,
             "explain": "Routing URL."
@@ -3765,10 +3765,10 @@ const CONTENT_PYTHON = [
             "type": "mc",
             "q": "Middleware memproses",
             "options": [
-              "CSS",
+              "konstruktor",
               "request",
-              "route",
-              "migrasi"
+              "perilaku bawaan",
+              "menyembunyikan bug"
             ],
             "a": 1,
             "explain": "Middleware request."
@@ -3779,8 +3779,8 @@ const CONTENT_PYTHON = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "in",
+              "@nama"
             ],
             "a": 1,
             "explain": "Autentikasi wajib."
@@ -3791,8 +3791,8 @@ const CONTENT_PYTHON = [
             "options": [
               "opsional",
               "wajib",
-              "CSS",
-              "route"
+              "assert",
+              "twine"
             ],
             "a": 1,
             "explain": "Validasi server."
@@ -3802,9 +3802,9 @@ const CONTENT_PYTHON = [
             "q": "Dokumentasi API otomatis membantu",
             "options": [
               "tidak",
-              "CSS",
+              "RCE",
               "ya",
-              "route"
+              ".py"
             ],
             "a": 2,
             "explain": "OpenAPI otomatis."
@@ -3814,9 +3814,9 @@ const CONTENT_PYTHON = [
             "q": "Observability penting",
             "options": [
               "tidak",
-              "CSS",
+              "#",
               "ya",
-              "route"
+              "%"
             ],
             "a": 2,
             "explain": "Log/metrik/tracing."

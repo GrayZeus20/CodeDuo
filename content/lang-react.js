@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_REACT = [
-{
+  {
     "id": "react",
     "name": "React",
     "icon": "⚛️",
@@ -478,7 +478,7 @@ const CONTENT_REACT = [
               "nama elemen",
               "id state",
               "nilai yang diketik pengguna",
-              "route"
+              "input yang dibaca, bukan dimutasi"
             ],
             "a": 2,
             "explain": "target.value membaca nilai input saat event terjadi."
@@ -567,7 +567,7 @@ const CONTENT_REACT = [
             "q": "Menampilkan loading lalu data biasanga memakai",
             "options": [
               "CSS animasi saja",
-              "route",
+              "logging, thunk, dan efek samping",
               "kondisi pada state loading",
               "migration"
             ],
@@ -720,7 +720,7 @@ const CONTENT_REACT = [
               "tidak ada syarat",
               "key unik bila daftar berupa array elemen",
               "Fragment tanpa key selalu",
-              "route"
+              "useEffect lalu set state"
             ],
             "a": 1,
             "explain": "Daftar array elemen bersaudara memerlukan key."
@@ -787,7 +787,7 @@ const CONTENT_REACT = [
               "DOM saja",
               "state React",
               "server",
-              "CSS"
+              "[...arr].sort(compare)"
             ],
             "a": 1,
             "explain": "Input terkontrol memperoleh nilai dari state."
@@ -971,10 +971,10 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Mengambil data dari API saat mount biasanya memakai",
             "options": [
-              "CSS",
+              "markup mirip HTML di dalam JavaScript",
               "useEffect lalu set state",
               "migration",
-              "route"
+              "key yang stabil"
             ],
             "a": 1,
             "explain": "Effect memicu fetch dan menyimpan hasil ke state."
@@ -1008,8 +1008,8 @@ const CONTENT_REACT = [
             "q": "Menyetel judul dokumen saat berubah memakai",
             "options": [
               "useEffect dengan dependency",
-              "CSS",
-              "route",
+              "berdasarkan kebutuhan, bukan tren",
+              "htmlFor dan id",
               "migration"
             ],
             "a": 0,
@@ -1039,7 +1039,7 @@ const CONTENT_REACT = [
             "q": "Cara aman memberi kelas CSS di JSX adalah",
             "options": [
               "class",
-              "css",
+              "ref.current",
               "styleName",
               "className"
             ],
@@ -1125,7 +1125,7 @@ const CONTENT_REACT = [
               "menulis ulang CSS",
               "kelas kondisional",
               "migration",
-              "route"
+              "stateless (dumb/presentational) component"
             ],
             "a": 1,
             "explain": "Kelas kondisional menyesuaikan gaya dengan nilai state."
@@ -1137,7 +1137,7 @@ const CONTENT_REACT = [
               "setiap komponen",
               "migration",
               "entry file aplikasi (main/index)",
-              "route"
+              "menjaga konsistensi transisi"
             ],
             "a": 2,
             "explain": "Global CSS diimpor sekali pada titik masuk aplikasi."
@@ -1148,7 +1148,7 @@ const CONTENT_REACT = [
             "options": [
               "migration",
               "kelas pada root (body/html)",
-              "route",
+              "pohon komponen React, bukan DOM",
               "props wajib"
             ],
             "a": 1,
@@ -1203,7 +1203,7 @@ const CONTENT_REACT = [
             "options": [
               "menulis CSS",
               "membuat route",
-              "migrasi",
+              "Agar React mencocokkan item saat list berubah",
               "bisa dipakai sebagai item dalam daftar"
             ],
             "a": 3,
@@ -1307,7 +1307,7 @@ const CONTENT_REACT = [
               "membuat route",
               "mengakses elemen DOM atau menyimpan nilai mutable",
               "migrasi database",
-              "CSS"
+              "memperkecil bundel awal"
             ],
             "a": 1,
             "explain": "Ref berguna untuk DOM dan nilai yang tidak perlu dirender."
@@ -1379,7 +1379,7 @@ const CONTENT_REACT = [
               "class turunan",
               "file CSS",
               "fungsi yang namanya diawali use",
-              "route"
+              "context atau props"
             ],
             "a": 2,
             "explain": "Hook kustom adalah fungsi berawalan use yang memakai hooks lain."
@@ -1402,8 +1402,8 @@ const CONTENT_REACT = [
             "options": [
               "referensi ke node DOM",
               "nilai state",
-              "route",
-              "CSS"
+              "string, angka, elemen, atau array elemen",
+              "di level atas komponen, bukan di dalam kondisi atau loop"
             ],
             "a": 0,
             "explain": "Ref yang dipasang ke elemen memberi akses ke node DOM-nya."
@@ -1530,7 +1530,7 @@ const CONTENT_REACT = [
               "entry/root komponen",
               "setiap event handler",
               "migration",
-              "CSS"
+              "useSearchParams"
             ],
             "a": 0,
             "explain": "Provider umumnya dipasang di root agar seluruh aplikasi bisa mengaksesnya."
@@ -1585,7 +1585,7 @@ const CONTENT_REACT = [
               "perhitungan mahal yang hasilnya bisa di-cache",
               "semua nilai state",
               "DOM query",
-              "route"
+              "validasi dan penanganan error"
             ],
             "a": 0,
             "explain": "useMemo menyimpan hasil perhitungan mahal."
@@ -1673,10 +1673,10 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Mengambil data di komponen biasanya memakai",
             "options": [
-              "CSS",
+              "sedang menunggu lalu menampilkan fallback",
               "migration",
               "fetch/axios di dalam useEffect",
-              "route"
+              "error boundary yang sesuai"
             ],
             "a": 2,
             "explain": "Effect memicu permintaan data dan menyimpan hasilnya ke state."
@@ -1688,7 +1688,7 @@ const CONTENT_REACT = [
               "CSS rusak",
               "route ganda",
               "update state pada komponen yang sudah dilepas",
-              "migrasi"
+              "dibagi antar request"
             ],
             "a": 2,
             "explain": "Update state setelah unmount memicu peringatan dan potensi bug."
@@ -1699,7 +1699,7 @@ const CONTENT_REACT = [
             "options": [
               "menulis CSS",
               "membuat route",
-              "migrasi",
+              "markup mirip HTML di dalam JavaScript",
               "membatalkan request fetch"
             ],
             "a": 3,
@@ -1748,7 +1748,7 @@ const CONTENT_REACT = [
               "mengabaikan respons yang sudah tidak relevan",
               "menambahkan lebih banyak request",
               "menghapus state",
-              "CSS"
+              "mengembangkan dan mendokumentasikan komponen terisolasi"
             ],
             "a": 0,
             "explain": "Pastikan hanya respons terbaru yang diterapkan ke state."
@@ -1770,8 +1770,8 @@ const CONTENT_REACT = [
             "q": "Mengirim data ke server (POST) memakai",
             "options": [
               "fetch GET saja",
-              "CSS",
-              "migrasi",
+              "state komponen anak",
+              "struktur implementasi internal",
               "fetch dengan method POST dan body"
             ],
             "a": 3,
@@ -1803,7 +1803,7 @@ const CONTENT_REACT = [
               "fungsi JavaScript yang memakai hooks lain",
               "class komponen",
               "file CSS",
-              "route"
+              "value dan onChange"
             ],
             "a": 0,
             "explain": "Custom hook membungkus logika berbasis hooks agar dipakai ulang."
@@ -1825,8 +1825,8 @@ const CONTENT_REACT = [
             "q": "Custom hook mengembalikan biasanya",
             "options": [
               "tag HTML",
-              "route",
-              "CSS",
+              "value dan onChange pada select",
+              "komponen unmount atau sebelum effect berikutnya",
               "state atau nilai yang dibutuhkan komponen"
             ],
             "a": 3,
@@ -1860,9 +1860,9 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Hook untuk mendeteksi lebar window biasanya mengembalikan",
             "options": [
-              "CSS",
+              "fungsi yang namanya diawali use",
               "nilai lebar saat ini",
-              "route",
+              "mengurangi render yang tidak perlu",
               "database"
             ],
             "a": 1,
@@ -1872,9 +1872,9 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Custom hook useForm biasanya menyediakan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "melihat komponen yang mahal dirender",
+              "membatalkan request fetch",
+              "fungsi JavaScript yang memakai hooks lain",
               "nilai, handler perubahan, dan submit"
             ],
             "a": 3,
@@ -1898,8 +1898,8 @@ const CONTENT_REACT = [
             "options": [
               "useEffect di dalam hook",
               "luar fungsi hook",
-              "CSS",
-              "route"
+              "logging, thunk, dan efek samping",
+              "menahan fokus di dalam dialog"
             ],
             "a": 0,
             "explain": "Cleanup diletakkan pada effect di dalam hook."
@@ -1910,7 +1910,7 @@ const CONTENT_REACT = [
             "options": [
               "hanya data",
               "status loading dan error",
-              "CSS",
+              "elemen semantik seperti button",
               "routing"
             ],
             "a": 1,
@@ -2105,7 +2105,7 @@ const CONTENT_REACT = [
               "hooks wajib",
               "fungsi yang menerima komponen dan mengembalikan komponen baru",
               "class CSS",
-              "route"
+              "clearInterval di fungsi cleanup"
             ],
             "a": 1,
             "explain": "HOC menambah perilaku dengan membungkus komponen."
@@ -2127,8 +2127,8 @@ const CONTENT_REACT = [
             "q": "Slot bernama pada React biasanya dibuat dengan",
             "options": [
               "tag slot HTML",
-              "CSS",
-              "route",
+              "<Route path ...>",
+              "<Outlet />",
               "prop berupa elemen/fungsi"
             ],
             "a": 3,
@@ -2152,7 +2152,7 @@ const CONTENT_REACT = [
             "options": [
               "warna",
               "siapa yang menjadi sumber kebenaran nilai",
-              "route",
+              "loading, error, dan data",
               "DB"
             ],
             "a": 1,
@@ -2183,7 +2183,7 @@ const CONTENT_REACT = [
             "options": [
               "event handler browser",
               "server",
-              "CSS",
+              "mengurangi JavaScript klien dan mengambil data di server",
               "pohon komponen anak saat render"
             ],
             "a": 3,
@@ -2196,7 +2196,7 @@ const CONTENT_REACT = [
               "fungsi biasa",
               "file CSS",
               "class component dengan componentDidCatch",
-              "route"
+              "stub global.fetch atau MSW"
             ],
             "a": 2,
             "explain": "Error boundary perlu class component dengan componentDidCatch (atau getDerivedStateFromError)."
@@ -2253,8 +2253,8 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Logging error di produksi dapat dikirim ke",
             "options": [
-              "CSS",
-              "route",
+              "menjaga konsistensi transisi",
+              "konten anak belum siap",
               "layanan monitoring (mis. Sentry)",
               "migration"
             ],
@@ -2266,9 +2266,9 @@ const CONTENT_REACT = [
             "q": "`key` yang berubah dapat mereset",
             "options": [
               "CSS global",
-              "route",
+              "pohon komponen React, bukan DOM",
               "state komponen anak",
-              "migrasi"
+              "bagian mahal yang perlu dioptimalkan"
             ],
             "a": 2,
             "explain": "Mengganti key memaksa komponen dibuat ulang dengan state baru."
@@ -2278,7 +2278,7 @@ const CONTENT_REACT = [
             "q": "Menangani error jaringan pada request memakai",
             "options": [
               "tanpa penanganan",
-              "CSS",
+              "pertama useState",
               "try/catch atau .catch",
               "reload saja"
             ],
@@ -2334,8 +2334,8 @@ const CONTENT_REACT = [
             "options": [
               "detail implementasi",
               "perilaku yang terlihat pengguna",
-              "CSS",
-              "route"
+              "membuat semua item dianggap baru setiap render",
+              "mengatur ulang state ke nilai awal"
             ],
             "a": 1,
             "explain": "Fokus pada perilaku yang dapat diamati pengguna."
@@ -2392,8 +2392,8 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Mocking fetch pada test memakai",
             "options": [
-              "CSS",
-              "route",
+              "markup mirip HTML di dalam JavaScript",
+              "key yang stabil",
               "stub global.fetch atau MSW",
               "migration"
             ],
@@ -2474,7 +2474,7 @@ const CONTENT_REACT = [
               "render ulang komponen",
               "error",
               "CSS rusak",
-              "route"
+              "memuat komponen saat dibutuhkan"
             ],
             "a": 0,
             "explain": "Perubahan ref tidak menjadwalkan render."
@@ -2509,8 +2509,8 @@ const CONTENT_REACT = [
             "options": [
               "ref.current.focus()",
               "input.focus() global",
-              "CSS",
-              "route"
+              "{/* komentar */}",
+              "array [nilai, setter]"
             ],
             "a": 0,
             "explain": "Memanggil focus pada node DOM via ref memberi fokus."
@@ -2519,9 +2519,9 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Mengukur ukuran elemen membutuhkan",
             "options": [
-              "CSS",
+              "meneruskan ref ke komponen anak",
               "akses DOM via ref setelah render",
-              "route",
+              "langsung diakses saat render server",
               "DB"
             ],
             "a": 1,
@@ -2563,7 +2563,7 @@ const CONTENT_REACT = [
             "q": "Server Component di React menjalankan kodenya di",
             "options": [
               "browser saja",
-              "CSS",
+              "mempercepat navigasi ke halaman berikutnya",
               "database",
               "server, tidak dikirim ke browser"
             ],
@@ -2649,7 +2649,7 @@ const CONTENT_REACT = [
               "menghapus state",
               "mempercepat CSS",
               "memakai interaksi klien di dalam struktur server",
-              "migrasi"
+              "detail sumber data dari komponen"
             ],
             "a": 2,
             "explain": "Komposisi ini memberi interaksi tanpa mengirim seluruh logika ke klien."
@@ -2661,7 +2661,7 @@ const CONTENT_REACT = [
               "batas terkecil komponen interaktif",
               "root aplikasi selalu",
               "setiap file CSS",
-              "route"
+              "useRef lalu pasang ke prop ref"
             ],
             "a": 0,
             "explain": "Menandai batas klien seperlunya menjaga sebagian besar tetap di server."
@@ -2692,7 +2692,7 @@ const CONTENT_REACT = [
               "menandai pembaruan state non-urgent",
               "menyimpan DOM",
               "membuat route",
-              "migrasi"
+              "sinkronisasi dengan sistem eksternal setelah render"
             ],
             "a": 0,
             "explain": "useTransition menandai pembaruan tertentu agar tidak memblokir UI."
@@ -2716,7 +2716,7 @@ const CONTENT_REACT = [
               "menunda nilai turunan berat",
               "menyimpan DOM",
               "membuat route",
-              "migrasi"
+              "{kondisi && <Elemen />}"
             ],
             "a": 0,
             "explain": "useDeferredValue menunda pembaruan nilai yang mahal."
@@ -2738,7 +2738,7 @@ const CONTENT_REACT = [
             "q": "Pembaruan state yang memblokir input pada daftar besar dapat diperbaiki dengan",
             "options": [
               "menghapus daftar",
-              "CSS",
+              "menangani fallback saat komponen lazy dimuat",
               "reload",
               "transition atau deferred value"
             ],
@@ -2774,7 +2774,7 @@ const CONTENT_REACT = [
             "q": "Prioritas render pada React concurrent ditentukan oleh",
             "options": [
               "React berdasarkan jenis pembaruan",
-              "CSS",
+              "(state, action) => newState",
               "server",
               "database"
             ],
@@ -2829,9 +2829,9 @@ const CONTENT_REACT = [
             "q": "Redux Toolkit membantu dengan",
             "options": [
               "pola reducer/prediktif dan perkakas bawaan",
-              "CSS",
+              "memicu render ulang komponen",
               "routing",
-              "migrasi"
+              "onSubmit pada form"
             ],
             "a": 0,
             "explain": "Redux Toolkit menyederhanakan state management prediktif."
@@ -2842,7 +2842,7 @@ const CONTENT_REACT = [
             "options": [
               "menghapus state",
               "mengambil bagian state secara terpilih",
-              "CSS",
+              "Membuat array baru, bukan memutasi state lama",
               "routing"
             ],
             "a": 1,
@@ -2888,10 +2888,10 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Middleware pada Redux sering dipakai untuk",
             "options": [
-              "CSS",
+              "memecah berdasarkan tanggung jawab",
               "logging, thunk, dan efek samping",
               "routing",
-              "migrasi"
+              "pohon komponen React, bukan DOM"
             ],
             "a": 1,
             "explain": "Middleware menangani efek samping atau logging pada dispatch."
@@ -2913,9 +2913,9 @@ const CONTENT_REACT = [
             "q": "Menghidrasi store dari localStorage perlu hati-hati terhadap",
             "options": [
               "data basi dan keamanan",
-              "CSS",
-              "route",
-              "migrasi"
+              "htmlFor dan id",
+              "navigasi pembaca layar",
+              "memicu error pada komponen anak"
             ],
             "a": 0,
             "explain": "Data tersimpan bisa basi atau tidak aman bila berisi informasi sensitif."
@@ -2927,7 +2927,7 @@ const CONTENT_REACT = [
               "mempercepat CSS",
               "skalabilitas dan pemisahan tanggung jawab",
               "menghapus route",
-              "migrasi"
+              "pengalaman yang lebih mulus"
             ],
             "a": 1,
             "explain": "Store modular memudahkan pengelolaan pada aplikasi besar."
@@ -2981,7 +2981,7 @@ const CONTENT_REACT = [
             "options": [
               "mempercepat CSS",
               "routing",
-              "migrasi",
+              "parameter default atau defaultProps",
               "menahan fokus di dalam dialog"
             ],
             "a": 3,
@@ -2993,7 +2993,7 @@ const CONTENT_REACT = [
             "options": [
               "hanya mouse",
               "tanpa fokus",
-              "CSS",
+              "logging, thunk, dan efek samping",
               "Tab, Enter, dan Escape sesuai konteks"
             ],
             "a": 3,
@@ -3006,7 +3006,7 @@ const CONTENT_REACT = [
               "styling",
               "mengumumkan perubahan konten dinamis",
               "routing",
-              "migrasi"
+              "elemen semantik seperti button"
             ],
             "a": 1,
             "explain": "aria-live memberi tahu pembaca layar tentang perubahan."
@@ -3039,10 +3039,10 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Urutan heading yang baik membantu",
             "options": [
-              "CSS",
+              "bisa dipakai sebagai item dalam daftar",
               "navigasi pembaca layar",
               "routing",
-              "migrasi"
+              "memoize referensi fungsi"
             ],
             "a": 1,
             "explain": "Hierarki heading yang benar memudahkan navigasi."
@@ -3073,7 +3073,7 @@ const CONTENT_REACT = [
               "mengubah CSS",
               "membuat route",
               "mencegat request jaringan pada level network",
-              "migrasi"
+              "string, angka, elemen, atau array elemen"
             ],
             "a": 2,
             "explain": "MSW mencegat fetch/XHR sehingga test memakai respons tiruan realistis."
@@ -3084,7 +3084,7 @@ const CONTENT_REACT = [
             "options": [
               "satu fungsi murni",
               "interaksi beberapa komponen bersama",
-              "CSS",
+              "bentrok nama kelas global",
               "DB"
             ],
             "a": 1,
@@ -3130,7 +3130,7 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Fake timers berguna untuk menguji",
             "options": [
-              "CSS",
+              "fungsi JavaScript yang memakai hooks lain",
               "routing",
               "debounce, timeout, dan interval",
               "DB"
@@ -3144,8 +3144,8 @@ const CONTENT_REACT = [
             "options": [
               "menghapus komponen",
               "memicu error pada komponen anak",
-              "CSS",
-              "route"
+              "meneruskan ref ke komponen anak",
+              "langsung diakses saat render server"
             ],
             "a": 1,
             "explain": "Test error boundary memicu error agar fallback tampil."
@@ -3200,7 +3200,7 @@ const CONTENT_REACT = [
               "ukuran file",
               "warna",
               "fitur, bukan tipe berkas",
-              "route"
+              "mencegat request jaringan pada level network"
             ],
             "a": 2,
             "explain": "Struktur berbasis fitur memudahkan navigasi pada aplikasi besar."
@@ -3212,7 +3212,7 @@ const CONTENT_REACT = [
               "memisahkan tanggung jawab",
               "mempercepat CSS",
               "menghapus state",
-              "migrasi"
+              "context atau props"
             ],
             "a": 0,
             "explain": "Pemisahan lapisan menjaga kode mudah dirawat dan diuji."
@@ -3222,8 +3222,8 @@ const CONTENT_REACT = [
             "q": "Dependency injection pada React sering dilakukan dengan",
             "options": [
               "context atau props",
-              "CSS",
-              "route",
+              "komponen yang menunggu data/kode",
+              "membantu deteksi perubahan dan debugging",
               "DB"
             ],
             "a": 0,
@@ -3233,8 +3233,8 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Adapter untuk API memisahkan",
             "options": [
-              "CSS",
-              "route",
+              "skalabilitas dan pemisahan tanggung jawab",
+              "memenuhi WCAG AA",
               "state",
               "detail sumber data dari komponen"
             ],
@@ -3246,7 +3246,7 @@ const CONTENT_REACT = [
             "q": "Komponen yang mengurus data sebaiknya dipisah dari",
             "options": [
               "CSS global",
-              "route",
+              "string kode",
               "DB",
               "komponen presentasional"
             ],
@@ -3260,7 +3260,7 @@ const CONTENT_REACT = [
               "menambah state",
               "menghapus props",
               "memecah berdasarkan tanggung jawab",
-              "CSS"
+              "berupa data yang dapat diserialisasi"
             ],
             "a": 2,
             "explain": "Memecah komponen menjaga tiap bagian fokus."
@@ -3272,7 +3272,7 @@ const CONTENT_REACT = [
               "mempercepat DB",
               "konsistensi UI dan pemakaian ulang",
               "routing",
-              "migrasi"
+              "status loading dan error"
             ],
             "a": 1,
             "explain": "Design system menyeragamkan komponen antarbagian aplikasi."
@@ -3295,8 +3295,8 @@ const CONTENT_REACT = [
             "options": [
               "variabel build-time/prefix yang sesuai",
               "menulis token di kode",
-              "CSS",
-              "route"
+              "melihat komponen yang mahal dirender",
+              "membatalkan request fetch"
             ],
             "a": 0,
             "explain": "Hanya variabel yang diekspos saat build yang tersedia di klien."
@@ -3308,7 +3308,7 @@ const CONTENT_REACT = [
               "pengujian dan pemakaian ulang",
               "styling",
               "routing",
-              "migrasi"
+              "data fetching library seperti TanStack Query"
             ],
             "a": 0,
             "explain": "Fungsi murni mudah diuji tanpa DOM."
@@ -3325,7 +3325,7 @@ const CONTENT_REACT = [
             "q": "ReactDOM.createPortal dipakai untuk",
             "options": [
               "menghapus state",
-              "CSS",
+              "merender teks \"0\"",
               "routing",
               "merender anak di luar hierarki DOM induk"
             ],
@@ -3336,7 +3336,7 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Portal cocok untuk membuat",
             "options": [
-              "route",
+              "spread objek lama lalu ubah field",
               "migration",
               "modal, tooltip, dan dropdown",
               "CSS global"
@@ -3349,7 +3349,7 @@ const CONTENT_REACT = [
             "q": "Event pada portal tetap mengikuti",
             "options": [
               "DOM induk",
-              "CSS",
+              "export default atau export named",
               "pohon komponen React, bukan DOM",
               "routing"
             ],
@@ -3361,7 +3361,7 @@ const CONTENT_REACT = [
             "q": "StrictMode di React membantu",
             "options": [
               "mempercepat produksi",
-              "CSS",
+              "ref berisi nilai terbaru",
               "routing",
               "menemukan masalah dengan efek dan API usang"
             ],
@@ -3423,7 +3423,7 @@ const CONTENT_REACT = [
               "dibagi antar request",
               "menghapus CSS",
               "mempercepat route",
-              "migrasi"
+              "mengumumkan perubahan konten dinamis"
             ],
             "a": 0,
             "explain": "Module scope pada server dipakai bersama antar request sehingga bisa bocor."
@@ -3432,9 +3432,9 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Mengukur render dengan Profiler dapat memperlihatkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "berdasarkan kebutuhan, bukan tren",
+              "htmlFor dan id",
+              "navigasi pembaca layar",
               "bagian mahal yang perlu dioptimalkan"
             ],
             "a": 3,
@@ -3454,7 +3454,7 @@ const CONTENT_REACT = [
               "state global selalu",
               "lifting state seperlunya",
               "tanpa state",
-              "CSS"
+              "pembaruan state diterapkan sebelum asersi"
             ],
             "a": 1,
             "explain": "State sebaiknya sedekat mungkin dengan komponen yang memakainya."
@@ -3490,7 +3490,7 @@ const CONTENT_REACT = [
               "mempercepat CSS",
               "routing",
               "menjaga konsistensi transisi",
-              "migrasi"
+              "perbaikan bug dan keamanan"
             ],
             "a": 2,
             "explain": "State terkait yang disatukan lebih mudah dijaga konsisten."
@@ -3513,7 +3513,7 @@ const CONTENT_REACT = [
             "options": [
               "mempercepat CSS",
               "routing",
-              "migrasi",
+              "prop berupa elemen/fungsi",
               "prediktabilitas render"
             ],
             "a": 3,
@@ -3526,7 +3526,7 @@ const CONTENT_REACT = [
               "menghapus CSS",
               "memperkecil bundel awal",
               "mempercepat DB",
-              "migrasi"
+              "memicu render ulang komponen"
             ],
             "a": 1,
             "explain": "Code splitting per route memuat kode saat dibutuhkan."
@@ -3550,7 +3550,7 @@ const CONTENT_REACT = [
               "mempercepat CSS",
               "routing",
               "perbaikan bug dan keamanan",
-              "migrasi"
+              "unik di antara saudara dalam daftar"
             ],
             "a": 2,
             "explain": "Pembaruan dependency membawa perbaikan bug dan patch keamanan."
@@ -3639,9 +3639,9 @@ const CONTENT_REACT = [
             "q": "Menampilkan beberapa fallback per bagian halaman dilakukan dengan",
             "options": [
               "satu boundary di root",
-              "CSS",
+              "hanya merender item yang terlihat",
               "beberapa Suspense boundary",
-              "route"
+              "mengurangi request berulang dan menampilkan data cepat"
             ],
             "a": 2,
             "explain": "Boundary terpisah memungkinkan fallback per bagian."
@@ -3663,8 +3663,8 @@ const CONTENT_REACT = [
             "q": "Kesalahan saat menunggu data sebaiknya ditangani oleh",
             "options": [
               "Suspense sendiri",
-              "CSS",
-              "route",
+              "logika data dan tampilan",
+              "class component dengan componentDidCatch",
               "error boundary yang sesuai"
             ],
             "a": 3,
@@ -3676,7 +3676,7 @@ const CONTENT_REACT = [
             "options": [
               "menghapus state",
               "menulis CSS",
-              "migrasi",
+              "Membuat array baru, bukan memutasi state lama",
               "mempercepat navigasi ke halaman berikutnya"
             ],
             "a": 3,
@@ -3687,7 +3687,7 @@ const CONTENT_REACT = [
             "q": "Menunda render bagian berat dapat memakai",
             "options": [
               "CSS inline",
-              "route",
+              "yang mendukung aturan hooks (mis. renderHook)",
               "DB",
               "lazy loading dengan Suspense"
             ],
@@ -3717,10 +3717,10 @@ const CONTENT_REACT = [
             "type": "mc",
             "q": "Efek yang berlangganan sesuatu wajib menyediakan",
             "options": [
-              "CSS",
-              "route",
+              "fireEvent.click / userEvent.click",
+              "Zustand",
               "fungsi cleanup",
-              "migrasi"
+              "PascalCase"
             ],
             "a": 2,
             "explain": "Cleanup mencegah kebocoran langganan."
@@ -3743,7 +3743,7 @@ const CONTENT_REACT = [
             "options": [
               "error CSS",
               "route ganda",
-              "migrasi",
+              "ditangkap dan ditampilkan pesan",
               "nilai usang (stale) pada effect"
             ],
             "a": 3,
@@ -3755,8 +3755,8 @@ const CONTENT_REACT = [
             "options": [
               "ref berisi nilai terbaru",
               "variabel global",
-              "CSS",
-              "route"
+              "renderToString / streaming API",
+              "yang sah untuk memaksa remount"
             ],
             "a": 0,
             "explain": "Ref menyimpan nilai terbaru tanpa memicu langganan ulang."

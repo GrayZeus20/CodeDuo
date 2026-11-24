@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_MATLAB = [
-{
+  {
     "id": "matlab",
     "name": "MATLAB",
     "icon": "📊",
@@ -35,7 +35,7 @@ const CONTENT_MATLAB = [
             "q": "MATLAB berfokus pada",
             "options": [
               "komputasi numerik dan matriks",
-              "CSS",
+              "jumlah argumen masukan",
               "routing",
               "HTML"
             ],
@@ -58,9 +58,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Command window dipakai untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "MATLAB Production Server",
+              "Menyatakan operasi array secara langsung dan memanfaatkan operasi bawaan",
+              "[a b] / [a; b]",
               "menjalankan perintah interaktif"
             ],
             "a": 3,
@@ -85,7 +85,7 @@ const CONTENT_MATLAB = [
               "0",
               "1",
               "-1",
-              "CSS"
+              "ya"
             ],
             "a": 1,
             "explain": "MATLAB memakai indexing berbasis satu."
@@ -97,7 +97,7 @@ const CONTENT_MATLAB = [
               "%",
               "//",
               "#",
-              "CSS"
+              ".m"
             ],
             "a": 0,
             "explain": "MATLAB memakai %."
@@ -106,10 +106,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Script MATLAB adalah",
             "options": [
-              "CSS",
-              "route",
+              "strtrim",
+              "memeriksa kondisi",
               "kumpulan perintah .m",
-              "migrasi"
+              "rgb2gray"
             ],
             "a": 2,
             "explain": "Script menjalankan perintah."
@@ -121,7 +121,7 @@ const CONTENT_MATLAB = [
               "def",
               "function",
               "fun",
-              "CSS"
+              "imwrite"
             ],
             "a": 1,
             "explain": "MATLAB memakai function."
@@ -131,9 +131,9 @@ const CONTENT_MATLAB = [
             "q": "Vectorization disarankan",
             "options": [
               "tidak",
-              "CSS",
+              "end",
               "ya",
-              "route"
+              "var()"
             ],
             "a": 2,
             "explain": "Vectorization efisien."
@@ -152,7 +152,7 @@ const CONTENT_MATLAB = [
               "var nama",
               "let nama",
               "nama = nilai",
-              "CSS"
+              "nilai antar panggilan"
             ],
             "a": 2,
             "explain": "MATLAB tanpa deklarasi."
@@ -163,7 +163,7 @@ const CONTENT_MATLAB = [
             "options": [
               "int",
               "float",
-              "CSS",
+              "plot(x,y)",
               "double"
             ],
             "a": 3,
@@ -174,9 +174,9 @@ const CONTENT_MATLAB = [
             "q": "Teks diapit",
             "options": [
               "kutip tunggal/ganda",
-              "CSS",
-              "route",
-              "migrasi"
+              "disp()/fprintf",
+              "kondisi array",
+              "size(A)"
             ],
             "a": 0,
             "explain": "String memakai kutip."
@@ -188,7 +188,7 @@ const CONTENT_MATLAB = [
               "null",
               "Inf",
               "nil",
-              "CSS"
+              "imresize"
             ],
             "a": 1,
             "explain": "MATLAB memakai Inf."
@@ -198,9 +198,9 @@ const CONTENT_MATLAB = [
             "q": "Nilai NaN berarti",
             "options": [
               "bukan angka",
-              "CSS",
-              "route",
-              "migrasi"
+              "==/</>",
+              "\"teks\"",
+              "strlength"
             ],
             "a": 0,
             "explain": "NaN menandakan hasil tak valid."
@@ -212,7 +212,7 @@ const CONTENT_MATLAB = [
               "null",
               "nil",
               "[]",
-              "CSS"
+              "ode45"
             ],
             "a": 2,
             "explain": "Array kosong memakai []."
@@ -222,9 +222,9 @@ const CONTENT_MATLAB = [
             "q": "Menampilkan variabel memakai",
             "options": [
               "disp()/fprintf",
-              "CSS",
-              "route",
-              "migrasi"
+              "cakupan test",
+              "rank(A)",
+              "max()"
             ],
             "a": 0,
             "explain": "disp/fprintf menampilkan."
@@ -233,10 +233,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Mengubah tipe memakai",
             "options": [
-              "CSS",
+              "performa",
               "cast/int32/str2double",
-              "route",
-              "migrasi"
+              "solver numerik",
+              "membuat GUI"
             ],
             "a": 1,
             "explain": "Konversi eksplisit."
@@ -245,9 +245,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "who/whos untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "parfor",
+              "kompleksitas",
+              "logika state",
               "melihat variabel"
             ],
             "a": 3,
@@ -257,10 +257,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "clear menghapus",
             "options": [
-              "CSS",
+              "xlabel()",
               "variabel workspace",
-              "route",
-              "migrasi"
+              "saveas()/print()",
+              "loop manual"
             ],
             "a": 1,
             "explain": "clear menghapus."
@@ -276,10 +276,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Indexing logika memakai",
             "options": [
-              "CSS",
+              "wajib",
               "mask logis",
-              "route",
-              "migrasi"
+              "analisis sinyal",
+              "MathWorks"
             ],
             "a": 1,
             "explain": "Mask logis memilih elemen."
@@ -288,9 +288,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "A(A>5) memilih",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "MATLAB Production Server",
+              "Menyatakan operasi array secara langsung dan memanfaatkan operasi bawaan",
+              "[a b] / [a; b]",
               "elemen lebih dari 5"
             ],
             "a": 3,
@@ -301,9 +301,9 @@ const CONTENT_MATLAB = [
             "q": "end menunjuk",
             "options": [
               "elemen terakhir",
-              "CSS",
-              "route",
-              "migrasi"
+              "sqrt()",
+              "grid on",
+              "di signature"
             ],
             "a": 0,
             "explain": "end elemen terakhir."
@@ -312,9 +312,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "A(2:4) memilih",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "jumlah argumen masukan",
+              "nilai antar panggilan",
+              "dipakai bila ada",
               "elemen 2 sampai 4"
             ],
             "a": 3,
@@ -325,9 +325,9 @@ const CONTENT_MATLAB = [
             "q": "find mengembalikan",
             "options": [
               "index elemen",
-              "CSS",
-              "route",
-              "migrasi"
+              "matriks",
+              "analisis spektral",
+              "unittest/matlab.unittest"
             ],
             "a": 0,
             "explain": "find mencari index."
@@ -336,10 +336,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "any/all memeriksa",
             "options": [
-              "CSS",
+              "mask logis",
               "kondisi array",
-              "route",
-              "migrasi"
+              "zeros()",
+              "exp()"
             ],
             "a": 1,
             "explain": "any/all memeriksa."
@@ -348,10 +348,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menggabungkan array memakai",
             "options": [
-              "CSS",
+              "&& || ~",
               "[a b] / [a; b]",
-              "route",
-              "migrasi"
+              "fungsi ke elemen",
+              "data tabular kolom"
             ],
             "a": 1,
             "explain": "Konkatenasi horizontal/vertikal."
@@ -361,9 +361,9 @@ const CONTENT_MATLAB = [
             "q": "Membalik array memakai",
             "options": [
               "fliplr/flipud",
-              "CSS",
-              "route",
-              "migrasi"
+              "replace/strrep",
+              "debugging",
+              "imread"
             ],
             "a": 0,
             "explain": "fliplr/flipud membalik."
@@ -372,9 +372,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Membentuk ulang array memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kode C/C++",
+              "profile on",
+              ".slx",
               "reshape"
             ],
             "a": 3,
@@ -385,9 +385,9 @@ const CONTENT_MATLAB = [
             "q": "Menghapus elemen memakai",
             "options": [
               "A(2) = []",
-              "CSS",
-              "route",
-              "migrasi"
+              ".mlapp",
+              "backslash",
+              "tabulate"
             ],
             "a": 0,
             "explain": "Assign [] menghapus."
@@ -405,8 +405,8 @@ const CONTENT_MATLAB = [
             "options": [
               "(1,2;3,4)",
               "[1 2; 3 4]",
-              "CSS",
-              "route"
+              "[a b] / [a; b]",
+              "jumlah argumen keluaran"
             ],
             "a": 1,
             "explain": "Baris dipisah ;."
@@ -416,8 +416,8 @@ const CONTENT_MATLAB = [
             "q": "Semua elemen dikalikan per elemen memakai",
             "options": [
               "*",
-              "CSS",
-              "route",
+              "help",
+              "edge",
               ".*"
             ],
             "a": 3,
@@ -428,8 +428,8 @@ const CONTENT_MATLAB = [
             "q": "Mengakses elemen memakai",
             "options": [
               "A[1][2]",
-              "CSS",
-              "route",
+              "di signature",
+              "strcmp",
               "A(1,2)"
             ],
             "a": 3,
@@ -441,8 +441,8 @@ const CONTENT_MATLAB = [
             "options": [
               "A[:,1]",
               "A(1,:)",
-              "CSS",
-              "route"
+              "banyak record",
+              "fopen"
             ],
             "a": 1,
             "explain": "Tanda : memilih semua kolom."
@@ -452,8 +452,8 @@ const CONTENT_MATLAB = [
             "q": "Dimensi array memakai",
             "options": [
               "shape(A)",
-              "CSS",
-              "route",
+              "variabel workspace",
+              "A(2) = []",
               "size(A)"
             ],
             "a": 3,
@@ -464,8 +464,8 @@ const CONTENT_MATLAB = [
             "q": "Jumlah elemen memakai",
             "options": [
               "length_all",
-              "CSS",
-              "route",
+              "imbinarize",
+              "sampling rate",
               "numel(A)"
             ],
             "a": 3,
@@ -476,8 +476,8 @@ const CONTENT_MATLAB = [
             "q": "Transpose memakai",
             "options": [
               "transpose_only",
-              "CSS",
-              "route",
+              ".slx",
+              "[]",
               "A'"
             ],
             "a": 3,
@@ -489,8 +489,8 @@ const CONTENT_MATLAB = [
             "options": [
               "eye(n)",
               "identity(n)",
-              "CSS",
-              "route"
+              "exp()",
+              "legend()"
             ],
             "a": 0,
             "explain": "eye membuat identitas."
@@ -500,9 +500,9 @@ const CONTENT_MATLAB = [
             "q": "Matriks nol memakai",
             "options": [
               "nulls()",
-              "CSS",
+              "std()",
               "zeros()",
-              "route"
+              "data tabular"
             ],
             "a": 2,
             "explain": "zeros membuat nol."
@@ -512,8 +512,8 @@ const CONTENT_MATLAB = [
             "q": "Matriks acak memakai",
             "options": [
               "random()",
-              "CSS",
-              "route",
+              "pengolahan citra",
+              "double",
               "rand()"
             ],
             "a": 3,
@@ -532,8 +532,8 @@ const CONTENT_MATLAB = [
             "options": [
               "+",
               "++",
-              "CSS",
-              "route"
+              "[]",
+              "index elemen"
             ],
             "a": 0,
             "explain": "Operator +."
@@ -544,8 +544,8 @@ const CONTENT_MATLAB = [
             "options": [
               ".*",
               "*",
-              "CSS",
-              "route"
+              "ya",
+              "./"
             ],
             "a": 1,
             "explain": "Perkalian matriks memakai *."
@@ -555,9 +555,9 @@ const CONTENT_MATLAB = [
             "q": "Perkalian per elemen memakai",
             "options": [
               "*",
-              "CSS",
+              ".m",
               ".*",
-              "route"
+              "A'"
             ],
             "a": 2,
             "explain": "Operator titik per elemen."
@@ -568,8 +568,8 @@ const CONTENT_MATLAB = [
             "options": [
               "/",
               "./",
-              "CSS",
-              "route"
+              "fft",
+              "std()"
             ],
             "a": 1,
             "explain": "./ untuk per elemen."
@@ -579,9 +579,9 @@ const CONTENT_MATLAB = [
             "q": "Pangkat per elemen memakai",
             "options": [
               "^",
-              "CSS",
+              "var()",
               ".^",
-              "route"
+              "{ }"
             ],
             "a": 2,
             "explain": ".^ per elemen."
@@ -592,8 +592,8 @@ const CONTENT_MATLAB = [
             "options": [
               "mod()",
               "%",
-              "CSS",
-              "route"
+              "scatter()",
+              "split/strsplit"
             ],
             "a": 0,
             "explain": "mod menghitung sisa."
@@ -603,9 +603,9 @@ const CONTENT_MATLAB = [
             "q": "Fungsi eksponen memakai",
             "options": [
               "^e",
-              "CSS",
+              "struktur kode",
               "exp()",
-              "route"
+              "replace/strrep"
             ],
             "a": 2,
             "explain": "exp menghitung e^x."
@@ -616,8 +616,8 @@ const CONTENT_MATLAB = [
             "options": [
               "root()",
               "sqrt()",
-              "CSS",
-              "route"
+              "model sistem",
+              "statistik"
             ],
             "a": 1,
             "explain": "sqrt akar kuadrat."
@@ -627,8 +627,8 @@ const CONTENT_MATLAB = [
             "q": "Nilai absolut memakai",
             "options": [
               "absolute()",
-              "CSS",
-              "route",
+              "Inf",
+              "mask logis",
               "abs()"
             ],
             "a": 3,
@@ -639,9 +639,9 @@ const CONTENT_MATLAB = [
             "q": "Pembulatan memakai",
             "options": [
               "round()/floor()/ceil()",
-              "CSS",
-              "route",
-              "migrasi"
+              "readmatrix/readtable",
+              "regularisasi",
+              "sesuai data"
             ],
             "a": 0,
             "explain": "Fungsi pembulatan."
@@ -659,8 +659,8 @@ const CONTENT_MATLAB = [
             "options": [
               "plot(x,y)",
               "line(x,y)",
-              "CSS",
-              "route"
+              "exist/isfile",
+              "ode45"
             ],
             "a": 0,
             "explain": "plot menggambar garis."
@@ -671,8 +671,8 @@ const CONTENT_MATLAB = [
             "options": [
               "name()",
               "title()",
-              "CSS",
-              "route"
+              "elemen terakhir",
+              "A(1,2)"
             ],
             "a": 1,
             "explain": "title memberi judul."
@@ -682,9 +682,9 @@ const CONTENT_MATLAB = [
             "q": "Label sumbu x memakai",
             "options": [
               "labelx()",
-              "CSS",
+              "membuat GUI",
               "xlabel()",
-              "route"
+              "Inf"
             ],
             "a": 2,
             "explain": "xlabel label sumbu."
@@ -695,8 +695,8 @@ const CONTENT_MATLAB = [
             "options": [
               "legend()",
               "key()",
-              "CSS",
-              "route"
+              "strlength",
+              "breakpoint programatik"
             ],
             "a": 0,
             "explain": "legend menampilkan legenda."
@@ -707,8 +707,8 @@ const CONTENT_MATLAB = [
             "options": [
               "grid()",
               "grid on",
-              "CSS",
-              "route"
+              "histogram()",
+              "di loop"
             ],
             "a": 1,
             "explain": "grid on menampilkan grid."
@@ -719,8 +719,8 @@ const CONTENT_MATLAB = [
             "options": [
               "hold on",
               "keep on",
-              "CSS",
-              "route"
+              "max()",
+              "C{1}"
             ],
             "a": 0,
             "explain": "hold on menahan plot."
@@ -731,8 +731,8 @@ const CONTENT_MATLAB = [
             "options": [
               "points()",
               "scatter()",
-              "CSS",
-              "route"
+              "event UI",
+              "state test"
             ],
             "a": 1,
             "explain": "scatter membuat scatter."
@@ -742,8 +742,8 @@ const CONTENT_MATLAB = [
             "q": "Histogram memakai",
             "options": [
               "hist_only",
-              "CSS",
-              "route",
+              "database toolbox",
+              "perlu diperhatikan",
               "histogram()"
             ],
             "a": 3,
@@ -754,8 +754,8 @@ const CONTENT_MATLAB = [
             "q": "subplot memakai",
             "options": [
               "panel()",
-              "CSS",
-              "route",
+              "keberadaan field",
+              "fgetl/fgets",
               "subplot()"
             ],
             "a": 3,
@@ -766,9 +766,9 @@ const CONTENT_MATLAB = [
             "q": "Menyimpan figur memakai",
             "options": [
               "saveas()/print()",
-              "CSS",
-              "route",
-              "migrasi"
+              "kutip tunggal/ganda",
+              "variabel workspace",
+              "A(2) = []"
             ],
             "a": 0,
             "explain": "saveas menyimpan."
@@ -786,8 +786,8 @@ const CONTENT_MATLAB = [
             "options": [
               "if/elif",
               "if/elseif/else",
-              "CSS",
-              "route"
+              "parfor",
+              "kompleksitas"
             ],
             "a": 1,
             "explain": "MATLAB memakai elseif."
@@ -797,9 +797,9 @@ const CONTENT_MATLAB = [
             "q": "Mengakhiri blok if memakai",
             "options": [
               "}",
-              "CSS",
+              "runtests",
               "end",
-              "route"
+              "norm(A)"
             ],
             "a": 2,
             "explain": "MATLAB memakai end."
@@ -810,8 +810,8 @@ const CONTENT_MATLAB = [
             "options": [
               "for (i=1;i<n)",
               "for i = 1:n",
-              "CSS",
-              "route"
+              "&& || ~",
+              "fungsi ke elemen"
             ],
             "a": 1,
             "explain": "For dengan rentang."
@@ -821,9 +821,9 @@ const CONTENT_MATLAB = [
             "q": "Perulangan while memakai",
             "options": [
               "while kondisi",
-              "CSS",
-              "route",
-              "migrasi"
+              "fminsearch/fmincon",
+              "trainNetwork",
+              "ODE non-stiff"
             ],
             "a": 0,
             "explain": "While bergantung kondisi."
@@ -833,9 +833,9 @@ const CONTENT_MATLAB = [
             "q": "switch memakai",
             "options": [
               "switch/case/otherwise",
-              "CSS",
-              "route",
-              "migrasi"
+              "+ / strcat",
+              "memeriksa kondisi",
+              "rgb2gray"
             ],
             "a": 0,
             "explain": "MATLAB memakai switch."
@@ -844,10 +844,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "break/continue berlaku",
             "options": [
-              "CSS",
-              "route",
+              ".slx",
+              "laporan",
               "di loop",
-              "migrasi"
+              "index elemen"
             ],
             "a": 2,
             "explain": "Mengatur loop."
@@ -858,8 +858,8 @@ const CONTENT_MATLAB = [
             "options": [
               "and or not",
               "&& || ~",
-              "CSS",
-              "route"
+              "menjalankan perintah interaktif",
+              "fungsi ke elemen"
             ],
             "a": 1,
             "explain": "MATLAB memakai && || ~."
@@ -870,8 +870,8 @@ const CONTENT_MATLAB = [
             "options": [
               "===",
               "==/</>",
-              "CSS",
-              "route"
+              "xlabel()",
+              "saveas()/print()"
             ],
             "a": 1,
             "explain": "MATLAB memakai ==."
@@ -880,10 +880,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Vectorization menggantikan",
             "options": [
-              "CSS",
-              "route",
+              "stabilitas",
+              "memori",
               "loop manual",
-              "migrasi"
+              "database toolbox"
             ],
             "a": 2,
             "explain": "Vectorization menghindari loop."
@@ -893,9 +893,9 @@ const CONTENT_MATLAB = [
             "q": "Menghindari loop di dalam loop berlebihan",
             "options": [
               "tidak",
-              "CSS",
+              "imresize",
               "disarankan",
-              "route"
+              "filter/designfilt"
             ],
             "a": 2,
             "explain": "Nested loop bisa lambat."
@@ -913,7 +913,7 @@ const CONTENT_MATLAB = [
             "options": [
               "def nama",
               "fun nama",
-              "CSS",
+              "[a b] / [a; b]",
               "function out = nama(in)"
             ],
             "a": 3,
@@ -923,9 +923,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Nilai balik fungsi dideklarasikan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "backslash",
+              "tabulate",
+              "struct()",
               "di signature"
             ],
             "a": 3,
@@ -936,9 +936,9 @@ const CONTENT_MATLAB = [
             "q": "Fungsi disimpan sebagai",
             "options": [
               "berkas .m bernama sama",
-              "CSS",
-              "route",
-              "migrasi"
+              "nilai antar panggilan",
+              "dipakai bila ada",
+              "Dimensi array A"
             ],
             "a": 0,
             "explain": "Nama berkas = nama fungsi."
@@ -948,8 +948,8 @@ const CONTENT_MATLAB = [
             "q": "Fungsi anonim memakai",
             "options": [
               "lambda",
-              "CSS",
-              "route",
+              "disarankan",
+              "+ / strcat",
               "@(x) x.^2"
             ],
             "a": 3,
@@ -959,10 +959,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "nargin mengecek",
             "options": [
-              "CSS",
+              "Menyatakan operasi array secara langsung dan memanfaatkan operasi bawaan",
               "jumlah argumen masukan",
-              "route",
-              "migrasi"
+              "[a b] / [a; b]",
+              "jumlah argumen keluaran"
             ],
             "a": 1,
             "explain": "nargin jumlah input."
@@ -971,10 +971,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "nargout mengecek",
             "options": [
-              "CSS",
+              "data campuran tipe",
               "jumlah argumen keluaran",
-              "route",
-              "migrasi"
+              "dengan hardware nyata",
+              "nama = nilai"
             ],
             "a": 1,
             "explain": "nargout jumlah output."
@@ -983,10 +983,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "varargin menampung",
             "options": [
-              "CSS",
+              "penting",
               "argumen variabel",
-              "route",
-              "migrasi"
+              "imresize",
+              "filter/designfilt"
             ],
             "a": 1,
             "explain": "varargin variadik."
@@ -995,10 +995,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Fungsi lokal berada di",
             "options": [
-              "CSS",
+              "menjalankan perintah interaktif",
               "berkas yang sama",
-              "route",
-              "migrasi"
+              "&& || ~",
+              "fungsi ke elemen"
             ],
             "a": 1,
             "explain": "Local function satu berkas."
@@ -1007,9 +1007,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Subfunction membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "grid on",
+              "di signature",
+              "strcmp",
               "struktur kode"
             ],
             "a": 3,
@@ -1021,8 +1021,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "fopen",
+              "fzero"
             ],
             "a": 1,
             "explain": "Uji fungsi."
@@ -1040,8 +1040,8 @@ const CONTENT_MATLAB = [
             "options": [
               "\"teks\"",
               "'teks'",
-              "CSS",
-              "route"
+              "fungsi khusus",
+              "help"
             ],
             "a": 0,
             "explain": "String modern memakai \"\"."
@@ -1052,8 +1052,8 @@ const CONTENT_MATLAB = [
             "options": [
               "'teks'",
               "\"teks\"",
-              "CSS",
-              "route"
+              "mean()",
+              "corr()"
             ],
             "a": 0,
             "explain": "Char memakai ''."
@@ -1062,9 +1062,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menggabungkan string memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "fopen",
+              "fzero",
+              "neural network",
               "+ / strcat"
             ],
             "a": 3,
@@ -1076,8 +1076,8 @@ const CONTENT_MATLAB = [
             "options": [
               "strcmp",
               "==",
-              "CSS",
-              "route"
+              "error()",
+              "penting"
             ],
             "a": 0,
             "explain": "strcmp membandingkan."
@@ -1087,9 +1087,9 @@ const CONTENT_MATLAB = [
             "q": "Format string memakai",
             "options": [
               "sprintf/fprintf",
-              "CSS",
-              "route",
-              "migrasi"
+              "sampling rate",
+              ".mlapp",
+              "backslash"
             ],
             "a": 0,
             "explain": "sprintf memformat."
@@ -1098,10 +1098,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Memecah string memakai",
             "options": [
-              "CSS",
+              "A(2) = []",
               "split/strsplit",
-              "route",
-              "migrasi"
+              "eye(n)",
+              "mod()"
             ],
             "a": 1,
             "explain": "split memecah."
@@ -1110,10 +1110,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Mengganti string memakai",
             "options": [
-              "CSS",
-              "route",
+              "legend()",
+              "if/elseif/else",
               "replace/strrep",
-              "migrasi"
+              "disarankan"
             ],
             "a": 2,
             "explain": "replace mengganti."
@@ -1124,8 +1124,8 @@ const CONTENT_MATLAB = [
             "options": [
               "len",
               "strlength",
-              "CSS",
-              "route"
+              "komputasi",
+              "kode C/C++"
             ],
             "a": 1,
             "explain": "strlength panjang string."
@@ -1135,8 +1135,8 @@ const CONTENT_MATLAB = [
             "q": "Mengubah huruf besar memakai",
             "options": [
               "toUpper",
-              "CSS",
-              "route",
+              ".m",
+              "double",
               "upper"
             ],
             "a": 3,
@@ -1147,9 +1147,9 @@ const CONTENT_MATLAB = [
             "q": "Menghapus spasi memakai",
             "options": [
               "trim",
-              "CSS",
+              "data tabular",
               "strtrim",
-              "route"
+              "field"
             ],
             "a": 2,
             "explain": "strtrim memangkas."
@@ -1166,9 +1166,9 @@ const CONTENT_MATLAB = [
             "q": "Melempar error memakai",
             "options": [
               "throw",
-              "CSS",
+              "struktur kode",
               "error()",
-              "route"
+              "replace/strrep"
             ],
             "a": 2,
             "explain": "error melempar."
@@ -1177,10 +1177,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Peringatan memakai",
             "options": [
-              "CSS",
-              "route",
+              "model sistem",
+              "statistik",
               "warning()",
-              "migrasi"
+              ".mat"
             ],
             "a": 2,
             "explain": "warning memberi peringatan."
@@ -1190,9 +1190,9 @@ const CONTENT_MATLAB = [
             "q": "try/catch memakai",
             "options": [
               "try ... catch",
-              "CSS",
-              "route",
-              "migrasi"
+              "svd(A)",
+              "var()",
+              "keberadaan field"
             ],
             "a": 0,
             "explain": "MATLAB mendukung try/catch."
@@ -1201,10 +1201,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Breakpoint memudahkan",
             "options": [
-              "CSS",
-              "route",
+              "round()/floor()/ceil()",
+              "scatter()",
               "debugging",
-              "migrasi"
+              "switch/case/otherwise"
             ],
             "a": 2,
             "explain": "Breakpoint berhenti eksekusi."
@@ -1213,9 +1213,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "dbstop memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pemrosesan besar",
+              "webread/webwrite",
+              "kompatibel",
               "breakpoint programatik"
             ],
             "a": 3,
@@ -1226,9 +1226,9 @@ const CONTENT_MATLAB = [
             "q": "dbstep untuk",
             "options": [
               "melangkah",
-              "CSS",
-              "route",
-              "migrasi"
+              "fungsi",
+              "matlab.unittest.TestCase",
+              "eig(A)"
             ],
             "a": 0,
             "explain": "dbstep melangkah."
@@ -1237,10 +1237,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menangkap pesan error memakai",
             "options": [
-              "CSS",
-              "route",
+              "kode dan narasi",
+              "elemen lebih dari 5",
               "catch err / err.message",
-              "migrasi"
+              "berkas .m bernama sama"
             ],
             "a": 2,
             "explain": "Error object menyimpan pesan."
@@ -1250,9 +1250,9 @@ const CONTENT_MATLAB = [
             "q": "assert membantu",
             "options": [
               "memeriksa kondisi",
-              "CSS",
-              "route",
-              "migrasi"
+              "integral()",
+              "operasi fungsi",
+              "codegen/export"
             ],
             "a": 0,
             "explain": "assert memeriksa."
@@ -1263,8 +1263,8 @@ const CONTENT_MATLAB = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              ".m",
+              "A'"
             ],
             "a": 0,
             "explain": "Validasi input."
@@ -1275,8 +1275,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "eig(A)",
+              "std()"
             ],
             "a": 1,
             "explain": "Tangani error jelas."
@@ -1292,10 +1292,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Anonymous function membantu",
             "options": [
-              "CSS",
+              "sesuai data",
               "callback",
-              "route",
-              "migrasi"
+              "komputasi",
+              "kode C/C++"
             ],
             "a": 1,
             "explain": "Anonymous untuk callback."
@@ -1304,10 +1304,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "cellfun/arrayfun menerapkan",
             "options": [
-              "CSS",
-              "route",
+              "dipakai bila ada",
+              "Dimensi array A",
               "fungsi ke elemen",
-              "migrasi"
+              "[1 2; 3 4]"
             ],
             "a": 2,
             "explain": "Menerapkan fungsi."
@@ -1317,9 +1317,9 @@ const CONTENT_MATLAB = [
             "q": "Function handle memungkinkan",
             "options": [
               "menyimpan fungsi di variabel",
-              "CSS",
-              "route",
-              "migrasi"
+              "data tabular kolom",
+              "kode dan narasi",
+              "elemen lebih dari 5"
             ],
             "a": 0,
             "explain": "Function handle."
@@ -1328,9 +1328,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Nested function membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "jumlah argumen keluaran",
+              "membuat aplikasi GUI",
+              "pemodelan sistem dinamis",
               "akses variabel induk"
             ],
             "a": 3,
@@ -1341,9 +1341,9 @@ const CONTENT_MATLAB = [
             "q": "Persistent variable menyimpan",
             "options": [
               "nilai antar panggilan",
-              "CSS",
-              "route",
-              "migrasi"
+              "dengan hardware nyata",
+              "nama = nilai",
+              "function out = nama(in)"
             ],
             "a": 0,
             "explain": "Persistent antar panggilan."
@@ -1353,9 +1353,9 @@ const CONTENT_MATLAB = [
             "q": "global sebaiknya",
             "options": [
               "dihindari",
-              "CSS",
-              "route",
-              "migrasi"
+              "banyak record",
+              "fopen",
+              "fzero"
             ],
             "a": 0,
             "explain": "Hindari global."
@@ -1365,9 +1365,9 @@ const CONTENT_MATLAB = [
             "q": "Menyimpan fungsi sebagai string berisiko",
             "options": [
               "tidak",
-              "CSS",
+              "load",
               "ya",
-              "route"
+              ".m"
             ],
             "a": 2,
             "explain": "Hindari eval."
@@ -1378,8 +1378,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "data jarang",
+              "fungsi khusus"
             ],
             "a": 1,
             "explain": "Anonymous untuk optimasi."
@@ -1389,8 +1389,8 @@ const CONTENT_MATLAB = [
             "q": "Menulis fungsi kecil fokus",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "mex",
+              "MATLAB Compiler",
               "penting"
             ],
             "a": 3,
@@ -1401,9 +1401,9 @@ const CONTENT_MATLAB = [
             "q": "Dokumentasi fungsi",
             "options": [
               "tidak",
-              "CSS",
+              "hold on",
               "penting",
-              "route"
+              "while kondisi"
             ],
             "a": 2,
             "explain": "Help dokumentasi."
@@ -1419,9 +1419,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Membaca gambar memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "ODE non-stiff",
+              "strategi",
+              "performa",
               "imread"
             ],
             "a": 3,
@@ -1431,10 +1431,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menampilkan gambar memakai",
             "options": [
-              "CSS",
-              "route",
+              "imfilter",
+              "conv",
               "imshow",
-              "migrasi"
+              "App Designer"
             ],
             "a": 2,
             "explain": "imshow menampilkan."
@@ -1443,9 +1443,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menyimpan gambar memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "runtests",
+              "norm(A)",
+              "min()",
               "imwrite"
             ],
             "a": 3,
@@ -1455,10 +1455,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Grayscale memakai",
             "options": [
-              "CSS",
+              "title()",
               "rgb2gray",
-              "route",
-              "migrasi"
+              "subplot()",
+              "==/</>"
             ],
             "a": 1,
             "explain": "rgb2gray konversi."
@@ -1467,9 +1467,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Resize gambar memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "strcmp",
+              "error()",
+              "penting",
               "imresize"
             ],
             "a": 3,
@@ -1479,10 +1479,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Filter citra memakai",
             "options": [
-              "CSS",
-              "route",
+              "fungsi khusus",
+              "help",
               "imfilter",
-              "migrasi"
+              "function"
             ],
             "a": 2,
             "explain": "imfilter filter."
@@ -1491,10 +1491,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Deteksi tepi memakai",
             "options": [
-              "CSS",
-              "route",
+              "numel(A)",
+              "./",
               "edge",
-              "migrasi"
+              "plot(x,y)"
             ],
             "a": 2,
             "explain": "edge deteksi tepi."
@@ -1503,10 +1503,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Threshold memakai",
             "options": [
-              "CSS",
+              "fopen",
               "imbinarize",
-              "route",
-              "migrasi"
+              "fzero",
+              "neural network"
             ],
             "a": 1,
             "explain": "imbinarize threshold."
@@ -1515,10 +1515,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Gambar disimpan sebagai",
             "options": [
-              "CSS",
+              "efisien",
               "matriks",
-              "route",
-              "migrasi"
+              "kriteria berhenti",
+              "pemrosesan besar"
             ],
             "a": 1,
             "explain": "Gambar representasi matriks."
@@ -1528,9 +1528,9 @@ const CONTENT_MATLAB = [
             "q": "Image Processing Toolbox menambah",
             "options": [
               "fungsi lanjutan",
-              "CSS",
-              "route",
-              "migrasi"
+              "memeriksa kondisi",
+              "rgb2gray",
+              "fungsi"
             ],
             "a": 0,
             "explain": "Toolbox fungsi."
@@ -1546,10 +1546,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Sinyal diekstrak memakai",
             "options": [
-              "CSS",
-              "route",
+              "parfor",
+              "loop",
               "fft",
-              "migrasi"
+              "A(1,2)"
             ],
             "a": 2,
             "explain": "fft transformasi."
@@ -1558,10 +1558,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Filter digital memakai",
             "options": [
-              "CSS",
+              "eye(n)",
               "filter/designfilt",
-              "route",
-              "migrasi"
+              "xlabel()",
+              "saveas()/print()"
             ],
             "a": 1,
             "explain": "Filter digital."
@@ -1570,9 +1570,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Konvolusi memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              ".mlapp",
+              "A\\b",
+              "backslash",
               "conv"
             ],
             "a": 3,
@@ -1583,9 +1583,9 @@ const CONTENT_MATLAB = [
             "q": "Spektogram memakai",
             "options": [
               "spectrogram",
-              "CSS",
-              "route",
-              "migrasi"
+              "kode C/C++",
+              "profile on",
+              ".slx"
             ],
             "a": 0,
             "explain": "spectrogram spektral."
@@ -1594,9 +1594,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menghitung frekuensi memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "if/elseif/else",
+              "disarankan",
+              "+ / strcat",
               "sampling rate"
             ],
             "a": 3,
@@ -1607,9 +1607,9 @@ const CONTENT_MATLAB = [
             "q": "Window memengaruhi",
             "options": [
               "analisis spektral",
-              "CSS",
-              "route",
-              "migrasi"
+              "corr()",
+              "fieldnames",
+              "diff/gradient"
             ],
             "a": 0,
             "explain": "Window memengaruhi spektrum."
@@ -1620,8 +1620,8 @@ const CONTENT_MATLAB = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "help",
+              "*"
             ],
             "a": 0,
             "explain": "Nyquist menghindari aliasing."
@@ -1630,9 +1630,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menyaring noise memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "error()",
+              "penting",
+              "imresize",
               "filter"
             ],
             "a": 3,
@@ -1643,9 +1643,9 @@ const CONTENT_MATLAB = [
             "q": "Signal Processing Toolbox menambah",
             "options": [
               "fungsi",
-              "CSS",
-              "route",
-              "migrasi"
+              "fzero",
+              "neural network",
+              "stabilitas"
             ],
             "a": 0,
             "explain": "Toolbox sinyal."
@@ -1655,8 +1655,8 @@ const CONTENT_MATLAB = [
             "q": "Visualisasi penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "./",
+              "A\\b",
               "ya"
             ],
             "a": 3,
@@ -1673,10 +1673,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "App Designer untuk",
             "options": [
-              "CSS",
+              "nama = nilai",
               "membuat aplikasi GUI",
-              "route",
-              "migrasi"
+              "function out = nama(in)",
+              "menyimpan fungsi di variabel"
             ],
             "a": 1,
             "explain": "App Designer GUI."
@@ -1685,10 +1685,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "uicontrol untuk",
             "options": [
-              "CSS",
-              "route",
+              "jumlah argumen keluaran",
+              "membuat aplikasi GUI",
               "komponen GUI klasik",
-              "migrasi"
+              "pemodelan sistem dinamis"
             ],
             "a": 2,
             "explain": "uicontrol komponen."
@@ -1697,10 +1697,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Callback menangani",
             "options": [
-              "CSS",
-              "route",
+              "abs()",
+              "hold on",
               "event UI",
-              "migrasi"
+              "while kondisi"
             ],
             "a": 2,
             "explain": "Callback event."
@@ -1710,9 +1710,9 @@ const CONTENT_MATLAB = [
             "q": "uilabel/uibutton bagian dari",
             "options": [
               "App Designer",
-              "CSS",
-              "route",
-              "migrasi"
+              "bertahap",
+              "MATLAB Compiler",
+              "wajib"
             ],
             "a": 0,
             "explain": "Komponen modern."
@@ -1722,9 +1722,9 @@ const CONTENT_MATLAB = [
             "q": "Layout GUI memakai",
             "options": [
               "grid/layout",
-              "CSS",
-              "route",
-              "migrasi"
+              "imread",
+              "imbinarize",
+              "sampling rate"
             ],
             "a": 0,
             "explain": "Layout mengatur."
@@ -1734,9 +1734,9 @@ const CONTENT_MATLAB = [
             "q": "Menyimpan app memakai",
             "options": [
               ".mlapp",
-              "CSS",
-              "route",
-              "migrasi"
+              "A(2) = []",
+              "eye(n)",
+              "mod()"
             ],
             "a": 0,
             "explain": "App .mlapp."
@@ -1747,8 +1747,8 @@ const CONTENT_MATLAB = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "loop",
+              "%"
             ],
             "a": 0,
             "explain": "Uji GUI."
@@ -1758,8 +1758,8 @@ const CONTENT_MATLAB = [
             "q": "Responsif penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "edge",
+              "min()",
               "ya"
             ],
             "a": 3,
@@ -1771,8 +1771,8 @@ const CONTENT_MATLAB = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "help",
+              "*"
             ],
             "a": 0,
             "explain": "Dokumentasi."
@@ -1782,9 +1782,9 @@ const CONTENT_MATLAB = [
             "q": "Aksesibilitas penting",
             "options": [
               "tidak",
-              "CSS",
+              "load",
               "ya",
-              "route"
+              ".m"
             ],
             "a": 2,
             "explain": "Aksesibilitas."
@@ -1800,10 +1800,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Framework test MATLAB adalah",
             "options": [
-              "CSS",
-              "route",
+              "round()/floor()/ceil()",
+              "scatter()",
               "unittest/matlab.unittest",
-              "migrasi"
+              "switch/case/otherwise"
             ],
             "a": 2,
             "explain": "MATLAB unittest."
@@ -1812,9 +1812,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "assert memeriksa",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "event UI",
+              "state test",
+              "svd(A)",
               "kondisi"
             ],
             "a": 3,
@@ -1824,9 +1824,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Test class memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "memeriksa kondisi",
+              "data tabular",
+              "fminsearch/fmincon",
               "matlab.unittest.TestCase"
             ],
             "a": 3,
@@ -1836,10 +1836,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Fixture menyiapkan",
             "options": [
-              "CSS",
-              "route",
+              "efisien",
+              "kriteria berhenti",
               "state test",
-              "migrasi"
+              "pemrosesan besar"
             ],
             "a": 2,
             "explain": "Fixture state."
@@ -1848,10 +1848,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Coverage membantu",
             "options": [
-              "CSS",
+              "struct()",
               "cakupan test",
-              "route",
-              "migrasi"
+              "integral()",
+              "operasi fungsi"
             ],
             "a": 1,
             "explain": "Coverage."
@@ -1861,9 +1861,9 @@ const CONTENT_MATLAB = [
             "q": "Menjalankan test memakai",
             "options": [
               "runtests",
-              "CSS",
-              "route",
-              "migrasi"
+              "kumpulan perintah .m",
+              "index elemen",
+              "A(1,:)"
             ],
             "a": 0,
             "explain": "runtests menjalankan."
@@ -1873,8 +1873,8 @@ const CONTENT_MATLAB = [
             "q": "Test perilaku lebih stabil",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "loop",
+              "%",
               "ya"
             ],
             "a": 3,
@@ -1885,9 +1885,9 @@ const CONTENT_MATLAB = [
             "q": "CI menjalankan test penting",
             "options": [
               "tidak",
-              "CSS",
+              "upper",
               "ya",
-              "route"
+              "fopen"
             ],
             "a": 2,
             "explain": "CI otomasi."
@@ -1898,8 +1898,8 @@ const CONTENT_MATLAB = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "end",
+              "var()"
             ],
             "a": 0,
             "explain": "Toleransi float."
@@ -1909,9 +1909,9 @@ const CONTENT_MATLAB = [
             "q": "Dokumentasi test penting",
             "options": [
               "tidak",
-              "CSS",
+              "fopen",
               "ya",
-              "route"
+              "fzero"
             ],
             "a": 2,
             "explain": "Dokumentasi."
@@ -1927,10 +1927,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menyelesaikan sistem linear memakai",
             "options": [
-              "CSS",
-              "route",
+              "gpuArray",
+              ".m",
               "A\\b",
-              "migrasi"
+              "double"
             ],
             "a": 2,
             "explain": "Backslash menyelesaikan Ax=b."
@@ -1939,9 +1939,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Invers matriks memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "rgb2gray",
+              "fft",
+              "fungsi",
               "inv(A)"
             ],
             "a": 3,
@@ -1951,9 +1951,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Determinan memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "state test",
+              "svd(A)",
+              "var()",
               "det(A)"
             ],
             "a": 3,
@@ -1963,9 +1963,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Transpose memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "*",
+              "edge",
+              "min()",
               "A'"
             ],
             "a": 3,
@@ -1976,9 +1976,9 @@ const CONTENT_MATLAB = [
             "q": "Nilai eigen memakai",
             "options": [
               "eig(A)",
-              "CSS",
-              "route",
-              "migrasi"
+              "di loop",
+              "struktur kode",
+              "replace/strrep"
             ],
             "a": 0,
             "explain": "eig nilai eigen."
@@ -1988,9 +1988,9 @@ const CONTENT_MATLAB = [
             "q": "Dekomposisi SVD memakai",
             "options": [
               "svd(A)",
-              "CSS",
-              "route",
-              "migrasi"
+              "model sistem",
+              "statistik",
+              ".mat"
             ],
             "a": 0,
             "explain": "svd dekomposisi."
@@ -1999,9 +1999,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Rank memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "Inf",
+              "mask logis",
+              "zeros()",
               "rank(A)"
             ],
             "a": 3,
@@ -2012,9 +2012,9 @@ const CONTENT_MATLAB = [
             "q": "Norm memakai",
             "options": [
               "norm(A)",
-              "CSS",
-              "route",
-              "migrasi"
+              "C{1}",
+              "fprintf",
+              "polyfit"
             ],
             "a": 0,
             "explain": "norm norma."
@@ -2024,9 +2024,9 @@ const CONTENT_MATLAB = [
             "q": "Perkalian matriks memakai",
             "options": [
               ".*",
-              "CSS",
+              "ode45",
               "*",
-              "route"
+              "klasifikasi"
             ],
             "a": 2,
             "explain": "Perkalian matriks *."
@@ -2036,9 +2036,9 @@ const CONTENT_MATLAB = [
             "q": "Hindari inv bila bisa pakai",
             "options": [
               "backslash",
-              "CSS",
-              "route",
-              "migrasi"
+              "breakpoint programatik",
+              "imshow",
+              "matriks"
             ],
             "a": 0,
             "explain": "Backslash lebih stabil."
@@ -2055,8 +2055,8 @@ const CONTENT_MATLAB = [
             "q": "Rata-rata memakai",
             "options": [
               "avg()",
-              "CSS",
-              "route",
+              "C{1}",
+              "fprintf",
               "mean()"
             ],
             "a": 3,
@@ -2066,10 +2066,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Median memakai",
             "options": [
-              "CSS",
-              "route",
+              "Inf",
+              "mask logis",
               "median()",
-              "migrasi"
+              "zeros()"
             ],
             "a": 2,
             "explain": "median nilai tengah."
@@ -2078,10 +2078,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Standar deviasi memakai",
             "options": [
-              "CSS",
+              "imshow",
               "std()",
-              "route",
-              "migrasi"
+              "matriks",
+              "inv(A)"
             ],
             "a": 1,
             "explain": "std simpangan baku."
@@ -2091,9 +2091,9 @@ const CONTENT_MATLAB = [
             "q": "Varians memakai",
             "options": [
               "var()",
-              "CSS",
-              "route",
-              "migrasi"
+              "ode45",
+              "klasifikasi",
+              "data besar"
             ],
             "a": 0,
             "explain": "var varians."
@@ -2103,9 +2103,9 @@ const CONTENT_MATLAB = [
             "q": "Nilai maksimum memakai",
             "options": [
               "max()",
-              "CSS",
-              "route",
-              "migrasi"
+              "scatter()",
+              "split/strsplit",
+              "try ... catch"
             ],
             "a": 0,
             "explain": "max maksimum."
@@ -2115,9 +2115,9 @@ const CONTENT_MATLAB = [
             "q": "Nilai minimum memakai",
             "options": [
               "min()",
-              "CSS",
-              "route",
-              "migrasi"
+              "state test",
+              "svd(A)",
+              "var()"
             ],
             "a": 0,
             "explain": "min minimum."
@@ -2126,9 +2126,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Tabel frekuensi memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "perlu diperhatikan",
+              "model sistem",
+              "statistik",
               "tabulate"
             ],
             "a": 3,
@@ -2139,9 +2139,9 @@ const CONTENT_MATLAB = [
             "q": "Korelasi memakai",
             "options": [
               "corr()",
-              "CSS",
-              "route",
-              "migrasi"
+              "di loop",
+              "struktur kode",
+              "replace/strrep"
             ],
             "a": 0,
             "explain": "corr korelasi."
@@ -2150,9 +2150,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menghapus NaN memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "save",
+              "integral()",
+              "operasi fungsi",
               "rmmissing"
             ],
             "a": 3,
@@ -2163,9 +2163,9 @@ const CONTENT_MATLAB = [
             "q": "Table/array cocok untuk",
             "options": [
               "data tabular",
-              "CSS",
-              "route",
-              "migrasi"
+              "index elemen",
+              "A(1,:)",
+              "abs()"
             ],
             "a": 0,
             "explain": "Table untuk data tabular."
@@ -2184,7 +2184,7 @@ const CONTENT_MATLAB = [
               "{ }",
               "[ ]",
               "( )",
-              "CSS"
+              "A(1,:)"
             ],
             "a": 0,
             "explain": "Cell memakai {}."
@@ -2193,10 +2193,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Cell menyimpan",
             "options": [
-              "CSS",
+              "for i = 1:n",
               "data campuran tipe",
-              "route",
-              "migrasi"
+              "catch err / err.message",
+              "dengan hardware nyata"
             ],
             "a": 1,
             "explain": "Cell heterogen."
@@ -2207,7 +2207,7 @@ const CONTENT_MATLAB = [
             "options": [
               "C[1]",
               "C(1) always",
-              "CSS",
+              "melangkah",
               "C{1}"
             ],
             "a": 3,
@@ -2219,8 +2219,8 @@ const CONTENT_MATLAB = [
             "options": [
               "s.field",
               "s[field]",
-              "CSS",
-              "route"
+              "bukan angka",
+              "elemen terakhir"
             ],
             "a": 0,
             "explain": "Struct memakai .field."
@@ -2229,10 +2229,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Membuat struct memakai",
             "options": [
-              "CSS",
+              "s.field",
               "struct()",
-              "route",
-              "migrasi"
+              "writematrix/writetable",
+              "exist/isfile"
             ],
             "a": 1,
             "explain": "struct() membuat struct."
@@ -2241,10 +2241,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Field struct memakai",
             "options": [
-              "CSS",
-              "route",
+              "==/</>",
+              "\"teks\"",
               "fieldnames",
-              "migrasi"
+              "strlength"
             ],
             "a": 2,
             "explain": "fieldnames daftar field."
@@ -2254,21 +2254,21 @@ const CONTENT_MATLAB = [
             "q": "Array of struct memungkinkan",
             "options": [
               "banyak record",
-              "CSS",
-              "route",
-              "migrasi"
+              "performa",
+              "solver numerik",
+              "membuat GUI"
             ],
             "a": 0,
             "explain": "Struct array."
           },
           {
             "type": "mc",
-            "q": "rmfield menghapus",
+            "q": "Fungsi `rmfield` pada struct di MATLAB digunakan untuk menghapus sebuah",
             "options": [
               "field",
-              "CSS",
-              "route",
-              "migrasi"
+              "cakupan test",
+              "rank(A)",
+              "max()"
             ],
             "a": 0,
             "explain": "rmfield hapus field."
@@ -2277,10 +2277,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "isfield memeriksa",
             "options": [
-              "CSS",
+              "plot(x,y)",
               "keberadaan field",
-              "route",
-              "migrasi"
+              "histogram()",
+              "di loop"
             ],
             "a": 1,
             "explain": "isfield cek field."
@@ -2289,10 +2289,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Table lebih nyaman untuk",
             "options": [
-              "CSS",
+              "data campuran tipe",
               "data tabular kolom",
-              "route",
-              "migrasi"
+              "dengan hardware nyata",
+              "nama = nilai"
             ],
             "a": 1,
             "explain": "Table kolom bernama."
@@ -2308,10 +2308,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Membaca CSV memakai",
             "options": [
-              "CSS",
+              "title()",
               "readmatrix/readtable",
-              "route",
-              "migrasi"
+              "subplot()",
+              "strlength"
             ],
             "a": 1,
             "explain": "readmatrix membaca CSV."
@@ -2320,9 +2320,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menulis CSV memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "runtests",
+              "exist/isfile",
+              "klasifikasi",
               "writematrix/writetable"
             ],
             "a": 3,
@@ -2332,10 +2332,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menyimpan variabel memakai",
             "options": [
-              "CSS",
-              "route",
+              "imfilter",
+              "conv",
               "save",
-              "migrasi"
+              "rank(A)"
             ],
             "a": 2,
             "explain": "save menyimpan .mat."
@@ -2344,10 +2344,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Memuat variabel memakai",
             "options": [
-              "CSS",
-              "route",
+              "strategi",
+              "performa",
               "load",
-              "migrasi"
+              "membuat GUI"
             ],
             "a": 2,
             "explain": "load memuat .mat."
@@ -2356,10 +2356,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Membuka berkas teks memakai",
             "options": [
-              "CSS",
+              "struct()",
               "fopen",
-              "route",
-              "migrasi"
+              "save",
+              "integral()"
             ],
             "a": 1,
             "explain": "fopen membuka berkas."
@@ -2368,10 +2368,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menutup berkas memakai",
             "options": [
-              "CSS",
+              "index elemen",
               "fclose",
-              "route",
-              "migrasi"
+              "A(1,:)",
+              "abs()"
             ],
             "a": 1,
             "explain": "fclose menutup."
@@ -2380,10 +2380,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Membaca baris memakai",
             "options": [
-              "CSS",
-              "route",
+              "loop",
+              "logika state",
               "fgetl/fgets",
-              "migrasi"
+              "Add-On Explorer"
             ],
             "a": 2,
             "explain": "fgetl membaca baris."
@@ -2392,10 +2392,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Menulis terformat memakai",
             "options": [
-              "CSS",
-              "route",
+              "loop manual",
+              "'teks'",
               "fprintf",
-              "migrasi"
+              "upper"
             ],
             "a": 2,
             "explain": "fprintf menulis."
@@ -2404,10 +2404,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Memeriksa path memakai",
             "options": [
-              "CSS",
-              "route",
+              "size(A)",
+              "round()/floor()/ceil()",
               "exist/isfile",
-              "migrasi"
+              "scatter()"
             ],
             "a": 2,
             "explain": "exist memeriksa."
@@ -2417,8 +2417,8 @@ const CONTENT_MATLAB = [
             "q": "Menangani IO error penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "var()",
+              "{ }",
               "ya"
             ],
             "a": 3,
@@ -2435,10 +2435,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Integral numerik memakai",
             "options": [
-              "CSS",
-              "route",
+              "try ... catch",
+              "dihindari",
               "integral()",
-              "migrasi"
+              "edge"
             ],
             "a": 2,
             "explain": "integral menghitung integral."
@@ -2447,9 +2447,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Turunan numerik memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "interp1",
+              "train/validation",
+              "ODE stiff",
               "diff/gradient"
             ],
             "a": 3,
@@ -2459,9 +2459,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Mencari akar memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "data tabular",
+              "field",
+              "fclose",
               "fzero"
             ],
             "a": 3,
@@ -2471,10 +2471,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Optimasi memakai",
             "options": [
-              "CSS",
+              "melihat variabel",
               "fminsearch/fmincon",
-              "route",
-              "migrasi"
+              "reshape",
+              "title()"
             ],
             "a": 1,
             "explain": "Fungsi optimasi."
@@ -2483,10 +2483,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Interpolasi memakai",
             "options": [
-              "CSS",
-              "route",
+              "komputasi",
+              "kode C/C++",
               "interp1",
-              "migrasi"
+              "profile on"
             ],
             "a": 2,
             "explain": "interp1 interpolasi."
@@ -2495,10 +2495,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Kurva fitting memakai",
             "options": [
-              "CSS",
+              "legend()",
               "polyfit",
-              "route",
-              "migrasi"
+              "if/elseif/else",
+              "disarankan"
             ],
             "a": 1,
             "explain": "polyfit fitting."
@@ -2507,10 +2507,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Solve ODE memakai",
             "options": [
-              "CSS",
-              "route",
+              "A(2) = []",
+              "eye(n)",
               "ode45",
-              "migrasi"
+              "mod()"
             ],
             "a": 2,
             "explain": "ode45 menyelesaikan ODE."
@@ -2519,10 +2519,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Fungsi anonim membantu",
             "options": [
-              "CSS",
-              "route",
+              "sampling rate",
+              ".mlapp",
               "operasi fungsi",
-              "migrasi"
+              "backslash"
             ],
             "a": 2,
             "explain": "Anonymous function."
@@ -2531,9 +2531,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Vectorize fungsi agar",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "strcmp",
+              "error()",
+              "penting",
               "efisien"
             ],
             "a": 3,
@@ -2544,9 +2544,9 @@ const CONTENT_MATLAB = [
             "q": "Menangani NaN/Inf penting",
             "options": [
               "tidak",
-              "CSS",
+              "fopen",
               "ya",
-              "route"
+              "fzero"
             ],
             "a": 2,
             "explain": "Tangani nilai khusus."
@@ -2563,9 +2563,9 @@ const CONTENT_MATLAB = [
             "q": "Deep Learning Toolbox untuk",
             "options": [
               "neural network",
-              "CSS",
-              "route",
-              "migrasi"
+              "MathWorks",
+              "cast/int32/str2double",
+              "fliplr/flipud"
             ],
             "a": 0,
             "explain": "Toolbox DL."
@@ -2575,9 +2575,9 @@ const CONTENT_MATLAB = [
             "q": "Training model memakai",
             "options": [
               "trainNetwork",
-              "CSS",
-              "route",
-              "migrasi"
+              "rmmissing",
+              "banyak record",
+              "fopen"
             ],
             "a": 0,
             "explain": "trainNetwork melatih."
@@ -2587,8 +2587,8 @@ const CONTENT_MATLAB = [
             "q": "Feature extraction penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "end",
+              "var()",
               "ya"
             ],
             "a": 3,
@@ -2598,10 +2598,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Data split memakai",
             "options": [
-              "CSS",
+              "kode CUDA",
               "train/validation",
-              "route",
-              "migrasi"
+              "data jarang",
+              "fungsi khusus"
             ],
             "a": 1,
             "explain": "Split data."
@@ -2610,10 +2610,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Overfitting dicegah dengan",
             "options": [
-              "CSS",
-              "route",
+              "unittest/matlab.unittest",
+              "inv(A)",
               "regularisasi",
-              "migrasi"
+              "mean()"
             ],
             "a": 2,
             "explain": "Regularisasi."
@@ -2622,10 +2622,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Confusion matrix mengevaluasi",
             "options": [
-              "CSS",
-              "route",
+              "zeros()",
+              "exp()",
               "klasifikasi",
-              "migrasi"
+              "legend()"
             ],
             "a": 2,
             "explain": "Confusion matrix."
@@ -2634,10 +2634,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Model deployment memakai",
             "options": [
-              "CSS",
+              "regularisasi",
               "codegen/export",
-              "route",
-              "migrasi"
+              "sesuai data",
+              "komputasi"
             ],
             "a": 1,
             "explain": "Deploy model."
@@ -2647,9 +2647,9 @@ const CONTENT_MATLAB = [
             "q": "Mengukur metrik penting",
             "options": [
               "tidak",
-              "CSS",
+              "A\\b",
               "ya",
-              "route"
+              "save"
             ],
             "a": 2,
             "explain": "Metrik evaluasi."
@@ -2659,8 +2659,8 @@ const CONTENT_MATLAB = [
             "q": "Reproducibility penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "mod()",
+              "upper",
               "ya"
             ],
             "a": 3,
@@ -2672,8 +2672,8 @@ const CONTENT_MATLAB = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "loop",
+              "%"
             ],
             "a": 0,
             "explain": "Dokumentasi."
@@ -2690,9 +2690,9 @@ const CONTENT_MATLAB = [
             "q": "Metode iteratif membutuhkan",
             "options": [
               "kriteria berhenti",
-              "CSS",
-              "route",
-              "migrasi"
+              "memeriksa kondisi",
+              "rgb2gray",
+              "fungsi"
             ],
             "a": 0,
             "explain": "Konvergensi perlu kriteria."
@@ -2701,10 +2701,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Kondisi matriks memengaruhi",
             "options": [
-              "CSS",
+              "efisien",
               "stabilitas",
-              "route",
-              "migrasi"
+              "kriteria berhenti",
+              "pemrosesan besar"
             ],
             "a": 1,
             "explain": "Condition number."
@@ -2715,8 +2715,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "*",
+              "edge"
             ],
             "a": 1,
             "explain": "Presisi float."
@@ -2726,8 +2726,8 @@ const CONTENT_MATLAB = [
             "q": "Memilih solver tepat",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "event UI",
+              "state test",
               "penting"
             ],
             "a": 3,
@@ -2738,9 +2738,9 @@ const CONTENT_MATLAB = [
             "q": "ode45 untuk",
             "options": [
               "ODE non-stiff",
-              "CSS",
-              "route",
-              "migrasi"
+              "database toolbox",
+              "perlu diperhatikan",
+              "model sistem"
             ],
             "a": 0,
             "explain": "ode45 umum."
@@ -2749,10 +2749,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "ode15s untuk",
             "options": [
-              "CSS",
+              "histogram()",
               "ODE stiff",
-              "route",
-              "migrasi"
+              "di loop",
+              "struktur kode"
             ],
             "a": 1,
             "explain": "ode15s stiff."
@@ -2762,9 +2762,9 @@ const CONTENT_MATLAB = [
             "q": "Interpolasi memilih metode",
             "options": [
               "sesuai data",
-              "CSS",
-              "route",
-              "migrasi"
+              "max()",
+              "C{1}",
+              "readmatrix/readtable"
             ],
             "a": 0,
             "explain": "Metode interpolasi."
@@ -2774,8 +2774,8 @@ const CONTENT_MATLAB = [
             "q": "Mengukur error penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "1",
+              "Inf",
               "ya"
             ],
             "a": 3,
@@ -2787,8 +2787,8 @@ const CONTENT_MATLAB = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "conv",
+              "max()"
             ],
             "a": 0,
             "explain": "Asumsi jelas."
@@ -2799,8 +2799,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "1",
+              "Inf"
             ],
             "a": 1,
             "explain": "Validasi hasil."
@@ -2816,10 +2816,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Tall array untuk",
             "options": [
-              "CSS",
+              "fungsi",
               "data besar",
-              "route",
-              "migrasi"
+              "matlab.unittest.TestCase",
+              "eig(A)"
             ],
             "a": 1,
             "explain": "Tall array data besar."
@@ -2828,10 +2828,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Datastore membaca",
             "options": [
-              "CSS",
-              "route",
+              "filter",
+              "kondisi",
               "bertahap",
-              "migrasi"
+              "det(A)"
             ],
             "a": 2,
             "explain": "Datastore bertahap."
@@ -2840,10 +2840,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "MapReduce membantu",
             "options": [
-              "CSS",
-              "route",
+              "scatter()",
+              "switch/case/otherwise",
               "pemrosesan besar",
-              "migrasi"
+              "argumen variabel"
             ],
             "a": 2,
             "explain": "MapReduce."
@@ -2853,9 +2853,9 @@ const CONTENT_MATLAB = [
             "q": "Sparse matrix menghemat",
             "options": [
               "memori",
-              "CSS",
-              "route",
-              "migrasi"
+              "webread/webwrite",
+              "kompatibel",
+              "gpuArray"
             ],
             "a": 0,
             "explain": "Sparse hemat."
@@ -2864,10 +2864,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Memori terbatas perlu",
             "options": [
-              "CSS",
-              "route",
+              "breakpoint programatik",
+              "imshow",
               "strategi",
-              "migrasi"
+              "matriks"
             ],
             "a": 2,
             "explain": "Kelola memori."
@@ -2876,10 +2876,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Paralel memakai",
             "options": [
-              "CSS",
+              "Inf",
               "parfor",
-              "route",
-              "migrasi"
+              "mask logis",
+              "zeros()"
             ],
             "a": 1,
             "explain": "parfor paralel."
@@ -2888,9 +2888,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "GPU mempercepat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "A(1,2)",
+              "rand()",
+              "sqrt()",
               "komputasi"
             ],
             "a": 3,
@@ -2902,8 +2902,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "ode45",
+              "py."
             ],
             "a": 1,
             "explain": "Ukur memori."
@@ -2914,8 +2914,8 @@ const CONTENT_MATLAB = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "perlu diperhatikan",
+              "model sistem"
             ],
             "a": 0,
             "explain": "Bersihkan data."
@@ -2925,8 +2925,8 @@ const CONTENT_MATLAB = [
             "q": "Dokumentasi pipeline penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "var()",
+              "{ }",
               "ya"
             ],
             "a": 3,
@@ -2943,9 +2943,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Memanggil Python dari MATLAB memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "help",
+              "function",
+              "size(A)",
               "py."
             ],
             "a": 3,
@@ -2955,10 +2955,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Memanggil C memakai",
             "options": [
-              "CSS",
+              "sqrt()",
               "mex",
-              "route",
-              "migrasi"
+              "grid on",
+              "end"
             ],
             "a": 1,
             "explain": "MEX untuk C."
@@ -2968,9 +2968,9 @@ const CONTENT_MATLAB = [
             "q": "Java interop memakai",
             "options": [
               "java object",
-              "CSS",
-              "route",
-              "migrasi"
+              "svd(A)",
+              "var()",
+              "{ }"
             ],
             "a": 0,
             "explain": "Java interop."
@@ -2979,9 +2979,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "REST API memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "matriks",
+              "analisis spektral",
+              "unittest/matlab.unittest",
               "webread/webwrite"
             ],
             "a": 3,
@@ -2991,10 +2991,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Database memakai",
             "options": [
-              "CSS",
+              "replace/strrep",
               "database toolbox",
-              "route",
-              "migrasi"
+              "debugging",
+              "imread"
             ],
             "a": 1,
             "explain": "Database toolbox."
@@ -3003,9 +3003,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Compiler men-deploy",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "fprintf",
+              "polyfit",
+              "regularisasi",
               "aplikasi standalone"
             ],
             "a": 3,
@@ -3015,10 +3015,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Interop menambah",
             "options": [
-              "CSS",
+              "var()",
               "kompleksitas",
-              "route",
-              "migrasi"
+              "keberadaan field",
+              "fgetl/fgets"
             ],
             "a": 1,
             "explain": "Kompleksitas interop."
@@ -3029,8 +3029,8 @@ const CONTENT_MATLAB = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              ".mat",
+              "mod()"
             ],
             "a": 0,
             "explain": "Uji integrasi."
@@ -3041,8 +3041,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "hold on",
+              "while kondisi"
             ],
             "a": 1,
             "explain": "Versi konsisten."
@@ -3053,8 +3053,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "edge",
+              "min()"
             ],
             "a": 1,
             "explain": "Dokumentasi."
@@ -3071,9 +3071,9 @@ const CONTENT_MATLAB = [
             "q": "MATLAB Coder menghasilkan",
             "options": [
               "kode C/C++",
-              "CSS",
-              "route",
-              "migrasi"
+              "laporan",
+              "kumpulan perintah .m",
+              "index elemen"
             ],
             "a": 0,
             "explain": "Coder ke C/C++."
@@ -3083,9 +3083,9 @@ const CONTENT_MATLAB = [
             "q": "GPU Coder untuk",
             "options": [
               "kode CUDA",
-              "CSS",
-              "route",
-              "migrasi"
+              "tabulate",
+              "struct()",
+              "save"
             ],
             "a": 0,
             "explain": "GPU Coder."
@@ -3094,9 +3094,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Simulink Coder untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "data tabular kolom",
+              "kode dan narasi",
+              "elemen lebih dari 5",
               "model ke kode"
             ],
             "a": 3,
@@ -3106,10 +3106,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Standalone app memakai",
             "options": [
-              "CSS",
-              "route",
+              "kompleksitas",
+              "logika state",
               "MATLAB Compiler",
-              "migrasi"
+              "Add-On Explorer"
             ],
             "a": 2,
             "explain": "Compiler standalone."
@@ -3118,10 +3118,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Deploy ke cloud memakai",
             "options": [
-              "CSS",
-              "route",
+              "dengan hardware nyata",
+              "nama = nilai",
               "MATLAB Production Server",
-              "migrasi"
+              "function out = nama(in)"
             ],
             "a": 2,
             "explain": "Production Server."
@@ -3131,9 +3131,9 @@ const CONTENT_MATLAB = [
             "q": "Codegen butuh kode",
             "options": [
               "kompatibel",
-              "CSS",
-              "route",
-              "migrasi"
+              "kondisi array",
+              "size(A)",
+              "round()/floor()/ceil()"
             ],
             "a": 0,
             "explain": "Kode harus didukung."
@@ -3144,8 +3144,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "diff/gradient",
+              "efisien"
             ],
             "a": 1,
             "explain": "Uji hasil."
@@ -3155,9 +3155,9 @@ const CONTENT_MATLAB = [
             "q": "Dokumentasi deployment",
             "options": [
               "tidak",
-              "CSS",
+              "strtrim",
               "penting",
-              "route"
+              "memeriksa kondisi"
             ],
             "a": 2,
             "explain": "Dokumentasi."
@@ -3167,9 +3167,9 @@ const CONTENT_MATLAB = [
             "q": "Lisensi deployment",
             "options": [
               "perlu diperhatikan",
-              "CSS",
-              "route",
-              "migrasi"
+              "cast/int32/str2double",
+              "fliplr/flipud",
+              "numel(A)"
             ],
             "a": 0,
             "explain": "Lisensi penting."
@@ -3179,9 +3179,9 @@ const CONTENT_MATLAB = [
             "q": "Monitoring produksi penting",
             "options": [
               "tidak",
-              "CSS",
+              "fopen",
               "ya",
-              "route"
+              "fzero"
             ],
             "a": 2,
             "explain": "Monitoring."
@@ -3197,10 +3197,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Preallocation array membantu",
             "options": [
-              "CSS",
+              "stabilitas",
               "performa",
-              "route",
-              "migrasi"
+              "memori",
+              "database toolbox"
             ],
             "a": 1,
             "explain": "Preallocation menghindari resize."
@@ -3209,9 +3209,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Vectorization mempercepat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "./",
+              "plot(x,y)",
+              "histogram()",
               "loop"
             ],
             "a": 3,
@@ -3222,8 +3222,8 @@ const CONTENT_MATLAB = [
             "q": "Menghindari grow array di loop",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "cakupan test",
+              "rank(A)",
               "penting"
             ],
             "a": 3,
@@ -3234,9 +3234,9 @@ const CONTENT_MATLAB = [
             "q": "Profiling memakai",
             "options": [
               "profile on",
-              "CSS",
-              "route",
-              "migrasi"
+              "performa",
+              "solver numerik",
+              "membuat GUI"
             ],
             "a": 0,
             "explain": "profile menemukan bottleneck."
@@ -3246,9 +3246,9 @@ const CONTENT_MATLAB = [
             "q": "Fungsi built-in teroptimasi",
             "options": [
               "dipakai bila ada",
-              "CSS",
-              "route",
-              "migrasi"
+              "membuat aplikasi GUI",
+              "pemodelan sistem dinamis",
+              "komputasi numerik dan matriks"
             ],
             "a": 0,
             "explain": "Gunakan built-in."
@@ -3258,9 +3258,9 @@ const CONTENT_MATLAB = [
             "q": "Mengurangi copy data",
             "options": [
               "tidak",
-              "CSS",
+              "load",
               "penting",
-              "route"
+              "diff/gradient"
             ],
             "a": 2,
             "explain": "Copy mahal."
@@ -3270,9 +3270,9 @@ const CONTENT_MATLAB = [
             "q": "Sparse matrix untuk",
             "options": [
               "data jarang",
-              "CSS",
-              "route",
-              "migrasi"
+              "disp()/fprintf",
+              "kondisi array",
+              "size(A)"
             ],
             "a": 0,
             "explain": "Sparse hemat memori."
@@ -3282,9 +3282,9 @@ const CONTENT_MATLAB = [
             "q": "Mengukur sebelum optimasi",
             "options": [
               "tidak",
-              "CSS",
+              "imresize",
               "wajib",
-              "route"
+              "event UI"
             ],
             "a": 2,
             "explain": "Ukur dulu."
@@ -3294,9 +3294,9 @@ const CONTENT_MATLAB = [
             "q": "Paralel memakai",
             "options": [
               "parfor",
-              "CSS",
-              "route",
-              "migrasi"
+              "operasi fungsi",
+              "codegen/export",
+              "bertahap"
             ],
             "a": 0,
             "explain": "parfor paralel."
@@ -3305,10 +3305,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "GPU memakai",
             "options": [
-              "CSS",
-              "route",
+              "A(1,:)",
+              "abs()",
               "gpuArray",
-              "migrasi"
+              "hold on"
             ],
             "a": 2,
             "explain": "gpuArray percepat."
@@ -3324,10 +3324,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Simulink untuk",
             "options": [
-              "CSS",
+              "menyimpan fungsi di variabel",
               "pemodelan sistem dinamis",
-              "route",
-              "migrasi"
+              "model ke kode",
+              "Perkalian elemen demi elemen"
             ],
             "a": 1,
             "explain": "Simulink model dinamik."
@@ -3336,10 +3336,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Blok diagram mewakili",
             "options": [
-              "CSS",
+              "zeros()",
               "model sistem",
-              "route",
-              "migrasi"
+              "exp()",
+              "legend()"
             ],
             "a": 1,
             "explain": "Blok menyusun model."
@@ -3348,10 +3348,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Simulasi memakai",
             "options": [
-              "CSS",
+              "grid on",
               "solver numerik",
-              "route",
-              "migrasi"
+              "di signature",
+              "strcmp"
             ],
             "a": 1,
             "explain": "Solver menyelesaikan."
@@ -3361,9 +3361,9 @@ const CONTENT_MATLAB = [
             "q": "Stateflow untuk",
             "options": [
               "logika state",
-              "CSS",
-              "route",
-              "migrasi"
+              "kode CUDA",
+              "data jarang",
+              "fungsi khusus"
             ],
             "a": 0,
             "explain": "Stateflow logika."
@@ -3384,10 +3384,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Code generation memungkinkan",
             "options": [
-              "CSS",
+              "membuat aplikasi GUI",
               "deploy ke hardware",
-              "route",
-              "migrasi"
+              "pemodelan sistem dinamis",
+              "komputasi numerik dan matriks"
             ],
             "a": 1,
             "explain": "Code generation deploy."
@@ -3396,9 +3396,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Hardware-in-the-loop menguji",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "data tabular kolom",
+              "kode dan narasi",
+              "elemen lebih dari 5",
               "dengan hardware nyata"
             ],
             "a": 3,
@@ -3410,8 +3410,8 @@ const CONTENT_MATLAB = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "conv",
+              "max()"
             ],
             "a": 0,
             "explain": "Dokumentasi model."
@@ -3421,8 +3421,8 @@ const CONTENT_MATLAB = [
             "q": "Versioning model penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "std()",
+              "field",
               "ya"
             ],
             "a": 3,
@@ -3434,8 +3434,8 @@ const CONTENT_MATLAB = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "+",
+              "abs()"
             ],
             "a": 0,
             "explain": "Validasi model."
@@ -3451,9 +3451,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Toolbox menambah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mask logis",
+              "zeros()",
+              "exp()",
               "fungsi khusus"
             ],
             "a": 3,
@@ -3463,9 +3463,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Deep Learning Toolbox untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "breakpoint programatik",
+              "imshow",
+              "matriks",
               "neural network"
             ],
             "a": 3,
@@ -3476,9 +3476,9 @@ const CONTENT_MATLAB = [
             "q": "Signal Processing Toolbox untuk",
             "options": [
               "analisis sinyal",
-              "CSS",
-              "route",
-              "migrasi"
+              "di loop",
+              "struktur kode",
+              "replace/strrep"
             ],
             "a": 0,
             "explain": "Signal toolbox."
@@ -3488,9 +3488,9 @@ const CONTENT_MATLAB = [
             "q": "Image Processing Toolbox untuk",
             "options": [
               "pengolahan citra",
-              "CSS",
-              "route",
-              "migrasi"
+              "readmatrix/readtable",
+              "fprintf",
+              "polyfit"
             ],
             "a": 0,
             "explain": "Image toolbox."
@@ -3499,10 +3499,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Statistics Toolbox untuk",
             "options": [
-              "CSS",
+              "filter",
               "statistik",
-              "route",
-              "migrasi"
+              "kondisi",
+              "det(A)"
             ],
             "a": 1,
             "explain": "Stats toolbox."
@@ -3511,10 +3511,10 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "App Designer untuk",
             "options": [
-              "CSS",
+              "MATLAB Compiler",
               "membuat GUI",
-              "route",
-              "migrasi"
+              "wajib",
+              "analisis sinyal"
             ],
             "a": 1,
             "explain": "App Designer GUI."
@@ -3523,9 +3523,9 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Mengelola add-on via",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "klasifikasi",
+              "data besar",
+              "kode CUDA",
               "Add-On Explorer"
             ],
             "a": 3,
@@ -3537,8 +3537,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "A(1,2)",
+              "rand()"
             ],
             "a": 1,
             "explain": "Konsistensi versi."
@@ -3548,8 +3548,8 @@ const CONTENT_MATLAB = [
             "q": "Dokumentasi toolbox penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "[]",
+              "+",
               "ya"
             ],
             "a": 3,
@@ -3561,8 +3561,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "fft",
+              "std()"
             ],
             "a": 1,
             "explain": "Lisensi penting."
@@ -3579,8 +3579,8 @@ const CONTENT_MATLAB = [
             "q": "Validasi input penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "A'",
+              ".^",
               "ya"
             ],
             "a": 3,
@@ -3591,8 +3591,8 @@ const CONTENT_MATLAB = [
             "q": "eval pada input berisiko",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "1",
+              "Inf",
               "ya"
             ],
             "a": 3,
@@ -3603,8 +3603,8 @@ const CONTENT_MATLAB = [
             "q": "Menghindari nilai global berlebih",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "callback",
+              "imfilter",
               "penting"
             ],
             "a": 3,
@@ -3615,9 +3615,9 @@ const CONTENT_MATLAB = [
             "q": "Dokumentasi fungsi penting",
             "options": [
               "tidak",
-              "CSS",
+              "./",
               "ya",
-              "route"
+              "A\\b"
             ],
             "a": 2,
             "explain": "Help/documentation."
@@ -3628,8 +3628,8 @@ const CONTENT_MATLAB = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "fopen",
+              "fzero"
             ],
             "a": 0,
             "explain": "Test fungsi."
@@ -3640,8 +3640,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "di signature",
+              "strcmp"
             ],
             "a": 1,
             "explain": "Version control."
@@ -3651,8 +3651,8 @@ const CONTENT_MATLAB = [
             "q": "Menangani error eksplisit",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "data jarang",
+              "fungsi khusus",
               "penting"
             ],
             "a": 3,
@@ -3664,8 +3664,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "inv(A)",
+              "mean()"
             ],
             "a": 1,
             "explain": "Path relatif."
@@ -3676,8 +3676,8 @@ const CONTENT_MATLAB = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "kondisi array",
+              "size(A)"
             ],
             "a": 1,
             "explain": "Komentar jelas."
@@ -3688,8 +3688,8 @@ const CONTENT_MATLAB = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "diff/gradient",
+              "efisien"
             ],
             "a": 0,
             "explain": "Ukur performa."
@@ -3706,9 +3706,9 @@ const CONTENT_MATLAB = [
             "q": "Live Script memadukan",
             "options": [
               "kode dan narasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "elemen lebih dari 5",
+              "berkas .m bernama sama",
+              "akses variabel induk"
             ],
             "a": 0,
             "explain": "Live Script naratif."
@@ -3717,22 +3717,22 @@ const CONTENT_MATLAB = [
             "type": "mc",
             "q": "Publishing menghasilkan",
             "options": [
-              "CSS",
-              "route",
+              "operasi fungsi",
+              "codegen/export",
               "laporan",
-              "migrasi"
+              "bertahap"
             ],
             "a": 2,
             "explain": "Publish laporan."
           },
           {
             "type": "mc",
-            "q": "Komantar help dibaca via",
+            "q": "Perintah MATLAB untuk menampilkan dokumentasi komentar fungsi langsung di Command Window adalah",
             "options": [
               "help",
-              "CSS",
-              "route",
-              "migrasi"
+              "kompatibel",
+              "gpuArray",
+              ".m"
             ],
             "a": 0,
             "explain": "help membaca komentar."
@@ -3743,8 +3743,8 @@ const CONTENT_MATLAB = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "std()",
+              "field"
             ],
             "a": 0,
             "explain": "Git untuk kode."
@@ -3754,9 +3754,9 @@ const CONTENT_MATLAB = [
             "q": "Naming konsisten penting",
             "options": [
               "tidak",
-              "CSS",
+              "ode45",
               "ya",
-              "route"
+              "py."
             ],
             "a": 2,
             "explain": "Konsistensi nama."
@@ -3766,8 +3766,8 @@ const CONTENT_MATLAB = [
             "q": "Testing terintegrasi",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "==/</>",
+              "\"teks\"",
               "penting"
             ],
             "a": 3,
@@ -3778,8 +3778,8 @@ const CONTENT_MATLAB = [
             "q": "Review kode penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "fopen",
+              "fzero",
               "ya"
             ],
             "a": 3,
@@ -3791,8 +3791,8 @@ const CONTENT_MATLAB = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "bukan angka",
+              "elemen terakhir"
             ],
             "a": 0,
             "explain": "Dokumentasi proyek."
@@ -3803,8 +3803,8 @@ const CONTENT_MATLAB = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "plot(x,y)",
+              "histogram()"
             ],
             "a": 0,
             "explain": "Modularisasi."
@@ -3815,8 +3815,8 @@ const CONTENT_MATLAB = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "stabilitas",
+              "memori"
             ],
             "a": 0,
             "explain": "Dependensi jelas."

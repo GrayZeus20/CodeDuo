@@ -6,7 +6,7 @@
 'use strict';
 
 const CONTENT_KOTLIN = [
-{
+  {
     "id": "kotlin",
     "name": "Kotlin",
     "icon": "🟣",
@@ -35,7 +35,7 @@ const CONTENT_KOTLIN = [
             "q": "Kotlin berjalan di atas",
             "options": [
               "JVM (juga native/JS)",
-              "CSS",
+              "let/run/apply/also",
               "SQL",
               "PHP"
             ],
@@ -46,7 +46,7 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Kotlin banyak digunakan untuk",
             "options": [
-              "CSS",
+              "duplikat",
               "SQL engine",
               "MATLAB",
               "aplikasi Android"
@@ -71,7 +71,7 @@ const CONTENT_KOTLIN = [
             "q": "Kotlin terkompilasi menjadi",
             "options": [
               "bytecode JVM",
-              "CSS",
+              "HTTP engine",
               "SQL",
               "PHP"
             ],
@@ -94,7 +94,7 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Kotlin kompatibel dengan",
             "options": [
-              "CSS",
+              "suspend",
               "PHP",
               "Ruby",
               "Java"
@@ -223,8 +223,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "referensi tidak dapat di-assign ulang",
               "selalu immutable mendalam",
-              "CSS",
-              "route"
+              "baru berjalan saat dikumpulkan",
+              "antar konfigurasi berubah"
             ],
             "a": 0,
             "explain": "val mencegah assignment ulang referensi."
@@ -246,9 +246,9 @@ const CONTENT_KOTLIN = [
             "q": "Tipe eksplisit ditulis",
             "options": [
               "val x = Int",
-              "CSS",
+              "menjalankan coroutine di kode blocking",
               "val x: Int = 1",
-              "route"
+              "komponen layar Android"
             ],
             "a": 2,
             "explain": "Kotlin memakai titik dua tipe."
@@ -257,10 +257,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Inferensi tipe memungkinkan",
             "options": [
-              "CSS",
+              "state dari UI",
               "menghilangkan tipe saat jelas",
-              "route",
-              "migrasi"
+              "referensi tidak dapat di-assign ulang",
+              "for (x in ...)"
             ],
             "a": 1,
             "explain": "Kotlin menginferensi tipe."
@@ -301,9 +301,9 @@ const CONTENT_KOTLIN = [
             "q": "Operator ! (not-null assertion) berarti",
             "options": [
               "menyatakan nilai tidak null",
-              "CSS",
-              "route",
-              "migrasi"
+              "menyebut nama parameter",
+              "memanggil member tanpa receiver",
+              "efek tanpa cleanup"
             ],
             "a": 0,
             "explain": "!! menegaskan non-null."
@@ -324,10 +324,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Mengubah nullable ke non-null memakai",
             "options": [
-              "CSS",
-              "route",
+              "flow { }",
+              "remember/mutableStateOf",
               "let/?:/cek null",
-              "migrasi"
+              "compose test"
             ],
             "a": 2,
             "explain": "Gunakan let atau Elvis."
@@ -336,10 +336,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Null safety mencegah",
             "options": [
-              "CSS",
-              "route",
+              "mengurangi recomposition",
+              "suspend function",
               "NullPointerException",
-              "migrasi"
+              "kecepatan build"
             ],
             "a": 2,
             "explain": "Null safety mencegah NPE."
@@ -350,7 +350,7 @@ const CONTENT_KOTLIN = [
             "options": [
               "as",
               "to",
-              "CSS",
+              "duplikat",
               "as?"
             ],
             "a": 3,
@@ -361,9 +361,9 @@ const CONTENT_KOTLIN = [
             "q": "lateinit dipakai untuk",
             "options": [
               "inisialisasi tertunda non-null",
-              "CSS",
-              "route",
-              "migrasi"
+              "tanpa memblokir thread",
+              "di IO coroutine",
+              "dengan lifecycle sesuai"
             ],
             "a": 0,
             "explain": "lateinit menunda inisialisasi."
@@ -372,10 +372,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Memeriksa null memakai",
             "options": [
-              "CSS",
-              "route",
+              "memanggil member tanpa receiver",
+              "efek tanpa cleanup",
               "== null / != null",
-              "migrasi"
+              "baru berjalan saat dikumpulkan"
             ],
             "a": 2,
             "explain": "Pemeriksaan null eksplisit."
@@ -384,10 +384,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Null safety membantu",
             "options": [
-              "CSS",
-              "route",
+              "backend JVM",
+              "dipisah",
               "keandalan",
-              "migrasi"
+              "overhead wrapper"
             ],
             "a": 2,
             "explain": "Meningkatkan keandalan."
@@ -405,8 +405,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "when only",
               "if/else",
-              "CSS",
-              "route"
+              "catch operator",
+              "fungsi composable"
             ],
             "a": 1,
             "explain": "Kotlin memakai if/else."
@@ -418,7 +418,7 @@ const CONTENT_KOTLIN = [
               "when",
               "switch",
               "case",
-              "CSS"
+              "cleanup"
             ],
             "a": 0,
             "explain": "Kotlin memakai when."
@@ -429,8 +429,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "statement saja",
               "ekspresi",
-              "CSS",
-              "route"
+              "$nama atau ${nama}",
+              "keandalan"
             ],
             "a": 1,
             "explain": "when dapat menjadi ekspresi."
@@ -441,7 +441,7 @@ const CONTENT_KOTLIN = [
             "options": [
               "1-5",
               "range(1,5)",
-              "CSS",
+              "request",
               "1..5"
             ],
             "a": 3,
@@ -453,8 +453,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "1..5",
               "1 until 5",
-              "CSS",
-              "route"
+              "menutup resource otomatis",
+              "subclass di modul sama"
             ],
             "a": 1,
             "explain": "until membuat range eksklusif."
@@ -465,8 +465,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "foreach",
               "for (x in ...)",
-              "CSS",
-              "route"
+              "gaya dan layout",
+              "hierarki tertutup dan when exhaustive"
             ],
             "a": 1,
             "explain": "Kotlin memakai for-in."
@@ -475,9 +475,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "while mengulang selama",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "konfigurasi build",
+              "JVM (juga native/JS)",
+              "println()",
               "kondisi benar"
             ],
             "a": 3,
@@ -488,9 +488,9 @@ const CONTENT_KOTLIN = [
             "q": "break/continue berlaku",
             "options": [
               "di loop",
-              "CSS",
-              "route",
-              "migrasi"
+              "fungsi composable",
+              "runTest",
+              "penting"
             ],
             "a": 0,
             "explain": "Mengatur loop."
@@ -501,8 +501,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "UI",
+              "var"
             ],
             "a": 0,
             "explain": "Kombinasi umum."
@@ -513,8 +513,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "if sebagai ekspresi",
               "when wajib",
-              "CSS",
-              "route"
+              "subclass di modul sama",
+              "anak coroutine terikat scope"
             ],
             "a": 0,
             "explain": "Kotlin memakai if ekspresi."
@@ -542,9 +542,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Nilai balik ditulis",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "state dari state lain",
+              "komunikasi antar coroutine",
+              "database lokal Android",
               "setelah parameter dengan :"
             ],
             "a": 3,
@@ -554,9 +554,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Named argument memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "efek samping berbasis key",
+              "API dengan Kotlin",
+              "Android Studio Profiler",
               "menyebut nama parameter"
             ],
             "a": 3,
@@ -581,7 +581,7 @@ const CONTENT_KOTLIN = [
               "->",
               "=",
               "=>",
-              "CSS"
+              "?."
             ],
             "a": 1,
             "explain": "Body ekspresi memakai =."
@@ -590,10 +590,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Fungsi ekstensi menambah",
             "options": [
-              "CSS",
+              "state ke pemanggil",
               "method pada tipe ada",
-              "route",
-              "migrasi"
+              "penamaan tipe kompleks",
+              "Membedakan tipe yang boleh null dan yang tidak"
             ],
             "a": 1,
             "explain": "Extension function."
@@ -603,9 +603,9 @@ const CONTENT_KOTLIN = [
             "q": "Vararg memungkinkan",
             "options": [
               "jumlah argumen variabel",
-              "CSS",
-              "route",
-              "migrasi"
+              "Menangguhkan pekerjaan asynchronous dalam coroutine",
+              "== null / != null",
+              "tanpa memblokir thread"
             ],
             "a": 0,
             "explain": "Vararg variadik."
@@ -615,9 +615,9 @@ const CONTENT_KOTLIN = [
             "q": "Higher-order function menerima",
             "options": [
               "fungsi sebagai parameter",
-              "CSS",
-              "route",
-              "migrasi"
+              "nilai saat ini",
+              "efek samping berbasis key",
+              "API dengan Kotlin"
             ],
             "a": 0,
             "explain": "Kotlin mendukung fungsi sebagai parameter."
@@ -628,7 +628,7 @@ const CONTENT_KOTLIN = [
             "options": [
               "(x) =>",
               "lambda x",
-              "CSS",
+              "jumlah argumen variabel",
               "{ x -> ... }"
             ],
             "a": 3,
@@ -638,10 +638,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Inline function mengurangi",
             "options": [
-              "CSS",
-              "route",
+              "skalabilitas",
+              "HTTP engine",
               "overhead lambda",
-              "migrasi"
+              "./gradlew build"
             ],
             "a": 2,
             "explain": "Inline menghilangkan overhead."
@@ -660,7 +660,7 @@ const CONTENT_KOTLIN = [
               "class Nama",
               "struct Nama",
               "def Nama",
-              "CSS"
+              "JaCoCo"
             ],
             "a": 0,
             "explain": "Kotlin memakai class."
@@ -670,9 +670,9 @@ const CONTENT_KOTLIN = [
             "q": "Constructor utama ada di",
             "options": [
               "body saja",
-              "CSS",
+              "factory method",
               "header class",
-              "route"
+              "lazy evaluation"
             ],
             "a": 2,
             "explain": "Primary constructor di header."
@@ -681,10 +681,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "data class menghasilkan",
             "options": [
-              "CSS",
+              "Pair(a,b)/Triple(a,b,c)",
               "equals/hashCode/toString/copy",
-              "route",
-              "migrasi"
+              "mengurangi keterbacaan",
+              "inisialisasi tertunda"
             ],
             "a": 1,
             "explain": "Data class memberi fungsi standar."
@@ -696,7 +696,7 @@ const CONTENT_KOTLIN = [
               "extends Induk",
               "inherits Induk",
               " : Induk()",
-              "CSS"
+              "if/else"
             ],
             "a": 2,
             "explain": "Kotlin memakai : untuk pewarisan."
@@ -706,21 +706,21 @@ const CONTENT_KOTLIN = [
             "q": "class default bersifat",
             "options": [
               "open",
-              "CSS",
+              "state berubah",
               "final",
-              "route"
+              "coroutine test"
             ],
             "a": 2,
             "explain": "Class default final; pakai open."
           },
           {
             "type": "mc",
-            "q": "Interface memakai",
+            "q": "Kata kunci Kotlin untuk mendefinisikan kontrak perilaku yang bisa diimplementasikan kelas lain adalah",
             "options": [
               "abstract",
-              "CSS",
+              "Pair(a,b)/Triple(a,b,c)",
               "interface",
-              "route"
+              "mengurangi keterbacaan"
             ],
             "a": 2,
             "explain": "Kotlin memakai interface."
@@ -730,8 +730,8 @@ const CONTENT_KOTLIN = [
             "q": "Override memakai",
             "options": [
               "over",
-              "CSS",
-              "route",
+              "interface",
+              "selalu",
               "override"
             ],
             "a": 3,
@@ -744,7 +744,7 @@ const CONTENT_KOTLIN = [
               "super",
               "parent",
               "base",
-              "CSS"
+              "Gradle"
             ],
             "a": 0,
             "explain": "super memanggil induk."
@@ -753,10 +753,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Companion object berperan seperti",
             "options": [
-              "CSS",
-              "route",
+              "./gradlew build",
+              "if/else",
               "static member",
-              "migrasi"
+              "fun nama()"
             ],
             "a": 2,
             "explain": "Companion mirip static."
@@ -766,9 +766,9 @@ const CONTENT_KOTLIN = [
             "q": "visibility modifier meliputi",
             "options": [
               "private/protected/internal/public",
-              "CSS",
-              "route",
-              "migrasi"
+              "EncryptedSharedPreferences/Keystore",
+              "aturan bisnis",
+              "konfigurasi build"
             ],
             "a": 0,
             "explain": "Kotlin punya internal."
@@ -787,7 +787,7 @@ const CONTENT_KOTLIN = [
               "raise",
               "throw",
               "panic",
-              "CSS"
+              "1..5"
             ],
             "a": 1,
             "explain": "Kotlin memakai throw."
@@ -798,7 +798,7 @@ const CONTENT_KOTLIN = [
             "options": [
               "try/rescue",
               "except",
-              "CSS",
+              "static",
               "try/catch"
             ],
             "a": 3,
@@ -809,9 +809,9 @@ const CONTENT_KOTLIN = [
             "q": "finally dijalankan",
             "options": [
               "selalu",
-              "CSS",
-              "route",
-              "migrasi"
+              "JUnit",
+              "compose test",
+              "komposisi"
             ],
             "a": 0,
             "explain": "finally selalu dijalankan."
@@ -821,8 +821,8 @@ const CONTENT_KOTLIN = [
             "q": "Exception adalah Throwable",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "?:",
+              "kecepatan build",
               "ya"
             ],
             "a": 3,
@@ -830,12 +830,12 @@ const CONTENT_KOTLIN = [
           },
           {
             "type": "mc",
-            "q": "Custom exception mewarisi",
+            "q": "Saat membuat kelas galat buatan sendiri di Kotlin, kelas tersebut biasanya mewarisi kelas dasar",
             "options": [
               "Error wajib",
-              "CSS",
+              "catch (e: Tipe)",
               "Exception",
-              "route"
+              "map[\"k\"] atau map.get"
             ],
             "a": 2,
             "explain": "Custom exception mewarisi Exception."
@@ -844,10 +844,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "try sebagai ekspresi mengembalikan",
             "options": [
-              "CSS",
-              "route",
+              "pemanggil",
+              "key-value",
               "nilai",
-              "migrasi"
+              "@Composable"
             ],
             "a": 2,
             "explain": "try dapat menghasilkan nilai."
@@ -856,10 +856,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Menangkap tipe spesifik memakai",
             "options": [
-              "CSS",
+              "dipisah",
               "catch (e: Tipe)",
-              "route",
-              "migrasi"
+              "overhead wrapper",
+              "performa"
             ],
             "a": 1,
             "explain": "Catch dapat menyebut tipe."
@@ -869,9 +869,9 @@ const CONTENT_KOTLIN = [
             "q": "Checked exception di Kotlin",
             "options": [
               "wajib",
-              "CSS",
+              "let/?:/cek null",
               "tidak ada",
-              "route"
+              "1..5"
             ],
             "a": 2,
             "explain": "Kotlin tidak punya checked exception."
@@ -880,9 +880,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "use() dipakai untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "for (x in ...)",
+              "{ x -> ... }",
+              "properti dan method",
               "menutup resource otomatis"
             ],
             "a": 3,
@@ -893,8 +893,8 @@ const CONTENT_KOTLIN = [
             "q": "Pesan exception diakses dengan",
             "options": [
               ".msg",
-              "CSS",
-              "route",
+              "class Nama",
+              "super",
               ".message"
             ],
             "a": 3,
@@ -914,7 +914,7 @@ const CONTENT_KOTLIN = [
               "mutableListOf()",
               "listOf()",
               "arrayListOf()",
-              "CSS"
+              "static member"
             ],
             "a": 1,
             "explain": "listOf membuat list readonly."
@@ -924,8 +924,8 @@ const CONTENT_KOTLIN = [
             "q": "List mutable memakai",
             "options": [
               "listOf()",
-              "CSS",
-              "route",
+              "suspend function",
+              "kecepatan build",
               "mutableListOf()"
             ],
             "a": 3,
@@ -936,8 +936,8 @@ const CONTENT_KOTLIN = [
             "q": "Map immutable memakai",
             "options": [
               "mutableMapOf()",
-              "CSS",
-              "route",
+              "JUnit",
+              "compose test",
               "mapOf()"
             ],
             "a": 3,
@@ -949,8 +949,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "mutableSetOf()",
               "setOf()",
-              "CSS",
-              "route"
+              "await()",
+              "static"
             ],
             "a": 1,
             "explain": "setOf readonly."
@@ -960,9 +960,9 @@ const CONTENT_KOTLIN = [
             "q": "Mengakses map memakai",
             "options": [
               "map[\"k\"] atau map.get",
-              "CSS",
-              "route",
-              "migrasi"
+              "efek samping",
+              "berdasarkan kunci",
+              "dua koleksi"
             ],
             "a": 0,
             "explain": "Map diakses dengan []."
@@ -972,9 +972,9 @@ const CONTENT_KOTLIN = [
             "q": "Mengubah list memakai",
             "options": [
               "each { }",
-              "CSS",
+              "Int",
               "map { }",
-              "route"
+              "let/?:/cek null"
             ],
             "a": 2,
             "explain": "map mentransformasi."
@@ -985,8 +985,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "where { }",
               "filter { }",
-              "CSS",
-              "route"
+              "backend JVM",
+              "dipisah"
             ],
             "a": 1,
             "explain": "filter menyaring."
@@ -998,7 +998,7 @@ const CONTENT_KOTLIN = [
               ".size",
               ".length",
               ".count_all",
-              "CSS"
+              "pemanggil"
             ],
             "a": 0,
             "explain": "Koleksi memakai size."
@@ -1009,7 +1009,7 @@ const CONTENT_KOTLIN = [
             "options": [
               "&&",
               "concat",
-              "CSS",
+              "?:",
               "+"
             ],
             "a": 3,
@@ -1020,9 +1020,9 @@ const CONTENT_KOTLIN = [
             "q": "Pair/Triple memakai",
             "options": [
               "Pair(a,b)/Triple(a,b,c)",
-              "CSS",
-              "route",
-              "migrasi"
+              "compose test",
+              "obfuscation/shrink",
+              "komposisi"
             ],
             "a": 0,
             "explain": "Kotlin menyediakan Pair/Triple."
@@ -1038,10 +1038,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Scope function yang mengakses objek memakai",
             "options": [
-              "CSS",
+              "factory method",
               "let/run/apply/also",
-              "route",
-              "migrasi"
+              "lazy evaluation",
+              "type safety"
             ],
             "a": 1,
             "explain": "Kotlin menyediakan scope function."
@@ -1051,9 +1051,9 @@ const CONTENT_KOTLIN = [
             "q": "let mengembalikan",
             "options": [
               "objek",
-              "CSS",
+              "JaCoCo",
               "hasil lambda",
-              "route"
+              "diuji"
             ],
             "a": 2,
             "explain": "let mengembalikan hasil lambda."
@@ -1063,9 +1063,9 @@ const CONTENT_KOTLIN = [
             "q": "apply mengembalikan",
             "options": [
               "objek itu sendiri",
-              "CSS",
-              "route",
-              "migrasi"
+              "gaya dan layout",
+              "hierarki tertutup dan when exhaustive",
+              "HTTP client populer Android"
             ],
             "a": 0,
             "explain": "apply mengembalikan receiver."
@@ -1074,9 +1074,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "also dipakai untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "interface",
+              "selalu",
+              "mutableListOf()",
               "efek samping"
             ],
             "a": 3,
@@ -1086,10 +1086,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "run mengeksekusi blok dan mengembalikan",
             "options": [
-              "CSS",
+              "cancel()",
               "hasil",
-              "route",
-              "migrasi"
+              "dua bagian",
+              "disarankan"
             ],
             "a": 1,
             "explain": "run mengembalikan hasil."
@@ -1098,10 +1098,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Extension function tidak bisa mengakses",
             "options": [
-              "CSS",
-              "route",
+              "pemeriksaan status",
+              "menambah kompleksitas",
               "member private",
-              "migrasi"
+              "state berubah"
             ],
             "a": 2,
             "explain": "Tidak bisa akses private."
@@ -1110,10 +1110,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "apply cocok untuk",
             "options": [
-              "CSS",
+              "EncryptedSharedPreferences/Keystore",
               "konfigurasi objek",
-              "route",
-              "migrasi"
+              "fitur lama",
+              "aturan bisnis"
             ],
             "a": 1,
             "explain": "apply konfigurasi objek."
@@ -1122,10 +1122,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "with memungkinkan",
             "options": [
-              "CSS",
+              "Mewakili data dengan fungsi umum seperti equals dan copy",
               "memanggil member tanpa receiver",
-              "route",
-              "migrasi"
+              "inisialisasi tertunda non-null",
+              "method pada tipe ada"
             ],
             "a": 1,
             "explain": "with mengubah receiver."
@@ -1136,8 +1136,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "diuji",
+              "as?"
             ],
             "a": 1,
             "explain": "Kombinasi umum."
@@ -1146,9 +1146,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Scope function berlebihan dapat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "./gradlew build",
+              "fun nama()",
+              "try/catch",
               "mengurangi keterbacaan"
             ],
             "a": 3,
@@ -1166,21 +1166,21 @@ const CONTENT_KOTLIN = [
             "q": "Coroutine untuk",
             "options": [
               "asynchronous tanpa memblokir thread",
-              "CSS",
-              "route",
-              "migrasi"
+              "properti dan method",
+              "kegagalan anak menggagalkan semua",
+              "state UI tahan rotasi"
             ],
             "a": 0,
             "explain": "Coroutine mendukung suspend."
           },
           {
             "type": "mc",
-            "q": "Fungsi suspend dideklarasikan dengan",
+            "q": "Modifier fungsi di Kotlin Coroutines yang menandakan fungsi dapat dijeda tanpa memblokir thread adalah",
             "options": [
               "async",
-              "CSS",
+              "$nama atau ${nama}",
               "suspend",
-              "route"
+              "keandalan"
             ],
             "a": 2,
             "explain": "Kotlin memakai suspend."
@@ -1189,10 +1189,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Menjalankan coroutine memakai",
             "options": [
-              "CSS",
-              "route",
+              "konfigurasi objek",
+              "lifecycle coroutine",
               "launch/async",
-              "migrasi"
+              "getter/setter kustom"
             ],
             "a": 2,
             "explain": "launch/async membuat coroutine."
@@ -1201,9 +1201,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "await hasil async memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "catch operator",
+              "fungsi composable",
+              "runTest",
               "await()"
             ],
             "a": 3,
@@ -1213,9 +1213,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Dispatchers.Main untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "fungsi composable",
+              "runTest",
+              "penting",
               "UI thread"
             ],
             "a": 3,
@@ -1226,9 +1226,9 @@ const CONTENT_KOTLIN = [
             "q": "Dispatchers.IO untuk",
             "options": [
               "operasi IO",
-              "CSS",
-              "route",
-              "migrasi"
+              "konfigurasi build",
+              "JVM (juga native/JS)",
+              "println()"
             ],
             "a": 0,
             "explain": "IO untuk IO berat."
@@ -1238,9 +1238,9 @@ const CONTENT_KOTLIN = [
             "q": "delay menunda",
             "options": [
               "tanpa memblokir thread",
-              "CSS",
-              "route",
-              "migrasi"
+              "jumlah argumen variabel",
+              "di IO coroutine",
+              "dengan lifecycle sesuai"
             ],
             "a": 0,
             "explain": "delay menangguhkan coroutine."
@@ -1249,9 +1249,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "CoroutineScope mengelola",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "hasil operasi (success/error)",
+              "disarankan",
+              "in-memory database",
               "lifecycle coroutine"
             ],
             "a": 3,
@@ -1261,10 +1261,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Membatalkan coroutine memakai",
             "options": [
-              "CSS",
-              "route",
+              "Gradle",
+              "$nama atau ${nama}",
               "cancel()",
-              "migrasi"
+              "keandalan"
             ],
             "a": 2,
             "explain": "Cancel membatalkan."
@@ -1273,10 +1273,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Exception di coroutine harus",
             "options": [
-              "CSS",
-              "route",
+              "konfigurasi objek",
+              "lifecycle coroutine",
               "ditangani",
-              "migrasi"
+              "getter/setter kustom"
             ],
             "a": 2,
             "explain": "Tangani exception."
@@ -1293,9 +1293,9 @@ const CONTENT_KOTLIN = [
             "q": "object declaration membuat",
             "options": [
               "singleton",
-              "CSS",
-              "route",
-              "migrasi"
+              "UI thread",
+              "objek anonim",
+              "berdasarkan nilai"
             ],
             "a": 0,
             "explain": "object membuat singleton."
@@ -1304,10 +1304,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "companion object berperan seperti",
             "options": [
-              "CSS",
+              "kondisi benar",
               "static",
-              "route",
-              "migrasi"
+              "header class",
+              "static member"
             ],
             "a": 1,
             "explain": "Companion mirip static."
@@ -1316,10 +1316,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "object expression membuat",
             "options": [
-              "CSS",
-              "route",
+              "modifikasi request",
+              "build rilis",
               "objek anonim",
-              "migrasi"
+              "let/?:/cek null"
             ],
             "a": 2,
             "explain": "Object expression anonim."
@@ -1328,9 +1328,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Delegation memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "UI",
+              "var",
+              "?.",
               "by"
             ],
             "a": 3,
@@ -1340,10 +1340,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Delegated property memungkinkan",
             "options": [
-              "CSS",
-              "route",
+              "penanganan exhaustive",
+              "observe perubahan",
               "getter/setter kustom",
-              "migrasi"
+              "flow { }"
             ],
             "a": 2,
             "explain": "Delegated property kustom."
@@ -1352,10 +1352,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "lazy membuat",
             "options": [
-              "CSS",
-              "route",
+              "private/protected/internal/public",
+              "tidak ada",
               "inisialisasi tertunda",
-              "migrasi"
+              "efek samping"
             ],
             "a": 2,
             "explain": "lazy menunda inisialisasi."
@@ -1364,10 +1364,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "observable property memungkinkan",
             "options": [
-              "CSS",
+              "Memilih hasil berdasarkan beberapa kondisi atau nilai",
               "reaksi saat berubah",
-              "route",
-              "migrasi"
+              "1 until 5",
+              "fungsi sebagai parameter"
             ],
             "a": 1,
             "explain": "Delegates.observable."
@@ -1376,9 +1376,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Companion object bisa berisi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "scalable",
+              "data besar",
+              "in/out",
               "factory method"
             ],
             "a": 3,
@@ -1388,10 +1388,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Singleton berlebihan berisiko",
             "options": [
-              "CSS",
-              "route",
+              "nilai flow",
+              "komponen aplikasi",
               "testabilitas",
-              "migrasi"
+              "kotlin.test"
             ],
             "a": 2,
             "explain": "Global state menyulitkan test."
@@ -1402,8 +1402,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "hasil",
+              "throw"
             ],
             "a": 1,
             "explain": "Nama deskriptif."
@@ -1419,9 +1419,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "groupBy mengelompokkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "status terbatas",
+              "cleanup",
+              "keamanan",
               "berdasarkan kunci"
             ],
             "a": 3,
@@ -1432,9 +1432,9 @@ const CONTENT_KOTLIN = [
             "q": "sortedBy mengurutkan",
             "options": [
               "berdasarkan nilai",
-              "CSS",
-              "route",
-              "migrasi"
+              "deklarasi endpoint",
+              "pemeliharaan",
+              "MVVM/MVI"
             ],
             "a": 0,
             "explain": "sortedBy mengurutkan."
@@ -1443,9 +1443,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "associate membuat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "fun",
+              "Double",
+              "duplikat",
               "map"
             ],
             "a": 3,
@@ -1455,9 +1455,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "fold/reduce mengakumulasi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "throw",
+              ".message",
+              "filter { }",
               "nilai"
             ],
             "a": 3,
@@ -1467,10 +1467,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "flatMap menggabungkan",
             "options": [
-              "CSS",
+              "operasi IO",
               "koleksi bersarang",
-              "route",
-              "migrasi"
+              "penanganan exhaustive",
+              "observe perubahan"
             ],
             "a": 1,
             "explain": "flatMap meratakan."
@@ -1479,10 +1479,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "partition membagi",
             "options": [
-              "CSS",
-              "route",
+              "dideklarasikan",
+              "MockK/Mockito",
               "dua bagian",
-              "migrasi"
+              "struktur proyek"
             ],
             "a": 2,
             "explain": "partition memisahkan."
@@ -1491,10 +1491,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Sequence membantu",
             "options": [
-              "CSS",
+              "pemeliharaan",
               "lazy evaluation",
-              "route",
-              "migrasi"
+              "MVVM/MVI",
+              "modifikasi request"
             ],
             "a": 1,
             "explain": "Sequence lazy."
@@ -1504,9 +1504,9 @@ const CONTENT_KOTLIN = [
             "q": "distinct menghapus",
             "options": [
               "duplikat",
-              "CSS",
-              "route",
-              "migrasi"
+              "as?",
+              "di loop",
+              "tidak ada"
             ],
             "a": 0,
             "explain": "distinct unik."
@@ -1515,10 +1515,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "zip menggabungkan",
             "options": [
-              "CSS",
-              "route",
+              "penting",
+              "deklarasi endpoint",
               "dua koleksi",
-              "migrasi"
+              "pemeliharaan"
             ],
             "a": 2,
             "explain": "zip memasangkan."
@@ -1527,9 +1527,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Operator berlebihan dapat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "println()",
+              "equals/hashCode/toString/copy",
+              "private/protected/internal/public",
               "mengurangi keterbacaan"
             ],
             "a": 3,
@@ -1546,10 +1546,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "enum class mendefinisikan",
             "options": [
-              "CSS",
-              "route",
+              "inisialisasi tertunda",
+              "dua bagian",
               "kumpulan konstanta",
-              "migrasi"
+              "hasil operasi (success/error)"
             ],
             "a": 2,
             "explain": "enum untuk konstanta."
@@ -1558,9 +1558,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "enum dapat punya",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "referensi tidak dapat di-assign ulang",
+              "for (x in ...)",
+              "{ x -> ... }",
               "properti dan method"
             ],
             "a": 3,
@@ -1571,9 +1571,9 @@ const CONTENT_KOTLIN = [
             "q": "sealed class membatasi",
             "options": [
               "subclass di modul sama",
-              "CSS",
-              "route",
-              "migrasi"
+              "scope coroutine dalam composable",
+              "nilai saat ini",
+              "efek samping berbasis key"
             ],
             "a": 0,
             "explain": "Sealed membatasi hierarki."
@@ -1582,10 +1582,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "when pada sealed memungkinkan",
             "options": [
-              "CSS",
+              "mengganti dispatcher",
               "penanganan exhaustive",
-              "route",
-              "migrasi"
+              "catch operator",
+              "fungsi composable"
             ],
             "a": 1,
             "explain": "Exhaustive when."
@@ -1595,8 +1595,8 @@ const CONTENT_KOTLIN = [
             "q": "Sealed interface lebih fleksibel",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "GC",
+              "Java",
               "ya"
             ],
             "a": 3,
@@ -1606,9 +1606,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Enum dipakai untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mutableListOf()",
+              "konfigurasi objek",
+              "lifecycle coroutine",
               "status terbatas"
             ],
             "a": 3,
@@ -1619,9 +1619,9 @@ const CONTENT_KOTLIN = [
             "q": "Sealed cocok untuk",
             "options": [
               "hasil operasi (success/error)",
-              "CSS",
-              "route",
-              "migrasi"
+              "aplikasi Android",
+              "$nama atau ${nama}",
+              "objek anonim"
             ],
             "a": 0,
             "explain": "Sealed untuk hasil bertipe."
@@ -1632,8 +1632,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "fun",
+              "coroutine test"
             ],
             "a": 0,
             "explain": "Hindari bergantung ordinal."
@@ -1642,10 +1642,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Sealed membantu",
             "options": [
-              "CSS",
+              "final",
               "type safety",
-              "route",
-              "migrasi"
+              "try/catch",
+              "listOf()"
             ],
             "a": 1,
             "explain": "Sealed menambah type safety."
@@ -1655,9 +1655,9 @@ const CONTENT_KOTLIN = [
             "q": "Dokumentasi hierarki penting",
             "options": [
               "tidak",
-              "CSS",
+              "as?",
               "ya",
-              "route"
+              "diuji"
             ],
             "a": 2,
             "explain": "Dokumentasi jelas."
@@ -1673,9 +1673,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "mutableStateOf membuat",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mengganti dispatcher",
+              "catch operator",
+              "fungsi composable",
               "state observable"
             ],
             "a": 3,
@@ -1685,9 +1685,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "remember menyimpan state antar",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "aturan bisnis",
+              "startup",
+              "konfigurasi build",
               "recomposition"
             ],
             "a": 3,
@@ -1697,10 +1697,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "State hoisting memindah state ke",
             "options": [
-              "CSS",
+              "fun nama()",
               "pemanggil",
-              "route",
-              "migrasi"
+              "final",
+              "try/catch"
             ],
             "a": 1,
             "explain": "Hoisting ke atas."
@@ -1709,21 +1709,21 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "derivedStateOf menurunkan",
             "options": [
-              "CSS",
-              "route",
+              "API dengan Kotlin",
+              "Android Studio Profiler",
               "state dari state lain",
-              "migrasi"
+              "val x: Int = 1"
             ],
             "a": 2,
             "explain": "Derived state."
           },
           {
             "type": "mc",
-            "q": "snapshotFlow mengubah state ke",
+            "q": "Fungsi `snapshotFlow` di Jetpack Compose mengonversi perubahan state Compose menjadi aliran reaktif",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "request",
+              "kualitas",
+              "sumber data",
               "flow"
             ],
             "a": 3,
@@ -1733,10 +1733,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "SideEffect untuk",
             "options": [
-              "CSS",
+              "Membedakan tipe yang boleh null dan yang tidak",
               "efek tanpa cleanup",
-              "route",
-              "migrasi"
+              "menyatakan nilai tidak null",
+              "menyebut nama parameter"
             ],
             "a": 1,
             "explain": "SideEffect efek sederhana."
@@ -1745,10 +1745,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "DisposableEffect menyediakan",
             "options": [
-              "CSS",
+              "mutableListOf()",
               "cleanup",
-              "route",
-              "migrasi"
+              "konfigurasi objek",
+              "lifecycle coroutine"
             ],
             "a": 1,
             "explain": "DisposableEffect cleanup."
@@ -1757,9 +1757,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "rememberCoroutineScope memberi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "== null / != null",
+              "jumlah argumen variabel",
+              "tanpa memblokir thread",
               "scope coroutine dalam composable"
             ],
             "a": 3,
@@ -1770,8 +1770,8 @@ const CONTENT_KOTLIN = [
             "q": "State harus immutable",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "fitur lama",
+              "aturan bisnis",
               "disarankan"
             ],
             "a": 3,
@@ -1782,8 +1782,8 @@ const CONTENT_KOTLIN = [
             "q": "Memisahkan state UI/domain penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "final",
+              ".size",
               "ya"
             ],
             "a": 3,
@@ -1801,9 +1801,9 @@ const CONTENT_KOTLIN = [
             "q": "Room menyediakan",
             "options": [
               "database lokal",
-              "CSS",
-              "route",
-              "migrasi"
+              ": Induk()",
+              "throw",
+              ".message"
             ],
             "a": 0,
             "explain": "Room ORM SQLite."
@@ -1812,10 +1812,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Entity didefinisikan dengan",
             "options": [
-              "CSS",
+              "sumber data",
               "@Entity",
-              "route",
-              "migrasi"
+              "non-blocking IO",
+              "Kotlin DSL/script"
             ],
             "a": 1,
             "explain": "Anotasi @Entity."
@@ -1824,9 +1824,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "DAO memakai anotasi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "runTest",
+              "penting",
+              "deklarasi endpoint",
               "@Dao/@Query"
             ],
             "a": 3,
@@ -1838,8 +1838,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "UI",
+              "var"
             ],
             "a": 0,
             "explain": "Migrasi skema perlu."
@@ -1848,10 +1848,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "DataStore menyimpan",
             "options": [
-              "CSS",
+              "println()",
               "key-value",
-              "route",
-              "migrasi"
+              "Boolean",
+              "di loop"
             ],
             "a": 1,
             "explain": "DataStore untuk preferensi."
@@ -1861,9 +1861,9 @@ const CONTENT_KOTLIN = [
             "q": "Query berat sebaiknya",
             "options": [
               "di IO coroutine",
-              "CSS",
-              "route",
-              "migrasi"
+              "API dengan Kotlin",
+              "Android Studio Profiler",
+              "val x: Int = 1"
             ],
             "a": 0,
             "explain": "Pindah ke IO."
@@ -1872,10 +1872,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Flow pada DAO memungkinkan",
             "options": [
-              "CSS",
+              "in-memory database",
               "observe perubahan",
-              "route",
-              "migrasi"
+              "banyak collector",
+              "dideklarasikan"
             ],
             "a": 1,
             "explain": "DAO Flow observable."
@@ -1885,9 +1885,9 @@ const CONTENT_KOTLIN = [
             "q": "Enkripsi lokal membantu",
             "options": [
               "keamanan",
-              "CSS",
-              "route",
-              "migrasi"
+              ".size",
+              "member private",
+              "operasi IO"
             ],
             "a": 0,
             "explain": "Enkripsi data lokal."
@@ -1896,10 +1896,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Menguji Room memakai",
             "options": [
-              "CSS",
+              "non-blocking IO",
               "in-memory database",
-              "route",
-              "migrasi"
+              "Kotlin DSL/script",
+              "JetBrains"
             ],
             "a": 1,
             "explain": "In-memory untuk test."
@@ -1910,8 +1910,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "?:",
+              "banyak collector"
             ],
             "a": 0,
             "explain": "Tutup koneksi."
@@ -1927,10 +1927,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "runBlocking dipakai untuk",
             "options": [
-              "CSS",
+              "Android Studio Profiler",
               "menjalankan coroutine di kode blocking",
-              "route",
-              "migrasi"
+              "val x: Int = 1",
+              "if sebagai ekspresi"
             ],
             "a": 1,
             "explain": "runBlocking untuk main/test."
@@ -1939,9 +1939,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "SupervisorJob mencegah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "state UI tahan rotasi",
+              "lihat UI di editor",
+              "akses tipe saat runtime",
               "kegagalan anak menggagalkan semua"
             ],
             "a": 3,
@@ -1951,9 +1951,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Structured concurrency berarti",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "implementasi per platform",
+              "lambdas with receiver",
+              "Memilih hasil berdasarkan beberapa kondisi atau nilai",
               "anak coroutine terikat scope"
             ],
             "a": 3,
@@ -1963,9 +1963,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "withContext dipakai untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "mengurangi recomposition",
+              "suspend function",
+              "kecepatan build",
               "mengganti dispatcher"
             ],
             "a": 3,
@@ -1975,10 +1975,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "JobState memungkinkan",
             "options": [
-              "CSS",
+              "map { }",
               "pemeriksaan status",
-              "route",
-              "migrasi"
+              "efek samping",
+              "await()"
             ],
             "a": 1,
             "explain": "Status coroutine dapat diperiksa."
@@ -1988,9 +1988,9 @@ const CONTENT_KOTLIN = [
             "q": "Channel memungkinkan",
             "options": [
               "komunikasi antar coroutine",
-              "CSS",
-              "route",
-              "migrasi"
+              "API dengan Kotlin",
+              "Android Studio Profiler",
+              "val x: Int = 1"
             ],
             "a": 0,
             "explain": "Channel untuk komunikasi."
@@ -2000,9 +2000,9 @@ const CONTENT_KOTLIN = [
             "q": "Flow menghasilkan",
             "options": [
               "aliran nilai",
-              "CSS",
-              "route",
-              "migrasi"
+              "backend JVM",
+              "dipisah",
+              "overhead wrapper"
             ],
             "a": 0,
             "explain": "Flow untuk stream."
@@ -2011,10 +2011,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "StateFlow/SharedFlow untuk",
             "options": [
-              "CSS",
-              "route",
+              "let/?:/cek null",
+              "class Nama",
               "state observable",
-              "migrasi"
+              "setOf()"
             ],
             "a": 2,
             "explain": "StateFlow/SharedFlow untuk state."
@@ -2025,8 +2025,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "throw",
+              "hasil"
             ],
             "a": 1,
             "explain": "Cek pembatalan."
@@ -2035,10 +2035,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Exception handler CoroutineExceptionHandler",
             "options": [
-              "CSS",
-              "route",
+              "kotlin.test",
+              "backend JVM",
               "menangani error",
-              "migrasi"
+              "dipisah"
             ],
             "a": 2,
             "explain": "Handler menangani error."
@@ -2055,9 +2055,9 @@ const CONTENT_KOTLIN = [
             "q": "Flow dibuat dengan",
             "options": [
               "flow { }",
-              "CSS",
-              "route",
-              "migrasi"
+              "state berubah",
+              "coroutine test",
+              "kompleksitas"
             ],
             "a": 0,
             "explain": "flow builder."
@@ -2066,10 +2066,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Flow bersifat cold sehingga",
             "options": [
-              "CSS",
+              "val x: Int = 1",
               "baru berjalan saat dikumpulkan",
-              "route",
-              "migrasi"
+              "if sebagai ekspresi",
+              "menutup resource otomatis"
             ],
             "a": 1,
             "explain": "Cold flow jalan saat collect."
@@ -2078,10 +2078,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "collect mengumpulkan",
             "options": [
-              "CSS",
+              "if/else",
               "nilai flow",
-              "route",
-              "migrasi"
+              "fun nama()",
+              "final"
             ],
             "a": 1,
             "explain": "collect membaca nilai."
@@ -2090,9 +2090,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Operator map/filter berlaku pada",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "fitur lama",
+              "startup",
+              "println()",
               "Flow"
             ],
             "a": 3,
@@ -2102,10 +2102,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "StateFlow selalu punya",
             "options": [
-              "CSS",
-              "route",
+              "memanggil member tanpa receiver",
+              "efek tanpa cleanup",
               "nilai saat ini",
-              "migrasi"
+              "baru berjalan saat dikumpulkan"
             ],
             "a": 2,
             "explain": "StateFlow menyimpan value."
@@ -2114,10 +2114,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "SharedFlow untuk",
             "options": [
-              "CSS",
-              "route",
+              "mutableListOf()",
+              "konfigurasi objek",
               "banyak collector",
-              "migrasi"
+              "lifecycle coroutine"
             ],
             "a": 2,
             "explain": "SharedFlow multi collector."
@@ -2127,9 +2127,9 @@ const CONTENT_KOTLIN = [
             "q": "Flow harus dikumpulkan pada scope",
             "options": [
               "dengan lifecycle sesuai",
-              "CSS",
-              "route",
-              "migrasi"
+              "if sebagai ekspresi",
+              "menutup resource otomatis",
+              "subclass di modul sama"
             ],
             "a": 0,
             "explain": "Kumpulkan sesuai lifecycle."
@@ -2139,9 +2139,9 @@ const CONTENT_KOTLIN = [
             "q": "Exception pada flow memakai",
             "options": [
               "catch operator",
-              "CSS",
-              "route",
-              "migrasi"
+              "coroutine test",
+              "kompleksitas",
+              "request"
             ],
             "a": 0,
             "explain": "Operator catch."
@@ -2150,10 +2150,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "FlatMap operators menggabungkan",
             "options": [
-              "CSS",
-              "route",
+              "Gradle",
+              "keandalan",
               "flow",
-              "migrasi"
+              "ya"
             ],
             "a": 2,
             "explain": "FlatMap menggabungkan."
@@ -2162,10 +2162,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Flow berlebihan dapat",
             "options": [
-              "CSS",
+              "state berubah",
               "menambah kompleksitas",
-              "route",
-              "migrasi"
+              "coroutine test",
+              "kompleksitas"
             ],
             "a": 1,
             "explain": "Gunakan sesuai kebutuhan."
@@ -2194,9 +2194,9 @@ const CONTENT_KOTLIN = [
             "q": "Composable ditandai dengan",
             "options": [
               "@Composable",
-              "CSS",
-              "route",
-              "migrasi"
+              "./gradlew build",
+              "if/else",
+              "fun nama()"
             ],
             "a": 0,
             "explain": "Anotasi @Composable."
@@ -2205,10 +2205,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "State pada Compose memakai",
             "options": [
-              "CSS",
+              "Exception",
               "remember/mutableStateOf",
-              "route",
-              "migrasi"
+              "Pair(a,b)/Triple(a,b,c)",
+              "mengurangi keterbacaan"
             ],
             "a": 1,
             "explain": "remember menyimpan state."
@@ -2217,10 +2217,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Activity adalah",
             "options": [
-              "CSS",
-              "route",
+              "scope coroutine dalam composable",
+              "nilai saat ini",
               "komponen layar Android",
-              "migrasi"
+              "efek samping berbasis key"
             ],
             "a": 2,
             "explain": "Activity komponen UI."
@@ -2230,9 +2230,9 @@ const CONTENT_KOTLIN = [
             "q": "ViewModel menyimpan",
             "options": [
               "state UI tahan rotasi",
-              "CSS",
-              "route",
-              "migrasi"
+              "state dari state lain",
+              "komunikasi antar coroutine",
+              "database lokal Android"
             ],
             "a": 0,
             "explain": "ViewModel bertahan lifecycle."
@@ -2241,10 +2241,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "LiveData/StateFlow menyediakan",
             "options": [
-              "CSS",
+              "pengujian",
               "state observable",
-              "route",
-              "migrasi"
+              "dependency injection",
+              "kotlinx.serialization"
             ],
             "a": 1,
             "explain": "Observable state."
@@ -2253,9 +2253,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Navigation Component menangani",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "nilai saat ini",
+              "efek samping berbasis key",
+              "API dengan Kotlin",
               "navigasi antar layar"
             ],
             "a": 3,
@@ -2266,9 +2266,9 @@ const CONTENT_KOTLIN = [
             "q": "Room adalah",
             "options": [
               "database lokal Android",
-              "CSS",
-              "route",
-              "migrasi"
+              "for (x in ...)",
+              "{ x -> ... }",
+              "properti dan method"
             ],
             "a": 0,
             "explain": "Room ORM lokal."
@@ -2277,10 +2277,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Manifest mendefinisikan",
             "options": [
-              "CSS",
+              "factory method",
               "komponen aplikasi",
-              "route",
-              "migrasi"
+              "lazy evaluation",
+              "type safety"
             ],
             "a": 1,
             "explain": "AndroidManifest mendefinisikan komponen."
@@ -2289,10 +2289,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Izin aplikasi harus",
             "options": [
-              "CSS",
+              "JaCoCo",
               "dideklarasikan",
-              "route",
-              "migrasi"
+              "EncryptedSharedPreferences/Keystore",
+              "diuji"
             ],
             "a": 1,
             "explain": "Izin dideklarasikan."
@@ -2308,10 +2308,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Compose menyusun UI dengan",
             "options": [
-              "CSS",
+              "listOf()",
               "fungsi composable",
-              "route",
-              "migrasi"
+              "member private",
+              "operasi IO"
             ],
             "a": 1,
             "explain": "UI dari composable."
@@ -2320,10 +2320,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Recomposition terjadi saat",
             "options": [
-              "CSS",
-              "route",
+              "JVM (juga native/JS)",
+              "println()",
               "state berubah",
-              "migrasi"
+              "Boolean"
             ],
             "a": 2,
             "explain": "State change memicu recomposition."
@@ -2332,9 +2332,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "remember menyimpan nilai antar",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kualitas",
+              "sumber data",
+              "non-blocking IO",
               "recomposition"
             ],
             "a": 3,
@@ -2344,10 +2344,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "rememberSaveable menyimpan",
             "options": [
-              "CSS",
+              "di IO coroutine",
               "antar konfigurasi berubah",
-              "route",
-              "migrasi"
+              "dengan lifecycle sesuai",
+              "gaya dan layout"
             ],
             "a": 1,
             "explain": "Saveable bertahan rotasi."
@@ -2356,9 +2356,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "LaunchedEffect untuk",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "menyebut nama parameter",
+              "memanggil member tanpa receiver",
+              "efek tanpa cleanup",
               "efek samping berbasis key"
             ],
             "a": 3,
@@ -2368,9 +2368,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Row/Column mengatur",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "keandalan",
+              ": Induk()",
+              "throw",
               "layout"
             ],
             "a": 3,
@@ -2380,9 +2380,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Modifier mengatur",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "tanpa memblokir thread",
+              "di IO coroutine",
+              "dengan lifecycle sesuai",
               "gaya dan layout"
             ],
             "a": 3,
@@ -2392,9 +2392,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "state hoisting menaikkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "implementasi per platform",
+              "lambdas with receiver",
+              "Memilih hasil berdasarkan beberapa kondisi atau nilai",
               "state ke pemanggil"
             ],
             "a": 3,
@@ -2405,9 +2405,9 @@ const CONTENT_KOTLIN = [
             "q": "Preview memudahkan",
             "options": [
               "lihat UI di editor",
-              "CSS",
-              "route",
-              "migrasi"
+              "menutup resource otomatis",
+              "subclass di modul sama",
+              "anak coroutine terikat scope"
             ],
             "a": 0,
             "explain": "Preview menampilkan komponen."
@@ -2416,10 +2416,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Compose test menguji",
             "options": [
-              "CSS",
-              "route",
+              "penting",
+              "deklarasi endpoint",
               "UI/semantics",
-              "migrasi"
+              "pemeliharaan"
             ],
             "a": 2,
             "explain": "Compose UI test."
@@ -2447,10 +2447,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Kotlin test dapat memakai",
             "options": [
-              "CSS",
-              "route",
+              "performa",
+              "JSON library",
               "kotlin.test",
-              "migrasi"
+              "./gradlew test"
             ],
             "a": 2,
             "explain": "kotlin.test menyediakan asersi."
@@ -2459,10 +2459,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Mocking memakai",
             "options": [
-              "CSS",
-              "route",
+              "compose test",
+              "obfuscation/shrink",
               "MockK/Mockito",
-              "migrasi"
+              "komposisi"
             ],
             "a": 2,
             "explain": "MockK populer untuk Kotlin."
@@ -2471,10 +2471,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Coroutine test memakai",
             "options": [
-              "CSS",
-              "route",
+              "berdasarkan kunci",
+              "dua koleksi",
               "runTest",
-              "migrasi"
+              "recomposition"
             ],
             "a": 2,
             "explain": "runTest untuk test coroutine."
@@ -2483,9 +2483,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Menguji suspend function perlu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "map[\"k\"] atau map.get",
+              "hasil lambda",
+              "launch/async",
               "coroutine test"
             ],
             "a": 3,
@@ -2495,10 +2495,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Coverage memakai",
             "options": [
-              "CSS",
-              "route",
+              "fun main()",
+              "String",
               "JaCoCo",
-              "migrasi"
+              "ekspresi"
             ],
             "a": 2,
             "explain": "JaCoCo mengukur."
@@ -2508,8 +2508,8 @@ const CONTENT_KOTLIN = [
             "q": "Test perilaku lebih stabil",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "var",
+              "?.",
               "ya"
             ],
             "a": 3,
@@ -2519,9 +2519,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Table-driven test permudah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "key-value",
+              "menangani error",
+              "@Composable",
               "banyak kasus"
             ],
             "a": 3,
@@ -2532,9 +2532,9 @@ const CONTENT_KOTLIN = [
             "q": "Test di CI penting",
             "options": [
               "tidak",
-              "CSS",
+              "var",
               "ya",
-              "route"
+              "?."
             ],
             "a": 2,
             "explain": "CI otomasi."
@@ -2543,9 +2543,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Test UI Compose memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "@Composable",
+              "UI/semantics",
+              "banyak kasus",
               "compose test"
             ],
             "a": 3,
@@ -2563,9 +2563,9 @@ const CONTENT_KOTLIN = [
             "q": "KMP memungkinkan",
             "options": [
               "berbagi kode lintas platform",
-              "CSS",
-              "route",
-              "migrasi"
+              "lihat UI di editor",
+              "akses tipe saat runtime",
+              "Mewakili data dengan fungsi umum seperti equals dan copy"
             ],
             "a": 0,
             "explain": "Kotlin Multiplatform."
@@ -2574,10 +2574,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "expect/actual memungkinkan",
             "options": [
-              "CSS",
+              "memanggil member tanpa receiver",
               "implementasi per platform",
-              "route",
-              "migrasi"
+              "efek tanpa cleanup",
+              "baru berjalan saat dikumpulkan"
             ],
             "a": 1,
             "explain": "Expect/actual per platform."
@@ -2586,10 +2586,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Ktor adalah",
             "options": [
-              "CSS",
+              "lambdas with receiver",
               "framework HTTP multiplatform",
-              "route",
-              "migrasi"
+              "Memilih hasil berdasarkan beberapa kondisi atau nilai",
+              "1 until 5"
             ],
             "a": 1,
             "explain": "Ktor untuk networking."
@@ -2598,10 +2598,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Compose Multiplatform berbagi",
             "options": [
-              "CSS",
-              "route",
+              "by",
+              "map",
               "UI",
-              "migrasi"
+              "flow"
             ],
             "a": 2,
             "explain": "UI lintas platform."
@@ -2610,10 +2610,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Mengelola source set memengaruhi",
             "options": [
-              "CSS",
+              "penanganan exhaustive",
               "struktur proyek",
-              "route",
-              "migrasi"
+              "observe perubahan",
+              "flow { }"
             ],
             "a": 1,
             "explain": "Source set KMP."
@@ -2624,8 +2624,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "?:",
+              "struktur proyek"
             ],
             "a": 1,
             "explain": "Tes per target."
@@ -2635,8 +2635,8 @@ const CONTENT_KOTLIN = [
             "q": "Serialisasi KMP memakai kotlinx",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "fun",
+              "Double",
               "ya"
             ],
             "a": 3,
@@ -2647,8 +2647,8 @@ const CONTENT_KOTLIN = [
             "q": "Menjaga kompatibilitas antar target",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "filter { }",
+              "hasil",
               "penting"
             ],
             "a": 3,
@@ -2659,8 +2659,8 @@ const CONTENT_KOTLIN = [
             "q": "Dokumentasi platform penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "hasil",
+              "throw",
               "ya"
             ],
             "a": 3,
@@ -2670,9 +2670,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "CI multiplatform menambah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "nilai flow",
+              "komponen aplikasi",
+              "kotlin.test",
               "kompleksitas"
             ],
             "a": 3,
@@ -2689,9 +2689,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Menyimpan token memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kecepatan build",
+              "overhead lambda",
+              "Pair(a,b)/Triple(a,b,c)",
               "EncryptedSharedPreferences/Keystore"
             ],
             "a": 3,
@@ -2701,10 +2701,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Network security config mengatur",
             "options": [
-              "CSS",
-              "route",
+              "JUnit",
+              "compose test",
               "TLS/domain",
-              "migrasi"
+              "obfuscation/shrink"
             ],
             "a": 2,
             "explain": "Konfigurasi keamanan jaringan."
@@ -2713,10 +2713,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Proguard/R8 membantu",
             "options": [
-              "CSS",
+              "berdasarkan kunci",
               "obfuscation/shrink",
-              "route",
-              "migrasi"
+              "dua koleksi",
+              "recomposition"
             ],
             "a": 1,
             "explain": "R8 memperkecil/obfuscate."
@@ -2727,8 +2727,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "1..5",
+              "super"
             ],
             "a": 1,
             "explain": "Jangan simpan secret di klien."
@@ -2739,8 +2739,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "1..5",
+              "super"
             ],
             "a": 1,
             "explain": "Minta izin minimal."
@@ -2751,8 +2751,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "var",
+              "?."
             ],
             "a": 1,
             "explain": "Enkripsi data sensitif."
@@ -2763,8 +2763,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "throw",
+              "hasil"
             ],
             "a": 1,
             "explain": "Uji multi-user."
@@ -2773,9 +2773,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Sertifikat pinning menambah",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "catch (e: Tipe)",
+              "map[\"k\"] atau map.get",
+              "hasil lambda",
               "keamanan"
             ],
             "a": 3,
@@ -2787,8 +2787,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "static member",
+              "catch (e: Tipe)"
             ],
             "a": 1,
             "explain": "Update dependency."
@@ -2799,8 +2799,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "?:",
+              "suspend function"
             ],
             "a": 1,
             "explain": "Audit rutin."
@@ -2817,9 +2817,9 @@ const CONTENT_KOTLIN = [
             "q": "Ktor server memungkinkan",
             "options": [
               "API dengan Kotlin",
-              "CSS",
-              "route",
-              "migrasi"
+              "hierarki tertutup dan when exhaustive",
+              "HTTP client populer Android",
+              "menghilangkan tipe saat jelas"
             ],
             "a": 0,
             "explain": "Ktor untuk backend."
@@ -2829,9 +2829,9 @@ const CONTENT_KOTLIN = [
             "q": "Spring Boot populer untuk",
             "options": [
               "backend JVM",
-              "CSS",
-              "route",
-              "migrasi"
+              "observe perubahan",
+              "flow { }",
+              "remember/mutableStateOf"
             ],
             "a": 0,
             "explain": "Spring Boot backend."
@@ -2841,9 +2841,9 @@ const CONTENT_KOTLIN = [
             "q": "Coroutine membantu server",
             "options": [
               "scalable",
-              "CSS",
-              "route",
-              "migrasi"
+              "backend JVM",
+              "dipisah",
+              "overhead wrapper"
             ],
             "a": 0,
             "explain": "Coroutine efisien."
@@ -2854,8 +2854,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "Java",
+              "Int"
             ],
             "a": 0,
             "explain": "kotlinx.serialization."
@@ -2864,9 +2864,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Routing didefinisikan sebagai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "header class",
+              "static member",
+              "catch (e: Tipe)",
               "deklarasi endpoint"
             ],
             "a": 3,
@@ -2876,10 +2876,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Middleware memproses",
             "options": [
-              "CSS",
-              "route",
+              "berdasarkan nilai",
+              "kumpulan konstanta",
               "request",
-              "migrasi"
+              "pemanggil"
             ],
             "a": 2,
             "explain": "Middleware request."
@@ -2890,8 +2890,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "ya",
               "tidak",
-              "CSS",
-              "route"
+              "JUnit",
+              "wajib"
             ],
             "a": 0,
             "explain": "Validasi server."
@@ -2901,8 +2901,8 @@ const CONTENT_KOTLIN = [
             "q": "Menangani error konsisten",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "suspend function",
+              "kecepatan build",
               "penting"
             ],
             "a": 3,
@@ -2914,8 +2914,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "Int",
+              "1..5"
             ],
             "a": 1,
             "explain": "Akses DB Kotlin."
@@ -2925,9 +2925,9 @@ const CONTENT_KOTLIN = [
             "q": "Observability penting",
             "options": [
               "tidak",
-              "CSS",
+              "diuji",
               "ya",
-              "route"
+              "as?"
             ],
             "a": 2,
             "explain": "Log/metrik/tracing."
@@ -2944,9 +2944,9 @@ const CONTENT_KOTLIN = [
             "q": "Pure function mudah",
             "options": [
               "diuji",
-              "CSS",
-              "route",
-              "migrasi"
+              "@Dao/@Query",
+              "aliran nilai",
+              "layout"
             ],
             "a": 0,
             "explain": "Fungsi murni mudah diuji."
@@ -2955,10 +2955,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Immutability membantu",
             "options": [
-              "CSS",
-              "route",
+              "setOf()",
+              "let/run/apply/also",
               "prediktabilitas",
-              "migrasi"
+              "suspend"
             ],
             "a": 2,
             "explain": "Immutable memudahkan."
@@ -2967,10 +2967,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Higher-order functions memungkinkan",
             "options": [
-              "CSS",
+              "ekspresi",
               "komposisi",
-              "route",
-              "migrasi"
+              "overhead lambda",
+              "override"
             ],
             "a": 1,
             "explain": "Komposisi fungsi."
@@ -2980,8 +2980,8 @@ const CONTENT_KOTLIN = [
             "q": "Composition over inheritance",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "wajib",
+              "skalabilitas",
               "disarankan"
             ],
             "a": 3,
@@ -2992,9 +2992,9 @@ const CONTENT_KOTLIN = [
             "q": "Side effect sebaiknya",
             "options": [
               "dipisah",
-              "CSS",
-              "route",
-              "migrasi"
+              "testabilitas",
+              "duplikat",
+              "state observable"
             ],
             "a": 0,
             "explain": "Pisahkan efek samping."
@@ -3003,9 +3003,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Sequence untuk pipeline",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "overhead lambda",
+              "override",
+              "Exception",
               "data besar"
             ],
             "a": 3,
@@ -3017,8 +3017,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "bytecode JVM",
+              "var"
             ],
             "a": 0,
             "explain": "Minimalkan mutasi."
@@ -3029,8 +3029,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "banyak kasus",
+              "TLS/domain"
             ],
             "a": 0,
             "explain": "Fungsi kecil."
@@ -3040,9 +3040,9 @@ const CONTENT_KOTLIN = [
             "q": "Dokumentasi perilaku fungsi",
             "options": [
               "tidak",
-              "CSS",
+              "komposisi",
               "penting",
-              "route"
+              "wajib"
             ],
             "a": 2,
             "explain": "Dokumentasi jelas."
@@ -3053,8 +3053,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "diuji",
+              "as?"
             ],
             "a": 1,
             "explain": "Mudah diuji."
@@ -3070,9 +3070,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Nama jelas membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "JUnit",
+              "compose test",
+              "obfuscation/shrink",
               "pemeliharaan"
             ],
             "a": 3,
@@ -3084,8 +3084,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "penting",
-              "CSS",
-              "route"
+              "kecepatan build",
+              "fun main()"
             ],
             "a": 1,
             "explain": "DRY."
@@ -3095,9 +3095,9 @@ const CONTENT_KOTLIN = [
             "q": "Linter (ktlint/detekt) menjaga",
             "options": [
               "kualitas",
-              "CSS",
-              "route",
-              "migrasi"
+              "catch (e: Tipe)",
+              "map[\"k\"] atau map.get",
+              "hasil lambda"
             ],
             "a": 0,
             "explain": "Linter menjaga kualitas."
@@ -3107,8 +3107,8 @@ const CONTENT_KOTLIN = [
             "q": "Refactor bertahap lebih aman",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "throw",
+              "hasil",
               "ya"
             ],
             "a": 3,
@@ -3118,10 +3118,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Test regresi melindungi",
             "options": [
-              "CSS",
+              "dipisah",
               "fitur lama",
-              "route",
-              "migrasi"
+              "overhead wrapper",
+              "performa"
             ],
             "a": 1,
             "explain": "Regresi penting."
@@ -3131,9 +3131,9 @@ const CONTENT_KOTLIN = [
             "q": "Memisahkan layer membantu",
             "options": [
               "pengujian",
-              "CSS",
-              "route",
-              "migrasi"
+              "let/?:/cek null",
+              "1..5",
+              "class Nama"
             ],
             "a": 0,
             "explain": "Pemisahan layer."
@@ -3144,8 +3144,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "diuji",
+              "as?"
             ],
             "a": 1,
             "explain": "Dokumentasi tim."
@@ -3155,8 +3155,8 @@ const CONTENT_KOTLIN = [
             "q": "Review kode membantu kualitas",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "JUnit",
+              "wajib",
               "ya"
             ],
             "a": 3,
@@ -3168,8 +3168,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "penting",
               "tidak",
-              "CSS",
-              "route"
+              "berdasarkan kunci",
+              "dua koleksi"
             ],
             "a": 0,
             "explain": "Sederhana lebih baik."
@@ -3180,8 +3180,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "wajib",
-              "CSS",
-              "route"
+              "compose test",
+              "komposisi"
             ],
             "a": 1,
             "explain": "Ukur dulu."
@@ -3197,9 +3197,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Sealed class memungkinkan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "== null / != null",
+              "jumlah argumen variabel",
+              "tanpa memblokir thread",
               "hierarki tertutup dan when exhaustive"
             ],
             "a": 3,
@@ -3209,10 +3209,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Value class mengurangi",
             "options": [
-              "CSS",
+              "scalable",
               "overhead wrapper",
-              "route",
-              "migrasi"
+              "data besar",
+              "in/out"
             ],
             "a": 1,
             "explain": "Value class efisien."
@@ -3222,9 +3222,9 @@ const CONTENT_KOTLIN = [
             "q": "Generic variance memakai",
             "options": [
               "in/out",
-              "CSS",
-              "route",
-              "migrasi"
+              "flow",
+              "flow { }",
+              "JUnit"
             ],
             "a": 0,
             "explain": "Kotlin memakai in/out."
@@ -3233,10 +3233,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Type alias memudahkan",
             "options": [
-              "CSS",
+              "properti dan method",
               "penamaan tipe kompleks",
-              "route",
-              "migrasi"
+              "kegagalan anak menggagalkan semua",
+              "state UI tahan rotasi"
             ],
             "a": 1,
             "explain": "Alias menamai tipe."
@@ -3245,10 +3245,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Reified type parameter memungkinkan",
             "options": [
-              "CSS",
+              "API dengan Kotlin",
               "akses tipe saat runtime",
-              "route",
-              "migrasi"
+              "Android Studio Profiler",
+              "val x: Int = 1"
             ],
             "a": 1,
             "explain": "Reified untuk akses tipe."
@@ -3257,9 +3257,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Contracts memberi",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "jumlah argumen variabel",
+              "tanpa memblokir thread",
+              "di IO coroutine",
               "info alur ke compiler"
             ],
             "a": 3,
@@ -3270,9 +3270,9 @@ const CONTENT_KOTLIN = [
             "q": "Delegation memakai",
             "options": [
               "by",
-              "CSS",
-              "route",
-              "migrasi"
+              "ya",
+              "throw",
+              "hasil"
             ],
             "a": 0,
             "explain": "Delegation dengan by."
@@ -3282,9 +3282,9 @@ const CONTENT_KOTLIN = [
             "q": "Composition lebih fleksibel",
             "options": [
               "tidak",
-              "CSS",
+              "fun",
               "ya",
-              "route"
+              "NullPointerException"
             ],
             "a": 2,
             "explain": "Komposisi fleksibel."
@@ -3294,8 +3294,8 @@ const CONTENT_KOTLIN = [
             "q": "Type erasure JVM perlu diingat",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "?:",
+              "data besar",
               "ya"
             ],
             "a": 3,
@@ -3306,9 +3306,9 @@ const CONTENT_KOTLIN = [
             "q": "DSL Kotlin memakai",
             "options": [
               "lambdas with receiver",
-              "CSS",
-              "route",
-              "migrasi"
+              "Android Studio Profiler",
+              "val x: Int = 1",
+              "if sebagai ekspresi"
             ],
             "a": 0,
             "explain": "Lambdas with receiver untuk DSL."
@@ -3324,10 +3324,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Arsitektur direkomendasikan memakai",
             "options": [
-              "CSS",
+              "./gradlew test",
               "MVVM/MVI",
-              "route",
-              "migrasi"
+              "bytecode JVM",
+              "var"
             ],
             "a": 1,
             "explain": "MVVM/MVI umum di Android."
@@ -3337,9 +3337,9 @@ const CONTENT_KOTLIN = [
             "q": "ViewModel memisahkan",
             "options": [
               "state dari UI",
-              "CSS",
-              "route",
-              "migrasi"
+              "akses tipe saat runtime",
+              "Mewakili data dengan fungsi umum seperti equals dan copy",
+              "inisialisasi tertunda non-null"
             ],
             "a": 0,
             "explain": "ViewModel memisahkan state."
@@ -3349,9 +3349,9 @@ const CONTENT_KOTLIN = [
             "q": "Repository memisahkan",
             "options": [
               "sumber data",
-              "CSS",
-              "route",
-              "migrasi"
+              "singleton",
+              "testabilitas",
+              "duplikat"
             ],
             "a": 0,
             "explain": "Repository mengabstraksi data."
@@ -3360,10 +3360,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Use case menampung",
             "options": [
-              "CSS",
+              "UI/semantics",
               "aturan bisnis",
-              "route",
-              "migrasi"
+              "banyak kasus",
+              "TLS/domain"
             ],
             "a": 1,
             "explain": "Use case domain."
@@ -3372,10 +3372,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Hilt/Koin menyediakan",
             "options": [
-              "CSS",
-              "route",
+              "ekspresi",
+              "overhead lambda",
               "dependency injection",
-              "migrasi"
+              "override"
             ],
             "a": 2,
             "explain": "DI di Android."
@@ -3384,10 +3384,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Unidirectional data flow membantu",
             "options": [
-              "CSS",
+              "launch/async",
               "prediktabilitas",
-              "route",
-              "migrasi"
+              "singleton",
+              "testabilitas"
             ],
             "a": 1,
             "explain": "UDF memudahkan state."
@@ -3397,8 +3397,8 @@ const CONTENT_KOTLIN = [
             "q": "State hoisting penting di Compose",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "diuji",
+              "as?",
               "ya"
             ],
             "a": 3,
@@ -3408,10 +3408,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Memisahkan UI dan domain memudahkan",
             "options": [
-              "CSS",
-              "route",
+              "komposisi",
+              "wajib",
               "pengujian",
-              "migrasi"
+              "skalabilitas"
             ],
             "a": 2,
             "explain": "Pemisahan memudahkan test."
@@ -3421,9 +3421,9 @@ const CONTENT_KOTLIN = [
             "q": "Modularisasi gradle membantu",
             "options": [
               "skalabilitas",
-              "CSS",
-              "route",
-              "migrasi"
+              "Pair(a,b)/Triple(a,b,c)",
+              "mengurangi keterbacaan",
+              "cancel()"
             ],
             "a": 0,
             "explain": "Modul memudahkan scaling."
@@ -3433,8 +3433,8 @@ const CONTENT_KOTLIN = [
             "q": "Dokumentasi arsitektur penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "fun",
+              "pemeriksaan status",
               "ya"
             ],
             "a": 3,
@@ -3451,10 +3451,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Profiling Android memakai",
             "options": [
-              "CSS",
-              "route",
+              "nilai saat ini",
+              "efek samping berbasis key",
               "Android Studio Profiler",
-              "migrasi"
+              "API dengan Kotlin"
             ],
             "a": 2,
             "explain": "Profiler bawaan."
@@ -3463,10 +3463,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Recomposition berlebihan memengaruhi",
             "options": [
-              "CSS",
-              "route",
+              ".kt",
+              "val",
               "performa",
-              "migrasi"
+              "if/else"
             ],
             "a": 2,
             "explain": "Recompose berlebih mahal."
@@ -3475,9 +3475,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "remember/derivedStateOf membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "pengujian",
+              "dependency injection",
+              "kotlinx.serialization",
               "mengurangi recomposition"
             ],
             "a": 3,
@@ -3488,9 +3488,9 @@ const CONTENT_KOTLIN = [
             "q": "Alokasi berlebih memengaruhi",
             "options": [
               "GC",
-              "CSS",
-              "route",
-              "migrasi"
+              "fun",
+              "@Entity",
+              "pemeriksaan status"
             ],
             "a": 0,
             "explain": "Alokasi menambah GC."
@@ -3499,9 +3499,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Coroutine membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "ditangani",
+              "factory method",
+              "lazy evaluation",
               "non-blocking IO"
             ],
             "a": 3,
@@ -3512,8 +3512,8 @@ const CONTENT_KOTLIN = [
             "q": "Pekerjaan berat di Dispatchers.IO",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "when",
+              "interface",
               "disarankan"
             ],
             "a": 3,
@@ -3523,9 +3523,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Baseline profile membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "./gradlew build",
+              ".kt",
+              "val",
               "startup"
             ],
             "a": 3,
@@ -3537,8 +3537,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "wajib",
-              "CSS",
-              "route"
+              "layout",
+              "JaCoCo"
             ],
             "a": 1,
             "explain": "Ukur dulu."
@@ -3548,8 +3548,8 @@ const CONTENT_KOTLIN = [
             "q": "Inline mengurangi overhead",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "fun",
+              "state observable",
               "ya"
             ],
             "a": 3,
@@ -3560,8 +3560,8 @@ const CONTENT_KOTLIN = [
             "q": "Image loading efisien penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "?:",
+              "Exception",
               "ya"
             ],
             "a": 3,
@@ -3578,10 +3578,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Serialisasi populer Kotlin memakai",
             "options": [
-              "CSS",
+              "compose test",
               "kotlinx.serialization",
-              "route",
-              "migrasi"
+              "obfuscation/shrink",
+              "komposisi"
             ],
             "a": 1,
             "explain": "Kotlinx.serialization."
@@ -3591,9 +3591,9 @@ const CONTENT_KOTLIN = [
             "q": "Retrofit adalah",
             "options": [
               "HTTP client populer Android",
-              "CSS",
-              "route",
-              "migrasi"
+              "Mewakili data dengan fungsi umum seperti equals dan copy",
+              "inisialisasi tertunda non-null",
+              "method pada tipe ada"
             ],
             "a": 0,
             "explain": "Retrofit untuk HTTP."
@@ -3602,9 +3602,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "OkHttp sebagai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "catch (e: Tipe)",
+              "map[\"k\"] atau map.get",
+              "hasil lambda",
               "HTTP engine"
             ],
             "a": 3,
@@ -3615,9 +3615,9 @@ const CONTENT_KOTLIN = [
             "q": "Moshi/Gson alternatif",
             "options": [
               "JSON library",
-              "CSS",
-              "route",
-              "migrasi"
+              "pemanggil",
+              "key-value",
+              "menangani error"
             ],
             "a": 0,
             "explain": "Alternatif JSON."
@@ -3626,10 +3626,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Coroutine dengan Retrofit mendukung",
             "options": [
-              "CSS",
+              "key-value",
               "suspend function",
-              "route",
-              "migrasi"
+              "menangani error",
+              "@Composable"
             ],
             "a": 1,
             "explain": "Retrofit mendukung suspend."
@@ -3638,10 +3638,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Interceptor memungkinkan",
             "options": [
-              "CSS",
+              "overhead wrapper",
               "modifikasi request",
-              "route",
-              "migrasi"
+              "performa",
+              "JSON library"
             ],
             "a": 1,
             "explain": "Interceptor mengubah request."
@@ -3652,8 +3652,8 @@ const CONTENT_KOTLIN = [
             "options": [
               "tidak",
               "ya",
-              "CSS",
-              "route"
+              "1..5",
+              "super"
             ],
             "a": 1,
             "explain": "Tangani error."
@@ -3663,9 +3663,9 @@ const CONTENT_KOTLIN = [
             "q": "Menyimpan token aman",
             "options": [
               "tidak",
-              "CSS",
+              "static",
               "penting",
-              "route"
+              "berdasarkan kunci"
             ],
             "a": 2,
             "explain": "Token aman."
@@ -3675,8 +3675,8 @@ const CONTENT_KOTLIN = [
             "q": "Timeout request penting",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "?:",
+              "suspend function",
               "ya"
             ],
             "a": 3,
@@ -3687,9 +3687,9 @@ const CONTENT_KOTLIN = [
             "q": "Versioning API membantu",
             "options": [
               "tidak",
-              "CSS",
+              "fun",
               "ya",
-              "route"
+              "static member"
             ],
             "a": 2,
             "explain": "Kompatibilitas."
@@ -3708,7 +3708,7 @@ const CONTENT_KOTLIN = [
               "Kotlin DSL/script",
               "PHP",
               "Ruby",
-              "CSS"
+              "keandalan"
             ],
             "a": 0,
             "explain": "Gradle mendukung Kotlin DSL."
@@ -3717,9 +3717,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "build.gradle.kts mendefinisikan",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "lifecycle coroutine",
+              "getter/setter kustom",
+              "koleksi bersarang",
               "konfigurasi build"
             ],
             "a": 3,
@@ -3729,9 +3729,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Version catalog membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "disarankan",
+              "in-memory database",
+              "banyak collector",
               "mengelola dependency"
             ],
             "a": 3,
@@ -3741,9 +3741,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Multi-module membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "kualitas",
+              "sumber data",
+              "non-blocking IO",
               "skalabilitas"
             ],
             "a": 3,
@@ -3754,8 +3754,8 @@ const CONTENT_KOTLIN = [
             "q": "Menjalankan build memakai",
             "options": [
               "gradle run_all",
-              "CSS",
-              "route",
+              "JVM (juga native/JS)",
+              "println()",
               "./gradlew build"
             ],
             "a": 3,
@@ -3765,9 +3765,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Menguji memakai",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "listOf()",
+              ".size",
+              "member private",
               "./gradlew test"
             ],
             "a": 3,
@@ -3777,9 +3777,9 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Konfigurasi cache membantu",
             "options": [
-              "CSS",
-              "route",
-              "migrasi",
+              "getter/setter kustom",
+              "koleksi bersarang",
+              "status terbatas",
               "kecepatan build"
             ],
             "a": 3,
@@ -3789,10 +3789,10 @@ const CONTENT_KOTLIN = [
             "type": "mc",
             "q": "Proguard/R8 dikonfigurasi saat",
             "options": [
-              "CSS",
-              "route",
+              "runTest",
+              "penting",
               "build rilis",
-              "migrasi"
+              "deklarasi endpoint"
             ],
             "a": 2,
             "explain": "Konfigurasi R8 untuk rilis."
@@ -3802,9 +3802,9 @@ const CONTENT_KOTLIN = [
             "q": "Menjaga versi plugin konsisten",
             "options": [
               "tidak",
-              "CSS",
+              "sumber data",
               "penting",
-              "route"
+              "non-blocking IO"
             ],
             "a": 2,
             "explain": "Versi plugin konsisten."
@@ -3814,8 +3814,8 @@ const CONTENT_KOTLIN = [
             "q": "CI menjalankan build otomatis",
             "options": [
               "tidak",
-              "CSS",
-              "route",
+              "throw",
+              "hasil",
               "ya"
             ],
             "a": 3,
