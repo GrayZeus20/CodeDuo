@@ -41,33 +41,15 @@ function Switch({ checked, onChange, label }) {
   );
 }
 
-/* Katalog offline cadangan jika belum berhasil fetch */
+/* Katalog offline cadangan khusus musik tenang untuk fokus belajar */
 const FALLBACK_CATALOG = [
-  {
-    id: 'px-uplifting',
-    title: 'Acoustic Guitars Ambient Uplifting',
-    artist: 'Lesfm',
-    duration: '2:40',
-    sizeStr: '3.4 MB',
-    tag: 'Hangat & Inspiratif',
-    url: 'https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=acoustic-guitars-ambient-uplifting-10173.mp3'
-  },
-  {
-    id: 'px-motivation',
-    title: 'Acoustic Motivation',
-    artist: 'Coma-Media',
-    duration: '2:18',
-    sizeStr: '5.3 MB',
-    tag: 'Fokus & Bersemangat',
-    url: 'https://cdn.pixabay.com/download/audio/2022/10/14/audio_9939f792cb.mp3?filename=acoustic-motivation-11290.mp3'
-  },
   {
     id: 'px-lofi',
     title: 'Lofi Study Chill Beats',
     artist: 'FASSounds',
     duration: '2:27',
     sizeStr: '4.5 MB',
-    tag: 'Lo-Fi Akustik Santai',
+    tag: 'Lo-Fi Fokus Belajar',
     url: 'https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3'
   },
   {
@@ -80,31 +62,13 @@ const FALLBACK_CATALOG = [
     url: 'https://cdn.pixabay.com/download/audio/2022/08/02/audio_884fe92c21.mp3?filename=relaxing-guitar-loop-v5-22436.mp3'
   },
   {
-    id: 'px-folk',
-    title: 'Acoustic Guitar Folk Melody',
-    artist: 'AcousticMusic',
-    duration: '2:11',
-    sizeStr: '5.0 MB',
-    tag: 'Folk Melodi Riang',
-    url: 'https://cdn.pixabay.com/download/audio/2023/02/28/audio_550d815fa5.mp3?filename=acoustic-guitar-folk-melody.mp3'
-  },
-  {
-    id: 'px-inspiring',
-    title: 'Inspiring Acoustic Day',
-    artist: 'prazkhanal',
-    duration: '2:02',
-    sizeStr: '3.7 MB',
-    tag: 'Cerah & Produktif',
-    url: 'https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=inspiring-acoustic-day.mp3'
-  },
-  {
-    id: 'px-loop',
-    title: 'Clean Acoustic Guitar Loop',
-    artist: 'SoulProdMusic',
-    duration: '0:14',
-    sizeStr: '78 KB',
-    tag: 'Loop Ringan & Cepat',
-    url: 'https://cdn.pixabay.com/download/audio/2021/08/04/audio_12b0c7443c.mp3?filename=clean-acoustic-guitar-loop-139bpm-1215.mp3'
+    id: 'px-uplifting',
+    title: 'Acoustic Guitars Ambient Uplifting',
+    artist: 'Lesfm',
+    duration: '2:40',
+    sizeStr: '3.4 MB',
+    tag: 'Ambient Akustik Hangat',
+    url: 'https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=acoustic-guitars-ambient-uplifting-10173.mp3'
   }
 ];
 
@@ -161,6 +125,8 @@ export default function BgmSettings() {
   const [bgmEnabled, setBgmEnabled] = useState(() => BGM.isEnabled());
   const [bgmVolumePct, setBgmVolumePct] = useState(() => Math.round(BGM.getVolume() * 100));
   const [activeTrack, setActiveTrack] = useState(() => BGM.getActiveTrack());
+  const [activePreset, setActivePreset] = useState(() => BGM.getPreset());
+  const studyPresets = useMemo(() => BGM.getPresets(), []);
   const [isOnline, setIsOnline] = useState(() => typeof navigator !== 'undefined' ? navigator.onLine : true);
   const [catalog, setCatalog] = useState(FALLBACK_CATALOG);
   const [loadingCatalog, setLoadingCatalog] = useState(false);
@@ -235,6 +201,7 @@ export default function BgmSettings() {
       setBgmEnabled(BGM.isEnabled());
       setBgmVolumePct(Math.round(BGM.getVolume() * 100));
       setActiveTrack(BGM.getActiveTrack());
+      setActivePreset(BGM.getPreset());
     });
 
     return () => {
@@ -386,6 +353,15 @@ export default function BgmSettings() {
     }
   };
 
+  const handleSelectPreset = async (presetId) => {
+    stopPreview();
+    SFX.pick();
+    await BGM.setPreset(presetId);
+    if (!bgmEnabled) BGM.setEnabled(true);
+    BGM.unlock();
+    if (!BGM.isPlaying()) BGM.play();
+  };
+
   const handleResetToSynth = async () => {
     stopPreview();
     SFX.back();
@@ -394,6 +370,18 @@ export default function BgmSettings() {
     BGM.unlock();
     if (!BGM.isPlaying()) BGM.play();
   };
+
+  const filteredPresets = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return studyPresets;
+    return studyPresets.filter((p) =>
+      p.title.toLowerCase().includes(q) ||
+      p.subtitle.toLowerCase().includes(q) ||
+      p.tag.toLowerCase().includes(q)
+    );
+  }, [studyPresets, searchQuery]);
+
+  const activePresetObj = studyPresets.find((p) => p.id === activePreset) || studyPresets[0];
 
   const filteredCatalog = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -428,12 +416,12 @@ export default function BgmSettings() {
               </span>
               <div>
                 <h2 style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0 }}>
-                  {activeTrack ? activeTrack.name : 'Petikan Akustik Bawaan (Sintetis)'}
+                  {activeTrack ? activeTrack.name : (activePresetObj ? activePresetObj.title : 'Gitar Akustik Tenang')}
                 </h2>
                 <div className="muted" style={{ fontSize: '0.8rem', marginTop: '2px' }}>
                   {activeTrack
                     ? 'Memutar berkas audio dari Pixabay / IndexedDB browser'
-                    : 'Web Audio Physical Modeling (Karplus-Strong) • 100% Offline'}
+                    : (activePresetObj ? activePresetObj.subtitle + ' • 100% Offline' : '100% Offline')}
                 </div>
               </div>
             </div>
@@ -542,35 +530,38 @@ export default function BgmSettings() {
 
           {/* Scrollable Container */}
           <div className="bgm-scroll-box" style={{ maxHeight: '420px' }} role="region" aria-label="Daftar lagu musik latar akustik">
-            {/* 1. Track Akustik Bawaan (Sintetis) */}
-            {(!searchQuery || 'petikan gitar akustik bawaan sintetis karplus strong'.includes(searchQuery.toLowerCase())) && (
-              <div className={`bgm-item ${!activeTrack ? 'bgm-item--active' : ''}`}>
-                <div className="bgm-item__info">
-                  <div className="bgm-item__title">
-                    🎸 Petikan Akustik Bawaan {!activeTrack && <span style={{ color: 'var(--green)', fontSize: '0.74rem' }}>✓ AKTIF</span>}
+            {/* 1. Preset Fokus Belajar Bawaan (100% Offline, 0 KB) */}
+            {filteredPresets.map((preset) => {
+              const isPresetActive = !activeTrack && activePreset === preset.id;
+              return (
+                <div key={preset.id} className={`bgm-item ${isPresetActive ? 'bgm-item--active' : ''}`}>
+                  <div className="bgm-item__info">
+                    <div className="bgm-item__title">
+                      {preset.title} {isPresetActive && <span style={{ color: 'var(--green)', fontSize: '0.74rem' }}>✓ AKTIF</span>}
+                    </div>
+                    <div className="bgm-item__artist">
+                      {preset.subtitle}
+                    </div>
+                    <div className="bgm-item__meta">
+                      <span>⏱ Loop Otomatis</span>
+                      <span>📦 0 KB (Offline)</span>
+                      <span className="bgm-item__tag">{preset.tag}</span>
+                    </div>
                   </div>
-                  <div className="bgm-item__artist">
-                    Web Audio Physical Modeling • Karplus-Strong
-                  </div>
-                  <div className="bgm-item__meta">
-                    <span>⏱ Loop Otomatis</span>
-                    <span>📦 0 KB (Sintetis)</span>
-                    <span className="bgm-item__tag">🌿 100% Offline &amp; Hemat Daya</span>
+                  <div className="bgm-item__actions">
+                    <button
+                      type="button"
+                      className={`chip-btn ${isPresetActive ? 'is-active' : ''}`}
+                      disabled={isPresetActive}
+                      onClick={() => handleSelectPreset(preset.id)}
+                      style={{ fontSize: '0.82rem', padding: '6px 14px' }}
+                    >
+                      {isPresetActive ? '✓ Sedang Dipakai' : '▶ Pakai Suara Ini'}
+                    </button>
                   </div>
                 </div>
-                <div className="bgm-item__actions">
-                  <button
-                    type="button"
-                    className={`chip-btn ${!activeTrack ? 'is-active' : ''}`}
-                    disabled={!activeTrack}
-                    onClick={handleResetToSynth}
-                    style={{ fontSize: '0.82rem', padding: '6px 14px' }}
-                  >
-                    {!activeTrack ? '✓ Sedang Dipakai' : '▶ Pakai Suara Ini'}
-                  </button>
-                </div>
-              </div>
-            )}
+              );
+            })}
 
             {/* 2. Custom Uploaded Tracks di IndexedDB (jika bukan dari katalog bawaan) */}
             {savedTracks.filter(s => !catalog.some(c => c.title + '.mp3' === s.name)).map(saved => {
@@ -673,7 +664,7 @@ export default function BgmSettings() {
             })}
 
             {/* Fallback pencarian kosong */}
-            {filteredCatalog.length === 0 && (
+            {filteredCatalog.length === 0 && filteredPresets.length === 0 && (
               <div style={{ textAlign: 'center', padding: '36px 12px', color: 'var(--muted)', fontSize: '0.88rem' }}>
                 🔍 Tidak ada musik yang cocok dengan "{searchQuery}".
               </div>

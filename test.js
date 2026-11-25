@@ -1651,5 +1651,23 @@ t('bibit-ml: otomatis belajar dari halaman Materi & menghormati sakelar On/Off',
   assert.strictEqual(isBibitMlEnabled(), true);
 });
 
+t('bgm: preset fokus belajar bawaan & katalog Pixabay hanya berisi lagu tenang untuk belajar', async () => {
+  const { BGM } = await import('./bgm.js');
+  const presets = BGM.getPresets();
+  assert.strictEqual(presets.length, 3, 'harus ada 3 preset fokus belajar bawaan');
+  assert.strictEqual(BGM.getPreset(), 'acoustic-calm');
+  await BGM.setPreset('lofi-pad');
+  assert.strictEqual(BGM.getPreset(), 'lofi-pad');
+  await BGM.setPreset('invalid-preset-xyz');
+  assert.strictEqual(BGM.getPreset(), 'lofi-pad', 'preset asing harus ditolak');
+  await BGM.setPreset('acoustic-calm');
+
+  const fs = await import('node:fs');
+  const catalog = JSON.parse(fs.readFileSync(new URL('./public/pixabay-acoustic-catalog.json', import.meta.url), 'utf8'));
+  const banned = new Set(['px-loop', 'px-folk', 'px-motivation', 'px-inspiring']);
+  assert.strictEqual(catalog.length, 3, 'katalog harus terkurasi 3 track tenang untuk belajar');
+  assert.ok(catalog.every((item) => !banned.has(item.id)), 'track yang terlalu cepat/riang harus sudah dihapus');
+});
+
 console.log('\n' + passed + ' passed, ' + failed + ' failed');
 process.exit(failed === 0 ? 0 : 1);

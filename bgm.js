@@ -15,13 +15,42 @@ const BGM = (() => {
   const STORAGE_KEY_ENABLED = 'codeduo_bgm_enabled';
   const STORAGE_KEY_VOLUME = 'codeduo_bgm_volume';
   const STORAGE_KEY_ACTIVE_ID = 'codeduo_active_bgm_id';
+  const STORAGE_KEY_PRESET = 'codeduo_bgm_preset';
   const DB_NAME = 'CodeDuoMusicDB';
   const STORE_NAME = 'tracks';
 
-  const DEFAULT_VOLUME = 0.35;
-  const BPM = 72;
-  const BEAT = 60 / BPM;
-  const EIGHTH = BEAT / 2;
+  const DEFAULT_VOLUME = 0.28;
+
+  /* 3 Preset BGM Bawaan Khusus Fokus Belajar (100% Offline, 0 KB, tanpa ritme mengganggu) */
+  const STUDY_PRESETS = [
+    {
+      id: 'acoustic-calm',
+      title: 'Gitar Akustik Tenang',
+      subtitle: 'Fingerstyle lembut 66 BPM • Fokus membaca & latihan',
+      tag: '🌿 Fokus Tenang',
+      bpm: 66,
+    },
+    {
+      id: 'lofi-pad',
+      title: 'Ambient Pad Fokus',
+      subtitle: 'Harmoni pad hangat 60 BPM • Deep study tanpa petikan tajam',
+      tag: '🧘 Deep Work',
+      bpm: 60,
+    },
+    {
+      id: 'rain-study',
+      title: 'Hujan Lembut & Akustik',
+      subtitle: 'Rintik hujan halus + petikan pelan 62 BPM • Redam bising',
+      tag: '🌧️ Hujan Santai',
+      bpm: 62,
+    },
+  ];
+  const VALID_PRESETS = STUDY_PRESETS.map((p) => p.id);
+
+  function stepDurationForPreset(presetId) {
+    const p = STUDY_PRESETS.find((x) => x.id === presetId) || STUDY_PRESETS[0];
+    return (60 / p.bpm) / 2;
+  }
 
   /* Frekuensi nada gitar akustik standar (Hz) */
   const FREQS = {
@@ -181,9 +210,12 @@ const BGM = (() => {
   let ctx = null;
   let master = null;
   let bodyFilterEntry = null;
+  let rainSource = null;
+  let rainGain = null;
   let isEnabled = true;
   let isMuted = false;
   let volume = DEFAULT_VOLUME;
+  let activePreset = 'acoustic-calm';
   let isRunning = false;
   let timerId = null;
   let currentStep = 0;
@@ -206,6 +238,10 @@ const BGM = (() => {
       if (savedVol != null) {
         const v = Number(savedVol);
         if (isFinite(v)) volume = Math.min(1, Math.max(0, v));
+      }
+      const savedPreset = localStorage.getItem(STORAGE_KEY_PRESET);
+      if (savedPreset && VALID_PRESETS.includes(savedPreset)) {
+        activePreset = savedPreset;
       }
     }
   } catch (_) { /* abaikan jika storage diblokir */ }
@@ -346,7 +382,7 @@ const BGM = (() => {
 
     const bodyWarm = ctx.createBiquadFilter();
     bodyWarm.type = 'lowpass';
-    bodyWarm.frequency.value = 3600;
+    bodyWarm.frequency.value = 2800;
     bodyWarm.Q.value = 0.707;
 
     bodyAir.connect(bodyWood);
@@ -404,8 +440,9 @@ const BGM = (() => {
     const humanVel = vel * (0.92 + Math.random() * 0.16);
     noteGain.gain.setValueAtTime(Math.max(0.01, humanVel), time);
 
+    let panner = null;
     if (typeof ctx.createStereoPanner === 'function') {
-      const panner = ctx.createStereoPanner();
+      panner = ctx.createStereoPanner();
       panner.pan.setValueAtTime(Math.min(1, Math.max(-1, pan)), time);
       src.connect(noteGain);
       noteGain.connect(panner);
@@ -415,34 +452,143 @@ const BGM = (() => {
       noteGain.connect(bodyFilterEntry);
     }
 
+    src.onended = () => {
+      try { src.disconnect(); noteGain.disconnect(); if (panner) panner.disconnect(); } catch (_) {}
+    };
+
     try {
       src.start(time);
     } catch (_) {}
   }
 
+  /* Pad ambient lembut untuk preset 'lofi-pad' (deep work tanpa petikan tajam) */
+  function playPadChord(freqs, time, durSec) {
+    if (!master || !ctx || !freqs.length) return;
+    const lp = ctx.createBiquadFilter();
+    lp.type = 'lowpass';
+    lp.frequency.setValueAtTime(920, time);
+    lp.Q.value = 0.7;
+
+    const env = ctx.createGain();
+    env.gain.setValueAtTime(0.0001, time);
+    env.gain.linearRampToValueAtTime(0.085, time + 0.85);
+    env.gain.exponentialRampToValueAtTime(0.0001, time + durSec);
+
+    lp.connect(env);
+    env.connect(master);
+
+    const oscs = freqs.map((f, idx) => {
+      const osc = ctx.createOscillator();
+      osc.type = idx === 0 ? 'sine' : 'triangle';
+      osc.frequency.setValueAtTime(f, time);
+      osc.connect(lp);
+      try {
+        osc.start(time);
+        osc.stop(time + durSec + 0.05);
+      } catch (_) {}
+      return osc;
+    });
+
+    if (oscs[0]) {
+      oscs[0].onended = () => {
+        try { oscs.forEach((o) => o.disconnect()); lp.disconnect(); env.disconnect(); } catch (_) {}
+      };
+    }
+  }
+
+  /* Lapisan hujan pink-noise halus untuk preset 'rain-study' */
+  function startRainLayer() {
+    if (!ctx || !master || rainSource) return;
+    try {
+      const sr = ctx.sampleRate;
+      const len = sr * 3;
+      const buf = ctx.createBuffer(1, len, sr);
+      const data = buf.getChannelData(0);
+      let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+      for (let i = 0; i < len; i++) {
+        const white = Math.random() * 2 - 1;
+        b0 = 0.99886 * b0 + white * 0.0555179;
+        b1 = 0.99332 * b1 + white * 0.0750759;
+        b2 = 0.96900 * b2 + white * 0.1538520;
+        b3 = 0.86650 * b3 + white * 0.3104856;
+        b4 = 0.55000 * b4 + white * 0.5329522;
+        b5 = -0.7616 * b5 - white * 0.0168980;
+        data[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.035;
+        b6 = white * 0.115926;
+      }
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
+      src.loop = true;
+
+      const bp = ctx.createBiquadFilter();
+      bp.type = 'lowpass';
+      bp.frequency.value = 1450;
+
+      const g = ctx.createGain();
+      g.gain.value = 0.38;
+
+      src.connect(bp);
+      bp.connect(g);
+      g.connect(master);
+      src.start();
+      rainSource = src;
+      rainGain = g;
+    } catch (_) {}
+  }
+
+  function stopRainLayer() {
+    if (rainSource) {
+      try { rainSource.stop(); rainSource.disconnect(); } catch (_) {}
+      rainSource = null;
+    }
+    if (rainGain) {
+      try { rainGain.disconnect(); } catch (_) {}
+      rainGain = null;
+    }
+  }
+
+  const PAD_CHORDS = [
+    [130.81, 164.81, 196.00, 246.94], // Cmaj7
+    [110.00, 130.81, 164.81, 196.00], // Am7
+    [87.31, 130.81, 164.81, 220.00],  // Fmaj7
+    [98.00, 146.83, 196.00, 246.94],  // G6
+  ];
+
   function schedule() {
     if (!isRunning || !ctx) return;
     const isHidden = typeof document !== 'undefined' && document.hidden;
     const lookahead = isHidden ? 1.2 : 0.28;
+    const stepDur = stepDurationForPreset(activePreset);
 
     if (nextStepTime < ctx.currentTime) {
       nextStepTime = ctx.currentTime + 0.05;
     }
 
     while (nextStepTime < ctx.currentTime + lookahead) {
-      const stepNotes = SCORE[currentStep];
-      if (stepNotes && stepNotes.length) {
-        for (let i = 0; i < stepNotes.length; i++) {
-          const item = stepNotes[i];
-          const freq = FREQS[item.n];
-          if (freq) {
-            const jitter = (Math.random() * 2 - 1) * 0.004;
-            const t = Math.max(ctx.currentTime, nextStepTime + (item.d || 0) + jitter);
-            playNote(freq, t, item.v, item.p || 0);
+      if (activePreset === 'lofi-pad') {
+        /* Mainkan 1 chord pad lembut setiap 8 langkah (1 birama penuh) */
+        if (currentStep % 8 === 0) {
+          const chordIdx = Math.floor(currentStep / 8) % PAD_CHORDS.length;
+          playPadChord(PAD_CHORDS[chordIdx], nextStepTime, stepDur * 8.2);
+        }
+      } else {
+        const stepNotes = SCORE[currentStep];
+        /* Untuk 'rain-study', kurangi kepadatan petikan agar suasana hujan lebih dominan & tenang */
+        const playThisStep = activePreset === 'rain-study' ? (currentStep % 2 === 0) : true;
+        if (playThisStep && stepNotes && stepNotes.length) {
+          const velScale = activePreset === 'rain-study' ? 0.68 : 0.88;
+          for (let i = 0; i < stepNotes.length; i++) {
+            const item = stepNotes[i];
+            const freq = FREQS[item.n];
+            if (freq) {
+              const jitter = (Math.random() * 2 - 1) * 0.004;
+              const t = Math.max(ctx.currentTime, nextStepTime + (item.d || 0) + jitter);
+              playNote(freq, t, item.v * velScale, item.p || 0);
+            }
           }
         }
       }
-      nextStepTime += EIGHTH;
+      nextStepTime += stepDur;
       currentStep = (currentStep + 1) % SCORE.length;
     }
   }
@@ -499,6 +645,8 @@ const BGM = (() => {
     isRunning = true;
     nextStepTime = c.currentTime + 0.1;
     applyMasterGain(true);
+    if (activePreset === 'rain-study') startRainLayer();
+    else stopRainLayer();
     timerId = setInterval(schedule, 40);
     notify();
   }
@@ -508,6 +656,7 @@ const BGM = (() => {
       clearInterval(timerId);
       timerId = null;
     }
+    stopRainLayer();
   }
 
   function stopCustomAudio() {
@@ -609,12 +758,35 @@ const BGM = (() => {
       stopAudioEngine();
     },
     toggle() {
-      if (isRunning) {
+      if (isEnabled && !isMuted) {
         this.setEnabled(false);
       } else {
         this.setEnabled(true);
         this.play();
       }
+    },
+    getPresets() {
+      return STUDY_PRESETS.slice();
+    },
+    getPreset() {
+      return activePreset;
+    },
+    async setPreset(presetId) {
+      if (!VALID_PRESETS.includes(presetId)) return activePreset;
+      activePreset = presetId;
+      try {
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem(STORAGE_KEY_PRESET, activePreset);
+          localStorage.removeItem(STORAGE_KEY_ACTIVE_ID);
+        }
+      } catch (_) {}
+      activeCustomTrack = null;
+      if (isRunning) {
+        stopAudioEngine();
+        await startAudioEngine();
+      }
+      notify();
+      return activePreset;
     },
     setEnabled(val) {
       isEnabled = !!val;
